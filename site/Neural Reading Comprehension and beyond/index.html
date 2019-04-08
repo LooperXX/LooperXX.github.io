@@ -10,14 +10,20 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="Looper's personal notes">
       
+      
+        <link rel="canonical" href="https://looperxx.github.io/My_wiki/Neural Reading Comprehension and beyond/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
       
       
         <meta name="lang:clipboard.copy" content="复制">
       
         <meta name="lang:clipboard.copied" content="已复制">
       
-        <meta name="lang:search.language" content="en, zh">
+        <meta name="lang:search.language" content="ja">
       
         <meta name="lang:search.pipeline.stopwords" content="True">
       
@@ -36,7 +42,7 @@
     
     
       
-        <title>Machine Reading Comprehension - LooperXX's wiki</title>
+        <title>Machine Reading Comprehension - Looper's wiki</title>
       
     
     
@@ -59,6 +65,31 @@
     
     
       
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-XXXXXXXX-X", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
@@ -68,6 +99,25 @@
     <svg class="md-svg">
       <defs>
         
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
         
       </defs>
     </svg>
@@ -84,7 +134,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="LooperXX's wiki" class="md-header-nav__button md-logo">
+        <a href="https://looperxx.github.io/My_wiki" title="Looper's wiki" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -97,7 +147,7 @@
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             <span class="md-header-nav__topic">
-              LooperXX's wiki
+              Looper's wiki
             </span>
             <span class="md-header-nav__topic">
               Machine Reading Comprehension
@@ -133,6 +183,28 @@
 </div>
         
       </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/looperxx/My_wiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    looperxx/My_wiki
+  </div>
+</a>
+          </div>
+        </div>
       
     </div>
   </nav>
@@ -174,6 +246,19 @@
   
 
       
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Material Theme Tutorial/" title="For MkDocs" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -187,13 +272,33 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href=".." title="LooperXX's wiki" class="md-nav__button md-logo">
+    <a href="https://looperxx.github.io/My_wiki" title="Looper's wiki" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
     </a>
-    LooperXX's wiki
+    Looper's wiki
   </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/looperxx/My_wiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    looperxx/My_wiki
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -287,10 +392,52 @@
       
       
       
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
     </ul>
   
 </nav>
     
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      For MkDocs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
   </li>
 
         
@@ -344,6 +491,12 @@
       
       
       
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
     </ul>
   
 </nav>
@@ -356,9 +509,11 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/looperxx/My_wiki/edit/master/docs/Neural Reading Comprehension and beyond.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
-                <h1 id="neural-reading-comprehension-and-beyond">Neural Reading Comprehension and beyond 阅读笔记</h1>
-<h2 id="chapter-1-introduction">Chapter 1   Introduction</h2>
+                
+                <h1 id="neural-reading-comprehension-and-beyond">Neural Reading Comprehension and beyond 阅读笔记<a class="headerlink" href="#neural-reading-comprehension-and-beyond" title="Permanent link">&para;</a></h1>
+<h2 id="chapter-1-introduction">Chapter 1   Introduction<a class="headerlink" href="#chapter-1-introduction" title="Permanent link">&para;</a></h2>
 <ul>
 <li>怎样叫做理解人类语言？</li>
 <li>词性标注 <code>part-of-speech tagging</code> <ul>
@@ -478,8 +633,8 @@
 <li>我们开创了将神经阅读理解作为开放域问答的核心组成部分的研究方向，并研究了如何推广该案例的模型。特别是，我们在<code>DRQA</code>系统中实现了这一想法，<code>DRQA</code>系统是基于英语维基百科的一个大型，仿真问答系统。</li>
 <li>最后，我们着手解决会话问题回答问题，其中计算机系统需要在对话环境中回答理解问题，因此每个问题都需要通过其对话历史来理解。为解决这个问题，我们提出了<code>COQA</code>挑战，并建立了适应这一问题的神经阅读理解模型。我们相信这是构建对话QA代理的第一步，也是重要的一步。</li>
 </ul>
-<h2 id="neural-reading-comprehensionfoundations">Neural Reading Comprehension:Foundations</h2>
-<h2 id="chapter-2-an-overview-of-reading-comprehension">Chapter 2   An Overview of Reading Comprehension</h2>
+<h2 id="neural-reading-comprehensionfoundations">Neural Reading Comprehension:Foundations<a class="headerlink" href="#neural-reading-comprehensionfoundations" title="Permanent link">&para;</a></h2>
+<h2 id="chapter-2-an-overview-of-reading-comprehension">Chapter 2   An Overview of Reading Comprehension<a class="headerlink" href="#chapter-2-an-overview-of-reading-comprehension" title="Permanent link">&para;</a></h2>
 <ul>
 <li>waiting</li>
 </ul>
@@ -490,6 +645,22 @@
               
                 
 
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/My_wiki/Neural Reading Comprehension and beyond/";
+      this.page.identifier =
+        "/Neural Reading Comprehension and beyond/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
 
               
             </article>
@@ -518,12 +689,30 @@
           </a>
         
         
+          <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                Material Theme Tutorial
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
       </nav>
     </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Looper Xiao Xu
+          </div>
         
         powered by
         <a href="https://www.mkdocs.org">MkDocs</a>
@@ -532,6 +721,15 @@
           Material for MkDocs</a>
       </div>
       
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/LooperXX" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>
@@ -546,18 +744,20 @@
           <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
           
             
-          
-            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
               
               
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
             
           
-          
-            <script src="../assets/javascripts/lunr/lunr.multi.js"></script>
           
         
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>
