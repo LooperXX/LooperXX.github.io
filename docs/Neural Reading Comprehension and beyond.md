@@ -1,4 +1,6 @@
-## Chapter 1	Introduction
+# Neural Reading Comprehension and beyond 阅读笔记
+
+##  Chapter 1	Introduction
 
 - 怎样叫做理解人类语言？
   - 词性标注 `part-of-speech tagging` 
@@ -84,6 +86,8 @@
   - 我们开创了将神经阅读理解作为开放域问答的核心组成部分的研究方向，并研究了如何推广该案例的模型。特别是，我们在`DRQA`系统中实现了这一想法，`DRQA`系统是基于英语维基百科的一个大型，仿真问答系统。
   - 最后，我们着手解决会话问题回答问题，其中计算机系统需要在对话环境中回答理解问题，因此每个问题都需要通过其对话历史来理解。为解决这个问题，我们提出了`COQA`挑战，并建立了适应这一问题的神经阅读理解模型。我们相信这是构建对话QA代理的第一步，也是重要的一步。
 
-# Neural Reading Comprehension:Foundations
-## Chapter 2	An Overview of Reading Comprehension
+##  Neural Reading Comprehension:Foundations
 
+##  Chapter 2	An Overview of Reading Comprehension
+
+- waiting

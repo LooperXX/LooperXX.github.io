@@ -7,7 +7,9 @@ For full documentation visit [mkdocs.org](https://mkdocs.org).
 * `mkdocs new [dir-name]` - Create a new project.
 * `mkdocs serve` - Start the live-reloading docs server.
 * `mkdocs build` - Build the documentation site.
+* `mkdocs build --clean` - remove useless files
 * `mkdocs help` - Print this help message.
+* `mkdocs gh-deploy`  push to github
 
 ## Project layout
 

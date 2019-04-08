@@ -1,6 +1,14 @@
-site_name: My Docs
+site_name: LooperXX's wiki
 theme:
-    name: 'material'
+    name: 'material' # name: 'readthedocs'
+    language: 'zh'
+    feature:
+        tabs: true
+    
 nav:
     - Home: index.md
-    - MRC: Neural Reading Comprehension and beyond.md
+    - NLP:
+        - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
+extra:
+  search:
+    language: 'en, zh'
