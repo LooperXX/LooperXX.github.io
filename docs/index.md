@@ -1,17 +1,8 @@
-# Welcome to MkDocs
+# Welcome to My_wiki
 
-For full documentation visit [mkdocs.org](https://mkdocs.org).
+- My Name is Xiao Xu 徐啸. 
 
-## Commands
+- This is my personal note taking website.
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- I'll always use `mkdocs `to manage the repository, and `typora `to write markdown files to take notes.
+- Here is [my personal resume](<https://looperxx.github.io/Chinese_Resume.pdf>).

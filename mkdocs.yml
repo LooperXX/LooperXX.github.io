@@ -3,4 +3,4 @@ theme:
     name: 'material'
 nav:
     - Home: index.md
-    - First: first.md
+    - MRC: Neural Reading Comprehension and beyond.md
