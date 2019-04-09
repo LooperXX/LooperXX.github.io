@@ -1,8 +1,8 @@
 # MkDocs_demo
 
-## Demo yaml
+## Demo yml
 
-```yaml
+```yml
 # Project information
 site_name: Looper's wiki
 site_description: Looper's personal notes
