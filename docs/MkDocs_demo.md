@@ -1,3 +1,8 @@
+# MkDocs_demo
+
+## Demo yaml
+
+```yaml
 # Project information
 site_name: Looper's wiki
 site_description: Looper's personal notes
@@ -78,3 +83,15 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
+
+```
+
+## Requirements
+
+```shell
+pip install mkdocs
+pip install mkdocs-material
+pip install pygments
+pip install pymdown-extensions
+```
+
