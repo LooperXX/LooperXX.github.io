@@ -1,0 +1,1918 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Looper's personal notes">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/My_wiki/FDBus API/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>FDBus API - Looper's wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-XXXXXXXX-X", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#fdbus-api" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://looperxx.github.io/My_wiki" title="Looper's wiki" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Looper's wiki
+            </span>
+            <span class="md-header-nav__topic">
+              FDBus API
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/looperxx/My_wiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    looperxx/My_wiki
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../OS/" title="Math & CS Course" class="md-tabs__link">
+          Math & CS Course
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../知识网络/" title="Coding" class="md-tabs__link">
+          Coding
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Concepts/" title="ML & DL" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Attention/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../面经/" title="Interview experience" class="md-tabs__link md-tabs__link--active">
+          Interview experience
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://looperxx.github.io/My_wiki" title="Looper's wiki" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Looper's wiki
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/looperxx/My_wiki/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    looperxx/My_wiki
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Math & CS Course
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Math & CS Course
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../OS/" title="OS" class="md-nav__link">
+      OS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Coding
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Coding
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../知识网络/" title="知识网络" class="md-nav__link">
+      知识网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">
+      重点内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../历年机试/" title="历年机试" class="md-nav__link">
+      历年机试
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      ML & DL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CNN/" title="CNN" class="md-nav__link">
+      CNN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../经典网络/" title="经典网络" class="md-nav__link">
+      经典网络
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      NMT
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        NMT
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NMT Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      QA
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        QA
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../QA Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Interview experience
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Interview experience
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../面经/" title="我的面经" class="md-nav__link">
+      我的面经
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+    
+    <label class="md-nav__link" for="nav-6-2">
+      实训笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        实训笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">
+      Protobuf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus/" title="FDBus" class="md-nav__link">
+      FDBus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        FDBus API
+      </label>
+    
+    <a href="./" title="FDBus API" class="md-nav__link md-nav__link--active">
+      FDBus API
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client-server" title="Client, Server消息收发相关方法调用" class="md-nav__link">
+    Client, Server消息收发相关方法调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-server_1" title="Client, Server其它方法调用" class="md-nav__link">
+    Client, Server其它方法调用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cbaseclient" title="类CBaseClient" class="md-nav__link">
+    类CBaseClient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cbaseserver" title="类CBaseServer" class="md-nav__link">
+    类CBaseServer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cfdbbaseobject" title="类CFdbBaseObject" class="md-nav__link">
+    类CFdbBaseObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdb_context" title="类FDB_CONTEXT" class="md-nav__link">
+    类FDB_CONTEXT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-server_2" title="Client, Server的回调函数" class="md-nav__link">
+    Client, Server的回调函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message" title="Message方法调换" class="md-nav__link">
+    Message方法调换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protobuf" title="Protobuf" class="md-nav__link">
+    Protobuf
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus内部结构/" title="FDBus内部结构" class="md-nav__link">
+      FDBus内部结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">
+      Cross compiler
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      For MkDocs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#client-server" title="Client, Server消息收发相关方法调用" class="md-nav__link">
+    Client, Server消息收发相关方法调用
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-server_1" title="Client, Server其它方法调用" class="md-nav__link">
+    Client, Server其它方法调用
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cbaseclient" title="类CBaseClient" class="md-nav__link">
+    类CBaseClient
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cbaseserver" title="类CBaseServer" class="md-nav__link">
+    类CBaseServer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cfdbbaseobject" title="类CFdbBaseObject" class="md-nav__link">
+    类CFdbBaseObject
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fdb_context" title="类FDB_CONTEXT" class="md-nav__link">
+    类FDB_CONTEXT
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-server_2" title="Client, Server的回调函数" class="md-nav__link">
+    Client, Server的回调函数
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message" title="Message方法调换" class="md-nav__link">
+    Message方法调换
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#protobuf" title="Protobuf" class="md-nav__link">
+    Protobuf
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/looperxx/My_wiki/edit/master/docs/FDBus API.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="fdbus-api">FDBus  API<a class="headerlink" href="#fdbus-api" title="Permanent link">&para;</a></h1>
+<h2 id="client-server">Client, Server消息收发相关方法调用<a class="headerlink" href="#client-server" title="Permanent link">&para;</a></h2>
+<p><strong>方法 (CFdbBaseObject, CBaseServer或CBaseClient)</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步 (同步：调用后阻塞，直至收到对方回复；异步：调用后立刻返回。对方的回复通过回调函数获得)</li>
+<li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer在回调函数中调用。参数receiver可以从CBaseServer回调函数的参数msg_ref获得。</li>
+<li>响应者：CBaseServer/CBaseClient；但通常是CBaseClient</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：默认使用CBaseMessage；不能携带私有数据(所谓消息私有数据是指在发送请求时可以携带额外数据；这些数据在请求返(onReply)时可以获取到。)</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer在回调函数中调用。参数receiver可以从CBaseServer回调函数的参数msg_ref获得。</li>
+<li>响应者：CBaseServer/CBaseClient；但通常是CBaseClient</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：参数msg扩展CBaseMessage后，可以携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CbaseClient</li>
+<li>响应者：CbaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：默认使用CBaseMessage；不能携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：参数msg扩展CBaseMessage后，可以携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+                <span class="p">,</span> <span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：同步</li>
+<li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer</li>
+<li>响应者：CBaseServer/CBaseClient；但通常是CBaseClient</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：msg_ref指向CBaseMessage子类对象，该对象可以携带私有数据；如果无私有数据则msg_ref直接指向CBaseMessage</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">invoke</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span>
+                <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：同步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：msg_ref指向CBaseMessage子类对象，该对象可以携带私有数据；如果无私有数据则msg_ref直接指向CBaseMessage</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">send</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+              <span class="p">,</span> <span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+              <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">send</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">receiver</span>
+              <span class="p">,</span> <span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+              <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+              <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer</li>
+<li>响应者：CBaseServer/CBaseClient；但通常是CBaseClient</li>
+<li>接收方返回：无返回</li>
+<li>消息私有数据：无需携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">send</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+              <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">send</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+              <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+              <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：无返回</li>
+<li>消息私有数据：无需携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">broadcast</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">broadcast</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="mi">0</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                   <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：N/A</li>
+<li>调用者：CBaseServer</li>
+<li>响应者：CBaseClient</li>
+<li>接收方返回：无返回</li>
+<li>消息私有数据：无需携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span>
+                   <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：默认使用CBaseMessage；不能携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span>
+                   <span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
+                   <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：参数msg扩展CBaseMessage后，可以携带私有数据</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span>
+                   <span class="p">,</span> <span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span>
+                   <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：同步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：有返回</li>
+<li>消息私有数据：msg_ref指向CBaseMessage子类对象，该对象可以携带私有数据；此处msg_ref也可以不指向任何对象，即不携带私有数据。</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">unsubscribe</span><span class="p">(</span><span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>同步/异步：异步</li>
+<li>调用者：CBaseClient</li>
+<li>响应者：CBaseServer</li>
+<li>接收方返回：无返回</li>
+<li>消息私有数据：无需携带私有数据</li>
+</ul>
+<h2 id="client-server_1">Client, Server其它方法调用<a class="headerlink" href="#client-server_1" title="Permanent link">&para;</a></h2>
+<h3 id="cbaseclient">类CBaseClient<a class="headerlink" href="#cbaseclient" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">CBaseClient</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：构造函数；创建Client</li>
+<li>参数<ul>
+<li>name : client名字，可以为任意字符串</li>
+<li>worker：如果指定则所有回调函数在该worker上运行；否则在fdbus工作线程FDB_CONTEXT上运行</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbSessionId_t</span> <span class="n">connect</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：连接到Server上</li>
+<li>参数：<ul>
+<li>url：Server的地址，支持tcp，file和svc格式。如果不指定默认是svc://name，name是构造函数的name参数。</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">disconnect</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：断开连接</li>
+<li>参数<ul>
+<li>sid：通常不指定</li>
+</ul>
+</li>
+</ul>
+<h3 id="cbaseserver">类CBaseServer<a class="headerlink" href="#cbaseserver" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">CBaseServer</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：构造函数；创建Server</li>
+<li>参数<ul>
+<li>name : server名字，可以为任意字符串</li>
+<li>worker：如果指定则所有回调函数在该worker上运行；否则在fdbus工作线程FDB_CONTEXT上运行</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbSocketId_t</span> <span class="nf">bind</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：绑定地址</li>
+<li>参数<ul>
+<li>url：Server的地址，支持tcp，file和svc格式。如果不指定默认是svc://name，name是构造函数的name参数。</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">unbind</span><span class="p">(</span><span class="n">FdbSocketId_t</span> <span class="n">skid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：解除地址绑定</li>
+<li>参数<ul>
+<li>sid：通常不指定</li>
+</ul>
+</li>
+</ul>
+<h3 id="cfdbbaseobject">类CFdbBaseObject<a class="headerlink" href="#cfdbbaseobject" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">CFdbBaseObject</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+               <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+               <span class="n">EFdbEndpointRole</span> <span class="n">role</span> <span class="o">=</span> <span class="n">FDB_OBJECT_ROLE_UNKNOWN</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：构造函数；创建对象</li>
+<li>参数<ul>
+<li>name : object名字，可以为任意字符串</li>
+<li>worker：如果指定则所有回调函数在该worker上运行；否则在fdbus工作线程FDB_CONTEXT上运行</li>
+<li>role：通常不指定</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbObjectId_t</span> <span class="n">bind</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> 
+                   <span class="n">FdbObjectId_t</span> <span class="n">oid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：绑定对象ID，将对象角色设置为Server。</li>
+<li>参数<ul>
+<li>endpoint：该对象要要挂靠到哪个endpoint上，可以是CBaseServer，也可以是CBaseClient</li>
+<li>oid：需要绑定的对象id，范围是1~65535。如果不指定则系统自动分配</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbObjectId_t</span> <span class="n">connect</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> 
+                      <span class="n">FdbObjectId_t</span> <span class="n">oid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：绑定对象ID，将对象角色设置为Client。</li>
+<li>参数<ul>
+<li>endpoint：该对象要要挂靠到哪个endpoint上，可以是CBaseServer，也可以是CBaseClient</li>
+<li>oid：需要绑定的对象id，范围是1~65535。如果不指定则系统自动分配</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="n">unbind</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：解除Server对象的绑定</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：解除Client对象的绑定</li>
+</ul>
+<h3 id="fdb_context">类FDB_CONTEXT<a class="headerlink" href="#fdb_context" title="Permanent link">&para;</a></h3>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">start</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">FDB_WORKER_ENABLE_FD_LOOP</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：启动fdbus收发线程；其本质就是一个worker线程</li>
+<li>参数<ul>
+<li>flag：启动标志；由以下标志位组合而成<ul>
+<li>FDB_WORKER_EXE_IN_PLACE：置位表示不启动线程，在调用的地方运行worker的主循环；否则启动新线程执行worker的主循环</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="client-server_2">Client, Server的回调函数<a class="headerlink" href="#client-server_2" title="Permanent link">&para;</a></h2>
+<p><strong>回调函数 (CFdbBaseObject, CBaseServer或CBaseClient)</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onOnline</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">is_first</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer：当有Client连上时被调用到；is_first表示是第一个Client来连接</li>
+<li>CBaseClient：当和Server连上时被调用到；由于client不会连接多个server，is_first总是true</li>
+<li>CBaseObject：作为Server时，调用时机和CBaseServer一致；作为Client时，调用时机和CBaseClient一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onOffline</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">is_last</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer：当有Client断开连接时被调用到；is_last表示最后一个client断开连接</li>
+<li>CBaseClient：当和Server断开连接时被调用到；由于client不会连接多个server，is_last总是true</li>
+<li>CBaseObject：作为Server时，调用时机和CBaseServer一致；作为Client时，调用时机和CBaseClient一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onInvoke</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer：当相连的Client调用CBaseClient::invoke()时被调用到；</li>
+<li>CBaseClient通常不需要实现这个方法</li>
+<li>CBaseObject：作为Server时，调用时机和CBaseServer一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onReply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer通常不需要实现这个方法；</li>
+<li>CBaseClient：当相连的Server调用CBaseMessage::reply()时被调到</li>
+<li>CBaseObject：作为Client时，调用时机和CBaseClient一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onBroadcast</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer通常不需要实现这个方法；</li>
+<li>CBaseClient：当相连的Server调用CBaseServer::broadcast()时被调到</li>
+<li>CBaseObject：作为Client时，调用时机和CBaseClient一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onSubscribe</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer：当有client调用CBaseClient::subscribe()时被调用到；该函数必须调用</li>
+<li>CBaseMessage::broadcast()将被注册事件的初始值返回给发起注册请求的Client；</li>
+<li>CBaseClient通常不需要实现这个方法。</li>
+<li>CBaseObject：作为Server时，调用时机和CBaseServer一致</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="n">onCreateObject</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer/CBaseClient：当对方和object通信，但object尚未创建时，该方法被调用到。该方法必须根据msg里的内容创建指定的CBaseObject并bind/connect。</li>
+<li>CBaseObject：无此回调</li>
+</ul>
+</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">connectionEnabled</span><span class="p">(</span><span class="k">const</span> <span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgAddressList</span> <span class="o">&amp;</span><span class="n">addr_list</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>触发条件<ul>
+<li>CBaseServer：无此回调</li>
+<li>CBaseClient：当server上线时，name
+    Server会把Server相关的信息广播给监听该server的client。addr_list包含了Server相关的信息，例如Server所在的host，Server地址等等。在连接Server之前先调用该回调，如果返回true则会连接server，否则将不会连接到Server上。注意，无论是否指定工作线程，该方法只在FDBus工作线程FDB_CONTEXT上执行。</li>
+</ul>
+</li>
+</ul>
+<h2 id="message">Message方法调换<a class="headerlink" href="#message" title="Permanent link">&para;</a></h2>
+<p><strong>方法 (CBaseMessage或CFdbMessage)</strong></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
+                  <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：Server端收到Client发送过来的Message后，通过该函数将Protobuf格式的数据包返回给该Client</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
+                  <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+                  <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：同上，只是返回的是raw data</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">deserialize</span><span class="p">(</span><span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">payload</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：将收到的protobuf格式的流反序列化成C++数据结构</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="o">*</span><span class="n">getPayloadBuffer</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：获得消息中payload数据的起始地址。对于protobuf格式的payload，通过调用deserialize()可以获得消息数据，无需调用该函数。该函数用于raw data的消息</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">isRawData</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：如果消息数据是protobuf则返回false；否则返回true</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbMsgCode_t</span> <span class="n">code</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：获得消息ID</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">getFilter</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：用于onBroadcast()，获得广播过来的消息的filter</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">FdbSessionId_t</span> <span class="n">session</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：获得消息的session</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">isError</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：用在onReply()里，检查对方返回的消息里是否置上了错误标记；如果置上错误标记说明这次请求发生了错误。此时需要调用decodeStatus()获得错误代码和错误描述从而做进一步检查</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">isStatus</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：为true说明返回的消息不包含实际数据，而是个状态，表明请求是成功处理了还是发生其它情况，例如请求超时。isError()是isStatus()的一个特例。</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">bool</span> <span class="n">decodeStatus</span><span class="p">(</span><span class="kt">int32_t</span> <span class="o">&amp;</span><span class="n">error_code</span><span class="p">,</span> 
+                  <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">description</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：当isStatus()或isError()为true时，获得状态的ID和描述。</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">status</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
+            <span class="kt">int32_t</span> <span class="n">error_code</span><span class="p">,</span> 
+            <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">description</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：和reply()类似，只是返回的不是数据，而是状态。通常用于没有数据返回的请求。</li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kt">void</span> <span class="nf">broadcast</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+<span class="kt">void</span> <span class="nf">broadcast</span><span class="p">(</span><span class="n">FdbMsgCode_t</span> <span class="n">code</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="mi">0</span>
+                   <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
+                   <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>描述：在CBaseServer的onBroadcast调用，将所注册消息的初始值返回给前来注册的client端。</li>
+</ul>
+<h2 id="protobuf">Protobuf<a class="headerlink" href="#protobuf" title="Permanent link">&para;</a></h2>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">package</span> <span class="nn">NFdbBase</span><span class="p">;</span>
+
+<span class="kd">message</span> <span class="nc">FdbMsgHostAddress</span>
+<span class="p">{</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">ip_address</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">required</span> <span class="kt">string</span> <span class="na">ns_url</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">optional</span> <span class="kt">string</span> <span class="na">host_name</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>
+<p>Generated C++ Class：<code>::NFdbBase::FdbMsgHostAddress</code></p>
+</li>
+<li>
+<p>Retrieve Memebers</p>
+<ul>
+<li>
+<p>```c++
+    ::NFdbBase::FdbMsgHostAddress::ip_address()
+    ::NFdbBase::FdbMsgHostAddress::ns_url()
+    ::NFdbBase::FdbMsgHostAddress::host_name()</p>
+<p>对于可选项host_name，还有成员函数::NFdbBase::FdbMsgHostAddress::has_host_name()用于检查该成员是否设置。
+```</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Change Members</p>
+<ul>
+<li><code>c++
+    ::NFdbBase::FdbMsgHostAddress::set_ip_address()
+    ::NFdbBase::FdbMsgHostAddress::set_ns_url()
+    ::NFdbBase::FdbMsgHostAddress::set_host_name()</code></li>
+</ul>
+</li>
+</ul>
+<p>```protobuf
+package NFdbBase;</p>
+<p>message FdbMsgHostAddressList
+{
+    repeated FdbMsgHostAddress address_list = 1;
+}
+```</p>
+<ul>
+<li>
+<p>Generated C++ Class：<code>::NFdbBase::FdbMsgHostAddressList</code></p>
+</li>
+<li>
+<p>Retrieve Memebers</p>
+<ul>
+<li>
+<p>```c++
+    NFdbBase::FdbMsgHostAddressList host_list;</p>
+<p>const ::google::protobuf::RepeatedPtrField&lt; ::NFdbBase::FdbMsgHostAddress&gt; &amp;addr_list = host_list.address_list();</p>
+<p>for (::google::protobuf::RepeatedPtrField&lt; ::NFdbBase::FdbMsgHostAddress&gt;::const_iterator it = addr_list.begin(); it != addr_list.end(); ++it)
+{
+    const ::NFdbBase::FdbMsgHostAddress &amp;addr = *it;
+    std::cout &lt;&lt; ""ip: "" &lt;&lt; addr.ip_address() &lt;&lt; "", url: "" &lt;&lt; addr.ns_url() &lt;&lt; "", name: "" &lt;&lt; addr.host_name();
+}
+```</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Change Members</p>
+<ul>
+<li><code>c++
+    ::NFdbBase::FdbMsgHostAddressList &amp;host_tbl;
+    ::NFdbBase::FdbMsgHostAddress *addr = host_tbl.add_address_list();
+    addr.set_ip_address(""192.168.0.1"");
+    addr.set_ns_url(""http://server"");
+    addr.set_host_name(""file server"");</code></li>
+</ul>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/My_wiki/FDBus API/";
+      this.page.identifier =
+        "/FDBus API/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../FDBus/" title="FDBus" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  后退
+                </span>
+                FDBus
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../FDBus内部结构/" title="FDBus内部结构" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  前进
+                </span>
+                FDBus内部结构
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Looper Xiao Xu
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/LooperXX" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.39abc4af.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+  </body>
+</html>

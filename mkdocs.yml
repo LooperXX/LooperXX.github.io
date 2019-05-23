@@ -13,8 +13,33 @@ copyright: 'Copyright &copy; 2019 - 2020 Looper Xiao Xu'
 
 nav:
   - Home: index.md
+  - Math & CS Course:
+    - 'OS' : 'OS.md'
+    - 'Linux' : 'Linux.md'
+  - Coding:
+    - '知识网络' : '知识网络.md'
+    - '重点内容' : 'Coding Knowledge.md'
+    - '历年机试' : '历年机试.md'
+  - ML & DL:
+    - 'Concepts' : 'Concepts.md'
+    - 'CNN' : 'CNN.md'
+    - '经典网络' : '经典网络.md'
+    - 'Normalization' : 'Normalization.md'    
   - NLP:
+      - 'Attention' : 'Attention.md'
       - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
+      - NMT:
+        - 'Concepts' : 'NMT Concepts.md'
+      - QA:
+        - 'Concepts' : 'QA Concepts.md'
+  - Interview experience:
+    - '我的面经' : '面经.md'
+    - 实训笔记:
+      - 'Protobuf' : 'Protocol Buffers.md'
+      - 'FDBus' : 'FDBus.md'
+      - 'FDBus API' : 'FDBus API.md'
+      - 'FDBus内部结构' : 'FDBus内部结构.md'
+      - 'Cross compiler' : 'Cross compiler.md'
   - For MkDocs:
       - 'Demo' : 'MkDocs_demo.md'
       - 'Material Theme Tutorial' : 'Material Theme Tutorial.md'
