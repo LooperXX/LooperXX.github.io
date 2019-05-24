@@ -593,6 +593,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#notes" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1077,6 +1084,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#notes" title="Notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1288,9 +1302,9 @@
 <p>在batch方向上，即对同一mini-batch内的某一通道的所有数据，求得均值与方差</p>
 </li>
 <li>
-<p>使用极小值 <span><span class="MathJax_Preview">\epsilon​</span><script type="math/tex">\epsilon​</script></span> 保证不会出现分母为0的情况</p>
+<p>使用极小值 <span><span class="MathJax_Preview">\epsilon</span><script type="math/tex">\epsilon</script></span> 保证不会出现分母为0的情况</p>
 </li>
-<li>加入缩放和平移变量<span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>和<span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span>,归一化后的值，<span><span class="MathJax_Preview">y=\gamma x+\beta​</span><script type="math/tex">y=\gamma x+\beta​</script></span></li>
+<li>加入缩放和平移变量<span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span>和<span><span class="MathJax_Preview">\beta</span><script type="math/tex">\beta</script></span>,归一化后的值，<span><span class="MathJax_Preview">y=\gamma x+\beta</span><script type="math/tex">y=\gamma x+\beta</script></span></li>
 <li>保证每一次数据经过归一化后还保留原有学习来的特征，同时又能完成归一化操作，加速训练 </li>
 <li>这两个参数是可学习的参数</li>
 </ul>
@@ -1303,6 +1317,8 @@
 <li>BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多</li>
 <li>不适用于动态的网络结构和RNN网络</li>
 </ul>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
+<p><img alt="1558627177098" src="../imgs/1558627177098.png" /></p>
 <h3 id="layer-normalization">Layer Normalization<a class="headerlink" href="#layer-normalization" title="Permanent link">&para;</a></h3>
 <p><img alt="LayerNormalization" src="../imgs/LayerNormalization.jpg" /></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
@@ -1441,7 +1457,7 @@
 <h3 id="weight-normalization">Weight Normalization<a class="headerlink" href="#weight-normalization" title="Permanent link">&para;</a></h3>
 <ul>
 <li>BN 和 LN 均将规范化应用于输入的特征数据 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> ，而 WN 则另辟蹊径，将规范化应用于线性变换函数的权重 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>，这就是 WN 名称的来源。</li>
-<li>WN 提出的方案是，<strong>将权重向量 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 分解为向量方向 <span><span class="MathJax_Preview">\hat {v}</span><script type="math/tex">\hat {v}</script></span> 和向量模<span><span class="MathJax_Preview">g​</span><script type="math/tex">g​</script></span>两部分</strong>：</li>
+<li>WN 提出的方案是，<strong>将权重向量 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 分解为向量方向 <span><span class="MathJax_Preview">\hat {v}</span><script type="math/tex">\hat {v}</script></span> 和向量模<span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span>两部分</strong>：</li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -1463,7 +1479,7 @@ f_w(WN(x)) = w \cdot WN(x) = g \cdot \frac {v}{||v||} \cdot x = v \cdot g \cdot 
 <ul>
 <li>BN 和 LN 是用输入的特征数据的方差对输入数据进行 scale，而 WN 则是用 神经元的权重的欧氏范式对输入数据进行 scale。</li>
 <li><strong>虽然在原始方法中分别进行的是特征数据规范化和参数的规范化，但本质上都实现了对数据的规范化，只是用于 scale 的参数来源不同。</strong></li>
-<li>另外，我们看到这里的规范化只是对数据进行了 scale，而没有进行 shift，因为我们简单地令<span><span class="MathJax_Preview">\mu = 0</span><script type="math/tex">\mu = 0</script></span>但事实上，这里留下了与 BN 或者 LN 相结合的余地——那就是利用 BN 或者 LN 的方法来计算输入数据的均值 <span><span class="MathJax_Preview">\mu​</span><script type="math/tex">\mu​</script></span>。</li>
+<li>另外，我们看到这里的规范化只是对数据进行了 scale，而没有进行 shift，因为我们简单地令<span><span class="MathJax_Preview">\mu = 0</span><script type="math/tex">\mu = 0</script></span>但事实上，这里留下了与 BN 或者 LN 相结合的余地——那就是利用 BN 或者 LN 的方法来计算输入数据的均值 <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span>。</li>
 <li>WN 的规范化不直接使用输入数据的统计量，因此避免了 BN 过于依赖 mini-batch 的不足，以及 LN 每层唯一转换器的限制，同时也可以用于动态网络结构。</li>
 <li>通过对weight进行normalization，可以保证在梯度回传的时候，如果梯度越noisy（梯度越大），v的norm就越大，那么g/||v||就越小，从而就会抑制梯度。做到了梯度的自稳定（self-stabilize）。</li>
 </ul>
@@ -1476,7 +1492,7 @@ f_w(x) = cos\theta = \frac {w \cdot x}{||w|| \cdot ||x||}
 f_w(x) = cos\theta = \frac {w \cdot x}{||w|| \cdot ||x||}
 </script>
 </div>
-<p>其中，<span><span class="MathJax_Preview">\theta​</span><script type="math/tex">\theta​</script></span> 是<span><span class="MathJax_Preview">w​</span><script type="math/tex">w​</script></span>和<span><span class="MathJax_Preview">x​</span><script type="math/tex">x​</script></span>的夹角</p>
+<p>其中，<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 是<span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>和<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的夹角</p>
 <ul>
 <li>
 <p>对输入数据<span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>的变换已经做过了，横着来是 LN，纵着来是 BN。</p>
