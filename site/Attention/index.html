@@ -275,13 +275,19 @@
         
   
   
+    
+    
+  
+  
     <li class="md-tabs__item">
       
-        <a href="./" title="NLP" class="md-tabs__link md-tabs__link--active">
+        <a href="../NLP的巨人肩膀/" title="NLP" class="md-tabs__link">
           NLP
         </a>
       
     </li>
+  
+
   
 
       
@@ -566,6 +572,42 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      NLP简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        NLP简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
         
           
           
@@ -963,13 +1005,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
-    <label class="md-nav__link" for="nav-5-3">
+    <label class="md-nav__link" for="nav-5-4">
       NMT
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-3">
+      <label class="md-nav__title" for="nav-5-4">
         NMT
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -981,8 +1023,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../NMT Concepts/" title="Concepts" class="md-nav__link">
-      Concepts
+    <a href="../NMT Concepts/" title="NMT Concepts" class="md-nav__link">
+      NMT Concepts
     </a>
   </li>
 
@@ -999,13 +1041,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
     
-    <label class="md-nav__link" for="nav-5-4">
+    <label class="md-nav__link" for="nav-5-5">
       QA
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-4">
+      <label class="md-nav__title" for="nav-5-5">
         QA
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1017,8 +1059,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../QA Concepts/" title="Concepts" class="md-nav__link">
-      Concepts
+    <a href="../QA Concepts/" title="QA Concepts" class="md-nav__link">
+      QA Concepts
     </a>
   </li>
 
@@ -1707,11 +1749,16 @@ y_t=f(y_{t−1},x_t)
 </div>
 <p>在FaceBook的论文中，纯粹使用卷积也完成了Seq2Seq的学习，是卷积的一个精致且极致的使用案例，热衷卷积的读者必须得好好读读这篇文论。CNN方便并行，而且容易捕捉到一些全局的结构信息。</p>
 <h6 id="attention_2">Attention<a class="headerlink" href="#attention_2" title="Permanent link">&para;</a></h6>
-<p>Google的大作提供了第三个思路：纯Attention，单靠注意力就可以RNN要逐步递归才能获得全局信息，因此一般要双向RNN才比较好；CNN事实上只能获取局部信息，是通过层叠来增大感受野；Attention的思路最为粗暴，它一步到位获取了全局信息！它的解决方案是：
-$$
-\boldsymbol{y}<em>{t}=f\left(\boldsymbol{x}</em>{t}, \boldsymbol{A}, \boldsymbol{B}\right)
-$$
-其中A,BA,B是另外一个序列（矩阵）。如果都取A=B=X，那么就称为Self Attention，它的意思是直接将xt与原来的每个词进行比较，最后算出yt！</p>
+<p>Google的大作提供了第三个思路：纯Attention，单靠注意力就可以RNN要逐步递归才能获得全局信息，因此一般要双向RNN才比较好；CNN事实上只能获取局部信息，是通过层叠来增大感受野；Attention的思路最为粗暴，它一步到位获取了全局信息！它的解决方案是：</p>
+<div>
+<div class="MathJax_Preview">
+\boldsymbol{y}_{t}=f\left(\boldsymbol{x}_{t}, \boldsymbol{A}, \boldsymbol{B}\right)
+</div>
+<script type="math/tex; mode=display">
+\boldsymbol{y}_{t}=f\left(\boldsymbol{x}_{t}, \boldsymbol{A}, \boldsymbol{B}\right)
+</script>
+</div>
+<p>其中A,BA,B是另外一个序列（矩阵）。如果都取A=B=X，那么就称为Self Attention，它的意思是直接将xt与原来的每个词进行比较，最后算出yt！</p>
 <h4 id="_10">整体架构<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="../imgs/1555939732972.png" /></p>
 <p><strong>Encoder</strong>: 六个相同层的堆叠，每一层都有两个子层构成。第一个子层是 multi-head self-attention mechanism，然后是position- wise fully connected feed-forward network。并且在两个子层之间使用了残差连接并后接Layer Normalization，所以每个子层的输出为 <span><span class="MathJax_Preview">LayerNorm(x+Sublayer(x))</span><script type="math/tex">LayerNorm(x+Sublayer(x))</script></span> 。网络输入是三个相同的向量q, k和v，是word embedding和position embedding相加得到的结果。为了方便进行残差连接，我们需要子层的输出和输入都是相同的维度，所有子层以及嵌入层的输出都为dmodel=512dmodel=512。</p>
@@ -1728,20 +1775,30 @@ $$
 $$
 (\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\operatorname{softmax}\left(\frac{\boldsymbol{Q} \boldsymbol{K}^{\top}}{\sqrt{d_{k}}}\right) \boldsymbol{V}
 $$
-其中，<span><span class="MathJax_Preview">\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}</span><script type="math/tex">\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}</script></span> 。如果忽略激活函数softmax的话，那么是事实上就是三个<span><span class="MathJax_Preview">n \times d_{k}, d_{k} \times m, m \times d_{v}</span><script type="math/tex">n \times d_{k}, d_{k} \times m, m \times d_{v}</script></span>矩阵相乘，最后的结果是一个<span><span class="MathJax_Preview">n \times d_{v}</span><script type="math/tex">n \times d_{v}</script></span>的矩阵。可以认为是一个将<span><span class="MathJax_Preview">n \times d_{k}</span><script type="math/tex">n \times d_{k}</script></span>的序列Q编码成了一个新的<span><span class="MathJax_Preview">n \times d_{v}</span><script type="math/tex">n \times d_{v}</script></span>的序列的Attention层。
-$$
-Attention\left(\boldsymbol{q}<em>{t}, \boldsymbol{K}, \boldsymbol{V}\right)=\sum</em>{s=1}^{m} \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}<em>{t}, \boldsymbol{k}</em>{s}\right\rangle}{\sqrt{d_{k}}}\right) \boldsymbol{v}_{s}
-$$
-其中Z是归一化因子。事实上q,k,v分别是query,key,value的简写，K,V是一一对应的，他们就像是key-value的关系，那么上式的意思就是通过<span><span class="MathJax_Preview">q_t</span><script type="math/tex">q_t</script></span>这个query，以和各个<span><span class="MathJax_Preview">k_s</span><script type="math/tex">k_s</script></span>做内积后softmax的方式，来得到<span><span class="MathJax_Preview">q_t</span><script type="math/tex">q_t</script></span>和各个<span><span class="MathJax_Preview">v_s</span><script type="math/tex">v_s</script></span>的相似度，然后加权求和，得到一个<span><span class="MathJax_Preview">d_v</span><script type="math/tex">d_v</script></span>维的向量。<span><span class="MathJax_Preview">\sqrt{d_k}</span><script type="math/tex">\sqrt{d_k}</script></span>起到调节作用，使得内积不至于太大。（太大的话softmax后就非0即1了，不够“soft”了，梯度过小，不利于反向传播）。</p>
+其中，<span><span class="MathJax_Preview">\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}</span><script type="math/tex">\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}</script></span> 。如果忽略激活函数softmax的话，那么是事实上就是三个<span><span class="MathJax_Preview">n \times d_{k}, d_{k} \times m, m \times d_{v}</span><script type="math/tex">n \times d_{k}, d_{k} \times m, m \times d_{v}</script></span>矩阵相乘，最后的结果是一个<span><span class="MathJax_Preview">n \times d_{v}</span><script type="math/tex">n \times d_{v}</script></span>的矩阵。可以认为是一个将<span><span class="MathJax_Preview">n \times d_{k}</span><script type="math/tex">n \times d_{k}</script></span>的序列Q编码成了一个新的<span><span class="MathJax_Preview">n \times d_{v}</span><script type="math/tex">n \times d_{v}</script></span>的序列的Attention层。</p>
+<div>
+<div class="MathJax_Preview">
+Attention\left(\boldsymbol{q}_{t}, \boldsymbol{K}, \boldsymbol{V}\right)=\sum_{s=1}^{m} \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}_{t}, \boldsymbol{k}_{s}\right\rangle}{\sqrt{d_{k}}}\right) \boldsymbol{v}_{s}
+</div>
+<script type="math/tex; mode=display">
+Attention\left(\boldsymbol{q}_{t}, \boldsymbol{K}, \boldsymbol{V}\right)=\sum_{s=1}^{m} \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}_{t}, \boldsymbol{k}_{s}\right\rangle}{\sqrt{d_{k}}}\right) \boldsymbol{v}_{s}
+</script>
+</div>
+<p>其中Z是归一化因子。事实上q,k,v分别是query,key,value的简写，K,V是一一对应的，他们就像是key-value的关系，那么上式的意思就是通过<span><span class="MathJax_Preview">q_t</span><script type="math/tex">q_t</script></span>这个query，以和各个<span><span class="MathJax_Preview">k_s</span><script type="math/tex">k_s</script></span>做内积后softmax的方式，来得到<span><span class="MathJax_Preview">q_t</span><script type="math/tex">q_t</script></span>和各个<span><span class="MathJax_Preview">v_s</span><script type="math/tex">v_s</script></span>的相似度，然后加权求和，得到一个<span><span class="MathJax_Preview">d_v</span><script type="math/tex">d_v</script></span>维的向量。<span><span class="MathJax_Preview">\sqrt{d_k}</span><script type="math/tex">\sqrt{d_k}</script></span>起到调节作用，使得内积不至于太大。（太大的话softmax后就非0即1了，不够“soft”了，梯度过小，不利于反向传播）。</p>
 <p>事实上这种Attention的定义并不新鲜，但由于Google的影响力，我们可以认为现在是更加正式地提出了这个定义，并将其视为一个层地看待；此外这个定义只是注意力的一种形式，还有一些其他选择，比如query跟key的运算方式不一定是点乘（还可以是拼接后再内积一个参数向量），甚至权重都不一定要归一化，等等。</p>
 <h5 id="multi-head-attention">MULTI-HEAD ATTENTION<a class="headerlink" href="#multi-head-attention" title="Permanent link">&para;</a></h5>
 <p><img alt="" src="../imgs/1555915743868.png" /></p>
 <p>这个是Google提出的新概念，是Attention机制的完善。不过从形式上看，它其实就再简单不过了，就是把<span><span class="MathJax_Preview">Q,K,V</span><script type="math/tex">Q,K,V</script></span>通过参数矩阵映射一下，然后再做Attention，把这个过程重复做<span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span>次，结果拼接起来就行了，可谓“大道至简”了。</p>
-<p>这里<span><span class="MathJax_Preview">\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}</span><script type="math/tex">\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}</script></span> , 然后
-$$
-\begin{array}{c}{\text {MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\text { Concat (head, }, \ldots, \text { head }<em>{h} )} \ {\text {where head}</em>{i}=\text {Attention}\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\right)}\end{array}
-$$
-最后得到一个<span><span class="MathJax_Preview">n \times\left(h \tilde{d}_{v}\right)</span><script type="math/tex">n \times\left(h \tilde{d}_{v}\right)</script></span> 的序列，<strong>所谓“多头”（Multi-Head），就是只多做几次同样的事情（参数不共享），然后把结果拼接</strong>。可以允许模型在不同的表示子空间里学习到相关的信息</p>
+<p>这里<span><span class="MathJax_Preview">\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}</span><script type="math/tex">\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}</script></span> , 然后</p>
+<div>
+<div class="MathJax_Preview">
+\begin{array}{c}{\text {MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\text { Concat (head, }, \ldots, \text { head }_{h} )} \\ {\text {where head}_{i}=\text {Attention}\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\right)}\end{array}
+</div>
+<script type="math/tex; mode=display">
+\begin{array}{c}{\text {MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\text { Concat (head, }, \ldots, \text { head }_{h} )} \\ {\text {where head}_{i}=\text {Attention}\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\right)}\end{array}
+</script>
+</div>
+<p>最后得到一个<span><span class="MathJax_Preview">n \times\left(h \tilde{d}_{v}\right)</span><script type="math/tex">n \times\left(h \tilde{d}_{v}\right)</script></span> 的序列，<strong>所谓“多头”（Multi-Head），就是只多做几次同样的事情（参数不共享），然后把结果拼接</strong>。可以允许模型在不同的表示子空间里学习到相关的信息</p>
 <p>简而言之，将<span><span class="MathJax_Preview">Q,K,V</span><script type="math/tex">Q,K,V</script></span>做h次不同的投影，重复做h次Attention层运算，每个Attention层的参数之间不共享，最后将结果拼接在一起，通过一个线性映射输出。</p>
 <p>这里的思想很像CNN中的多个卷积核的操作，上文说到的<a href="https://arxiv.org/pdf/1703.03130">A Structured Self-attentive Sentence Embedding</a>也使用了类似的思想。</p>
 <h6 id="_12">具体化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h6>
@@ -1781,7 +1838,7 @@ $$</p>
 </script>
 </div>
 <p>除了 attention sub-layers，encoder和decoder中的每一层都包含一个完全连接的前馈网络，它分别应用于每个位置，并且是相同的。它由两个线性变换组成，中间有一个ReLU激活。</p>
-<p>虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络,hidden_size变化为：512-&gt;2048-&gt;512。每个 $d_model $维向量 x 在此先由 $ xW_1+b_1$ 变为 $d_f $ 维的$ x′ <span><span class="MathJax_Preview">，再经过</span><script type="math/tex">，再经过</script></span>max(0,x′)W_2+b_2$ 回归$ d_model $ 维。之后再是一个residual connection。输出 size 仍是 <span><span class="MathJax_Preview">[sequence_{length},dmodel]</span><script type="math/tex">[sequence_{length},dmodel]</script></span></p>
+<p>虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络,hidden_size变化为：512-&gt;2048-&gt;512。每个 $d_model $ 维向量 x 在此先由 <span><span class="MathJax_Preview">xW_1+b_1</span><script type="math/tex">xW_1+b_1</script></span> 变为 $d_f $ 维的$ x′ $ ，再经过  <span><span class="MathJax_Preview">max(0,x′)W_2+b_2</span><script type="math/tex">max(0,x′)W_2+b_2</script></span> 回归 $ d_model $ 维。之后再是一个residual connection。输出 size 仍是  <span><span class="MathJax_Preview">[sequence_{length},d_{model}]</span><script type="math/tex">[sequence_{length},d_{model}]</script></span> </p>
 <h5 id="positional-encoding">POSITIONAL ENCODING<a class="headerlink" href="#positional-encoding" title="Permanent link">&para;</a></h5>
 <p>由于我们的模型不包含递归和卷积，为了使模型利用序列的顺序，我们必须注入一些关于序列中token的相对或绝对位置的信息。为此，我们将“位置编码”添加到encoder和decoder stacks底部的输入embeddings中。位置编码的维数dmodeldmodel与嵌入的维数相同，因此可以将二者相加。有许多位置编码的选择，学习的和固定的都可以。</p>
 <p>其中pos为位置，ii为维度。也就是说，位置编码的每个维度对应于一个正弦曲线。波长组成几何级数从2π到10000·2π。选择这个函数是因为我们假设它可以让模型很容易地学习到相对位置的参与，因为对于任何固定偏移量<span><span class="MathJax_Preview">k, PE_{pos+k}</span><script type="math/tex">k, PE_{pos+k}</script></span>都可以表示为的线性函数<span><span class="MathJax_Preview">PE_{pos}</span><script type="math/tex">PE_{pos}</script></span>。我们还使用了learning position embeddings进行了实验，发现这两个版本的结果几乎相同。我们选择正弦版本，因为它可能允许模型推断出比训练中遇到的序列长度更长的序列长度。</p>
@@ -1882,7 +1939,7 @@ $$</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Normalization/" title="Normalization" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1891,7 +1948,7 @@ $$</p>
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                Normalization
+                NLP的巨人肩膀
               </span>
             </div>
           </a>

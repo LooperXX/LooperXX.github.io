@@ -208,9 +208,11 @@ $$
 ###### Attention
 
 Google的大作提供了第三个思路：纯Attention，单靠注意力就可以RNN要逐步递归才能获得全局信息，因此一般要双向RNN才比较好；CNN事实上只能获取局部信息，是通过层叠来增大感受野；Attention的思路最为粗暴，它一步到位获取了全局信息！它的解决方案是：
+
 $$
 \boldsymbol{y}_{t}=f\left(\boldsymbol{x}_{t}, \boldsymbol{A}, \boldsymbol{B}\right)
 $$
+
 其中A,BA,B是另外一个序列（矩阵）。如果都取A=B=X，那么就称为Self Attention，它的意思是直接将xt与原来的每个词进行比较，最后算出yt！
 
 #### 整体架构
@@ -242,9 +244,11 @@ $$
 (\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\operatorname{softmax}\left(\frac{\boldsymbol{Q} \boldsymbol{K}^{\top}}{\sqrt{d_{k}}}\right) \boldsymbol{V}
 $$
 其中，$\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}$ 。如果忽略激活函数softmax的话，那么是事实上就是三个$n \times d_{k}, d_{k} \times m, m \times d_{v}$矩阵相乘，最后的结果是一个$n \times d_{v}$的矩阵。可以认为是一个将$n \times d_{k}$的序列Q编码成了一个新的$n \times d_{v}$的序列的Attention层。
+
 $$
 Attention\left(\boldsymbol{q}_{t}, \boldsymbol{K}, \boldsymbol{V}\right)=\sum_{s=1}^{m} \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}_{t}, \boldsymbol{k}_{s}\right\rangle}{\sqrt{d_{k}}}\right) \boldsymbol{v}_{s}
 $$
+
 其中Z是归一化因子。事实上q,k,v分别是query,key,value的简写，K,V是一一对应的，他们就像是key-value的关系，那么上式的意思就是通过$q_t$这个query，以和各个$k_s$做内积后softmax的方式，来得到$q_t$和各个$v_s$的相似度，然后加权求和，得到一个$d_v$维的向量。$\sqrt{d_k}$起到调节作用，使得内积不至于太大。（太大的话softmax后就非0即1了，不够“soft”了，梯度过小，不利于反向传播）。
 
 事实上这种Attention的定义并不新鲜，但由于Google的影响力，我们可以认为现在是更加正式地提出了这个定义，并将其视为一个层地看待；此外这个定义只是注意力的一种形式，还有一些其他选择，比如query跟key的运算方式不一定是点乘（还可以是拼接后再内积一个参数向量），甚至权重都不一定要归一化，等等。
@@ -256,9 +260,11 @@ $$
 这个是Google提出的新概念，是Attention机制的完善。不过从形式上看，它其实就再简单不过了，就是把$Q,K,V$通过参数矩阵映射一下，然后再做Attention，把这个过程重复做$h$次，结果拼接起来就行了，可谓“大道至简”了。
 
 这里$\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}$ , 然后
+
 $$
 \begin{array}{c}{\text {MultiHead}(\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\text { Concat (head, }, \ldots, \text { head }_{h} )} \\ {\text {where head}_{i}=\text {Attention}\left(Q W_{i}^{Q}, K W_{i}^{K}, V W_{i}^{V}\right)}\end{array}
 $$
+
 最后得到一个$n \times\left(h \tilde{d}_{v}\right)$ 的序列，**所谓“多头”（Multi-Head），就是只多做几次同样的事情（参数不共享），然后把结果拼接**。可以允许模型在不同的表示子空间里学习到相关的信息
 
 简而言之，将$Q,K,V$做h次不同的投影，重复做h次Attention层运算，每个Attention层的参数之间不共享，最后将结果拼接在一起，通过一个线性映射输出。
@@ -319,7 +325,7 @@ $$
 
 除了 attention sub-layers，encoder和decoder中的每一层都包含一个完全连接的前馈网络，它分别应用于每个位置，并且是相同的。它由两个线性变换组成，中间有一个ReLU激活。
 
-虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络,hidden_size变化为：512->2048->512。每个 $d_model $维向量 x 在此先由 $ xW_1+b_1$ 变为 $d_f $ 维的$ x′ $，再经过$max(0,x′)W_2+b_2$ 回归$ d_model $ 维。之后再是一个residual connection。输出 size 仍是 $[sequence_{length},dmodel]$
+虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络,hidden_size变化为：512->2048->512。每个 $d_model $ 维向量 x 在此先由 $xW_1+b_1$ 变为 $d_f $ 维的$ x′ $ ，再经过  $max(0,x′)W_2+b_2$ 回归 $ d_model $ 维。之后再是一个residual connection。输出 size 仍是  $[sequence_{length},d_{model}]$ 
 
 ##### POSITIONAL ENCODING
 

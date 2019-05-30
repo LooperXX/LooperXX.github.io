@@ -275,13 +275,19 @@
         
   
   
+    
+    
+  
+  
     <li class="md-tabs__item">
       
-        <a href="../Attention/" title="NLP" class="md-tabs__link md-tabs__link--active">
+        <a href="../NLP的巨人肩膀/" title="NLP" class="md-tabs__link">
           NLP
         </a>
       
     </li>
+  
+
   
 
       
@@ -566,6 +572,42 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-1" type="checkbox" id="nav-5-1">
+    
+    <label class="md-nav__link" for="nav-5-1">
+      NLP简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-1">
+        NLP简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
         
           
           
@@ -1128,13 +1170,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
     
-    <label class="md-nav__link" for="nav-5-3">
+    <label class="md-nav__link" for="nav-5-4">
       NMT
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-3">
+      <label class="md-nav__title" for="nav-5-4">
         NMT
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1146,8 +1188,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../NMT Concepts/" title="Concepts" class="md-nav__link">
-      Concepts
+    <a href="../NMT Concepts/" title="NMT Concepts" class="md-nav__link">
+      NMT Concepts
     </a>
   </li>
 
@@ -1164,13 +1206,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
     
-    <label class="md-nav__link" for="nav-5-4">
+    <label class="md-nav__link" for="nav-5-5">
       QA
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-5-4">
+      <label class="md-nav__title" for="nav-5-5">
         QA
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1182,8 +1224,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../QA Concepts/" title="Concepts" class="md-nav__link">
-      Concepts
+    <a href="../QA Concepts/" title="QA Concepts" class="md-nav__link">
+      QA Concepts
     </a>
   </li>
 
@@ -2025,7 +2067,7 @@
 </ul>
 </li>
 <li>本文贡献<ul>
-<li>第一批研究神经阅读理解的V人。特别是，我们提出了<code>STANFORD ATTENTIVE READER</code>模型，该模型在各种现代阅读理解任务中表现出优越的性能</li>
+<li>第一批研究神经阅读理解的人。特别是，我们提出了<code>STANFORD ATTENTIVE READER</code>模型，该模型在各种现代阅读理解任务中表现出优越的性能</li>
 <li>我们努力更好地理解神经阅读理解模型实际学到了什么，以及解决当前任务需要多大的语言理解深度。我们得出结论，与传统的基于特征的分类器相比，神经模型更好地学习词汇匹配和释义，而现有系统的推理能力仍然相当有限。</li>
 <li>我们开创了将神经阅读理解作为开放域问答的核心组成部分的研究方向，并研究了如何推广该案例的模型。特别是，我们在<code>DRQA</code>系统中实现了这一想法，<code>DRQA</code>系统是基于英语维基百科的一个大型，仿真问答系统。</li>
 <li>最后，我们着手解决会话问题回答问题，其中计算机系统需要在对话环境中回答理解问题，因此每个问题都需要通过其对话历史来理解。为解决这个问题，我们提出了<code>COQA</code>挑战，并建立了适应这一问题的神经阅读理解模型。我们相信这是构建对话QA代理的第一步，也是重要的一步。</li>
@@ -2046,7 +2088,7 @@
 <li><code>MCTEST</code>收集了660个虚构故事，每个故事有4个选择题（每个问题附带4个假设答案，其中一个是正确的）</li>
 <li><code>PROCESSBANK</code>旨在回答描述生物过程的段落中的二元选择问题，并且需要了解过程中实体和事件之间的关系。该数据集包括分布在200个段落中的585个问题。</li>
 <li>在最初的<code>MCTEST</code>论文中，Richardson等人提出了几个基于规则的基线，而没有利用任何训练数据。一种是启发式滑动窗口方法，其测量问题中的单词，答案和滑动窗口之间的加权单词重叠/距离信息; 另一种是通过将每个问答配对转换成声明来运行现成的文本蕴涵系统。该数据集后来启发了一系列机器学习模型，这些模型主要建立在一个简单的最大边缘学习框架之上，该框架具有丰富的手工设计语言特征，包括句法依赖性，语义框架，共指解析，语篇关系和单词嵌入。MC500部分的性能从63％适度提高到70％左右。</li>
-<li>在<code>PROCESSBANK</code>数据集中，Berant等人提出了一种统计模型，该模型首先学习预测过程结构，然后将问题映射到可以针对结构执行的形式查询。同样，该模型包含大量手动特征，最终在二分类任务中获得66.7％的准确性。与早期基于规则的启发式方法相比，这些机器学习模型取得了适度的进步。但是，他们的改进仍然相当有限，他们的弱点总结如下：<ul>
+<li>在<code>PROCESSBANK</code>数据集中，Berant等人提出了一种统计模型，该模型首先学习预测过程结构，然后将问题映射到可以针对结构执行的形式查询。同样，该模型包含大量手工特征，最终在二分类任务中获得66.7％的准确性。与早期基于规则的启发式方法相比，这些机器学习模型取得了适度的进步。但是，他们的改进仍然相当有限，他们的弱点总结如下：<ul>
 <li><strong>高度依赖已有的语言工具，难以构造有效的特征，数据集规模不够大</strong></li>
 </ul>
 </li>
@@ -2080,7 +2122,7 @@
 <p><code>SQUAD</code>上目前所有最佳性能系统都建立在端到端神经网络或深度学习模型上。这些模型通常从表示段落中的每个单词和问题作为密集向量（例如，300维），通过几个建模或交互层，最后进行预测。可以使用梯度下降算法或其变体共同优化所有参数。这类模型可以称为神经阅读理解，我们将在第3章中详细描述。不同于基于特征的分类器，神经阅读理解模型有几个很大的优点：</p>
 <ul>
 <li>它们不依赖于任何下游语言特征 （例如，依存句法分析或共指消解）并且所有特征在一个统一的端到端框架中自己学习。这可以避免语言注释中的噪声，同时还在有用特征的空间中提供极大的灵活性。</li>
-<li>传统的符号NLP系统存在一个严重问题：特征通常非常稀疏并且概括性差。
+<li>传统的符号NLP系统存在一个严重问题：<strong>特征通常非常稀疏并且概括性差</strong>。
   例如，回答一个问题“How many individual libraries make up the main school library?” 文章：“...... Harvard Library, which is the world’s largest academic and private library system, comprising 79 individual libraries with over 18 million volumes.” 系统必须根据指标特性来学习comprising 和make up之间的对应关系(pw: passage word; qw: question word).没有足够的数据来正确地对这些特性进行加权。这是所有非神经NLP模型中普遍存在的问题。利用低维、密集的词嵌入，通过共享相似词之间的统计强度，可以有效地缓解稀疏性。</li>
 </ul>
 </li>
@@ -2795,13 +2837,13 @@ $$
           </a>
         
         
-          <a href="../NMT Concepts/" title="Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../NMT Concepts/" title="NMT Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   前进
                 </span>
-                Concepts
+                NMT Concepts
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
