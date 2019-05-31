@@ -27,6 +27,7 @@ nav:
     - 'Normalization' : 'Normalization.md'    
   - NLP:
       - NLP简介 : 
+        - '自然语言处理简介' : '自然语言处理简介.md'
         - 'NLP的巨人肩膀' : 'NLP的巨人肩膀.md'
       - 'Attention' : 'Attention.md'
       - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'

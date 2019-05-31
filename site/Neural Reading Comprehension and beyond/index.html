@@ -281,7 +281,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../NLP的巨人肩膀/" title="NLP" class="md-tabs__link">
+        <a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">
           NLP
         </a>
       
@@ -591,6 +591,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
         
           
           
@@ -2725,7 +2737,7 @@ $$
 <p>Seo等人(2017)的注意机制比较复杂，但我们认为是相似的。我们还认为，在这个方向上的注意力功能没有那么有用，Seo等人(2017)也证明了这一点。这是因为问题一般都很短(平均10-20个单词)，使用一个LSTM进行问题编码(无需额外注意)通常就足够了。</p>
 <h5 id="self-attention-over-passage">SELF-ATTENTION OVER PASSAGE<a class="headerlink" href="#self-attention-over-passage" title="Permanent link">&para;</a></h5>
 <p>直观的感觉是，文章中的单词可以与其他文章中的单词对齐，希望它可以解决指代问题，并从文章中的多个位置聚(同一实体的信息。</p>
-<p>首先计算出文章的隐层向量<span><span class="MathJax_Preview">\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}</span><script type="math/tex">\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}</script></span>，然后通过在其上为每一个pipi使用MLP实现注意力函数：
+<p>首先计算出文章的隐层向量<span><span class="MathJax_Preview">\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}</span><script type="math/tex">\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}</script></span>，然后通过在其上为每一个pi使用MLP实现注意力函数：
 $$
 \begin{aligned} a_{i, j} &amp;=\frac{\exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}<em>{i}, \mathbf{p}</em>{j}\right)\right)}{\sum_{j^{\prime}} \exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}<em>{i}, \mathbf{p}</em>{j^{\prime}}\right)\right)} \ \mathbf{c}<em>{i} &amp;=\sum</em>{j} a_{i, j} \mathbf{p}_{j} \end{aligned}
 $$

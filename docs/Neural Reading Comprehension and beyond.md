@@ -696,7 +696,7 @@ Seo等人(2017)的注意机制比较复杂，但我们认为是相似的。我�
 
 直观的感觉是，文章中的单词可以与其他文章中的单词对齐，希望它可以解决指代问题，并从文章中的多个位置聚(同一实体的信息。
 
-首先计算出文章的隐层向量$\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}$，然后通过在其上为每一个pipi使用MLP实现注意力函数：
+首先计算出文章的隐层向量$\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}$，然后通过在其上为每一个pi使用MLP实现注意力函数：
 $$
 \begin{aligned} a_{i, j} &=\frac{\exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}_{i}, \mathbf{p}_{j}\right)\right)}{\sum_{j^{\prime}} \exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}_{i}, \mathbf{p}_{j^{\prime}}\right)\right)} \\ \mathbf{c}_{i} &=\sum_{j} a_{i, j} \mathbf{p}_{j} \end{aligned}
 $$

@@ -479,7 +479,7 @@ Decoder 实际上还有很多细节，一般来说，训练时 Decoder 中的输
 
 然而在做 inference 的时候，Decoder 必须按照序列输入，因为在生成每一个词的时候，必须先生成它的前一个词，无法一次将整个序列全部生成（当然理论上也可以，但是效果并不好）。
 
-在矩阵运算过程中，**Decoder 中有许多 mask 操作，参与运算的三个矩阵 Q,K 和 V 都要做许多 mask 操作，主要有两方面作用：**一方面是消除输入句子本身长度之外的 padding 影响，另一方面是 decode r 必须要求不能提前看到待生成的词。
+在矩阵运算过程中，**Decoder 中有许多 mask 操作，参与运算的三个矩阵 Q,K 和 V 都要做许多 mask 操作，主要有两方面作用：**一方面是消除输入句子本身长度之外的 padding 影响，另一方面是 decoder 必须要求不能提前看到待生成的词。
 
 除了 mask 操作，另外值得注意的是，和 Encoder 中只有一种类型 Self-attention 不同的是，**Decoder 的 attention 实际包含两部分：**
 
@@ -552,7 +552,7 @@ $$
 
 为了更深入理解 BERT，我们分别来看看他的这些特征。
 
-首先看看 BERT 如何使用双向 Transformer。其实很好理解，**用一句话来回答为什么 BERT 使用双向 Transformer：****BERT 用了 Transformer 的 Encoder 框架。**
+首先看看 BERT 如何使用双向 Transformer。其实很好理解，**用一句话来回答为什么 BERT 使用双向 Transformer：BERT 用了 Transformer 的 Encoder 框架。**
 
 但是，我想这样的答案自然是要扣分的，更“求生欲”一点的答案是：**因为 Encoder 中用了 Self-attention 机制，而这个机制会将每一个词在整个输入序列中进行加权求和得到新的表征。**
 

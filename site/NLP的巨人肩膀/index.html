@@ -281,7 +281,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" title="NLP" class="md-tabs__link md-tabs__link--active">
+        <a href="../自然语言处理简介/" title="NLP" class="md-tabs__link md-tabs__link--active">
           NLP
         </a>
       
@@ -593,6 +593,18 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
         
           
           
@@ -1671,7 +1683,7 @@ $$
 <p><img alt="img" src="../imgs/640-1559222327065.webp" /></p>
 <p>Decoder 实际上还有很多细节，一般来说，训练时 Decoder 中的输入可以用矩阵形式一次完成当前整个序列的 decode 过程，因为 ground truth 已经提前知道，只需做好每个词的 mask 就好（为了避免待预测的词影响到当前的输入）。</p>
 <p>然而在做 inference 的时候，Decoder 必须按照序列输入，因为在生成每一个词的时候，必须先生成它的前一个词，无法一次将整个序列全部生成（当然理论上也可以，但是效果并不好）。</p>
-<p>在矩阵运算过程中，**Decoder 中有许多 mask 操作，参与运算的三个矩阵 Q,K 和 V 都要做许多 mask 操作，主要有两方面作用：**一方面是消除输入句子本身长度之外的 padding 影响，另一方面是 decode r 必须要求不能提前看到待生成的词。</p>
+<p>在矩阵运算过程中，**Decoder 中有许多 mask 操作，参与运算的三个矩阵 Q,K 和 V 都要做许多 mask 操作，主要有两方面作用：**一方面是消除输入句子本身长度之外的 padding 影响，另一方面是 decoder 必须要求不能提前看到待生成的词。</p>
 <p>除了 mask 操作，另外值得注意的是，和 Encoder 中只有一种类型 Self-attention 不同的是，<strong>Decoder 的 attention 实际包含两部分：</strong></p>
 <p><strong>第一部分是带有 mask 的 Self-attention</strong>，通过 mask 将 decode 阶段的 attention 限定只会 attention 到已经生成过的词上，因此叫做 Mask Self-attention。</p>
 <p><strong>第二部分是普通的 Self-attention 操作</strong>，不过这时的 K 和 V 矩阵已经替换为 Encoder 的输出结果，所以本质上并非一个 Self-attention。 </p>
@@ -1713,7 +1725,7 @@ $$
 <li>进一步完善和扩展了 GPT 中设计的通用任务框架，使得 BERT 能够支持包括：句子对分类任务、单句子分类任务、阅读理解任务和序列标注任务。</li>
 </ul>
 <p>为了更深入理解 BERT，我们分别来看看他的这些特征。</p>
-<p>首先看看 BERT 如何使用双向 Transformer。其实很好理解，<strong>用一句话来回答为什么 BERT 使用双向 Transformer：****BERT 用了 Transformer 的 Encoder 框架。</strong></p>
+<p>首先看看 BERT 如何使用双向 Transformer。其实很好理解，<strong>用一句话来回答为什么 BERT 使用双向 Transformer：BERT 用了 Transformer 的 Encoder 框架。</strong></p>
 <p>但是，我想这样的答案自然是要扣分的，更“求生欲”一点的答案是：<strong>因为 Encoder 中用了 Self-attention 机制，而这个机制会将每一个词在整个输入序列中进行加权求和得到新的表征。</strong></p>
 <p>更通俗的说法是每一个词在经过 Self-attention之后，其新的表征将会是整个输入序列中所有词（当然也包括它本身）的加权求和，每一个词都达到了“我中有你，你中有我”的境界。</p>
 <p>如果经过更多的 transformer 的 block（意味着经过更多 Self-attention），那么互相交融的程度将会更高，类似于 BERT 这样深的结构（Base 模型是 12层，Large 模型是 24层），经过所有 block 后，彼时，遑论“我中有你，你中有我”了，一切早已是“我在哪里”和“我是谁”这样的哲学式命题了，也就是连“你我”的界限都早已混沌的状态了。</p>
@@ -1925,7 +1937,7 @@ $$
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Normalization/" title="Normalization" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1934,7 +1946,7 @@ $$
                 <span class="md-footer-nav__direction">
                   后退
                 </span>
-                Normalization
+                自然语言处理简介
               </span>
             </div>
           </a>
