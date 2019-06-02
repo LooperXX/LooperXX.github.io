@@ -679,7 +679,7 @@ using namespace std;
 #define MAXV 1010
 #define INF 0x3f3f3f3f
 
-int n, m, s; // 顶点个数，边数，起点编号
+int n, m, s; // 顶点个数，边数，起点编号 
 int G[MAXV][MAXV]; // MAXV为最大顶点数
 int d[MAXV]; // 起点到达各点的最短路径长度
 bool vis[MAXV] = {false}; // 表示是否访问的数组
@@ -687,20 +687,20 @@ bool vis[MAXV] = {false}; // 表示是否访问的数组
 void Dijkstra(int s) { // s为起点
     fill(d, d + MAXV, INF); // 相当于C语言的memset
     d[s] = 0; // 起点到达自身的距离为0，不要把起点标记为已访问
-    for (int i = 0; i < n; i++) { // 循环次数为顶点的数量
+    for(int i = 0; i < n; i++) { // 循环次数为顶点的数量
         int u = -1, MIN = INF; // 找到u使得d[u]最小，MIN存放该最小的d[u]
-        for (int j = 0; j < n; j++) {
-            if (vis[j] == false && d[j] < MIN) {
+        for(int j = 0; j < n; j++) {
+            if(vis[j] == false && d[j] < MIN) {
                 u = j;
                 MIN = d[j];
             }
         }
         // 找不到小于INF的d[i]，说明剩下的顶点和起点s不连通
-        if (u == -1) return;
+        if(u == -1) return;
         vis[u] = true; // 标记u为已访问
-        for (int v = 0; v < n; v++) {
+        for(int v = 0; v < n; v++) {
             // 如果v未访问 且 u能到达v 且 以u为中介点可以使d[v]更优
-            if (vis[v] == false && G[u][v] != INF && d[u] + G[u][v] < d[v]) {
+            if(vis[v] == false && G[u][v] != INF && d[u] + G[u][v] < d[v]) {
                 d[v] = d[u] + G[u][v];
             }
         }
@@ -711,7 +711,7 @@ int main() {
     int u, v, w;
     cin >> n >> m >> s; // 顶点个数，边数，起点编号
     fill(G[0], G[0] + MAXV * MAXV, INF); // 初始化图G
-    for (int i = 0; i < m; i++) {
+    for(int i = 0; i < m; i++) {
         cin >> u >> v >> w;
         G[u][v] = w;
     }

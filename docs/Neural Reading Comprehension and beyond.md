@@ -320,7 +320,7 @@ $$
 
             - $m,n$ 分别代表X与Y的序列长度
             - $R_{lcs}$ 和 $P_{lcs}$分别对应召回率和准确率
-            - $\beta = \frac{P_{lcs}}{R_{lcs}}$ ，如果$ \beta $ 过大，则只需要考虑$R_{lcs}$
+            - $\beta = \frac{P_{lcs}}{R_{lcs}}$ ，如果 $\beta$ 过大，则只需要考虑$R_{lcs}$
 
         - 总的来说，`ROUGE`有以下变种
 
@@ -383,48 +383,58 @@ $$
 
 ##### WORD EMBEDDINGS
 
-第一个关键的idea就是将单词表示为低维的、真实数值的向量。以往的One-hot 向量的最大的问题是他们在单词之间没有任何语义相似性，即对于任意一对不同的单词$a,b,cos(va,vb)=0$。低维单词嵌入有效地解决了这一问题，相似的单词可以在几何空间中编码为相似的向量:$cos(v_{car},v_{vechicle})<cos(v_{car},v_{man})$。这些词的嵌入可以从大型无标记文本语料库中有效地学习到，这是基于单词出现在相似的上下文中往往具有相似的含义这一假设(又称分布假说)。
+第一个关键的idea就是将单词表示为低维的、真实数值的向量。以往的One-hot 向量的最大的问题是他们在单词之间没有任何语义相似性，即对于任意一对不同的单词 $a,b,cos(va,vb)=0$ 。低维单词嵌入有效地解决了这一问题，相似的单词可以在几何空间中编码为相似的向量：$cos(v_{car},v_{vechicle})<cos(v_{car},v_{man})$ 。这些词的嵌入可以从大型无标记文本语料库中有效地学习到，这是基于单词出现在相似的上下文中往往具有相似的含义这一假设(又称分布假说)。
 
 最近的可伸缩算法和发布的预先训练的单词嵌入集最终普及了单词嵌入，如word2vec (Mikolov et al., 2013)，Glove(Pennington et al.,2014)和FASTTEXT (Bojanowski et al.,2017)。它们已成为现代NLP系统的中流砥柱。
 
 ##### RECURRENT NEURAL NETWORKS
 
-第二个重要的思想是使用递归神经网络(RNNs)来建模NLP中的句子或段落。递归神经网络是一类适合处理变长序列的神经网络。更具体地说，它们递归地将参数化函数应用于序列$x_1,…,x_n$
+第二个重要的思想是使用递归神经网络(RNNs)来建模NLP中的句子或段落。递归神经网络是一类适合处理变长序列的神经网络。更具体地说，它们递归地将参数化函数应用于序列 $x_1,…,x_n$ 
+
 $$
 \mathbf{h}_{t}=f\left(\mathbf{h}_{t-1}, \mathbf{x}_{t} ; \Theta\right)
 $$
-其中，$
-\mathbf{W}^{h h} \in \mathbb{R}^{h \times h}, \mathbf{W}^{h x} \in \mathbb{R}^{h \times d}, \mathbf{b} \in \mathbb{R}^{h}
-$是要学习的参数。
+
+其中，$\mathbf{W}^{h h} \in \mathbb{R}^{h \times h}, \mathbf{W}^{h x} \in \mathbb{R}^{h \times d}, \mathbf{b} \in \mathbb{R}^{h}$ 是要学习的参数。
 
 变体LSTM和GRU是常用的两种，LSTM仍然是当今NLP应用中最有竞争力的RNN变体，也是我们将描述的神经模型的默认选择。
+
 $$
 \begin{aligned} \mathbf{i}_{t} &=\sigma\left(\mathbf{W}^{i h} \mathbf{h}_{t-1}+\mathbf{W}^{i x} \mathbf{x}_{t}+\mathbf{b}^{i}\right) \\ \mathbf{f}_{t} &=\sigma\left(\mathbf{W}^{f h} \mathbf{h}_{t-1}+\mathbf{W}^{f x} \mathbf{x}_{t}+\mathbf{b}^{f}\right) \\ \mathbf{o}_{t} &=\sigma\left(\mathbf{W}^{o h} \mathbf{h}_{t-1}+\mathbf{W}^{o x} \mathbf{x}_{t}+\mathbf{b}^{o}\right) \\ \mathbf{g}_{t} &=\tanh \left(\mathbf{W}^{g h} \mathbf{h}_{t-1}+\mathbf{W}^{g x} \mathbf{x}_{t}+\mathbf{b}^{g}\right) \\ \mathbf{c}_{t} &=\mathbf{f}_{t} \odot \mathbf{c}_{t-1}+\mathbf{i}_{t} \odot \mathbf{g}_{t} \\ \mathbf{h}_{t} &=\mathbf{o}_{t} \odot \tanh \left(\mathbf{c}_{t}\right) \end{aligned}
 $$
+
 其中，$\mathbf{W}^{i h}, \mathbf{W}^{f h}, \mathbf{W}^{o h}, \mathbf{W}^{g h} \in \mathbb{R}^{h \times h}, \mathbf{W}^{i x}, \mathbf{W}^{f x}, \mathbf{W}^{o x}, \mathbf{W}^{g x} \in \mathbb{R}^{h \times d}$ and $\mathbf{b}^{i}, \mathbf{b}^{f}, \mathbf{b}^{o}, \mathbf{b}^{g} \in \mathbb{R}^{h}$ 是要学习的参数。
 
-最后还有一个有用的精巧设计BiRNN，这个想法很简单:对于一个句子或一个段落，$x=x_1,…,x_n $前向RNN从左到右，后向RNN从右到左：
+最后还有一个有用的精巧设计BiRNN，这个想法很简单:对于一个句子或一个段落，$x=x_1,…,x_n$ 前向RNN从左到右，后向RNN从右到左：
+
 $$
 \begin{aligned} \overrightarrow{\mathbf{h}}_{t} &=f\left(\overrightarrow{\mathbf{h}}_{t-1}, \mathbf{x}_{t} ; \overrightarrow{\Theta}\right), \quad t=1, \ldots, n \\ \overleftarrow{\mathbf{h}}_{t} &=f\left(\overleftarrow{\mathbf{h}}_{t+1}, \mathbf{x}_{t} ; \overleftarrow{\Theta}\right), \quad t=n, \ldots, 1 \end{aligned}
 $$
-我们定义$\mathbf{h}_{t}=\left[\overrightarrow{\mathbf{h}}_{t} ; \overleftarrow{\mathbf{h}_{t}}\right] \in \mathbb{R}^{2 h}$ ，对来自RNNs的两个方向的隐藏向量进行拼接。这些表示可以有效地对来自左上下文和右上下文的信息进行编码，适用于许多NLP任务的通用可训练特征提取组件
+
+我们定义 $\mathbf{h}_{t}=\left[\overrightarrow{\mathbf{h}}_{t} ; \overleftarrow{\mathbf{h}_{t}}\right] \in \mathbb{R}^{2 h}$ ，对来自RNNs的两个方向的隐藏向量进行拼接。这些表示可以有效地对来自左上下文和右上下文的信息进行编码，适用于许多NLP任务的通用可训练特征提取组件
 
 ##### ATTENTION MECHANISM
 
 第三个重要组成部分是注意机制。首次引入sequence-to-sequence(seq2seq)模型用于神经机器翻译，并已扩展到其他NLP任务。
 
 关键的思想是，如果我们想要预测一个句子的情绪，或者把一个句子从一种语言翻译成另一种语言，我们通常使用递归神经网络来编码一个句子(或者机器翻译的源句):$h_1,h_2,…,h_n$，并使用最后一个时间步$h_n$预测情感标签或目标语言中的第一个单词:
+
 $$
 P(Y=y)=\frac{\exp \left(\mathbf{W}_{y} \mathbf{h}_{n}\right)}{\sum_{y^{\prime}} \exp \left(\mathbf{W}_{y^{\prime}} \mathbf{h}_{n}\right)}
 $$
+
 这就要求该模型能够将一个句子的所有必要信息压缩成一个固定长度的向量，这就造成了提高性能的信息瓶颈。设计了一种注意机制来解决这个问题:它不是将所有信息压缩到最后一个隐藏向量中，而是在所有时间步骤中查看隐藏向量并自适应地选取这些向量的子集:
+
 $$
 \begin{aligned} \alpha_{i} &=\frac{\exp \left(g\left(\mathbf{h}_{i}, \mathbf{w} ; \Theta_{g}\right)\right)}{\sum_{i^{\prime}=1}^{n} \exp \left(g\left(\mathbf{h}_{i^{\prime}}, \mathbf{w} ; \Theta_{g}\right)\right)} \\ \mathbf{c} &=\sum_{i=1}^{n} \alpha_{i} \mathbf{h}_{i} \end{aligned}
 $$
+
 这里w可以是训练过程中学习到的任务特定向量，也可以作为机器翻译中当前目标隐藏状态，g是参数函数，可以通过点积、双线性积、或MLP
+
 $$
 \begin{aligned} g_{dot}\left(\mathbf{h}_{i}, \mathbf{w}\right) &=\mathbf{h}_{i}^{\top} \mathbf{w} \\ g_{bilinear}\left(\mathbf{h}_{i}, \mathbf{w}\right) &=\mathbf{h}_{i}^{\top} \mathbf{W} \mathbf{w} \\ g_{MLP}\left(\mathbf{h}_{i}, \mathbf{w}\right) &=\mathbf{v}^{\top} \tanh \left(\mathbf{W}^{h} \mathbf{h}_{i}+\mathbf{W}^{w} \mathbf{w}\right) \end{aligned}
 $$
+
 简单来说，Attention机制会为每一个hihi计算一个相似度分数，然后使用softmax做归一化。因此αα基本上能够捕获句子中的那一部分是真正相关的，cc则用加权和表示所有时间步长的总和，可以用于最终预测。
 
 注意机制已被证明在众多应用中具有广泛的有效性，成为神经NLP模型的重要组成部分。最近，Parikh et al.(2016)和Vaswani et al.(2017)推测注意机制不必与递归神经网络结合使用，可以完全基于单词嵌入和前馈网络构建，同时提供最小的序列信息。这类模型通常需要更少的参数，并且具有更强的并行性和可伸缩性——特别是在Vaswani et al.(2017)中提出的Transformer模型已经成为一个研究热点。
@@ -433,7 +443,7 @@ $$
 
 `THE STANFORD ATTENTIVE READER` 是受到了 `ATTENTIVE READER` 和其他并行工作的启发，目标是是模型变得简单而强大。我们首先描述了Chen等人(2017)介绍的跨度预测问题的完整形式，然后讨论了它的其他变体。
 
-对于基于范围的问题而言，给定一篇文章 $p$ 由 $l_p$ 个tokens$(p_1,p_2,...,p_{l_p})$构成和一个问题 $q$ 由 $l_q $个tokens$(q_1,q_2,...,q_{l_q})$构成，目标是为了预测一个范围$a_{start},a_{end}$，是问题的答案。
+对于基于范围的问题而言，给定一篇文章 $p$ 由 $l_p$ 个tokens $(p_1,p_2,...,p_{l_p})$ 构成和一个问题 $q$ 由 $l_q$ 个tokens $(q_1,q_2,...,q_{l_q})$ 构成，目标是为了预测一个范围$a_{start},a_{end}$，是问题的答案。
 
 ![](imgs/1556006073666.png)
 
@@ -442,28 +452,34 @@ $$
 ##### QUESTION ENCODING
 
 问题编码相对简单:首先将每个问题单词qiqi映射到其嵌入的单词$\mathbf{E}\left(q_{i}\right) \in \mathbb{R}^{d}$中，然后在其上应用双向LSTM，最终得到
+
 $$
 \mathbf{q}_{1}, \mathbf{q}_{2}, \ldots, \mathbf{q}_{l_{q}}=\operatorname{BiLSTM}\left(\mathbf{E}\left(q_{1}\right), \mathbf{E}\left(q_{2}\right), \ldots, \mathbf{E}\left(q_{l_{q}}\right) ; \Theta^{(q)}\right) \in \mathbb{R}^{h}
 $$
+
 然后我们将这些隐藏的单位通过一个注意力层聚合成一个向量
+
 $$
 \begin{aligned} b_{j} &=\frac{\exp \left(\mathbf{w}^{q \top} \mathbf{q}_{j}\right)}{\sum_{j^{\prime}} \exp \left(\mathbf{w}^{q \top} \mathbf{q}_{j^{\prime}}\right)} \\ \mathbf{q} &=\sum_{j} b_{j} \mathbf{q}_{j} \end{aligned}
 $$
+
 $b_j$度量每个问题单词的重要性，$w_q∈R_h$是一个需要学习的权向量。因此，$q∈R_h$是问题的最终向量表示。实际上，将$q$表示为LSTMs在两个方向上的最后一个隐藏向量的连接更简单(也更常见)。然而，基于经验的表现，我们发现添加这个注意层有助于一致性，因为它为更相关的问题词增加了更多的权重。
 
 ##### PASSAGE ENCODING
 
 首先为文章中的每个单词形成一个输入表示$\tilde{\mathbf{p}}_{i} \in \mathbb{R}^{\overline{d}}$，并且它们穿过另一个双向LSTM:
+
 $$
 \mathbf{p}_{1}, \mathbf{p}_{2}, \ldots, \mathbf{p}_{l_{p}}=\operatorname{BiLSTM}\left(\tilde{\mathbf{p}}_{1}, \tilde{\mathbf{p}}_{2}, \ldots, \tilde{\mathbf{p}}_{l_{p}} ; \Theta^{(p)}\right) \in \mathbb{R}^{h}
 $$
+
 输入表示$\tilde{\mathbf{p}}_{i}$可分为两类:**一是编码每个单词本身的属性,,另一个是编码其与问题的相关性**。
 
 {>>properties of each word itself, its relevance with respect to the question<<}
 
 ###### 单词本身的属性
 
-除了词嵌入$f_{emb}(p_i)=E(p_i)∈\mathbb{R}^d$,我们还添加了一些人工特征反映词pipi在它的上下文的性质,包括它的词性(POS)和命名实体识别(NER)及其频率(规范化)词频(TF): $f_{\text {token}}\left(p_{i}\right)=\left(\operatorname{POS}\left(p_{i}\right), \mathrm{NER}\left(p_{i}\right), \mathrm{TF}\left(p_{i}\right)\right)$。对于POS和NER标记，我们运行现成的工具并将其转换为One-hot表示，因为标记集很小。TF特征是实值数，它度量单词在文章中出现的次数除以单词总数。
+除了词嵌入$f_{emb}(p_i)=E(p_i)∈\mathbb{R}^d$,我们还添加了一些人工特征反映词pipi在它的上下文的性质,包括它的词性(POS)和命名实体识别(NER)及其频率(规范化)词频(TF): $f_{\text {token}}\left(p_{i}\right)=\left(\operatorname{POS}\left(p_{i}\right), \mathrm{NER}\left(p_{i}\right), \mathrm{TF}\left(p_{i}\right)\right)$ 。对于POS和NER标记，我们运行现成的工具并将其转换为One-hot表示，因为标记集很小。TF特征是实值数，它度量单词在文章中出现的次数除以单词总数。
 
 ###### 与问题的相关性
 
@@ -482,12 +498,14 @@ $$
 a_{i, j}=\frac{\exp \left(\operatorname{MLP}\left(\mathbf{E}\left(p_{i}\right)\right)^{T} \operatorname{MLP}\left(\mathbf{E}\left(q_{j}\right)\right)\right)}{\sum_{j^{\prime}} \exp \left(\operatorname{MLP}\left(\mathbf{E}\left(p_{i}\right)\right) ^T{MLP}\left(\mathbf{E}\left(q_{j^{\prime}}\right)\right)\right)}
 $$
 
--   其中$\operatorname{MLP}(\mathbf{x})=\max \left(0, \mathbf{W}_{\operatorname{MLP}} \mathbf{x}+\mathbf{b}_{\mathrm{MLP}}\right)$是具有非线性函数的单层dense层，$\mathbf{W}_{\mathrm{MLP}} \in \mathbb{R}^{d \times d} \text { and } \mathbf{b}_{\mathrm{MLP}} \in \mathbb{R}^{d}.$ and $\mathbf{W}_{\mathrm{MLP}} \in \mathbb{R}^{d \times d} \text { and } \mathbf{b}_{\mathrm{MLP}} \in \mathbb{R}^{d}$
+-   其中 $\operatorname{MLP}(\mathbf{x})=\max \left(0, \mathbf{W}_{\operatorname{MLP}} \mathbf{x}+\mathbf{b}_{\mathrm{MLP}}\right)$是具有非线性函数的单层dense层，$\mathbf{W}_{\mathrm{MLP}} \in \mathbb{R}^{d \times d} \text { and } \mathbf{b}_{\mathrm{MLP}} \in \mathbb{R}^{d}.$ and $\mathbf{W}_{\mathrm{MLP}} \in \mathbb{R}^{d \times d} \text { and } \mathbf{b}_{\mathrm{MLP}} \in \mathbb{R}^{d}$
 
 最后，我们将四个组件连接起来，形成输入表示:
+
 $$
 \tilde{\mathbf{p}}_{i}=\left(f_{e m b}\left(p_{i}\right), f_{t o k e n}\left(p_{i}\right), f_{e x a c t-m a t c h}\left(p_{i}\right), f_{a l i g n}\left(p_{i}\right)\right) \in \mathbb{R}^{\tilde{d}}
 $$
+
 这部分在模型中的体现如下
 
 ![1556071511292](imgs/1556071511292.png)
@@ -495,22 +513,26 @@ $$
 ##### ANSWER PREDICTION
 
 现在我们有了文章和问题的向量表示了，我们的目标是预测最可能是正确答案的范围。我们再次运用注意力机制的思想，训练两个独立的分类器，一个是预测跨度的起始位置，另一个是预测跨度的结束位置。更具体地说，我们使用双线性乘积来捕捉pipi和qq之间的相似性:
+
 $$
 \begin{aligned} P^{(\mathrm{start})}(i) &=\frac{\exp \left(\mathbf{p}_{i} \mathbf{W}^{(\mathrm{sart})} \mathbf{q}\right)}{\sum_{i^{\prime}} \exp \left(\mathbf{p}_{i^{\prime}} \mathbf{W}^{(\mathrm{start})} \mathbf{q}\right)} \\ P^{(\mathrm{end})}(i) &=\frac{\exp \left(\mathbf{p}_{i} \mathbf{W}^{(\mathrm{end})} \mathbf{q}\right)}{\sum_{i^{\prime}} \exp \left(\mathbf{p}_{i^{\prime}} \mathbf{W}^{(\mathrm{end})} \mathbf{q}\right)} \end{aligned}
 $$
+
 其中，$\mathbf{W}^{(\text { start })}, \mathbf{W}^{(\text { end })} \in \mathbb{R}^{h \times h}$ 是要学习的额外变量。这和注意力的表达式略有不同因为我们不需要对所有向量表示取加权和。相反，我们使用标准化的权重来进行直接预测。我们使用双线性乘积是因为我们发现它们在经验上是有效的。
 
 ##### TRAINING AND INFERENCE
 
 最终的训练目标是最小化交叉熵损失：
+
 $$
 \mathcal{L}=-\sum \log P^{(\mathrm{start})}\left(a_{\mathrm{start}}\right)-\sum \log P^{(\mathrm{end})}\left(a_{\mathrm{end}}\right)
 $$
+
 其中，所有的参数$\Theta=\Theta^{(p)}, \Theta^{(q)}, \mathbf{w}^{(q)}, \mathbf{W}_{\mathrm{MLP}}, \mathbf{b}_{\mathrm{MLP}}, \mathbf{W}^{(\mathrm{start})}, \mathbf{W}^{(\mathrm{end})}$ 都是通过SGD进行优化的。
 
 在推理过程中，我们选择了范围
- $ p_{i}, \dots, p_{i^{\prime}}, i \leq i^{\prime} \leq i+max\_{len}$ 并且$ P^{(\text { start })}(i) \times P^{(\text { end })}\left(i^{\prime}\right)$ 
-取最大值。max_lenmax_len是一个预定义的常量，控制答案的最大长度。
+ $p_{i}, \dots, p_{i^{\prime}}, i \leq i^{\prime} \leq i+max\_{len}$ 并且 $P^{(\text { start })}(i) \times P^{(\text { end })}\left(i^{\prime}\right)$ 
+取最大值。$max\_len$是一个预定义的常量，控制答案的最大长度。
 
 #### 3.2.3 Extensions
 
@@ -519,14 +541,17 @@ $$
 ##### CLOZE STYLE
 
 同样地，我们可以用问题对文章中所有单词的双线性乘积来计算注意力函数，然后计算一个输出向量o，它对所有段落表示形式进行加权和
+
 $$
 P(Y=e | p, q)=\frac{\exp \left(\mathbf{W}_{e}^{(a)} \mathbf{o}\right)}{\sum_{e^{\prime} \in \mathcal{E}} \exp \left(\mathbf{W}_{e^{\prime}}^{(a)} \mathbf{o}\right)}
 $$
+
 其中，$\mathcal{E}$表示候选的单词或实体的集合。采用负对数似然目标进行训练，在预测过程中选择$e \in \mathcal{E}$使$\mathbf{W}_{e}^{(a)} \mathbf{o}$最大化，是很简单的。
 
 ##### MULTIPLE CHOICE
 
 在这一背景下，我们给出k个假定答案$\mathcal{A}=\left\{a_{1}, \dots, a_{k}\right\}$，通过使用第三个BiLSTM将每个都编码为向量ai , 类似于我们的问题编码步骤。我们就可以计算出输出向量o并且通过另一个双线性乘积的相似性函数，把它和每个假定答案的向量 ai进行比较
+
 $$
 P(Y=i | p, q)=\frac{\exp \left(\mathbf{a}_{i} \mathbf{W}^{(a)} \mathbf{o}\right)}{\sum_{i^{\prime}=1, \ldots, k} \exp \left(\mathbf{a}_{i^{\prime}}^{\prime} \mathbf{W}^{(a)} \mathbf{o}\right)}
 $$
@@ -536,6 +561,7 @@ $$
 ##### FREE-FORM ANSWER
 
 这种问题的答案不限定与一个实体或是文中的一个范围，可以取任何单词序列，最常见的解决方案是将LSTM的序列decoder合并到当前框架中。具体而言，我们假定一个答案字符串为$a=\left(a_{1}, a_{2}, \dots, a_{l_{a}}\right)$以及一个特殊的序列终点token⟨eos⟩⟨eos⟩会被添加到每一个答案的末尾。我们可以同样使用输出向量o并且decoder会每次生成一个单词，因此条件概率可以分解为:
+
 $$
 P(a | p, q)=P(a | \mathbf{o})=\prod_{j=1}^{l_{a}} P\left(a_{j} | a_{<j}, \mathbf{o}\right)
 $$
@@ -543,9 +569,11 @@ $$
 >   $$P\left(A_{1} A_{2} \cdots A_{n}\right)=P\left(A_{1}\right) P\left(A_{2} | A_{1}\right) \cdots P\left(A_{n} | A_{1} A_{2} \cdots A_{n-1}\right) $$
 
 其中，$P\left(a_{j} | a_{<j}, \mathbf{o}\right)$是一个LSTM的参数化表示，该LSTM以输出向量oo为初始隐层向量，在完整的词汇表$\mathcal{V} \cup\{\langle\text { eos }\rangle\}$中，根据隐层向量$h_j$预测出$a_j$，训练目标为
+
 $$
 \mathcal{L}=-\log P(a | p, q)=-\log \sum_{j=1}^{l_{a}} P\left(a_{j} | a_{<j}, \mathbf{o}\right)
 $$
+
 对于预测，每次预测一个单词，使得$P\left(a_{j} | a_{<j}, \mathbf{o}\right)$最大，然后输入下一个时间步，知道预测到token⟨eos⟩⟨eos⟩。
 
 由于自由形式的答题阅读理解问题更加复杂，也更难评估，我们认为这些方法与其他类型的问题相比还没有得到充分的探索。最后，我们认为 (Gu et al., 2016; See et al., 2017)提出了一种用于总结任务的复制机制。它允许解码器选择从源文本中复制一个单词，或者从词汇表中生成一个单词，这对于阅读理解任务也非常有用，因为答案单词仍然可能出现在段落或问题中。我们将在第6.3节中讨论一个具有复制机制的模型。
@@ -562,7 +590,7 @@ $$
 
 ##### STACKED BILSTMS
 
-增大问题和文章编码的双向LSTM的深度，将会计算$\mathbf{h}_{t}=\left[\overrightarrow{\mathbf{h}}_{t} ; \overleftarrow{\mathbf{h}}_{t}\right] \in \mathbb{R}^{2 h}$并且把$h_t$作为下一层的输入$X_t$，传递到另一层BiLSTM中，以此类推。实验结果表明，Stack比单层效果好，实验采用了三层。
+增大问题和文章编码的双向LSTM的深度，将会计算 $\mathbf{h}_{t}=\left[\overrightarrow{\mathbf{h}}_{t} ; \overleftarrow{\mathbf{h}}_{t}\right] \in \mathbb{R}^{2 h}$ 并且把 $h_t$ 作为下一层的输入$X_t$ ，传递到另一层BiLSTM中，以此类推。实验结果表明，Stack比单层效果好，实验采用了三层。
 
 ##### DROPOUT
 
@@ -588,7 +616,7 @@ SQuAD中使用3层BiLSTM(h=128)，使用了优化函数Adamax，在词嵌入和�
 
 ![](imgs/1556121761391.png)
 
-在17年的论文中对文章的表征进行了模型简化测试。我们发现，没有对齐的问题嵌入(只有word嵌入和一些手动特性)，我们的系统仍然能够实现F1超过77%。精确匹配特征的有效性也表明，在该数据集上，文章和问题之间存在大量的单词重叠。更有趣的是，如果我们同时删除$f_{aligned }$和$ f_{exact match}$，性能会显著下降，因此我们得出结论，这两个特性在特征表示方面发挥着相似但互补的作用，就像问题和文章单词之间的硬对齐和软对齐一样
+在17年的论文中对文章的表征进行了模型简化测试。我们发现，没有对齐的问题嵌入(只有word嵌入和一些手动特性)，我们的系统仍然能够实现F1超过77%。精确匹配特征的有效性也表明，在该数据集上，文章和问题之间存在大量的单词重叠。更有趣的是，如果我们同时删除$f_{aligned }$和 $f_{exact match}$ ，性能会显著下降，因此我们得出结论，这两个特性在特征表示方面发挥着相似但互补的作用，就像问题和文章单词之间的硬对齐和软对齐一样
 
 #### 3.3.4 Analysis: What Have the Models Learned?
 
@@ -638,12 +666,14 @@ SQuAD中使用3层BiLSTM(h=128)，使用了优化函数Adamax，在词嵌入和�
 用字符级别的嵌入方式来表征单词，可以让模型在很少见的单词以及词库以外的单词上有提升。现在常用的是将每个单词用一串字符向量表示，然后用卷积神经网络对字符向量做卷积，可以有效地利用n-gram字符的 surface patterns。具体来说，$C$ 是字符的词汇表，每个单词类型$x$都可以表示为字符序列$\left(c_{1}, \ldots, c_{|x|}\right), \forall c_{i} \in \mathcal{C}.$ 我们首先将$C$中的每一个字符都映射为一个$d_c$维度的向量，所以单词xx可以被表示为$\mathbf{c}_{1}, \dots, \mathbf{c}_{|x|}$ 。
 
 接下来我我们使用带有一个$\mathbf{w} \in \mathbb{R}^{d_{c} \times w}$的宽度为ww的卷积核的卷积层，$\mathbf{c}_{i : i+j}$表示$\mathbf{c}_{i}, \mathbf{c}_{i+1}, \ldots, \mathbf{c}_{i+j}$。因此，$for \ i=1, \ldots,|x|-w+1$，我们可以使用该卷积核并添加偏差和非线性函数$tanh$:
+
 $$
 f_{i}=\tanh \left(\mathbf{w}^{\top} \mathbf{c}_{i : i+w-1}+b\right)
 $$
 
 
 最后我们再对获得$f_{1}, \ldots, f_{|x|-w+1}$的使用`max-pooling`，获得一个标量特征：
+
 $$
 f=\max _{i}\left\{f_{i}\right\}
 $$
@@ -656,17 +686,23 @@ $$
 与传统的词嵌入方式不同，传统方法中一个单词对应一个词向量，但是情景化词嵌入将每个单词作为整个输入语句的函数分配一个向量，这样词向量能够反映更为复杂的特征(例如语法和语义)，并且单词的向量还能根据上下文意思进行改变(例如一词多义)
 
 以`ELMO`为例，他们的情景化词嵌入是在一个大型文本语料库上预先训练的深层双向语言模型的内部状态的学习函数。基本上，给定一个单词序列$\left(x_{1}, x_{2}, \ldots, x_{n}\right)$，它们运行LL层正向LSTM，序列概率模型为:
+
 $$
 P\left(x_{1}, x_{2}, \ldots, x_{n}\right)=\prod_{k=1}^{n} P\left(x_{k} | x_{1}, \ldots, x_{k-1}\right)
 $$
+
 只有最顶层的LSTM的$\overrightarrow{\mathrm{h}}_{k}^{(L)}$被用来预测下一个token$x_{k+1}$。类似的另一个$L$层LSTM反向运行获得$\overleftarrow{\mathbf{h}}_{k}^{(L)}$来预测token$x_{k-1}$。总体的训练目标是最大化两个方向的似然估计：
+
 $$
 \sum_{k=1}^{n}\left(\log P\left(x_{k} | x_{1}, \ldots, x_{k-1} ; \Theta_{x}, \overrightarrow{\Theta}_{\mathrm{LSTM}}, \Theta_{s}\right)+\log P\left(x_{k} | x_{k+1}, \ldots, x_{n} ; \Theta_{x}, \overleftarrow{\Theta}_{\mathrm{LSTM}}, \Theta_{s}\right)\right)
 $$
+
 其中，$\Theta_{x} ,\Theta_{s}$是两个LSTM都共享的词嵌入和softmax参数。最终的情景词嵌入是通过所有双向LSTM层和输入词嵌入的线性组合，乘以一个线性标量:
+
 $$
 \operatorname{ELMO}\left(x_{k}\right)=\gamma\left(s_{0} \mathbf{x}_{k}+\sum_{j=1}^{L} \overrightarrow{s}_{j} \overrightarrow{\mathbf{h}}_{k}^{(j)}+\sum_{j=1}^{L} \overleftarrow{s}_{j} \overleftarrow{\mathbf{h}}_{k}^{(j)}\right)
 $$
+
 所有的权重$\gamma, s_{0}, \overrightarrow{s}_{j},\overleftarrow{s}_{j}$都是针对特定任务在训练中学习的。
 
 这些情景化的单词嵌入通常与传统的单词类型嵌入和字符嵌入一起使用。事实证明，这种在非常大的文本语料库上预先训练过的词嵌入是非常有效的。
@@ -683,11 +719,10 @@ $$
 
 除了我们已经拥有的，关键的区别是他们有`question-to-passage`的注意力，这意味着哪些段落单词与每个问题单词最相似。在实践中，这可以实现为:对于问题中的每个单词，我们可以计算出所有短文单词的注意图，但是是双向的：
 
-
-
 $$
 f_{q-\text {align}}\left(q_{i}\right)=\sum_{j} b_{i, j} \mathbf{E}\left(p_{j}\right)
 $$
+
 之后可以用它作为问题编码输入层的一部分。
 
 Seo等人(2017)的注意机制比较复杂，但我们认为是相似的。我们还认为，在这个方向上的注意力功能没有那么有用，Seo等人(2017)也证明了这一点。这是因为问题一般都很短(平均10-20个单词)，使用一个LSTM进行问题编码(无需额外注意)通常就足够了。
@@ -697,9 +732,11 @@ Seo等人(2017)的注意机制比较复杂，但我们认为是相似的。我�
 直观的感觉是，文章中的单词可以与其他文章中的单词对齐，希望它可以解决指代问题，并从文章中的多个位置聚(同一实体的信息。
 
 首先计算出文章的隐层向量$\mathbf{p}_{1}, \mathbf{p}_{2}, \dots, \mathbf{p}_{l_{p}}$，然后通过在其上为每一个pi使用MLP实现注意力函数：
+
 $$
 \begin{aligned} a_{i, j} &=\frac{\exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}_{i}, \mathbf{p}_{j}\right)\right)}{\sum_{j^{\prime}} \exp \left(g_{\mathrm{MLP}}\left(\mathbf{p}_{i}, \mathbf{p}_{j^{\prime}}\right)\right)} \\ \mathbf{c}_{i} &=\sum_{j} a_{i, j} \mathbf{p}_{j} \end{aligned}
 $$
+
 随后，$c_i$和$p_i$都被连接并投入到另一个BiLSTM : $\mathbf{h}_{i}^{(p)}=\operatorname{BiLSTM}\left(\mathbf{h}_{i-1}^{(p)},\left[\mathbf{p}_{i}, \mathbf{c}_{i}\right]\right)$中，可以被用做最终的文章表示。
 
 #### 3.4.3 Alternatives to LSTMs

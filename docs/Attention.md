@@ -185,7 +185,7 @@ Self Attention也经常被称为intra Attention。与传统的Attention机制非
 
 ##### 序列编码
 
-深度学习做NLP的方法，基本上都是先将句子分词，然后每个词转化为对应的词向量序列。这样一来，每个句子都对应的是一个矩阵X=(x1,x2,…,xt)，其中xi都代表着第i个词的词向量（行向量），维度为d维，故X∈Rn×d。这样的话，问题就变成了编码这些序列了。
+深度学习做NLP的方法，基本上都是先将句子分词，然后每个词转化为对应的词向量序列。这样一来，每个句子都对应的是一个矩阵$X=(x_1,x_2,…,x_t)$，其中xi都代表着第i个词的词向量（行向量），维度为d维，故$X∈R_n×d$。这样的话，问题就变成了编码这些序列了。
 
 ###### RNN
 
@@ -213,13 +213,13 @@ $$
 \boldsymbol{y}_{t}=f\left(\boldsymbol{x}_{t}, \boldsymbol{A}, \boldsymbol{B}\right)
 $$
 
-其中A,BA,B是另外一个序列（矩阵）。如果都取A=B=X，那么就称为Self Attention，它的意思是直接将xt与原来的每个词进行比较，最后算出yt！
+其中A,BA,B是另外一个序列（矩阵）。如果都取$A=B=X$，那么就称为Self Attention，它的意思是直接将xt与原来的每个词进行比较，最后算出yt！
 
 #### 整体架构
 
 ![](imgs/1555939732972.png)
 
-**Encoder**: 六个相同层的堆叠，每一层都有两个子层构成。第一个子层是 multi-head self-attention mechanism，然后是position- wise fully connected feed-forward network。并且在两个子层之间使用了残差连接并后接Layer Normalization，所以每个子层的输出为 $LayerNorm(x+Sublayer(x))$ 。网络输入是三个相同的向量q, k和v，是word embedding和position embedding相加得到的结果。为了方便进行残差连接，我们需要子层的输出和输入都是相同的维度，所有子层以及嵌入层的输出都为dmodel=512dmodel=512。
+**Encoder**: 六个相同层的堆叠，每一层都有两个子层构成。第一个子层是 multi-head self-attention mechanism，然后是position- wise fully connected feed-forward network。并且在两个子层之间使用了残差连接并后接Layer Normalization，所以每个子层的输出为 $LayerNorm(x+Sublayer(x))$ 。网络输入是三个相同的向量q, k和v，是word embedding和position embedding相加得到的结果。为了方便进行残差连接，我们需要子层的输出和输入都是相同的维度，所有子层以及嵌入层的输出都为$dmodel=512$。
 
 **Decoder**: 同样是六个相同层的堆叠，decoder中的Layer由encoder的Layer中插入一个Multi-Head Attention + Add&Norm组成，该子层对Encoder Stack的输出执行多头注意。同样使用残差连接和Layer Normalization，并且还修改了Decoder Stack中的self-attention子层，以防止位置注意到后续位置。{>>We also modify the self-attention sub-layer in the decoder stack to prevent positions from attending to subsequent positions<<}对于decoder中的第一个多头注意力子层，需要添加masking，确保预测位置i的时候仅仅依赖于位置小于i的输出。
 
@@ -243,7 +243,7 @@ Google的一般化Attention思路也是一个编码序列的方案，因此我�
 $$
 (\boldsymbol{Q}, \boldsymbol{K}, \boldsymbol{V})=\operatorname{softmax}\left(\frac{\boldsymbol{Q} \boldsymbol{K}^{\top}}{\sqrt{d_{k}}}\right) \boldsymbol{V}
 $$
-其中，$\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}$ 。如果忽略激活函数softmax的话，那么是事实上就是三个$n \times d_{k}, d_{k} \times m, m \times d_{v}$矩阵相乘，最后的结果是一个$n \times d_{v}$的矩阵。可以认为是一个将$n \times d_{k}$的序列Q编码成了一个新的$n \times d_{v}$的序列的Attention层。
+其中，$\boldsymbol{Q} \in \mathbb{R}^{n \times d_{k}}, \boldsymbol{K} \in \mathbb{R}^{m \times d_{k}}, \boldsymbol{V} \in \mathbb{R}^{m \times d}$ 。如果忽略激活函数softmax的话，那么是事实上就是三个$n \times d_{k}, d_{k} \times m, m \times d_{v}$矩阵相乘，最后的结果是一个$n \times d_{v}$的矩阵。可以认为是一个将$n \times d_{k}$的序列$Q$编码成了一个新的$n \times d_{v}$的序列的Attention层。
 
 $$
 Attention\left(\boldsymbol{q}_{t}, \boldsymbol{K}, \boldsymbol{V}\right)=\sum_{s=1}^{m} \frac{1}{Z} \exp \left(\frac{\left\langle\boldsymbol{q}_{t}, \boldsymbol{k}_{s}\right\rangle}{\sqrt{d_{k}}}\right) \boldsymbol{v}_{s}
@@ -259,6 +259,10 @@ $$
 
 这个是Google提出的新概念，是Attention机制的完善。不过从形式上看，它其实就再简单不过了，就是把$Q,K,V$通过参数矩阵映射一下，然后再做Attention，把这个过程重复做$h$次，结果拼接起来就行了，可谓“大道至简”了。
 
+$$
+head_{i}=\text { Attention }\left(\boldsymbol{Q} \boldsymbol{W}_{i}^{Q}, \boldsymbol{K} \boldsymbol{W}_{i}^{K}, \boldsymbol{V} \boldsymbol{W}_{i}^{V}\right)
+$$
+
 这里$\boldsymbol{W}_{i}^{Q} \in \mathbb{R}^{d_{k} \times \overline{d}}, \boldsymbol{W}_{i}^{K} \in \mathbb{R}^{d_{k} \times \overline{d}} k, \boldsymbol{W}_{i}^{V} \in \mathbb{R}^{d_{v} \times \overline{d} v}$ , 然后
 
 $$
@@ -273,9 +277,7 @@ $$
 
 ###### 具体化
 
-我们记 word embedding 的 dimension 为 dmodel ，所以 Q 的 shape 就是 n*dmodel， K、V 也是一样，第 i 个 word 的 embedding 为 vi，所以该 word 的 attention 应为：
-
-我们记 word embedding 的 dimension 为 dmodel ，所以 Q 的 shape 就是 n*dmodel， K、V 也是一样，第 i 个 word 的 embedding 为 vi，所以该 word 的 attention 应为：
+我们记 word embedding 的 dimension 为 $d_{model}$ ，所以 Q 的 shape 就是 $n*d_{model}$， K、V 也是一样，第 i 个 word 的 embedding 为 $v_i$，所以该 word 的 attention 应为：
 
 ![1555941190469](imgs/1555941190469.png)
 
@@ -286,7 +288,9 @@ $$
 ###### Mask
 
 decoder 中的 self-attention 也一样的道理，只是要注意一点，decoder 中你在用 vi 对 vj 做 attention 时，有一些 pair 是不合法的。原因在于，虽然 encoder 阶段你可以把序列的全部 word 一次全输入进去，但是 decoder 阶段却并不总是可以，想象一下你在做 inference，decoder 的产出还是按从左至右的顺序，所以你的 vi 是没机会和 vj ( j>i ) 做 attention 的。那怎么将这一点体现在 attention 的计算中呢？文中说只需要令$\operatorname{score}\left(v_{i}, v_{j}\right)=-\infty$即可。为何？因为这样的话：
-
+$$
+\alpha_{i j}=\operatorname{softmax}\left(\operatorname{score}\left(v_{i}, v_{j}\right)\right)=\operatorname{softmax}(-\infty)=0
+$$
 
 所以在计算 vi 的 self-attention 的时候，就能够把 vj 屏蔽掉。所以这个问题也就解决了。
 
@@ -325,28 +329,35 @@ $$
 
 除了 attention sub-layers，encoder和decoder中的每一层都包含一个完全连接的前馈网络，它分别应用于每个位置，并且是相同的。它由两个线性变换组成，中间有一个ReLU激活。
 
-虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络,hidden_size变化为：512->2048->512。每个 $d_model $ 维向量 x 在此先由 $xW_1+b_1$ 变为 $d_f $ 维的$ x′ $ ，再经过  $max(0,x′)W_2+b_2$ 回归 $ d_model $ 维。之后再是一个residual connection。输出 size 仍是  $[sequence_{length},d_{model}]$ 
+虽然不同位置上的线性变换是相同的，但是它们在不同的层之间使用不同的参数。另一种描述方法是用内核大小为1的两个卷积。其实就是一个MLP 网络，hidden_size变化为：$512 \to 2048 \to 512$。
+
+每个$d_{model}$维向量 x 在此先由  $xW_1+b_1$ 变为  $d_f$  维的  $x′$ ，再经过  $max(0,x′)W_2+b_2$ 变回 $d_{model}$ 维。之后再是一个残差连接。输出 size 仍是  $[sequence_{length},d_{model}]$
 
 ##### POSITIONAL ENCODING
 
-由于我们的模型不包含递归和卷积，为了使模型利用序列的顺序，我们必须注入一些关于序列中token的相对或绝对位置的信息。为此，我们将“位置编码”添加到encoder和decoder stacks底部的输入embeddings中。位置编码的维数dmodeldmodel与嵌入的维数相同，因此可以将二者相加。有许多位置编码的选择，学习的和固定的都可以。
-
+由于我们的模型不包含递归和卷积，为了使模型利用序列的顺序，我们必须注入一些关于序列中token的相对或绝对位置的信息。为此，我们将“位置编码”添加到encoder和decoder stacks底部的输入embeddings中。位置编码的维数$d_{model}$与嵌入的维数相同，因此可以将二者相加。有许多位置编码的选择，学习的和固定的都可以。
+$$
+\begin{equation}
+\begin{cases}
+PE(pos, 2i)=\sin \left(pos / 10000^{2 i / d_{model}}\right) \\
+PE(\text {pos}, 2 i+1)=\cos \left(pos / 10000^{2 i / d_{model}}\right)
+\end{cases}
+\end{equation}
+$$
 其中pos为位置，ii为维度。也就是说，位置编码的每个维度对应于一个正弦曲线。波长组成几何级数从2π到10000·2π。选择这个函数是因为我们假设它可以让模型很容易地学习到相对位置的参与，因为对于任何固定偏移量$k, PE_{pos+k}$都可以表示为的线性函数$PE_{pos}$。我们还使用了learning position embeddings进行了实验，发现这两个版本的结果几乎相同。我们选择正弦版本，因为它可能允许模型推断出比训练中遇到的序列长度更长的序列长度。
-
-
 
 这样做的目的是因为正弦和余弦函数具有周期性，对于固定长度偏差k（类似于周期），post +k位置的PE可以表示成关于pos位置PE的一个线性变化（存在线性关系），这样可以方便模型学习词与词之间的一个相对位置关系
 
->   只要稍微思考一下就会发现，这样的模型**并不能捕捉序列的顺序**！换句话说，如果将K,VK,V按行打乱顺序（相当于句子中的词序打乱），那么Attention的结果还是一样的。这就表明了，到目前为止，Attention模型顶多是一个非常精妙的“词袋模型”而已。这问题就比较严重了，大家知道，对于时间序列来说，尤其是对于NLP中的任务来说，顺序是很重要的信息，它代表着局部甚至是全局的结构，学习不到顺序信息，那么效果将会大打折扣（比如机器翻译中，有可能只把每个词都翻译出来了，但是不能组织成合理的句子）。
->
->   于是Google再祭出了一招——**Position Embedding**，也就是“位置向量”，将每个位置编号，然后每个编号对应一个向量，通过结合位置向量和词向量，就给每个词都引入了一定的位置信息，这样Attention就可以分辨出不同位置的词了。
->
->   Position Embedding并不算新鲜的玩意，在FaceBook的《Convolutional Sequence to Sequence Learning》也用到了这个东西。但在Google的这个作品中，它的Position Embedding有几点区别： 
->
->   1. 以前在RNN、CNN模型中其实都出现过Position Embedding，但在那些模型中，Position Embedding是锦上添花的辅助手段，也就是“有它会更好、没它也就差一点点”的情况，因为RNN、CNN本身就能捕捉到位置信息。但是在这个纯Attention模型中，Position Embedding是位置信息的唯一来源，因此它是模型的核心成分之一，并非仅仅是简单的辅助手段。 
->   2. 在以往的Position Embedding中，基本都是根据任务训练出来的向量。而Google直接给出了一个构造Position Embedding的公式：
->       -   这里的意思是将id为pp的位置映射为一个dposdpos维的位置向量，这个向量的第ii个元素的数值就是$PE_i(p)$。Google在论文中说到他们比较过直接训练出来的位置向量和上述公式计算出来的位置向量，效果是接近的。因此显然我们更乐意使用公式构造的Position Embedding了。
->   3. Position Embedding本身是一个绝对位置的信息，但在语言中，相对位置也很重要，Google选择前述的位置向量公式的一个重要原因是：由于我们有$sin⁡(α+β)=sin⁡αcos⁡β+cos⁡αsin⁡β$以及$cos⁡(α+β)=cos⁡αcos⁡β−sin⁡αsin⁡β$。这表明位置$p+k$的向量可以表示成位置$p$的向量的线性变换，这提供了表达相对位置信息的可能性。
+只要稍微思考一下就会发现，这样的模型 **并不能捕捉序列的顺序** ！换句话说，如果将$K,V$按行打乱顺序（相当于句子中的词序打乱），那么Attention的结果还是一样的。这就表明了，到目前为止，Attention模型顶多是一个非常精妙的“词袋模型”而已。这问题就比较严重了，大家知道，对于时间序列来说，尤其是对于NLP中的任务来说，顺序是很重要的信息，它代表着局部甚至是全局的结构，学习不到顺序信息，那么效果将会大打折扣（比如机器翻译中，有可能只把每个词都翻译出来了，但是不能组织成合理的句子）。
+
+于是Google再祭出了一招——**Position Embedding**，也就是“位置向量”，将每个位置编号，然后每个编号对应一个向量，通过结合位置向量和词向量，就给每个词都引入了一定的位置信息，这样Attention就可以分辨出不同位置的词了。
+
+Position Embedding并不算新鲜的玩意，在FaceBook的《Convolutional Sequence to Sequence Learning》也用到了这个东西。但在Google的这个作品中，它的Position Embedding有几点区别： 
+
+1.  以前在RNN、CNN模型中其实都出现过Position Embedding，但在那些模型中，Position Embedding是锦上添花的辅助手段，也就是“有它会更好、没它也就差一点点”的情况，因为RNN、CNN本身就能捕捉到位置信息。但是在这个纯Attention模型中，Position Embedding是位置信息的唯一来源，因此它是模型的核心成分之一，并非仅仅是简单的辅助手段。 
+2.  在以往的Position Embedding中，基本都是根据任务训练出来的向量。而Google直接给出了一个构造Position Embedding的公式：
+    -   这里的意思是将id为pp的位置映射为一个dposdpos维的位置向量，这个向量的第ii个元素的数值就是$PE_i(p)$。Google在论文中说到他们比较过直接训练出来的位置向量和上述公式计算出来的位置向量，效果是接近的。因此显然我们更乐意使用公式构造的Position Embedding了。
+3.  Position Embedding本身是一个绝对位置的信息，但在语言中，相对位置也很重要，Google选择前述的位置向量公式的一个重要原因是：由于我们有$sin⁡(α+β)=sin⁡αcos⁡β+cos⁡αsin⁡β$以及$cos⁡(α+β)=cos⁡αcos⁡β−sin⁡αsin⁡β$。这表明位置$p+k$的向量可以表示成位置$p$的向量的线性变换，这提供了表达相对位置信息的可能性。
 
 结合位置向量和词向量有几个可选方案，可以把它们拼接起来作为一个新向量，也可以把位置向量定义为跟词向量一样大小，然后两者加起来。FaceBook的论文和Google论文中用的都是后者。直觉上相加会导致信息损失，似乎不可取，但Google的成果说明相加也是很好的方案。
 
