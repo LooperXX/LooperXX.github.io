@@ -22,6 +22,7 @@ nav:
     - '历年机试' : '历年机试.md'
   - ML & DL:
     - 'Concepts' : 'Concepts.md'
+    - '花书经验法则' : '花书经验法则.md'
     - 'CNN' : 'CNN.md'
     - '经典网络' : '经典网络.md'
     - 'Normalization' : 'Normalization.md'    

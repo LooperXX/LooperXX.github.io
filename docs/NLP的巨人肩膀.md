@@ -830,3 +830,5 @@ GPT 刷了 12 项数据集（打破其中 9 项纪录），BERT 刷了 11 项数
 [Word and Document Embeddings based on Neural Network Approaches](<https://arxiv.org/abs/1611.05962>)
 
 fasttext
+
+[[论文笔记]ELMo](<https://zhuanlan.zhihu.com/p/37684922>)
