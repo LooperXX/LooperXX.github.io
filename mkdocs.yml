@@ -27,15 +27,15 @@ nav:
     - '经典网络' : '经典网络.md'
     - 'Normalization' : 'Normalization.md'    
   - NLP:
-      - NLP简介 : 
+      - 简介: 
         - '自然语言处理简介' : '自然语言处理简介.md'
         - 'NLP的巨人肩膀' : 'NLP的巨人肩膀.md'
-      - 'Attention' : 'Attention.md'
-      - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
-      - NMT:
-        - 'NMT Concepts' : 'NMT Concepts.md'
-      - QA:
-        - 'QA Concepts' : 'QA Concepts.md'
+      - 书籍笔记:
+        - 'Concepts' : 'NLP Concepts.md'        
+        - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
+      - 论文笔记:
+        - 'Attention' : 'Attention.md'
+
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
