@@ -2,11 +2,11 @@
 site_name: Looper's wiki
 site_description: Looper's personal notes
 site_author: 'Looper - Xiao Xu'
-site_url: 'https://looperxx.github.io/My_wiki'
+site_url: 'https://looperxx.github.io'
 
 # Repository
-repo_name: 'looperxx/My_wiki'
-repo_url: 'https://github.com/looperxx/My_wiki'
+repo_name: 'looperxx/looperxx.github.io'
+repo_url: 'https://github.com/looperxx/looperxx.github.io'
 
 # Copyright
 copyright: 'Copyright &copy; 2019 - 2020 Looper Xiao Xu'
@@ -14,7 +14,6 @@ copyright: 'Copyright &copy; 2019 - 2020 Looper Xiao Xu'
 nav:
   - Home: index.md
   - Math & CS Course:
-    - 'OS' : 'OS.md'
     - 'Linux' : 'Linux.md'
   - Coding:
     - '知识网络' : '知识网络.md'
@@ -26,6 +25,7 @@ nav:
     - 'CNN' : 'CNN.md'
     - '经典网络' : '经典网络.md'
     - 'Normalization' : 'Normalization.md'    
+    - 'Attention' : 'Attention.md'
   - NLP:
       - 简介: 
         - '自然语言处理简介' : '自然语言处理简介.md'
@@ -33,9 +33,8 @@ nav:
       - 书籍笔记:
         - 'Concepts' : 'NLP Concepts.md'        
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
-      - 论文笔记:
-        - 'Attention' : 'Attention.md'
-
+      - 课程笔记:
+        - 'CS224n-2019' : 'CS224n-2019.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:

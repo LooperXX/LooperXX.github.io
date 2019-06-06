@@ -1,123 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-     <loc>https://looperxx.github.io/My_wiki/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/OS/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Linux/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Linux/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/知识网络/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/知识网络/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Coding Knowledge/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Coding Knowledge/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/历年机试/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/历年机试/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Concepts/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Concepts/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/花书经验法则/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/花书经验法则/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/CNN/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/CNN/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/经典网络/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/经典网络/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Normalization/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Normalization/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Attention/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/自然语言处理简介/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/自然语言处理简介/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/NLP的巨人肩膀/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/NLP的巨人肩膀/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/NLP Concepts/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/NLP Concepts/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Neural Reading Comprehension and beyond/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Neural Reading Comprehension and beyond/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Attention/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/CS224n-2019/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/面经/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/面经/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Protocol Buffers/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Protocol Buffers/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/FDBus/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/FDBus/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/FDBus API/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/FDBus API/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/FDBus内部结构/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/FDBus内部结构/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Cross compiler/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Cross compiler/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/MkDocs_demo/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/MkDocs_demo/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
-     <loc>https://looperxx.github.io/My_wiki/Material Theme Tutorial/</loc>
-     <lastmod>2019-06-05</lastmod>
+     <loc>https://looperxx.github.io/Material Theme Tutorial/</loc>
+     <lastmod>2019-06-06</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>
