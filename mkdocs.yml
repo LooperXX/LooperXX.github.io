@@ -13,23 +13,22 @@ copyright: 'Copyright &copy; 2019 - 2020 Looper Xiao Xu'
 
 nav:
   - Home: index.md
-  - Math & CS Course:
+  - Math & CS & Coding:
     - 'Linux' : 'Linux.md'
-  - Coding:
     - '重点内容' : 'Coding Knowledge.md'
     - '历年机试' : '历年机试.md'
   - ML & DL:
+    - 'Attention' : 'Attention.md'
+    - 'Normalization' : 'Normalization.md' 
     - 'Concepts' : 'Concepts.md'
     - '花书经验法则' : '花书经验法则.md'
     - '经典网络' : '经典网络.md'
-    - 'Normalization' : 'Normalization.md'    
-    - 'Attention' : 'Attention.md'
   - NLP:
       - 简介: 
         - '自然语言处理简介' : '自然语言处理简介.md'
         - 'NLP的巨人肩膀' : 'NLP的巨人肩膀.md'
       - 书籍笔记:
-        - 'Concepts' : 'NLP Concepts.md'        
+        - 'NLP Concepts' : 'NLP Concepts.md'        
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
       - 课程笔记:
         - 'CS224n-2019' : 'CS224n-2019.md'
