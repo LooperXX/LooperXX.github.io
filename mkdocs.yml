@@ -31,7 +31,9 @@ nav:
         - 'NLP Concepts' : 'NLP Concepts.md'        
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
       - 课程笔记:
-        - 'CS224n-2019' : 'CS224n-2019.md'
+        - CS224n-2019:
+          - '简介' : 'CS224n-2019简介.md'
+          - '笔记' : 'CS224n-2019笔记.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
