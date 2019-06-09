@@ -1477,7 +1477,7 @@ $$
 </blockquote>
 <p><strong>Negative Sampling</strong></p>
 <p>让我们再回到目标函数上。注意对 <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 的求和计算量是非常大的。任何的更新或者对目标函数的评估都要花费 <span><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 的时间复杂度。一个简单的想法是不去直接计算，而是去求近似值。</p>
-<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span>  “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
+<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span>  “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
 <ul>
 <li>目标函数</li>
 <li>梯度</li>
@@ -1531,7 +1531,7 @@ J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_
 -log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}^{K}log\,\sigma(-\widetilde{u}_{k}^{T}\cdot \widehat{v})
 </script>
 </div>
-<p>在上面的公式中，$ {\widetilde{u}_{k}\mid k=1...K}$ 是从 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
+<p>在上面的公式中，<span><span class="MathJax_Preview">\{\widetilde{u}_{k}\mid k=1...K\}</span><script type="math/tex">\{\widetilde{u}_{k}\mid k=1...K\}</script></span> 是从 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
 <div>
 <div class="MathJax_Preview">
 \begin{eqnarray}  is: 0.9^{3/4} &amp;=&amp; 0.92 \nonumber \\ Constitution: 0.09^{3/4}&amp;=&amp; 0.16 \nonumber \\ bombastic:0.01^{3/4}&amp;=&amp; 0.032 \nonumber \end{eqnarray}
@@ -1567,7 +1567,7 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
 </div>
 <p>这个公式看起来非常复杂，让我们细细梳理一下。</p>
 <p>首先，我们将根据从根节点 <span><span class="MathJax_Preview">(n(w,1))</span><script type="math/tex">(n(w,1))</script></span> 到叶节点 <span><span class="MathJax_Preview">(w)</span><script type="math/tex">(w)</script></span> 的路径的形状来计算相乘的项。如果我们假设 <span><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> 一直都是 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 的左节点，然后当路径往左时 <span><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 的值返回 1，往右则返回 0。</p>
-<p>此外，$ [n(w,j+1)=ch(n(w,j))]$ 提供了归一化的作用。在节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 处，如果我们将去往左和右节点的概率相加，对于 <span><span class="MathJax_Preview">v_{n}^{T}v_{w_{i}}</span><script type="math/tex">v_{n}^{T}v_{w_{i}}</script></span> 的任何值则可以检查，</p>
+<p>此外，<span><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 提供了归一化的作用。在节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 处，如果我们将去往左和右节点的概率相加，对于 <span><span class="MathJax_Preview">v_{n}^{T}v_{w_{i}}</span><script type="math/tex">v_{n}^{T}v_{w_{i}}</script></span> 的任何值则可以检查，</p>
 <div>
 <div class="MathJax_Preview">
 \sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
