@@ -1084,7 +1084,7 @@
 <p>Singular Value Decomposition (SVD) 奇异值分解</p>
 </blockquote>
 <h3 id="human-language-and-word-meaning">Human language and word meaning<a class="headerlink" href="#human-language-and-word-meaning" title="Permanent link">&para;</a></h3>
-<p>人类之所以比类人猿更“聪明”，是因为我们有语言，因此是一个人机网络，其中人类语言作为网络语言。人类语言具有**信息功能**和**社会功能**。</p>
+<p>人类之所以比类人猿更“聪明”，是因为我们有语言，因此是一个人机网络，其中人类语言作为网络语言。人类语言具有 <strong>信息功能</strong> 和 <strong>社会功能</strong> 。</p>
 <p>据估计，人类语言只有大约5000年的短暂历。语言是人类变得强大的主要原因。写作是另一件让人类变得强大的事情。它是使知识能够在空间上传送到世界各地，并在时间上传送的一种工具。</p>
 <p>但是，相较于如今的互联网的传播速度而言，人类语言是一种缓慢的语言。然而，只需人类语言形式的几百位信息，就可以构建整个视觉场景。这就是自然语言如此迷人的原因。</p>
 <p><strong>How do we represent the meaning of a word?</strong></p>
@@ -1104,23 +1104,26 @@ $$</p>
 </blockquote>
 <p><strong>How do we have usable meaning in a computer?</strong></p>
 <p><strong><em>WordNet</em></strong>, 一个包含同义词集和上位词(“is a”关系) <strong><em>synonym sets and hypernyms</em></strong> 的列表的辞典</p>
-<p>```python tab=&quot;synonym&quot;
-from nltk.corpus import wordnet as wn
-poses = { 'n':'noun', 'v':'verb', 's':'adj (s)', 'a':'adj', 'r':'adv'}
-for synset in wn.synsets("good"):
-    print("{}: {}".format(poses[synset.pos()],
-                    ", ".join([l.name() for l in synset.lemmas()])))
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">synonym</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
 3
 4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>```python tab=“hypernyms”
-from nltk.corpus import wordnet as wn
-panda = wn.synset(&quot;panda.n.01&quot;)
-hyper = lambda s: s.hypernyms()
-list(panda.closure(hyper))
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="n">poses</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span><span class="s1">&#39;noun&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">:</span><span class="s1">&#39;verb&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="s1">&#39;adj (s)&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;adj&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="s1">&#39;adv&#39;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">synset</span> <span class="ow">in</span> <span class="n">wn</span><span class="o">.</span><span class="n">synsets</span><span class="p">(</span><span class="s2">&quot;good&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">poses</span><span class="p">[</span><span class="n">synset</span><span class="o">.</span><span class="n">pos</span><span class="p">()],</span>
+                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">l</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">synset</span><span class="o">.</span><span class="n">lemmas</span><span class="p">()])))</span>
 </pre></div>
-</td></tr></table></p>
+</td></tr></table></div>
+</div>
+<p><code>python tab=“hypernyms”
+from nltk.corpus import wordnet as wn
+panda = wn.synset("panda.n.01")
+hyper = lambda s: s.hypernyms()
+list(panda.closure(hyper))</code></p>
 <p><img alt="同义词" src="../imgs/1560068762906.png" /></p>
 <p><img alt="上位词" src="../imgs/1560068729196.png" /></p>
 <p><strong>Problems with resources like WordNet</strong></p>
@@ -1141,7 +1144,7 @@ list(panda.closure(hyper))
 <p><strong>Representing words as discrete symbols</strong></p>
 <p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
 $$
-motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0]\
+motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0] \ 
 hotel = [0   0   0   0   0   0   0   1   0   0   0   0   0   0   0]
 $$
 <strong>Problem with words as discrete symbols</strong></p>
@@ -1164,33 +1167,38 @@ $$
 </ul>
 <p><img alt="示例" src="../imgs/1560069660365.png" /></p>
 <h3 id="word2vec-introduction">Word2vec introduction<a class="headerlink" href="#word2vec-introduction" title="Permanent link">&para;</a></h3>
-<p>我们为每个单词构建一个**密集**的向量，使其与出现在相似上下文中的单词向量相似</p>
-<p>词向量 <strong><em>word vectors</em></strong> 有时被称为词嵌入***word embeddings*** 或词表示***word representations*** </p>
+<p>我们为每个单词构建一个 <strong>密集</strong> 的向量，使其与出现在相似上下文中的单词向量相似</p>
+<p>词向量 <strong><em>word vectors</em></strong> 有时被称为词嵌入 <strong><em>word embeddings</em></strong>  或词表示 <strong><em>word representations</em></strong>  </p>
 <p>它们是分布式表示 <strong><em>distributed representation</em></strong>
 $$
-\mathrm{banking} = \left[\begin{matrix}0.286\0.792\-0.177\-0.107\0.109\-0.542\0.349\0.271\end{matrix}\right]
+\mathrm{banking} = \left[\begin{matrix}0.286 \0.792 \-0.177 \-0.107 \0.109 \-0.542 \0.349 \0.271 \end{matrix}\right]
 $$
-<strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的**框架**</p>
+<strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的 <strong>框架</strong> </p>
 <p>Idea：</p>
 <ul>
 <li>我们有大量的文本 (corpus means 'body' in Latin. 复数为corpora)</li>
 <li>固定词汇表中的每个单词都由一个向量表示</li>
-<li>文本中的每个位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>，其中有一个中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和上下文(“外部”)单词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
-<li>使用 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的**词向量的相似性**来计算给定 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 的 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的**概率**(反之亦然)</li>
-<li>**不断调整词向量**来最大化这个概率</li>
+<li>文本中的每个位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>，其中有一个中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和上下文(“外部”)单词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
+<li>使用 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>词向量的相似性</strong> 来计算给定 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 的 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>概率</strong> (反之亦然)</li>
+<li><strong>不断调整词向量</strong> 来最大化这个概率</li>
 </ul>
-<p>下图为窗口大小 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> =2时的 <span><span class="MathJax_Preview">P\left(w_{t+j} | w_{t}\right)</span><script type="math/tex">P\left(w_{t+j} | w_{t}\right)</script></span> 计算过程，center word分别为 <span><span class="MathJax_Preview">into</span><script type="math/tex">into</script></span> 和 <span><span class="MathJax_Preview">banking</span><script type="math/tex">banking</script></span></p>
+<p>下图为窗口大小 <span><span class="MathJax_Preview">j=2</span><script type="math/tex">j=2</script></span> 时的 <span><span class="MathJax_Preview">P\left(w_{t+j} | w_{t}\right)</span><script type="math/tex">P\left(w_{t+j} | w_{t}\right)</script></span> 计算过程，center word分别为 <span><span class="MathJax_Preview">into</span><script type="math/tex">into</script></span> 和 <span><span class="MathJax_Preview">banking</span><script type="math/tex">banking</script></span></p>
 <p><img alt="1560070410531" src="../imgs/1560070410531.png" /></p>
 <p><img alt="1560070494437" src="../imgs/1560070494437.png" /></p>
 <h3 id="word2vec-objective-function">Word2vec objective function<a class="headerlink" href="#word2vec-objective-function" title="Permanent link">&para;</a></h3>
-<p>对于每个位置<span><span class="MathJax_Preview">t=1, \ldots, T</span><script type="math/tex">t=1, \ldots, T</script></span> ，在大小为<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>的固定窗口内预测上下文单词，给定中心词 <span><span class="MathJax_Preview">w_j</span><script type="math/tex">w_j</script></span>
-$$
-Likelihoood = L(\theta) = \prod^{T}<em>{t=1} \prod</em>{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
-$$</p>
+<p>对于每个位置<span><span class="MathJax_Preview">t=1, \ldots, T</span><script type="math/tex">t=1, \ldots, T</script></span> ，在大小为<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>的固定窗口内预测上下文单词，给定中心词 <span><span class="MathJax_Preview">w_j</span><script type="math/tex">w_j</script></span></p>
+<div>
+<div class="MathJax_Preview">
+Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
+</div>
+<script type="math/tex; mode=display">
+Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
+</script>
+</div>
 <ul>
 <li>其中，<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 为所有需要优化的变量</li>
 </ul>
-<p>目标函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span> (有时被称为代价函数或损失函数) 是(平均)负对数似然
+<p>目标函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span> (有时被称为代价函数或损失函数) 是(平均)负对数似然
 $$
 J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
 $$
@@ -1237,25 +1245,50 @@ $$
 <li><strong>soft</strong> ：因为仍然为较小的 <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 赋予了一定概率</li>
 <li>深度学习中常用</li>
 </ul>
-<p>梯度下降，随机梯度下降以及链式求导法则的知识在此不再赘述，你可以在**Reference**部分找到你需要的资料<img alt="😄" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f604.svg" title=":smile:" /></p>
+<p>梯度下降，随机梯度下降以及链式求导法则的知识在此不再赘述，你可以在 <strong>Reference</strong> 部分找到你需要的资料<img alt="😄" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f604.svg" title=":smile:" /></p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
-<p><strong>Keyphrases</strong>: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words
-(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</p>
+<p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
+<strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>
+<blockquote>
 <p>这组笔记首先介绍了自然语言处理(NLP)的概念及其面临的问题。然后我们继续讨论将单词表示为数字向量的概念。最后，讨论了常用的词向量设计方法。</p>
+</blockquote>
 <h3 id="introduction-to-natural-language-processing">Introduction to Natural Language Processing<a class="headerlink" href="#introduction-to-natural-language-processing" title="Permanent link">&para;</a></h3>
 <p><strong>What is so special about NLP?</strong></p>
-<p>Natural language is a discrete/symbolic/categorical system 离散的/符号的/分类的</p>
-<p>人类的语言有什么特别之处?人类语言是一个专门用来表达意义的系统，而不是由任何形式的物理表现产生的。在这方面上，它与视觉或任何其他机器学习任务都有很大的不同。</p>
-<p>大多数单词只是一个超语言实体的符号：单词是一个映射到所指(想法或事物)的能指。</p>
-<p>例如，“rocket”一词指的是火箭的概念，因此可以引申为火箭的实例。当我们使用单词和字母来表达符号时，也会有一些例外，例如“whoompaa”的使用。最重要的是，这些语言的符号可以被 encoded 成几种形式：声音、手势、文字等等，然后通过连续的信号传输给大脑，大脑本身似乎也能以一种连续的方式对这些信号进行 encode。语言哲学和语言学已经做了大量的工作来使人类语言概念化，并区分单词和它们的指代、意义等。不同的任务有不同的难度</p>
+<p>Natural language is a discrete/symbolic/categorical system </p>
+<blockquote>
+<p>离散的/符号的/分类的</p>
+</blockquote>
+<p>人类的语言有什么特别之处？人类语言是一个专门用来表达意义的系统，而不是由任何形式的物理表现产生的。在这方面上，它与视觉或任何其他机器学习任务都有很大的不同。</p>
+<p>大多数单词只是一个语言学以外的的符号：单词是一个映射到所指(signified 想法或事物)的能指(signifier)。</p>
+<p>例如，“rocket”一词指的是火箭的概念，因此可以引申为火箭的实例。当我们使用单词和字母来表达符号时，也会有一些例外，例如“whoompaa”的使用。最重要的是，这些语言的符号可以被 编码成几种形式：声音、手势、文字等等，然后通过连续的信号传输给大脑，大脑本身似乎也能以一种连续的方式对这些信号进行解码。人们在语言哲学和语言学方面做了大量的工作来概念化人类语言，并将词语与其参照、意义等区分开来。</p>
 <p><strong>Examples of tasks</strong></p>
+<p>自然语言处理有不同层次的任务，从语言处理到语义解释再到语篇处理。自然语言处理的目标是通过设计算法使得计算机能够“理解”语言，从而能够执行某些特定的任务。不同的任务的难度是不一样的</p>
+<p><strong>Easy</strong></p>
+<ul>
+<li>拼写检查  Spell Checking</li>
+<li>关键词检索 Keyword Search</li>
+<li>同义词查找  Finding Synonyms</li>
+</ul>
+<p><strong>Medium</strong></p>
+<ul>
+<li>解析来自网站、文档等的信息</li>
+</ul>
+<p><strong>Hard</strong></p>
+<ul>
+<li>机器翻译  Machine Translation</li>
+<li>语义分析  Semantic Analysis</li>
+<li>指代消解  Coreference</li>
+<li>问答系统  Question Answering</li>
+</ul>
+<p><strong>How to represent words?</strong></p>
+<p>在所有的NLP任务中，第一个也是可以说是最重要的共同点是我们如何将单词表示为任何模型的输入。在这里我们不会讨论早期的自然语言处理工作是将单词视为原子符号 atomic symbols。为了让大多数的自然语言处理任务能有更好的表现，我们首先需要了解单词之间的相似和不同。有了词向量，我们可以很容易地将其编码到向量本身中。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的推荐书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
 <p>以下是整理笔记的过程中参考的博客：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/61625439">斯坦福NLP课程 CS224N Winter 2019 学习笔记</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> (这是针对note部分的翻译)</p>
                 
                   
                 
