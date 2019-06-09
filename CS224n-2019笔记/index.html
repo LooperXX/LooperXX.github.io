@@ -1341,7 +1341,7 @@ $$
 <p><strong>Applying SVD to the cooccurrence matrix</strong></p>
 <p>我们对矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 使用 SVD，观察奇异值（矩阵 S 上对角线上元素），根据期望的捕获方差百分比截断，留下前 k 个元素：</p>
 <p>然后取子矩阵 <span><span class="MathJax_Preview">U_{1:|V|, 1:k}</span><script type="math/tex">U_{1:|V|, 1:k}</script></span> 作为词嵌入矩阵。这就给出了词汇表中每个词的 k 维表示</p>
-<p>对矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 使用SVD</p>
+<p>对矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 使用SVD</p>
 <p><img alt="1560082218689" src="../imgs/1560082218689.png" /></p>
 <p>通过选择前 k 个奇异向量来降低维度</p>
 <p><img alt="1560082288451" src="../imgs/1560082288451.png" /></p>
@@ -1350,7 +1350,7 @@ $$
 <li>矩阵的维度会经常发生改变（经常增加新的单词和语料库的大小会改变）。</li>
 <li>矩阵会非常的稀疏，因为很多词不会共现。</li>
 <li>矩阵维度一般会非常高 <span><span class="MathJax_Preview">\approx 10^{6}\times 10^{6}</span><script type="math/tex">\approx 10^{6}\times 10^{6}</script></span></li>
-<li>基于 SVD 的方法的计算复杂度很高 ( <span><span class="MathJax_Preview">m×n</span><script type="math/tex">m×n</script></span> 矩阵的计算成本是 <span><span class="MathJax_Preview">O({mn}^2)</span><script type="math/tex">O({mn}^2)</script></span> )，并且很难合并新单词或文档</li>
+<li>基于 SVD 的方法的计算复杂度很高 ( <span><span class="MathJax_Preview">m×n</span><script type="math/tex">m×n</script></span> 矩阵的计算成本是 <span><span class="MathJax_Preview">O({mn}^2)</span><script type="math/tex">O({mn}^2)</script></span> )，并且很难合并新单词或文档</li>
 <li>需要在 X 上加入一些技巧处理来解决词频的极剧的不平衡</li>
 <li>需要在 X 上加入一些技巧处理来解决词频的极剧的不平衡</li>
 </ul>
@@ -1392,6 +1392,146 @@ $$
 但是，这个方法还是有点简单，因为我们只关心一对邻近的单词，而不是针对整个句子来考虑。但是我们将看到，这个方法会有显著的提升。考虑在词-词共现矩阵中，共现窗口为 1，我们基本上能得到这样的成对的概率。但是，这又需要计算和存储大量数据集的全局信息。</p>
 <p>既然我们已经理解了如何考虑具有概率的单词序列，那么让我们观察一些能够学习这些概率的示例模型。</p>
 <p><strong>Continuous Bag of Words Model (CBOW)</strong></p>
+<p>这一方法是把 {"The","cat","over","the","puddle"} 作为上下文，希望从这些词中能够预测或者生成中心词“jumped”。这样的模型我们称之为 continuous bag-of-words（CBOW）模型。</p>
+<p>它是从上下文中预测中心词的方法，在这个模型中的每个单词，我们希望学习两个向量</p>
+<ul>
+<li><span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> (输入向量) 当词在上下文中</li>
+<li><span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> (输出向量) 当词是中心词</li>
+</ul>
+<p>首先我们设定已知参数。令我们模型的已知参数是 one-hot 形式的词向量表示。输入的 one-hot 向量或者上下文我们用 <span><span class="MathJax_Preview">x^{(c)}</span><script type="math/tex">x^{(c)}</script></span> 表示，输出用 <span><span class="MathJax_Preview">y^{(c)}</span><script type="math/tex">y^{(c)}</script></span> 表示。在 CBOW 模型中，因为我们只有一个输出，因此我们把 y 称为是已知中心词的的 one-hot 向量。现在让我们定义模型的未知参数。</p>
+<p>首先我们对 CBOW 模型作出以下定义</p>
+<ul>
+<li><span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> ：词汇表 <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 中的单词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{V}\in \mathbb{R}^{n\times |V|}</span><script type="math/tex">\mathcal{V}\in \mathbb{R}^{n\times |V|}</script></span> ：输入词矩阵</li>
+<li><span><span class="MathJax_Preview">v_{i} ： \mathcal{V}</span><script type="math/tex">v_{i} ： \mathcal{V}</script></span> 的第 i 列，单词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输入向量表示</li>
+<li>
+<p><span><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> ：输出词矩阵</p>
+</li>
+<li><span><span class="MathJax_Preview">u_{i} ： \mathcal{U}</span><script type="math/tex">u_{i} ： \mathcal{U}</script></span> 的第 i 行，单词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输出向量表示</li>
+</ul>
+<p>我们创建两个矩阵，$ \mathcal{V}\in \mathbb{R}^{n\times |V|}$ 和 <span><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> 。其中 n 是嵌入空间的任意维度大小。 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 是输入词矩阵，使得当其为模型的输入时，$ \mathcal{V}$ 的第 i 列是词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的 n 维嵌入向量。我们定义这个 <span><span class="MathJax_Preview">n \times 1</span><script type="math/tex">n \times 1</script></span> 的向量为 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 。相似地， <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是输出词矩阵。当其为模型的输入时， <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的第 j 行是词 <span><span class="MathJax_Preview">w_{j}</span><script type="math/tex">w_{j}</script></span> 的 n 维嵌入向量。我们定义 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的这行为 <span><span class="MathJax_Preview">u_{j}</span><script type="math/tex">u_{j}</script></span> 。注意实际上对每个词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 我们需要学习两个词向量（即输入词向量 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和输出词向量 <span><span class="MathJax_Preview">u_{i}</span><script type="math/tex">u_{i}</script></span> ）。</p>
+<p>我们将这个模型分解为以下步骤</p>
+<ul>
+<li>我们为大小为 m 的输入上下文，生成 one-hot 词向量 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></script></span>  </li>
+<li>我们从上下文  <span><span class="MathJax_Preview">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</span><script type="math/tex">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</script></span> 得到嵌入词向量。</li>
+<li>对上述的向量求平均值 <span><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</script></span> 。</li>
+<li>生成一个分数向量 <span><span class="MathJax_Preview">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</span><script type="math/tex">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</script></span> 。当相似向量的点积越高，就会令到相似的词更为靠近，从而获得更高的分数。将分数转换为概率 <span><span class="MathJax_Preview">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</script></span> 。<ul>
+<li>这里 softmax 是一个常用的函数。它将一个向量转换为另外一个向量，其中转换后的向量的第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个元素是 <span><span class="MathJax_Preview">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</span><script type="math/tex">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</script></span> 。因为该函数是一个指数函数，所以值一定为正数；通过除以 <span><span class="MathJax_Preview">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</span><script type="math/tex">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</script></span> 来归一化向量（使得 $\sum_{k=1}^{|V|}\widehat{y}_k=1 $）得到概率。</li>
+</ul>
+</li>
+<li>我们希望生成的概率 <span><span class="MathJax_Preview">\widehat{y} \in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y} \in \mathbb{R}^{|V|}</script></span> 与实际的概率 <span><span class="MathJax_Preview">y \in \mathbb{R}^{|V|}</span><script type="math/tex">y \in \mathbb{R}^{|V|}</script></span> 匹配。使得其刚好是实际的词就是这个 one-hot 向量。</li>
+</ul>
+<p>下图是 CBOW 模型的计算图示</p>
+<p><img alt="1560088203499" src="../imgs/1560088203499.png" /></p>
+<p>如果有 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个**度量两个概率分布的距离**的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span><span class="MathJax_Preview">H(\widehat{y}, y)</span><script type="math/tex">H(\widehat{y}, y)</script></span> 。</p>
+<p>在离散情况下使用交叉熵可以直观地得出损失函数的公式</p>
+<p>$$
+H(\hat{y}, y)=-\sum_{j=1}^{|V|} y_{j} \log \left(\hat{y}_{j}\right)
+$$
+上面的公式中，y 是 one-hot 向量。因此上面的损失函数可以简化为：</p>
+<p>$$
+H(\widehat{y}, y)= - y_{j}\,log(\widehat{y}_{j})
+$$
+c 是正确词的 one-hot 向量的索引。我们现在可以考虑我们的预测是完美并且 <span><span class="MathJax_Preview">\widehat{y}_{c}=1</span><script type="math/tex">\widehat{y}_{c}=1</script></span> 的情况。然后我们可以计算 <span><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(1)=0</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(1)=0</script></span> 。因此，对一个完美的预测，我们不会面临任何惩罚或者损失。现在我们考虑一个相反的情况，预测非常差并且 <span><span class="MathJax_Preview">\widehat{y}_{c}=0.01</span><script type="math/tex">\widehat{y}_{c}=0.01</script></span> 。和前面类似，我们可以计算损失 <span><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(0.01)=4.605</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(0.01)=4.605</script></span> 。因此，我们可以看到，对于概率分布，交叉熵为我们提供了一个很好的距离度量。因此我们的优化目标函数公式为：</p>
+<p>$$
+\begin{aligned} \text { minimize } J &amp;=-\log P\left(w_{c} | w_{c-m}, \ldots, w_{c-1}, w_{c+1}, \ldots, w_{c+m}\right) \ &amp;=-\log P\left(u_{c} | \hat{v}\right) \ &amp;=-\log \frac{\exp \left(u_{c}^{T} \hat{v}\right)}{\sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right)} \ &amp;=-u_{c}^{T} \hat{v}+\log \sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right) \end{aligned}
+$$
+我们使用 SGD 来更新所有相关的词向量 <span><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 和 <span><span class="MathJax_Preview">v_{j}</span><script type="math/tex">v_{j}</script></span> 。SGD 对一个窗口计算梯度和更新参数：</p>
+<p>$$
+\begin{array}{l}{\mathcal{U}<em>{\text {new}} \leftarrow \mathcal{U}</em>{\text {old}}-\alpha \nabla_{\mathcal{U}} J} \ {\mathcal{V}<em>{\text {old}} \leftarrow \mathcal{V}</em>{\text {old}}-\alpha \nabla_{\mathcal{V}} J}\end{array}
+$$
+<strong>Skip-Gram Model</strong></p>
+<p>Skip-Gram模型与CBOW大体相同，但是交换了我们的 x 和 y，即 CBOW 中的 x 现在是 y，y 现在是 x。输入的 one-hot 向量（中心词）我们表示为 x，输出向量为$ y^{(j)}$ 。我们定义的 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是和 CBOW 一样的。</p>
+<ul>
+<li>生成中心词的 one-hot 向量 <span><span class="MathJax_Preview">x\in \mathbb{R}^{|V|}</span><script type="math/tex">x\in \mathbb{R}^{|V|}</script></span> </li>
+<li>我们对中心词 <span><span class="MathJax_Preview">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</span><script type="math/tex">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</script></span> 得到词嵌入向量</li>
+<li>生成分数向量 <span><span class="MathJax_Preview">z = \mathcal{U}v_{c}</span><script type="math/tex">z = \mathcal{U}v_{c}</script></span> </li>
+<li>将分数向量转化为概率， $\widehat{y}=softmax(z) $ 注意 <span><span class="MathJax_Preview">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</span><script type="math/tex">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</script></span> 是每个上下文词观察到的概率</li>
+<li>我们希望我们生成的概率向量匹配真实概率 <span><span class="MathJax_Preview">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</span><script type="math/tex">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</script></span> ，one-hot 向量是实际的输出。</li>
+</ul>
+<p>下图是 Skip-Gram 模型的计算图示</p>
+<p><img alt="1560089015401" src="../imgs/1560089015401.png" /></p>
+<p>和 CBOW 模型一样，我们需要生成一个目标函数来评估这个模型。与 CBOW 模型的一个主要的不同是我们引用了一个朴素的贝叶斯假设来拆分概率。这是一个很强（朴素）的条件独立假设。换而言之，<strong>给定中心词，所有输出的词是完全独立的</strong>。(即公式1至2行)
+$$
+\begin{aligned} \text { minimize } J &amp;=-\log P\left(w_{c-m}, \ldots, w_{c-1}, w_{c+1}, \ldots, w_{c+m} | w_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} P\left(w_{c-m+j} | w_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} P\left(u_{c-m+j} | v_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} \frac{\exp \left(u_{c-m+j}^{T} v_{c}\right)}{\sum_{k=1}^{|V|} \exp \left(u_{k}^{T} v_{c}\right)} \ &amp;=-\sum_{j=0, j \neq m}^{2 m} u_{c-m+j}^{T} v_{c}+2 m \log \sum_{k=1}^{|V|} \exp \left(u_{k}^{T} v_{c}\right) \end{aligned}
+$$
+通过这个目标函数，我们可以计算出与未知参数相关的梯度，并且在每次迭代中通过 SGD 来更新它们。</p>
+<p>注意
+$$
+\begin{aligned} J &amp;=-\sum_{j=0, j \neq m}^{2 m} \log P\left(u_{c-m+j} | v_{c}\right) \ &amp;=\sum_{j=0, j \neq m}^{2 m} H\left(\hat{y}, y_{c-m+j}\right) \end{aligned}
+$$
+其中 <span><span class="MathJax_Preview">H(\widehat{y},y_{c-m+j})</span><script type="math/tex">H(\widehat{y},y_{c-m+j})</script></span> 是向量 <span><span class="MathJax_Preview">\widehat{y}</span><script type="math/tex">\widehat{y}</script></span> 的概率和 one-hot 向量 <span><span class="MathJax_Preview">y_{c-m+j}</span><script type="math/tex">y_{c-m+j}</script></span> 之间的交叉熵。</p>
+<blockquote>
+<p>只有一个概率向量 <span><span class="MathJax_Preview">\hat{y}</span><script type="math/tex">\hat{y}</script></span> 是被计算的。Skip-Gram 对每个上下文单词一视同仁：该模型计算每个单词在上下文中出现的概率，而与它到中心单词的距离无关。</p>
+</blockquote>
+<p><strong>Negative Sampling</strong></p>
+<p>让我们再回到目标函数上。注意对 <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 的求和计算量是非常大的。任何的更新或者对目标函数的评估都要花费 <span><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 的时间复杂度。一个简单的想法是不去直接计算，而是去求近似值。</p>
+<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布   $P_{n}(w) $ “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
+<ul>
+<li>目标函数</li>
+<li>梯度</li>
+<li>更新规则</li>
+</ul>
+<p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了负采样。虽然负采样是基于 Skip-Gram 模型，但实际上是对一个不同的目标函数进行优化。</p>
+<p>考虑一对中心词和上下文词 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 。这词对是来自训练数据集吗？我们通过 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 表示 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 是来自语料库。相应地， <span><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 表示 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 不是来自语料库。</p>
+<p>首先，我们对 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 用 sigmoid 函数建模：
+$$
+P(D=1 | w, c, \theta)=\sigma\left(v_{c}^{T} v_{w}\right)=\frac{1}{1+e<sup>{\left(-v_{c}</sup>{T} v_{w}\right)}}
+$$
+现在，我们建立一个新的目标函数，如果中心词和上下文词确实在语料库中，就最大化概率 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> ，如果中心词和上下文词确实不在语料库中，就最大化概率 <span><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 。我们对这两个概率采用一个简单的极大似然估计的方法（这里我们把 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 作为模型的参数，在我们的例子是 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ）
+$$
+\begin{aligned} \theta &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}} P(D=0 | w, c, \theta) \ &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}}(1-P(D=1 | w, c, \theta)) \ &amp;=\underset{\theta}{\operatorname{argmax}} \sum_{(w, c) \in D} \log P(D=1 | w, c, \theta)+\sum_{(w, c) \in \widetilde{D}} \log (1-P(D=1 | w, c, \theta)) \ &amp;=\arg \max <em>{\theta} \sum</em>{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(1-\frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}\right) \ &amp;=\arg \max <em>{\theta} \sum</em>{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right) \end{aligned}
+$$
+注意最大化似然函数等同于最小化负对数似然：
+$$
+J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
+$$
+注意 <span><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 是“假的”或者“负的”语料。例如我们有句子类似“stock boil fish is toy”，这种无意义的句子出现时会得到一个很低的概率。我们可以从语料库中随机抽样出负样例 <span><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 。</p>
+<p>对于 Skip-Gram 模型，我们对给定中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 来观察的上下文单词 <span><span class="MathJax_Preview">c-m+j</span><script type="math/tex">c-m+j</script></span> 的新目标函数为
+$$
+-\log \sigma\left(u_{c-m+j}^{T} \cdot v_{c}\right)-\sum_{k=1}^{K} \log \sigma\left(-\tilde{u}<em>{k}^{T} \cdot v</em>{c}\right)
+$$
+对 CBOW 模型，我们对给定上下文向量 <span><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</script></span> 来观察中心词 <span><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 的新的目标函数为</p>
+<p>$$
+-log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}<sup>{K}log\,\sigma(-\widetilde{u}_{k}</sup>{T}\cdot \widehat{v})
+$$
+在上面的公式中，$ {\widetilde{u}_{k}\mid k=1...K}$ 是从 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{eqnarray}  is: 0.9^{3/4} &amp;=&amp; 0.92 \nonumber \\ Constitution: 0.09^{3/4}&amp;=&amp; 0.16 \nonumber \\ bombastic:0.01^{3/4}&amp;=&amp; 0.032 \nonumber \end{eqnarray}
+</div>
+<script type="math/tex; mode=display">
+\begin{eqnarray}  is: 0.9^{3/4} &=& 0.92 \nonumber \\ Constitution: 0.09^{3/4}&=& 0.16 \nonumber \\ bombastic:0.01^{3/4}&=& 0.032 \nonumber \end{eqnarray}
+</script>
+</div>
+<p>“Bombastic”现在被抽样的概率是之前的三倍，而“is”只比之前的才提高了一点点。</p>
+<p><strong>Hierarchical Softmax</strong></p>
+<p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了 hierarchical softmax，相比普通的 softmax 这是一种更有效的替代方法。<strong>在实际中，hierarchical softmax 对低频词往往表现得更好，负采样对高频词和较低维度向量表现得更好</strong>。</p>
+<p>Hierarchical softmax 使用一个二叉树来表示词表中的所有词。树中的每个叶结点都是一个单词，而且只有一条路径从根结点到叶结点。在这个模型中，没有词的输出表示。相反，图的每个节点（根节点和叶结点除外）与模型要学习的向量相关联。单词作为输出单词的概率定义为从根随机游走到单词所对应的叶的概率。计算成本变为 <span><span class="MathJax_Preview">O(log (|V|))</span><script type="math/tex">O(log (|V|))</script></span> 而不是 <span><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 。</p>
+<p>在这个模型中，给定一个向量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的下的单词 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的概率 <span><span class="MathJax_Preview">p(w\mid w_{i})</span><script type="math/tex">p(w\mid w_{i})</script></span> ，等于从根结点开始到对应 w 的叶结点结束的随机漫步概率。这个方法最大的优势是计算概率的时间复杂度仅仅是 <span><span class="MathJax_Preview">O(log(|V|))</span><script type="math/tex">O(log(|V|))</script></span> ，对应着路径的长度。</p>
+<p>下图是 Hierarchical softmax 的二叉树示意图</p>
+<p><img alt="1560093818125" src="../imgs/1560093818125.png" /></p>
+<p>让我们引入一些概念。令 <span><span class="MathJax_Preview">L(w)</span><script type="math/tex">L(w)</script></span> 为从根结点到叶结点 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的路径中节点数目。例如，上图中的 <span><span class="MathJax_Preview">L(w_{2})</span><script type="math/tex">L(w_{2})</script></span> 为 3。我们定义 <span><span class="MathJax_Preview">n(w,i)</span><script type="math/tex">n(w,i)</script></span> 为与向量 <span><span class="MathJax_Preview">v_{n(w,i)}</span><script type="math/tex">v_{n(w,i)}</script></span> 相关的路径上第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个结点。因此 <span><span class="MathJax_Preview">n(w,1)</span><script type="math/tex">n(w,1)</script></span> 是根结点，而 <span><span class="MathJax_Preview">n(w,L(w))</span><script type="math/tex">n(w,L(w))</script></span> 是 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的父节点。现在对每个内部节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，我们任意选取一个它的子节点，定义为 <span><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> （一般是左节点）。然后，我们可以计算概率为
+$$
+p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatorname{ch}(n(w, j))] \cdot v_{n(w, j)}^{T} v_{w_{i}}\right)
+$$
+其中
+$$
+[x]=\left{\begin{array}{ll}{1} &amp; {\text { if } x \text { is true }} \ {-1} &amp; {\text { otherwise }}\end{array}\right.
+$$
+这个公式看起来非常复杂，让我们细细梳理一下。</p>
+<p>首先，我们将根据从根节点 <span><span class="MathJax_Preview">(n(w,1))</span><script type="math/tex">(n(w,1))</script></span> 到叶节点 <span><span class="MathJax_Preview">(w)</span><script type="math/tex">(w)</script></span> 的路径的形状来计算相乘的项。如果我们假设 <span><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> 一直都是 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 的左节点，然后当路径往左时 <span><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 的值返回 1，往右则返回 0。</p>
+<p>此外，$ [n(w,j+1)=ch(n(w,j))]$ 提供了归一化的作用。在节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 处，如果我们将去往左和右节点的概率相加，对于 <span><span class="MathJax_Preview">v_{n}^{T}v_{w_{i}}</span><script type="math/tex">v_{n}^{T}v_{w_{i}}</script></span> 的任何值则可以检查，
+$$
+\sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
+$$
+归一化也保证了 <span><span class="MathJax_Preview">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</span><script type="math/tex">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</script></span> ，和在普通的 softmax 是一样的。</p>
+<p>最后我们计算点积来比较输入向量 <span><span class="MathJax_Preview">v_{w_{i}}</span><script type="math/tex">v_{w_{i}}</script></span> 对每个内部节点向量 <span><span class="MathJax_Preview">v_{n(w,j)}^{T}</span><script type="math/tex">v_{n(w,j)}^{T}</script></span> 的相似度。下面我们给出一个例子。以上图中的 <span><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> 为例，从根节点要经过两次左边的边和一次右边的边才到达 <span><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> ，因此
+$$
+\begin{aligned} p\left(w_{2} | w_{i}\right) &amp;=p\left(n\left(w_{2}, 1\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 2\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 3\right), \text { right }\right) \ &amp;=\sigma\left(v_{n\left(w_{2}, 1\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(v_{n\left(w_{2}, 2\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(-v_{n\left(w_{2}, 3\right)}^{T} v_{w_{i}}\right) \end{aligned}
+$$
+我们训练模型的目标是最小化负的对数似然 <span><span class="MathJax_Preview">-log\,P(w\mid w_{i})</span><script type="math/tex">-log\,P(w\mid w_{i})</script></span> 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。</p>
+<p>该方法的速度由构建二叉树的方式确定，并将词分配给叶节点。Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中使用的是哈夫曼树，在树中分配高频词到较短的路径。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
