@@ -741,6 +741,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#word-vectors" title="Word Vectors" class="md-nav__link">
+    Word Vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svd-based-methods" title="SVD Based Methods" class="md-nav__link">
+    SVD Based Methods
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -748,6 +762,13 @@
       
         <li class="md-nav__item">
   <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference_1" title="Reference" class="md-nav__link">
     Reference
   </a>
   
@@ -1024,6 +1045,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#word-vectors" title="Word Vectors" class="md-nav__link">
+    Word Vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#svd-based-methods" title="SVD Based Methods" class="md-nav__link">
+    SVD Based Methods
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1031,6 +1066,13 @@
       
         <li class="md-nav__item">
   <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference_1" title="Reference" class="md-nav__link">
     Reference
   </a>
   
@@ -1282,7 +1324,21 @@ $$
 </ul>
 <p><strong>How to represent words?</strong></p>
 <p>在所有的NLP任务中，第一个也是可以说是最重要的共同点是我们如何将单词表示为任何模型的输入。在这里我们不会讨论早期的自然语言处理工作是将单词视为原子符号 atomic symbols。为了让大多数的自然语言处理任务能有更好的表现，我们首先需要了解单词之间的相似和不同。有了词向量，我们可以很容易地将其编码到向量本身中。</p>
+<h3 id="word-vectors">Word Vectors<a class="headerlink" href="#word-vectors" title="Permanent link">&para;</a></h3>
+<p>使用词向量编码单词，N维空间足够我们编码语言的所有语义，每一维度都会编码一些我们使用语言传递的信息。简单的one-hot向量无法给出单词间的相似性，我们需要将维度  <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span>  减少至一个低纬度的子空间，来获得稠密的词向量，获得词之间的关系。</p>
+<h3 id="svd-based-methods">SVD Based Methods<a class="headerlink" href="#svd-based-methods" title="Permanent link">&para;</a></h3>
+<p>这是一类找到词嵌入的方法（即词向量），我们首先遍历一个很大的数据集和统计词的共现计数矩阵 X，然后对矩阵 X 进行 SVD 分解得到 <span><span class="MathJax_Preview">USV^{T}</span><script type="math/tex">USV^{T}</script></span> 。然后我们使用 U 的行来作为字典中所有词的词向量。我们来讨论一下矩阵 X 的几种选择。</p>
+<p><strong>Word-Document Matrix</strong></p>
+<p>我们最初的尝试，我们猜想相关连的单词在同一个文档中会经常出现。例如，“banks”，“bonds”，“stocks”，“moneys”等等，出现在一起的概率会比较高。但是“banks”，“octopus”，“banana”，“hockey”不大可能会连续地出现。我们根据这个情况来建立一个 <strong><em>Word-Document</em></strong> 矩阵，<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 是按照以下方式构建：遍历数亿的文档和当词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 出现在文档 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>，我们对 <span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span> 加一。这显然是一个很大的矩阵 <span><span class="MathJax_Preview">\mathbb{R}^{|V|\times M}</span><script type="math/tex">\mathbb{R}^{|V|\times M}</script></span>，它的规模是和文档数量 <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 成正比关系。因此我们可以尝试更好的方法。</p>
+<p><strong>Window based Co-occurrence Matrix</strong></p>
+<p>同样的逻辑也适用于这里，但是矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 存储单词的共现，从而成为一个关联矩阵。在此方法中，我们计算每个单词在特定大小的窗口中出现的次数。我们按照这个方法对语料库中的所有单词进行统计。</p>
+<ul>
+<li>生成维度为 <span><span class="MathJax_Preview">|V| \times|V|</span><script type="math/tex">|V| \times|V|</script></span> 的共现矩阵<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span></li>
+<li>在 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 上应用 <strong>SVD</strong> 从而得到 $X = {USV}^T $ </li>
+<li></li>
+</ul>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<h2 id="reference_1">Reference<a class="headerlink" href="#reference_1" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的推荐书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
 <p>以下是整理笔记的过程中参考的博客：</p>
