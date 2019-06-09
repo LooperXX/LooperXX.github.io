@@ -1293,7 +1293,68 @@ $$
 <li><strong>soft</strong> ：因为仍然为较小的 <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 赋予了一定概率</li>
 <li>深度学习中常用</li>
 </ul>
-<p>梯度下降，随机梯度下降以及链式求导法则的知识在此不再赘述，你可以在 <strong>Reference</strong> 部分找到你需要的资料<img alt="😄" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f604.svg" title=":smile:" /></p>
+<p>首先我们随机初始化 <span><span class="MathJax_Preview">u_{w}\in\mathbb{R}^d</span><script type="math/tex">u_{w}\in\mathbb{R}^d</script></span> 和 <span><span class="MathJax_Preview">v_{w}\in\mathbb{R}^d</span><script type="math/tex">v_{w}\in\mathbb{R}^d</script></span> ，而后使用梯度下降法进行更新</p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}\begin{split}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&amp;=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
+\end{split}\end{align}
+$$
+我们可以对上述结果重新排列
+$$
+\begin{align}\begin{split}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+&amp;=u_o-\sum_{w\in V}P(w|c)u_w
+\end{split}\end{align}
+$$
+第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
+$$
+\begin{align}\begin{split}
+\frac{\partial}{\partial u_o}\log P(o|c)
+&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&amp;=v_c - P(o|c)v_c\\
+&amp;=(1-P(o|c))v_c
+\end{split}\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}\begin{split}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
+\end{split}\end{align}
+$$
+我们可以对上述结果重新排列
+$$
+\begin{align}\begin{split}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+&=u_o-\sum_{w\in V}P(w|c)u_w
+\end{split}\end{align}
+$$
+第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
+$$
+\begin{align}\begin{split}
+\frac{\partial}{\partial u_o}\log P(o|c)
+&=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&=v_c - P(o|c)v_c\\
+&=(1-P(o|c))v_c
+\end{split}\end{align}
+</script>
+</div>
+<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to  1</span><script type="math/tex">P(o|c) \to  1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
 <p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
 <strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>
