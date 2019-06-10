@@ -2,7 +2,7 @@
 site_name: Looper's wiki
 site_description: Looper's personal notes
 site_author: 'Looper - Xiao Xu'
-site_url: 'https://looperxx.github.io'
+site_url: 'https://looperxx.github.io/'
 site_dir: 'looperxx.github.io'
 # Repository
 repo_name: 'looperxx/looperxx.github.io'
@@ -65,17 +65,12 @@ theme:
 extra:
   social:
     - type: 'github'
-      link: 'https://github.com/LooperXX'
+      link: 'https://github.com/looperXX'
     - type: 'linkedin'
       link: 'https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/'
   disqus: 'https-looperxx-github-io-my-wiki'
-  # search:   
-  #   language: 'en, zh'
-
-# Google Analytics
-google_analytics:
-  - 'UA-XXXXXXXX-X'
-  - 'auto'
+  search:   
+    language: 'jp'
 
 # Extensions
 extra_javascript:
@@ -96,7 +91,7 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+      emoji_generator: !!python/name:pymdownx.emoji.to_png
   - pymdownx.inlinehilite
   - pymdownx.magiclink
   - pymdownx.mark

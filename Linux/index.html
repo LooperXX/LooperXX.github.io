@@ -23,7 +23,7 @@
       
         <meta name="lang:clipboard.copied" content="已复制">
       
-        <meta name="lang:search.language" content="ja">
+        <meta name="lang:search.language" content="jp">
       
         <meta name="lang:search.pipeline.stopwords" content="True">
       
@@ -64,31 +64,6 @@
     
     
     
-      
-        
-<script>
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
-  /* Setup integration and send page view */
-  ga("create", "UA-XXXXXXXX-X", "auto")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
       
     
     
@@ -134,7 +109,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://looperxx.github.io" title="Looper's wiki" class="md-header-nav__button md-logo">
+        <a href="https://looperxx.github.io/" title="Looper's wiki" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -317,7 +292,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://looperxx.github.io" title="Looper's wiki" class="md-nav__button md-logo">
+    <a href="https://looperxx.github.io/" title="Looper's wiki" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
@@ -8013,7 +7988,7 @@ funWithReturn
     var disqus_config = function () {
       this.page.url = "https://looperxx.github.io/Linux/";
       this.page.identifier =
-        "/Linux/";
+        "Linux/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -8085,7 +8060,7 @@ funWithReturn
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/LooperXX" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>
     
       <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
     
@@ -8106,10 +8081,6 @@ funWithReturn
           
             
               
-                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
-              
-              
-                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
               
             
           
