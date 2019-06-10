@@ -32,7 +32,8 @@ nav:
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
       - 课程笔记:
         - 'CS224n-2019简介' : 'CS224n-2019简介.md'
-        - 'CS224n-2019笔记' : 'CS224n-2019笔记.md'
+        - CS224n-2019学习笔记:
+          - '01 Introduction and Word Vectors' : 'CS224n-2019-01-Introduction and Word Vectors.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:

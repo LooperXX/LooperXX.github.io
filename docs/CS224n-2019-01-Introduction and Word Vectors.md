@@ -1,4 +1,4 @@
-# CS224n-2019 笔记
+# CS224n-2019 学习笔记
 
 -   结合每课时的课件、笔记与推荐读物等整理而成
 
@@ -143,7 +143,12 @@ $$
 $$
 J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
 $$
-其中log形式是方便将联乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。
+其中log形式是方便将连乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。
+
+>   在连乘之前使用log转化为求和非常有效，特别是在做优化时
+>   $$
+>   \log \prod_i x_i = \sum_i \log x_i
+>   $$
 
 -   **最小化目标函数 $\Leftrightarrow$  最大化预测精度**
 -   <u>问题</u>：如何计算 $P(w_{t+j} | w_{t} ; \theta)$ ？
@@ -155,6 +160,10 @@ $$
 $$
 P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
 $$
+
+>   阅读这个公式，你可以看到一个向量 $u_o$ 和向量 $v_c$ 。当它们相似时给出最大的概率。因此，该模型的训练使得相同上下文中的单词具有相似的向量。
+>
+>   点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score
 
 ### Word2vec prediction function
 
@@ -187,6 +196,12 @@ $$
 &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
 \end{split}\end{align}
 $$
+>   偏导数可以移进求和中，对应上方公式的最后两行
+>   $$
+>   \frac{\partial}{\partial x}\sum_iy_i = \sum_i\frac{\partial}{\partial x}y_i
+>   $$
+>   
+
 我们可以对上述结果重新排列
 $$
 \begin{align}\begin{split}
@@ -208,7 +223,7 @@ $$
 \end{split}\end{align}
 $$
 
-可以理解，当 $P(o|c) \to  1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
+可以理解，当 $P(o|c) \to  1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
 
 ## Notes 01  Introduction, SVD and Word2Vec
 
@@ -532,6 +547,28 @@ $$
 我们训练模型的目标是最小化负的对数似然 $-log\,P(w\mid w_{i})$ 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。
 
 该方法的速度由构建二叉树的方式确定，并将词分配给叶节点。Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中使用的是哈夫曼树，在树中分配高频词到较短的路径。
+
+## Gensim word vectors example
+
+Gensim提供了将 `Glove ` 转化为Word2Vec格式的API，并且提供了 `most_similar`,  `doesnt_match`等API。我们可以对`most_similar`进行封装，输出三元组的类比结果
+
+```python
+model = KeyedVectors.load_word2vec_format(word2vec_glove_file)
+model.most_similar('banana')
+def analogy(x1, x2, y1):
+    result = model.most_similar(positive=[y1, x2], negative=[x1])
+    return result[0][0]
+analogy('japan', 'japanese', 'australia')
+model.doesnt_match("breakfast cereal dinner lunch".split())
+```
+
+## Suggested Readings
+
+### [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+
+### [Efficient Estimation of Word Representations in Vector Space](http://arxiv.org/pdf/1301.3781.pdf)(original word2vec paper)
+
+### [Distributed Representations of Words and Phrases and their Compositionality](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf) (negative sampling paper)
 
 ## Reference
 

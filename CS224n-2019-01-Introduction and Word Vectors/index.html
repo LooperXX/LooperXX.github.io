@@ -13,7 +13,7 @@
         <meta name="description" content="Looper's personal notes">
       
       
-        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019笔记/">
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-01-Introduction and Word Vectors/">
       
       
         <meta name="author" content="Looper - Xiao Xu">
@@ -42,7 +42,7 @@
     
     
       
-        <title>CS224n-2019笔记 - Looper's wiki</title>
+        <title>01 Introduction and Word Vectors - Looper's wiki</title>
       
     
     
@@ -150,7 +150,7 @@
               Looper's wiki
             </span>
             <span class="md-header-nav__topic">
-              CS224n-2019笔记
+              01 Introduction and Word Vectors
             </span>
           
         </div>
@@ -660,6 +660,27 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3-2" type="checkbox" id="nav-4-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-4-3-2">
+      CS224n-2019学习笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-4-3-2">
+        CS224n-2019学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -668,11 +689,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        CS224n-2019笔记
+        01 Introduction and Word Vectors
       </label>
     
-    <a href="./" title="CS224n-2019笔记" class="md-nav__link md-nav__link--active">
-      CS224n-2019笔记
+    <a href="./" title="01 Introduction and Word Vectors" class="md-nav__link md-nav__link--active">
+      01 Introduction and Word Vectors
     </a>
     
       
@@ -768,6 +789,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gensim-word-vectors-example" title="Gensim word vectors example" class="md-nav__link">
+    Gensim word vectors example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">
+    Suggested Readings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#word2vec-tutorial-the-skip-gram-model" title="Word2Vec Tutorial - The Skip-Gram Model" class="md-nav__link">
+    Word2Vec Tutorial - The Skip-Gram Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Efficient Estimation of Word Representations in Vector Space(original word2vec paper)" class="md-nav__link">
+    Efficient Estimation of Word Representations in Vector Space(original word2vec paper)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)" class="md-nav__link">
+    Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reference" title="Reference" class="md-nav__link">
     Reference
   </a>
@@ -788,6 +850,11 @@
   
 </nav>
     
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
         
@@ -1072,6 +1139,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#gensim-word-vectors-example" title="Gensim word vectors example" class="md-nav__link">
+    Gensim word vectors example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">
+    Suggested Readings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#word2vec-tutorial-the-skip-gram-model" title="Word2Vec Tutorial - The Skip-Gram Model" class="md-nav__link">
+    Word2Vec Tutorial - The Skip-Gram Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Efficient Estimation of Word Representations in Vector Space(original word2vec paper)" class="md-nav__link">
+    Efficient Estimation of Word Representations in Vector Space(original word2vec paper)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)" class="md-nav__link">
+    Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reference" title="Reference" class="md-nav__link">
     Reference
   </a>
@@ -1100,10 +1208,10 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/looperxx/looperxx.github.io/edit/master/docs/CS224n-2019笔记.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/looperxx/looperxx.github.io/edit/master/docs/CS224n-2019-01-Introduction and Word Vectors.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="cs224n-2019">CS224n-2019 笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
+                <h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
 <ul>
 <li>
 <p>结合每课时的课件、笔记与推荐读物等整理而成</p>
@@ -1250,7 +1358,13 @@ Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0
 $$
 J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
 $$
-其中log形式是方便将联乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。</p>
+其中log形式是方便将连乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。</p>
+<blockquote>
+<p>在连乘之前使用log转化为求和非常有效，特别是在做优化时
+  $$
+  \log \prod_i x_i = \sum_i \log x_i
+  $$</p>
+</blockquote>
 <ul>
 <li><strong>最小化目标函数 <span><span class="MathJax_Preview">\Leftrightarrow</span><script type="math/tex">\Leftrightarrow</script></span>  最大化预测精度</strong></li>
 <li><u>问题</u>：如何计算 <span><span class="MathJax_Preview">P(w_{t+j} | w_{t} ; \theta)</span><script type="math/tex">P(w_{t+j} | w_{t} ; \theta)</script></span> ？</li>
@@ -1269,6 +1383,10 @@ P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w
 P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
 </script>
 </div>
+<blockquote>
+<p>阅读这个公式，你可以看到一个向量 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 和向量 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 。当它们相似时给出最大的概率。因此，该模型的训练使得相同上下文中的单词具有相似的向量。</p>
+<p>点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score</p>
+</blockquote>
 <h3 id="word2vec-prediction-function">Word2vec prediction function<a class="headerlink" href="#word2vec-prediction-function" title="Permanent link">&para;</a></h3>
 <div>
 <div class="MathJax_Preview">
@@ -1303,26 +1421,6 @@ $$
 &amp;=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
 \end{split}\end{align}
-$$
-我们可以对上述结果重新排列
-$$
-\begin{align}\begin{split}
-\frac{\partial}{\partial v_c}\log P(o|c)
-&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
-&amp;=u_o-\sum_{w\in V}P(w|c)u_w
-\end{split}\end{align}
-$$
-第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
-$$
-\begin{align}\begin{split}
-\frac{\partial}{\partial u_o}\log P(o|c)
-&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
-&amp;=v_c - P(o|c)v_c\\
-&amp;=(1-P(o|c))v_c
-\end{split}\end{align}
 </div>
 <script type="math/tex; mode=display">
 \begin{align}\begin{split}
@@ -1332,29 +1430,36 @@ $$
 &=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
 \end{split}\end{align}
-$$
-我们可以对上述结果重新排列
+</script>
+</div>
+<blockquote>
+<p>偏导数可以移进求和中，对应上方公式的最后两行
+  $$
+  \frac{\partial}{\partial x}\sum_iy_i = \sum_i\frac{\partial}{\partial x}y_i
+  $$
+</p>
+</blockquote>
+<p>我们可以对上述结果重新排列
 $$
 \begin{align}\begin{split}
 \frac{\partial}{\partial v_c}\log P(o|c)
-&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
-&=u_o-\sum_{w\in V}P(w|c)u_w
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\
+&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\
+&amp;=u_o-\sum_{w\in V}P(w|c)u_w
 \end{split}\end{align}
 $$
 第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
 $$
 \begin{align}\begin{split}
 \frac{\partial}{\partial u_o}\log P(o|c)
-&=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
-&=v_c - P(o|c)v_c\\
-&=(1-P(o|c))v_c
+&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\
+&amp;=v_c - P(o|c)v_c\
+&amp;=(1-P(o|c))v_c
 \end{split}\end{align}
-</script>
-</div>
-<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to  1</span><script type="math/tex">P(o|c) \to  1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
+$$</p>
+<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to  1</span><script type="math/tex">P(o|c) \to  1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
 <p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
 <strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>
@@ -1649,6 +1754,28 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
 </div>
 <p>我们训练模型的目标是最小化负的对数似然 <span><span class="MathJax_Preview">-log\,P(w\mid w_{i})</span><script type="math/tex">-log\,P(w\mid w_{i})</script></span> 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。</p>
 <p>该方法的速度由构建二叉树的方式确定，并将词分配给叶节点。Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中使用的是哈夫曼树，在树中分配高频词到较短的路径。</p>
+<h2 id="gensim-word-vectors-example">Gensim word vectors example<a class="headerlink" href="#gensim-word-vectors-example" title="Permanent link">&para;</a></h2>
+<p>Gensim提供了将 <code>Glove</code> 转化为Word2Vec格式的API，并且提供了 <code>most_similar</code>,  <code>doesnt_match</code>等API。我们可以对<code>most_similar</code>进行封装，输出三元组的类比结果</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="n">word2vec_glove_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">analogy</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="n">x1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">analogy</span><span class="p">(</span><span class="s1">&#39;japan&#39;</span><span class="p">,</span> <span class="s1">&#39;japanese&#39;</span><span class="p">,</span> <span class="s1">&#39;australia&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">doesnt_match</span><span class="p">(</span><span class="s2">&quot;breakfast cereal dinner lunch&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="suggested-readings">Suggested Readings<a class="headerlink" href="#suggested-readings" title="Permanent link">&para;</a></h2>
+<h3 id="word2vec-tutorial-the-skip-gram-model"><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a><a class="headerlink" href="#word2vec-tutorial-the-skip-gram-model" title="Permanent link">&para;</a></h3>
+<h3 id="efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper"><a href="http://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a>(original word2vec paper)<a class="headerlink" href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Permanent link">&para;</a></h3>
+<h3 id="distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper"><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality</a> (negative sampling paper)<a class="headerlink" href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Permanent link">&para;</a></h3>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
@@ -1668,9 +1795,9 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://looperxx.github.io/CS224n-2019笔记/";
+      this.page.url = "https://looperxx.github.io/CS224n-2019-01-Introduction and Word Vectors/";
       this.page.identifier =
-        "/CS224n-2019笔记/";
+        "/CS224n-2019-01-Introduction and Word Vectors/";
     };
     (function() {
       var d = document, s = d.createElement("script");
