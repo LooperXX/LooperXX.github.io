@@ -1298,12 +1298,12 @@ $$</p>
 <li>无法计算单词相似度</li>
 </ul>
 <p><strong>Representing words as discrete symbols</strong></p>
-<p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
-$$
+<p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。</p>
+<p>$$
 motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0] \</p>
 <p>hotel = [0   0   0   0   0   0   0   1   0   0   0   0   0   0   0]
-$$
-<strong>Problem with words as discrete symbols</strong></p>
+$$</p>
+<p><strong>Problem with words as discrete symbols</strong></p>
 <p>所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。</p>
 <p><strong>Solutions</strong></p>
 <ul>
@@ -1327,7 +1327,7 @@ $$
 <p>词向量 <strong><em>word vectors</em></strong> 有时被称为词嵌入 <strong><em>word embeddings</em></strong>  或词表示 <strong><em>word representations</em></strong>  </p>
 <p>它们是分布式表示 <strong><em>distributed representation</em></strong>
 $$
-\mathrm{banking} = \left[\begin{matrix}0.286 \0.792 \-0.177 \-0.107 \0.109 \-0.542 \0.349 \0.271 \end{matrix}\right]
+\mathrm{banking} = \left [\begin{matrix}0.286 \0.792 \-0.177 \-0.107 \0.109 \-0.542 \0.349 \0.271 \end{matrix} \right]
 $$
 <strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的 <strong>框架</strong> </p>
 <p>Idea：</p>
@@ -1459,7 +1459,7 @@ $$
 &amp;=(1-P(o|c))v_c
 \end{split}\end{align}
 $$</p>
-<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to  1</span><script type="math/tex">P(o|c) \to  1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
+<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to 1</span><script type="math/tex">P(o|c) \to 1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
 <p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
 <strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>

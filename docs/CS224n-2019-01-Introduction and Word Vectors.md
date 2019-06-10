@@ -79,11 +79,13 @@ list(panda.closure(hyper))
 **Representing words as discrete symbols**
 
 在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a **localist** representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
+
 $$
 motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\
 
 hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
 $$
+
 **Problem with words as discrete symbols**
 
 所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。
@@ -112,7 +114,7 @@ $$
 
 它们是分布式表示 ***distributed representation***
 $$
-\mathrm{banking} = \left[\begin{matrix}0.286 \\0.792 \\-0.177 \\-0.107 \\0.109 \\-0.542 \\0.349 \\0.271 \end{matrix}\right]
+\mathrm{banking} = \left [\begin{matrix}0.286 \\0.792 \\-0.177 \\-0.107 \\0.109 \\-0.542 \\0.349 \\0.271 \end{matrix} \right]
 $$
 ***Word2vec*** (Mikolov et al. 2013)是一个学习单词向量的 **框架** 
 
@@ -224,7 +226,7 @@ $$
 \end{split}\end{align}
 $$
 
-可以理解，当 $P(o|c) \to  1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
+可以理解，当 $P(o|c) \to 1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
 
 ## Notes 01  Introduction, SVD and Word2Vec
 
