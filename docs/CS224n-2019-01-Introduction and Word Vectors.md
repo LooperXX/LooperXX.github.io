@@ -80,7 +80,8 @@ list(panda.closure(hyper))
 
 在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a **localist** representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
 $$
-motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ 
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\
+
 hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
 $$
 **Problem with words as discrete symbols**

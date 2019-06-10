@@ -1300,8 +1300,8 @@ $$</p>
 <p><strong>Representing words as discrete symbols</strong></p>
 <p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
 $$
-motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0] \ 
-hotel = [0   0   0   0   0   0   0   1   0   0   0   0   0   0   0]
+motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0] \</p>
+<p>hotel = [0   0   0   0   0   0   0   1   0   0   0   0   0   0   0]
 $$
 <strong>Problem with words as discrete symbols</strong></p>
 <p>所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。</p>
