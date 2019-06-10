@@ -1299,10 +1299,14 @@ $$</p>
 </ul>
 <p><strong>Representing words as discrete symbols</strong></p>
 <p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。</p>
-<p>$$
-motel = [0   0   0   0   0   0   0   0   0   0   1   0   0   0   0] \</p>
-<p>hotel = [0   0   0   0   0   0   0   1   0   0   0   0   0   0   0]
-$$</p>
+<div>
+<div class="MathJax_Preview">
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
+</div>
+<script type="math/tex; mode=display">
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
+</script>
+</div>
 <p><strong>Problem with words as discrete symbols</strong></p>
 <p>所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。</p>
 <p><strong>Solutions</strong></p>
@@ -1325,11 +1329,9 @@ $$</p>
 <h3 id="word2vec-introduction">Word2vec introduction<a class="headerlink" href="#word2vec-introduction" title="Permanent link">&para;</a></h3>
 <p>我们为每个单词构建一个 <strong>密集</strong> 的向量，使其与出现在相似上下文中的单词向量相似</p>
 <p>词向量 <strong><em>word vectors</em></strong> 有时被称为词嵌入 <strong><em>word embeddings</em></strong>  或词表示 <strong><em>word representations</em></strong>  </p>
-<p>它们是分布式表示 <strong><em>distributed representation</em></strong>
-$$
-\mathrm{banking} = \left [\begin{matrix}0.286 \0.792 \-0.177 \-0.107 \0.109 \-0.542 \0.349 \0.271 \end{matrix} \right]
-$$
-<strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的 <strong>框架</strong> </p>
+<p>它们是分布式表示 <strong><em>distributed representation</em></strong></p>
+<p><img alt="1560142035593" src="../imgs/1560142035593.png" /></p>
+<p><strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的 <strong>框架</strong> </p>
 <p>Idea：</p>
 <ul>
 <li>我们有大量的文本 (corpus means 'body' in Latin. 复数为corpora)</li>
@@ -1384,8 +1386,8 @@ P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w
 </script>
 </div>
 <blockquote>
-<p>阅读这个公式，你可以看到一个向量 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 和向量 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 。当它们相似时给出最大的概率。因此，该模型的训练使得相同上下文中的单词具有相似的向量。</p>
-<p>点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score</p>
+<p>公式中，向量 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 和向量 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 进行点乘。向量之间越相似，点乘结果越大，从而归一化后得到的概率值也越大。模型的训练正是为了使得具有相似上下文的单词，具有相似的向量。</p>
+<p>点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score，参见我的<a href="https://looperxx.github.io/Attention/">Attention笔记</a></p>
 </blockquote>
 <h3 id="word2vec-prediction-function">Word2vec prediction function<a class="headerlink" href="#word2vec-prediction-function" title="Permanent link">&para;</a></h3>
 <div>
@@ -1414,51 +1416,73 @@ $$
 <p>首先我们随机初始化 <span><span class="MathJax_Preview">u_{w}\in\mathbb{R}^d</span><script type="math/tex">u_{w}\in\mathbb{R}^d</script></span> 和 <span><span class="MathJax_Preview">v_{w}\in\mathbb{R}^d</span><script type="math/tex">v_{w}\in\mathbb{R}^d</script></span> ，而后使用梯度下降法进行更新</p>
 <div>
 <div class="MathJax_Preview">
-\begin{align}\begin{split}
+\begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &amp;=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &amp;=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &amp;=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
-\end{split}\end{align}
+\end{align}
 </div>
 <script type="math/tex; mode=display">
-\begin{align}\begin{split}
+\begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
-\end{split}\end{align}
+\end{align}
 </script>
 </div>
 <blockquote>
-<p>偏导数可以移进求和中，对应上方公式的最后两行
+<p>偏导数可以移进求和中，对应上方公式的最后两行的推导
   $$
   \frac{\partial}{\partial x}\sum_iy_i = \sum_i\frac{\partial}{\partial x}y_i
   $$
 </p>
 </blockquote>
-<p>我们可以对上述结果重新排列
-$$
-\begin{align}\begin{split}
+<p>我们可以对上述结果重新排列</p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
-&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\
-&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
 &amp;=u_o-\sum_{w\in V}P(w|c)u_w
-\end{split}\end{align}
-$$
-第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
-$$
-\begin{align}\begin{split}
+\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+&=u_o-\sum_{w\in V}P(w|c)u_w
+\end{align}
+</script>
+</div>
+<p>第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}
 \frac{\partial}{\partial u_o}\log P(o|c)
-&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\
-&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\
-&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\
-&amp;=v_c - P(o|c)v_c\
+&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&amp;=v_c - P(o|c)v_c\\
 &amp;=(1-P(o|c))v_c
-\end{split}\end{align}
-$$</p>
+\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial}{\partial u_o}\log P(o|c)
+&=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&=v_c - P(o|c)v_c\\
+&=(1-P(o|c))v_c
+\end{align}
+</script>
+</div>
 <p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to 1</span><script type="math/tex">P(o|c) \to 1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
 <p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>

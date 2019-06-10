@@ -81,9 +81,7 @@ list(panda.closure(hyper))
 在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a **localist** representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。
 
 $$
-motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\
-
-hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
 $$
 
 **Problem with words as discrete symbols**
@@ -113,9 +111,9 @@ $$
 词向量 ***word vectors*** 有时被称为词嵌入 ***word embeddings***  或词表示 ***word representations***  
 
 它们是分布式表示 ***distributed representation***
-$$
-\mathrm{banking} = \left [\begin{matrix}0.286 \\0.792 \\-0.177 \\-0.107 \\0.109 \\-0.542 \\0.349 \\0.271 \end{matrix} \right]
-$$
+
+![1560142035593](imgs/1560142035593.png)
+
 ***Word2vec*** (Mikolov et al. 2013)是一个学习单词向量的 **框架** 
 
 Idea：
@@ -164,9 +162,9 @@ $$
 P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
 $$
 
->   阅读这个公式，你可以看到一个向量 $u_o$ 和向量 $v_c$ 。当它们相似时给出最大的概率。因此，该模型的训练使得相同上下文中的单词具有相似的向量。
+>   公式中，向量 $u_o$ 和向量 $v_c$ 进行点乘。向量之间越相似，点乘结果越大，从而归一化后得到的概率值也越大。模型的训练正是为了使得具有相似上下文的单词，具有相似的向量。
 >
->   点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score
+>   点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score，参见我的[Attention笔记](https://looperxx.github.io/Attention/)
 
 ### Word2vec prediction function
 
@@ -191,39 +189,42 @@ $$
 首先我们随机初始化 $u_{w}\in\mathbb{R}^d$ 和 $v_{w}\in\mathbb{R}^d$ ，而后使用梯度下降法进行更新
 
 $$
-\begin{align}\begin{split}
+\begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
-\end{split}\end{align}
+\end{align}
 $$
->   偏导数可以移进求和中，对应上方公式的最后两行
+>   偏导数可以移进求和中，对应上方公式的最后两行的推导
 >   $$
 >   \frac{\partial}{\partial x}\sum_iy_i = \sum_i\frac{\partial}{\partial x}y_i
 >   $$
 >   
 
 我们可以对上述结果重新排列
+
 $$
-\begin{align}\begin{split}
+\begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
 &=u_o-\sum_{w\in V}P(w|c)u_w
-\end{split}\end{align}
+\end{align}
 $$
-第一项是真正的上下文单词，第二项是预期的上下文单词。使用梯度下降法，模型的预期上下文将更接近真实单词(通过纠正每一步的错误)。
+
+第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。
+
 $$
-\begin{align}\begin{split}
+\begin{align}
 \frac{\partial}{\partial u_o}\log P(o|c)
 &=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
 &=v_c - P(o|c)v_c\\
 &=(1-P(o|c))v_c
-\end{split}\end{align}
+\end{align}
 $$
 
 可以理解，当 $P(o|c) \to 1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
