@@ -203,7 +203,7 @@ $$
 >   $$
 >   
 
-我们可以对上述结果重新排列
+我们可以对上述结果重新排列如下，第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。
 
 $$
 \begin{align}
@@ -214,12 +214,15 @@ $$
 \end{align}
 $$
 
-第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。
+再对 $u_o$ 进行偏微分计算，注意这里的 $u_o$ 是 $u_{w=o}$ 的简写，故可知 $\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c$ 
 
 $$
 \begin{align}
 \frac{\partial}{\partial u_o}\log P(o|c)
 &=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=\frac{\partial}{\partial u_o}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=\frac{\partial}{\partial u_o}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=v_c-\frac{\log\sum\frac{\partial}{\partial u_o}\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
 &=v_c - P(o|c)v_c\\
@@ -228,6 +231,8 @@ $$
 $$
 
 可以理解，当 $P(o|c) \to 1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
+
+关于此处的微积分知识，可以通过[《神经网络与深度学习》](<https://nndl.github.io/>)中的 **附录B** 了解。
 
 ## Notes 01  Introduction, SVD and Word2Vec
 
