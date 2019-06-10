@@ -4,6 +4,8 @@ source: Material Theme Tutorial.md
 
 # Material Theme Tutorial
 
+[更加完整的Tutorial](<https://cyent.github.io/markdown-with-mkdocs-material/>)
+
 ## 警告
 
 ### 用法
