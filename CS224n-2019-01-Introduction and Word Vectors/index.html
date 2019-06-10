@@ -800,33 +800,6 @@
     Suggested Readings
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#word2vec-tutorial-the-skip-gram-model" title="Word2Vec Tutorial - The Skip-Gram Model" class="md-nav__link">
-    Word2Vec Tutorial - The Skip-Gram Model
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Efficient Estimation of Word Representations in Vector Space(original word2vec paper)" class="md-nav__link">
-    Efficient Estimation of Word Representations in Vector Space(original word2vec paper)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)" class="md-nav__link">
-    Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1150,33 +1123,6 @@
     Suggested Readings
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#word2vec-tutorial-the-skip-gram-model" title="Word2Vec Tutorial - The Skip-Gram Model" class="md-nav__link">
-    Word2Vec Tutorial - The Skip-Gram Model
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Efficient Estimation of Word Representations in Vector Space(original word2vec paper)" class="md-nav__link">
-    Efficient Estimation of Word Representations in Vector Space(original word2vec paper)
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)" class="md-nav__link">
-    Distributed Representations of Words and Phrases and their Compositionality (negative sampling paper)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1460,7 +1406,7 @@ $$
 \end{align}
 </script>
 </div>
-<p>再对 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 进行偏微分计算，注意这里的 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 是 <span><span class="MathJax_Preview">u_{w=o}</span><script type="math/tex">u_{w=o}</script></span> 的简写，故可知 <span><span class="MathJax_Preview">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</span><script type="math/tex">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</script></span> </p>
+<p>再对 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 进行偏微分计算，注意这里的 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 是 <span><span class="MathJax_Preview">u_{w=o}</span><script type="math/tex">u_{w=o}</script></span> 的简写，故可知 <span><span class="MathJax_Preview">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</span><script type="math/tex">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</script></span> </p>
 <div>
 <div class="MathJax_Preview">
 \begin{align}
@@ -1490,7 +1436,7 @@ $$
 </script>
 </div>
 <p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to 1</span><script type="math/tex">P(o|c) \to 1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
-<p>关于此处的微积分知识，可以通过<a href="https://nndl.github.io/">《神经网络与深度学习》</a>中的 <strong>附录B</strong> 了解。</p>
+<p>关于此处的微积分知识，可以通过<a href="https://nndl.github.io/">《神经网络与深度学习》</a>中的 <strong>附录B</strong> 了解。</p>
 <h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
 <p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
 <strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>
@@ -1804,9 +1750,9 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
 </td></tr></table>
 
 <h2 id="suggested-readings">Suggested Readings<a class="headerlink" href="#suggested-readings" title="Permanent link">&para;</a></h2>
-<h3 id="word2vec-tutorial-the-skip-gram-model"><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a><a class="headerlink" href="#word2vec-tutorial-the-skip-gram-model" title="Permanent link">&para;</a></h3>
-<h3 id="efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper"><a href="http://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a>(original word2vec paper)<a class="headerlink" href="#efficient-estimation-of-word-representations-in-vector-spaceoriginal-word2vec-paper" title="Permanent link">&para;</a></h3>
-<h3 id="distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper"><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality</a> (negative sampling paper)<a class="headerlink" href="#distributed-representations-of-words-and-phrases-and-their-compositionality-negative-sampling-paper" title="Permanent link">&para;</a></h3>
+<p><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a></p>
+<p><a href="http://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a>(original word2vec paper)</p>
+<p><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality</a> (negative sampling paper)</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
@@ -1933,7 +1879,7 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
     
   </body>

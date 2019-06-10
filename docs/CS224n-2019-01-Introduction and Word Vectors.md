@@ -214,7 +214,7 @@ $$
 \end{align}
 $$
 
-再对 $u_o$ 进行偏微分计算，注意这里的 $u_o$ 是 $u_{w=o}$ 的简写，故可知 $\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c$ 
+再对 $u_o$ 进行偏微分计算，注意这里的 $u_o$ 是 $u_{w=o}$ 的简写，故可知 $\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c$ 
 
 $$
 \begin{align}
@@ -232,7 +232,7 @@ $$
 
 可以理解，当 $P(o|c) \to 1$ ，即通过中心词 $c$ 我们可以正确预测上下文词 $o$ ，此时我们不需要调整 $u_o$ ，反之，则相应调整 $u_o$ 。
 
-关于此处的微积分知识，可以通过[《神经网络与深度学习》](<https://nndl.github.io/>)中的 **附录B** 了解。
+关于此处的微积分知识，可以通过[《神经网络与深度学习》](<https://nndl.github.io/>)中的 **附录B** 了解。
 
 ## Notes 01  Introduction, SVD and Word2Vec
 
@@ -573,11 +573,11 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 ## Suggested Readings
 
-### [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
+[Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
 
-### [Efficient Estimation of Word Representations in Vector Space](http://arxiv.org/pdf/1301.3781.pdf)(original word2vec paper)
+[Efficient Estimation of Word Representations in Vector Space](http://arxiv.org/pdf/1301.3781.pdf)(original word2vec paper)
 
-### [Distributed Representations of Words and Phrases and their Compositionality](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf) (negative sampling paper)
+[Distributed Representations of Words and Phrases and their Compositionality](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf) (negative sampling paper)
 
 ## Reference
 
