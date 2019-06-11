@@ -1,0 +1,347 @@
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="Looper's personal notes"><link rel="canonical" href="https://looperxx.github.io/CS224n-2019-02-Word Vectors 2 and Word Senses/"><meta name="author" content="Looper - Xiao Xu"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="jp"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>02 Word Vectors 2 and Word Senses - Looper's wiki</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"></head><body dir="ltr"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#cs224n-2019" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://looperxx.github.io/" title="Looper's wiki" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Looper's wiki</span><span class="md-header-nav__topic">02 Word Vectors 2 and Word Senses</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/looperxx/looperxx.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">looperxx/looperxx.github.io</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href=".." title="Home" class="md-tabs__link">Home</a></li><li class="md-tabs__item"><a href="../Linux/" title="Math & CS & Coding" class="md-tabs__link">Math & CS & Coding</a></li><li class="md-tabs__item"><a href="../Attention/" title="ML & DL" class="md-tabs__link">ML & DL</a></li><li class="md-tabs__item"><a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">NLP</a></li><li class="md-tabs__item"><a href="../面经/" title="Interview experience" class="md-tabs__link">Interview experience</a></li><li class="md-tabs__item"><a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">For MkDocs</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://looperxx.github.io/" title="Looper's wiki" class="md-nav__button md-logo"><i class="md-icon"></i></a>Looper's wiki</label><div class="md-nav__source"><a href="https://github.com/looperxx/looperxx.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">looperxx/looperxx.github.io</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Math & CS & Coding</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Math & CS & Coding</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Linux/" title="Linux" class="md-nav__link">Linux</a></li><li class="md-nav__item"><a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">重点内容</a></li><li class="md-nav__item"><a href="../历年机试/" title="历年机试" class="md-nav__link">历年机试</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">ML & DL</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">ML & DL</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Attention/" title="Attention" class="md-nav__link">Attention</a></li><li class="md-nav__item"><a href="../Normalization/" title="Normalization" class="md-nav__link">Normalization</a></li><li class="md-nav__item"><a href="../Concepts/" title="Concepts" class="md-nav__link">Concepts</a></li><li class="md-nav__item"><a href="../花书经验法则/" title="花书经验法则" class="md-nav__link">花书经验法则</a></li><li class="md-nav__item"><a href="../经典网络/" title="经典网络" class="md-nav__link">经典网络</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked><label class="md-nav__link" for="nav-4">NLP</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">NLP</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1"><label class="md-nav__link" for="nav-4-1">简介</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-1">简介</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">自然语言处理简介</a></li><li class="md-nav__item"><a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">NLP的巨人肩膀</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2"><label class="md-nav__link" for="nav-4-2">书籍笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-2">书籍笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../NLP Concepts/" title="NLP Concepts" class="md-nav__link">NLP Concepts</a></li><li class="md-nav__item"><a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">Machine Reading Comprehension</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked><label class="md-nav__link" for="nav-4-3">课程笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-3">课程笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../CS224n-2019简介/" title="CS224n-2019简介" class="md-nav__link">CS224n-2019简介</a></li><li class="md-nav__item"><a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">CS224n-2019作业笔记</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" checked><label class="md-nav__link" for="nav-4-3-3">CS224n-2019学习笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="3"><label class="md-nav__title" for="nav-4-3-3">CS224n-2019学习笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../CS224n-2019-01-Introduction and Word Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">01 Introduction and Word Vectors</a></li><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">02 Word Vectors 2 and Word Senses</label><a href="./" title="02 Word Vectors 2 and Word Senses" class="md-nav__link md-nav__link--active">02 Word Vectors 2 and Word Senses</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#lecture-02-word-vectors-and-word-senses" title="Lecture 02 Word Vectors and Word Senses" class="md-nav__link">Lecture 02 Word Vectors and Word Senses</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#review-main-idea-of-word2vec" title="Review: Main idea of word2vec" class="md-nav__link">Review: Main idea of word2vec</a></li><li class="md-nav__item"><a href="#optimization-gradient-descent" title="Optimization: Gradient Descent" class="md-nav__link">Optimization: Gradient Descent</a></li><li class="md-nav__item"><a href="#but-why-not-capture-co-occurrence-counts-directly" title="But why not capture co-occurrence counts directly?" class="md-nav__link">But why not capture co-occurrence counts directly?</a></li><li class="md-nav__item"><a href="#encoding-meaning-in-vector-differences" title="Encoding meaning in vector differences" class="md-nav__link">Encoding meaning in vector differences</a></li><li class="md-nav__item"><a href="#how-to-evaluate-word-vectors" title="How to evaluate word vectors?" class="md-nav__link">How to evaluate word vectors?</a></li><li class="md-nav__item"><a href="#word-senses-and-word-sense-ambiguity" title="Word senses and word sense ambiguity" class="md-nav__link">Word senses and word sense ambiguity</a></li></ul></nav></li><li class="md-nav__item"><a href="#notes-02-glove-evaluation-and-training" title="Notes 02  GloVe, Evaluation and Training" class="md-nav__link">Notes 02  GloVe, Evaluation and Training</a></li><li class="md-nav__item"><a href="#reference" title="Reference" class="md-nav__link">Reference</a></li><li class="md-nav__item"><a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">评论</a></li></ul></nav></li></ul></nav></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Interview experience</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Interview experience</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../面经/" title="我的面经" class="md-nav__link">我的面经</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2"><label class="md-nav__link" for="nav-5-2">实训笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-5-2">实训笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">Protobuf</a></li><li class="md-nav__item"><a href="../FDBus/" title="FDBus" class="md-nav__link">FDBus</a></li><li class="md-nav__item"><a href="../FDBus API/" title="FDBus API" class="md-nav__link">FDBus API</a></li><li class="md-nav__item"><a href="../FDBus内部结构/" title="FDBus内部结构" class="md-nav__link">FDBus内部结构</a></li><li class="md-nav__item"><a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">Cross compiler</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6"><label class="md-nav__link" for="nav-6">For MkDocs</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">For MkDocs</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../MkDocs_demo/" title="Demo" class="md-nav__link">Demo</a></li><li class="md-nav__item"><a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">Material Theme Tutorial</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#lecture-02-word-vectors-and-word-senses" title="Lecture 02 Word Vectors and Word Senses" class="md-nav__link">Lecture 02 Word Vectors and Word Senses</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#review-main-idea-of-word2vec" title="Review: Main idea of word2vec" class="md-nav__link">Review: Main idea of word2vec</a></li><li class="md-nav__item"><a href="#optimization-gradient-descent" title="Optimization: Gradient Descent" class="md-nav__link">Optimization: Gradient Descent</a></li><li class="md-nav__item"><a href="#but-why-not-capture-co-occurrence-counts-directly" title="But why not capture co-occurrence counts directly?" class="md-nav__link">But why not capture co-occurrence counts directly?</a></li><li class="md-nav__item"><a href="#encoding-meaning-in-vector-differences" title="Encoding meaning in vector differences" class="md-nav__link">Encoding meaning in vector differences</a></li><li class="md-nav__item"><a href="#how-to-evaluate-word-vectors" title="How to evaluate word vectors?" class="md-nav__link">How to evaluate word vectors?</a></li><li class="md-nav__item"><a href="#word-senses-and-word-sense-ambiguity" title="Word senses and word sense ambiguity" class="md-nav__link">Word senses and word sense ambiguity</a></li></ul></nav></li><li class="md-nav__item"><a href="#notes-02-glove-evaluation-and-training" title="Notes 02  GloVe, Evaluation and Training" class="md-nav__link">Notes 02  GloVe, Evaluation and Training</a></li><li class="md-nav__item"><a href="#reference" title="Reference" class="md-nav__link">Reference</a></li><li class="md-nav__item"><a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">评论</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/looperxx/looperxx.github.io/edit/master/docs/CS224n-2019-02-Word Vectors 2 and Word Senses.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>结合每课时的课件、笔记与推荐读物等整理而成</p>
+</li>
+<li>
+<p>作业部分将单独整理</p>
+</li>
+</ul>
+<h2 id="lecture-02-word-vectors-and-word-senses">Lecture 02 Word Vectors and Word Senses<a class="headerlink" href="#lecture-02-word-vectors-and-word-senses" title="Permanent link">&para;</a></h2>
+<p><strong>Lecture Plan</strong></p>
+<ul>
+<li>Finish looking at word vectors and word2vec</li>
+<li>Optimization basics</li>
+<li>Can we capture this essence more effectively by counting?</li>
+<li>The GloVe model of word vectors</li>
+<li>Evaluating word vectors </li>
+<li>Word senses</li>
+<li>The course</li>
+</ul>
+<blockquote>
+<p>Goal: be able to read word embeddings papers by the end of class</p>
+</blockquote>
+<h3 id="review-main-idea-of-word2vec">Review: Main idea of word2vec<a class="headerlink" href="#review-main-idea-of-word2vec" title="Permanent link">&para;</a></h3>
+<p><img alt="1560257599521" src="../imgs/1560257599521.png" /></p>
+<div>
+<div class="MathJax_Preview">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</div>
+<script type="math/tex; mode=display">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</script>
+</div>
+<ul>
+<li>遍历整个语料库中的每个单词</li>
+<li>使用单词向量预测周围的单词</li>
+<li>更新向量以便更好地预测</li>
+</ul>
+<p><strong>Word2vec parameters and computations</strong></p>
+<p><img alt="1560257888161" src="../imgs/1560257888161.png" /></p>
+<blockquote>
+<p><span><span class="MathJax_Preview">n \times d \cdot d \to 1 \rightarrow n \times 1 \overset{softmax} \to n \times 1</span><script type="math/tex">n \times d \cdot d \to 1 \rightarrow n \times 1 \overset{softmax} \to n \times 1</script></span> </p>
+</blockquote>
+<ul>
+<li>每行代表一个单词的词向量，点乘后得到的分数通过softmax映射为概率分布，并且我们得到的概率分布是对于该中心词而言的上下文中单词的概率分布，该分布于上下文所在的具体位置无关，所以在每个位置的预测都是一样的</li>
+<li>我们希望模型对上下文中(相当频繁)出现的所有单词给出一个合理的高概率估计</li>
+<li>the, and, that, of 这样的停用词，是每个单词点乘后得到的较大概率的单词<ul>
+<li>去掉这一部分可以使词向量效果更好</li>
+</ul>
+</li>
+</ul>
+<h3 id="optimization-gradient-descent">Optimization: Gradient Descent<a class="headerlink" href="#optimization-gradient-descent" title="Permanent link">&para;</a></h3>
+<p>Gradient Descent 每次使用全部样本进行更新</p>
+<p>Stochastic Gradient Descent 每次只是用单个样本进行更新</p>
+<p>Mini-batch具有以下优点</p>
+<ul>
+<li>通过平均值，减少梯度估计的噪音</li>
+<li>在GPU上并行化运算，加快运算速度</li>
+</ul>
+<p><strong>Stochastic gradients with word vectors</strong></p>
+<p><span><span class="MathJax_Preview">\nabla_{\theta} J_{t}(\theta)</span><script type="math/tex">\nabla_{\theta} J_{t}(\theta)</script></span> 将会非常稀疏，所以我们可能只更新实际出现的向量</p>
+<p>解决方案</p>
+<ul>
+<li>需要稀疏矩阵更新操作来只更新矩阵U和V中的特定行</li>
+<li>需要保留单词向量的散列</li>
+</ul>
+<p>如果有数百万个单词向量，并且进行分布式计算，那么重要的是不必到处发送巨大的更新</p>
+<p><strong>Word2vec: More details</strong></p>
+<p>为什么两个向量？</p>
+<ul>
+<li>更容易优化，最后都取平均值</li>
+<li>可以每个单词只用一个向量</li>
+</ul>
+<p>两个模型变体</p>
+<ul>
+<li>Skip-grams (SG)<ul>
+<li>输入中心词并预测上下文中的单词</li>
+</ul>
+</li>
+<li>Continuous Bag of Words (CBOW)<ul>
+<li>输入上下文中的单词并预测中心词</li>
+</ul>
+</li>
+</ul>
+<p>之前一直使用naive的softmax(简单但代价很高的训练方法)，接下来使用负采样方法加快训练速率</p>
+<p><strong>The skip-gram model with negative sampling (HW2)</strong></p>
+<p>softmax中用于归一化的分母的计算代价太高
+$$
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+$$
+我们将在作业2中实现使用 <strong>negative sampling</strong> 负采样方法的 <code>skip-gram</code> 模型</p>
+<ul>
+<li>使用一个 true pair (中心词及其上下文窗口中的词)与几个 noise pair (中心词与随机词搭配) 形成的样本，训练二元逻辑回归</li>
+</ul>
+<p>原文中的(最大化)目标函数是</p>
+<div>
+<div class="MathJax_Preview">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J_{t}(\theta)
+</div>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J_{t}(\theta)
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+J_{t}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} \mathbb{E}_{j \sim P(w)}\left[\log \sigma\left(-u_{j}^{T} v_{c}\right)\right]
+</div>
+<script type="math/tex; mode=display">
+J_{t}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} \mathbb{E}_{j \sim P(w)}\left[\log \sigma\left(-u_{j}^{T} v_{c}\right)\right]
+</script>
+</div>
+<p>本课以及作业中的目标函数是
+$$
+J_{\text {neg-sample}}\left(\boldsymbol{o}, \boldsymbol{v}<em>{c}, \boldsymbol{U}\right)=-\log \left(\sigma\left(\boldsymbol{u}</em>{o}^{\top} \boldsymbol{v}<em>{c}\right)\right)-\sum</em>{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}<em>{k}^{\top} \boldsymbol{v}</em>{c}\right)\right)
+$$</p>
+<ul>
+<li>我们希望中心词与真实上下文单词的向量点积更大，中心词与随机单词的点积更小</li>
+<li>k是我们负采样的样本数目</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P(w)=U(w)^{3 / 4} / Z
+</div>
+<script type="math/tex; mode=display">
+P(w)=U(w)^{3 / 4} / Z
+</script>
+</div>
+<p>使用上式作为抽样的分布，<span><span class="MathJax_Preview">U(w)</span><script type="math/tex">U(w)</script></span> 是 unigram 分布，通过 <span><span class="MathJax_Preview">\frac{3}{4}</span><script type="math/tex">\frac{3}{4}</script></span> 次方，相对减少常见单词的频率，增大稀有词的概率。 <span><span class="MathJax_Preview">Z</span><script type="math/tex">Z</script></span> 用于生成概率分布。</p>
+<h3 id="but-why-not-capture-co-occurrence-counts-directly">But why not capture co-occurrence counts directly?<a class="headerlink" href="#but-why-not-capture-co-occurrence-counts-directly" title="Permanent link">&para;</a></h3>
+<p>共现矩阵 X </p>
+<ul>
+<li>两个选项：windows vs. full document</li>
+<li>Window ：与word2vec类似，在每个单词周围都使用Window，包括语法(POS)和语义信息</li>
+<li>Word-document 共现矩阵的基本假设是在同一篇文章中出现的单词更有可能相互关联。假设单词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 出现在文章 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 中，则矩阵元素 <span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span> 加一，当我们处理完数据库中的所有文章后，就得到了矩阵 X ，其大小为 <span><span class="MathJax_Preview">|V|\times M</span><script type="math/tex">|V|\times M</script></span> ，其中 <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 为词汇量，而 <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 为文章数。这一构建单词文章co-occurrence matrix的方法也是经典的Latent Semantic Analysis所采用的。<span class="critic comment">潜在语义分析</span></li>
+</ul>
+<p>利用某个定长窗口中单词与单词同时出现的次数来产生window-based (word-word) co-occurrence matrix。下面以窗口长度为1来举例，假设我们的数据包含以下几个句子：</p>
+<ul>
+<li>I like deep learning.</li>
+<li>I like NLP.</li>
+<li>I enjoy flying.</li>
+</ul>
+<p>则我们可以得到如下的word-word co-occurrence matrix:</p>
+<p><img alt="1560263567193" src="../imgs/1560263567193.png" /></p>
+<p>使用共现次数衡量单词的相似性，但是会随着词汇量的增加而增大矩阵的大小，并且需要很多空间来存储这一高维矩阵，后续的分类模型也会由于矩阵的稀疏性而存在稀疏性问题，使得效果不佳。我们需要对这一矩阵进行降维，获得低维(25-1000)的稠密向量。</p>
+<p><strong>Method 1: Dimensionality Reduction on X (HW1)</strong></p>
+<p>使用SVD方法将共现矩阵 X 分解为 <span><span class="MathJax_Preview">U \Sigma V^{\top}</span><script type="math/tex">U \Sigma V^{\top}</script></span> ，<span><span class="MathJax_Preview">\sum</span><script type="math/tex">\sum</script></span> 是对角线矩阵，对角线上的值是矩阵的奇异值。 <span><span class="MathJax_Preview">U,V</span><script type="math/tex">U,V</script></span> 是对应于行和列的正交基。</p>
+<p>为了减少尺度同时尽量保存有效信息，可保留对角矩阵的最大的k个值，并将矩阵 <span><span class="MathJax_Preview">U,V</span><script type="math/tex">U,V</script></span> 的相应的行列保留。这是经典的线性代数算法，对于大型矩阵而言，计算代价昂贵。</p>
+<p><strong>Hacks to X (several used in Rohde et al. 2005)</strong></p>
+<p>按比例调整 counts 会很有效</p>
+<ul>
+<li>对高频词进行缩放(语法有太多的影响)<ul>
+<li>使用log进行缩放</li>
+<li><span><span class="MathJax_Preview">min(X, t), t \approx 100</span><script type="math/tex">min(X, t), t \approx 100</script></span></li>
+<li>直接全部忽视</li>
+</ul>
+</li>
+<li>在基于window的计数中，提高更加接近的单词的计数</li>
+<li>使用Person相关系数</li>
+</ul>
+<blockquote>
+<p>Conclusion：对计数进行处理是可以得到有效的词向量的</p>
+</blockquote>
+<p><img alt="1560264868083" src="../imgs/1560264868083.png" /></p>
+<p><span><span class="MathJax_Preview">drive \to driver , swim \to swimmer, teach \to teacher</span><script type="math/tex">drive \to driver , swim \to swimmer, teach \to teacher</script></span></p>
+<p>在向量中出现的有趣的句法模式：语义向量基本上是线性组件，虽然有一些摆动，但是基本是存在动词和动词实施者的方向。</p>
+<p>基于计数：使用整个矩阵的全局统计数据来直接估计</p>
+<ul>
+<li>优点<ul>
+<li>训练快速</li>
+<li>统计数据高效利用</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>主要用于捕捉单词相似性</li>
+<li>对大量数据给予比例失调的重视</li>
+</ul>
+</li>
+</ul>
+<p>转换计数：定义概率分布并试图预测单词</p>
+<ul>
+<li>优点<ul>
+<li>提高其他任务的性能</li>
+<li>能捕获除了单词相似性以外的复杂的模式</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>与语料库大小有关的量表</li>
+<li>统计数据的低效使用（<strong>采样是对统计数据的低效使用</strong>）</li>
+</ul>
+</li>
+</ul>
+<h3 id="encoding-meaning-in-vector-differences">Encoding meaning in vector differences<a class="headerlink" href="#encoding-meaning-in-vector-differences" title="Permanent link">&para;</a></h3>
+<p>将两个流派的想法结合起来，在神经网络中使用计数矩阵</p>
+<blockquote>
+<p>关于Glove的理论分析需要阅读原文，也可以阅读<a href="https://zhuanlan.zhihu.com/p/60208480">CS224N笔记(二)：GloVe</a> </p>
+</blockquote>
+<p><strong>关键思想</strong>：共现概率的比值可以对meaning component进行编码</p>
+<p><img alt="1560266202421" src="../imgs/1560266202421.png" /></p>
+<p>重点不是单一的概率大小，重点是他们之间的比值，其中蕴含着meaning component。</p>
+<blockquote>
+<p>例如我们想区分热力学上两种不同状态ice冰与蒸汽steam，它们之间的关系可通过与不同的单词 x 的co-occurrence probability 的比值来描述。</p>
+<p>例如对于solid固态，虽然 <span><span class="MathJax_Preview">P(solid|ice)</span><script type="math/tex">P(solid|ice)</script></span> 与 <span><span class="MathJax_Preview">P(solid|steam)</span><script type="math/tex">P(solid|steam)</script></span> 本身很小，不能透露有效的信息，但是它们的比值$ \frac{P(solid|ice)}{P(solid|steam)}$ 却较大，因为solid更常用来描述ice的状态而不是steam的状态，所以在ice的上下文中出现几率较大</p>
+<p>对于gas则恰恰相反，而对于water这种描述ice与steam均可或者fashion这种与两者都没什么联系的单词，则比值接近于1。所以相较于单纯的co-occurrence probability，实际上co-occurrence probability的相对比值更有意义</p>
+</blockquote>
+<p>我们如何在词向量空间中以线性meaning component的形式捕获共现概率的比值？</p>
+<p>log-bilinear 模型 : <span><span class="MathJax_Preview">w_{i} \cdot w_{j}=\log P(i | j)</span><script type="math/tex">w_{i} \cdot w_{j}=\log P(i | j)</script></span></p>
+<p>向量差异 : <span><span class="MathJax_Preview">w_{x} \cdot\left(w_{a}-w_{b}\right)=\log \frac{P(x | a)}{P(x | b)}</span><script type="math/tex">w_{x} \cdot\left(w_{a}-w_{b}\right)=\log \frac{P(x | a)}{P(x | b)}</script></span></p>
+<ul>
+<li>如果使向量点积等于共现概率的对数，那么向量差异变成了共现概率的比率</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+J=\sum_{i, j=1}^{V} f\left(X_{i j}\right)\left(w_{i}^{T} \tilde{w}_{j}+b_{i}+\tilde{b}_{j}-\log X_{i j}\right)^{2}
+</div>
+<script type="math/tex; mode=display">
+J=\sum_{i, j=1}^{V} f\left(X_{i j}\right)\left(w_{i}^{T} \tilde{w}_{j}+b_{i}+\tilde{b}_{j}-\log X_{i j}\right)^{2}
+</script>
+</div>
+<ul>
+<li>使用平方误差促使点积尽可能得接近共现概率的对数</li>
+<li>使用 <span><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span> 对常见单词进行限制</li>
+</ul>
+<p><img alt="1560267029780" src="../imgs/1560267029780.png" /></p>
+<ul>
+<li>优点<ul>
+<li>训练快速</li>
+<li>可以扩展到大型语料库</li>
+<li>即使是小语料库和小向量，性能也很好</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-to-evaluate-word-vectors">How to evaluate word vectors?<a class="headerlink" href="#how-to-evaluate-word-vectors" title="Permanent link">&para;</a></h3>
+<p>与NLP的一般评估相关：内在与外在</p>
+<ul>
+<li>内在<ul>
+<li>对特定/中间子任务进行评估</li>
+<li>计算速度快</li>
+<li>有助于理解这个系统</li>
+<li>不清楚是否真的有用，除非与实际任务建立了相关性</li>
+</ul>
+</li>
+<li>外在<ul>
+<li>对真实任务的评估</li>
+<li>计算精确度可能需要很长时间</li>
+<li>不清楚子系统是问题所在，是交互问题，还是其他子系统</li>
+<li>如果用另一个子系统替换一个子系统可以提高精确度</li>
+</ul>
+</li>
+</ul>
+<p><strong>Intrinsic word vector evaluation</strong></p>
+<p>词向量类比 <code>a:b :: c:?</code>
+$$
+d=\arg \max <em>{i} \frac{\left(x</em>{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left|x_{b}-x_{a}+x_{c}\right|}
+$$</p>
+<ul>
+<li>通过加法后的余弦距离是否能很好地捕捉到直观的语义和句法类比问题来评估单词向量</li>
+<li>从搜索中丢弃输入的单词</li>
+<li>问题:如果有信息但不是线性的怎么办？</li>
+</ul>
+<p>Glove可视化效果</p>
+<p><img alt="1560267650486" src="../imgs/1560267650486.png" /></p>
+<p><img alt="1560267659926" src="../imgs/1560267659926.png" /></p>
+<p><img alt="1560267671216" src="../imgs/1560267671216.png" /></p>
+<blockquote>
+<p>可以使用数据集评估语法和语义上的效果</p>
+</blockquote>
+<p><strong>Analogy evaluation and hyperparameters</strong></p>
+<p><img alt="1560267825912" src="../imgs/1560267825912.png" /></p>
+<ul>
+<li>300是一个很好的词向量维度</li>
+<li>不对称上下文(只使用单侧的单词)不是很好，但是这在下游任务重可能不同</li>
+<li>
+<p>window size 设为 8 对 Glove向量来说比较好</p>
+</li>
+<li>
+<p>分析</p>
+<ul>
+<li>window size设为2的时候实际上有效的，并且对于句法分析是更好的，因为句法效果非常局部</li>
+</ul>
+</li>
+</ul>
+<p><strong>On the Dimensionality of Word Embedding</strong></p>
+<p>利用矩阵摄动理论，揭示了词嵌入维数选择的基本的偏差与方法的权衡</p>
+<p>当持续增大词向量维度的时候，词向量的效果不会一直变差并且会保持平稳</p>
+<p><strong>Analogy evaluation and hyperparameters</strong></p>
+<ul>
+<li>训练时间越长越好</li>
+</ul>
+<p><img alt="1560268494152" src="../imgs/1560268494152.png" /></p>
+<ul>
+<li>数据集越大越好，并且维基百科数据集比新闻文本数据集要好<ul>
+<li>因为维基百科就是在解释概念以及他们之间的相互关联，更多的说明性文本显示了事物之间的所有联系</li>
+<li>而新闻并不去解释，而只是去阐述一些事件</li>
+</ul>
+</li>
+</ul>
+<p><img alt="1560268567031" src="../imgs/1560268567031.png" /></p>
+<p><strong>Another intrinsic word vector evaluation</strong></p>
+<p>使用 cosine similarity 衡量词向量之间的相似程度</p>
+<h3 id="word-senses-and-word-sense-ambiguity">Word senses and word sense ambiguity<a class="headerlink" href="#word-senses-and-word-sense-ambiguity" title="Permanent link">&para;</a></h3>
+<p>大多数单词都是多义的</p>
+<ul>
+<li>特别是常见单词</li>
+<li>特别是存在已久的单词</li>
+</ul>
+<p><strong>Improving Word Representations Via Global Context</strong>
+<strong>And Multiple Word Prototypes (Huang et al. 2012)</strong></p>
+<p>将常用词的所有上下文进行聚类，通过该词得到一些清晰的簇，从而将这个常用词分解为多个单词，例如<code>bank_1, bank_2, bank_3</code></p>
+<p>虽然这很粗糙，并且有时sensors之间的划分也不是很明确甚至相互重叠</p>
+<p><strong>Linear Algebraic Structure of Word Senses, with</strong>
+<strong>Applications to Polysemy、</strong></p>
+<ul>
+<li>单词在标准单词嵌入(如word2vec)中的不同含义以线性叠加(加权和)的形式存在，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 指频率</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike }_{2}}+\alpha_{3} v_{\text { pike }_{3}} \\ \alpha_{1}=\frac{f_{1}}{f_{1}+f_{2}+f_{3}}
+</div>
+<script type="math/tex; mode=display">
+v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike }_{2}}+\alpha_{3} v_{\text { pike }_{3}} \\ \alpha_{1}=\frac{f_{1}}{f_{1}+f_{2}+f_{3}}
+</script>
+</div>
+<p>令人惊讶的结果，只是加权平均值就已经可以获得很好的效果</p>
+<ul>
+<li>由于从稀疏编码中得到的概念，你实际上可以将感官分离出来(前提是它们相对比较常见)</li>
+<li>可以理解为由于单词存在于高维的向量空间之中，不同的纬度所包含的含义是不同的，所以加权平均值并不会损害单词在不同含义所属的纬度上存储的信息</li>
+</ul>
+<p><strong>Extrinsic word vector evaluation</strong></p>
+<p>单词向量的外部评估：词向量可以应用于NLP的很多任务</p>
+<h2 id="notes-02-glove-evaluation-and-training">Notes 02  GloVe, Evaluation and Training<a class="headerlink" href="#notes-02-glove-evaluation-and-training" title="Permanent link">&para;</a></h2>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/61625439">斯坦福NLP课程 CS224N Winter 2019 学习笔记</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p><h2 id="__comments">评论</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/CS224n-2019-02-Word Vectors 2 and Word Senses/";
+      this.page.identifier =
+        "CS224n-2019-02-Word Vectors 2 and Word Senses/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();</script></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../CS224n-2019-01-Introduction and Word Vectors/" title="01 Introduction and Word Vectors" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">后退</span>01 Introduction and Word Vectors</span></div></a><a href="../面经/" title="我的面经" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前进</span>我的面经</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2019 - 2020 Looper Xiao Xu</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div><div class="md-footer-social"><link rel="stylesheet" href="../assets/fonts/font-awesome.css"> <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>  <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a> </div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="../js/baidu-tongji.js"></script></body></html>

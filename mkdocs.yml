@@ -35,6 +35,7 @@ nav:
         - 'CS224n-2019作业笔记' : 'CS224n-2019-Assignment.md'
         - CS224n-2019学习笔记:
           - '01 Introduction and Word Vectors' : 'CS224n-2019-01-Introduction and Word Vectors.md'
+          - '02 Word Vectors 2 and Word Senses' : 'CS224n-2019-02-Word Vectors 2 and Word Senses.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
