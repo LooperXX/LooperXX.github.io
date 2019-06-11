@@ -575,9 +575,25 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 [Word2Vec Tutorial - The Skip-Gram Model](http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/)
 
+**Fake Task**
+
+我们将训练一个带有单个隐藏层的简单神经网络来执行某个任务，但是我们实际上并没有将这个神经网络用于我们训练它的任务。相反，目标实际上只是学习隐藏层的权重，这实际上是我们试图学习的“单词向量”。这一技巧也在无监督的特征学习常用。训练一个`auto-encoder`从而在隐藏层中压缩输入向量并在输出层将隐藏层向量解压缩得到输入向量。训练完成后，去除输出层，只是用隐藏层。
+
+下图是从源文本中抽取样本的过程
+
+![Training Data](imgs/training_data.png)
+
+下图是网络架构图
+
+![Skip-gram Neural Network Architecture](imgs/skip_gram_net_arch.png)
+
+如果两个不同的单词具有非常相似的“上下文”（即它们周围可能出现的单词是相似的），那么我们的模型需要为这两个单词输出非常相似的结果。网络为这两个单词输出类似的上下文预测的一种方式是判断单词向量是否相似。因此，如果两个单词具有相似的上下文，那么我们的网络就会为这两个单词学习相似的单词向量！
+
 [Efficient Estimation of Word Representations in Vector Space](http://arxiv.org/pdf/1301.3781.pdf)(original word2vec paper)
 
 [Distributed Representations of Words and Phrases and their Compositionality](http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf) (negative sampling paper)
+
+{>>上述Paper在Note中已有详细笔记<<}
 
 ## Reference
 
@@ -591,4 +607,6 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 [斯坦福NLP课程 CS224N Winter 2019 学习笔记](<https://zhuanlan.zhihu.com/p/61625439>)
 
-[斯坦福大学 CS224n自然语言处理与深度学习笔记汇总](<https://zhuanlan.zhihu.com/p/31977759>) (这是针对note部分的翻译)
+[斯坦福大学 CS224n自然语言处理与深度学习笔记汇总](<https://zhuanlan.zhihu.com/p/31977759>) {>>这是针对note部分的翻译<<}
+
+[Notes on Stanford CS224n](<https://lintongmao.github.io/>) {>>我的同学[@lintongmao](<https://github.com/lintongmao/>)的学习笔记 采用英文记录 更加符合课程原义<<}
