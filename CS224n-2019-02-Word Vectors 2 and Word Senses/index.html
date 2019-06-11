@@ -109,10 +109,15 @@ J_{t}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} \mathbb{E}_
 J_{t}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} \mathbb{E}_{j \sim P(w)}\left[\log \sigma\left(-u_{j}^{T} v_{c}\right)\right]
 </script>
 </div>
-<p>本课以及作业中的目标函数是
-$$
-J_{\text {neg-sample}}\left(\boldsymbol{o}, \boldsymbol{v}<em>{c}, \boldsymbol{U}\right)=-\log \left(\sigma\left(\boldsymbol{u}</em>{o}^{\top} \boldsymbol{v}<em>{c}\right)\right)-\sum</em>{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}<em>{k}^{\top} \boldsymbol{v}</em>{c}\right)\right)
-$$</p>
+<p>本课以及作业中的目标函数是</p>
+<div>
+<div class="MathJax_Preview">
+J_{\text {neg-sample}}\left(\boldsymbol{o}, \boldsymbol{v}_{c}, \boldsymbol{U}\right)=-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right)
+</div>
+<script type="math/tex; mode=display">
+J_{\text {neg-sample}}\left(\boldsymbol{o}, \boldsymbol{v}_{c}, \boldsymbol{U}\right)=-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right)
+</script>
+</div>
 <ul>
 <li>我们希望中心词与真实上下文单词的向量点积更大，中心词与随机单词的点积更小</li>
 <li>k是我们负采样的样本数目</li>
@@ -192,14 +197,14 @@ P(w)=U(w)^{3 / 4} / Z
 <h3 id="encoding-meaning-in-vector-differences">Encoding meaning in vector differences<a class="headerlink" href="#encoding-meaning-in-vector-differences" title="Permanent link">&para;</a></h3>
 <p>将两个流派的想法结合起来，在神经网络中使用计数矩阵</p>
 <blockquote>
-<p>关于Glove的理论分析需要阅读原文，也可以阅读<a href="https://zhuanlan.zhihu.com/p/60208480">CS224N笔记(二)：GloVe</a> </p>
+<p>关于Glove的理论分析需要阅读原文，也可以阅读<a href="https://zhuanlan.zhihu.com/p/60208480">CS224N笔记(二)：GloVe</a> </p>
 </blockquote>
 <p><strong>关键思想</strong>：共现概率的比值可以对meaning component进行编码</p>
 <p><img alt="1560266202421" src="../imgs/1560266202421.png" /></p>
 <p>重点不是单一的概率大小，重点是他们之间的比值，其中蕴含着meaning component。</p>
 <blockquote>
 <p>例如我们想区分热力学上两种不同状态ice冰与蒸汽steam，它们之间的关系可通过与不同的单词 x 的co-occurrence probability 的比值来描述。</p>
-<p>例如对于solid固态，虽然 <span><span class="MathJax_Preview">P(solid|ice)</span><script type="math/tex">P(solid|ice)</script></span> 与 <span><span class="MathJax_Preview">P(solid|steam)</span><script type="math/tex">P(solid|steam)</script></span> 本身很小，不能透露有效的信息，但是它们的比值$ \frac{P(solid|ice)}{P(solid|steam)}$ 却较大，因为solid更常用来描述ice的状态而不是steam的状态，所以在ice的上下文中出现几率较大</p>
+<p>例如对于solid固态，虽然 <span><span class="MathJax_Preview">P(solid|ice)</span><script type="math/tex">P(solid|ice)</script></span> 与 <span><span class="MathJax_Preview">P(solid|steam)</span><script type="math/tex">P(solid|steam)</script></span> 本身很小，不能透露有效的信息，但是它们的比值 <span><span class="MathJax_Preview">\frac{P(solid|ice)}{P(solid|steam)}</span><script type="math/tex">\frac{P(solid|ice)}{P(solid|steam)}</script></span> 却较大，因为solid更常用来描述ice的状态而不是steam的状态，所以在ice的上下文中出现几率较大</p>
 <p>对于gas则恰恰相反，而对于water这种描述ice与steam均可或者fashion这种与两者都没什么联系的单词，则比值接近于1。所以相较于单纯的co-occurrence probability，实际上co-occurrence probability的相对比值更有意义</p>
 </blockquote>
 <p>我们如何在词向量空间中以线性meaning component的形式捕获共现概率的比值？</p>
@@ -248,10 +253,15 @@ J=\sum_{i, j=1}^{V} f\left(X_{i j}\right)\left(w_{i}^{T} \tilde{w}_{j}+b_{i}+\ti
 </li>
 </ul>
 <p><strong>Intrinsic word vector evaluation</strong></p>
-<p>词向量类比 <code>a:b :: c:?</code>
-$$
-d=\arg \max <em>{i} \frac{\left(x</em>{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left|x_{b}-x_{a}+x_{c}\right|}
-$$</p>
+<p>词向量类比 <code>a:b :: c:?</code></p>
+<div>
+<div class="MathJax_Preview">
+d=\arg \max _{i} \frac{\left(x_{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left\|x_{b}-x_{a}+x_{c}\right\|}
+</div>
+<script type="math/tex; mode=display">
+d=\arg \max _{i} \frac{\left(x_{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left\|x_{b}-x_{a}+x_{c}\right\|}
+</script>
+</div>
 <ul>
 <li>通过加法后的余弦距离是否能很好地捕捉到直观的语义和句法类比问题来评估单词向量</li>
 <li>从搜索中丢弃输入的单词</li>
@@ -310,7 +320,7 @@ $$</p>
 <p><strong>Linear Algebraic Structure of Word Senses, with</strong>
 <strong>Applications to Polysemy、</strong></p>
 <ul>
-<li>单词在标准单词嵌入(如word2vec)中的不同含义以线性叠加(加权和)的形式存在，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 指频率</li>
+<li>单词在标准单词嵌入(如word2vec)中的不同含义以线性叠加(加权和)的形式存在，<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 指频率</li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -332,8 +342,7 @@ v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike 
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
 <p>以下是整理笔记的过程中参考的博客：</p>
-<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/61625439">斯坦福NLP课程 CS224N Winter 2019 学习笔记</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
 <p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p><h2 id="__comments">评论</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
       this.page.url = "https://looperxx.github.io/CS224n-2019-02-Word Vectors 2 and Word Senses/";
       this.page.identifier =

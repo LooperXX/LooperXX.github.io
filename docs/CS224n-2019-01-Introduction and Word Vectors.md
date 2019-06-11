@@ -603,10 +603,9 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 以下是整理笔记的过程中参考的博客：
 
-[斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录](<https://zhuanlan.zhihu.com/p/59011576>)
-
-[斯坦福NLP课程 CS224N Winter 2019 学习笔记](<https://zhuanlan.zhihu.com/p/61625439>)
+[斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录](<https://zhuanlan.zhihu.com/p/59011576>) (课件核心内容的提炼，并包含作者的见解与建议)
 
 [斯坦福大学 CS224n自然语言处理与深度学习笔记汇总](<https://zhuanlan.zhihu.com/p/31977759>) {>>这是针对note部分的翻译<<}
 
 [Notes on Stanford CS224n](<https://lintongmao.github.io/>) {>>我的同学[@lintongmao](<https://github.com/lintongmao/>)的学习笔记 采用英文记录 更加符合课程原义<<}
+

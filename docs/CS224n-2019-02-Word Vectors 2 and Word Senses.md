@@ -100,6 +100,7 @@ J_{t}(\theta)=\log \sigma\left(u_{o}^{T} v_{c}\right)+\sum_{i=1}^{k} \mathbb{E}_
 $$
 
 本课以及作业中的目标函数是
+
 $$
 J_{\text {neg-sample}}\left(\boldsymbol{o}, \boldsymbol{v}_{c}, \boldsymbol{U}\right)=-\log \left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\right)-\sum_{k=1}^{K} \log \left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right)
 $$
@@ -180,7 +181,7 @@ $drive \to driver , swim \to swimmer, teach \to teacher$
 
 将两个流派的想法结合起来，在神经网络中使用计数矩阵
 
->   关于Glove的理论分析需要阅读原文，也可以阅读[CS224N笔记(二)：GloVe](<https://zhuanlan.zhihu.com/p/60208480>) 
+>   关于Glove的理论分析需要阅读原文，也可以阅读[CS224N笔记(二)：GloVe](<https://zhuanlan.zhihu.com/p/60208480>) 
 
 **关键思想**：共现概率的比值可以对meaning component进行编码
 
@@ -190,7 +191,7 @@ $drive \to driver , swim \to swimmer, teach \to teacher$
 
 >   例如我们想区分热力学上两种不同状态ice冰与蒸汽steam，它们之间的关系可通过与不同的单词 x 的co-occurrence probability 的比值来描述。
 >
->   例如对于solid固态，虽然 $P(solid|ice)$ 与 $P(solid|steam)$ 本身很小，不能透露有效的信息，但是它们的比值$ \frac{P(solid|ice)}{P(solid|steam)}$ 却较大，因为solid更常用来描述ice的状态而不是steam的状态，所以在ice的上下文中出现几率较大
+>   例如对于solid固态，虽然 $P(solid|ice)$ 与 $P(solid|steam)$ 本身很小，不能透露有效的信息，但是它们的比值 $\frac{P(solid|ice)}{P(solid|steam)}$ 却较大，因为solid更常用来描述ice的状态而不是steam的状态，所以在ice的上下文中出现几率较大
 >
 >   对于gas则恰恰相反，而对于water这种描述ice与steam均可或者fashion这种与两者都没什么联系的单词，则比值接近于1。所以相较于单纯的co-occurrence probability，实际上co-occurrence probability的相对比值更有意义
 
@@ -234,6 +235,7 @@ $$
 **Intrinsic word vector evaluation**
 
 词向量类比 `a:b :: c:?`
+
 $$
 d=\arg \max _{i} \frac{\left(x_{b}-x_{a}+x_{c}\right)^{T} x_{i}}{\left\|x_{b}-x_{a}+x_{c}\right\|}
 $$
@@ -302,7 +304,7 @@ Glove可视化效果
 **Linear Algebraic Structure of Word Senses, with**
 **Applications to Polysemy、**
 
--   单词在标准单词嵌入(如word2vec)中的不同含义以线性叠加(加权和)的形式存在，$f$ 指频率
+-   单词在标准单词嵌入(如word2vec)中的不同含义以线性叠加(加权和)的形式存在，$f$ 指频率
 
 $$
 v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike }_{2}}+\alpha_{3} v_{\text { pike }_{3}} \\ \alpha_{1}=\frac{f_{1}}{f_{1}+f_{2}+f_{3}}
@@ -329,9 +331,7 @@ $$
 
 以下是整理笔记的过程中参考的博客：
 
-[斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录](<https://zhuanlan.zhihu.com/p/59011576>)
-
-[斯坦福NLP课程 CS224N Winter 2019 学习笔记](<https://zhuanlan.zhihu.com/p/61625439>)
+[斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录](<https://zhuanlan.zhihu.com/p/59011576>) (课件核心内容的提炼，并包含作者的见解与建议)
 
 [斯坦福大学 CS224n自然语言处理与深度学习笔记汇总](<https://zhuanlan.zhihu.com/p/31977759>) {>>这是针对note部分的翻译<<}
 
