@@ -6,16 +6,14 @@
 
 ## Lecture 01 Introduction and Word Vectors
 
-**Lecture Plan**
+??? abstract "Lecture Plan"
 
--   The course
--   Human language and word meaning
--   Word2vec introduction
--   Word2vec objective function gradients
--   Optimization basics
--   Looking at word vectors
-
->   Singular Value Decomposition (SVD) 奇异值分解
+    -   The course
+    -   Human language and word meaning
+    -   Word2vec introduction
+    -   Word2vec objective function gradients
+    -   Optimization basics
+    -   Looking at word vectors
 
 ### Human language and word meaning
 
@@ -39,7 +37,9 @@ signifier(symbol)\Leftrightarrow signified(idea \ or \ thing) \\
 = \textbf{denotational semantics}
 $$
 
->   denotational semantics 指称语义
+!!! info ""
+
+    denotational semantics 指称语义
 
 **How do we have usable meaning in a computer?**
 
@@ -116,7 +116,7 @@ $$
 
 ***Word2vec*** (Mikolov et al. 2013)是一个学习单词向量的 **框架** 
 
-Idea：
+**IDEA**：
 
 -   我们有大量的文本 (corpus means 'body' in Latin. 复数为corpora)
 -   固定词汇表中的每个单词都由一个向量表示
@@ -141,10 +141,13 @@ $$
 -   其中，$\theta$ 为所有需要优化的变量
 
 目标函数$J(\theta)$ (有时被称为代价函数或损失函数) 是(平均)负对数似然
+
 $$
 J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
 $$
+
 其中log形式是方便将连乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。
+
 
 >   在连乘之前使用log转化为求和非常有效，特别是在做优化时
 >   $$
@@ -236,9 +239,12 @@ $$
 
 ## Notes 01  Introduction, SVD and Word2Vec
 
-**Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words**
-**(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.**
+??? abstract "Keyphrases"
 
+    Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.
+
+>   Singular Value Decomposition (SVD) 奇异值分解
+>
 >   这组笔记首先介绍了自然语言处理(NLP)的概念及其面临的问题。然后我们继续讨论将单词表示为数字向量的概念。最后，讨论了常用的词向量设计方法。
 
 ### Introduction to Natural Language Processing

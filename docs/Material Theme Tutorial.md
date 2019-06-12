@@ -311,7 +311,7 @@ tags on separate lines and adding new lines between the tags and the content.
 
 #### 突出
 `==...==`
-==AAA	==
+==AAA==
 
 #### 智能符号
 - 箭头 (<--, -->, <-->)

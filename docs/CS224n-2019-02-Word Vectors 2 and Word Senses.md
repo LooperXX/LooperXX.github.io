@@ -6,15 +6,15 @@
 
 ## Lecture 02 Word Vectors and Word Senses
 
-**Lecture Plan**
+??? abstract “Lecture Plan”
 
--   Finish looking at word vectors and word2vec
--   Optimization basics
--   Can we capture this essence more effectively by counting?
--   The GloVe model of word vectors
--   Evaluating word vectors 
--   Word senses
--   The course
+    -   Finish looking at word vectors and word2vec
+    -   Optimization basics
+    -   Can we capture this essence more effectively by counting?
+    -   The GloVe model of word vectors
+    -   Evaluating word vectors 
+    -   Word senses
+    -   The course
 
 !!! info "Goal"
 
@@ -325,11 +325,13 @@ $$
 
 ## Notes 02  GloVe, Evaluation and Training
 
-**Keyphrases: Global Vectors for Word Representation (GloVe). Intrinsic**
-**and extrinsic evaluations. Effect of hyperparameters on analogy**
-**evaluation tasks. Correlation of human judgment with word**
-**vector distances. Dealing with ambiguity in word using contexts.**
-**Window classification.**
+??? abstract “Keyphrases”
+
+    Global Vectors for Word Representation (GloVe). Intrinsic
+    and extrinsic evaluations. Effect of hyperparameters on analogy
+    evaluation tasks. Correlation of human judgment with word
+    vector distances. Dealing with ambiguity in word using contexts.
+    Window classification.
 
 >   这组笔记首先介绍了训练词向量的Glove模型。然后，它扩展了我们对词向量(或称词嵌入)的讨论，看看它们是如何通过内部和外部来评估的。我们讨论了以词类比作为一种内在评价技术的例子，以及它如何被用来调整词嵌入技术。然后我们讨论了训练模型的权重/参数和词向量的外部任务。最后，我们将人工神经网络作为一种自然语言处理任务的模型。
 
