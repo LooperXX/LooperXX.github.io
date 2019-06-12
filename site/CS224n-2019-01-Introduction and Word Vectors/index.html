@@ -1,0 +1,621 @@
+<!doctype html><html lang="zh" class="no-js"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="x-ua-compatible" content="ie=edge"><meta name="description" content="Looper's personal notes"><link rel="canonical" href="https://looperxx.github.io/CS224n-2019-01-Introduction and Word Vectors/"><meta name="author" content="Looper - Xiao Xu"><meta name="lang:clipboard.copy" content="复制"><meta name="lang:clipboard.copied" content="已复制"><meta name="lang:search.language" content="jp"><meta name="lang:search.pipeline.stopwords" content="True"><meta name="lang:search.pipeline.trimmer" content="True"><meta name="lang:search.result.none" content="没有找到符合条件的结果"><meta name="lang:search.result.one" content="找到 1 个符合条件的结果"><meta name="lang:search.result.other" content="# 个符合条件的结果"><meta name="lang:search.tokenizer" content="[\uff0c\u3002]+"><link rel="shortcut icon" href="../assets/images/favicon.png"><meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.3.1"><title>01 Introduction and Word Vectors - Looper's wiki</title><link rel="stylesheet" href="../assets/stylesheets/application.4031d38b.css"><script src="../assets/javascripts/modernizr.74668098.js"></script><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=swap"><style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style><link rel="stylesheet" href="../assets/fonts/material-icons.css"></head><body dir="ltr"><svg class="md-svg"><defs><svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg></defs></svg> <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off"> <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off"> <label class="md-overlay" data-md-component="overlay" for="__drawer"></label><a href="#cs224n-2019" tabindex="1" class="md-skip">跳转至 </a><header class="md-header" data-md-component="header"><nav class="md-header-nav md-grid"><div class="md-flex"><div class="md-flex__cell md-flex__cell--shrink"><a href="https://looperxx.github.io/" title="Looper's wiki" class="md-header-nav__button md-logo"><i class="md-icon"></i></a></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label></div><div class="md-flex__cell md-flex__cell--stretch"><div class="md-flex__ellipsis md-header-nav__title" data-md-component="title"><span class="md-header-nav__topic">Looper's wiki</span><span class="md-header-nav__topic">01 Introduction and Word Vectors</span></div></div><div class="md-flex__cell md-flex__cell--shrink"><label class="md-icon md-icon--search md-header-nav__button" for="__search"></label><div class="md-search" data-md-component="search" role="dialog"><label class="md-search__overlay" for="__search"></label><div class="md-search__inner" role="search"><form class="md-search__form" name="search"><input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active"> <label class="md-icon md-search__icon" for="__search"></label> <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">&#xE5CD;</button></form><div class="md-search__output"><div class="md-search__scrollwrap" data-md-scrollfix><div class="md-search-result" data-md-component="result"><div class="md-search-result__meta">键入以开始搜索</div><ol class="md-search-result__list"></ol></div></div></div></div></div></div><div class="md-flex__cell md-flex__cell--shrink"><div class="md-header-nav__source"><a href="https://github.com/looperxx/looperxx.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">looperxx/looperxx.github.io</div></a></div></div></div></nav></header><div class="md-container"><nav class="md-tabs md-tabs--active" data-md-component="tabs"><div class="md-tabs__inner md-grid"><ul class="md-tabs__list"><li class="md-tabs__item"><a href=".." title="Home" class="md-tabs__link">Home</a></li><li class="md-tabs__item"><a href="../Linux/" title="Math & CS & Coding" class="md-tabs__link">Math & CS & Coding</a></li><li class="md-tabs__item"><a href="../Attention/" title="ML & DL" class="md-tabs__link">ML & DL</a></li><li class="md-tabs__item"><a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">NLP</a></li><li class="md-tabs__item"><a href="../面经/" title="Interview experience" class="md-tabs__link">Interview experience</a></li><li class="md-tabs__item"><a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">For MkDocs</a></li></ul></div></nav><main class="md-main"><div class="md-main__inner md-grid" data-md-component="container"><div class="md-sidebar md-sidebar--primary" data-md-component="navigation"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--primary" data-md-level="0"><label class="md-nav__title md-nav__title--site" for="__drawer"><a href="https://looperxx.github.io/" title="Looper's wiki" class="md-nav__button md-logo"><i class="md-icon"></i></a>Looper's wiki</label><div class="md-nav__source"><a href="https://github.com/looperxx/looperxx.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github"><div class="md-source__icon"><svg viewBox="0 0 24 24" width="24" height="24"><use xlink:href="#__github" width="24" height="24"></use></svg></div><div class="md-source__repository">looperxx/looperxx.github.io</div></a></div><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href=".." title="Home" class="md-nav__link">Home</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2"><label class="md-nav__link" for="nav-2">Math & CS & Coding</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-2">Math & CS & Coding</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Linux/" title="Linux" class="md-nav__link">Linux</a></li><li class="md-nav__item"><a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">重点内容</a></li><li class="md-nav__item"><a href="../历年机试/" title="历年机试" class="md-nav__link">历年机试</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3"><label class="md-nav__link" for="nav-3">ML & DL</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-3">ML & DL</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Attention/" title="Attention" class="md-nav__link">Attention</a></li><li class="md-nav__item"><a href="../Normalization/" title="Normalization" class="md-nav__link">Normalization</a></li><li class="md-nav__item"><a href="../Concepts/" title="Concepts" class="md-nav__link">Concepts</a></li><li class="md-nav__item"><a href="../花书经验法则/" title="花书经验法则" class="md-nav__link">花书经验法则</a></li><li class="md-nav__item"><a href="../经典网络/" title="经典网络" class="md-nav__link">经典网络</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked><label class="md-nav__link" for="nav-4">NLP</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-4">NLP</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-1" type="checkbox" id="nav-4-1"><label class="md-nav__link" for="nav-4-1">简介</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-1">简介</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">自然语言处理简介</a></li><li class="md-nav__item"><a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">NLP的巨人肩膀</a></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2"><label class="md-nav__link" for="nav-4-2">书籍笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-2">书籍笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../NLP Concepts/" title="NLP Concepts" class="md-nav__link">NLP Concepts</a></li><li class="md-nav__item"><a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">Machine Reading Comprehension</a></li></ul></nav></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked><label class="md-nav__link" for="nav-4-3">课程笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-4-3">课程笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../CS224n-2019 简介/" title="CS224n-2019简介" class="md-nav__link">CS224n-2019简介</a></li><li class="md-nav__item"><a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">CS224n-2019作业笔记</a></li><li class="md-nav__item md-nav__item--active md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3-3" type="checkbox" id="nav-4-3-3" checked><label class="md-nav__link" for="nav-4-3-3">CS224n-2019学习笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="3"><label class="md-nav__title" for="nav-4-3-3">CS224n-2019学习笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item md-nav__item--active"><input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc"><label class="md-nav__link md-nav__link--active" for="__toc">01 Introduction and Word Vectors</label><a href="./" title="01 Introduction and Word Vectors" class="md-nav__link md-nav__link--active">01 Introduction and Word Vectors</a><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#lecture-01-introduction-and-word-vectors" title="Lecture 01 Introduction and Word Vectors" class="md-nav__link">Lecture 01 Introduction and Word Vectors</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#human-language-and-word-meaning" title="Human language and word meaning" class="md-nav__link">Human language and word meaning</a></li><li class="md-nav__item"><a href="#word2vec-introduction" title="Word2vec introduction" class="md-nav__link">Word2vec introduction</a></li><li class="md-nav__item"><a href="#word2vec-objective-function" title="Word2vec objective function" class="md-nav__link">Word2vec objective function</a></li><li class="md-nav__item"><a href="#word2vec-prediction-function" title="Word2vec prediction function" class="md-nav__link">Word2vec prediction function</a></li></ul></nav></li><li class="md-nav__item"><a href="#notes-01-introduction-svd-and-word2vec" title="Notes 01  Introduction, SVD and Word2Vec" class="md-nav__link">Notes 01  Introduction, SVD and Word2Vec</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#introduction-to-natural-language-processing" title="Introduction to Natural Language Processing" class="md-nav__link">Introduction to Natural Language Processing</a></li><li class="md-nav__item"><a href="#word-vectors" title="Word Vectors" class="md-nav__link">Word Vectors</a></li><li class="md-nav__item"><a href="#svd-based-methods" title="SVD Based Methods" class="md-nav__link">SVD Based Methods</a></li><li class="md-nav__item"><a href="#iteration-based-methods-word2vec" title="Iteration Based Methods - Word2vec" class="md-nav__link">Iteration Based Methods - Word2vec</a></li></ul></nav></li><li class="md-nav__item"><a href="#gensim-word-vectors-example" title="Gensim word vectors example" class="md-nav__link">Gensim word vectors example</a></li><li class="md-nav__item"><a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">Suggested Readings</a></li><li class="md-nav__item"><a href="#reference" title="Reference" class="md-nav__link">Reference</a></li><li class="md-nav__item"><a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">评论</a></li></ul></nav></li><li class="md-nav__item"><a href="../CS224n-2019-02-Word Vectors 2 and Word Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">02 Word Vectors 2 and Word Senses</a></li></ul></nav></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5"><label class="md-nav__link" for="nav-5">Interview experience</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-5">Interview experience</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../面经/" title="我的面经" class="md-nav__link">我的面经</a></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2"><label class="md-nav__link" for="nav-5-2">实训笔记</label><nav class="md-nav" data-md-component="collapsible" data-md-level="2"><label class="md-nav__title" for="nav-5-2">实训笔记</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">Protobuf</a></li><li class="md-nav__item"><a href="../FDBus/" title="FDBus" class="md-nav__link">FDBus</a></li><li class="md-nav__item"><a href="../FDBus API/" title="FDBus API" class="md-nav__link">FDBus API</a></li><li class="md-nav__item"><a href="../FDBus内部结构/" title="FDBus内部结构" class="md-nav__link">FDBus内部结构</a></li><li class="md-nav__item"><a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">Cross compiler</a></li></ul></nav></li></ul></nav></li><li class="md-nav__item md-nav__item--nested"><input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6"><label class="md-nav__link" for="nav-6">For MkDocs</label><nav class="md-nav" data-md-component="collapsible" data-md-level="1"><label class="md-nav__title" for="nav-6">For MkDocs</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="../MkDocs_demo/" title="Demo" class="md-nav__link">Demo</a></li><li class="md-nav__item"><a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">Material Theme Tutorial</a></li></ul></nav></li></ul></nav></div></div></div><div class="md-sidebar md-sidebar--secondary" data-md-component="toc"><div class="md-sidebar__scrollwrap"><div class="md-sidebar__inner"><nav class="md-nav md-nav--secondary"><label class="md-nav__title" for="__toc">目录</label><ul class="md-nav__list" data-md-scrollfix><li class="md-nav__item"><a href="#lecture-01-introduction-and-word-vectors" title="Lecture 01 Introduction and Word Vectors" class="md-nav__link">Lecture 01 Introduction and Word Vectors</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#human-language-and-word-meaning" title="Human language and word meaning" class="md-nav__link">Human language and word meaning</a></li><li class="md-nav__item"><a href="#word2vec-introduction" title="Word2vec introduction" class="md-nav__link">Word2vec introduction</a></li><li class="md-nav__item"><a href="#word2vec-objective-function" title="Word2vec objective function" class="md-nav__link">Word2vec objective function</a></li><li class="md-nav__item"><a href="#word2vec-prediction-function" title="Word2vec prediction function" class="md-nav__link">Word2vec prediction function</a></li></ul></nav></li><li class="md-nav__item"><a href="#notes-01-introduction-svd-and-word2vec" title="Notes 01  Introduction, SVD and Word2Vec" class="md-nav__link">Notes 01  Introduction, SVD and Word2Vec</a><nav class="md-nav"><ul class="md-nav__list"><li class="md-nav__item"><a href="#introduction-to-natural-language-processing" title="Introduction to Natural Language Processing" class="md-nav__link">Introduction to Natural Language Processing</a></li><li class="md-nav__item"><a href="#word-vectors" title="Word Vectors" class="md-nav__link">Word Vectors</a></li><li class="md-nav__item"><a href="#svd-based-methods" title="SVD Based Methods" class="md-nav__link">SVD Based Methods</a></li><li class="md-nav__item"><a href="#iteration-based-methods-word2vec" title="Iteration Based Methods - Word2vec" class="md-nav__link">Iteration Based Methods - Word2vec</a></li></ul></nav></li><li class="md-nav__item"><a href="#gensim-word-vectors-example" title="Gensim word vectors example" class="md-nav__link">Gensim word vectors example</a></li><li class="md-nav__item"><a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">Suggested Readings</a></li><li class="md-nav__item"><a href="#reference" title="Reference" class="md-nav__link">Reference</a></li><li class="md-nav__item"><a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">评论</a></li></ul></nav></div></div></div><div class="md-content"><article class="md-content__inner md-typeset"><a href="https://github.com/looperxx/looperxx.github.io/edit/master/docs/CS224n-2019-01-Introduction and Word Vectors.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a><h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>结合每课时的课件、笔记与推荐读物等整理而成</p>
+</li>
+<li>
+<p>作业部分将单独整理</p>
+</li>
+</ul>
+<h2 id="lecture-01-introduction-and-word-vectors">Lecture 01 Introduction and Word Vectors<a class="headerlink" href="#lecture-01-introduction-and-word-vectors" title="Permanent link">&para;</a></h2>
+<p><strong>Lecture Plan</strong></p>
+<ul>
+<li>The course</li>
+<li>Human language and word meaning</li>
+<li>Word2vec introduction</li>
+<li>Word2vec objective function gradients</li>
+<li>Optimization basics</li>
+<li>Looking at word vectors</li>
+</ul>
+<blockquote>
+<p>Singular Value Decomposition (SVD) 奇异值分解</p>
+</blockquote>
+<h3 id="human-language-and-word-meaning">Human language and word meaning<a class="headerlink" href="#human-language-and-word-meaning" title="Permanent link">&para;</a></h3>
+<p>人类之所以比类人猿更“聪明”，是因为我们有语言，因此是一个人机网络，其中人类语言作为网络语言。人类语言具有 <strong>信息功能</strong> 和 <strong>社会功能</strong> 。</p>
+<p>据估计，人类语言只有大约5000年的短暂历。语言是人类变得强大的主要原因。写作是另一件让人类变得强大的事情。它是使知识能够在空间上传送到世界各地，并在时间上传送的一种工具。</p>
+<p>但是，相较于如今的互联网的传播速度而言，人类语言是一种缓慢的语言。然而，只需人类语言形式的几百位信息，就可以构建整个视觉场景。这就是自然语言如此迷人的原因。</p>
+<p><strong>How do we represent the meaning of a word?</strong></p>
+<p><strong><em>meaning</em></strong></p>
+<ul>
+<li>用一个词、词组等表示的概念。</li>
+<li>一个人想用语言、符号等来表达的想法。</li>
+<li>表达在作品、艺术等方面的思想</li>
+</ul>
+<p>理解意义的最普遍的语言方式(<strong><em>linguistic way</em></strong>) : 语言符号与语言符号的意义的转化
+$$
+signifier(symbol)\Leftrightarrow signified(idea  or  thing) \
+= \textbf{denotational semantics}
+$$</p>
+<blockquote>
+<p>denotational semantics 指称语义</p>
+</blockquote>
+<p><strong>How do we have usable meaning in a computer?</strong></p>
+<p><strong><em>WordNet</em></strong>, 一个包含同义词集和上位词(“is a”关系) <strong><em>synonym sets and hypernyms</em></strong> 的列表的辞典</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">synonym</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="n">poses</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span><span class="s1">&#39;noun&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">:</span><span class="s1">&#39;verb&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span><span class="s1">&#39;adj (s)&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="s1">&#39;adj&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="s1">&#39;adv&#39;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">synset</span> <span class="ow">in</span> <span class="n">wn</span><span class="o">.</span><span class="n">synsets</span><span class="p">(</span><span class="s2">&quot;good&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;{}: {}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">poses</span><span class="p">[</span><span class="n">synset</span><span class="o">.</span><span class="n">pos</span><span class="p">()],</span>
+                    <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">l</span><span class="o">.</span><span class="n">name</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">synset</span><span class="o">.</span><span class="n">lemmas</span><span class="p">()])))</span>
+</pre></div>
+</td></tr></table></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">hypernyms</label>
+<div class="superfences-content"><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">wordnet</span> <span class="k">as</span> <span class="n">wn</span>
+<span class="n">panda</span> <span class="o">=</span> <span class="n">wn</span><span class="o">.</span><span class="n">synset</span><span class="p">(</span><span class="s2">&quot;panda.n.01&quot;</span><span class="p">)</span>
+<span class="n">hyper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">hypernyms</span><span class="p">()</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">panda</span><span class="o">.</span><span class="n">closure</span><span class="p">(</span><span class="n">hyper</span><span class="p">))</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p><img alt="同义词" src="../imgs/1560068762906.png" /></p>
+<p><img alt="上位词" src="../imgs/1560068729196.png" /></p>
+<p><strong>Problems with resources like WordNet</strong></p>
+<ul>
+<li>作为一个资源很好，但忽略了细微差别<ul>
+<li>例如“proficient”被列为“good”的同义词。这只在某些上下文中是正确的。</li>
+</ul>
+</li>
+<li>缺少单词的新含义<ul>
+<li>难以持续更新</li>
+<li>例如 wicked, badass, nifty, wizard, genius, ninja, bombest</li>
+</ul>
+</li>
+<li>主观的</li>
+<li>需要人类劳动来创造和调整</li>
+<li>无法计算单词相似度</li>
+</ul>
+<p><strong>Representing words as discrete symbols</strong></p>
+<p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。</p>
+<div>
+<div class="MathJax_Preview">
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
+</div>
+<script type="math/tex; mode=display">
+motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
+</script>
+</div>
+<p><strong>Problem with words as discrete symbols</strong></p>
+<p>所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。</p>
+<p><strong>Solutions</strong></p>
+<ul>
+<li>使用类似 <strong><em>WordNet</em></strong> 的工具中的列表，获得相似度，但会因不够完整而失败</li>
+<li>学习在向量本身中编码相似性</li>
+</ul>
+<p><strong>Representing words by their context</strong></p>
+<ul>
+<li><strong><u>Distributional semantics</u></strong> ：一个单词的意思是由经常出现在它附近的单词给出的<ul>
+<li><em>“You shall know a word by the company it keeps”</em> (J. R. Firth 1957: 11)</li>
+<li>现代统计NLP最成功的理念之一</li>
+<li>有点物以类聚，人以群分的感觉</li>
+</ul>
+</li>
+<li>当一个单词<span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>出现在文本中时，它的上下文是出现在其附近的一组单词(在一个固定大小的窗口中)。</li>
+<li>使用<span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>的许多上下文来构建<span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>的表示</li>
+</ul>
+<p><img alt="示例" src="../imgs/1560069660365.png" /></p>
+<h3 id="word2vec-introduction">Word2vec introduction<a class="headerlink" href="#word2vec-introduction" title="Permanent link">&para;</a></h3>
+<p>我们为每个单词构建一个 <strong>密集</strong> 的向量，使其与出现在相似上下文中的单词向量相似</p>
+<p>词向量 <strong><em>word vectors</em></strong> 有时被称为词嵌入 <strong><em>word embeddings</em></strong>  或词表示 <strong><em>word representations</em></strong>  </p>
+<p>它们是分布式表示 <strong><em>distributed representation</em></strong></p>
+<p><img alt="1560142035593" src="../imgs/1560142035593.png" /></p>
+<p><strong><em>Word2vec</em></strong> (Mikolov et al. 2013)是一个学习单词向量的 <strong>框架</strong> </p>
+<p>Idea：</p>
+<ul>
+<li>我们有大量的文本 (corpus means 'body' in Latin. 复数为corpora)</li>
+<li>固定词汇表中的每个单词都由一个向量表示</li>
+<li>文本中的每个位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>，其中有一个中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和上下文(“外部”)单词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
+<li>使用 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>词向量的相似性</strong> 来计算给定 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 的 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>概率</strong> (反之亦然)</li>
+<li><strong>不断调整词向量</strong> 来最大化这个概率</li>
+</ul>
+<p>下图为窗口大小 <span><span class="MathJax_Preview">j=2</span><script type="math/tex">j=2</script></span> 时的 <span><span class="MathJax_Preview">P\left(w_{t+j} | w_{t}\right)</span><script type="math/tex">P\left(w_{t+j} | w_{t}\right)</script></span> 计算过程，center word分别为 <span><span class="MathJax_Preview">into</span><script type="math/tex">into</script></span> 和 <span><span class="MathJax_Preview">banking</span><script type="math/tex">banking</script></span></p>
+<p><img alt="1560070410531" src="../imgs/1560070410531.png" /></p>
+<p><img alt="1560070494437" src="../imgs/1560070494437.png" /></p>
+<h3 id="word2vec-objective-function">Word2vec objective function<a class="headerlink" href="#word2vec-objective-function" title="Permanent link">&para;</a></h3>
+<p>对于每个位置<span><span class="MathJax_Preview">t=1, \ldots, T</span><script type="math/tex">t=1, \ldots, T</script></span> ，在大小为<span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>的固定窗口内预测上下文单词，给定中心词 <span><span class="MathJax_Preview">w_j</span><script type="math/tex">w_j</script></span></p>
+<div>
+<div class="MathJax_Preview">
+Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
+</div>
+<script type="math/tex; mode=display">
+Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
+</script>
+</div>
+<ul>
+<li>其中，<span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 为所有需要优化的变量</li>
+</ul>
+<p>目标函数<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span> (有时被称为代价函数或损失函数) 是(平均)负对数似然
+$$
+J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
+$$
+其中log形式是方便将连乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。</p>
+<blockquote>
+<p>在连乘之前使用log转化为求和非常有效，特别是在做优化时
+  $$
+  \log \prod_i x_i = \sum_i \log x_i
+  $$</p>
+</blockquote>
+<ul>
+<li><strong>最小化目标函数 <span><span class="MathJax_Preview">\Leftrightarrow</span><script type="math/tex">\Leftrightarrow</script></span>  最大化预测精度</strong></li>
+<li><u>问题</u>：如何计算 <span><span class="MathJax_Preview">P(w_{t+j} | w_{t} ; \theta)</span><script type="math/tex">P(w_{t+j} | w_{t} ; \theta)</script></span> ？</li>
+<li><u>回答</u>：对于每个单词都是用两个向量<ul>
+<li><span><span class="MathJax_Preview">v_w</span><script type="math/tex">v_w</script></span> 当 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 是中心词时</li>
+<li><span><span class="MathJax_Preview">u_w</span><script type="math/tex">u_w</script></span> 当 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 是上下文词时</li>
+</ul>
+</li>
+<li>于是对于一个中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和一个上下文词  <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</div>
+<script type="math/tex; mode=display">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</script>
+</div>
+<blockquote>
+<p>公式中，向量 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 和向量 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 进行点乘。向量之间越相似，点乘结果越大，从而归一化后得到的概率值也越大。模型的训练正是为了使得具有相似上下文的单词，具有相似的向量。</p>
+<p>点积是计算相似性的一种简单方法，在注意力机制中常使用点积计算Score，参见我的<a href="https://looperxx.github.io/Attention/">Attention笔记</a></p>
+</blockquote>
+<h3 id="word2vec-prediction-function">Word2vec prediction function<a class="headerlink" href="#word2vec-prediction-function" title="Permanent link">&para;</a></h3>
+<div>
+<div class="MathJax_Preview">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</div>
+<script type="math/tex; mode=display">
+P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
+</script>
+</div>
+<ul>
+<li>取幂使任何数都为正</li>
+<li>点积比较o和c的相似性 <span><span class="MathJax_Preview">u^{T} v=u . v=\sum_{i=1}^{n} u_{i} v_{i}</span><script type="math/tex">u^{T} v=u . v=\sum_{i=1}^{n} u_{i} v_{i}</script></span> ，点积越大则概率越大</li>
+<li>分母：对整个词汇表进行标准化，从而给出概率分布</li>
+</ul>
+<p><strong>softmax function</strong> <span><span class="MathJax_Preview">\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}</span><script type="math/tex">\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}</script></span>
+$$
+\operatorname{softmax}\left(x_{i}\right)=\frac{\exp \left(x_{i}\right)}{\sum_{j=1}^{n} \exp \left(x_{j}\right)}=p_{i}
+$$
+将任意值 <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 映射到概率分布 <span><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span></p>
+<ul>
+<li><strong>max</strong> ：因为放大了最大的概率</li>
+<li><strong>soft</strong> ：因为仍然为较小的 <span><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 赋予了一定概率</li>
+<li>深度学习中常用</li>
+</ul>
+<p>首先我们随机初始化 <span><span class="MathJax_Preview">u_{w}\in\mathbb{R}^d</span><script type="math/tex">u_{w}\in\mathbb{R}^d</script></span> 和 <span><span class="MathJax_Preview">v_{w}\in\mathbb{R}^d</span><script type="math/tex">v_{w}\in\mathbb{R}^d</script></span> ，而后使用梯度下降法进行更新</p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&amp;=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
+\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
+\end{align}
+</script>
+</div>
+<blockquote>
+<p>偏导数可以移进求和中，对应上方公式的最后两行的推导
+  $$
+  \frac{\partial}{\partial x}\sum_iy_i = \sum_i\frac{\partial}{\partial x}y_i
+  $$
+</p>
+</blockquote>
+<p>我们可以对上述结果重新排列如下，第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。</p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+&amp;=u_o-\sum_{w\in V}P(w|c)u_w
+\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial}{\partial v_c}\log P(o|c)
+&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
+&=u_o-\sum_{w\in V}P(w|c)u_w
+\end{align}
+</script>
+</div>
+<p>再对 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 进行偏微分计算，注意这里的 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 是 <span><span class="MathJax_Preview">u_{w=o}</span><script type="math/tex">u_{w=o}</script></span> 的简写，故可知 <span><span class="MathJax_Preview">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</span><script type="math/tex">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</script></span> </p>
+<div>
+<div class="MathJax_Preview">
+\begin{align}
+\frac{\partial}{\partial u_o}\log P(o|c)
+&amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=\frac{\partial}{\partial u_o}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=\frac{\partial}{\partial u_o}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&amp;=v_c-\frac{\log\sum\frac{\partial}{\partial u_o}\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&amp;=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&amp;=v_c - P(o|c)v_c\\
+&amp;=(1-P(o|c))v_c
+\end{align}
+</div>
+<script type="math/tex; mode=display">
+\begin{align}
+\frac{\partial}{\partial u_o}\log P(o|c)
+&=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=\frac{\partial}{\partial u_o}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=\frac{\partial}{\partial u_o}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
+&=v_c-\frac{\log\sum\frac{\partial}{\partial u_o}\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
+&=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
+&=v_c - P(o|c)v_c\\
+&=(1-P(o|c))v_c
+\end{align}
+</script>
+</div>
+<p>可以理解，当 <span><span class="MathJax_Preview">P(o|c) \to 1</span><script type="math/tex">P(o|c) \to 1</script></span> ，即通过中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
+<p>关于此处的微积分知识，可以通过<a href="https://nndl.github.io/">《神经网络与深度学习》</a>中的 <strong>附录B</strong> 了解。</p>
+<h2 id="notes-01-introduction-svd-and-word2vec">Notes 01  Introduction, SVD and Word2Vec<a class="headerlink" href="#notes-01-introduction-svd-and-word2vec" title="Permanent link">&para;</a></h2>
+<p><strong>Keyphrases: Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words</strong>
+<strong>(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.</strong></p>
+<blockquote>
+<p>这组笔记首先介绍了自然语言处理(NLP)的概念及其面临的问题。然后我们继续讨论将单词表示为数字向量的概念。最后，讨论了常用的词向量设计方法。</p>
+</blockquote>
+<h3 id="introduction-to-natural-language-processing">Introduction to Natural Language Processing<a class="headerlink" href="#introduction-to-natural-language-processing" title="Permanent link">&para;</a></h3>
+<p><strong>What is so special about NLP?</strong></p>
+<p>Natural language is a discrete/symbolic/categorical system </p>
+<blockquote>
+<p>离散的/符号的/分类的</p>
+</blockquote>
+<p>人类的语言有什么特别之处？人类语言是一个专门用来表达意义的系统，而不是由任何形式的物理表现产生的。在这方面上，它与视觉或任何其他机器学习任务都有很大的不同。</p>
+<p>大多数单词只是一个语言学以外的的符号：单词是一个映射到所指(signified 想法或事物)的能指(signifier)。</p>
+<p>例如，“rocket”一词指的是火箭的概念，因此可以引申为火箭的实例。当我们使用单词和字母来表达符号时，也会有一些例外，例如“whoompaa”的使用。最重要的是，这些语言的符号可以被 编码成几种形式：声音、手势、文字等等，然后通过连续的信号传输给大脑，大脑本身似乎也能以一种连续的方式对这些信号进行解码。人们在语言哲学和语言学方面做了大量的工作来概念化人类语言，并将词语与其参照、意义等区分开来。</p>
+<p><strong>Examples of tasks</strong></p>
+<p>自然语言处理有不同层次的任务，从语言处理到语义解释再到语篇处理。自然语言处理的目标是通过设计算法使得计算机能够“理解”语言，从而能够执行某些特定的任务。不同的任务的难度是不一样的</p>
+<p><strong>Easy</strong></p>
+<ul>
+<li>拼写检查  Spell Checking</li>
+<li>关键词检索 Keyword Search</li>
+<li>同义词查找  Finding Synonyms</li>
+</ul>
+<p><strong>Medium</strong></p>
+<ul>
+<li>解析来自网站、文档等的信息</li>
+</ul>
+<p><strong>Hard</strong></p>
+<ul>
+<li>机器翻译  Machine Translation</li>
+<li>语义分析  Semantic Analysis</li>
+<li>指代消解  Coreference</li>
+<li>问答系统  Question Answering</li>
+</ul>
+<p><strong>How to represent words?</strong></p>
+<p>在所有的NLP任务中，第一个也是可以说是最重要的共同点是我们如何将单词表示为任何模型的输入。在这里我们不会讨论早期的自然语言处理工作是将单词视为原子符号 atomic symbols。为了让大多数的自然语言处理任务能有更好的表现，我们首先需要了解单词之间的相似和不同。有了词向量，我们可以很容易地将其编码到向量本身中。</p>
+<h3 id="word-vectors">Word Vectors<a class="headerlink" href="#word-vectors" title="Permanent link">&para;</a></h3>
+<p>使用词向量编码单词，N维空间足够我们编码语言的所有语义，每一维度都会编码一些我们使用语言传递的信息。简单的one-hot向量无法给出单词间的相似性，我们需要将维度  <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span>  减少至一个低纬度的子空间，来获得稠密的词向量，获得词之间的关系。</p>
+<h3 id="svd-based-methods">SVD Based Methods<a class="headerlink" href="#svd-based-methods" title="Permanent link">&para;</a></h3>
+<p>这是一类找到词嵌入的方法（即词向量），我们首先遍历一个很大的数据集和统计词的共现计数矩阵 X，然后对矩阵 X 进行 SVD 分解得到 <span><span class="MathJax_Preview">USV^{T}</span><script type="math/tex">USV^{T}</script></span> 。然后我们使用 U 的行来作为字典中所有词的词向量。我们来讨论一下矩阵 X 的几种选择。</p>
+<p><strong>Word-Document Matrix</strong></p>
+<p>我们最初的尝试，我们猜想相关连的单词在同一个文档中会经常出现。例如，“banks”，“bonds”，“stocks”，“moneys”等等，出现在一起的概率会比较高。但是“banks”，“octopus”，“banana”，“hockey”不大可能会连续地出现。我们根据这个情况来建立一个 <strong><em>Word-Document</em></strong> 矩阵，<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 是按照以下方式构建：遍历数亿的文档和当词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 出现在文档 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span>，我们对 <span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span> 加一。这显然是一个很大的矩阵 <span><span class="MathJax_Preview">\mathbb{R}^{|V|\times M}</span><script type="math/tex">\mathbb{R}^{|V|\times M}</script></span>，它的规模是和文档数量 <span><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 成正比关系。因此我们可以尝试更好的方法。</p>
+<p><strong>Window based Co-occurrence Matrix</strong></p>
+<p>同样的逻辑也适用于这里，但是矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 存储单词的共现，从而成为一个关联矩阵。在此方法中，我们计算每个单词在特定大小的窗口中出现的次数。我们按照这个方法对语料库中的所有单词进行统计。</p>
+<ul>
+<li>生成维度为 <span><span class="MathJax_Preview">|V| \times|V|</span><script type="math/tex">|V| \times|V|</script></span> 的共现矩阵<span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span></li>
+<li>在 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 上应用 <strong>SVD</strong> 从而得到 <span><span class="MathJax_Preview">X = {USV}^T</span><script type="math/tex">X = {USV}^T</script></span> </li>
+<li>选择 <span><span class="MathJax_Preview">U</span><script type="math/tex">U</script></span> 前 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 行 得到 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 维的词向量</li>
+<li><span><span class="MathJax_Preview">\frac{\sum_{i=1}^{k} \sigma_{i}}{\sum_{i=1}^{|V|} \sigma_{i}}</span><script type="math/tex">\frac{\sum_{i=1}^{k} \sigma_{i}}{\sum_{i=1}^{|V|} \sigma_{i}}</script></span> 表示第一个k维捕获的方差量</li>
+</ul>
+<p><strong>Applying SVD to the cooccurrence matrix</strong></p>
+<p>我们对矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 使用 SVD，观察奇异值（矩阵 S 上对角线上元素），根据期望的捕获方差百分比截断，留下前 k 个元素：</p>
+<p>然后取子矩阵 <span><span class="MathJax_Preview">U_{1:|V|, 1:k}</span><script type="math/tex">U_{1:|V|, 1:k}</script></span> 作为词嵌入矩阵。这就给出了词汇表中每个词的 k 维表示</p>
+<p>对矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 使用SVD</p>
+<p><img alt="1560082218689" src="../imgs/1560082218689.png" /></p>
+<p>通过选择前 k 个奇异向量来降低维度</p>
+<p><img alt="1560082288451" src="../imgs/1560082288451.png" /></p>
+<p>这两种方法都给我们提供了足够的词向量来编码语义和句法(part of speech)信息，但伴随许多其他问题</p>
+<ul>
+<li>矩阵的维度会经常发生改变（经常增加新的单词和语料库的大小会改变）。</li>
+<li>矩阵会非常的稀疏，因为很多词不会共现。</li>
+<li>矩阵维度一般会非常高 <span><span class="MathJax_Preview">\approx 10^{6}\times 10^{6}</span><script type="math/tex">\approx 10^{6}\times 10^{6}</script></span></li>
+<li>基于 SVD 的方法的计算复杂度很高 ( <span><span class="MathJax_Preview">m×n</span><script type="math/tex">m×n</script></span> 矩阵的计算成本是 <span><span class="MathJax_Preview">O({mn}^2)</span><script type="math/tex">O({mn}^2)</script></span> )，并且很难合并新单词或文档</li>
+<li>需要在 X 上加入一些技巧处理来解决词频的极剧的不平衡</li>
+<li>需要在 X 上加入一些技巧处理来解决词频的极剧的不平衡</li>
+</ul>
+<p>然而，基于计数的方法可以有效地利用统计量</p>
+<p>对上述讨论中存在的问题存在以下的解决方法：</p>
+<ul>
+<li>忽略功能词，例如 “the”，“he”，“has” 等等。</li>
+<li>使用 ramp window，即根据文档中单词之间的距离对共现计数进行加权</li>
+<li>使用皮尔逊相关系数并将负计数设置为0，而不是只使用原始计数</li>
+</ul>
+<p>正如我们在下一节中看到的，基于迭代的方法以一种优雅得多的方式解决了大部分上述问题。</p>
+<h3 id="iteration-based-methods-word2vec">Iteration Based Methods - Word2vec<a class="headerlink" href="#iteration-based-methods-word2vec" title="Permanent link">&para;</a></h3>
+<p>这里我们尝试一个新的方法。我们可以尝试创建一个模型，该模型能够一次学习一个迭代，并最终能够对给定上下文的单词的概率进行编码，而不是计算和存储一些大型数据集(可能是数十亿个句子)的全局信息。</p>
+<p>这个想法是设计一个模型，该模型的参数就是词向量。然后根据一个目标函数训练模型，在每次模型的迭代计算误差，并遵循一些更新规则，该规则具有惩罚造成错误的模型参数的作用，从而可以学习到词向量。这个方法可以追溯到 1986年，我们称这个方法为“反向传播”，模型和任务越简单，训练它的速度就越快。</p>
+<ul>
+<li>基于迭代的方法一次捕获一个单词的共现情况，而不是像SVD方法那样直接捕获所有的共现计数。</li>
+</ul>
+<p>已经很多人按照这个思路测试了不同的方法。[Collobert et al., 2011] 设计的模型首先将每个单词转换为向量。对每个特定的任务（命名实体识别、词性标注等等），他们不仅训练模型的参数，同时也训练单词向量，计算出了非常好的词向量的同时取得了很好的性能。</p>
+<p>在这里，我们介绍一个非常有效的概率模型：Word2vec。Word2vec 是一个软件包实际上包含：</p>
+<ul>
+<li><strong>两个算法</strong>：continuous bag-of-words（CBOW）和 skip-gram。CBOW 是根据中心词周围的上下文单词来预测该词的词向量。skip-gram 则相反，是根据中心词预测周围上下文的词的概率分布。</li>
+<li>**两个训练方法：**negative sampling 和 hierarchical softmax。Negative sampling 通过抽取负样本来定义目标，hierarchical softmax 通过使用一个有效的树结构来计算所有词的概率来定义目标。</li>
+</ul>
+<p><strong>Language Models (Unigrams, Bigrams, etc.)</strong></p>
+<p>首先，我们需要创建一个模型来为一系列的单词分配概率。我们从一个例子开始：</p>
+<p>“The cat jumped over the puddle”</p>
+<p>一个好的语言模型会给这个句子很高的概率，因为在句法和语义上这是一个完全有效的句子。相似地，句子“stock boil fish is toy”会得到一个很低的概率，因为这是一个无意义的句子。在数学上，我们可以称为对给定 n 个词的序列的概率是：
+$$
+P(w_{1}, w_{2}, \ldots, w_{n})
+$$
+我们可以采用一元语言模型方法(<strong>Unigram model</strong>)，假设单词的出现是完全独立的，从而分解概率
+$$
+P\left(w_{1}, w_{2}, \cdots, w_{n}\right)=\prod_{i=1}^{n} P\left(w_{i}\right)
+$$
+但是我们知道这是不大合理的，因为下一个单词是高度依赖于前面的单词序列的。如果使用上述的语言模型，可能会让一个无意义的句子具有很高的概率。所以我们让序列的概率取决于序列中的单词和其旁边的单词的成对概率。我们称之为 bigram 模型：
+$$
+P\left(w_{1}, w_{2}, \cdots, w_{n}\right)=\prod_{i=2}^{n} P\left(w_{i} | w_{i-1}\right)
+$$
+但是，这个方法还是有点简单，因为我们只关心一对邻近的单词，而不是针对整个句子来考虑。但是我们将看到，这个方法会有显著的提升。考虑在词-词共现矩阵中，共现窗口为 1，我们基本上能得到这样的成对的概率。但是，这又需要计算和存储大量数据集的全局信息。</p>
+<p>既然我们已经理解了如何考虑具有概率的单词序列，那么让我们观察一些能够学习这些概率的示例模型。</p>
+<p><strong>Continuous Bag of Words Model (CBOW)</strong></p>
+<p>这一方法是把 {"The","cat","over","the","puddle"} 作为上下文，希望从这些词中能够预测或者生成中心词“jumped”。这样的模型我们称之为 continuous bag-of-words（CBOW）模型。</p>
+<p>它是从上下文中预测中心词的方法，在这个模型中的每个单词，我们希望学习两个向量</p>
+<ul>
+<li><span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> (输入向量) 当词在上下文中</li>
+<li><span><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> (输出向量) 当词是中心词</li>
+</ul>
+<p>首先我们设定已知参数。令我们模型的已知参数是 one-hot 形式的词向量表示。输入的 one-hot 向量或者上下文我们用 <span><span class="MathJax_Preview">x^{(c)}</span><script type="math/tex">x^{(c)}</script></span> 表示，输出用 <span><span class="MathJax_Preview">y^{(c)}</span><script type="math/tex">y^{(c)}</script></span> 表示。在 CBOW 模型中，因为我们只有一个输出，因此我们把 y 称为是已知中心词的的 one-hot 向量。现在让我们定义模型的未知参数。</p>
+<p>首先我们对 CBOW 模型作出以下定义</p>
+<ul>
+<li><span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> ：词汇表 <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 中的单词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></li>
+<li><span><span class="MathJax_Preview">\mathcal{V}\in \mathbb{R}^{n\times |V|}</span><script type="math/tex">\mathcal{V}\in \mathbb{R}^{n\times |V|}</script></span> ：输入词矩阵</li>
+<li><span><span class="MathJax_Preview">v_{i} ： \mathcal{V}</span><script type="math/tex">v_{i} ： \mathcal{V}</script></span> 的第 i 列，单词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输入向量表示</li>
+<li>
+<p><span><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> ：输出词矩阵</p>
+</li>
+<li><span><span class="MathJax_Preview">u_{i} ： \mathcal{U}</span><script type="math/tex">u_{i} ： \mathcal{U}</script></span> 的第 i 行，单词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输出向量表示</li>
+</ul>
+<p>我们创建两个矩阵，<span><span class="MathJax_Preview">\mathcal{V}\in \mathbb{R}^{n\times |V|}</span><script type="math/tex">\mathcal{V}\in \mathbb{R}^{n\times |V|}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> 。其中 n 是嵌入空间的任意维度大小。 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 是输入词矩阵，使得当其为模型的输入时，<span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 的第 i 列是词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的 n 维嵌入向量。我们定义这个 <span><span class="MathJax_Preview">n \times 1</span><script type="math/tex">n \times 1</script></span> 的向量为 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 。相似地， <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是输出词矩阵。当其为模型的输入时， <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的第 j 行是词 <span><span class="MathJax_Preview">w_{j}</span><script type="math/tex">w_{j}</script></span> 的 n 维嵌入向量。我们定义 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的这行为 <span><span class="MathJax_Preview">u_{j}</span><script type="math/tex">u_{j}</script></span> 。注意实际上对每个词 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 我们需要学习两个词向量（即输入词向量 <span><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和输出词向量 <span><span class="MathJax_Preview">u_{i}</span><script type="math/tex">u_{i}</script></span> ）。</p>
+<p>我们将这个模型分解为以下步骤</p>
+<ul>
+<li>我们为大小为 m 的输入上下文，生成 one-hot 词向量 <span><span class="MathJax_Preview"><span><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></span><script type="math/tex"><span><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></script></span>  </li>
+<li>我们从上下文  <span><span class="MathJax_Preview">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</span><script type="math/tex">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</script></span> 得到嵌入词向量。</li>
+<li>对上述的向量求平均值 <span><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</script></span> 。</li>
+<li>生成一个分数向量 <span><span class="MathJax_Preview">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</span><script type="math/tex">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</script></span> 。当相似向量的点积越高，就会令到相似的词更为靠近，从而获得更高的分数。将分数转换为概率 <span><span class="MathJax_Preview">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</script></span> 。<ul>
+<li>这里 softmax 是一个常用的函数。它将一个向量转换为另外一个向量，其中转换后的向量的第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个元素是 <span><span class="MathJax_Preview">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</span><script type="math/tex">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</script></span> 。因为该函数是一个指数函数，所以值一定为正数；通过除以 <span><span class="MathJax_Preview">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</span><script type="math/tex">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</script></span> 来归一化向量（使得 <span><span class="MathJax_Preview">\sum_{k=1}^{|V|}\widehat{y}_k=1</span><script type="math/tex">\sum_{k=1}^{|V|}\widehat{y}_k=1</script></span>）得到概率。</li>
+</ul>
+</li>
+<li>我们希望生成的概率 <span><span class="MathJax_Preview">\widehat{y} \in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y} \in \mathbb{R}^{|V|}</script></span> 与实际的概率 <span><span class="MathJax_Preview">y \in \mathbb{R}^{|V|}</span><script type="math/tex">y \in \mathbb{R}^{|V|}</script></span> 匹配。使得其刚好是实际的词就是这个 one-hot 向量。</li>
+</ul>
+<p>下图是 CBOW 模型的计算图示</p>
+<p><img alt="1560088203499" src="../imgs/1560088203499.png" /></p>
+<p>如果有 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个**度量两个概率分布的距离**的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span><span class="MathJax_Preview">H(\widehat{y}, y)</span><script type="math/tex">H(\widehat{y}, y)</script></span> 。</p>
+<p>在离散情况下使用交叉熵可以直观地得出损失函数的公式</p>
+<p>$$
+H(\hat{y}, y)=-\sum_{j=1}^{|V|} y_{j} \log \left(\hat{y}_{j}\right)
+$$
+上面的公式中，y 是 one-hot 向量。因此上面的损失函数可以简化为：</p>
+<p>$$
+H(\widehat{y}, y)= - y_{j}\,log(\widehat{y}_{j})
+$$
+c 是正确词的 one-hot 向量的索引。我们现在可以考虑我们的预测是完美并且 <span><span class="MathJax_Preview">\widehat{y}_{c}=1</span><script type="math/tex">\widehat{y}_{c}=1</script></span> 的情况。然后我们可以计算 <span><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(1)=0</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(1)=0</script></span> 。因此，对一个完美的预测，我们不会面临任何惩罚或者损失。现在我们考虑一个相反的情况，预测非常差并且 <span><span class="MathJax_Preview">\widehat{y}_{c}=0.01</span><script type="math/tex">\widehat{y}_{c}=0.01</script></span> 。和前面类似，我们可以计算损失 <span><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(0.01)=4.605</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(0.01)=4.605</script></span> 。因此，我们可以看到，对于概率分布，交叉熵为我们提供了一个很好的距离度量。因此我们的优化目标函数公式为：</p>
+<p>$$
+\begin{aligned} \text { minimize } J &amp;=-\log P\left(w_{c} | w_{c-m}, \ldots, w_{c-1}, w_{c+1}, \ldots, w_{c+m}\right) \ &amp;=-\log P\left(u_{c} | \hat{v}\right) \ &amp;=-\log \frac{\exp \left(u_{c}^{T} \hat{v}\right)}{\sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right)} \ &amp;=-u_{c}^{T} \hat{v}+\log \sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right) \end{aligned}
+$$
+我们使用 SGD 来更新所有相关的词向量 <span><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 和 <span><span class="MathJax_Preview">v_{j}</span><script type="math/tex">v_{j}</script></span> 。SGD 对一个窗口计算梯度和更新参数：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{array}{l}{\mathcal{U}_{\text {new}} \leftarrow \mathcal{U}_{\text {old}}-\alpha \nabla_{\mathcal{U}} J} \\ {\mathcal{V}_{\text {old}} \leftarrow \mathcal{V}_{\text {old}}-\alpha \nabla_{\mathcal{V}} J}\end{array}
+</div>
+<script type="math/tex; mode=display">
+\begin{array}{l}{\mathcal{U}_{\text {new}} \leftarrow \mathcal{U}_{\text {old}}-\alpha \nabla_{\mathcal{U}} J} \\ {\mathcal{V}_{\text {old}} \leftarrow \mathcal{V}_{\text {old}}-\alpha \nabla_{\mathcal{V}} J}\end{array}
+</script>
+</div>
+<p><strong>Skip-Gram Model</strong></p>
+<p>Skip-Gram模型与CBOW大体相同，但是交换了我们的 x 和 y，即 CBOW 中的 x 现在是 y，y 现在是 x。输入的 one-hot 向量（中心词）我们表示为 x，输出向量为 <span><span class="MathJax_Preview">y^{(j)}</span><script type="math/tex">y^{(j)}</script></span> 。我们定义的 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是和 CBOW 一样的。</p>
+<ul>
+<li>生成中心词的 one-hot 向量 <span><span class="MathJax_Preview">x\in \mathbb{R}^{|V|}</span><script type="math/tex">x\in \mathbb{R}^{|V|}</script></span> </li>
+<li>我们对中心词 <span><span class="MathJax_Preview">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</span><script type="math/tex">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</script></span> 得到词嵌入向量</li>
+<li>生成分数向量 <span><span class="MathJax_Preview">z = \mathcal{U}v_{c}</span><script type="math/tex">z = \mathcal{U}v_{c}</script></span> </li>
+<li>将分数向量转化为概率， <span><span class="MathJax_Preview">\widehat{y}=softmax(z)</span><script type="math/tex">\widehat{y}=softmax(z)</script></span> 注意 <span><span class="MathJax_Preview">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</span><script type="math/tex">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</script></span> 是每个上下文词观察到的概率</li>
+<li>我们希望我们生成的概率向量匹配真实概率 <span><span class="MathJax_Preview">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</span><script type="math/tex">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</script></span> ，one-hot 向量是实际的输出。</li>
+</ul>
+<p>下图是 Skip-Gram 模型的计算图示</p>
+<p><img alt="1560089015401" src="../imgs/1560089015401.png" /></p>
+<p>和 CBOW 模型一样，我们需要生成一个目标函数来评估这个模型。与 CBOW 模型的一个主要的不同是我们引用了一个朴素的贝叶斯假设来拆分概率。这是一个很强（朴素）的条件独立假设。换而言之，<strong>给定中心词，所有输出的词是完全独立的</strong>。(即公式1至2行)
+$$
+\begin{aligned} \text { minimize } J &amp;=-\log P\left(w_{c-m}, \ldots, w_{c-1}, w_{c+1}, \ldots, w_{c+m} | w_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} P\left(w_{c-m+j} | w_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} P\left(u_{c-m+j} | v_{c}\right) \ &amp;=-\log \prod_{j=0, j \neq m}^{2 m} \frac{\exp \left(u_{c-m+j}^{T} v_{c}\right)}{\sum_{k=1}^{|V|} \exp \left(u_{k}^{T} v_{c}\right)} \ &amp;=-\sum_{j=0, j \neq m}^{2 m} u_{c-m+j}^{T} v_{c}+2 m \log \sum_{k=1}^{|V|} \exp \left(u_{k}^{T} v_{c}\right) \end{aligned}
+$$
+通过这个目标函数，我们可以计算出与未知参数相关的梯度，并且在每次迭代中通过 SGD 来更新它们。</p>
+<p>注意
+$$
+\begin{aligned} J &amp;=-\sum_{j=0, j \neq m}^{2 m} \log P\left(u_{c-m+j} | v_{c}\right) \ &amp;=\sum_{j=0, j \neq m}^{2 m} H\left(\hat{y}, y_{c-m+j}\right) \end{aligned}
+$$
+其中 <span><span class="MathJax_Preview">H(\widehat{y},y_{c-m+j})</span><script type="math/tex">H(\widehat{y},y_{c-m+j})</script></span> 是向量 <span><span class="MathJax_Preview">\widehat{y}</span><script type="math/tex">\widehat{y}</script></span> 的概率和 one-hot 向量 <span><span class="MathJax_Preview">y_{c-m+j}</span><script type="math/tex">y_{c-m+j}</script></span> 之间的交叉熵。</p>
+<blockquote>
+<p>只有一个概率向量 <span><span class="MathJax_Preview">\hat{y}</span><script type="math/tex">\hat{y}</script></span> 是被计算的。Skip-Gram 对每个上下文单词一视同仁：该模型计算每个单词在上下文中出现的概率，而与它到中心单词的距离无关。</p>
+</blockquote>
+<p><strong>Negative Sampling</strong></p>
+<p>让我们再回到目标函数上。注意对 <span><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 的求和计算量是非常大的。任何的更新或者对目标函数的评估都要花费 <span><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 的时间复杂度。一个简单的想法是不去直接计算，而是去求近似值。</p>
+<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span>  “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
+<ul>
+<li>目标函数</li>
+<li>梯度</li>
+<li>更新规则</li>
+</ul>
+<p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了负采样。虽然负采样是基于 Skip-Gram 模型，但实际上是对一个不同的目标函数进行优化。</p>
+<p>考虑一对中心词和上下文词 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 。这词对是来自训练数据集吗？我们通过 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 表示 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 是来自语料库。相应地， <span><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 表示 <span><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 不是来自语料库。</p>
+<p>首先，我们对 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 用 sigmoid 函数建模：</p>
+<div>
+<div class="MathJax_Preview">
+P(D=1 | w, c, \theta)=\sigma\left(v_{c}^{T} v_{w}\right)=\frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}}
+</div>
+<script type="math/tex; mode=display">
+P(D=1 | w, c, \theta)=\sigma\left(v_{c}^{T} v_{w}\right)=\frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}}
+</script>
+</div>
+<p>现在，我们建立一个新的目标函数，如果中心词和上下文词确实在语料库中，就最大化概率 <span><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> ，如果中心词和上下文词确实不在语料库中，就最大化概率 <span><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 。我们对这两个概率采用一个简单的极大似然估计的方法（这里我们把 <span><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 作为模型的参数，在我们的例子是 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ）</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned} \theta &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}} P(D=0 | w, c, \theta) \\ &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}}(1-P(D=1 | w, c, \theta)) \\ &amp;=\underset{\theta}{\operatorname{argmax}} \sum_{(w, c) \in D} \log P(D=1 | w, c, \theta)+\sum_{(w, c) \in \widetilde{D}} \log (1-P(D=1 | w, c, \theta)) \\ &amp;=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(1-\frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}\right) \\ &amp;=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right) \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned} \theta &=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}} P(D=0 | w, c, \theta) \\ &=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}}(1-P(D=1 | w, c, \theta)) \\ &=\underset{\theta}{\operatorname{argmax}} \sum_{(w, c) \in D} \log P(D=1 | w, c, \theta)+\sum_{(w, c) \in \widetilde{D}} \log (1-P(D=1 | w, c, \theta)) \\ &=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(1-\frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}\right) \\ &=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right) \end{aligned}
+</script>
+</div>
+<p>注意最大化似然函数等同于最小化负对数似然：</p>
+<div>
+<div class="MathJax_Preview">
+J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
+</div>
+<script type="math/tex; mode=display">
+J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
+</script>
+</div>
+<p>注意 <span><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 是“假的”或者“负的”语料。例如我们有句子类似“stock boil fish is toy”，这种无意义的句子出现时会得到一个很低的概率。我们可以从语料库中随机抽样出负样例 <span><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 。</p>
+<p>对于 Skip-Gram 模型，我们对给定中心词 <span><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 来观察的上下文单词 <span><span class="MathJax_Preview">c-m+j</span><script type="math/tex">c-m+j</script></span> 的新目标函数为</p>
+<div>
+<div class="MathJax_Preview">
+-\log \sigma\left(u_{c-m+j}^{T} \cdot v_{c}\right)-\sum_{k=1}^{K} \log \sigma\left(-\tilde{u}_{k}^{T} \cdot v_{c}\right)
+</div>
+<script type="math/tex; mode=display">
+-\log \sigma\left(u_{c-m+j}^{T} \cdot v_{c}\right)-\sum_{k=1}^{K} \log \sigma\left(-\tilde{u}_{k}^{T} \cdot v_{c}\right)
+</script>
+</div>
+<p>对 CBOW 模型，我们对给定上下文向量 <span><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</script></span> 来观察中心词 <span><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 的新的目标函数为</p>
+<div>
+<div class="MathJax_Preview">
+-log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}^{K}log\,\sigma(-\widetilde{u}_{k}^{T}\cdot \widehat{v})
+</div>
+<script type="math/tex; mode=display">
+-log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}^{K}log\,\sigma(-\widetilde{u}_{k}^{T}\cdot \widehat{v})
+</script>
+</div>
+<p>在上面的公式中，<span><span class="MathJax_Preview">\{\widetilde{u}_{k}\mid k=1...K\}</span><script type="math/tex">\{\widetilde{u}_{k}\mid k=1...K\}</script></span> 是从 <span><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
+<div>
+<div class="MathJax_Preview">
+\begin{eqnarray}  is: 0.9^{3/4} &amp;=&amp; 0.92 \nonumber \\ Constitution: 0.09^{3/4}&amp;=&amp; 0.16 \nonumber \\ bombastic:0.01^{3/4}&amp;=&amp; 0.032 \nonumber \end{eqnarray}
+</div>
+<script type="math/tex; mode=display">
+\begin{eqnarray}  is: 0.9^{3/4} &=& 0.92 \nonumber \\ Constitution: 0.09^{3/4}&=& 0.16 \nonumber \\ bombastic:0.01^{3/4}&=& 0.032 \nonumber \end{eqnarray}
+</script>
+</div>
+<p>“Bombastic”现在被抽样的概率是之前的三倍，而“is”只比之前的才提高了一点点。</p>
+<p><strong>Hierarchical Softmax</strong></p>
+<p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了 hierarchical softmax，相比普通的 softmax 这是一种更有效的替代方法。<strong>在实际中，hierarchical softmax 对低频词往往表现得更好，负采样对高频词和较低维度向量表现得更好</strong>。</p>
+<p>Hierarchical softmax 使用一个二叉树来表示词表中的所有词。树中的每个叶结点都是一个单词，而且只有一条路径从根结点到叶结点。在这个模型中，没有词的输出表示。相反，图的每个节点（根节点和叶结点除外）与模型要学习的向量相关联。单词作为输出单词的概率定义为从根随机游走到单词所对应的叶的概率。计算成本变为 <span><span class="MathJax_Preview">O(log (|V|))</span><script type="math/tex">O(log (|V|))</script></span> 而不是 <span><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 。</p>
+<p>在这个模型中，给定一个向量 <span><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的下的单词 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的概率 <span><span class="MathJax_Preview">p(w\mid w_{i})</span><script type="math/tex">p(w\mid w_{i})</script></span> ，等于从根结点开始到对应 w 的叶结点结束的随机漫步概率。这个方法最大的优势是计算概率的时间复杂度仅仅是 <span><span class="MathJax_Preview">O(log(|V|))</span><script type="math/tex">O(log(|V|))</script></span> ，对应着路径的长度。</p>
+<p>下图是 Hierarchical softmax 的二叉树示意图</p>
+<p><img alt="1560093818125" src="../imgs/1560093818125.png" /></p>
+<p>让我们引入一些概念。令 <span><span class="MathJax_Preview">L(w)</span><script type="math/tex">L(w)</script></span> 为从根结点到叶结点 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的路径中节点数目。例如，上图中的 <span><span class="MathJax_Preview">L(w_{2})</span><script type="math/tex">L(w_{2})</script></span> 为 3。我们定义 <span><span class="MathJax_Preview">n(w,i)</span><script type="math/tex">n(w,i)</script></span> 为与向量 <span><span class="MathJax_Preview">v_{n(w,i)}</span><script type="math/tex">v_{n(w,i)}</script></span> 相关的路径上第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个结点。因此 <span><span class="MathJax_Preview">n(w,1)</span><script type="math/tex">n(w,1)</script></span> 是根结点，而 <span><span class="MathJax_Preview">n(w,L(w))</span><script type="math/tex">n(w,L(w))</script></span> 是 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的父节点。现在对每个内部节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，我们任意选取一个它的子节点，定义为 <span><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> （一般是左节点）。然后，我们可以计算概率为</p>
+<div>
+<div class="MathJax_Preview">
+p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatorname{ch}(n(w, j))] \cdot v_{n(w, j)}^{T} v_{w_{i}}\right)
+</div>
+<script type="math/tex; mode=display">
+p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatorname{ch}(n(w, j))] \cdot v_{n(w, j)}^{T} v_{w_{i}}\right)
+</script>
+</div>
+<p>其中</p>
+<div>
+<div class="MathJax_Preview">
+[x]=\left\{\begin{array}{ll}{1} &amp; {\text { if } x \text { is true }} \\ {-1} &amp; {\text { otherwise }}\end{array}\right.
+</div>
+<script type="math/tex; mode=display">
+[x]=\left\{\begin{array}{ll}{1} & {\text { if } x \text { is true }} \\ {-1} & {\text { otherwise }}\end{array}\right.
+</script>
+</div>
+<p>这个公式看起来非常复杂，让我们细细梳理一下。</p>
+<p>首先，我们将根据从根节点 <span><span class="MathJax_Preview">(n(w,1))</span><script type="math/tex">(n(w,1))</script></span> 到叶节点 <span><span class="MathJax_Preview">(w)</span><script type="math/tex">(w)</script></span> 的路径的形状来计算相乘的项。如果我们假设 <span><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> 一直都是 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 的左节点，然后当路径往左时 <span><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 的值返回 1，往右则返回 0。</p>
+<p>此外，<span><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 提供了归一化的作用。在节点 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 处，如果我们将去往左和右节点的概率相加，对于 <span><span class="MathJax_Preview">v_{n}^{T}v_{w_{i}}</span><script type="math/tex">v_{n}^{T}v_{w_{i}}</script></span> 的任何值则可以检查，</p>
+<div>
+<div class="MathJax_Preview">
+\sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
+</div>
+<script type="math/tex; mode=display">
+\sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
+</script>
+</div>
+<p>归一化也保证了 <span><span class="MathJax_Preview">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</span><script type="math/tex">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</script></span> ，和在普通的 softmax 是一样的。</p>
+<p>最后我们计算点积来比较输入向量 <span><span class="MathJax_Preview">v_{w_{i}}</span><script type="math/tex">v_{w_{i}}</script></span> 对每个内部节点向量 <span><span class="MathJax_Preview">v_{n(w,j)}^{T}</span><script type="math/tex">v_{n(w,j)}^{T}</script></span> 的相似度。下面我们给出一个例子。以上图中的 <span><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> 为例，从根节点要经过两次左边的边和一次右边的边才到达 <span><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> ，因此</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned} p\left(w_{2} | w_{i}\right) &amp;=p\left(n\left(w_{2}, 1\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 2\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 3\right), \text { right }\right) \\ &amp;=\sigma\left(v_{n\left(w_{2}, 1\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(v_{n\left(w_{2}, 2\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(-v_{n\left(w_{2}, 3\right)}^{T} v_{w_{i}}\right) \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned} p\left(w_{2} | w_{i}\right) &=p\left(n\left(w_{2}, 1\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 2\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 3\right), \text { right }\right) \\ &=\sigma\left(v_{n\left(w_{2}, 1\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(v_{n\left(w_{2}, 2\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(-v_{n\left(w_{2}, 3\right)}^{T} v_{w_{i}}\right) \end{aligned}
+</script>
+</div>
+<p>我们训练模型的目标是最小化负的对数似然 <span><span class="MathJax_Preview">-log\,P(w\mid w_{i})</span><script type="math/tex">-log\,P(w\mid w_{i})</script></span> 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。</p>
+<p>该方法的速度由构建二叉树的方式确定，并将词分配给叶节点。Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中使用的是哈夫曼树，在树中分配高频词到较短的路径。</p>
+<h2 id="gensim-word-vectors-example">Gensim word vectors example<a class="headerlink" href="#gensim-word-vectors-example" title="Permanent link">&para;</a></h2>
+<p>Gensim提供了将 <code>Glove</code> 转化为Word2Vec格式的API，并且提供了 <code>most_similar</code>,  <code>doesnt_match</code>等API。我们可以对<code>most_similar</code>进行封装，输出三元组的类比结果</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">KeyedVectors</span><span class="o">.</span><span class="n">load_word2vec_format</span><span class="p">(</span><span class="n">word2vec_glove_file</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="s1">&#39;banana&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">analogy</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">most_similar</span><span class="p">(</span><span class="n">positive</span><span class="o">=</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">],</span> <span class="n">negative</span><span class="o">=</span><span class="p">[</span><span class="n">x1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">analogy</span><span class="p">(</span><span class="s1">&#39;japan&#39;</span><span class="p">,</span> <span class="s1">&#39;japanese&#39;</span><span class="p">,</span> <span class="s1">&#39;australia&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">doesnt_match</span><span class="p">(</span><span class="s2">&quot;breakfast cereal dinner lunch&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+</pre></div>
+</td></tr></table>
+
+<h2 id="suggested-readings">Suggested Readings<a class="headerlink" href="#suggested-readings" title="Permanent link">&para;</a></h2>
+<p><a href="http://mccormickml.com/2016/04/19/word2vec-tutorial-the-skip-gram-model/">Word2Vec Tutorial - The Skip-Gram Model</a></p>
+<p><strong>Fake Task</strong></p>
+<p>我们将训练一个带有单个隐藏层的简单神经网络来执行某个任务，但是我们实际上并没有将这个神经网络用于我们训练它的任务。相反，目标实际上只是学习隐藏层的权重，这实际上是我们试图学习的“单词向量”。这一技巧也在无监督的特征学习常用。训练一个<code>auto-encoder</code>从而在隐藏层中压缩输入向量并在输出层将隐藏层向量解压缩得到输入向量。训练完成后，去除输出层，只是用隐藏层。</p>
+<p>下图是从源文本中抽取样本的过程</p>
+<p><img alt="Training Data" src="../imgs/training_data.png" /></p>
+<p>下图是网络架构图</p>
+<p><img alt="Skip-gram Neural Network Architecture" src="../imgs/skip_gram_net_arch.png" /></p>
+<p>如果两个不同的单词具有非常相似的“上下文”（即它们周围可能出现的单词是相似的），那么我们的模型需要为这两个单词输出非常相似的结果。网络为这两个单词输出类似的上下文预测的一种方式是判断单词向量是否相似。因此，如果两个单词具有相似的上下文，那么我们的网络就会为这两个单词学习相似的单词向量！</p>
+<p><a href="http://arxiv.org/pdf/1301.3781.pdf">Efficient Estimation of Word Representations in Vector Space</a>(original word2vec paper)</p>
+<p><a href="http://papers.nips.cc/paper/5021-distributed-representations-of-words-and-phrases-and-their-compositionality.pdf">Distributed Representations of Words and Phrases and their Compositionality</a> (negative sampling paper)</p>
+<span class="critic comment">上述Paper在Note中已有详细笔记</span>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
+<p><a href="https://lintongmao.github.io/">Notes on Stanford CS224n</a> <span class="critic comment">我的同学[@lintongmao](&lt;https://github.com/lintongmao/&gt;)的学习笔记 采用英文记录 更加符合课程原义</span></p><h2 id="__comments">评论</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/CS224n-2019-01-Introduction and Word Vectors/";
+      this.page.identifier =
+        "CS224n-2019-01-Introduction and Word Vectors/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();</script></article></div></div></main><footer class="md-footer"><div class="md-footer-nav"><nav class="md-footer-nav__inner md-grid"><a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev"><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-back md-footer-nav__button"></i></div><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">后退</span>CS224n-2019作业笔记</span></div></a><a href="../CS224n-2019-02-Word Vectors 2 and Word Senses/" title="02 Word Vectors 2 and Word Senses" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next"><div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span class="md-flex__ellipsis"><span class="md-footer-nav__direction">前进</span>02 Word Vectors 2 and Word Senses</span></div><div class="md-flex__cell md-flex__cell--shrink"><i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i></div></a></nav></div><div class="md-footer-meta md-typeset"><div class="md-footer-meta__inner md-grid"><div class="md-footer-copyright"><div class="md-footer-copyright__highlight">Copyright &copy; 2019 - 2020 Looper Xiao Xu</div>powered by <a href="https://www.mkdocs.org">MkDocs</a> and <a href="https://squidfunk.github.io/mkdocs-material/">Material for MkDocs</a></div><div class="md-footer-social"><link rel="stylesheet" href="../assets/fonts/font-awesome.css"> <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>  <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a> </div></div></div></footer></div><script src="../assets/javascripts/application.b260a35d.js"></script><script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script><script>app.initialize({version:"1.0.4",url:{base:".."}})</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script><script src="../js/baidu-tongji.js"></script></body></html>
