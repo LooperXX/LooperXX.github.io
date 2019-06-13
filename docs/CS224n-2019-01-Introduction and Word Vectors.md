@@ -605,6 +605,8 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 以下是学习本课程时的可用参考书籍：
 
+[《基于深度学习的自然语言处理》](<https://item.jd.com/12355569.html>) （车万翔老师等翻译）
+
 [《神经网络与深度学习》](<https://nndl.github.io/>)
 
 以下是整理笔记的过程中参考的博客：
