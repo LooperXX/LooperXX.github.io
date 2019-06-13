@@ -1025,16 +1025,18 @@ J_{R}=J+\lambda\sum_{i=1}^{L}\big|\big|W^{(i)}\big|\big|_{F}   \\
 </li>
 <li>
 <p>一种简单的方法是对非时间维度的连接（即非循环连接）进行随机丢失。如图所示，虚线边表示进行随机丢弃，不同的颜色表示不同的丢弃掩码。</p>
-<p><img alt="1558861348710" src="../../python-workspace/NLPTry/imgs/1558861348710.png" /></p>
-</li>
-<li>
-<p>然而根据贝叶斯学习的解释，丢弃法是一种对参数<span><span class="MathJax_Preview">θ</span><script type="math/tex">θ</script></span>的采样。每次采样的参数需要在每个时刻保持不变。因此，在对循环神经网络上使用丢弃法时，需要对参数矩阵的每个元素进行随机丢弃，并在所有时刻都使用相同的丢弃掩码。这种方法称为变分丢弃法（Variational Dropout）。
-    图7.12给出了变分丢弃法的示例，<strong>相同颜色表示使用相同的丢弃掩码</strong>。</p>
 </li>
 </ul>
-<p><img alt="1558861390725" src="../../python-workspace/NLPTry/imgs/1558861390725.png" /></p>
 </li>
 </ul>
+<p><img alt="1558861348710" src="../imgs/1558861348710.png" /></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>-   然而根据贝叶斯学习的解释，丢弃法是一种对参数$θ$的采样。每次采样的参数需要在每个时刻保持不变。因此，在对循环神经网络上使用丢弃法时，需要对参数矩阵的每个元素进行随机丢弃，并在所有时刻都使用相同的丢弃掩码。这种方法称为变分丢弃法（Variational Dropout）。
+    图7.12给出了变分丢弃法的示例，**相同颜色表示使用相同的丢弃掩码**。
+</pre></div>
+</td></tr></table>
+
+<p><img alt="1558861390725" src="../imgs/1558861390725.png" /></p>
 <h4 id="24-neuron-units">2.4 Neuron Units<a class="headerlink" href="#24-neuron-units" title="Permanent link">&para;</a></h4>
 <p>到目前为止，我们讨论了含有 sigmoidal neurons 的非线性分类的神经网络。但是在很多应用中，使用其他激活函数可以设计更好的神经网络。下面列出一些常见的激活函数和激活函数的梯度定义，它们可以和前面讨论过的 sigmoidal 函数互相替换。</p>
 <p><strong>Sigmoid</strong>：这是我们讨论过的常用选择，激活函数 <span><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span> 为：
@@ -1140,7 +1142,7 @@ $$
 $$
 W\sim U\bigg[-\sqrt{\frac{6}{n<sup>{(l)}+n</sup>{(l+1)}}},\sqrt{\frac{6}{n<sup>{(l)}+n</sup>{(l+1)}}}\;\bigg]   \
 $$</p>
-<p>其中 <span><span class="MathJax_Preview">n^{(l)}</span><script type="math/tex">n^{(l)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}in)</span><script type="math/tex">(fan\text{-}in)</script></span> 的输入单元数， <span><span class="MathJax_Preview">n^{(l+1)}</span><script type="math/tex">n^{(l+1)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}out)</span><script type="math/tex">(fan\text{-}out)</script></span> 的输出单元数。在这个参数初始化方案中，偏置单元是初始化为 0 。这种方法是尝试保持跨层之间的激活方差以及反向传播梯度方差。如果没有这样的初始化，梯度方差（当中含有纠正信息）通常随着跨层的反向传播而衰减。</p>
+<p>其中 <span><span class="MathJax_Preview">n^{(l)}</span><script type="math/tex">n^{(l)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}in)</span><script type="math/tex">(fan\text{-}in)</script></span> 的输入单元数， <span><span class="MathJax_Preview">n^{(l+1)}</span><script type="math/tex">n^{(l+1)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}out)</span><script type="math/tex">(fan\text{-}out)</script></span> 的输出单元数。在这个参数初始化方案中，偏置单元是初始化为 0 。这种方法是尝试保持跨层之间的激活方差以及反向传播梯度方差。如果没有这样的初始化，梯度方差（当中含有纠正信息）通常随着跨层的反向传播而衰减。</p>
 <h4 id="27-learning-strategies">2.7 Learning Strategies<a class="headerlink" href="#27-learning-strategies" title="Permanent link">&para;</a></h4>
 <p>训练期间模型参数更新的速率/幅度可以使用学习率进行控制。在最简单的梯度下降公式中， <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 是学习率：
 $$
