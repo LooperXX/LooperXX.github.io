@@ -6,7 +6,7 @@
 
 ## Lecture 02 Word Vectors and Word Senses
 
-??? abstract “Lecture Plan”
+??? abstract "Lecture Plan"
 
     -   Finish looking at word vectors and word2vec
     -   Optimization basics
@@ -325,7 +325,7 @@ $$
 
 ## Notes 02  GloVe, Evaluation and Training
 
-??? abstract “Keyphrases”
+??? abstract "Keyphrases"
 
     Global Vectors for Word Representation (GloVe). Intrinsic
     and extrinsic evaluations. Effect of hyperparameters on analogy
@@ -356,7 +356,7 @@ $X$ 表示 word-word 共现矩阵，其中 $X_{ij}$ 表示词 $j$ 出现在词 $
 回想一下 Skip-Gram 模型，我们使用 softmax 来计算词 $j$ 出现在词 $i$ 的上下文的概率。
 
 $$
-Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})} 
+Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})}
 $$
 
 训练时以在线随机的方式进行，但是隐含的全局交叉熵损失可以如下计算：
@@ -374,6 +374,7 @@ $$
 其中，共现频率的值是通过共现矩阵 $X$ 给定。
 
 交叉熵损失的一个显着缺点是要求分布 $Q$ 被正确归一化，因为对整个词汇的求和的计算量是非常大的。因此，我们使用一个最小二乘的目标函数，其中 $P$ 和 $Q$ 的归一化因子被丢弃了：
+
 $$
 \widehat{J}=\sum_{i=1}^{W}\sum_{j=1}^{W}X_{i}(\widehat{P}_{ij}-\widehat{Q}_{ij})^{2}
 $$

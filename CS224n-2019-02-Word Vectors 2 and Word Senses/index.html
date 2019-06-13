@@ -8,23 +8,16 @@
 </li>
 </ul>
 <h2 id="lecture-02-word-vectors-and-word-senses">Lecture 02 Word Vectors and Word Senses<a class="headerlink" href="#lecture-02-word-vectors-and-word-senses" title="Permanent link">&para;</a></h2>
-<p>??? abstract “Lecture Plan”</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>-   Finish looking at word vectors and word2vec
--   Optimization basics
--   Can we capture this essence more effectively by counting?
--   The GloVe model of word vectors
--   Evaluating word vectors 
--   Word senses
--   The course
-</pre></div>
-</td></tr></table>
-
+<details class="abstract"><summary>Lecture Plan</summary><ul>
+<li>Finish looking at word vectors and word2vec</li>
+<li>Optimization basics</li>
+<li>Can we capture this essence more effectively by counting?</li>
+<li>The GloVe model of word vectors</li>
+<li>Evaluating word vectors </li>
+<li>Word senses</li>
+<li>The course</li>
+</ul>
+</details>
 <div class="admonition info">
 <p class="admonition-title">Goal</p>
 <p>be able to read word embeddings papers by the end of class</p>
@@ -346,19 +339,12 @@ v_{\text { pike }}=\alpha_{1} v_{\text { pike }_{1}}+\alpha_{2} v_{\text { pike 
 <p><strong>Extrinsic word vector evaluation</strong></p>
 <p>单词向量的外部评估：词向量可以应用于NLP的很多任务</p>
 <h2 id="notes-02-glove-evaluation-and-training">Notes 02  GloVe, Evaluation and Training<a class="headerlink" href="#notes-02-glove-evaluation-and-training" title="Permanent link">&para;</a></h2>
-<p>??? abstract “Keyphrases”</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Global Vectors for Word Representation (GloVe). Intrinsic
+<details class="abstract"><summary>Keyphrases</summary><p>Global Vectors for Word Representation (GloVe). Intrinsic
 and extrinsic evaluations. Effect of hyperparameters on analogy
 evaluation tasks. Correlation of human judgment with word
 vector distances. Dealing with ambiguity in word using contexts.
-Window classification.
-</pre></div>
-</td></tr></table>
-
+Window classification.</p>
+</details>
 <blockquote>
 <p>这组笔记首先介绍了训练词向量的Glove模型。然后，它扩展了我们对词向量(或称词嵌入)的讨论，看看它们是如何通过内部和外部来评估的。我们讨论了以词类比作为一种内在评价技术的例子，以及它如何被用来调整词嵌入技术。然后我们讨论了训练模型的权重/参数和词向量的外部任务。最后，我们将人工神经网络作为一种自然语言处理任务的模型。</p>
 </blockquote>
@@ -376,10 +362,10 @@ Window classification.
 <p>回想一下 Skip-Gram 模型，我们使用 softmax 来计算词 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 出现在词 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 的上下文的概率。</p>
 <div>
 <div class="MathJax_Preview">
-Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})} 
+Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})}
 </div>
 <script type="math/tex; mode=display">
-Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})} 
+Q_{ij}=\frac{exp(u_{j}^{T}v_{i})}{\sum_{w=1}^{W}exp(u_{w}^{T}v_{i})}
 </script>
 </div>
 <p>训练时以在线随机的方式进行，但是隐含的全局交叉熵损失可以如下计算：</p>
@@ -401,10 +387,15 @@ J=-\sum_{i=1}^{W}\sum_{j=1}^{W}X_{ij}log\;Q_{ij}
 </script>
 </div>
 <p>其中，共现频率的值是通过共现矩阵 <span><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 给定。</p>
-<p>交叉熵损失的一个显着缺点是要求分布 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 被正确归一化，因为对整个词汇的求和的计算量是非常大的。因此，我们使用一个最小二乘的目标函数，其中 <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> 和 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 的归一化因子被丢弃了：
-$$
-\widehat{J}=\sum_{i=1}<sup>{W}\sum_{j=1}</sup>{W}X_{i}(\widehat{P}<em>{ij}-\widehat{Q}</em>{ij})^{2}
-$$</p>
+<p>交叉熵损失的一个显着缺点是要求分布 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 被正确归一化，因为对整个词汇的求和的计算量是非常大的。因此，我们使用一个最小二乘的目标函数，其中 <span><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> 和 <span><span class="MathJax_Preview">Q</span><script type="math/tex">Q</script></span> 的归一化因子被丢弃了：</p>
+<div>
+<div class="MathJax_Preview">
+\widehat{J}=\sum_{i=1}^{W}\sum_{j=1}^{W}X_{i}(\widehat{P}_{ij}-\widehat{Q}_{ij})^{2}
+</div>
+<script type="math/tex; mode=display">
+\widehat{J}=\sum_{i=1}^{W}\sum_{j=1}^{W}X_{i}(\widehat{P}_{ij}-\widehat{Q}_{ij})^{2}
+</script>
+</div>
 <p>其中 <span><span class="MathJax_Preview">\hat{P}_{i j}=X_{i j} \text { and } \hat{Q}_{i j}=\exp \left(\vec{u}_{j}^{T} \vec{v}_{i}\right)</span><script type="math/tex">\hat{P}_{i j}=X_{i j} \text { and } \hat{Q}_{i j}=\exp \left(\vec{u}_{j}^{T} \vec{v}_{i}\right)</script></span> 是未归一化分布。这个公式带来了一个新的问题， <span><span class="MathJax_Preview">X_{ij}</span><script type="math/tex">X_{ij}</script></span> 经常会是很大的值，从而难以优化。一个有效的改变是最小化 <span><span class="MathJax_Preview">\widehat{P}</span><script type="math/tex">\widehat{P}</script></span> 和 <span><span class="MathJax_Preview">\widehat{Q}</span><script type="math/tex">\widehat{Q}</script></span> 对数的平方误差：</p>
 <div>
 <div class="MathJax_Preview">

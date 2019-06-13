@@ -4,7 +4,7 @@
 
 -   作业部分将单独整理
 
-## Lecture 02 Word Vectors and Word Senses
+## Lecture 03 Word Window Classification,Neural Networks, and Matrix Calculus
 
 ??? abstract "Lecture Plan"
 
@@ -14,7 +14,7 @@
       -   Binary true vs. corrupted word window classification
       -   Matrix calculus introduction
 
-??? info ”提示”
+!!! info "提示"
 
     这对一些人而言将是困难的一周，课后需要阅读提供的资料。
 
@@ -90,17 +90,23 @@ $$
 **Classification over a full dataset**
 
 在整个数据集 $\left\{x_{i}, y_{i}\right\}_{i=1}^{N}$ 上的交叉熵损失函数，是所有样本的交叉熵的均值
+
 $$
 J(\theta)=\frac{1}{N} \sum_{i=1}^{N}-\log \left(\frac{e^{f_{y_{i}}}}{\sum_{c=1}^{C} e^{f_{c}}}\right)
 $$
+
 我们不使用
+
 $$
 f_{y}=f_{y}(x)=W_{y} \cdot x=\sum_{j=1}^{d} W_{y j} x_{j}
 $$
+
 我们使用矩阵来表示 $f$
+
 $$
 f = Wx
 $$
+
 **Traditional ML optimization**
 
 -   一般机器学习的参数 $\theta$ 通常只由W的列组成
@@ -130,7 +136,7 @@ $$
 
 ![1560346033994](imgs/1560346033994.png)
 
-??? tip “更高级的分类需要”
+??? tip "更高级的分类需要"
 
     -   词向量
     -   更深层次的深层神经网络
@@ -139,7 +145,7 @@ $$
 
 一般在NLP深度学习中
 
--   我们学习了矩阵 $W$ 和词向量 $x$
+-   我们学习了矩阵 $W$ 和词向量 $x$
 -   我们学习传统参数和表示
 -   词向量是对独热向量的重新表示——在中间层向量空间中移动它们——以便使用(线性)softmax分类器通过 x = Le 层进行分类
     -   即将词向量理解为一层神经网络，输入单词的独热向量并获得单词的词向量表示，并且我们需要对其进行更新。其中，$Vd$ 是数量很大的参数
@@ -297,7 +303,7 @@ score(x)=U^{T} a \in \mathbb{R}
 $$
 我们用一个三层神经网络计算一个窗口的得分
 
--   $s = score("museums  \ in \ Paris \ are \ amazing”)$
+-   $s = score("museums  \ in \ Paris \ are \ amazing”)$
 
 $$
 \begin{array}{l}{s=U^{T} f(W x+b)} \\ {x \in \mathbb{R}^{20 \times 1}, W \in \mathbb{R}^{8 \times 20}, U \in \mathbb{R}^{8 \times 1}}\end{array}
@@ -407,11 +413,12 @@ $$
 $$
 **Example Jacobian: Elementwise activation Function**
 
-$h=f(z)$ , $\frac{\partial \textbf{h}}{\partial \textbf{z}} = ?, \textbf{h},\textbf{z} \in \mathbb{R}^{n}$  
+$h=f(z)$ , $\frac{\partial \textbf{h}}{\partial \textbf{z}} = ?, \textbf{h},\textbf{z} \in \mathbb{R}^{n}$  
 
 由于使用的是 element-wise，所以 $h_{i}=f\left(z_{i}\right)$
 
 函数有n个输出和n个输入 → n×n 的雅可比矩阵
+
 $$
 \begin{aligned}\left(\frac{\partial h}{\partial z}\right)_{i j} &=\frac{\partial h_{i}}{\partial z_{j}}=\frac{\partial}{\partial z_{j}} f\left(z_{i}\right), \text{definition of Jacobian} \\ &=\left\{\begin{array}{ll}{f^{\prime}\left(z_{i}\right)} & {\text { if } i=j} \\ {0} & {\text { if otherwise }} , \text{regular 1-variable derivative} \end{array}\right.\end{aligned}
 $$
@@ -504,7 +511,7 @@ $$
 
 -   两个选择
     -   尽量使用雅可比矩阵形式，最后按照约定进行整形
-        -   我们刚刚做的。但最后转置 $\frac{\partial s}{\partial \boldsymbol{b}}$ 使导数成为列向量，得到 $\delta ^ T$
+        -   我们刚刚做的。但最后转置 $\frac{\partial s}{\partial \boldsymbol{b}}$ 使导数成为列向量，得到 $\delta ^ T$
     -   始终遵循惯例
         -   查看维度，找出何时转置 和/或 重新排序项。
 
@@ -514,7 +521,7 @@ $$
 -   将我们刚刚手工完成的转换成算法
 -   用于深度学习软件框架(TensorFlow, PyTorch, Chainer, etc.)
 
-## Notes 02  GloVe, Evaluation and Training
+## Notes 03 Neural Networks, Backpropagation
 
 ??? abstract "Keyphrases"
 
