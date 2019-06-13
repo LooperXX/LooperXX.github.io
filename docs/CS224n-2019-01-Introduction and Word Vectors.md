@@ -243,9 +243,10 @@ $$
 
     Natural Language Processing. Word Vectors. Singular Value Decomposition. Skip-gram. Continuous Bag of Words(CBOW). Negative Sampling. Hierarchical Softmax. Word2Vec.
 
->   Singular Value Decomposition (SVD) 奇异值分解
->
->   这组笔记首先介绍了自然语言处理(NLP)的概念及其面临的问题。然后我们继续讨论将单词表示为数字向量的概念。最后，讨论了常用的词向量设计方法。
+!!! info "概述"
+
+    Singular Value Decomposition (SVD) 奇异值分解
+    这组笔记首先介绍了自然语言处理(NLP)的概念及其面临的问题。然后我们继续讨论将单词表示为数字向量的概念。最后，讨论了常用的词向量设计方法。
 
 ### Introduction to Natural Language Processing
 
@@ -605,7 +606,7 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 以下是学习本课程时的可用参考书籍：
 
-[《基于深度学习的自然语言处理》](<https://item.jd.com/12355569.html>) （车万翔老师等翻译）
+[《基于深度学习的自然语言处理》](<https://item.jd.com/12355569.html>) （车万翔老师等翻译）
 
 [《神经网络与深度学习》](<https://nndl.github.io/>)
 

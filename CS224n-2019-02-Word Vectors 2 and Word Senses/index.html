@@ -345,9 +345,10 @@ evaluation tasks. Correlation of human judgment with word
 vector distances. Dealing with ambiguity in word using contexts.
 Window classification.</p>
 </details>
-<blockquote>
+<div class="admonition info">
+<p class="admonition-title">概述</p>
 <p>这组笔记首先介绍了训练词向量的Glove模型。然后，它扩展了我们对词向量(或称词嵌入)的讨论，看看它们是如何通过内部和外部来评估的。我们讨论了以词类比作为一种内在评价技术的例子，以及它如何被用来调整词嵌入技术。然后我们讨论了训练模型的权重/参数和词向量的外部任务。最后，我们将人工神经网络作为一种自然语言处理任务的模型。</p>
-</blockquote>
+</div>
 <h3 id="1-global-vectors-for-word-representation-glove">1 Global Vectors for Word Representation (GloVe)<a class="headerlink" href="#1-global-vectors-for-word-representation-glove" title="Permanent link">&para;</a></h3>
 <h4 id="11-comparison-with-previous-methods">1.1 Comparison with Previous Methods<a class="headerlink" href="#11-comparison-with-previous-methods" title="Permanent link">&para;</a></h4>
 <p>到目前为止，我们已经研究了两类主要的词嵌入方法。第一类是基于统计并且依赖矩阵分解（例如LSA，HAL）。虽然这类方法有效地利用了**全局的信息**，它们主要用于捕获单词的**相似性**，但是对例如单词类比的任务上表现不好。另外一类方法是基于浅层窗口（例如，Skip-Gram 和 CBOW 模型），这类模型通过在局部上下文窗口通过预测来学习词向量。这些模型除了在单词相似性任务上表现良好外，还展示了捕获**复杂语言模式**能力，但未能利用到全局共现统计数据。</p>
