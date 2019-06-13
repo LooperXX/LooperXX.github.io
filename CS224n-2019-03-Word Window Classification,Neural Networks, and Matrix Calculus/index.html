@@ -649,7 +649,7 @@ $$</p>
 <p>神经网络是受生物学启发的分类器，这就是为什么它们经常被称为“人工神经网络”，以区别于有机类。然而，在现实中，人类神经网络比人工神经网络更有能力、更复杂，因此通常最好不要在两者之间画太多的相似点。</p>
 <p><img alt="1560405499464" src="../imgs/1560405499464.png" /></p>
 <h4 id="11-a-neuron">1.1 A Neuron<a class="headerlink" href="#11-a-neuron" title="Permanent link">&para;</a></h4>
-<p>神经元是一个通用的计算单元，它接受 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 个输入并产生一个输出。不同的神经元根据它们不同的参数（一般认为是神经元的权值）会有不同的输出。对神经元来说一个常见的选择是 $sigmoid $ ，或者称为“二元逻辑回归”单元。这种神经元以 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 维的向量作为输入，然后计算出一个激活标量（输出） <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 。该神经元还与一个 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 维的权重向量 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 和一个偏置标量 <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 相关联。这个神经元的输出是</p>
+<p>神经元是一个通用的计算单元，它接受 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 个输入并产生一个输出。不同的神经元根据它们不同的参数（一般认为是神经元的权值）会有不同的输出。对神经元来说一个常见的选择是 <span><span class="MathJax_Preview">sigmoid</span><script type="math/tex">sigmoid</script></span> ，或者称为“二元逻辑回归”单元。这种神经元以 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 维的向量作为输入，然后计算出一个激活标量（输出） <span><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 。该神经元还与一个 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 维的权重向量 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 和一个偏置标量 <span><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 相关联。这个神经元的输出是</p>
 <div>
 <div class="MathJax_Preview">
 a=\frac{1}{1+exp(-(w^{T}x+b))}
@@ -730,7 +730,7 @@ s=\mathbf{U}^{T}a=\mathbf{U}^{T}f(Wx+b)
 </script>
 </div>
 <p>其中 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 是激活函数（例如 sigmoid 函数）。</p>
-<p><strong>维度分析</strong>：如果我们使用 4 维的词向量来表示每个单词并使用 5 个词的窗口，则输入是 <span><span class="MathJax_Preview">x\in \mathbb{R}^{20}</span><script type="math/tex">x\in \mathbb{R}^{20}</script></span> 。如果我们在隐藏层使用 8 个 sigmoid 单元和从激活函数中生成一个分数输出，其中 <span><span class="MathJax_Preview">W\in \mathbb{R}^{8\times 20}</span><script type="math/tex">W\in \mathbb{R}^{8\times 20}</script></span> ， <span><span class="MathJax_Preview">b\in \mathbb{R}^{8}</span><script type="math/tex">b\in \mathbb{R}^{8}</script></span> ， $U\in \mathbb{R}^{8\times 1} $， $s\in \mathbb{R} $ 。</p>
+<p><strong>维度分析</strong>：如果我们使用 4 维的词向量来表示每个单词并使用 5 个词的窗口，则输入是 <span><span class="MathJax_Preview">x\in \mathbb{R}^{20}</span><script type="math/tex">x\in \mathbb{R}^{20}</script></span> 。如果我们在隐藏层使用 8 个 sigmoid 单元和从激活函数中生成一个分数输出，其中 <span><span class="MathJax_Preview">W\in \mathbb{R}^{8\times 20}</span><script type="math/tex">W\in \mathbb{R}^{8\times 20}</script></span> ， <span><span class="MathJax_Preview">b\in \mathbb{R}^{8}</span><script type="math/tex">b\in \mathbb{R}^{8}</script></span> ， <span><span class="MathJax_Preview">U\in \mathbb{R}^{8\times 1}</span><script type="math/tex">U\in \mathbb{R}^{8\times 1}</script></span>， <span><span class="MathJax_Preview">s\in \mathbb{R}</span><script type="math/tex">s\in \mathbb{R}</script></span> 。</p>
 <p><img alt="1560407221438" src="../imgs/1560407221438.png" /></p>
 <h4 id="14-maximum-margin-objective-function">1.4 Maximum Margin Objective Function<a class="headerlink" href="#14-maximum-margin-objective-function" title="Permanent link">&para;</a></h4>
 <p>类似很多的机器学习模型，神经网络需要一个优化目标函数，一个我们想要最小化或最大化的误差。这里我们讨论一个常用的误差度量方法：<strong>maximum margin objective</strong> 最大间隔目标函数。使用这个目标函数的背后的思想是保证对“真”标签数据的计算得分要比“假”标签数据的计算得分要高。</p>
@@ -768,10 +768,15 @@ minimize\;J=max\,(1+s_{c}-s,0)
 <p>最大边际目标函数通常与支持向量机一起使用</p>
 </div>
 <h4 id="15-training-with-backpropagation-elemental">1.5 Training with Backpropagation – Elemental<a class="headerlink" href="#15-training-with-backpropagation-elemental" title="Permanent link">&para;</a></h4>
-<p>在这部分我们讨论当1.4节中讨论的损失函数 <span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span> 为正时，模型中不同参数时是如何训练的。如果损失为 0 时，那么不需要再更新参数。我们一般使用梯度下降（或者像 SGD 这样的变体）来更新参数，所以要知道在更新公式中需要的任意参数的梯度信息：
-$$
-\theta<sup>{(t+1)}=\theta</sup>{(t)}-\alpha\nabla_{\theta^{(t)}}J \
-$$</p>
+<p>在这部分我们讨论当1.4节中讨论的损失函数 <span><span class="MathJax_Preview">J</span><script type="math/tex">J</script></span> 为正时，模型中不同参数时是如何训练的。如果损失为 0 时，那么不需要再更新参数。我们一般使用梯度下降（或者像 SGD 这样的变体）来更新参数，所以要知道在更新公式中需要的任意参数的梯度信息：</p>
+<div>
+<div class="MathJax_Preview">
+\theta^{(t+1)}=\theta^{(t)}-\alpha\nabla_{\theta^{(t)}}J 
+</div>
+<script type="math/tex; mode=display">
+\theta^{(t+1)}=\theta^{(t)}-\alpha\nabla_{\theta^{(t)}}J 
+</script>
+</div>
 <p>反向传播是一种利用微分链式法则来计算模型上任意参数的损失梯度的方法。为了更进一步理解反向传播，我们先看下图中的一个简单的网络  </p>
 <p><img alt="1560408903195" src="../imgs/1560408903195.png" /></p>
 <p>这里我们使用只有单个隐藏层和单个输出单元的神经网络。现在让我们先建立一些符号定义：</p>
@@ -801,7 +806,7 @@ $$</p>
 <p><img alt="1560415341614" src="../imgs/1560415341614.png" /></p>
 <ol>
 <li>我们从 <span><span class="MathJax_Preview">a_{1}^{(3)}</span><script type="math/tex">a_{1}^{(3)}</script></span> 的 1 的误差信号开始反向传播。</li>
-<li>然后我们把误差与将 <span><span class="MathJax_Preview">z_{1}^{(3)}</span><script type="math/tex">z_{1}^{(3)}</script></span> 映射到 <span><span class="MathJax_Preview">a_{1}^{(3)}</span><script type="math/tex">a_{1}^{(3)}</script></span> 的神经元的局部梯度相乘。在这个例子中梯度正好等于  1 ，则误差仍然为 1 。所以有$ \delta_{1}^{(3)}=1$ 。</li>
+<li>然后我们把误差与将 <span><span class="MathJax_Preview">z_{1}^{(3)}</span><script type="math/tex">z_{1}^{(3)}</script></span> 映射到 <span><span class="MathJax_Preview">a_{1}^{(3)}</span><script type="math/tex">a_{1}^{(3)}</script></span> 的神经元的局部梯度相乘。在这个例子中梯度正好等于  1 ，则误差仍然为 1 。所以有 <span><span class="MathJax_Preview">\delta_{1}^{(3)}=1</span><script type="math/tex">\delta_{1}^{(3)}=1</script></span> 。</li>
 <li>这里误差信号 1 已经到达 <span><span class="MathJax_Preview">z_{1}^{(3)}</span><script type="math/tex">z_{1}^{(3)}</script></span> 。我们现在需要分配误差信号使得误差的“公平共享”到达 <span><span class="MathJax_Preview">a_{1}^{(2)}</span><script type="math/tex">a_{1}^{(2)}</script></span> 。</li>
 <li>现在在 <span><span class="MathJax_Preview">a_{1}^{(2)}</span><script type="math/tex">a_{1}^{(2)}</script></span> 的误差为 <span><span class="MathJax_Preview">\delta_{1}^{(3)}\times W_{1}^{(2)}=W_{1}^{(2)}</span><script type="math/tex">\delta_{1}^{(3)}\times W_{1}^{(2)}=W_{1}^{(2)}</script></span> （在 <span><span class="MathJax_Preview">z_{1}^{(3)}</span><script type="math/tex">z_{1}^{(3)}</script></span> 的误差信号为 <span><span class="MathJax_Preview">\delta_{1}^{(3)}</span><script type="math/tex">\delta_{1}^{(3)}</script></span> ）。因此在 <span><span class="MathJax_Preview">a_{1}^{(2)}</span><script type="math/tex">a_{1}^{(2)}</script></span> 的误差为 <span><span class="MathJax_Preview">W_{1}^{(2)}</span><script type="math/tex">W_{1}^{(2)}</script></span> 。</li>
 <li>与第 2 步的做法相同，我们在将 <span><span class="MathJax_Preview">z_{1}^{(2)}</span><script type="math/tex">z_{1}^{(2)}</script></span> 映射到 <span><span class="MathJax_Preview">a_{1}^{(2)}</span><script type="math/tex">a_{1}^{(2)}</script></span> 的神经元上移动误差，将 <span><span class="MathJax_Preview">a_{1}^{(2)}</span><script type="math/tex">a_{1}^{(2)}</script></span> 与局部梯度相乘，这里的局部梯度为  <span><span class="MathJax_Preview">f'(z_{1}^{(2)})</span><script type="math/tex">f'(z_{1}^{(2)})</script></span>  。</li>
@@ -823,7 +828,7 @@ $$</p>
 </ul>
 <p><img alt="1560417982981" src="../imgs/1560417982981.png" /></p>
 <ul>
-<li>我们通过把 <span><span class="MathJax_Preview">\delta_{i}^{(k)}</span><script type="math/tex">\delta_{i}^{(k)}</script></span> 与路径上的权值 $W_{ij}^{(k-1)} $相乘，将这个误差反向传播到 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 。</li>
+<li>我们通过把 <span><span class="MathJax_Preview">\delta_{i}^{(k)}</span><script type="math/tex">\delta_{i}^{(k)}</script></span> 与路径上的权值 <span><span class="MathJax_Preview">W_{ij}^{(k-1)}</span><script type="math/tex">W_{ij}^{(k-1)}</script></span> 相乘，将这个误差反向传播到 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 。</li>
 <li>因此在 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 接收的误差是 <span><span class="MathJax_Preview">\delta_{i}^{(k)}W_{ij}^{(k-1)}</span><script type="math/tex">\delta_{i}^{(k)}W_{ij}^{(k-1)}</script></span> 。</li>
 <li>然而， <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 在前向计算可能出下图的情况，会参与下一层中的多个神经元的计算。那么第 k 层的第 <span><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> 个神经元的误差也要使用上一步方法将误差反向传播到 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 上。</li>
 </ul>
@@ -831,7 +836,7 @@ $$</p>
 <ul>
 <li>因此现在在 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 接收的误差是 <span><span class="MathJax_Preview">\delta_{i}^{(k)}W_{ij}^{(k-1)}+\delta_{m}^{(k)}W_{mj}^{(k-1)}</span><script type="math/tex">\delta_{i}^{(k)}W_{ij}^{(k-1)}+\delta_{m}^{(k)}W_{mj}^{(k-1)}</script></span> 。</li>
 <li>实际上，我们可以把上面误差和简化为 <span><span class="MathJax_Preview">\sum_{i}\delta_{i}^{(k)}W_{ij}^{(k-1)}</span><script type="math/tex">\sum_{i}\delta_{i}^{(k)}W_{ij}^{(k-1)}</script></span> 。</li>
-<li>现在我们有在 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 正确的误差，然后将其与局部梯度  $f'(z_{j}^{(k-1)}) $相乘，把误差信息反向传到第 <span><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> 层的第 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 个神经元上。</li>
+<li>现在我们有在 <span><span class="MathJax_Preview">a_{j}^{(k-1)}</span><script type="math/tex">a_{j}^{(k-1)}</script></span> 正确的误差，然后将其与局部梯度  <span><span class="MathJax_Preview">f'(z_{j}^{(k-1)})</span><script type="math/tex">f'(z_{j}^{(k-1)})</script></span> 相乘，把误差信息反向传到第 <span><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> 层的第 <span><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 个神经元上。</li>
 <li>因此到达 <span><span class="MathJax_Preview">z_{j}^{(k-1)}</span><script type="math/tex">z_{j}^{(k-1)}</script></span> 的误差为 <span><span class="MathJax_Preview">f'(z_{j}^{(k-1)})\sum_{i}\delta_{i}^{(k)}W_{ij}^{(k-1)}</span><script type="math/tex">f'(z_{j}^{(k-1)})\sum_{i}\delta_{i}^{(k)}W_{ij}^{(k-1)}</script></span> 。</li>
 </ul>
 <h4 id="16-training-with-backpropagation-vectorized">1.6 Training with Backpropagation – Vectorized<a class="headerlink" href="#16-training-with-backpropagation-vectorized" title="Permanent link">&para;</a></h4>
@@ -1025,17 +1030,15 @@ J_{R}=J+\lambda\sum_{i=1}^{L}\big|\big|W^{(i)}\big|\big|_{F}   \\
 </li>
 <li>
 <p>一种简单的方法是对非时间维度的连接（即非循环连接）进行随机丢失。如图所示，虚线边表示进行随机丢弃，不同的颜色表示不同的丢弃掩码。</p>
-</li>
-</ul>
-</li>
-</ul>
 <p><img alt="1558861348710" src="../imgs/1558861348710.png" /></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>-   然而根据贝叶斯学习的解释，丢弃法是一种对参数$θ$的采样。每次采样的参数需要在每个时刻保持不变。因此，在对循环神经网络上使用丢弃法时，需要对参数矩阵的每个元素进行随机丢弃，并在所有时刻都使用相同的丢弃掩码。这种方法称为变分丢弃法（Variational Dropout）。
-    图7.12给出了变分丢弃法的示例，**相同颜色表示使用相同的丢弃掩码**。
-</pre></div>
-</td></tr></table>
-
+</li>
+<li>
+<p>然而根据贝叶斯学习的解释，丢弃法是一种对参数<span><span class="MathJax_Preview">θ</span><script type="math/tex">θ</script></span>的采样。每次采样的参数需要在每个时刻保持不变。因此，在对循环神经网络上使用丢弃法时，需要对参数矩阵的每个元素进行随机丢弃，并在所有时刻都使用相同的丢弃掩码。这种方法称为变分丢弃法（Variational Dropout）。
+    图7.12给出了变分丢弃法的示例，<strong>相同颜色表示使用相同的丢弃掩码</strong>。</p>
+</li>
+</ul>
+</li>
+</ul>
 <p><img alt="1558861390725" src="../imgs/1558861390725.png" /></p>
 <h4 id="24-neuron-units">2.4 Neuron Units<a class="headerlink" href="#24-neuron-units" title="Permanent link">&para;</a></h4>
 <p>到目前为止，我们讨论了含有 sigmoidal neurons 的非线性分类的神经网络。但是在很多应用中，使用其他激活函数可以设计更好的神经网络。下面列出一些常见的激活函数和激活函数的梯度定义，它们可以和前面讨论过的 sigmoidal 函数互相替换。</p>
@@ -1123,10 +1126,15 @@ leaky(z)=max(z, k\cdot z)  \
 $$</p>
 <p>其中 <span><span class="MathJax_Preview">0&lt;k&lt;1</span><script type="math/tex">0<k<1</script></span> 。</p>
 <p><span><span class="MathJax_Preview">leaky\;ReLU</span><script type="math/tex">leaky\;ReLU</script></span> 函数的微分是一个分段函数：</p>
-<p>$$
-\begin{eqnarray}  leaky'(z) &amp;=&amp; \begin{cases} 1 &amp; \text{<span><span class="MathJax_Preview">z &gt; 0</span><script type="math/tex">z > 0</script></span>} \ k &amp; \text{:<span><span class="MathJax_Preview">otherwise</span><script type="math/tex">otherwise</script></span>} \end{cases} \nonumber  \end{eqnarray}
-$$
-<img alt="1560433960028" src="../imgs/1560433960028.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\begin{eqnarray}  leaky'(z) &amp;=&amp; \begin{cases} 1 &amp; \text{$z &gt; 0$} \\ k &amp; \text{:$otherwise$} \end{cases} \nonumber  \end{eqnarray}
+</div>
+<script type="math/tex; mode=display">
+\begin{eqnarray}  leaky'(z) &=& \begin{cases} 1 & \text{$z > 0$} \\ k & \text{:$otherwise$} \end{cases} \nonumber  \end{eqnarray}
+</script>
+</div>
+<p><img alt="1560433960028" src="../imgs/1560433960028.png" /></p>
 <h4 id="25-data-preprocessing">2.5 Data Preprocessing<a class="headerlink" href="#25-data-preprocessing" title="Permanent link">&para;</a></h4>
 <p>与机器学习模型的一般情况一样，确保模型在当前任务上获得合理性能的一个关键步骤是对数据执行基本的预处理。下面概述了一些常见的技术。</p>
 <p><strong>Mean Subtraction</strong></p>
@@ -1138,26 +1146,41 @@ $$
 <h4 id="26-parameter-initialization">2.6 Parameter Initialization<a class="headerlink" href="#26-parameter-initialization" title="Permanent link">&para;</a></h4>
 <p>让神经网络实现最佳性能的关键一步是以合理的方式初始化参数。一个好的起始方法是将权值初始化为通常分布在 0 附近的很小的随机数-在实践中效果还不错。在论文***Understanding the difficulty***
 <strong><em>of training deep feedforward neural networks</em></strong>
-<strong><em>(2010)</em></strong>, Xavier 研究不同权值和偏置初始化方案对训练动力（ <strong>training dynamics</strong>​ ）的影响。实验结果表明，对于 sigmoid 和 tanh 激活单元，当一个权值矩阵 <span><span class="MathJax_Preview">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</span><script type="math/tex">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</script></span> 以如下的均匀分布的方式随机初始化，能够实现更快的收敛和得到更低的误差：
-$$
-W\sim U\bigg[-\sqrt{\frac{6}{n<sup>{(l)}+n</sup>{(l+1)}}},\sqrt{\frac{6}{n<sup>{(l)}+n</sup>{(l+1)}}}\;\bigg]   \
-$$</p>
+<strong><em>(2010)</em></strong>, Xavier 研究不同权值和偏置初始化方案对训练动力（ <strong>training dynamics</strong>​ ）的影响。实验结果表明，对于 sigmoid 和 tanh 激活单元，当一个权值矩阵 <span><span class="MathJax_Preview">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</span><script type="math/tex">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</script></span> 以如下的均匀分布的方式随机初始化，能够实现更快的收敛和得到更低的误差：</p>
+<div>
+<div class="MathJax_Preview">
+W\sim U\bigg[-\sqrt{\frac{6}{n^{(l)}+n^{(l+1)}}},\sqrt{\frac{6}{n^{(l)}+n^{(l+1)}}}\;\bigg]   \\
+</div>
+<script type="math/tex; mode=display">
+W\sim U\bigg[-\sqrt{\frac{6}{n^{(l)}+n^{(l+1)}}},\sqrt{\frac{6}{n^{(l)}+n^{(l+1)}}}\;\bigg]   \\
+</script>
+</div>
 <p>其中 <span><span class="MathJax_Preview">n^{(l)}</span><script type="math/tex">n^{(l)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}in)</span><script type="math/tex">(fan\text{-}in)</script></span> 的输入单元数， <span><span class="MathJax_Preview">n^{(l+1)}</span><script type="math/tex">n^{(l+1)}</script></span> 是 W <span><span class="MathJax_Preview">(fan\text{-}out)</span><script type="math/tex">(fan\text{-}out)</script></span> 的输出单元数。在这个参数初始化方案中，偏置单元是初始化为 0 。这种方法是尝试保持跨层之间的激活方差以及反向传播梯度方差。如果没有这样的初始化，梯度方差（当中含有纠正信息）通常随着跨层的反向传播而衰减。</p>
 <h4 id="27-learning-strategies">2.7 Learning Strategies<a class="headerlink" href="#27-learning-strategies" title="Permanent link">&para;</a></h4>
-<p>训练期间模型参数更新的速率/幅度可以使用学习率进行控制。在最简单的梯度下降公式中， <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 是学习率：
-$$
-\theta<sup>{new}=\theta</sup>{old}-\alpha\nabla_{\theta}J_{t}(\theta)   \
-$$</p>
+<p>训练期间模型参数更新的速率/幅度可以使用学习率进行控制。在最简单的梯度下降公式中， <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 是学习率：</p>
+<div>
+<div class="MathJax_Preview">
+\theta^{new}=\theta^{old}-\alpha\nabla_{\theta}J_{t}(\theta)   \\
+</div>
+<script type="math/tex; mode=display">
+\theta^{new}=\theta^{old}-\alpha\nabla_{\theta}J_{t}(\theta)   \\
+</script>
+</div>
 <p>你可能会认为如果要更快地收敛，我们应该对 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 取一个较大的值——然而，在更快的收敛速度下并不能保证更快的收敛。实际上，如果学习率非常高，我们可能会遇到损失函数难以收敛的情况，因为参数更新幅度过大，会导致模型越过凸优化的极小值点，如下图所示。在非凸模型中（我们很多时候遇到的模型都是非凸），高学习率的结果是难以预测的，但是损失函数难以收敛的可能性是非常高的。</p>
 <p><img alt="1560434193931" src="../imgs/1560434193931.png" /></p>
 <p>避免损失函数难以收敛的一个简答的解决方法是使用一个很小的学习率，让模型谨慎地在参数空间中迭代——当然，如果我们使用了一个太小的学习率，损失函数可能不会在合理的时间内收敛，或者会困在局部最优点。因此，与任何其他超参数一样，学习率必须有效地调整。</p>
 <p>深度学习系统中最消耗计算资源的是训练阶段，一些研究已在尝试提升设置学习率的新方法。例如， <strong>Ronan Collobert</strong> 通过取 <span><span class="MathJax_Preview">fan\text{-}in</span><script type="math/tex">fan\text{-}in</script></span> 的神经元 <span><span class="MathJax_Preview">(n^{(l)})</span><script type="math/tex">(n^{(l)})</script></span> 的平方根的倒数来缩放权值 <span><span class="MathJax_Preview">W_{ij}</span><script type="math/tex">W_{ij}</script></span> ( <span><span class="MathJax_Preview">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</span><script type="math/tex">W\in \mathbb{R}^{n^{(l+1)}\times n^{(l)}}</script></span>) 的学习率。</p>
 <p>还有其他已经被证明有效的技术-这个方法叫 <strong>annealing</strong> <strong>退火</strong>，在多次迭代之后，学习率以以下方式降低：保证以一个高的的学习率开始训练和快速逼近最小值；当越来越接近最小值时，开始降低学习率，让我们可以在更细微的范围内找到最优值。一个常见的实现 <strong>annealing</strong> 的方法是在每 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 次的迭代学习后，通过一个因子 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 来降低学习率 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span> 。</p>
 <p>指数衰减也是很常见的方法，在 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 次迭代后学习率变为 <span><span class="MathJax_Preview">\alpha(t)=\alpha_{0}e^{-kt}</span><script type="math/tex">\alpha(t)=\alpha_{0}e^{-kt}</script></span> ，其中 <span><span class="MathJax_Preview">\alpha_{0}</span><script type="math/tex">\alpha_{0}</script></span> 是初始的学习率和 <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 是超参数。</p>
-<p>还有另外一种方法是允许学习率随着时间减少：
-$$
+<p>还有另外一种方法是允许学习率随着时间减少：</p>
+<div>
+<div class="MathJax_Preview">
 \alpha(t)=\frac{\alpha_{0}\tau}{max(t,\tau)}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\alpha(t)=\frac{\alpha_{0}\tau}{max(t,\tau)}
+</script>
+</div>
 <p>在上述的方案中， <span><span class="MathJax_Preview">\alpha_{0}</span><script type="math/tex">\alpha_{0}</script></span> 是一个可调的参数，代表起始的学习率。 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> 也是一个可调参数，表示学习率应该在该时间点开始减少。在实际中，这个方法是很有效的。在下一部分我们讨论另外一种不需要手动设定学习率的自适应梯度下降的方法。</p>
 <h4 id="28-momentum-updates">2.8 Momentum Updates<a class="headerlink" href="#28-momentum-updates" title="Permanent link">&para;</a></h4>
 <p>动量方法，灵感来自于物理学中的对动力学的研究，是梯度下降方法的一种变体，尝试使用更新的“速度”的一种更有效的更新方案。动量更新的伪代码如下所示：</p>
@@ -1172,10 +1195,15 @@ $$</p>
 </td></tr></table>
 
 <h4 id="29-adaptive-optimization-methods">2.9 Adaptive Optimization Methods<a class="headerlink" href="#29-adaptive-optimization-methods" title="Permanent link">&para;</a></h4>
-<p><strong>AdaGrad</strong> 是标准的随机梯度下降( <strong>SGD</strong> )的一种实现，但是有一点关键的不同：对每个参数学习率是不同的。每个参数的学习率取决于每个参数梯度更新的历史,参数的历史更新越小，就使用更大的学习率加快更新。换句话说，过去没有更新太大的参数现在更有可能有更高的学习率。
-$$
-\theta_{t,i}=\theta_{t-1,i}-\frac{\alpha}{\sqrt{\sum_{\tau=1}<sup>{t}g_{\tau,i}</sup>{2}}} g_{t,i}  where  g_{t,i}=\frac{\partial}{\partial\theta_{i}^{t}}J_{t}(\theta)
-$$</p>
+<p><strong>AdaGrad</strong> 是标准的随机梯度下降( <strong>SGD</strong> )的一种实现，但是有一点关键的不同：对每个参数学习率是不同的。每个参数的学习率取决于每个参数梯度更新的历史,参数的历史更新越小，就使用更大的学习率加快更新。换句话说，过去没有更新太大的参数现在更有可能有更高的学习率。</p>
+<div>
+<div class="MathJax_Preview">
+\theta_{t,i}=\theta_{t-1,i}-\frac{\alpha}{\sqrt{\sum_{\tau=1}^{t}g_{\tau,i}^{2}}} g_{t,i} \ where \ g_{t,i}=\frac{\partial}{\partial\theta_{i}^{t}}J_{t}(\theta)
+</div>
+<script type="math/tex; mode=display">
+\theta_{t,i}=\theta_{t-1,i}-\frac{\alpha}{\sqrt{\sum_{\tau=1}^{t}g_{\tau,i}^{2}}} g_{t,i} \ where \ g_{t,i}=\frac{\partial}{\partial\theta_{i}^{t}}J_{t}(\theta)
+</script>
+</div>
 <p>在这个技术中，我们看到如果梯度的历史 <strong>RMS</strong> 很低，那么学习率会非常高。这个技术的一个简单的实现如下所示：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
