@@ -521,7 +521,7 @@ $$
 -   将我们刚刚手工完成的转换成算法
 -   用于深度学习软件框架(TensorFlow, PyTorch, Chainer, etc.)
 
-## Notes 03 Neural Networks, Backpropagation
+## Notes 03 Neural Networks, Backpropagation(Lecture 03 and 04)
 
 ??? abstract "Keyphrases"
 
@@ -1065,6 +1065,16 @@ x += -learning_rate * m / (np.sqrt(v) + eps)
 #### 2.10 More reference
 
 如果希望了解以上的梯度优化算法的具体细节，可以阅读这篇文章： [An overview of gradient descent optimization algorithms](<http://ruder.io/optimizing-gradient-descent/>)) 。
+
+## Computing Neural Network Gradients
+
+### 1 Introduction
+
+这些笔记的目的是演示如何以完全矢量化的方式快速计算神经网络梯度。这是对CS224n 2019第三讲的最后一部分的补充，是同样的材料
+
+### 2 Vectorized Gradients
+
+
 
 ## Reference
 

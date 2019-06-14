@@ -37,6 +37,7 @@ nav:
           - '01 Introduction and Word Vectors' : 'CS224n-2019-01-Introduction and Word Vectors.md'
           - '02 Word Vectors 2 and Word Senses' : 'CS224n-2019-02-Word Vectors 2 and Word Senses.md'
           - '03 Word Window Classification,Neural Networks, and Matrix Calculus' : 'CS224n-2019-03-Word Window Classification,Neural Networks, and Matrix Calculus.md'
+          - '04 Backpropagation and Computation Graphs' : 'CS224n-2019-04-Backpropagation and Computation Graphs.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
