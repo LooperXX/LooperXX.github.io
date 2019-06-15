@@ -188,12 +188,18 @@ to use your solution to part (d) to help compute the necessary gradients here.</
 <p>For <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> :</p>
 <div>
 <div class="MathJax_Preview">
+\begin{array}{l}
 \frac{\partial J_{\text {neg-sample}}}{\partial v_c}
-=(\sigma(u_o^T v_c) - 1) u_o    + \sum_{k=1}^{K}\left(1-\sigma\left(-u_{k}^{T} v_{c}\right)\right) u_{k}
+&amp;=(\sigma(u_o^T v_c) - 1) u_o   + \sum_{k=1}^{K}\left(1-\sigma\left(-u_{k}^{T} v_{c}\right)\right) u_{k} 
+\\ &amp;= (\sigma(u_o^T v_c) - 1) u_o+ \sum_{k=1}^{K}\left(\sigma\left(u_{k}^{T} v_{c}\right)\right) u_{k}
+\end{array}
 </div>
 <script type="math/tex; mode=display">
+\begin{array}{l}
 \frac{\partial J_{\text {neg-sample}}}{\partial v_c}
-=(\sigma(u_o^T v_c) - 1) u_o    + \sum_{k=1}^{K}\left(1-\sigma\left(-u_{k}^{T} v_{c}\right)\right) u_{k}
+&=(\sigma(u_o^T v_c) - 1) u_o   + \sum_{k=1}^{K}\left(1-\sigma\left(-u_{k}^{T} v_{c}\right)\right) u_{k} 
+\\ &= (\sigma(u_o^T v_c) - 1) u_o+ \sum_{k=1}^{K}\left(\sigma\left(u_{k}^{T} v_{c}\right)\right) u_{k}
+\end{array}
 </script>
 </div>
 <p>For <span><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span>, Remeber : <span><span class="MathJax_Preview">o \notin\left\{w_{1}, \dots, w_{K}\right\}</span><script type="math/tex">o \notin\left\{w_{1}, \dots, w_{K}\right\}</script></span> <img alt="😢" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/4.0/png/64/1f622.png" title=":cry:" /> :</p>
@@ -238,10 +244,10 @@ loss function is much more efficient to compute than the naive-softmax loss?</p>
 <p>For negative sampling loss function:</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o}-\sum_{k=1}^{K}\left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &amp;=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
+\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\left(\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &amp;=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o}-\sum_{k=1}^{K}\left(\sigma\left(-\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
+\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\left(\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right)\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
 </script>
 </div>
 <p>从求得的偏导数中我们可以看出，原始的softmax函数每次对 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 进行反向传播时，需要与 output vector matrix 进行大量且复杂的矩阵运算，而负采样中的计算复杂度则不再与词表大小 <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 有关，而是与采样数量 <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 有关。</p>
