@@ -244,10 +244,18 @@ loss function is much more efficient to compute than the naive-softmax loss?</p>
 <p>For negative sampling loss function:</p>
 <div>
 <div class="MathJax_Preview">
-\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &amp;=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
+\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k} 
+=\sigma\left(-\boldsymbol{u}_{o}^{\top} v_{c}\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k}
+\\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &amp;=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} 
+= \sigma\left(-\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\boldsymbol{v}_{c} 
+\\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &amp;=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
 </div>
 <script type="math/tex; mode=display">
-\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k} \\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} \\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
+\begin{aligned} \frac{\partial J}{\partial \boldsymbol{v}_{c}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} v_{c}\right)-1\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k} 
+=\sigma\left(-\boldsymbol{u}_{o}^{\top} v_{c}\right) \boldsymbol{u}_{o} + \sum_{k=1}^{K}\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{u}_{k}
+\\ \frac{\partial J}{\partial \boldsymbol{u}_{o}} &=\left(\sigma\left(\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)-1\right) \boldsymbol{v}_{c} 
+= \sigma\left(-\boldsymbol{u}_{o}^{\top} \boldsymbol{v}_{c}\right)\boldsymbol{v}_{c} 
+\\ \frac{\partial J}{\partial \boldsymbol{u}_{k}} &=\sigma\left(\boldsymbol{u}_{k}^{\top} \boldsymbol{v}_{c}\right) \boldsymbol{v}_{c}, \quad \text { for all } k=1,2, \ldots, K \end{aligned}
 </script>
 </div>
 <p>从求得的偏导数中我们可以看出，原始的softmax函数每次对 <span><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 进行反向传播时，需要与 output vector matrix 进行大量且复杂的矩阵运算，而负采样中的计算复杂度则不再与词表大小 <span><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 有关，而是与采样数量 <span><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 有关。</p>
