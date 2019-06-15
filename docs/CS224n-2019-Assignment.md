@@ -226,6 +226,33 @@ $$
 \\ \frac{\partial J_{s g}}{\partial v_{w}}&=0(\text { when } w \neq c) \end{array}
 $$
 
+### 2 Coding: Implementing word2vec
+
+#### word2vec.py
+
+本部分要求实现 $sigmoid, naiveSoftmaxLossAndGradient, negSamplingLossAndGradient, skipgram$  四个函数，主要考察对第一部分中反向传播计算结果的实现。代码实现中，通过优化偏导数结合偏导数计算结果与 $\sigma(x) + \sigma(-x) = 1$ 对公式进行转化，从而实现了全矢量化。这部分需要大家自行结合代码与公式进行推导。
+
+#### sgd.py
+
+实现 SGD 
+$$
+\theta^{n e w}=\theta^{o l d} - \alpha \nabla_{\theta} J(\theta)
+$$
+
+#### run.py
+
+首先要说明的是，这个真的要跑好久 :sweat_smile:
+
+!!! question "Question"
+
+    Briefly explain in at most three sentences what you see in the plot.
+
+上图是经过训练的词向量的可视化。我们可以注意到一些模式：
+
+-   近义词被组合在一起，比如 amazing 和 wonderful，woman 和 female。
+    -   但是 man 和 male 却距离较远
+-   反义词可能因为经常属于同一上下文，它们也会与同义词一起出现，比如 enjoyable 和 annoying。
+-   `man:king::woman:queen` 以及 `queen:king::female:male` 形成的两条直线基本平行
 
 ## Reference
 
