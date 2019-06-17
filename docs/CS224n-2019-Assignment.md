@@ -1,8 +1,8 @@
 # CS224n-2019 Assignment
 
-本文档将简要记录作业中的要点
+本文档将记录作业中的要点以及问题的答案
 
-课程笔记参见[此处](https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/)
+课程笔记参见我的[博客](https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/)，并在博客的[Repo](<https://github.com/LooperXX/LooperXX.github.io>)中提供笔记源文件的下载
 
 ## Assignment 01
 
@@ -246,6 +246,8 @@ $$
 !!! question "Question"
 
     Briefly explain in at most three sentences what you see in the plot.
+
+![word_vectors](imgs/word_vectors.png)
 
 上图是经过训练的词向量的可视化。我们可以注意到一些模式：
 

@@ -650,6 +650,24 @@ $$
 
 ![1560320060184](imgs/1560320060184.png)
 
+## Suggested Readings
+
+### GloVe Global Vectors for Word Representation
+
+此为 Glove 原文，已在 Lecture 和 Note 中详细记录。
+
+### Improving Distributional Similarity with Lessons Learned from Word Embeddings 
+
+实际应用中如何获得更好的词向量
+
+#### Abstract
+
+近年来的研究趋势表明，基于神经网络的词嵌入模型在词相似性和相似性检测任务上优于传统的基于计数的分布模型。我们发现，word嵌入的性能提高在很大程度上是由于某些系统设计选择和超参数优化，而不是嵌入算法本身。此外，我们证明这些修改可以转移到传统的分配模型，产生类似的收益。与以前的报告相比，我们观察到的方法之间的性能差异主要是局部的或不显著的，没有任何一种方法比其他方法具有全局优势。
+
+## Additional Readings
+
+
+
 ## Reference
 
 以下是学习本课程时的可用参考书籍：
