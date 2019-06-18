@@ -218,7 +218,6 @@ $$
     function $J_{skip-gram}$ with respect to all parameters. You're ready to implement ***word2vec*** !
 
 **Answer f** : 
-
 $$
 \begin{array}{l} 
 \frac{\partial J_{s g}}{\partial U} &= \sum_{-m \leq j \leq m, j \neq 0} \frac{\partial J\left(v_{c}, w_{t+j}, U\right)}{\partial U} 
@@ -255,6 +254,52 @@ $$
     -   但是 man 和 male 却距离较远
 -   反义词可能因为经常属于同一上下文，它们也会与同义词一起出现，比如 enjoyable 和 annoying。
 -   `man:king::woman:queen` 以及 `queen:king::female:male` 形成的两条直线基本平行
+
+## Assignment 03
+
+### 1. Machine Learning & Neural Networks
+
+#### (a) Adam Optimizer
+
+回忆一下标准随机梯度下降的更新规则
+$$
+\boldsymbol{\theta} \leftarrow \boldsymbol{\theta}-\alpha \nabla_{\boldsymbol{\theta}}{J_{\mathrm{minibatch}}(\boldsymbol{\theta})}
+$$
+其中，$\boldsymbol{\theta}$ 是包含模型所有参数的向量，$J$ 是损失函数，$\nabla_{\boldsymbol{\theta}} J_{\mathrm{minibatch}}(\boldsymbol{\theta})$ 是关于minibatch数据上参数的损失函数的梯度，$\alpha$ 是学习率。[Adam Optimization](https://arxiv.org/pdf/1412.6980.pdf)使用了一个更复杂的更新规则，并附加了两个步骤。
+
+!!! question "Question 1.a.i"
+
+    首先，Adam使用了一个叫做 $momentum$ **动量**的技巧来跟踪梯度的移动平均值 $m$
+    
+    $$
+    \begin{aligned}
+    \mathbf{m} & \leftarrow \beta_{1} \mathbf{m}+\left(1-\beta_{1}\right) \nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta}) \\ \boldsymbol{\theta} & \leftarrow \boldsymbol{\theta}-\alpha \mathbf{m} \end{aligned}
+    $$
+    
+    其中，$\beta_1$ 是一个 0 和 1 之间的超参数(通常被设为0.9)。简要说明(不需要用数学方法证明，只需要直观地说明)如何使用m来阻止更新发生大的变化，以及总体上为什么这种小变化可能有助于学习。
+
+**Answer 1.a.i** : 
+
+-   由于超参数 $\beta _1$ 一般被设为0.9，此时对于移动平均的梯度值 $m$ 而言，主要受到的是之前梯度的移动平均值的影响，而本次计算得到的梯度将会被缩放为原来的 ${1 - \beta_1}$ 倍，即时本次计算得到的梯度很大（梯度爆炸），这一影响也会被减轻，从而阻止更新发生大的变化。
+
+-   通过减小梯度的变化程度，使得每次的梯度更新更加稳定，从而使模型学习更加稳定，收敛速度更快，并且这也减慢了对于较大梯度值的参数的更新速度，保证其更新的稳定性。
+
+!!! question "Question 1.a.ii"
+
+    Adam还通过跟踪梯度平方的移动平均值 $v$ 来使用自适应学习率
+
+    $$
+    \begin{aligned} 
+    \mathbf{m} & \leftarrow \beta_{1} \mathbf{m}+\left(1-\beta_{1}\right) \nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta}) \\ 
+    \mathbf{v} & \leftarrow \beta_{2} \mathbf{v}+\left(1-\beta_{2}\right)\left(\nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta}) \odot \nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta})\right) \\ 
+    \boldsymbol{\theta} & \leftarrow \boldsymbol{\theta}-\alpha \odot \mathbf{m} / \sqrt{\mathbf{v}}  \end{aligned}
+    $$
+
+    其中，$\odot, /$ 分别表示逐元素的乘法和除法（所以 $z \odot z$ 是逐元素的平方），$\beta_2$ 是一个 0 和 1 之间的超参数(通常被设为0.99)。因为Adam将更新除以 $\sqrt v$ ，那么哪个模型参数会得到更大的更新？为什么这对学习有帮助？
+
+**Answer 1.a.ii** : 
+
+
 
 ## Reference
 
