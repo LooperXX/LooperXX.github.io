@@ -287,18 +287,146 @@ $$
 !!! question "Question 1.a.ii"
 
     Adam还通过跟踪梯度平方的移动平均值 $v$ 来使用自适应学习率
-
+    
     $$
     \begin{aligned} 
     \mathbf{m} & \leftarrow \beta_{1} \mathbf{m}+\left(1-\beta_{1}\right) \nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta}) \\ 
     \mathbf{v} & \leftarrow \beta_{2} \mathbf{v}+\left(1-\beta_{2}\right)\left(\nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta}) \odot \nabla_{\boldsymbol{\theta}} J_{\text { minibatch }}(\boldsymbol{\theta})\right) \\ 
     \boldsymbol{\theta} & \leftarrow \boldsymbol{\theta}-\alpha \odot \mathbf{m} / \sqrt{\mathbf{v}}  \end{aligned}
     $$
-
+    
     其中，$\odot, /$ 分别表示逐元素的乘法和除法（所以 $z \odot z$ 是逐元素的平方），$\beta_2$ 是一个 0 和 1 之间的超参数(通常被设为0.99)。因为Adam将更新除以 $\sqrt v$ ，那么哪个模型参数会得到更大的更新？为什么这对学习有帮助？
 
 **Answer 1.a.ii** : 
 
+-   移动平均梯度最小的模型参数将得到较大的更新。
+-   一方面，将梯度较小的参数的更新变大，帮助其走出局部最优点（鞍点）；另一方面，将梯度较大的参数的更新变小，使其更新更加稳定。结合以上两个方面，使学习更加快速的同时也更加稳定。
+
+#### (b) Dropout
+
+[Dropout](https://www.cs.toronto.edu/˜hinton/absps/JMLRdropout.pdf) 是一种正则化技术。在训练期间，Dropout 以 $p_{drop}$ 的概率随机设置隐藏层 $h$ 中的神经元为零(每个minibatch中 dropout 不同的神经元),然后将 $h$ 乘以一个常数 $\gamma$ 。我们可以写为
+
+$$
+\mathbf{h}_{\mathrm{drop}}=\gamma \mathbf{d} \circ \mathbf{h}
+$$
+
+其中，$d \in \{0,1\}^{D_h}$ ( $D_h$ 是 $h$ 的大小)是一个掩码向量，其中每个条目都是以 $p_{drop}$ 的概率为 0 ，以 $1 - p_{drop}$ 的概率为 1。$\gamma$ 是使得 $h_{drop}$ 的期望值为 $h$ 的值
+
+$$
+\mathbb{E}_{p_{\text{drop}}}\left[\mathbf{h}_{\text{drop}}\right]_{i}=h_{i}, \text{for all } i \in \{1,\dots,D_h\}
+$$
+
+!!! question "Question 1.b.i"
+
+    $\gamma$ 必须等于什么(用 $p_{drop}$ 表示) ？简单证明你的答案。
+
+**Answer 1.b.i** : 
+
+$$
+\gamma = \frac{1}{1 - p_{drop}} \\
+$$
+
+证明如下：
+
+$$
+\sum_i (1 -  p_{drop}) h_i = (1 -  p_{drop}) E[h] \\
+\sum_i[h_{drop}]_i = \gamma\sum_i (1 -  p_{drop}) h_i = \gamma (1 -  p_{drop}) E[h] = E[h]
+$$
+
+
+!!! question "Question 1.b.ii"
+
+    为什么我们应该只在训练时使用 dropout 而在评估时不使用？
+
+**Answer 1.b.ii** : 
+
+如果我们在评估期间应用 dropout ，那么评估结果将会具有随机性，并不能体现模型的真实性能，违背了正则化的初衷。通过在评估期间禁用 dropout，从而观察模型的性能与正则化的效果，保证模型的参数得到正确的更新。
+
+### 2. Neural Transition-Based Dependency Parsing
+
+在本节中，您将实现一个基于神经网络的依赖解析器，其目标是在UAS(未标记依存评分)指标上最大化性能。
+
+依存解析器分析句子的语法结构，在 head words 和 修饰 head words 的单词之间建立关系。你的实现将是一个基于转换的解析器，它逐步构建一个解析。每一步都维护一个局部解析，表示如下
+
+-   一个存储正在被处理的单词的 栈 
+-   一个存储尚未处理的单词的 缓存
+-   一个解析器预测的 依赖 的列表
+
+最初,栈只包含 ROOT ，依赖项列表是空的，而缓存则包含了这个句子的所有单词。在每一个步骤中,解析器将对部分解析使用一个转换,直到它的魂村是空的，并且栈大小为1。可以使用以下转换：
+
+-   SHIFT：将buffer中的第一个词移出并放到stack上。
+-   LEFT-ARC：将第二个(最近添加的第二)项标记为栈顶元素的依赖，并从堆栈中删除第二项
+-   RIGHT-ARC：将第一个(最近添加的第一)项标记为栈中第二项的依赖，并从堆栈中删除第一项
+
+在每个步骤中，解析器将使用一个神经网络分类器在三个转换中决定。
+
+!!! question "Question 2.a"
+
+    求解解析句子 “I parsed this sentence correctly” 所需的转换顺序。这句话的依赖树如下所示。在每一步中，给出 stack 和 buffer 的结构，以及本步骤应用了什么转换，并添加新的依赖(如果有的话)。下面提供了以下三个步骤。
+    
+    ![1560871900131](imgs/1560871900131.png)
+
+**Answer 2.a** : 
+
+| Stack                          | Buffer                                 | New dependency         | Transition           |
+| ------------------------------ | -------------------------------------- | ---------------------- | -------------------- |
+| [ROOT]                         | [I, parsed, this, sentence, correctly] |                        | Initial Conﬁguration |
+| [ROOT, I]                      | [parsed, this, sentence, correctly]    |                        | SHIFT                |
+| [ROOT, I, parsed]              | [this, sentence, correctly]            |                        | SHIFT                |
+| [ROOT, parsed]                 | [this, sentence, correctly]            | parsed $\to$ I         | LEFT-ARC             |
+| [ROOT, parsed, this]           | [sentence, correctly]                  |                        | SHIFT                |
+| [ROOT, parsed, this, sentence] | [correctly]                            |                        | SHIFT                |
+| [ROOT, parsed, sentence]       | [correctly]                            | sentence $\to$ this    | LEFT-ARC             |
+| [ROOT, parsed]                 | [correctly]                            | parsed $\to$ sentence  | RIGHT-ARC            |
+| [ROOT, parsed, correctly]      | []                                     |                        | SHIFT                |
+| [ROOT, parsed]                 | []                                     | parsed $\to$ correctly | RIGHT-ARC            |
+| [ROOT]                         | []                                     | ROOT $\to$ parsed      | RIGHT-ARC            |
+
+!!! question "Question 2.b"
+
+    一个包含 $n$ 个单词的句子需要多少步(用 $n$ 表示)才能被解析？简要解释为什么。
+
+**Answer 2.b** : 
+
+包含$n$个单词的句子需要 $2 \times n$ 步才能完成解析。因为需要进行 $n$ 步的 $SHIFT$ 操作和 共计$n 步的 LEFT-ARC 或 RIGHT-ARC 操作，才能完成解析。（每个单词都需要一次SHIFT和ARC的操作，初始化步骤不计算在内）
+
+**Question 2.c**
+
+实现解析器将使用的转换机制
+
+**Question 2.d**
+
+我们的网络将预测哪些转换应该应用于部分解析。我们可以使用它来解析一个句子，通过应用预测出的转换操作，直到解析完成。然而，在对大量数据进行预测时，神经网络的运行速度要高得多(即同时预测了对任何不同部分解析的下一个转换)。我们可以用下面的算法来解析小批次的句子
+
+![1560906831993](imgs/1560906831993.png)
+
+实现minibatch的解析器
+
+我们现在将训练一个神经网络来预测，考虑到栈、缓存和依赖项集合的状态，下一步应该应用哪个转换。首先，模型提取了一个表示当前状态的特征向量。我们将使用原神经依赖解析论文中的特征集合：[A Fast and Accurate Dependency Parser using Neural Networks](http://cs.stanford.edu/people/danqi/papers/emnlp2014.pdf)。这个特征向量由标记列表(例如在栈中的最后一个词，缓存中的第一个词，栈中第二到最后一个字的依赖(如果有))组成。它们可以被表示为整数的列表$[w_1,w_2,\dots,w_m]$，m是特征的数量，每个 $0 \leq w_i \lt |V|$ 是词汇表中的一个token的索引($| V |$是词汇量)。首先，我们的网络查找每个单词的嵌入，并将它们连接成一个输入向量：
+
+$$
+\mathbf{x}=\left[\mathbf{E}_{w_{1}}, \dots, \mathbf{E}_{w_{m}}\right] \in \mathbb{R}^{d m}
+$$
+
+其中 $\mathbf{E} \in \mathbb{R}^{|V| \times d}$ 是嵌入矩阵，每一行 $\mathbf{E}_w$ 是一个特定的单词 $w$ 的向量。接着我们可以计算我们的预测：
+
+$$
+\mathbf h = \text{ReLU}(\mathbf{xW+b_1}) \\
+\mathbf l = \text{ReLU}(\mathbf{hU+b_2}) \\
+\mathbf {\hat y} = \text{softmax}(l) 
+$$
+
+其中， $\mathbf{h}$ 指的是隐藏层，$\mathbf{l}$ 是其分数，$\mathbf{\hat y}$ 指的是预测结果， $\text{ReLU(z)}=max(z,0)$ 。我们使用最小化交叉熵损失来训练模型
+
+$$
+J(\theta) = CE(\mathbf y,\mathbf{\hat y}) = -\sum^3_{i=1}y_i\log\hat y_i
+$$
+
+训练集的损失为所有训练样本的 $J(\theta)$ 的平均值。
+
+Question 2.e
+
+## Reference
 
 
 ## Reference
