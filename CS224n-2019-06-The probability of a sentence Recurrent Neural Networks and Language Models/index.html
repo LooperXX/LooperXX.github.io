@@ -4,12 +4,389 @@
 <li>作业部分将单独整理</li>
 </ul>
 <h2 id="lecture-06-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models">Lecture 06 The probability of a sentence Recurrent Neural Networks and Language Models<a class="headerlink" href="#lecture-06-the-probability-of-a-sentence-recurrent-neural-networks-and-language-models" title="Permanent link">&para;</a></h2>
-<h2 id="notes-05-language-models-rnn-gru-and-lstm">Notes 05 Language Models, RNN, GRU and LSTM<a class="headerlink" href="#notes-05-language-models-rnn-gru-and-lstm" title="Permanent link">&para;</a></h2>
-<details class="abstract"><summary>Keyphrases</summary></details>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>Language Models. RNN. Bi-directional RNN. Deep RNN. GRU. LSTM.
+<details class="abstract"><summary>Overview</summary><ul>
+<li>介绍一个新的NLP任务<ul>
+<li>Language Modeling (motivate RNNs)</li>
+</ul>
+</li>
+<li>介绍一个新的神经网络家族<ul>
+<li><strong>Recurrent Neural Networks (RNNs)</strong></li>
+</ul>
+</li>
+</ul>
+</details>
+<p><strong>Language Modeling</strong></p>
+<ul>
+<li>语言建模的任务是预测下一个单词是什么。</li>
+</ul>
+<p><img alt="1560953937807" src="../imgs/1560953937807.png" /></p>
+<ul>
+<li>更正式的说法是：给定一个单词序列 <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \boldsymbol{x}^{(2)}, \ldots, \boldsymbol{x}^{(t)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \boldsymbol{x}^{(2)}, \ldots, \boldsymbol{x}^{(t)}</script></span> ，计算下一个单词 <span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 的概率分布</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)
+</div>
+<script type="math/tex; mode=display">
+P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)
+</script>
+</div>
+<ul>
+<li>其中，<span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 可以是词表中的任意单词 <span><span class="MathJax_Preview">V=\left\{\boldsymbol{w}_{1}, \ldots, \boldsymbol{w}_{|V|}\right\}</span><script type="math/tex">V=\left\{\boldsymbol{w}_{1}, \ldots, \boldsymbol{w}_{|V|}\right\}</script></span></li>
+<li>这样做的系统称为 <strong>Language Model</strong> 语言模型</li>
+<li>还可以将语言模型看作是一个将概率分配给一段文本的系统</li>
+<li>例如，如果我们有一段文本 <span><span class="MathJax_Preview">x^{(1)},\dots,x^{(T)}</span><script type="math/tex">x^{(1)},\dots,x^{(T)}</script></span>  则这段文本的概率(根据语言模型)为</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned} P\left(\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}\right) &amp;=P\left(\boldsymbol{x}^{(1)}\right) \times P\left(\boldsymbol{x}^{(2)} | \boldsymbol{x}^{(1)}\right) \times \cdots \times P\left(\boldsymbol{x}^{(T)} | \boldsymbol{x}^{(T-1)}, \ldots, \boldsymbol{x}^{(1)}\right) \\ &amp;=\prod_{t=1}^{T} P\left(\boldsymbol{x}^{(t)} | \boldsymbol{x}^{(t-1)}, \ldots, \boldsymbol{x}^{(1)}\right) \end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned} P\left(\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}\right) &=P\left(\boldsymbol{x}^{(1)}\right) \times P\left(\boldsymbol{x}^{(2)} | \boldsymbol{x}^{(1)}\right) \times \cdots \times P\left(\boldsymbol{x}^{(T)} | \boldsymbol{x}^{(T-1)}, \ldots, \boldsymbol{x}^{(1)}\right) \\ &=\prod_{t=1}^{T} P\left(\boldsymbol{x}^{(t)} | \boldsymbol{x}^{(t-1)}, \ldots, \boldsymbol{x}^{(1)}\right) \end{aligned}
+</script>
+</div>
+<ul>
+<li>语言模型提供的是 <span><span class="MathJax_Preview">\prod_{t=1}^{T} P\left(\boldsymbol{x}^{(t)} | \boldsymbol{x}^{(t-1)}, \ldots, \boldsymbol{x}^{(1)}\right)</span><script type="math/tex">\prod_{t=1}^{T} P\left(\boldsymbol{x}^{(t)} | \boldsymbol{x}^{(t-1)}, \ldots, \boldsymbol{x}^{(1)}\right)</script></span></li>
+</ul>
+<p><strong>n-gram Language Models</strong></p>
+<div>
+<div class="MathJax_Preview">
+\text{the students opened their  ______}
+</div>
+<script type="math/tex; mode=display">
+\text{the students opened their  ______}
+</script>
+</div>
+<ul>
+<li><strong><u>问题</u></strong> ：如何学习一个语言模型？</li>
+<li><strong><u>回答</u></strong> (pre-DeepLearning)：学习一个 n-gram 语言模型</li>
+<li><u>定义</u> ：n-gram 是 一个由n个连续单词组成的块<ul>
+<li>**uni**grams: “the”, “students”, “opened”, ”their”</li>
+<li>**bi**grams: “the students”, “students opened”, “opened their”</li>
+<li>**tri**grams: “the students opened”, “students opened their” </li>
+<li>**4-**grams: “the students opened their”</li>
+</ul>
+</li>
+<li>
+<p><strong>想法</strong> ：收集关于不同n-gram出现频率的统计数据，并使用这些数据预测下一个单词。</p>
+</li>
+<li>
+<p>首先，我们做一个**简化假设**：<span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 只依赖于前面的n-1个单词</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)
+&amp; =P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)
+\\ &amp;=\frac{P\left(\boldsymbol{x}^{(t+1)}, \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}{P\left(\boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)
+& =P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)
+\\ &=\frac{P\left(\boldsymbol{x}^{(t+1)}, \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}{P\left(\boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}
+\end{aligned}
+</script>
+</div>
+<p>具体含义如下图所示</p>
+<p><img alt="1560954979111" src="../imgs/1560954979111.png" /></p>
+<ul>
+<li><strong><u>问题</u></strong> ：如何得到n-gram和(n-1)-gram的概率？</li>
+<li><strong><u>回答</u></strong> ：通过在一些大型文本语料库中计算它们(统计近似)</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\approx \frac{\operatorname{count}\left(\boldsymbol{x}^{(t+1)}, \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}{\operatorname{count}\left(\boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}
+</div>
+<script type="math/tex; mode=display">
+\approx \frac{\operatorname{count}\left(\boldsymbol{x}^{(t+1)}, \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}{\operatorname{count}\left(\boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(t-n+2)}\right)}
+</script>
+</div>
+<p>假设我们正在学习一个 <strong>4-gram</strong> 的语言模型</p>
+<p><img alt="1560955135094" src="../imgs/1560955135094.png" /></p>
+<p>例如，假设在语料库中：</p>
+<ul>
+<li>“students opened their” 出现了1000次</li>
+<li>“students opened their books” 出现了400次<ul>
+<li><span><span class="MathJax_Preview">P(\text { books } | \text { students opened their })=0.4</span><script type="math/tex">P(\text { books } | \text { students opened their })=0.4</script></span></li>
+</ul>
+</li>
+<li>“students opened their exams” 出现了100次<ul>
+<li><span><span class="MathJax_Preview">P(\text { exams } | \text { students opened their })=0.1</span><script type="math/tex">P(\text { exams } | \text { students opened their })=0.1</script></span></li>
+</ul>
+</li>
+<li>我们应该忽视上下文中的“proctor”吗？<ul>
+<li>在本例中，上下文里出现了“proctor”，所以exams在这里的上下文中应该是比books概率更大的。</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sparsity Problems with n-gram Language Models</strong></p>
+<p><img alt="1560955544533" src="../imgs/1560955544533.png" /></p>
+<ul>
+<li><strong><u>问题</u></strong> ：如果“students open their <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>” 从未出现在数据中，那么概率值为 0</li>
+<li><strong><u>(Partial)解决方案</u></strong> ：为每个 <span><span class="MathJax_Preview">w\in V</span><script type="math/tex">w\in V</script></span> 添加极小数 <span><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> 。这叫做平滑。这使得词表中的每个单词都至少有很小的概率。</li>
+<li><strong><u>问题</u></strong> ：如果“students open their” 从未出现在数据中，那么我们将无法计算任何单词 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的概率值</li>
+<li><strong><u>(Partial)解决方案</u></strong> ：将条件改为“open their”。这叫做后退。</li>
+</ul>
+<p>!!! note “Note”</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>n 的增加使稀疏性问题变得更糟。一般情况下 n 不能大于5。
 </pre></div>
 </td></tr></table>
 
+<p><strong>Storage Problems with n-gram Language Models</strong></p>
+<p><img alt="1560956032892" src="../imgs/1560956032892.png" /></p>
+<p>增加 n 或增加语料库都会增加模型大小</p>
+<p><strong>n-gram Language Models in practice</strong></p>
+<ul>
+<li>你可以在你的笔记本电脑上，在几秒钟内建立一个超过170万个单词库(Reuters)的简单的三元组语言模型</li>
+<li>Reuters 是 商业和金融新闻的数据集</li>
+</ul>
+<p><img alt="1560956304459" src="../imgs/1560956304459.png" /></p>
+<p><strong><u>稀疏性问题</u></strong> ：概率分布的粒度不大。“today the company” 和 “today the bank”都是<span><span class="MathJax_Preview">\frac{4}{26}</span><script type="math/tex">\frac{4}{26}</script></span> ，都只出现过四次</p>
+<p><strong>Generating text with a n-gram Language Model</strong></p>
+<ul>
+<li>还可以使用语言模型来生成文本</li>
+</ul>
+<p><img alt="1560956554190" src="../imgs/1560956554190.png" /></p>
+<p><img alt="1560956564197" src="../imgs/1560956564197.png" /></p>
+<p><img alt="1560956573012" src="../imgs/1560956573012.png" /></p>
+<p>使用trigram运行以上生成过程时，会得到如下文本</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>today the price of gold per ton , while production of shoe lasts and shoe industry , the bank intervened just after it considered and rejected an imf demand to rebuild depleted european stocks , sept 30 end primary 76 cts a share .
+</pre></div>
+</td></tr></table>
+
+<p><strong>令人惊讶的是其具有语法但是是不连贯的。如果我们想要很好地模拟语言，我们需要同时考虑三个以上的单词。但增加 n 使模型的稀疏性问题恶化，模型尺寸增大。</strong></p>
+<p><strong>How to build a neural Language Model?</strong></p>
+<ul>
+<li>回忆一下语言模型任务<ul>
+<li>输入：单词序列 <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \boldsymbol{x}^{(2)}, \ldots, \boldsymbol{x}^{(t)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \boldsymbol{x}^{(2)}, \ldots, \boldsymbol{x}^{(t)}</script></span></li>
+<li>输出：下一个单词的概率分布 <span><span class="MathJax_Preview">P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)</span><script type="math/tex">P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1)}\right)</script></span></li>
+</ul>
+</li>
+</ul>
+<p>window-based neural model 在第三讲中被用于NER问题</p>
+<p><img alt="1560956976214" src="../imgs/1560956976214.png" /></p>
+<p><strong>A fixed-window neural Language Model</strong></p>
+<p><img alt="1560957097608" src="../imgs/1560957097608.png" /></p>
+<p>使用和NER问题中同样网络结构</p>
+<p><img alt="1560957211434" src="../imgs/1560957211434.png" /></p>
+<p>超越 n-gram 语言模型的**改进**</p>
+<ul>
+<li>没有稀疏性问题</li>
+<li>不需要观察到所有的n-grams</li>
+</ul>
+<p>存在的问题</p>
+<ul>
+<li>固定窗口太小</li>
+<li>扩大窗口就需要扩大权重矩阵 <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span></li>
+<li>窗口再大也不够用</li>
+<li><span><span class="MathJax_Preview">x^{(1)}</span><script type="math/tex">x^{(1)}</script></span> 和 <span><span class="MathJax_Preview">x^{(2)}</span><script type="math/tex">x^{(2)}</script></span> 乘以完全不同的权重。输入的处理**不对称**。</li>
+</ul>
+<p>我们需要一个神经结构，可以处理任何长度的输入</p>
+<p><strong>Recurrent Neural Networks (RNN)</strong></p>
+<p><u>核心想法</u>：重复使用**相同**的权重矩阵 <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span></p>
+<p><img alt="1560957560354" src="../imgs/1560957560354.png" /></p>
+<p><img alt="1560958598963" src="../imgs/1560958598963.png" /></p>
+<p>RNN的**优点**</p>
+<ul>
+<li>可以处理**任意长度**的输入</li>
+<li>步骤 t 的计算(理论上)可以使用**许多步骤前**的信息</li>
+<li><strong>模型大小不会**随着输入的增加而**增加</strong></li>
+<li>在每个时间步上应用相同的权重，因此在处理输入时具有**对称性**</li>
+</ul>
+<p>RNN的**缺点**</p>
+<ul>
+<li>递归计算速度**慢**</li>
+<li>在实践中，很难从**许多步骤前**返回信息</li>
+<li>后面的课程中会详细介绍</li>
+</ul>
+<p><strong>Training a RNN Language Model</strong></p>
+<ul>
+<li>获取一个较大的文本语料库，该语料库是一个单词序列</li>
+<li>输入RNN-LM；计算每个步骤 t 的输出分布<ul>
+<li>即预测到目前为止给定的每个单词的概率分布</li>
+</ul>
+</li>
+<li>步骤 t 上的损失函数为预测概率分布 <span><span class="MathJax_Preview">\hat{\boldsymbol{y}}^{(t)}</span><script type="math/tex">\hat{\boldsymbol{y}}^{(t)}</script></span> 与真实下一个单词 <span><span class="MathJax_Preview">{\boldsymbol{y}}^{(t)}</span><script type="math/tex">{\boldsymbol{y}}^{(t)}</script></span> (<span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 的独热向量)之间的交叉熵</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+J^{(t)}(\theta)=C E\left(\boldsymbol{y}^{(t)}, \hat{\boldsymbol{y}}^{(t)}\right)=-\sum_{w \in V} \boldsymbol{y}_{w}^{(t)} \log \hat{\boldsymbol{y}}_{w}^{(t)}=-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
+</div>
+<script type="math/tex; mode=display">
+J^{(t)}(\theta)=C E\left(\boldsymbol{y}^{(t)}, \hat{\boldsymbol{y}}^{(t)}\right)=-\sum_{w \in V} \boldsymbol{y}_{w}^{(t)} \log \hat{\boldsymbol{y}}_{w}^{(t)}=-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
+</script>
+</div>
+<ul>
+<li>将其平均，得到整个培训集的**总体损失**</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)=\frac{1}{T} \sum_{t=1}^{T}-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
+</div>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)=\frac{1}{T} \sum_{t=1}^{T}-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
+</script>
+</div>
+<p><img alt="1560959454417" src="../imgs/1560959454417.png" /></p>
+<div>
+<div class="MathJax_Preview">
+J^{(1)}(\theta)+J^{(2)}(\theta)+J^{(3)}(\theta)+J^{(4)}(\theta)+\ldots=J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
+</div>
+<script type="math/tex; mode=display">
+J^{(1)}(\theta)+J^{(2)}(\theta)+J^{(3)}(\theta)+J^{(4)}(\theta)+\ldots=J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
+</script>
+</div>
+<ul>
+<li>然而：计算**整个语料库** <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span>的损失和梯度太昂贵了</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
+</div>
+<script type="math/tex; mode=display">
+J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
+</script>
+</div>
+<ul>
+<li>在实践中，我们通常将 <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span> 看做一个**句子**或是**文档**</li>
+<li><u>回忆</u> ：随机梯度下降允许我们计算小块数据的损失和梯度，并进行更新。</li>
+<li>计算一个句子的损失<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>(实际上是一批句子)，计算梯度和更新权重。重复上述操作。</li>
+</ul>
+<p><strong>Backpropagation for RNNs</strong></p>
+<p><img alt="1560960125900" src="../imgs/1560960125900.png" /></p>
+<p><strong><u>问题</u></strong> ：关于**重复的**权重矩阵 <span><span class="MathJax_Preview">W_h</span><script type="math/tex">W_h</script></span> 的偏导数 <span><span class="MathJax_Preview">J^{(t)}(\theta)</span><script type="math/tex">J^{(t)}(\theta)</script></span> </p>
+<p><strong><u>回答</u></strong> ：重复权重的梯度是每次其出现时的梯度的总和</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial J^{(t)}}{\partial \boldsymbol{W}_{\boldsymbol{h}}}=\sum_{i=1}^{t}\left.\frac{\partial J^{(t)}}{\partial \boldsymbol{W}_{\boldsymbol{h}}}\right|_{(i)}
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial J^{(t)}}{\partial \boldsymbol{W}_{\boldsymbol{h}}}=\sum_{i=1}^{t}\left.\frac{\partial J^{(t)}}{\partial \boldsymbol{W}_{\boldsymbol{h}}}\right|_{(i)}
+</script>
+</div>
+<p><strong>Multivariable Chain Rule</strong></p>
+<p><img alt="1560960413574" src="../imgs/1560960413574.png" /></p>
+<p>对于一个多变量函数 <span><span class="MathJax_Preview">f(x,y)</span><script type="math/tex">f(x,y)</script></span> 和两个单变量函数 <span><span class="MathJax_Preview">x(t)</span><script type="math/tex">x(t)</script></span> 和 <span><span class="MathJax_Preview">y(t)</span><script type="math/tex">y(t)</script></span> ，其链式法则如下：</p>
+<div>
+<div class="MathJax_Preview">
+\frac{d}{d t} f(x(t), y(t))=\frac{\partial f}{\partial x} \frac{d x}{d t}+\frac{\partial f}{\partial y} \frac{d y}{d t}
+</div>
+<script type="math/tex; mode=display">
+\frac{d}{d t} f(x(t), y(t))=\frac{\partial f}{\partial x} \frac{d x}{d t}+\frac{\partial f}{\partial y} \frac{d y}{d t}
+</script>
+</div>
+<p><strong>Backpropagation for RNNs: Proof sketch</strong></p>
+<p><img alt="1560960544222" src="../imgs/1560960544222.png" /></p>
+<p><strong>Backpropagation for RNNs</strong></p>
+<p><img alt="1560960622191" src="../imgs/1560960622191.png" /></p>
+<ul>
+<li><strong><u>问题</u></strong> ： 如何计算？</li>
+<li><strong><u>回答</u></strong> ：反向传播的时间步长 <span><span class="MathJax_Preview">i=t,\dots,0</span><script type="math/tex">i=t,\dots,0</script></span> 。累加梯度。这个算法叫做“<strong>backpropagation through time</strong>”</li>
+</ul>
+<p><strong>Generating text with a RNN Language Model</strong></p>
+<p>就像n-gram语言模型一样，您可以使用RNN语言模型通过**重复采样**来**生成文本**。采样输出是下一步的输入。</p>
+<p><img alt="1560960753273" src="../imgs/1560960753273.png" /></p>
+<ul>
+<li>相比n-gram更流畅，语法正确，但总体上仍然很不连贯</li>
+<li>食谱的例子中，生成的文本并没有记住文本的主题是什么</li>
+<li>
+<p>哈利波特的例子中，甚至有体现出了人物的特点，并且引号的开闭也没有出现问题</p>
+<ul>
+<li>也许某些神经元或者隐藏状态在跟踪模型的输出是否在引号中</li>
+</ul>
+</li>
+<li>
+<p>RNN是否可以和手工规则结合？</p>
+<ul>
+<li>例如Beam Serach，但是可能很难做到</li>
+</ul>
+</li>
+</ul>
+<p><strong>Evaluating Language Models</strong></p>
+<ul>
+<li>标准语言模型评估指标是 <strong>perplexity</strong> 困惑度</li>
+</ul>
+<p><img alt="1560961990924" src="../imgs/1560961990924.png" /></p>
+<ul>
+<li>这等于交叉熵损失 <span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span> 的指数</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+=\prod_{t=1}^{T}\left(\frac{1}{\hat{y}_{x_{t+1}}^{(t)}}\right)^{1 / T}=\exp \left(\frac{1}{T} \sum_{t=1}^{T}-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}\right)=\exp (J(\theta))
+</div>
+<script type="math/tex; mode=display">
+=\prod_{t=1}^{T}\left(\frac{1}{\hat{y}_{x_{t+1}}^{(t)}}\right)^{1 / T}=\exp \left(\frac{1}{T} \sum_{t=1}^{T}-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}\right)=\exp (J(\theta))
+</script>
+</div>
+<ul>
+<li>低困惑度是更好的</li>
+</ul>
+<p><strong>RNNs have greatly improved perplexity</strong></p>
+<p><img alt="1560962257990" src="../imgs/1560962257990.png" /></p>
+<p><strong>Why should we care about Language Modeling?</strong></p>
+<ul>
+<li>语言模型是一项**基准测试**任务，它帮助我们**衡量**我们在理解语言方面的**进展**<ul>
+<li>生成下一个单词，需要语法，句法，逻辑，推理，现实世界的知识等</li>
+</ul>
+</li>
+<li>语言建模是许多NLP任务的**子组件**，尤其是那些涉及**生成文本**或**估计文本概率**的任务<ul>
+<li>预测性打字</li>
+<li>语音识别</li>
+<li>手写识别</li>
+<li>拼写/语法纠正</li>
+<li>作者识别</li>
+<li>机器翻译</li>
+<li>摘要</li>
+<li>对话</li>
+<li>等等</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recap</strong></p>
+<ul>
+<li>语言模型：**预测下一个单词**的系统</li>
+<li>递归神经网络：一系列神经网络<ul>
+<li>采用任意长度的顺序输入</li>
+<li>在每一步上应用相同的权重</li>
+<li>可以选择在每一步上生成输出</li>
+</ul>
+</li>
+<li>递归神经网络<span><span class="MathJax_Preview">\neq</span><script type="math/tex">\neq</script></span>语言模型</li>
+<li>我们已经证明，RNNs是构建LM的一个很好的方法。</li>
+<li>但RNNs的用处要大得多!</li>
+</ul>
+<p><strong>RNNs can be used for tagging</strong> </p>
+<p>e.g. <u>part-of-speech tagging</u>, named entity recognition</p>
+<p><img alt="1560963423563" src="../imgs/1560963423563.png" /></p>
+<p><strong>RNNs can be used for sentence classification</strong></p>
+<p>e.g. <u>sentiment classification</u></p>
+<p><img alt="1560963469195" src="../imgs/1560963469195.png" /></p>
+<p><img alt="1560963485192" src="../imgs/1560963485192.png" /></p>
+<p>如何计算句子编码</p>
+<ul>
+<li>使用最终隐层状态</li>
+<li>使用所有隐层状态的逐元素最值或均值</li>
+</ul>
+<p><strong>RNNs can be used as an encoder module</strong> </p>
+<p>e.g. <u>question answering</u>, machine translation, many other tasks!</p>
+<p><img alt="1560963507012" src="../imgs/1560963507012.png" /></p>
+<p>Encoder的结构在NLP中非常常见</p>
+<p><strong>RNN-LMs can be used to generate text</strong> </p>
+<p>e.g. <u>speech recognition</u>, machine translation, summarization</p>
+<p><img alt="1560963533367" src="../imgs/1560963533367.png" /></p>
+<p>这是一个条件语言模型的示例。我们使用语言模型组件，并且最关键的是，我们根据条件来调整它</p>
+<p>稍后我们会更详细地看到机器翻译。</p>
+<p><strong>A note on terminology</strong></p>
+<p>本课提到的RNN是 ““vanilla RNN”</p>
+<p>下节课将会学习GRU和LSTM以及多层RNN</p>
+<p>本课程结束时，你会理解类似“stacked bidirectional LSTM with residual connections and self-attention”的短语</p>
+<p><img alt="1560963659418" src="../imgs/1560963659418.png" /></p>
+<h2 id="notes-05-language-models-rnn-gru-and-lstm">Notes 05 Language Models, RNN, GRU and LSTM<a class="headerlink" href="#notes-05-language-models-rnn-gru-and-lstm" title="Permanent link">&para;</a></h2>
+<details class="abstract"><summary>Keyphrases</summary><p>Language Models. RNN. Bi-directional RNN. Deep RNN. GRU. LSTM.</p>
+</details>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
