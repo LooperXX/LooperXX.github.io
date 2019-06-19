@@ -424,10 +424,56 @@ $$
 
 训练集的损失为所有训练样本的 $J(\theta)$ 的平均值。
 
-Question 2.e
+**Question 2.f**
 
-## Reference
+我们想看看依赖关系解析的例子，并了解像我们这样的解析器在什么地方可能是错误的。例如，在这个句子中:
 
+![1560950604163](imgs/1560950604163.png)
+
+依赖 $\text{into Afghanistan}$ 是错的，因为这个短语应该修饰 $\text{sent}$ (例如 $\text{sent into Afghanistan}$) 而不是 $\text{troops}$ (因为 $\text{ troops into Afghanistan}$ 没有意义)。下面是正确的解析：
+
+![1560950910787](imgs/1560950910787.png)
+
+一般来说，以下是四种解析错误：
+
+-   **Prepositional Phrase Attachment Error** 介词短语连接错误：在上面的例子中，词组 $\text{into Afghanistan}$ 是一个介词短语。介词短语连接错误是指介词短语连接到错误的 head word 上(在本例中，troops 是错误的 head word ，sent 是正确的 head word )。介词短语的更多例子包括with a rock, before midnight和under the carpet。
+-   **Verb Phrase Attachment Error** 动词短语连接错误：在句子$\text{leave the store alone, I went out to watch the parade}$中，短语 $\text{leave the store alone}$ 是动词短语。动词短语连接错误是指一个动词短语连接到错误的 head word 上(在本例中，正确的头词是 $\text{went}$)。
+-   **Modiﬁer Attachment Error** 修饰语连接错误：在句子 $\text{I am extremely short}$ 中，副词extremely 是形容词 short 的修饰语。修饰语附加错误是修饰语附加到错误的 head word 上时发生的错误(在本例中，正确的头词是 short)。
+-   **Coordination Attachment Error** 协调连接错误：在句子 $\text{Would you like brown rice or garlic naan?}$ 中， brown rice 和garlic naan都是连词，or是并列连词。第二个连接词(这里是garlic naan)应该连接到第一个连接词(这里是brown rice)。协调连接错误是当第二个连接词附加到错误的 head word 上时(在本例中，正确的头词是rice)。其他并列连词包括and, but和so。
+
+在这个问题中有四个句子，其中包含从解析器获得的依赖项解析。每个句子都有一个错误，上面四种类型都有一个例子。对于每个句子，请说明错误的类型、不正确的依赖项和正确的依赖项。为了演示:对于上面的例子，您可以这样写：
+
+-   Error type: Prepositional Phrase Attachment Error 
+-   Incorrect dependency: troops $\to$ Afghanistan
+-   Correct dependency: sent $\to$ Afghanistan 
+
+注意：依赖项注释有很多细节和约定。如果你想了解更多关于他们的信息，你可以浏览UD网站:http://universaldependencies.org。然而，你不需要知道所有这些细节就能回答这个问题。在每一种情况下，我们都在询问短语的连接，应该足以看出它们是否修饰了正确的head。特别是，你不需要查看依赖项边缘上的标签——只需查看边缘本身就足够了。
+
+**Answer 2.f**
+
+![1560951554929](imgs/1560951554929.png)
+
+-   Error type: Verb Phrase Attachment Error
+-   Incorrect dependency: wedding $\to$ fearing
+-   Correct dependency: heading $\to$ fearing
+
+![1560951560930](imgs/1560951560930.png)
+
+-   Error type: Coordination Attachment Error
+-   Incorrect dependency: makes $\to$ rescue
+-   Correct dependency: rush $\to$ rescue
+
+![1560951569847](imgs/1560951569847.png)
+
+-   Error type: Prepositional Phrase Attachment Error
+-   Incorrect dependency: named $\to$ Midland
+-   Correct dependency: guy $\to$ Midland
+
+![1560951576042](imgs/1560951576042.png)
+
+-   Error type: Modiﬁer Attachment Error 
+-   Incorrect dependency: elements $\to$ most
+-   Correct dependency: crucial $\to$ most
 
 ## Reference
 
