@@ -46,13 +46,13 @@ $$
 -   **<u>问题</u>** ：如何学习一个语言模型？
 -   **<u>回答</u>** (pre-DeepLearning)：学习一个 n-gram 语言模型
 -   <u>定义</u> ：n-gram 是 一个由n个连续单词组成的块
-    -   **uni**grams: “the”, “students”, “opened”, ”their”
-    -   **bi**grams: “the students”, “students opened”, “opened their”
-    -   **tri**grams: “the students opened”, “students opened their” 
-    -   **4-**grams: “the students opened their”
+    -   unigrams: “the”, “students”, “opened”, ”their”
+    -   bigrams: “the students”, “students opened”, “opened their”
+    -   trigrams: “the students opened”, “students opened their” 
+    -   4-grams: “the students opened their”
 -   **想法** ：收集关于不同n-gram出现频率的统计数据，并使用这些数据预测下一个单词。
 
--   首先，我们做一个**简化假设**：$x^{(t+1)}$ 只依赖于前面的n-1个单词
+-   首先，我们做一个 **简化假设** ：$x^{(t+1)}$ 只依赖于前面的n-1个单词
 
 $$
 \begin{aligned}
@@ -96,9 +96,10 @@ $$
 -   **<u>问题</u>** ：如果“students open their” 从未出现在数据中，那么我们将无法计算任何单词 $w$ 的概率值
 -   **<u>(Partial)解决方案</u>** ：将条件改为“open their”。这叫做后退。
 
-!!! note “Note”
+!!! note "Note"
 
     n 的增加使稀疏性问题变得更糟。一般情况下 n 不能大于5。
+
 
 **Storage Problems with n-gram Language Models**
 
@@ -151,7 +152,7 @@ window-based neural model 在第三讲中被用于NER问题
 
 ![1560957211434](imgs/1560957211434.png)
 
-超越 n-gram 语言模型的**改进**
+超越 n-gram 语言模型的 **改进**
 
 -   没有稀疏性问题
 -   不需要观察到所有的n-grams
@@ -161,29 +162,29 @@ window-based neural model 在第三讲中被用于NER问题
 -   固定窗口太小
 -   扩大窗口就需要扩大权重矩阵 $W$
 -   窗口再大也不够用
--   $x^{(1)}$ 和 $x^{(2)}$ 乘以完全不同的权重。输入的处理**不对称**。
+-   $x^{(1)}$ 和 $x^{(2)}$ 乘以完全不同的权重。输入的处理 **不对称**。
 
 我们需要一个神经结构，可以处理任何长度的输入
 
 **Recurrent Neural Networks (RNN)**
 
-<u>核心想法</u>：重复使用**相同**的权重矩阵 $W$
+<u>核心想法</u>：重复使用 **相同** 的权重矩阵 $W$
 
 ![1560957560354](imgs/1560957560354.png)
 
 ![1560958598963](imgs/1560958598963.png)
 
-RNN的**优点**
+RNN的 **优点**
 
--   可以处理**任意长度**的输入
--   步骤 t 的计算(理论上)可以使用**许多步骤前**的信息
--   **模型大小不会**随着输入的增加而**增加**
--   在每个时间步上应用相同的权重，因此在处理输入时具有**对称性**
+-   可以处理 **任意长度** 的输入
+-   步骤 t 的计算(理论上)可以使用 **许多步骤前** 的信息
+-    **模型大小不会** 随着输入的增加而**增加**
+-   在每个时间步上应用相同的权重，因此在处理输入时具有 **对称性**
 
-RNN的**缺点**
+RNN的 **缺点**
 
--   递归计算速度**慢**
--   在实践中，很难从**许多步骤前**返回信息
+-   递归计算速度 **慢**
+-   在实践中，很难从 **许多步骤前**返回信息
 -   后面的课程中会详细介绍
 
 **Training a RNN Language Model**
@@ -197,7 +198,7 @@ $$
 J^{(t)}(\theta)=C E\left(\boldsymbol{y}^{(t)}, \hat{\boldsymbol{y}}^{(t)}\right)=-\sum_{w \in V} \boldsymbol{y}_{w}^{(t)} \log \hat{\boldsymbol{y}}_{w}^{(t)}=-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
 $$
 
--   将其平均，得到整个培训集的**总体损失**
+-   将其平均，得到整个培训集的 **总体损失**
 
 $$
 J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)=\frac{1}{T} \sum_{t=1}^{T}-\log \hat{\boldsymbol{y}}_{\boldsymbol{x}_{t+1}}^{(t)}
@@ -209,13 +210,13 @@ $$
 J^{(1)}(\theta)+J^{(2)}(\theta)+J^{(3)}(\theta)+J^{(4)}(\theta)+\ldots=J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 $$
 
--   然而：计算**整个语料库** $\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}$的损失和梯度太昂贵了
+-   然而：计算 **整个语料库**  $\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}$的损失和梯度太昂贵了
 
 $$
 J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 $$
 
--   在实践中，我们通常将 $\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}$ 看做一个**句子**或是**文档**
+-   在实践中，我们通常将 $\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}$ 看做一个 **句子** 或是 **文档**
 -   <u>回忆</u> ：随机梯度下降允许我们计算小块数据的损失和梯度，并进行更新。
 -   计算一个句子的损失$J(\theta)$(实际上是一批句子)，计算梯度和更新权重。重复上述操作。
 
@@ -223,7 +224,7 @@ $$
 
 ![1560960125900](imgs/1560960125900.png)
 
-**<u>问题</u>** ：关于**重复的**权重矩阵 $W_h$ 的偏导数 $J^{(t)}(\theta)$ 
+**<u>问题</u>** ：关于 **重复的** 权重矩阵 $W_h$ 的偏导数 $J^{(t)}(\theta)$ 
 
 **<u>回答</u>** ：重复权重的梯度是每次其出现时的梯度的总和
 
@@ -256,7 +257,7 @@ $$
 
 **Generating text with a RNN Language Model**
 
-就像n-gram语言模型一样，您可以使用RNN语言模型通过**重复采样**来**生成文本**。采样输出是下一步的输入。
+就像n-gram语言模型一样，您可以使用RNN语言模型通过 **重复采样** 来 **生成文本** 。采样输出是下一步的输入。
 
 ![1560960753273](imgs/1560960753273.png)
 
@@ -288,9 +289,9 @@ $$
 
 **Why should we care about Language Modeling?**
 
--   语言模型是一项**基准测试**任务，它帮助我们**衡量**我们在理解语言方面的**进展**
+-   语言模型是一项 **基准测试** 任务，它帮助我们 **衡量** 我们在理解语言方面的 **进展**
     -   生成下一个单词，需要语法，句法，逻辑，推理，现实世界的知识等
--   语言建模是许多NLP任务的**子组件**，尤其是那些涉及**生成文本**或**估计文本概率**的任务
+-   语言建模是许多NLP任务的 **子组件**，尤其是那些涉及 **生成文本** 或 **估计文本概率** 的任务
     -   预测性打字
     -   语音识别
     -   手写识别
@@ -303,7 +304,7 @@ $$
 
 **Recap**
 
--   语言模型：**预测下一个单词**的系统
+-   语言模型： **预测下一个单词** 的系统
 -   递归神经网络：一系列神经网络
     -   采用任意长度的顺序输入
     -   在每一步上应用相同的权重

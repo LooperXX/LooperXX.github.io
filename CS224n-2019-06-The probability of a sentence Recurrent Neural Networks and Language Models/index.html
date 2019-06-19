@@ -61,17 +61,17 @@ P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1
 <li><strong><u>问题</u></strong> ：如何学习一个语言模型？</li>
 <li><strong><u>回答</u></strong> (pre-DeepLearning)：学习一个 n-gram 语言模型</li>
 <li><u>定义</u> ：n-gram 是 一个由n个连续单词组成的块<ul>
-<li>**uni**grams: “the”, “students”, “opened”, ”their”</li>
-<li>**bi**grams: “the students”, “students opened”, “opened their”</li>
-<li>**tri**grams: “the students opened”, “students opened their” </li>
-<li>**4-**grams: “the students opened their”</li>
+<li>unigrams: “the”, “students”, “opened”, ”their”</li>
+<li>bigrams: “the students”, “students opened”, “opened their”</li>
+<li>trigrams: “the students opened”, “students opened their” </li>
+<li>4-grams: “the students opened their”</li>
 </ul>
 </li>
 <li>
 <p><strong>想法</strong> ：收集关于不同n-gram出现频率的统计数据，并使用这些数据预测下一个单词。</p>
 </li>
 <li>
-<p>首先，我们做一个**简化假设**：<span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 只依赖于前面的n-1个单词</p>
+<p>首先，我们做一个 <strong>简化假设</strong> ：<span><span class="MathJax_Preview">x^{(t+1)}</span><script type="math/tex">x^{(t+1)}</script></span> 只依赖于前面的n-1个单词</p>
 </li>
 </ul>
 <div>
@@ -130,11 +130,10 @@ P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1
 <li><strong><u>问题</u></strong> ：如果“students open their” 从未出现在数据中，那么我们将无法计算任何单词 <span><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的概率值</li>
 <li><strong><u>(Partial)解决方案</u></strong> ：将条件改为“open their”。这叫做后退。</li>
 </ul>
-<p>!!! note “Note”</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>n 的增加使稀疏性问题变得更糟。一般情况下 n 不能大于5。
-</pre></div>
-</td></tr></table>
-
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>n 的增加使稀疏性问题变得更糟。一般情况下 n 不能大于5。</p>
+</div>
 <p><strong>Storage Problems with n-gram Language Models</strong></p>
 <p><img alt="1560956032892" src="../imgs/1560956032892.png" /></p>
 <p>增加 n 或增加语料库都会增加模型大小</p>
@@ -172,7 +171,7 @@ P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1
 <p><img alt="1560957097608" src="../imgs/1560957097608.png" /></p>
 <p>使用和NER问题中同样网络结构</p>
 <p><img alt="1560957211434" src="../imgs/1560957211434.png" /></p>
-<p>超越 n-gram 语言模型的**改进**</p>
+<p>超越 n-gram 语言模型的 <strong>改进</strong></p>
 <ul>
 <li>没有稀疏性问题</li>
 <li>不需要观察到所有的n-grams</li>
@@ -182,24 +181,24 @@ P\left(\boldsymbol{x}^{(t+1)} | \boldsymbol{x}^{(t)}, \ldots, \boldsymbol{x}^{(1
 <li>固定窗口太小</li>
 <li>扩大窗口就需要扩大权重矩阵 <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span></li>
 <li>窗口再大也不够用</li>
-<li><span><span class="MathJax_Preview">x^{(1)}</span><script type="math/tex">x^{(1)}</script></span> 和 <span><span class="MathJax_Preview">x^{(2)}</span><script type="math/tex">x^{(2)}</script></span> 乘以完全不同的权重。输入的处理**不对称**。</li>
+<li><span><span class="MathJax_Preview">x^{(1)}</span><script type="math/tex">x^{(1)}</script></span> 和 <span><span class="MathJax_Preview">x^{(2)}</span><script type="math/tex">x^{(2)}</script></span> 乘以完全不同的权重。输入的处理 <strong>不对称</strong>。</li>
 </ul>
 <p>我们需要一个神经结构，可以处理任何长度的输入</p>
 <p><strong>Recurrent Neural Networks (RNN)</strong></p>
-<p><u>核心想法</u>：重复使用**相同**的权重矩阵 <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span></p>
+<p><u>核心想法</u>：重复使用 <strong>相同</strong> 的权重矩阵 <span><span class="MathJax_Preview">W</span><script type="math/tex">W</script></span></p>
 <p><img alt="1560957560354" src="../imgs/1560957560354.png" /></p>
 <p><img alt="1560958598963" src="../imgs/1560958598963.png" /></p>
-<p>RNN的**优点**</p>
+<p>RNN的 <strong>优点</strong></p>
 <ul>
-<li>可以处理**任意长度**的输入</li>
-<li>步骤 t 的计算(理论上)可以使用**许多步骤前**的信息</li>
-<li><strong>模型大小不会**随着输入的增加而**增加</strong></li>
-<li>在每个时间步上应用相同的权重，因此在处理输入时具有**对称性**</li>
+<li>可以处理 <strong>任意长度</strong> 的输入</li>
+<li>步骤 t 的计算(理论上)可以使用 <strong>许多步骤前</strong> 的信息</li>
+<li><strong>模型大小不会</strong> 随着输入的增加而**增加**</li>
+<li>在每个时间步上应用相同的权重，因此在处理输入时具有 <strong>对称性</strong></li>
 </ul>
-<p>RNN的**缺点**</p>
+<p>RNN的 <strong>缺点</strong></p>
 <ul>
-<li>递归计算速度**慢**</li>
-<li>在实践中，很难从**许多步骤前**返回信息</li>
+<li>递归计算速度 <strong>慢</strong></li>
+<li>在实践中，很难从 **许多步骤前**返回信息</li>
 <li>后面的课程中会详细介绍</li>
 </ul>
 <p><strong>Training a RNN Language Model</strong></p>
@@ -220,7 +219,7 @@ J^{(t)}(\theta)=C E\left(\boldsymbol{y}^{(t)}, \hat{\boldsymbol{y}}^{(t)}\right)
 </script>
 </div>
 <ul>
-<li>将其平均，得到整个培训集的**总体损失**</li>
+<li>将其平均，得到整个培训集的 <strong>总体损失</strong></li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -240,7 +239,7 @@ J^{(1)}(\theta)+J^{(2)}(\theta)+J^{(3)}(\theta)+J^{(4)}(\theta)+\ldots=J(\theta)
 </script>
 </div>
 <ul>
-<li>然而：计算**整个语料库** <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span>的损失和梯度太昂贵了</li>
+<li>然而：计算 <strong>整个语料库</strong>  <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span>的损失和梯度太昂贵了</li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -251,13 +250,13 @@ J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 </script>
 </div>
 <ul>
-<li>在实践中，我们通常将 <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span> 看做一个**句子**或是**文档**</li>
+<li>在实践中，我们通常将 <span><span class="MathJax_Preview">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</span><script type="math/tex">\boldsymbol{x}^{(1)}, \ldots, \boldsymbol{x}^{(T)}</script></span> 看做一个 <strong>句子</strong> 或是 <strong>文档</strong></li>
 <li><u>回忆</u> ：随机梯度下降允许我们计算小块数据的损失和梯度，并进行更新。</li>
 <li>计算一个句子的损失<span><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span>(实际上是一批句子)，计算梯度和更新权重。重复上述操作。</li>
 </ul>
 <p><strong>Backpropagation for RNNs</strong></p>
 <p><img alt="1560960125900" src="../imgs/1560960125900.png" /></p>
-<p><strong><u>问题</u></strong> ：关于**重复的**权重矩阵 <span><span class="MathJax_Preview">W_h</span><script type="math/tex">W_h</script></span> 的偏导数 <span><span class="MathJax_Preview">J^{(t)}(\theta)</span><script type="math/tex">J^{(t)}(\theta)</script></span> </p>
+<p><strong><u>问题</u></strong> ：关于 <strong>重复的</strong> 权重矩阵 <span><span class="MathJax_Preview">W_h</span><script type="math/tex">W_h</script></span> 的偏导数 <span><span class="MathJax_Preview">J^{(t)}(\theta)</span><script type="math/tex">J^{(t)}(\theta)</script></span> </p>
 <p><strong><u>回答</u></strong> ：重复权重的梯度是每次其出现时的梯度的总和</p>
 <div>
 <div class="MathJax_Preview">
@@ -287,7 +286,7 @@ J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 <li><strong><u>回答</u></strong> ：反向传播的时间步长 <span><span class="MathJax_Preview">i=t,\dots,0</span><script type="math/tex">i=t,\dots,0</script></span> 。累加梯度。这个算法叫做“<strong>backpropagation through time</strong>”</li>
 </ul>
 <p><strong>Generating text with a RNN Language Model</strong></p>
-<p>就像n-gram语言模型一样，您可以使用RNN语言模型通过**重复采样**来**生成文本**。采样输出是下一步的输入。</p>
+<p>就像n-gram语言模型一样，您可以使用RNN语言模型通过 <strong>重复采样</strong> 来 <strong>生成文本</strong> 。采样输出是下一步的输入。</p>
 <p><img alt="1560960753273" src="../imgs/1560960753273.png" /></p>
 <ul>
 <li>相比n-gram更流畅，语法正确，但总体上仍然很不连贯</li>
@@ -328,11 +327,11 @@ J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 <p><img alt="1560962257990" src="../imgs/1560962257990.png" /></p>
 <p><strong>Why should we care about Language Modeling?</strong></p>
 <ul>
-<li>语言模型是一项**基准测试**任务，它帮助我们**衡量**我们在理解语言方面的**进展**<ul>
+<li>语言模型是一项 <strong>基准测试</strong> 任务，它帮助我们 <strong>衡量</strong> 我们在理解语言方面的 <strong>进展</strong><ul>
 <li>生成下一个单词，需要语法，句法，逻辑，推理，现实世界的知识等</li>
 </ul>
 </li>
-<li>语言建模是许多NLP任务的**子组件**，尤其是那些涉及**生成文本**或**估计文本概率**的任务<ul>
+<li>语言建模是许多NLP任务的 <strong>子组件</strong>，尤其是那些涉及 <strong>生成文本</strong> 或 <strong>估计文本概率</strong> 的任务<ul>
 <li>预测性打字</li>
 <li>语音识别</li>
 <li>手写识别</li>
@@ -347,7 +346,7 @@ J(\theta)=\frac{1}{T} \sum_{t=1}^{T} J^{(t)}(\theta)
 </ul>
 <p><strong>Recap</strong></p>
 <ul>
-<li>语言模型：**预测下一个单词**的系统</li>
+<li>语言模型： <strong>预测下一个单词</strong> 的系统</li>
 <li>递归神经网络：一系列神经网络<ul>
 <li>采用任意长度的顺序输入</li>
 <li>在每一步上应用相同的权重</li>
