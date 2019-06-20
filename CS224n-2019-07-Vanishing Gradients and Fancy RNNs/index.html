@@ -41,10 +41,15 @@
 <ul>
 <li>当这些梯度很小的时候，反向传播的越深入，梯度信号就会变得越来越小</li>
 </ul>
-<p><strong>Vanishing gradient proof sketch</strong>
-$$
-\boldsymbol{h}^{(t)}=\sigma\left(\boldsymbol{W}<em>{h} \boldsymbol{h}^{(t-1)}+\boldsymbol{W}</em>{x} \boldsymbol{x}^{(t)}+\boldsymbol{b}_{1}\right)
-$$</p>
+<p><strong>Vanishing gradient proof sketch</strong></p>
+<div>
+<div class="MathJax_Preview">
+\boldsymbol{h}^{(t)}=\sigma\left(\boldsymbol{W}_{h} \boldsymbol{h}^{(t-1)}+\boldsymbol{W}_{x} \boldsymbol{x}^{(t)}+\boldsymbol{b}_{1}\right)
+</div>
+<script type="math/tex; mode=display">
+\boldsymbol{h}^{(t)}=\sigma\left(\boldsymbol{W}_{h} \boldsymbol{h}^{(t-1)}+\boldsymbol{W}_{x} \boldsymbol{x}^{(t)}+\boldsymbol{b}_{1}\right)
+</script>
+</div>
 <ul>
 <li>因此通过链式法则得到：</li>
 </ul>
@@ -73,7 +78,7 @@ $$</p>
 </script>
 </div>
 <ul>
-<li>Pascanu et al 表明，如果 <span><span class="MathJax_Preview">W_h</span><script type="math/tex">W_h</script></span> 的 <strong>最大特征值 &lt; 1</strong> ，梯度 <span><span class="MathJax_Preview">\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|</span><script type="math/tex">\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|</script></span> 将呈指数衰减<ul>
+<li>Pascanu et al 表明，如果 <span><span class="MathJax_Preview">W_h</span><script type="math/tex">W_h</script></span> 的 <strong>最大特征值 &lt; 1</strong> ，梯度 <span><span class="MathJax_Preview">\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|</span><script type="math/tex">\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|</script></span> 将呈指数衰减<ul>
 <li>这里的界限是1因为我们使用的非线性函数是 sigmoid</li>
 </ul>
 </li>
@@ -91,11 +96,11 @@ $$</p>
 </li>
 <li>如果梯度在较长一段距离内(从时间步 t 到 t+n )变得越来越小，那么我们就不能判断:<ul>
 <li>在数据中，步骤 t 和 t+n 之间没有依赖关系</li>
-<li>我们用 <strong>错误的参数</strong> 来捕获 t 和 t+n 之间的真正依赖关系</li>
+<li>我们用 <strong>错误的参数</strong> 来捕获 t 和 t+n 之间的真正依赖关系</li>
 </ul>
 </li>
 </ul>
-<p><strong>Effect of vanishing gradient on RNN-LM</strong>、</p>
+<p><strong>Effect of vanishing gradient on RNN-LM</strong></p>
 <ul>
 <li>语言模型任务</li>
 </ul>

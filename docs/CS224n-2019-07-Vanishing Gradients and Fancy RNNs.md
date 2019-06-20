@@ -38,6 +38,7 @@
 -   当这些梯度很小的时候，反向传播的越深入，梯度信号就会变得越来越小
 
 **Vanishing gradient proof sketch**
+
 $$
 \boldsymbol{h}^{(t)}=\sigma\left(\boldsymbol{W}_{h} \boldsymbol{h}^{(t-1)}+\boldsymbol{W}_{x} \boldsymbol{x}^{(t)}+\boldsymbol{b}_{1}\right)
 $$
@@ -60,7 +61,7 @@ $$
 \left\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\right\| \leq\left\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(i)}}\right\|\left\|\boldsymbol{W}_{h}\right\|^{(i-j)} \prod_{j<t \leq i}\left\|\operatorname{diag}\left(\sigma^{\prime}\left(\boldsymbol{W}_{h} \boldsymbol{h}^{(t-1)}+\boldsymbol{W}_{x} \boldsymbol{x}^{(t)}+\boldsymbol{b}_{1}\right)\right)\right\|
 $$
 
--    Pascanu et al 表明，如果 $W_h$ 的 **最大特征值 < 1** ，梯度 $\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|$ 将呈指数衰减
+-    Pascanu et al 表明，如果 $W_h$ 的 **最大特征值 < 1** ，梯度 $\|\frac{\partial J^{(i)}(\theta)}{\partial \boldsymbol{h}^{(j)}}\|$ 将呈指数衰减
     -   这里的界限是1因为我们使用的非线性函数是 sigmoid
 -   有一个类似的证明将一个 **最大的特征值 >1** 与 **梯度爆炸** 联系起来
 
@@ -74,9 +75,9 @@ $$
 -   <u>另一种解释</u> ：**梯度** 可以被看作是 **过去对未来的影响** 的衡量标准
 -   如果梯度在较长一段距离内(从时间步 t 到 t+n )变得越来越小，那么我们就不能判断:
     -   在数据中，步骤 t 和 t+n 之间没有依赖关系
-    -   我们用 **错误的参数** 来捕获 t 和 t+n 之间的真正依赖关系
+    -   我们用 **错误的参数** 来捕获 t 和 t+n 之间的真正依赖关系
 
-**Effect of vanishing gradient on RNN-LM**、
+**Effect of vanishing gradient on RNN-LM**
 
 -   语言模型任务
 
@@ -248,7 +249,7 @@ $$
 
 -   我们可以把这种隐藏状态看作是这个句子中单词“terribly”的一种表示。我们称之为上下文表示。
 -   这些上下文表示只包含关于左上下文的信息(例如“the movie was”)。
--    **那么正确的上下文呢?**
+-    **那么正确的上下文呢?**
 -   在这个例子中，“exciting”在右上下文中，它修饰了“terribly”的意思(从否定变为肯定)
 
 ![1561043781671](imgs/1561043781671.png)
