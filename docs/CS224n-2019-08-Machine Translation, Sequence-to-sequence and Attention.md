@@ -435,18 +435,20 @@ $$
     1.  计算注意力得分 $e \in \mathbb{R}^{N}$ （很多种计算方式）
 
     2.  采取softmax来获得注意力分布 $\alpha$
+        
         $$
         \alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
         $$
 
     3.  使用注意力分布对值进行加权求和：从而得到注意输出 $\boldsymbol{a}$ (有时称为上下文向量)
+        
         $$
         \boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}_{i} \in \mathbb{R}^{d_{1}}
         $$
 
 **Attention variants**
 
-有几种方法可以从 $ \boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}$ 计算 $e \in \mathbb{R}^{N}$ 和 $\boldsymbol{s} \in \mathbb{R}^{d_{2}}$ 
+有几种方法可以从 $\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}$ 计算 $e \in \mathbb{R}^{N}$ 和 $\boldsymbol{s} \in \mathbb{R}^{d_{2}}$ 
 
 -   基本的点乘注意力 $\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}$
     -   注意：这里假设 $d_1 = d_2$

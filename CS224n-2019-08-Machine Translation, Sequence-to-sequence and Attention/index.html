@@ -532,22 +532,32 @@ e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsy
 <p>计算注意力得分 <span><span class="MathJax_Preview">e \in \mathbb{R}^{N}</span><script type="math/tex">e \in \mathbb{R}^{N}</script></span> （很多种计算方式）</p>
 </li>
 <li>
-<p>采取softmax来获得注意力分布 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span>
-    $$
-    \alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
-    $$</p>
+<p>采取softmax来获得注意力分布 <span><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span></p>
+<div>
+<div class="MathJax_Preview">
+\alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
+</div>
+<script type="math/tex; mode=display">
+\alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
+</script>
+</div>
 </li>
 <li>
-<p>使用注意力分布对值进行加权求和：从而得到注意输出 <span><span class="MathJax_Preview">\boldsymbol{a}</span><script type="math/tex">\boldsymbol{a}</script></span> (有时称为上下文向量)
-    $$
-    \boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}<em>{i} \in \mathbb{R}^{d</em>{1}}
-    $$</p>
+<p>使用注意力分布对值进行加权求和：从而得到注意输出 <span><span class="MathJax_Preview">\boldsymbol{a}</span><script type="math/tex">\boldsymbol{a}</script></span> (有时称为上下文向量)</p>
+<div>
+<div class="MathJax_Preview">
+\boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}_{i} \in \mathbb{R}^{d_{1}}
+</div>
+<script type="math/tex; mode=display">
+\boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}_{i} \in \mathbb{R}^{d_{1}}
+</script>
+</div>
 </li>
 </ol>
 </li>
 </ul>
 <p><strong>Attention variants</strong></p>
-<p>有几种方法可以从 $ \boldsymbol{h}<em>{1}, \ldots, \boldsymbol{h}</em>{N} \in \mathbb{R}^{d_{1}}$ 计算 <span><span class="MathJax_Preview">e \in \mathbb{R}^{N}</span><script type="math/tex">e \in \mathbb{R}^{N}</script></span> 和 <span><span class="MathJax_Preview">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</span><script type="math/tex">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</script></span> </p>
+<p>有几种方法可以从 <span><span class="MathJax_Preview">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</span><script type="math/tex">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</script></span> 计算 <span><span class="MathJax_Preview">e \in \mathbb{R}^{N}</span><script type="math/tex">e \in \mathbb{R}^{N}</script></span> 和 <span><span class="MathJax_Preview">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</span><script type="math/tex">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</script></span> </p>
 <ul>
 <li>基本的点乘注意力 <span><span class="MathJax_Preview">\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}</span><script type="math/tex">\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}</script></span><ul>
 <li>注意：这里假设 <span><span class="MathJax_Preview">d_1 = d_2</span><script type="math/tex">d_1 = d_2</script></span></li>
