@@ -90,7 +90,7 @@ $$
 ![1561039117289](imgs/1561039117289.png)
 
 -    **Correct answer** : The writer of the books is planning a sequel
--   **句法近因**
+-   **语法近因**
 
 ![1561039297137](imgs/1561039297137.png)
 
@@ -98,7 +98,7 @@ $$
 
 ![1561039357717](imgs/1561039357717.png)
 
--   由于梯度的消失，RNN-LMs更善于从 **顺序近因** 学习而不是 **句法近因** ，所以他们犯这种错误的频率比我们希望的要高[Linzen et al . 2016]
+-   由于梯度的消失，RNN-LMs更善于从 **顺序近因** 学习而不是 **语法近因** ，所以他们犯这种错误的频率比我们希望的要高[Linzen et al . 2016]
 
 **Why is <u>exploding</u> gradient a problem?**
 
@@ -290,6 +290,7 @@ RNN层 $i$ 的隐藏状态是RNN层 $i+1$ 的输入
 -   高性能的RNNs通常是多层的(但没有卷积或前馈网络那么深)
 -   例如：在2017年的一篇论文，Britz et al 发现在神经机器翻译中，2到4层RNN编码器是最好的,和4层RNN解码器
     -   但是，skip-connections / dense-connections需要训练更深RNNs(例如8层)
+    -   RNN无法并行化，计算代价过大，所以不会过深
 -    Transformer-based 的网络(如BERT)可以多达24层。他们有很多skipping-like的连接
 
 **In summary**
