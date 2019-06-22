@@ -608,6 +608,7 @@ $$
 Luong 等人在论文 《Effective Approaches to Attention-based Neural Machine Translation》 提出了一个注意力机制模型的变体，是由两个不同的注意力机制组成。
 
 **Global attention** ：我们运行简单的 Seq2Seq NMT。我们称编码器的隐藏状态 $h_{1}, \ldots, h_{n}$ ，解码器的隐藏状态 $\overline{h}_{1}, \ldots, \overline{h}_{n}$ 。现在对每个 $\overline{h}_{i}$ ，我们计算编码器的隐藏状态的注意力向量。我们可以使用下面其中一个得分函数：
+
 $$
 \operatorname{score}\left(h_{i}, \overline{h}_{j}\right)=\left\{\begin{array}{l}{h_{i}^{T} \overline{h}_{j}} \\ {h_{i}^{T} W \overline{h}_{j} \quad \in \mathbb{R}} \\ {W\left[h_{i}, \overline{h}_{j}\right]}\end{array}\right.
 $$
@@ -680,6 +681,7 @@ $$
 这种技术是有效的，但是它探索了一小部分的搜索空间，如果我们在一个时间步中出现一个错误，那么剩下的句子生成可能会受到很大的影响。
 
 **Beam search** ：这个方法是在每个时间步保持着 K 个候选单词
+
 $$
 \mathcal{H}_{t}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right\}
 $$
@@ -702,7 +704,7 @@ $$
 
 在这一点上，应该注意的是，模型的目标损失函数与我们将要讨论的评估方法之间存在差异。由于损失函数本质上是对模型预测的一个评估，所以很容易混淆这两个概念。前面的评估指标针对一些度量标准为模型提供了一个最终的、总结性的评价，没有一个度量方法优于所有其他方法，虽然有些具有明显的优势和多数偏好。
 
-评估机器学习翻译的质量已经自成体系为一个研究领域，已经提出了许多评估的方法 **TER, METEOR, MaxSim, SEPIA 和 RTE-MT** 。我们将重点关注两个基准评估方法和 BLEU。
+评估机器学习翻译的质量已经自成体系为一个研究领域，已经提出了许多评估的方法 **TER, METEOR, MaxSim, SEPIA 和 RTE-MT** 。我们将重点关注两个基准评估方法和 BLEU。
 
 **5.1 Human Evaluation**
 
@@ -814,7 +816,7 @@ Gulcehre 等人提出了一个想法来处理这些问题：学习从源文本�
 
 Sennrich 等人提出了一种通过将罕见和未知的单词作为一个 subword units 的序列来实现开放词汇翻译的方法。
 
-这通过调整称为 **Byte Pair Encoding** 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 $(p,q,f)$ 来表示一个 n-gram 对 $p,q$ 和出现的频率 $f$ 。如图中所示，我们已经选择的频率最高的的 n-gram 对 $(e,s,9)$，然后我们现在增加当前频率最高的的 n-gram 对 $(es,t,9)$ 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。
+这通过调整称为 **Byte Pair Encoding** 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 $(p,q,f)$ 来表示一个 n-gram 对 $p,q$ 和出现的频率 $f$ 。如图中所示，我们已经选择的频率最高的的 n-gram 对 $(e,s,9)$，然后我们现在增加当前频率最高的的 n-gram 对 $(es,t,9)$ 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。
 
 ![1561199106928](imgs/1561199106928.png)
 

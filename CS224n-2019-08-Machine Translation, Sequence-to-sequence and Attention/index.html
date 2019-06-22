@@ -700,10 +700,15 @@ c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
 <h3 id="3-other-models">3 Other Models<a class="headerlink" href="#3-other-models" title="Permanent link">&para;</a></h3>
 <p><strong>3.1 Luong et al. NMT model</strong></p>
 <p>Luong 等人在论文 《Effective Approaches to Attention-based Neural Machine Translation》 提出了一个注意力机制模型的变体，是由两个不同的注意力机制组成。</p>
-<p><strong>Global attention</strong> ：我们运行简单的 Seq2Seq NMT。我们称编码器的隐藏状态 <span><span class="MathJax_Preview">h_{1}, \ldots, h_{n}</span><script type="math/tex">h_{1}, \ldots, h_{n}</script></span> ，解码器的隐藏状态 <span><span class="MathJax_Preview">\overline{h}_{1}, \ldots, \overline{h}_{n}</span><script type="math/tex">\overline{h}_{1}, \ldots, \overline{h}_{n}</script></span> 。现在对每个 <span><span class="MathJax_Preview">\overline{h}_{i}</span><script type="math/tex">\overline{h}_{i}</script></span> ，我们计算编码器的隐藏状态的注意力向量。我们可以使用下面其中一个得分函数：
-$$
-\operatorname{score}\left(h_{i}, \overline{h}<em>{j}\right)=\left{\begin{array}{l}{h</em>{i}^{T} \overline{h}<em>{j}} \ {h</em>{i}^{T} W \overline{h}<em>{j} \quad \in \mathbb{R}} \ {W\left[h</em>{i}, \overline{h}_{j}\right]}\end{array}\right.
-$$</p>
+<p><strong>Global attention</strong> ：我们运行简单的 Seq2Seq NMT。我们称编码器的隐藏状态 <span><span class="MathJax_Preview">h_{1}, \ldots, h_{n}</span><script type="math/tex">h_{1}, \ldots, h_{n}</script></span> ，解码器的隐藏状态 <span><span class="MathJax_Preview">\overline{h}_{1}, \ldots, \overline{h}_{n}</span><script type="math/tex">\overline{h}_{1}, \ldots, \overline{h}_{n}</script></span> 。现在对每个 <span><span class="MathJax_Preview">\overline{h}_{i}</span><script type="math/tex">\overline{h}_{i}</script></span> ，我们计算编码器的隐藏状态的注意力向量。我们可以使用下面其中一个得分函数：</p>
+<div>
+<div class="MathJax_Preview">
+\operatorname{score}\left(h_{i}, \overline{h}_{j}\right)=\left\{\begin{array}{l}{h_{i}^{T} \overline{h}_{j}} \\ {h_{i}^{T} W \overline{h}_{j} \quad \in \mathbb{R}} \\ {W\left[h_{i}, \overline{h}_{j}\right]}\end{array}\right.
+</div>
+<script type="math/tex; mode=display">
+\operatorname{score}\left(h_{i}, \overline{h}_{j}\right)=\left\{\begin{array}{l}{h_{i}^{T} \overline{h}_{j}} \\ {h_{i}^{T} W \overline{h}_{j} \quad \in \mathbb{R}} \\ {W\left[h_{i}, \overline{h}_{j}\right]}\end{array}\right.
+</script>
+</div>
 <ul>
 <li>现在我们有一个分数的向量，然后可以用 Bahdanau 等人提出的方法来计算一个上下文向量。首先，我们通过一个 softmax 层来对分数进行归一化，得到向量 <span><span class="MathJax_Preview">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</span><script type="math/tex">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</script></span></li>
 </ul>
@@ -790,10 +795,15 @@ x_{l}=\operatorname{argmax}_{x_{l}} \mathbb{P}\left(\tilde{x}_{t} | x_{1}, \ldot
 </script>
 </div>
 <p>这种技术是有效的，但是它探索了一小部分的搜索空间，如果我们在一个时间步中出现一个错误，那么剩下的句子生成可能会受到很大的影响。</p>
-<p><strong>Beam search</strong> ：这个方法是在每个时间步保持着 K 个候选单词
-$$
-\mathcal{H}<em>{t}=\left{\left(x</em>{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right}
-$$</p>
+<p><strong>Beam search</strong> ：这个方法是在每个时间步保持着 K 个候选单词</p>
+<div>
+<div class="MathJax_Preview">
+\mathcal{H}_{t}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right\}
+</div>
+<script type="math/tex; mode=display">
+\mathcal{H}_{t}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right\}
+</script>
+</div>
 <p>通过扩展 <span><span class="MathJax_Preview">\mathcal{H}_{t}</span><script type="math/tex">\mathcal{H}_{t}</script></span> 并保持 K 个最好的候选单词来计算 <span><span class="MathJax_Preview">\mathcal{H}_{t+1}</span><script type="math/tex">\mathcal{H}_{t+1}</script></span> 。换而言之，我们在下面的集合中选择最好的 K 个序列</p>
 <div>
 <div class="MathJax_Preview">
@@ -815,7 +825,7 @@ $$</p>
 <h3 id="5-evaluation-of-machine-translation-systems">5 Evaluation of Machine Translation Systems<a class="headerlink" href="#5-evaluation-of-machine-translation-systems" title="Permanent link">&para;</a></h3>
 <p>现在我们知道有关机器翻译系统的基础知识，我们将讨论一些评估这些模型的方法。评估翻译质量是一个非常棘手和主观的任务。在现实生活中，如果您给十个不同的翻译者提供一段相同的文字，您将获得十个不同的翻译结果。翻译在实践中是不完美和有噪声的。他们关注不同的信息，强调不同的含义。一种翻译可以保存隐喻和长期思想的完整性，而而另一种翻译可以更忠实地重构句法和风格，尝试逐字翻译。注意，这种灵活性并不是负担；这证明了语言的复杂性和我们解码和解释意思的能力，也是我们交流能力的一个奇妙方面。</p>
 <p>在这一点上，应该注意的是，模型的目标损失函数与我们将要讨论的评估方法之间存在差异。由于损失函数本质上是对模型预测的一个评估，所以很容易混淆这两个概念。前面的评估指标针对一些度量标准为模型提供了一个最终的、总结性的评价，没有一个度量方法优于所有其他方法，虽然有些具有明显的优势和多数偏好。</p>
-<p>评估机器学习翻译的质量已经自成体系为一个研究领域，已经提出了许多评估的方法 <strong>TER, METEOR, MaxSim, SEPIA 和 RTE-MT</strong> 。我们将重点关注两个基准评估方法和 BLEU。</p>
+<p>评估机器学习翻译的质量已经自成体系为一个研究领域，已经提出了许多评估的方法 <strong>TER, METEOR, MaxSim, SEPIA 和 RTE-MT</strong> 。我们将重点关注两个基准评估方法和 BLEU。</p>
 <p><strong>5.1 Human Evaluation</strong></p>
 <p>第一个也是最不令人惊讶的方法是让人们手动评估系统的正确性、充分性和流畅性。就像图灵测试一样，如果你能骗过一个人，让他无法区分人工翻译和系统翻译，那么你的模型就通过了看起来像真实句子的测试！这种方法的一个明显问题是成本高且效率低，尽管它仍然是机器翻译的黄金标准。</p>
 <p><strong>5.2 Evaluation against another task</strong></p>
@@ -895,7 +905,7 @@ B E L U=\beta \prod_{i=1}^{k} p_{n}^{w_{n}}
 <p>如上一部分所述，“复制”机制在处理罕见或未知词语上仍然存在不足。解决这些问题的另一个思路是在 sub-word 的级别进行操作。一个趋势是使用相同的 Seq2Seq 架构，但是在更小的单元上操作——基于字符的分词模型。另一个趋势是对单词和字符采用混合架构。</p>
 <p><strong>7.1 Word segmentation</strong></p>
 <p>Sennrich 等人提出了一种通过将罕见和未知的单词作为一个 subword units 的序列来实现开放词汇翻译的方法。</p>
-<p>这通过调整称为 <strong>Byte Pair Encoding</strong> 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 <span><span class="MathJax_Preview">(p,q,f)</span><script type="math/tex">(p,q,f)</script></span> 来表示一个 n-gram 对 <span><span class="MathJax_Preview">p,q</span><script type="math/tex">p,q</script></span> 和出现的频率 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 。如图中所示，我们已经选择的频率最高的的 n-gram 对 <span><span class="MathJax_Preview">(e,s,9)</span><script type="math/tex">(e,s,9)</script></span>，然后我们现在增加当前频率最高的的 n-gram 对 <span><span class="MathJax_Preview">(es,t,9)</span><script type="math/tex">(es,t,9)</script></span> 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。</p>
+<p>这通过调整称为 <strong>Byte Pair Encoding</strong> 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 <span><span class="MathJax_Preview">(p,q,f)</span><script type="math/tex">(p,q,f)</script></span> 来表示一个 n-gram 对 <span><span class="MathJax_Preview">p,q</span><script type="math/tex">p,q</script></span> 和出现的频率 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 。如图中所示，我们已经选择的频率最高的的 n-gram 对 <span><span class="MathJax_Preview">(e,s,9)</span><script type="math/tex">(e,s,9)</script></span>，然后我们现在增加当前频率最高的的 n-gram 对 <span><span class="MathJax_Preview">(es,t,9)</span><script type="math/tex">(es,t,9)</script></span> 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。</p>
 <p><img alt="1561199106928" src="../imgs/1561199106928.png" /></p>
 <p>我们可以选择为训练集和测试集构建单独的词汇表，或者共同构建一个词汇表。在构建词汇表之后，一个带有 Seq2Seq 体系结构的 NMT 系统（Bahdanau 等人在论文中使用的），可以直接训练这些词段。值得注意的是，这种方法赢得了 WMT 2016 的第一名。</p>
 <p><strong>7.2 Character-based model</strong></p>
