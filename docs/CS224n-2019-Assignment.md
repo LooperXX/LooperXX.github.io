@@ -475,6 +475,73 @@ $$
 -   Incorrect dependency: elements $\to$ most
 -   Correct dependency: crucial $\to$ most
 
+## Assignment 04
+
+### 1. Neural Machine Translation with RNNs 
+
+在机器翻译中，我们的目标是将一个句子从源语言(如西班牙语)转换成目标语言(如英语)。在本作业中，我们将注意实现一个序列到序列(Seq2Seq)网络，以建立一个神经机器翻译(NMT)系统。在本节中，我们描述了使用双向LSTM编码器和单向LSTM解码器的NMT系统的训练过程。
+
+![1561215798223](imgs/1561215798223.png)
+
+上图是使用乘法注意力的Seq2Seq模型，显示了解码器的第三步。注意，为了可读性，我们不描绘前一个组合输出与解码器输入的连接。
+
+给定源语言中的一个句子，我们从词嵌入矩阵中查找单词嵌入，得到 $\mathbf{x}_{1}, \dots, \mathbf{x}_{m} | \mathbf{x}_{i} \in \mathbb{R}^{e \times 1}$ ，其中 $m$ 为源语句的长度，$e$ 为嵌入大小。我们将这些嵌入提供给双向编码器，为正向($\rightarrow$)和反向($\leftarrow$)LSTMs生成隐藏状态和单元格状态。前向和后向的版本连接起来，以得到隐藏状态 $\mathbf{h}_{i}^{\mathrm{enc}}$ 和单元格状态 $\mathbf{c}_{i}^{\mathrm{enc}}$ 
+
+$$
+\begin{array}
+\mathbf{h}_{i}^{\mathrm{enc}} = [\overleftarrow {\mathbf{h}_{i}^{\mathrm{enc}}};\overrightarrow {\mathbf{h}_{i}^{\mathrm{enc}}}] \text{ where }\mathbf{h}_{i}^{\mathrm{enc}} \in \mathbb{R}^{2h \times 1} , \overleftarrow {\mathbf{h}_{i}^{\mathrm{enc}}};\overrightarrow {\mathbf{h}_{i}^{\mathrm{enc}}} \in \mathbb{R}^{h \times 1} & 1 \leq i \leq m
+\\ \mathbf{c}_{i}^{\mathrm{enc}} = [\overleftarrow {\mathbf{c}_{i}^{\mathrm{enc}}};\overrightarrow {\mathbf{c}_{i}^{\mathrm{enc}}}] \text{ where }\mathbf{c}_{i}^{\mathrm{enc}} \in \mathbb{R}^{2h \times 1} , \overleftarrow {\mathbf{c}_{i}^{\mathrm{enc}}};\overrightarrow {\mathbf{c}_{i}^{\mathrm{enc}}} \in \mathbb{R}^{h \times 1} & 1 \leq i \leq m
+\end{array}
+$$
+
+然后，我们使用编码器的最终隐藏状态和最终单元状态的线性投影，初始化解码器的第一个隐藏状态 $\mathbf{h}_{0}^{\mathrm{dec}}$ 和单元状态 $\mathbf{c}_{0}^{\mathrm{dec}}$ 
+
+$$
+\begin{array}
+\mathbf{h}_{0}^{\mathrm{enc}} = [\overleftarrow {\mathbf{h}_{1}^{\mathrm{enc}}};\overrightarrow {\mathbf{h}_{m}^{\mathrm{enc}}}] \text{ where }\mathbf{h}_{0}^{\mathrm{enc}} \in \mathbb{R}^{h \times 1} , \mathbf{W}_{h} \in \mathbb{R}^{h \times 2 h}
+\\ \mathbf{c}_{0}^{\mathrm{enc}} = [\overleftarrow {\mathbf{c}_{1}^{\mathrm{enc}}};\overrightarrow {\mathbf{c}_{m}^{\mathrm{enc}}}] \text{ where }\mathbf{c}_{0}^{\mathrm{enc}} \in \mathbb{R}^{h \times 1} , \mathbf{W}_{c} \in \mathbb{R}^{h \times 2 h}
+\end{array}
+$$
+
+初始化解码器之后，现在必须用目标语言为它提供匹配的句子。在第 $t$ 步，我们查找第 $t$ 个单词的嵌入，$\mathbf{y}_{t} \in \mathbb{R}^{e \times 1}$ 。然后，我们将 $y_t$ 与前一个时间步的 combined-output 组合输出向量 $\mathbf{o}_{t-1} \in \mathbb{R}^{h \times 1}$ 连接起来(我们将在下一页解释这是什么！)，得到 $\overline{\mathbf{y}_{t}} \in \mathbb{R}^{(e+h) \times 1}$ 。注意，对于第一个目标单词(即 start 标记)，$o_0$是一个零向量。然后将 $\overline{\mathbf{y}_{t}}$ 作为输入输入到解码器LSTM中。
+
+$$
+\mathbf{h}_{t}^{\mathrm{dec}}, \mathbf{c}_{t}^{\mathrm{dec}}=\text { Decoder }\left(\overline{\mathbf{y}_{t}}, \mathbf{h}_{t-1}^{\mathrm{dec}}\right) \text { where } \mathbf{h}_{t}^{\mathrm{dec}} \in \mathbb{R}^{h \times 1}, \mathbf{c}_{t}^{\mathrm{dec}} \in \mathbb{R}^{h \times 1}
+$$
+
+然后我们用 $\mathbf{h}_{t}^{\mathrm{dec}}$ 来计算在 $\mathbf{h}_{0}^{\mathrm{enc}}, \ldots, \mathbf{h}_{m}^{\mathrm{enc}}$ 上的乘法注意
+
+$$
+\mathbf{e}_{t, i}=\left(\mathbf{h}_{t}^{\mathrm{dec}}\right)^{T} \mathbf{W}_{\mathrm{attProj}} \mathbf{h}_{i}^{\mathrm{enc}} \text { where } \mathbf{e}_{t} \in \mathbb{R}^{m \times 1}, \mathbf{W}_{\mathrm{attProj}} \in \mathbb{R}^{h \times 2 h} \quad \quad 1 \leq i \leq m
+\\ \alpha_{t}=\operatorname{Softmax}\left(\mathbf{e}_{t}\right) \text { where } \alpha_{t} \in \mathbb{R}^{m \times 1}
+\\ \mathbf{a}_{t}=\sum_{i}^{m} \alpha_{t, i} \mathbf{h}_{i}^{\mathrm{enc}} \text { where } \mathbf{a}_{t} \in \mathbb{R}^{2 h \times 1}
+$$
+
+现在，我们将注意力输出 $\alpha_t$ 与解码器隐藏状态 $\mathbf{h}_{t}^{\mathrm{dec}}$ 连接起来，并将其通过线性层 Tanh 和 Dropout 来获得组合输出向量 $o_t$ 。
+
+$$
+\begin{aligned} 
+\mathbf{u}_{t} &=\left[\mathbf{a}_{t}; \mathbf{h}_{t}^{\mathrm{dec}}\right] \text { where } \mathbf{u}_{t} \in \mathbb{R}^{3 h \times 1} 
+\\ \mathbf{v}_{t} &=\mathbf{W}_{u} \mathbf{u}_{t} \text { where } \mathbf{v}_{t} \in \mathbb{R}^{h \times 1}, \mathbf{W}_{u} \in \mathbb{R}^{h \times 3 h} 
+\\ \mathbf{o}_{t} &=\operatorname{Dropout}\left(\operatorname{Tanh}\left(\mathbf{v}_{t}\right)\right) \text { where } \mathbf{o}_{t} \in \mathbb{R}^{h \times 1} \end{aligned}
+$$
+
+然后，在第 $t$ 个时间步长时，得到目标词的概率分布 $\mathbf{P}_{t}$
+
+$$
+\mathbf{P}_{t}=\operatorname{Softmax}\left(\mathbf{W}_{\mathrm{vocab}} \mathbf{o}_{t}\right) \text { where } \mathbf{P}_{t} \in \mathbb{R}^{V_{t} \times 1}, \mathbf{W}_{\mathrm{vocab}} \in \mathbb{R}^{V_{t} \times h}
+$$
+
+这里， $V_t$ 是目标词汇表的大小。最后，为了训练网络，我们计算了 $\mathbf{P}_{t} ,\mathbf{g}_{t}$ 之间的 softmax 交叉熵损失，$\mathbf{g}_{t}$ 是时间步 $t$ 的目标词的 one-hot 向量
+
+$$
+J_{t}(\theta)=C E\left(\mathbf{P}_{t}, \mathbf{g}_{t}\right)
+$$
+
+在这里，$\theta$ 代表所有的模型参数，$J_t(\theta)$是解码器第 $t$ 步的损失。现在我们已经描述了该模型，让我们尝试将其实现为西班牙语到英语的翻译！
+
+### 2. Analyzing NMT Systems
+
 ## Reference
 
 -   [从SVD到PCA——奇妙的数学游戏](<https://my.oschina.net/findbill/blog/535044>)
