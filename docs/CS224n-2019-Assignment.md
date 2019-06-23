@@ -594,46 +594,208 @@ $$
 ---
 
 -   Error: “ **favorite** of my favorites”
--   Reason: 
--   Possible fix: 
+-   Reason: 特定的语言构造，低资源语言对
+-   Possible fix: 尝试在这类语言对上添加更多的训练数据
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix:
+-   Error:  “ **more reading** in the U.S.“ 语义错误
+-   Reason: 特定的语言构造，模型对语义的理解不足，需要增大模型的容量以增强理解能力
+-   Possible fix: 增大Hidden_size
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix:
+-   Error: ”Richard \<unk\>“
+-   Reason: 模型限制，Bolingbroke 是词表外的单词
+-   Possible fix: 对此类姓名中出现的词加以处理，比如直接添加到词表中
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix: 
+-   Error: ”go back to the apple “
+-   Reason: 模型限制，”manzana“ 有丰富的含义，包括 apple 苹果和 block 街区。“block”在西班牙语中的表达方式比 “apple” 在西班牙语中的表达方式更多。然而，在训练集中，“manzana”更多地表示“apple”，而不是“block”。
+-   Possible fix: 在训练集中添加更多的关于 ”manzana“ 表示 “block” 的数据，保持多重含义的训练不失衡
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix: 
+-   Error: “go to the bathroom in the women’s room“
+-   Reason: 模型限制，由于在数据集中，女性比专业人员(教师)的出现频率要更高，所以导致翻译具有来自训练数据的偏见 bias 
+-   Possible fix: 添加更多 profesore 的训练样本
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix: 
+-   Error: ”100,000 acres.“
+-   Reason: 模型限制，常识错误，hectáreas 表示公顷，acres 表示英亩（acre的复数）。模型并未理解两个单位制之间的转换关系，由于 acres 在训练集中的出现频率更高，直接采用 acres 并且使用 hectáreas 附近的数字直接修饰 acres
+-   Possible fix: 添加关于 hectáreas 的训练数据
 
 ------
 
--   Error: 
--   Reason: 
--   Possible fix: 
+!!! question "Question 2.b"
+
+    现在是时候探索您所训练的模型的输出了！问题 1-i 中生成的模型的测试集翻译应该位于output /test_output.txt中。请找出你的模型产生的两个错误示例。你发现的两个例子应该是不同的错误类型，并且与前一个问题中提供的例子不同。对于每个例子，你应该：
+    
+    -   写下西班牙语原文句子。源语句在 en_es_data/test.es 中
+    -   写下参考译文，参考译文在en_es_data/test.en中
+    -   写下NMT模型的英文翻译，模型翻译的句子位于output /test_output .txt中
+    -   识别NMT翻译中的错误
+    -   提供模型可能出错的原因(由于特定的语言构造或特定的模型限制)
+    -   描述一种可能的方法，我们可以改变NMT系统，以修复观察到的错误
+
+**Answer 2.b**
+
+---
+
+-   Source Sentence: El 5 de noviembre de 1990 
+-   Reference Translation: On November 5th, 1990 
+-   NMT Translation: On **five** of November 1990 
+-   Error: five 
+-   Reason: 模型限制，模型没有数据集中充分学习到日期格式的转换
+-   Possible Fix: 增加更多关于西班牙语与英语之间的日期格式转换的数据样本
+
+---
+
+-   Source Sentence: Y mis amigos hondureos me pidieron que dijera: "Gracias TED". 
+
+-   Reference Translation: And my friends from Honduras  asked me to say thank you, TED. 
+
+-   NMT Translation: My friends were asked to say, "Thank you." 
+
+-   Error : 说话的对象错误，说话的人是我而不是我的朋友
+
+-   Reason: 句法结构有误并且有缺译现象
+
+-   Possible Fix: 尝试为模型的添加更有效的对齐方式，如优化注意力模型
+
+---
+
+**Question 2.c**
+
+BLEU评分是NMT系统中最常用的自动评价指标。它通常在整个测试集中计算，但这里我们将考虑为单个示例定义的BLEU。假设我们有一个源句 $s$ ，一组 $k$ 个参考译文 $\mathbf{r}_{1}, \dots, \mathbf{r}_{k}$ 和一个候选翻译 $\boldsymbol{c}$ 。 为了计算 $\boldsymbol{c}$ 的BLEU分数，我们首先为 $\boldsymbol{c}$ 计算修改后的 n-gram 精度 $p_{n}$ ，对于 $n = 1,2,3,4$ :
+
+$$
+p_{n}=\frac{\sum_{\text{ngram} \in c} \min \left(\max _{i=1, \ldots, k} \operatorname{Count}_{r_{i}}(\text { ngram }), \text {Count}_c \text{(ngram)}\right)}{\sum_{\text{ngram} \in c} \text {Count}_c \text{(ngram)}}
+$$
+
+这里，对于出现在候选翻译 $\boldsymbol{c}$ 中的每个 n-gram ，我们计算它在任何一个参考译文中出现的最大次数，并以它出现在 $\boldsymbol{c}$ 中的次数为上限(这是分子)，再除以 $\boldsymbol{c}$ 的 n-gram (分母)
+
+接下来，我们计算简洁代价 $\text{brevity penalty BP}$ 。令 $c$ 作为 $\boldsymbol{c}$ 的长度，让 $r^*$ 作为最接近 $\boldsymbol{c}$ 的参考翻译的长度(在两个相等接近的参考翻译长度的情况下，选择较短的参考翻译的长度作为 $r^*$ )
+
+$$
+B P=\left\{\begin{array}{ll}{1} & {\text { if } c \geq r^{*}} \\ {\exp \left(1-\frac{r^{*}}{c}\right)} & {\text { otherwise }}\end{array}\right.
+$$
+
+最后，候选翻译 $\boldsymbol{c}$ 关于 $\mathbf{r}_{1}, \dots, \mathbf{r}_{k}$ 的BLEU分数为：
+
+$$
+B L E U=B P \times \exp \left(\sum_{n=1}^{4} \lambda_{n} \log p_{n}\right)
+$$
+
+其中，$\lambda_{1}, \lambda_{2}, \lambda_{3}, \lambda_{4}$ 是总和为1的权重
+
+!!! question "Question 2.c.i"
+
+    请考虑这个例子：
+    
+    ![1561306251880](imgs/1561306251880.png)
+    
+    分别计算 $c_1, c_2$ 的BLEU分数。令 $\lambda_{i}=0.5 \text { for } i \in\{1,2\}, \lambda_{i}=0 \text { for } i \in\{3,4\}$ 。当计算BLEU分数时，显示你的计算过程(展示 $p_1, p_2, c, r^{*}, BP$ 的计算值)。
+    
+    根据BLEU评分，这两种NMT翻译中哪一种被认为是更好的翻译?你同意这是更好的翻译吗？
+
+**Answer 2.c.i**
+
+$c_1$
+
+$$
+\begin{array}{l}
+ {p_1} &= \frac{0+1+1+1+0}{5} = 0.6 \\
+ {p_2} &= \frac{0+1+1+0}{4} = 0.5 \\
+ c &= 5 \\
+ r^* &= 4 \\
+ BP &= 1 \\
+ BLEU_{{c_1}} &= 1 * \exp(0.5 * \log(0.6) + 0.5 * \log(0.5)) = 0.5477
+\end{array}
+$$
+
+$c_2$
+
+$$
+\begin{array}{l}
+ {p_1} &= \frac{1+1+0+1+1}{5} = 0.8 \\
+ {p_2} &= \frac{1+0+0+1}{4} = 0.5 \\
+ c &= 5 \\
+ r^* &= 4 \\
+ BP &= 1 \\
+ BLEU_{{c_1}} &= 1 * \exp(0.5 * \log(0.8) + 0.5 * \log(0.5)) = 0.632
+\end{array}
+$$
+
+根据 BLEU 分数，$c_2$ 是得分更高的翻译，但我认为 $c_1$ 的翻译更加好
+
+!!! question "Question 2.c.ii"
+
+    我们的硬盘坏了，我们失去了参考翻译 $r_2$ 。请重新计算 $c_1$ 和 $c_2$ 的BLEU分数，这次只针对 $r_1$ 。两个NMT分一中，哪一个现在获得了更高的BLEU分数？你同意这是更好的翻译吗？
+
+**Answer 2.c.ii**
+
+$c_1$
+
+$$
+\begin{array}{l}
+ {p_1} &= \frac{0+1+1+1+0}{5} = 0.6 \\
+ {p_2} &= \frac{0+1+1+0}{4} = 0.5 \\
+ c &= 5 \\
+ r^* &= 6 \\
+ BP &= \exp(1 - \frac{6}{5}) = 0.8187 \\
+ BLEU_{{c_1}} &= 0.8187 * \exp(0.5 * \log(0.6) + 0.5 * \log(0.5)) = 0.4484
+\end{array}
+$$
+
+$c_2$
+
+$$
+\begin{array}{l}
+ {p_1} &= \frac{1+1+0+0+0}{5} = 0.4 \\
+ {p_2} &= \frac{1+0+0+0}{4} = 0.25 \\
+ c &= 5 \\
+ r^* &= 6 \\
+ BP &= \exp(1 - \frac{6}{5}) = 0.8187 \\
+ BLEU_{{c_1}} &= 0.8187 * \exp(0.5 * \log(0.4) + 0.5 * \log(0.25)) = 0.2589
+\end{array}
+$$
+
+根据 BLEU 分数，$c_1$ 是得分更高的翻译，并且我认为这是对的
+
+
+!!! question "Question 2.c.iii"
+
+    由于数据可用性，NMT系统通常只根据一个参考翻译进行评估。请解释(用几句话)为什么这可能有问题？
+
+**Answer 2.c.iii**
+
+如果我们使用单一参考翻译，它增加了好翻译由于与单一参考翻译有较低的 n-gram overlap ，而获得较差的BUEU分数的可能性。例如上例中，如果删去的参考翻译是 $r_1$ ，那么将使得 $c_1$ 的BLEU分数变低。
+
+如果我们增加更多的参考翻译，就会增加一个好翻译中 n-gram overlap 的几率，这样我们就有可能使好翻译获得相对较高的BLEU分数。
+
+!!! question "Question 2.c.iv"
+
+    列举了BLEU作为机器翻译的评价指标，相对于人工评价的两个优点和两个缺点。
+
+**Answer 2.c.iv**
+
+优点
+
+-   自动评价，比人工评价更快，方便，快速
+-   BLEU的使用普及率较高，方便模型之间的效果对比
+
+缺点
+
+-   结果并不稳定，由于核心思想是 n-gram overlap，所以如果参考翻译不够丰富，会导致出现较好翻译获得较差BLEU分数的情况
+-   不考虑语义与句法
+-   不考虑词法，例如上例中的make和makes
+-   未对同义词或相似表达进行优化
 
 ## Reference
 
 -   [从SVD到PCA——奇妙的数学游戏](<https://my.oschina.net/findbill/blog/535044>)
 -   [alongstar518](https://github.com/alongstar518/CS224NHomeworks)
+-   [NLP 中评价文本输出都有哪些方法？为什么要小心使用 BLEU？](https://www.leiphone.com/news/201901/1ij9vMCBDQ84qJly.html)
