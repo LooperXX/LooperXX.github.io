@@ -538,10 +538,102 @@ $$
 J_{t}(\theta)=C E\left(\mathbf{P}_{t}, \mathbf{g}_{t}\right)
 $$
 
-在这里，$\theta$ 代表所有的模型参数，$J_t(\theta)$是解码器第 $t$ 步的损失。现在我们已经描述了该模型，让我们尝试将其实现为西班牙语到英语的翻译！
+在这里，$\theta$ 代表所有的模型参数，$J_t(\theta)$是解码器第 $t$ 步的损失。现在我们已经描述了该模型，让我们尝试将其实现为西班牙语到英语的翻译！
+
+!!! note "Pytorch Bidirectional RNNs Note"
+
+    Pytorch 中的 RNNs，返回的 **out** 的 shape 为 $\text{(seq_len, batch, num_directions * hidden_size)}$ 
+    
+    -   转换为 $\text{(seq_len, batch, num_directions, hidden_size)}$ 后，num_directions 中的顺序是先 forward 再 backward，并且 forward 和 backward 的 hidden state 的顺序是相反的，即 $out[0][0][0]$ 是 forward 的第一个时间步的结果，而 $out[0][0][1]$ 是 backward 的最后一个时间步的结果。此外，**out** 只包含最后一层的结果
+    
+    但对于 **h_n** (**c_n**同理) 而言，shape 为 $\text{(num_layers * num_directions, batch, hidden_size)}$ ，保存的是 forward 和 backward 的最后一个时间步的结果。
+    
+    -   转换为 $\text{(num_layers, num_directions, batch, hidden_size)}$ 后，第一维的 num_layers 和 真实的 layer 层数一一对应，即 $h_n[1][0][0]$ 与 $out[-1][0][0]$ 相等， $h_n[1][1][0]$  与 $out[0][0][1]$ 。
+
+!!! question "Question 1.g"
+
+    首先解释(大约三句话) masks 对整个注意力计算有什么影响。然后(用一两句话)解释为什么有必要这样使用 masks 。
+
+**Answer 1.g**
+
+-   使用 masks 将句子中的 pad token 的分数赋值为 $-inf$ ，从而使得 softmax 作用后获得的 attention 分布中，pad token 的 attention 概率值近似为 0 
+-   attention score / distributions 计算的是 decoder 中某一时间步上的 target word 对 encoder 中的所有 source word 的注意力概率，而 pad token 只是用于 mini-batch ，并没有任何语言意义，target word 无须为其分散注意力，所以需要使用 masks 过滤掉 pad token
+
+!!! question "Question 1.j"
+
+    在课堂上，我们学习了点积注意、乘法注意和加法注意。请就其他两种注意机制中的任何一种，提供每种注意机制可能的优点和缺点
+    
+    -   点积注意 $\mathbf{e}_{t, i}=\mathbf{s}_{t}^{T} \mathbf{h}_{i}$
+    -   乘法注意 $\mathbf{e}_{t, i}=\mathbf{s}_{t}^{T} \mathbf{W h}_{i}$
+    -   加法注意 $\mathbf{e}_{t, i}=\mathbf{v}^{T}(\mathbf{W}_{1} \mathbf{h}_{i}+\mathbf{W}_{2} \mathrm{s}_{t} )$
+
+**Answer 1.j**
+
+|            |                             优点                             |                     缺点                     |
+| :--------: | :----------------------------------------------------------: | :------------------------------------------: |
+| 点积注意力 |                    不需要额外的线性映射层                    |         $s_t, h_t$ 必须有同样的纬度          |
+| 乘法注意力 | $s_t, h_t$ 不需要有同样的纬度并且因为可以使用高效率的矩阵乘法，比加法注意力要更快更省内存 |                增加了训练参数                |
+| 加法注意力 |                       高维时的表现更好                       | 训练参数更多（两个参数矩阵以及注意力的纬度） |
 
 ### 2. Analyzing NMT Systems
+
+!!! question "Question 2.a"
+
+    这里，我们展示了在NMT模型的输出中发现的一系列错误(与您刚刚训练的模型相同)。对于西班牙语源句的每个示例，标准英文翻译，以及NMT(即，“模型”)，请你：
+    
+    -   识别NMT翻译中的错误
+    -   提供模型可能出错的原因(由于特定的语言构造或特定的模型限制)
+    -   描述一种可能的方法，我们可以改变NMT系统，以修复观察到的错误
+    
+    下面是您应该按照上面描述的那样分析的翻译。请注意，标记了下划线的单词是词汇表外的单词
+    
+    ![1561302568933](imgs/1561302568933.png)
+
+**Answer 2.a**
+
+---
+
+-   Error: “ **favorite** of my favorites”
+-   Reason: 
+-   Possible fix: 
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix:
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix:
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix: 
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix: 
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix: 
+
+------
+
+-   Error: 
+-   Reason: 
+-   Possible fix: 
 
 ## Reference
 
 -   [从SVD到PCA——奇妙的数学游戏](<https://my.oschina.net/findbill/blog/535044>)
+-   [alongstar518](https://github.com/alongstar518/CS224NHomeworks)
