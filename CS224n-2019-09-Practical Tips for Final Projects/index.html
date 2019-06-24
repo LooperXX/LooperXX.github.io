@@ -4,8 +4,7 @@
 <li>作业部分将单独整理</li>
 </ul>
 <h2 id="lecture-09-practical-tips-for-final-projects">Lecture 09 Practical Tips for Final Projects<a class="headerlink" href="#lecture-09-practical-tips-for-final-projects" title="Permanent link">&para;</a></h2>
-<details class="abstract"><summary>Lecture Plan</summary></details>
-<ol>
+<details class="abstract"><summary>Lecture Plan</summary><ol>
 <li>Final project types and details; assessment revisited </li>
 <li>Finding research topics; a couple of examples </li>
 <li>Finding data </li>
@@ -14,6 +13,7 @@
 <li>Doing your research </li>
 <li>Presenting your results and evaluation</li>
 </ol>
+</details>
 <p><strong>This lecture is still relevant ... Even if doing DFP</strong> </p>
 <ul>
 <li>
@@ -175,20 +175,30 @@ f(h_{t-1}, x_t) = \tanh(W[x_t] + U h_{t-1} + b)
 <li>或许我们可以创建快捷连接</li>
 </ul>
 <p><img alt="1561361245890" src="../imgs/1561361245890.png" /></p>
-<p>我们可以创建自适应的快捷连接
-$$
-f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}<em>{t}+\left(1-u</em>{t}\right) \odot h_{t-1}
-$$</p>
+<p>我们可以创建自适应的快捷连接</p>
+<div>
+<div class="MathJax_Preview">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</div>
+<script type="math/tex; mode=display">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</script>
+</div>
 <ul>
 <li>候选更新 <span><span class="MathJax_Preview">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U h_{t-1}+b\right)</span><script type="math/tex">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U h_{t-1}+b\right)</script></span></li>
 <li>更新门 <span><span class="MathJax_Preview">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</span><script type="math/tex">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</script></span></li>
 <li><span><span class="MathJax_Preview">\odot</span><script type="math/tex">\odot</script></span> 表示逐元素的乘法</li>
 </ul>
 <p>让网络自适应地修剪不必要的连接</p>
-<p><img alt="1561361425117" src="../imgs/1561361425117.png" />
-$$
-f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}<em>{t}+\left(1-u</em>{t}\right) \odot h_{t-1}
-$$</p>
+<p><img alt="1561361425117" src="../imgs/1561361425117.png" /></p>
+<div>
+<div class="MathJax_Preview">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</div>
+<script type="math/tex; mode=display">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</script>
+</div>
 <ul>
 <li>候选更新 <span><span class="MathJax_Preview">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U\left(r_{t} \odot h_{t-1}\right)+b\right)</span><script type="math/tex">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U\left(r_{t} \odot h_{t-1}\right)+b\right)</script></span></li>
 <li>重置门 <span><span class="MathJax_Preview">r_{t}=\sigma\left(W_{r}\left[x_{t}\right]+U_{r} h_{t-1}+b_{r}\right)</span><script type="math/tex">r_{t}=\sigma\left(W_{r}\left[x_{t}\right]+U_{r} h_{t-1}+b_{r}\right)</script></span></li>

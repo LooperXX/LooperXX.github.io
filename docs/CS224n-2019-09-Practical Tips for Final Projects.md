@@ -7,13 +7,13 @@
 
 ??? abstract "Lecture Plan"
 
-1.  Final project types and details; assessment revisited 
-2.  Finding research topics; a couple of examples 
-3.  Finding data 
-4.  Review of gated neural sequence models 
-5.  A couple of MT topics 
-6.  Doing your research 
-7.  Presenting your results and evaluation
+    1.  Final project types and details; assessment revisited 
+    2.  Finding research topics; a couple of examples 
+    3.  Finding data 
+    4.  Review of gated neural sequence models 
+    5.  A couple of MT topics 
+    6.  Doing your research 
+    7.  Presenting your results and evaluation
 
 **This lecture is still relevant ... Even if doing DFP** 
 
@@ -150,6 +150,7 @@ $$
 ![1561361245890](imgs/1561361245890.png)
 
 我们可以创建自适应的快捷连接
+
 $$
 f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
 $$
@@ -161,6 +162,7 @@ $$
 让网络自适应地修剪不必要的连接
 
 ![1561361425117](imgs/1561361425117.png)
+
 $$
 f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
 $$
