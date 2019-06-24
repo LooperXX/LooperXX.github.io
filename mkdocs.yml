@@ -42,6 +42,8 @@ nav:
           - '06 The probability of a sentence Recurrent Neural Networks and Language Models' : 'CS224n-2019-06-The probability of a sentence Recurrent Neural Networks and Language Models.md'
           - '07 Vanishing Gradients and Fancy RNNs' : 'CS224n-2019-07-Vanishing Gradients and Fancy RNNs.md'
           - '08 Machine Translation, Sequence-to-sequence and Attention' : 'CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention.md'
+          - '09 Practical Tips for Final Projects' : 'CS224n-2019-09-Practical Tips for Final Projects.md'
+          - '10 Question Answering and the Default Final Project' : 'CS224n-2019-10-Question Answering and the Default Final Project.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
