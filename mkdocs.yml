@@ -44,6 +44,7 @@ nav:
           - '08 Machine Translation, Sequence-to-sequence and Attention' : 'CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention.md'
           - '09 Practical Tips for Final Projects' : 'CS224n-2019-09-Practical Tips for Final Projects.md'
           - '10 Question Answering and the Default Final Project' : 'CS224n-2019-10-Question Answering and the Default Final Project.md'
+          - '11 ConvNets for NLP' : 'CS224n-2019-11-ConvNets for NLP.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
