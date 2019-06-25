@@ -266,11 +266,40 @@ $$
 
 2016年、2017年和2018年的大部分工作都采用了越来越复杂的架构，其中包含了多种注意力变体——通常可以获得很好的任务收益
 
+![1561445385565](imgs/1561445385565.png)
+
+人们一直在尝试不同的 Attention 
+
+**Dynamic CoattentionNetworks for Question Answering**
+
+(CaimingXiong, Victor Zhong, Richard Socher ICLR 2017) 
+
+-   缺陷：问题具有独立于输入的表示形式
+-   一个全面的QA模型需要相互依赖
+
+![1561441116979](imgs/1561441116979.png)
+
+**Coattention Encoder**
+
+![1561441125342](imgs/1561441125342.png)
+
+
+
+-   Coattention layer 再次提供了一个上下文之间的双向关注问题
+-   然而，coattention包括两级注意力计算
+    -   关注那些本身就是注意力输出的表象
+-   我们使用C2Q注意力分布 $\alpha _i$ ，求得Q2C注意力输出 $\boldsymbol{b}_j$ 的加权和。这给了我们第二级注意力输出 $\boldsymbol{s}_{i}$
+
+$$
+\boldsymbol{s}_{i}=\sum_{j=1}^{M+1} \alpha_{j}^{i} \boldsymbol{b}_{j} \in \mathbb{R}^{l} \quad \forall i \in\{1, \ldots, N\}
+$$
+
 **FusionNet(Huang, Zhu, Shen, Chen 2017)**
 
 Attention functions 
 
 MLP(Additive)形式
+
 $$
 S_{i j}=s^{T} \tanh \left(W_{1} c_{i}+W_{2} q_{j}\right)
 $$
@@ -278,13 +307,26 @@ $$
 -   Space: O(mnk), W is kxd
 
 Bilinear (Product) form
+
 $$
 \begin{array}{c}{S_{i j}=c_{i}^{T} W q_{j}} \\ {S_{i j}=c_{i}^{T} U^{T} V q_{j}} \\ {S_{i j}=c_{i}^{T} W^{T} D W q_{j}} \\ 
 S_{i j}=\operatorname{Relu}\left(c_{i}^{T} W^{T}\right) \operatorname{DRelu}\left(W q_{j}\right) \end{array}
 $$
 
 -   Smaller space, Non-linearity
--   Space: O((m+n)k), W is kxd
+-   Space: O((m+n)k)
+
+![1561444271130](imgs/1561444271130.png)
+
+**Multi-level inter-attention**
+
+![1561445320199](imgs/1561445320199.png)
+
+经过多层次的inter-attention，使用RNN、self-attention 和另一个RNN得到上下文的最终表示 $\left\{\boldsymbol{u}_{i}^{C}\right\}$
+
+### 7. ELMo and BERT preview
+
+![1561445488664](imgs/1561445488664.png)
 
 ## Reference
 
