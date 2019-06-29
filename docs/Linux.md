@@ -1,12 +1,8 @@
 #  Linux 选修课
 
-> 大作业是并发 基于网络的Service   进程/多线程/异步阻塞
+> [Syh](https://lzw429.github.io/)
 >
-> 教材：Unix/Linux 编程实践教程  Linux应用程序开发 嵌入式Linux应用开发	
->
-> 建议：装好系统并课后练习
->
-> 成绩：实验40分 大作业40分 平时成绩20分
+> [Shell Programming](https://github.com/jaywcjlove/shell-tutorial)
 
 ## 一. History And Common Sense
 
@@ -1909,8 +1905,6 @@ main(){
 | **竞态条件**     | 需要处理                                     | 内核管理的队列                             | 需要处理          | 内核管理的队列                                               |
 
 ## 十二. Shell Programming
-
-[Reference](https://github.com/jaywcjlove/shell-tutorial)
 
 ### 脚本运行
 
