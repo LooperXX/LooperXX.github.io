@@ -15,6 +15,7 @@ nav:
   - Home: index.md
   - Math & CS & Coding:
     - 'Linux' : 'Linux.md'
+    - 'CS专业课' : '专业知识面试准备.md'
     - '重点内容' : 'Coding Knowledge.md'
     - '历年机试' : '历年机试.md'
   - ML & DL:
@@ -45,6 +46,7 @@ nav:
           - '09 Practical Tips for Final Projects' : 'CS224n-2019-09-Practical Tips for Final Projects.md'
           - '10 Question Answering and the Default Final Project' : 'CS224n-2019-10-Question Answering and the Default Final Project.md'
           - '11 ConvNets for NLP' : 'CS224n-2019-11-ConvNets for NLP.md'
+          - '12 Information from parts of words Subword Models' : 'CS224n-2019-12-Information from parts of words Subword Models.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
