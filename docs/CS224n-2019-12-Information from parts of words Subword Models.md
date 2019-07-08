@@ -39,7 +39,7 @@
 ![1561551953710](imgs/1561551953710.png)
 
 -   一个简单的替代方法是使用字符 n-grams
-    -    Wickelphones(Rumelhart& McClelland 1986) 
+    -    Wickelphones (Rumelhart& McClelland 1986) 
     -    Microsoft’s DSSM (Huang, He, Gao, Deng, Acero, & Hect2013) 
 -   使用卷积层的相关想法
 -   能更容易地发挥语素的许多优点吗？
