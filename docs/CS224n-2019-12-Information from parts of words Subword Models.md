@@ -15,8 +15,8 @@
 
 ### 1. Human language sounds: Phonetics and phonology 
 
--   Phonetics 语音学是一种音流——毫无争议的“物理学”
--   Phonology 语音体系假定了一组或多组独特的、分类的单元：音位或独特的特征
+-   Phonetics 语音学是一种音流——物理学或生物学
+-   Phonology 语音体系假定了一组或多组独特的、分类的单元：**phoneme** 音素 或者是独特的特征 
     -   这也许是一种普遍的类型学，但却是一种特殊的语言实现
     -   分类感知的最佳例子就是语音体系
         -   音位差异缩小；音素之间的放大
@@ -25,13 +25,14 @@
 
 **Morphology: Parts of words**
 
+-   声音本身在语言中没有意义
 -   parts of words 是音素的下一级的形态学，是具有意义的最低级别
 
 ![1561551568613](imgs/1561551568613.png)
 
--   传统上，**morphemes** 语素是最小的语义单位 **semantic unit** 
+-   传统上，**morphemes** 词素是最小的语义单位 **semantic unit** 
     -   $\left[\left[\text {un}\left[[\text { fortun }(\mathrm{e})]_{\text { Root }} \text { ate }\right]_{\text { STEM }}\right]_{\text { STEM }} \text {ly}\right]_{\text { WORD }}$
--   深度学习:形态学研究较少;递归神经网络的一种尝试是 (Luong, Socher, & Manning 2013)
+-   深度学习:形态学研究较少；递归神经网络的一种尝试是 (Luong, Socher, & Manning 2013)
     -   处理更大词汇量的一种可能方法——大多数看不见的单词是新的形态(或数字)
 
 **Morphology**
@@ -42,28 +43,31 @@
     -    Wickelphones (Rumelhart& McClelland 1986) 
     -    Microsoft’s DSSM (Huang, He, Gao, Deng, Acero, & Hect2013) 
 -   使用卷积层的相关想法
--   能更容易地发挥语素的许多优点吗？
+-   能更容易地发挥词素的许多优点吗？
 
 **Words in writing systems**
 
 书写系统在表达单词的方式上各不相同，也不相同
 
--   没有分词 美国关岛国际机场及其办公室均接获
+-   没有分词（没有在单词间放置空格） 美国关岛国际机场及其办公室均接获
 -   大部分的单词都是分开的：由单词组成了句子
     -   附着词 clitics
-        -   分开的
+        -   分开的  
+        
+            ![image-20190710131907798](imgs/image-20190710131907798.png)
+        
         -   连续的
+        
+        ![image-20190710131935936](imgs/image-20190710131935936.png)
     -   复合名词
-        -   分开的
-        -   连续的
-
-![1561552170825](imgs/1561552170825.png)
+        -   分开的 life insurance company employee
+        -   连续的 Lebensversicherungsgesellschaftsangestellter
 
 **Models below the word level**
 
--   需要处理数量很大的开放词汇
+-   需要处理数量很大的开放词汇：巨大的、无限的单词空间
     -   丰富的形态
-    -   音译
+    -   音译（特别是名字，在翻译中基本上是音译）
     -   非正式的拼写
 
 ![1561552234608](imgs/1561552234608.png)
@@ -74,7 +78,8 @@
     -   为未知单词生成嵌入
     -   相似的拼写共享相似的嵌入
     -   解决OOV问题
--   连接语言可以作为字符处理，这两种方法都被证明是非常成功的！
+-   连续语言可以作为字符处理：即所有的语言处理均建立在字符序列上，不考虑 word-level
+-   这两种方法都被证明是非常成功的！
     -   有点令人惊讶的是——传统上，音素/字母不是一个语义单元——但DL模型组成了组
     -   深度学习模型可以存储和构建来自于多个字母组的含义表示，从而模拟语素和更大单位的意义，从而汇总形成语义
 
@@ -90,14 +95,15 @@
 
 -   上节课我们看到了一个很好的纯字符级模型的例子用于句子分类
     -   非常深的卷积网络用于文本分类
-    -   •Conneau, Schwenk, Lecun, Barrault.EACL 2017
+    -   Conneau, Schwenk, Lecun, Barrault.EACL 2017
 -   强大的结果通过深度卷积堆叠
 
 **Purely character-level NMT models**
 
+-   以字符作为输入和输出的机器翻译系统
 -   最初，效果不令人满意
     -   (Vilaret al., 2007; Neubiget al., 2013) 
--   只有decoder
+-   只有decoder（成功的）
     -    (JunyoungChung, KyunghyunCho, YoshuaBengio. arXiv 2016). 
 -   然后有前景的结果
     -    (Wang Ling, Isabel Trancoso, Chris Dyer, Alan Black, arXiv 2015)
@@ -110,8 +116,10 @@
 
 -   Luong和Manning测试了一个纯字符级seq2seq (LSTM) NMT系统作为基线
 -   它在单词级基线上运行得很好
--   但是太慢了
+-   对于 UNK，是用 single word translation 或者 copy stuff from the source
+-   字符级的 model 效果更好了，但是太慢了
     -   但是在运行时需要3周的时间来训练，运行时没那么快
+    -   如果放进了 LSTM 中，序列长度变为以前的数倍（大约七倍）
 
 **Fully Character-Level Neural Machine Translation without Explicit Segmentation**
 
@@ -127,6 +135,9 @@ Revisiting Character-Based Neural Machine Translation with Capacity and Compress
 
 ![1561553291034](imgs/1561553291034.png)
 
+-   在捷克语这样的复杂语言中，字符级模型的效果提升较为明显，但是在英语和法语等语言中则收效甚微。
+-   模型较小时，word-level 更佳；模型较大时，character-level 更佳
+
 ### 3. Sub-word models: two trends
 
 -   与word级模型相同的架构
@@ -138,17 +149,18 @@ Revisiting Character-Based Neural Machine Translation with Capacity and Compress
 
 **Byte Pair Encoding**
 
+-   BPE 并未深度学习的有关算法，但已成为标准且成功表示 pieces of words 的方法，可以获得一个有限的词典与无限且有效的词汇表。
 -   最初的压缩算法
     -   最频繁的字节 $\to$ 一个新的字节。
     -   用字符ngram替换字节(实际上，有些人已经用字节做了一些有趣的事情)
     -   Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural Machine Translation of Rare Words with SubwordUnits. ACL 2016.
-    -   https://arxiv.org/abs/1508.07909 
-    -   https://github.com/rsennrich/subword-nmt
-    -   https://github.com/EdinburghNLP/nematus
--   分词算法
-    -   虽然做得很简单
+        -   https://arxiv.org/abs/1508.07909 
+        -   https://github.com/rsennrich/subword-nmt
+        -   https://github.com/EdinburghNLP/nematus
+-   分词算法 word segmentation 
+    -   虽然做得很简单，有点像是自下而上的短序列聚类
     -   将数据中的所有的Unicode字符组成一个unigram的词典
-    -   最常见的ngram对是一个新的ngram
+    -   最常见的 **ngram pairs** 视为 一个新的 **ngram**
 
 ![1561621812079](imgs/1561621812079.png)
 
@@ -169,8 +181,8 @@ Revisiting Character-Based Neural Machine Translation with Capacity and Compress
 **Wordpiece/Sentencepiece model**
 
 -   谷歌NMT (GNMT) 使用了它的一个变体
-    -   V1: wordpiecemodel 
-    -   V2: sentencepiecemodel 
+    -   V1: wordpiece model 
+    -   V2: sentencepiece model 
 -   不使用字符的 n-gram count，而是使用贪心近似来最大化语言模型的对数似然函数值，选择对应的pieces
     -   添加最大限度地减少困惑的n-gram
 
@@ -211,10 +223,10 @@ Learning Character-level Representations for Part-ofSpeech Tagging (Dos Santos a
 
 Yoon Kim, Yacine Jernite, David Sontag,  Alexander M. Rush. 2015
 
--   一个更复杂/复杂的方法
+-   一个更复杂/精密的方法
 -   动机
     -   派生一个强大的、健壮的语言模型，该模型在多种语言中都有效
-    -   编码子单词关联性s: eventful, eventfully, uneventful… 
+    -   编码子单词关联性：eventful, eventfully, uneventful… 
     -   解决现有模型的罕见字问题
     -   用更少的参数获得可比较的表达性
 
@@ -253,7 +265,7 @@ Yoon Kim, Yacine Jernite, David Sontag,  Alexander M. Rush. 2015
 
 **Hybrid NMT**
 
--   Abest-of-both-worldsarchitecture
+-   Abest-of-both-worlds architecture
     -   翻译大部分是单词级别的
     -   只在需要的时候进入字符级别
 -   使用一个复制机制，试图填充罕见的单词，产生了超过 2 BLEU的改进
@@ -269,6 +281,9 @@ Yoon Kim, Yacine Jernite, David Sontag,  Alexander M. Rush. 2015
 ![1561623975512](imgs/1561623975512.png)
 
 -   字符级别的束搜索（遇到 $\text{<UNK>}$ ）时
+-   混合模型与字符级模型相比
+    -   纯粹的字符级模型能够非常有效地是用字符序列作为条件上下文
+    -   混合模型虽然提供了字符级的隐层表示，但并没有获得比单词级别更低的表示
 
 **English-Czech Results**
 
@@ -295,7 +310,7 @@ Yoon Kim, Yacine Jernite, David Sontag,  Alexander M. Rush. 2015
 一种用于单词嵌入和单词形态学的联合模型(Cao and Rei 2016)
 
 -   与w2v目标相同，但使用字符
--   双向LSTM计算嵌入
+-   双向LSTM计算单词表示
 -   模型试图捕获形态学
 -   模型可以推断单词的词根
 

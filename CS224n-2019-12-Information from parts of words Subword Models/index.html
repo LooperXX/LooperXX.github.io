@@ -1193,8 +1193,8 @@
 </details>
 <h3 id="1-human-language-sounds-phonetics-and-phonology">1. Human language sounds: Phonetics and phonology<a class="headerlink" href="#1-human-language-sounds-phonetics-and-phonology" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Phonetics 语音学是一种音流——毫无争议的“物理学”</li>
-<li>Phonology 语音体系假定了一组或多组独特的、分类的单元：音位或独特的特征<ul>
+<li>Phonetics 语音学是一种音流——物理学或生物学</li>
+<li>Phonology 语音体系假定了一组或多组独特的、分类的单元：<strong>phoneme</strong> 音素 或者是独特的特征 <ul>
 <li>这也许是一种普遍的类型学，但却是一种特殊的语言实现</li>
 <li>分类感知的最佳例子就是语音体系<ul>
 <li>音位差异缩小；音素之间的放大</li>
@@ -1206,15 +1206,16 @@
 <p><img alt="1561551194126" src="../imgs/1561551194126.png" /></p>
 <p><strong>Morphology: Parts of words</strong></p>
 <ul>
+<li>声音本身在语言中没有意义</li>
 <li>parts of words 是音素的下一级的形态学，是具有意义的最低级别</li>
 </ul>
 <p><img alt="1561551568613" src="../imgs/1561551568613.png" /></p>
 <ul>
-<li>传统上，<strong>morphemes</strong> 语素是最小的语义单位 <strong>semantic unit</strong> <ul>
+<li>传统上，<strong>morphemes</strong> 词素是最小的语义单位 <strong>semantic unit</strong> <ul>
 <li><span><span class="MathJax_Preview">\left[\left[\text {un}\left[[\text { fortun }(\mathrm{e})]_{\text { Root }} \text { ate }\right]_{\text { STEM }}\right]_{\text { STEM }} \text {ly}\right]_{\text { WORD }}</span><script type="math/tex">\left[\left[\text {un}\left[[\text { fortun }(\mathrm{e})]_{\text { Root }} \text { ate }\right]_{\text { STEM }}\right]_{\text { STEM }} \text {ly}\right]_{\text { WORD }}</script></span></li>
 </ul>
 </li>
-<li>深度学习:形态学研究较少;递归神经网络的一种尝试是 (Luong, Socher, &amp; Manning 2013)<ul>
+<li>深度学习:形态学研究较少；递归神经网络的一种尝试是 (Luong, Socher, &amp; Manning 2013)<ul>
 <li>处理更大词汇量的一种可能方法——大多数看不见的单词是新的形态(或数字)</li>
 </ul>
 </li>
@@ -1228,32 +1229,37 @@
 </ul>
 </li>
 <li>使用卷积层的相关想法</li>
-<li>能更容易地发挥语素的许多优点吗？</li>
+<li>能更容易地发挥词素的许多优点吗？</li>
 </ul>
 <p><strong>Words in writing systems</strong></p>
 <p>书写系统在表达单词的方式上各不相同，也不相同</p>
 <ul>
-<li>没有分词 美国关岛国际机场及其办公室均接获</li>
+<li>没有分词（没有在单词间放置空格） 美国关岛国际机场及其办公室均接获</li>
 <li>大部分的单词都是分开的：由单词组成了句子<ul>
-<li>附着词 clitics<ul>
-<li>分开的</li>
-<li>连续的</li>
-</ul>
+<li>
+<p>附着词 clitics</p>
+<ul>
+<li>
+<p>分开的  </p>
+<p><img alt="image-20190710131907798" src="../imgs/image-20190710131907798.png" /></p>
 </li>
-<li>复合名词<ul>
-<li>分开的</li>
-<li>连续的</li>
-</ul>
-</li>
-</ul>
+<li>
+<p>连续的</p>
 </li>
 </ul>
-<p><img alt="1561552170825" src="../imgs/1561552170825.png" /></p>
+<p><img alt="image-20190710131935936" src="../imgs/image-20190710131935936.png" />
+    -   复合名词
+-   分开的 life insurance company employee
+-   连续的 Lebensversicherungsgesellschaftsangestellter</p>
+</li>
+</ul>
+</li>
+</ul>
 <p><strong>Models below the word level</strong></p>
 <ul>
-<li>需要处理数量很大的开放词汇<ul>
+<li>需要处理数量很大的开放词汇：巨大的、无限的单词空间<ul>
 <li>丰富的形态</li>
-<li>音译</li>
+<li>音译（特别是名字，在翻译中基本上是音译）</li>
 <li>非正式的拼写</li>
 </ul>
 </li>
@@ -1267,7 +1273,8 @@
 <li>解决OOV问题</li>
 </ul>
 </li>
-<li>连接语言可以作为字符处理，这两种方法都被证明是非常成功的！<ul>
+<li>连续语言可以作为字符处理：即所有的语言处理均建立在字符序列上，不考虑 word-level</li>
+<li>这两种方法都被证明是非常成功的！<ul>
 <li>有点令人惊讶的是——传统上，音素/字母不是一个语义单元——但DL模型组成了组</li>
 <li>深度学习模型可以存储和构建来自于多个字母组的含义表示，从而模拟语素和更大单位的意义，从而汇总形成语义</li>
 </ul>
@@ -1281,18 +1288,19 @@
 <ul>
 <li>上节课我们看到了一个很好的纯字符级模型的例子用于句子分类<ul>
 <li>非常深的卷积网络用于文本分类</li>
-<li>•Conneau, Schwenk, Lecun, Barrault.EACL 2017</li>
+<li>Conneau, Schwenk, Lecun, Barrault.EACL 2017</li>
 </ul>
 </li>
 <li>强大的结果通过深度卷积堆叠</li>
 </ul>
 <p><strong>Purely character-level NMT models</strong></p>
 <ul>
+<li>以字符作为输入和输出的机器翻译系统</li>
 <li>最初，效果不令人满意<ul>
 <li>(Vilaret al., 2007; Neubiget al., 2013) </li>
 </ul>
 </li>
-<li>只有decoder<ul>
+<li>只有decoder（成功的）<ul>
 <li>(JunyoungChung, KyunghyunCho, YoshuaBengio. arXiv 2016). </li>
 </ul>
 </li>
@@ -1308,8 +1316,10 @@
 <ul>
 <li>Luong和Manning测试了一个纯字符级seq2seq (LSTM) NMT系统作为基线</li>
 <li>它在单词级基线上运行得很好</li>
-<li>但是太慢了<ul>
+<li>对于 UNK，是用 single word translation 或者 copy stuff from the source</li>
+<li>字符级的 model 效果更好了，但是太慢了<ul>
 <li>但是在运行时需要3周的时间来训练，运行时没那么快</li>
+<li>如果放进了 LSTM 中，序列长度变为以前的数倍（大约七倍）</li>
 </ul>
 </li>
 </ul>
@@ -1320,6 +1330,10 @@
 <p><strong>Stronger character results with depth in LSTM seq2seq model</strong> </p>
 <p>Revisiting Character-Based Neural Machine Translation with Capacity and Compression. 2018. Cherry, Foster, Bapna, Firat, Macherey, Google AI</p>
 <p><img alt="1561553291034" src="../imgs/1561553291034.png" /></p>
+<ul>
+<li>在捷克语这样的复杂语言中，字符级模型的效果提升较为明显，但是在英语和法语等语言中则收效甚微。</li>
+<li>模型较小时，word-level 更佳；模型较大时，character-level 更佳</li>
+</ul>
 <h3 id="3-sub-word-models-two-trends">3. Sub-word models: two trends<a class="headerlink" href="#3-sub-word-models-two-trends" title="Permanent link">&para;</a></h3>
 <ul>
 <li>与word级模型相同的架构<ul>
@@ -1335,19 +1349,22 @@
 </ul>
 <p><strong>Byte Pair Encoding</strong></p>
 <ul>
+<li>BPE 并未深度学习的有关算法，但已成为标准且成功表示 pieces of words 的方法，可以获得一个有限的词典与无限且有效的词汇表。</li>
 <li>最初的压缩算法<ul>
 <li>最频繁的字节 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 一个新的字节。</li>
 <li>用字符ngram替换字节(实际上，有些人已经用字节做了一些有趣的事情)</li>
-<li>Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural Machine Translation of Rare Words with SubwordUnits. ACL 2016.</li>
+<li>Rico Sennrich, Barry Haddow, and Alexandra Birch. Neural Machine Translation of Rare Words with SubwordUnits. ACL 2016.<ul>
 <li><a href="https://arxiv.org/abs/1508.07909">https://arxiv.org/abs/1508.07909</a> </li>
 <li><a href="https://github.com/rsennrich/subword-nmt">https://github.com/rsennrich/subword-nmt</a></li>
 <li><a href="https://github.com/EdinburghNLP/nematus">https://github.com/EdinburghNLP/nematus</a></li>
 </ul>
 </li>
-<li>分词算法<ul>
-<li>虽然做得很简单</li>
+</ul>
+</li>
+<li>分词算法 word segmentation <ul>
+<li>虽然做得很简单，有点像是自下而上的短序列聚类</li>
 <li>将数据中的所有的Unicode字符组成一个unigram的词典</li>
-<li>最常见的ngram对是一个新的ngram</li>
+<li>最常见的 <strong>ngram pairs</strong> 视为 一个新的 <strong>ngram</strong></li>
 </ul>
 </li>
 </ul>
@@ -1369,8 +1386,8 @@
 <p><strong>Wordpiece/Sentencepiece model</strong></p>
 <ul>
 <li>谷歌NMT (GNMT) 使用了它的一个变体<ul>
-<li>V1: wordpiecemodel </li>
-<li>V2: sentencepiecemodel </li>
+<li>V1: wordpiece model </li>
+<li>V2: sentencepiece model </li>
 </ul>
 </li>
 <li>
@@ -1423,10 +1440,10 @@
 <p><strong>Character-Aware Neural Language Models</strong> </p>
 <p>Yoon Kim, Yacine Jernite, David Sontag,  Alexander M. Rush. 2015</p>
 <ul>
-<li>一个更复杂/复杂的方法</li>
+<li>一个更复杂/精密的方法</li>
 <li>动机<ul>
 <li>派生一个强大的、健壮的语言模型，该模型在多种语言中都有效</li>
-<li>编码子单词关联性s: eventful, eventfully, uneventful… </li>
+<li>编码子单词关联性：eventful, eventfully, uneventful… </li>
 <li>解决现有模型的罕见字问题</li>
 <li>用更少的参数获得可比较的表达性</li>
 </ul>
@@ -1459,7 +1476,7 @@
 </ul>
 <p><strong>Hybrid NMT</strong></p>
 <ul>
-<li>Abest-of-both-worldsarchitecture<ul>
+<li>Abest-of-both-worlds architecture<ul>
 <li>翻译大部分是单词级别的</li>
 <li>只在需要的时候进入字符级别</li>
 </ul>
@@ -1475,6 +1492,11 @@
 <p><img alt="1561623975512" src="../imgs/1561623975512.png" /></p>
 <ul>
 <li>字符级别的束搜索（遇到 <span><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> ）时</li>
+<li>混合模型与字符级模型相比<ul>
+<li>纯粹的字符级模型能够非常有效地是用字符序列作为条件上下文</li>
+<li>混合模型虽然提供了字符级的隐层表示，但并没有获得比单词级别更低的表示</li>
+</ul>
+</li>
 </ul>
 <p><strong>English-Czech Results</strong></p>
 <p><img alt="1561624044408" src="../imgs/1561624044408.png" /></p>
@@ -1490,7 +1512,7 @@
 <p>一种用于单词嵌入和单词形态学的联合模型(Cao and Rei 2016)</p>
 <ul>
 <li>与w2v目标相同，但使用字符</li>
-<li>双向LSTM计算嵌入</li>
+<li>双向LSTM计算单词表示</li>
 <li>模型试图捕获形态学</li>
 <li>模型可以推断单词的词根</li>
 </ul>
