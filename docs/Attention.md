@@ -339,7 +339,7 @@ $$
 $$
 \begin{equation}
 \begin{cases}
-PE(pos, 2i)=\sin \left(pos / 10000^{2 i / d_{model}}\right) \\
+PE(pos, 2i)=\sin \left(pos / 10000^{2 i / d_{model}}\right)  \\
 PE(\text {pos}, 2 i+1)=\cos \left(pos / 10000^{2 i / d_{model}}\right)
 \end{cases}
 \end{equation}
