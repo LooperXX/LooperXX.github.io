@@ -1183,19 +1183,14 @@
 <li>作业部分将单独整理</li>
 </ul>
 <h2 id="lecture-13-contextual-word-representations-and-pretraining">Lecture 13 Contextual Word Representations and Pretraining<a class="headerlink" href="#lecture-13-contextual-word-representations-and-pretraining" title="Permanent link">&para;</a></h2>
-<p>??? abstract “Lecture Plan”</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>1.  Reflections on word representations 
-2.  Pre-ELMo and ELMO
-3.  ULMfit and onward
-4.  Transformer architectures (20 mins)
-5.  BERT
-</pre></div>
-</td></tr></table>
-
+<details class="abstract"><summary>Lecture Plan</summary><ol>
+<li>Reflections on word representations </li>
+<li>Pre-ELMo and ELMO</li>
+<li>ULMfit and onward</li>
+<li>Transformer architectures (20 mins)</li>
+<li>BERT</li>
+</ol>
+</details>
 <p>The remaining lectures</p>
 <ul>
 <li>Transformers</li>
@@ -1272,10 +1267,15 @@
 <ul>
 <li>与上文无关的单词嵌入 + RNN model 得到的 hidden states 作为特征输入</li>
 </ul>
-<p><img alt="image-20190711183038119" src="../imgs/image-20190711183038119.png" />
-$$
-\mathbf{h}<em>{k, l}=\left[\overrightarrow{\mathbf{h}}</em>{k, 1} ; \overleftarrow{\mathbf{h}}<em>{k, 1} ; \mathbf{h}</em>{k}^{L M}\right]
-$$</p>
+<p><img alt="image-20190711183038119" src="../imgs/image-20190711183038119.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
+</div>
+<script type="math/tex; mode=display">
+\mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
+</script>
+</div>
 <ul>
 <li>Char CNN / RNN + Token Embedding 作为 bi-LSTM 的输入</li>
 <li>得到的 hidden states 与 Pre-trained bi-LM（冻结的） 的 hidden states 连接起来输入到第二层的 bi-LSTM 中</li>
@@ -1367,11 +1367,16 @@ $$</p>
 </li>
 </ul>
 <p><strong>ELMo used in a sequence tagger</strong></p>
-<p><img alt="image-20190711191705597" src="../imgs/image-20190711191705597.png" />
-$$
-\mathbf{h}<em>{k, l}=\left[\overrightarrow{\mathbf{h}}</em>{k, 1} ; \overleftarrow{\mathbf{h}}<em>{k, 1} ; \mathbf{h}</em>{k}^{L M}\right]
-$$
-<strong>ELMo results: Great for all tasks</strong></p>
+<p><img alt="image-20190711191705597" src="../imgs/image-20190711191705597.png" /></p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
+</div>
+<script type="math/tex; mode=display">
+\mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
+</script>
+</div>
+<p><strong>ELMo results: Great for all tasks</strong></p>
 <p><img alt="image-20190711191805572" src="../imgs/image-20190711191805572.png" /></p>
 <p><strong>ELMo: Weighting of layers</strong></p>
 <ul>

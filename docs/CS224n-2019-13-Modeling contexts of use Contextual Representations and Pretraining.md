@@ -5,7 +5,7 @@
 
 ## Lecture 13 Contextual Word Representations and Pretraining
 
-??? abstract “Lecture Plan”
+??? abstract "Lecture Plan"
 
     1.  Reflections on word representations 
     2.  Pre-ELMo and ELMO
@@ -82,6 +82,7 @@ https://arxiv.org/pdf/1705.00108.pdf
 -   与上文无关的单词嵌入 + RNN model 得到的 hidden states 作为特征输入
 
 ![image-20190711183038119](imgs/image-20190711183038119.png)
+
 $$
 \mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
 $$
@@ -168,9 +169,11 @@ $$
 **ELMo used in a sequence tagger**
 
 ![image-20190711191705597](imgs/image-20190711191705597.png)
+
 $$
 \mathbf{h}_{k, l}=\left[\overrightarrow{\mathbf{h}}_{k, 1} ; \overleftarrow{\mathbf{h}}_{k, 1} ; \mathbf{h}_{k}^{L M}\right]
 $$
+
 **ELMo results: Great for all tasks**
 
 ![image-20190711191805572](imgs/image-20190711191805572.png)
