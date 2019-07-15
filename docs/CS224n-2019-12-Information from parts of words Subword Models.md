@@ -337,7 +337,15 @@ Bojanowski, Grave, Joulinand Mikolov. FAIR. 2016. https://arxiv.org/pdf/1607.046
 
 ![1561624601357](imgs/1561624601357.png)
 
+## Suggested Readings
 
+[Character Level NMT](https://arxiv.org/pdf/1610.03017.pdf)
+
+[Byte Pair Encoding](https://arxiv.org/pdf/1508.07909.pdf)
+
+Minh-Thang Luong and Christopher Manning. [Achieving Open Vocabulary Neural Machine Translation with Hybrid Word-Character Models](https://arxiv.org/abs/1604.00788)
+
+[FastText论文](https://arxiv.org/pdf/1607.04606.pdf)
 
 ## Reference
 
