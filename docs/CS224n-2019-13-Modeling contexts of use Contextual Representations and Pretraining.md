@@ -24,7 +24,7 @@ The remaining lectures
 -   “More neural architectures that are used to solve NLP problem”
 -   “More linguistics stuff and NLU!”
 
-## 1. Representations for a word
+### 1. Representations for a word
 
 现在我们可以获得一个单词的表示
 
@@ -68,7 +68,7 @@ The remaining lectures
 -   那些LSTM层被训练来预测下一个单词
 -   但这些语言模型在每一个位置生成特定于上下文的词表示
 
-## 2. Peters et al. (2017): TagLM – “Pre-ELMo”
+### 2. Peters et al. (2017): TagLM – “Pre-ELMo”
 
 https://arxiv.org/pdf/1705.00108.pdf
 
@@ -197,7 +197,7 @@ for Text Classification. https://arxiv.org/pdf/1801.06146.pdf
 
 ![image-20190711192140341](imgs/image-20190711192140341.png)
 
-## 3. ULMfit
+### 3. ULMfit
 
 -   在大型通用领域的无监督语料库上使用 biLM 训练
 -   在目标任务数据上调整 LM
@@ -243,7 +243,7 @@ for Text Classification. https://arxiv.org/pdf/1801.06146.pdf
 
 -   Transformer 不仅狠强大，而且允许扩展到更大的尺寸
 
-## 4. The Motivation for Transformers
+### 4. The Motivation for Transformers
 
 ![image-20190711193104835](imgs/image-20190711193104835.png)
 
@@ -416,7 +416,7 @@ $$
 
 ![image-20190711210356881](imgs/image-20190711210356881.png)
 
-## 5. BERT: Devlin, Chang, Lee, Toutanova (2018)
+### 5. BERT: Devlin, Chang, Lee, Toutanova (2018)
 
 BERT (Bidirectional Encoder Representations from Transformers):
 
@@ -514,6 +514,17 @@ Pre-training of Deep Bidirectional Transformers for Language Understanding
 
 -   从 119M 到 340M 的参数量改善了很多
 -   改进尚未渐进
+
+## Suggested Readings
+
+[The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
+
+-   https://github.com/rsennrich/subword-nmt
+-   https://github.com/opennmt/opennmt-py
+
+[The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](http://jalammar.github.io/illustrated-bert/)
+
+-   中文版：https://blog.csdn.net/qq_41664845/article/details/84787969
 
 ## Reference
 

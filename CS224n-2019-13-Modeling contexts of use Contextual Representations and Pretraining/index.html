@@ -839,39 +839,52 @@
     Lecture 13 Contextual Word Representations and Pretraining
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-representations-for-a-word" title="1. Representations for a word" class="md-nav__link">
     1. Representations for a word
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-peters-et-al-2017-taglm-pre-elmo" title="2. Peters et al. (2017): TagLM – “Pre-ELMo”" class="md-nav__link">
     2. Peters et al. (2017): TagLM – “Pre-ELMo”
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-ulmfit" title="3. ULMfit" class="md-nav__link">
     3. ULMfit
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-the-motivation-for-transformers" title="4. The Motivation for Transformers" class="md-nav__link">
     4. The Motivation for Transformers
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#5-bert-devlin-chang-lee-toutanova-2018" title="5. BERT: Devlin, Chang, Lee, Toutanova (2018)" class="md-nav__link">
     5. BERT: Devlin, Chang, Lee, Toutanova (2018)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">
+    Suggested Readings
   </a>
   
 </li>
@@ -1108,39 +1121,52 @@
     Lecture 13 Contextual Word Representations and Pretraining
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#1-representations-for-a-word" title="1. Representations for a word" class="md-nav__link">
     1. Representations for a word
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#2-peters-et-al-2017-taglm-pre-elmo" title="2. Peters et al. (2017): TagLM – “Pre-ELMo”" class="md-nav__link">
     2. Peters et al. (2017): TagLM – “Pre-ELMo”
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#3-ulmfit" title="3. ULMfit" class="md-nav__link">
     3. ULMfit
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-the-motivation-for-transformers" title="4. The Motivation for Transformers" class="md-nav__link">
     4. The Motivation for Transformers
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#5-bert-devlin-chang-lee-toutanova-2018" title="5. BERT: Devlin, Chang, Lee, Toutanova (2018)" class="md-nav__link">
     5. BERT: Devlin, Chang, Lee, Toutanova (2018)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#suggested-readings" title="Suggested Readings" class="md-nav__link">
+    Suggested Readings
   </a>
   
 </li>
@@ -1202,7 +1228,7 @@
 <li>“More neural architectures that are used to solve NLP problem”</li>
 <li>“More linguistics stuff and NLU!”</li>
 </ul>
-<h2 id="1-representations-for-a-word">1. Representations for a word<a class="headerlink" href="#1-representations-for-a-word" title="Permanent link">&para;</a></h2>
+<h3 id="1-representations-for-a-word">1. Representations for a word<a class="headerlink" href="#1-representations-for-a-word" title="Permanent link">&para;</a></h3>
 <p>现在我们可以获得一个单词的表示</p>
 <ul>
 <li>我们开始时学过的单词向量 Word2vec, GloVe, fastText</li>
@@ -1256,7 +1282,7 @@
 <li>那些LSTM层被训练来预测下一个单词</li>
 <li>但这些语言模型在每一个位置生成特定于上下文的词表示</li>
 </ul>
-<h2 id="2-peters-et-al-2017-taglm-pre-elmo">2. Peters et al. (2017): TagLM – “Pre-ELMo”<a class="headerlink" href="#2-peters-et-al-2017-taglm-pre-elmo" title="Permanent link">&para;</a></h2>
+<h3 id="2-peters-et-al-2017-taglm-pre-elmo">2. Peters et al. (2017): TagLM – “Pre-ELMo”<a class="headerlink" href="#2-peters-et-al-2017-taglm-pre-elmo" title="Permanent link">&para;</a></h3>
 <p><a href="https://arxiv.org/pdf/1705.00108.pdf">https://arxiv.org/pdf/1705.00108.pdf</a></p>
 <ul>
 <li>想法：想要获得单词在上下文的意思，但标准的 RNN 学习任务只在 task-labeled 的小数据上（如 NER ）</li>
@@ -1401,7 +1427,7 @@ for Text Classification. <a href="https://arxiv.org/pdf/1801.06146.pdf">https://
 <li>这里应用于文本分类</li>
 </ul>
 <p><img alt="image-20190711192140341" src="../imgs/image-20190711192140341.png" /></p>
-<h2 id="3-ulmfit">3. ULMfit<a class="headerlink" href="#3-ulmfit" title="Permanent link">&para;</a></h2>
+<h3 id="3-ulmfit">3. ULMfit<a class="headerlink" href="#3-ulmfit" title="Permanent link">&para;</a></h3>
 <ul>
 <li>在大型通用领域的无监督语料库上使用 biLM 训练</li>
 <li>在目标任务数据上调整 LM</li>
@@ -1441,7 +1467,7 @@ for Text Classification. <a href="https://arxiv.org/pdf/1801.06146.pdf">https://
 <ul>
 <li>Transformer 不仅狠强大，而且允许扩展到更大的尺寸</li>
 </ul>
-<h2 id="4-the-motivation-for-transformers">4. The Motivation for Transformers<a class="headerlink" href="#4-the-motivation-for-transformers" title="Permanent link">&para;</a></h2>
+<h3 id="4-the-motivation-for-transformers">4. The Motivation for Transformers<a class="headerlink" href="#4-the-motivation-for-transformers" title="Permanent link">&para;</a></h3>
 <p><img alt="image-20190711193104835" src="../imgs/image-20190711193104835.png" /></p>
 <ul>
 <li>我们想要并行化，但是RNNs本质上是顺序的</li>
@@ -1635,7 +1661,7 @@ PE(\text {pos}, 2 i+1)=\cos \left(pos / 10000^{2 i / d_{model}}\right)
 <p><img alt="image-20190711210344591" src="../imgs/image-20190711210344591.png" /></p>
 <p><strong>Experimental Results for Parsing</strong></p>
 <p><img alt="image-20190711210356881" src="../imgs/image-20190711210356881.png" /></p>
-<h2 id="5-bert-devlin-chang-lee-toutanova-2018">5. BERT: Devlin, Chang, Lee, Toutanova (2018)<a class="headerlink" href="#5-bert-devlin-chang-lee-toutanova-2018" title="Permanent link">&para;</a></h2>
+<h3 id="5-bert-devlin-chang-lee-toutanova-2018">5. BERT: Devlin, Chang, Lee, Toutanova (2018)<a class="headerlink" href="#5-bert-devlin-chang-lee-toutanova-2018" title="Permanent link">&para;</a></h3>
 <p>BERT (Bidirectional Encoder Representations from Transformers):</p>
 <p>Pre-training of Deep Bidirectional Transformers for Language Understanding</p>
 <ul>
@@ -1734,6 +1760,16 @@ PE(\text {pos}, 2 i+1)=\cos \left(pos / 10000^{2 i / d_{model}}\right)
 <ul>
 <li>从 119M 到 340M 的参数量改善了很多</li>
 <li>改进尚未渐进</li>
+</ul>
+<h2 id="suggested-readings">Suggested Readings<a class="headerlink" href="#suggested-readings" title="Permanent link">&para;</a></h2>
+<p><a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">The Annotated Transformer</a></p>
+<ul>
+<li><a href="https://github.com/rsennrich/subword-nmt">https://github.com/rsennrich/subword-nmt</a></li>
+<li><a href="https://github.com/opennmt/opennmt-py">https://github.com/opennmt/opennmt-py</a></li>
+</ul>
+<p><a href="http://jalammar.github.io/illustrated-bert/">The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)</a></p>
+<ul>
+<li>中文版：<a href="https://blog.csdn.net/qq_41664845/article/details/84787969">https://blog.csdn.net/qq_41664845/article/details/84787969</a></li>
 </ul>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
