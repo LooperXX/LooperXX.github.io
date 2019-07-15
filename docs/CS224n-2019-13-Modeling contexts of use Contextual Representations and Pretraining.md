@@ -517,14 +517,18 @@ Pre-training of Deep Bidirectional Transformers for Language Understanding
 
 ## Suggested Readings
 
-[The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html)
+[The Annotated Transformer](http://nlp.seas.harvard.edu/2018/04/03/attention.html) 代码解析
 
 -   https://github.com/rsennrich/subword-nmt
 -   https://github.com/opennmt/opennmt-py
 
-[The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](http://jalammar.github.io/illustrated-bert/)
+jalammar 的一系列可视化简单教程
 
--   中文版：https://blog.csdn.net/qq_41664845/article/details/84787969
+[Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)](https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/)
+
+[The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+
+[The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](http://jalammar.github.io/illustrated-bert/)
 
 ## Reference
 

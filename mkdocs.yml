@@ -48,6 +48,7 @@ nav:
           - '11 ConvNets for NLP' : 'CS224n-2019-11-ConvNets for NLP.md'
           - '12 Information from parts of words Subword Models' : 'CS224n-2019-12-Information from parts of words Subword Models.md'
           - '13 Modeling contexts of use Contextual Representations and Pretraining' : 'CS224n-2019-13-Modeling contexts of use Contextual Representations and Pretraining.md'
+          - '14 Transformers and Self-Attention For Generative Models' : 'CS224n-2019-14-Transformers and Self-Attention For Generative Models.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
