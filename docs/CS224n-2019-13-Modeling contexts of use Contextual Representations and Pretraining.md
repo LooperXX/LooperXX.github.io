@@ -528,7 +528,30 @@ jalammar 的一系列可视化简单教程
 
 [The Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
 
+>   **Go Forth And Transform**
+>
+>   I hope you’ve found this a useful place to start to break the ice with the major concepts of the Transformer. If you want to go deeper, I’d suggest these next steps:
+>
+>   -   Read the [Attention Is All You Need](https://arxiv.org/abs/1706.03762) paper, the Transformer blog post ([Transformer: A Novel Neural Network Architecture for Language Understanding](https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html)), and the [Tensor2Tensor announcement](https://ai.googleblog.com/2017/06/accelerating-deep-learning-research.html).
+>   -   Watch [Łukasz Kaiser’s talk](https://www.youtube.com/watch?v=rBCqOTEfxvg) walking through the model and its details
+>   -   Play with the [Jupyter Notebook provided as part of the Tensor2Tensor repo](https://colab.research.google.com/github/tensorflow/tensor2tensor/blob/master/tensor2tensor/notebooks/hello_t2t.ipynb)
+>   -   Explore the [Tensor2Tensor repo](https://github.com/tensorflow/tensor2tensor).
+>
+>   **Follow-up works**
+>
+>   -   [Depthwise Separable Convolutions for Neural Machine Translation](https://arxiv.org/abs/1706.03059)
+>   -   [One Model To Learn Them All](https://arxiv.org/abs/1706.05137)
+>   -   [Discrete Autoencoders for Sequence Models](https://arxiv.org/abs/1801.09797)
+>   -   [Generating Wikipedia by Summarizing Long Sequences](https://arxiv.org/abs/1801.10198)
+>   -   [Image Transformer](https://arxiv.org/abs/1802.05751)
+>   -   [Training Tips for the Transformer Model](https://arxiv.org/abs/1804.00247)
+>   -   [Self-Attention with Relative Position Representations](https://arxiv.org/abs/1803.02155)
+>   -   [Fast Decoding in Sequence Models using Discrete Latent Variables](https://arxiv.org/abs/1803.03382)
+>   -   [Adafactor: Adaptive Learning Rates with Sublinear Memory Cost](https://arxiv.org/abs/1804.04235)
+
 [The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)](http://jalammar.github.io/illustrated-bert/)
+
+Smith, Noah A. [Contextual Word Representations: A Contextual Introduction](https://arxiv.org/abs/1902.06006). 
 
 ## Reference
 
