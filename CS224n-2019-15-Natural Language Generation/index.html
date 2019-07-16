@@ -1230,7 +1230,7 @@
 </ul>
 <p><strong>Recap</strong></p>
 <ul>
-<li>**语言建模**是给定之前的单词，预测下一个单词的任务：</li>
+<li><strong>语言建模</strong> 是给定之前的单词，预测下一个单词的任务：</li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -1241,12 +1241,12 @@ P\left(y_{t} | y_{1}, \ldots, y_{t-1}\right)
 </script>
 </div>
 <ul>
-<li>一个产生这一概率分布的系统叫做**语言模型**</li>
+<li>一个产生这一概率分布的系统叫做 <strong>语言模型</strong></li>
 <li>
 <p>如果系统使用 RNN，则被称为 <strong>RNN-LM</strong></p>
 </li>
 <li>
-<p>**条件语言建模**是给定之前的单词以及一些其他输入 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> ，预测下一个单词的任务：</p>
+<p><strong>条件语言建模</strong> 是给定之前的单词以及一些其他输入 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> ，预测下一个单词的任务：</p>
 </li>
 </ul>
 <div>
@@ -1270,7 +1270,7 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <ul>
 <li>这是神经机器翻译中的例子</li>
 <li>在训练期间,我们将正确的(又名引用)目标句子输入解码器，而不考虑
-    解码器预测的。这种培训方法称为**Teacher Forcing**</li>
+    解码器预测的。这种培训方法称为 <strong>Teacher Forcing</strong></li>
 </ul>
 <p><strong>Recap: decoding algorithms</strong></p>
 <ul>
@@ -1340,7 +1340,7 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <li>像贪婪的解码，但是是采样而不是argmax。</li>
 </ul>
 </li>
-<li>Top-n 采样*<ul>
+<li>Top-n 采样<ul>
 <li>在每个步骤 t ，从 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 中随机采样，仅限于前n个最可能的单词</li>
 <li>与纯采样一样，但截断概率分布</li>
 <li>n = 1是贪婪搜索，n = V是纯采样</li>
@@ -1385,17 +1385,17 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </ul>
 <p><strong>Decoding algorithms: in summary</strong></p>
 <ul>
-<li>**贪心解码**是一种简单的译码方法；给低质量输出</li>
-<li><strong>Beam搜索</strong>(特别是高beam大小)搜索高概率输出<ul>
+<li><strong>贪心解码</strong> 是一种简单的译码方法；给低质量输出</li>
+<li><strong>Beam搜索</strong> (特别是高beam大小)搜索高概率输出<ul>
 <li>比贪婪提供更好的质量，但是如果 Beam 尺寸太大，可能会返回高概率但不合适的输出(如通用的或是短的)</li>
 </ul>
 </li>
-<li>**抽样方法**来获得更多的多样性和随机性<ul>
+<li><strong>抽样方法</strong> 来获得更多的多样性和随机性<ul>
 <li>适合开放式/创意代(诗歌,故事)</li>
 <li>Top-n个抽样允许您控制多样性</li>
 </ul>
 </li>
-<li>**Softmax 温度控制**的另一种方式多样性<ul>
+<li><strong>Softmax 温度控制</strong> 的另一种方式多样性<ul>
 <li>它不是一个解码算法！这种技术可以应用在任何解码算法。</li>
 </ul>
 </li>
@@ -1420,7 +1420,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li><strong>NYT, CNN/DailyMail</strong>: 新闻文章  <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> (多个)句子总结</li>
 <li><strong>Wikihow (new!)</strong>: 完整的 how-to 文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 总结句子</li>
 </ul>
-<p>**句子简化**是一个不同但相关的任务：将源文本改写为更简单（有时是更短）的版本</p>
+<p><strong>句子简化</strong> 是一个不同但相关的任务：将源文本改写为更简单（有时是更短）的版本</p>
 <ul>
 <li>Simple Wikipedia：标准维基百科句子 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 简单版本</li>
 <li>Newsela：新闻文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 为儿童写的版本</li>
@@ -1436,7 +1436,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </ul>
 <p><strong>摘要式总结 Abstractive summarization</strong></p>
 <ul>
-<li>使用自然语言生成技术**生成新的文本**<ul>
+<li>使用自然语言生成技术 <strong>生成新的文本</strong><ul>
 <li>更困难</li>
 <li>更多变（更人性化）</li>
 </ul>
@@ -1455,7 +1455,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </ul>
 <p>Pre-neural <strong>内容选择</strong> 算法</p>
 <ul>
-<li>**句子得分函数**可以根据<ul>
+<li><strong>句子得分函数</strong> 可以根据<ul>
 <li>主题关键词，通过计算如tf-idf等</li>
 <li>特性，例如这句话出现在文档的哪里</li>
 </ul>
@@ -1716,7 +1716,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>他们发现用标准的最大似然(ML)来训练seq2seq系统的产生了流利但是缺乏策略的对话代理</li>
 <li>和Paulus等的总结论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)</li>
 <li>RL 的基于目的的目标函数与 ML 目标函数相结合</li>
-<li>潜在的陷阱：如果两两对话时，代理优化的只是RL目标，他们可能会偏离英语*</li>
+<li>潜在的陷阱：如果两两对话时，代理优化的只是RL目标，他们可能会偏离英语</li>
 </ul>
 <p><img alt="image-20190716184151261" src="../imgs/image-20190716184151261.png" /></p>
 <p>在测试时，模型通过计算 rollouts，选择可能的反应：模拟剩余的谈话和预期的回报</p>
