@@ -28,6 +28,8 @@ nav:
       - 简介: 
         - '自然语言处理简介' : '自然语言处理简介.md'
         - 'NLP的巨人肩膀' : 'NLP的巨人肩膀.md'
+      - 框架学习:
+        - 'NCRF++' : 'NCRF++学习笔记.md'
       - 书籍笔记:
         - 'NLP Concepts' : 'NLP Concepts.md'        
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
