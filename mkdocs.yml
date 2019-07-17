@@ -31,7 +31,8 @@ nav:
       - 框架学习:
         - 'NCRF++' : 'NCRF++学习笔记.md'
       - 书籍笔记:
-        - 'NLP Concepts' : 'NLP Concepts.md'        
+        - 'NLP Concepts' : 'NLP Concepts.md'  
+        - 'NNDL 习题' : 'NNDL 习题.md'      
         - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
       - 课程笔记:
         - 'CS224n-2019简介' : 'CS224n-2019 简介.md'
