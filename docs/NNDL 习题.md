@@ -44,6 +44,7 @@
 **Answer**
 
 已知
+
 $$
 \mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2}
 $$
@@ -53,21 +54,27 @@ $$
 $$
 
 可得
+
 $$
 \begin{aligned} 
 \frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+ \lambda\|\mathbf{w}\|^{2}}{\partial \mathbf{w}} \\ 
 &=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right)+\lambda \mathbf{w} 
 \end{aligned}
 $$
+
 令 $\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0$ 可得
+
 $$
 -XY + XX^{\mathrm{T}}\mathbf{w}+\lambda \mathbf{w}=0\\
 (XX^{\mathrm{T}}+\lambda I)\mathbf{w}=XY \\
 $$
+
 即
+
 $$
 \mathbf{w}^{*}=\left(X X^{\mathrm{T}}+\lambda I\right)^{-1} X \mathbf{y}
 $$
+
 !!! question "习题2-5"
 
     在线性回归中，若假设标签 $y \sim \mathcal{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}, \beta\right)$，并用最大似然估计来优化参数时，验证最优参数为公式(2.51) 的解。
@@ -75,16 +82,21 @@ $$
 **Answer**
 
 已知
+
 $$
 \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2} )
 $$
+
 令 $\frac{\partial \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0$ ，即有
+
 $$
 \frac{\partial \left(\sum _{n=1}^{N} - \frac{\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^2}{2 \beta}\right)}{\partial \mathbf{w}}=0\\
 \frac{\partial \frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} = 0 \\
 -X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) = 0
 $$
+
 则
+
 $$
 \mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
 $$

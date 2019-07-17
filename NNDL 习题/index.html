@@ -1207,10 +1207,50 @@
 <p>在线性回归中，验证岭回归的解为**结构风险最小化准则**下的最小二乘法估计，见公式(2.45)。</p>
 </div>
 <p><strong>Answer</strong></p>
-<p>已知
-$$
-\mathcal{R}(\mathbf{w})=\frac{1}{2}\left|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right|^{2}+\frac{1}{2} \lambda|\mathbf{w}|^{2}
-$$</p>
+<p>已知</p>
+<div>
+<div class="MathJax_Preview">
+\mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2}
+</div>
+<script type="math/tex; mode=display">
+\mathcal{R}(\mathbf{w})=\frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+\frac{1}{2} \lambda\|\mathbf{w}\|^{2}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\mathbf{w}^{*}=\left(X X^{\mathrm{T}}+\lambda I\right)^{-1} X \mathbf{y}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{w}^{*}=\left(X X^{\mathrm{T}}+\lambda I\right)^{-1} X \mathbf{y}
+</script>
+</div>
+<p>可得</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned} 
+\frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &amp;=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+ \lambda\|\mathbf{w}\|^{2}}{\partial \mathbf{w}} \\ 
+&amp;=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right)+\lambda \mathbf{w} 
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned} 
+\frac{\partial \mathcal{R}(\mathbf{w})}{\partial \mathbf{w}} &=\frac{1}{2} \frac{\partial\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}+ \lambda\|\mathbf{w}\|^{2}}{\partial \mathbf{w}} \\ 
+&=-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right)+\lambda \mathbf{w} 
+\end{aligned}
+</script>
+</div>
+<p>令 <span><span class="MathJax_Preview">\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0</span><script type="math/tex">\frac{\partial}{\partial \mathbf{w}} \mathcal{R}(\mathbf{w})=0</script></span> 可得</p>
+<div>
+<div class="MathJax_Preview">
+-XY + XX^{\mathrm{T}}\mathbf{w}+\lambda \mathbf{w}=0\\
+(XX^{\mathrm{T}}+\lambda I)\mathbf{w}=XY \\
+</div>
+<script type="math/tex; mode=display">
+-XY + XX^{\mathrm{T}}\mathbf{w}+\lambda \mathbf{w}=0\\
+(XX^{\mathrm{T}}+\lambda I)\mathbf{w}=XY \\
+</script>
+</div>
+<p>即</p>
 <div>
 <div class="MathJax_Preview">
 \mathbf{w}^{*}=\left(X X^{\mathrm{T}}+\lambda I\right)^{-1} X \mathbf{y}
@@ -1224,20 +1264,37 @@ $$</p>
 <p>在线性回归中，若假设标签 <span><span class="MathJax_Preview">y \sim \mathcal{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}, \beta\right)</span><script type="math/tex">y \sim \mathcal{N}\left(\mathbf{w}^{\mathrm{T}} \mathbf{x}, \beta\right)</script></span>，并用最大似然估计来优化参数时，验证最优参数为公式(2.51) 的解。</p>
 </div>
 <p><strong>Answer</strong></p>
-<p>已知
-$$
+<p>已知</p>
+<div>
+<div class="MathJax_Preview">
 \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2} )
-$$
-令 <span><span class="MathJax_Preview">\frac{\partial \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0</span><script type="math/tex">\frac{\partial \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0</script></span> ，即有
-$$
-\frac{\partial \left(\sum _{n=1}^{N} - \frac{\left(y<sup>{(n)}-\mathbf{w}</sup>{\mathrm{T}} \mathbf{x}<sup>{(n)}\right)</sup>2}{2 \beta}\right)}{\partial \mathbf{w}}=0\
-\frac{\partial \frac{1}{2}\left|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right|^{2}}{\partial \mathbf{w}} = 0 \
+</div>
+<script type="math/tex; mode=display">
+\log p(\mathbf{y} | X ; \mathbf{w}, \sigma)=\sum_{n=1}^{N} \log \mathcal{N}(y^{(n)} | \mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}, \sigma^{2} )
+</script>
+</div>
+<p>令 <span><span class="MathJax_Preview">\frac{\partial \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0</span><script type="math/tex">\frac{\partial \log p(\mathbf{y} | X ; \mathbf{w}, \sigma)}{\partial \mathbf{w}}=0</script></span> ，即有</p>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial \left(\sum _{n=1}^{N} - \frac{\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^2}{2 \beta}\right)}{\partial \mathbf{w}}=0\\
+\frac{\partial \frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} = 0 \\
 -X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) = 0
-$$
-则
-$$
-\mathbf{w}^{M L}=\left(X X<sup>{\mathrm{T}}\right)</sup>{-1} X \mathbf{y}
-$$</p>
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial \left(\sum _{n=1}^{N} - \frac{\left(y^{(n)}-\mathbf{w}^{\mathrm{T}} \mathbf{x}^{(n)}\right)^2}{2 \beta}\right)}{\partial \mathbf{w}}=0\\
+\frac{\partial \frac{1}{2}\left\|\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right\|^{2}}{\partial \mathbf{w}} = 0 \\
+-X\left(\mathbf{y}-X^{\mathrm{T}} \mathbf{w}\right) = 0
+</script>
+</div>
+<p>则</p>
+<div>
+<div class="MathJax_Preview">
+\mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
+</div>
+<script type="math/tex; mode=display">
+\mathbf{w}^{M L}=\left(X X^{\mathrm{T}}\right)^{-1} X \mathbf{y}
+</script>
+</div>
 <div class="admonition question">
 <p class="admonition-title">习题2-6</p>
 <p>假设有 <span><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 个样本 <span><span class="MathJax_Preview">x^{(1)}, x^{(2)}, \cdots, x^{(N)}</span><script type="math/tex">x^{(1)}, x^{(2)}, \cdots, x^{(N)}</script></span> 服从正态分布 <span><span class="MathJax_Preview">\mathcal{N}\left(\mu, \sigma^{2}\right)</span><script type="math/tex">\mathcal{N}\left(\mu, \sigma^{2}\right)</script></span> ，其中 <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> 未知</p>
