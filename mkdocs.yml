@@ -13,11 +13,6 @@ copyright: 'Copyright &copy; 2019 - 2020 Looper Xiao Xu'
 
 nav:
   - Home: index.md
-  - Math & CS & Coding:
-    - 'Linux' : 'Linux.md'
-    - 'CS专业课' : '专业知识面试准备.md'
-    - '重点内容' : 'Coding Knowledge.md'
-    - '历年机试' : '历年机试.md'
   - ML & DL:
     - 'Attention' : 'Attention.md'
     - 'Normalization' : 'Normalization.md' 
@@ -61,6 +56,11 @@ nav:
       - 'FDBus API' : 'FDBus API.md'
       - 'FDBus内部结构' : 'FDBus内部结构.md'
       - 'Cross compiler' : 'Cross compiler.md'
+  - Math & CS & Coding:
+    - 'Linux' : 'Linux.md'
+    - 'CS专业课' : '专业知识面试准备.md'
+    - '重点内容' : 'Coding Knowledge.md'
+    - '历年机试' : '历年机试.md'
   - For MkDocs:
       - 'Demo' : 'MkDocs_demo.md'
       - 'Material Theme Tutorial' : 'Material Theme Tutorial.md'
