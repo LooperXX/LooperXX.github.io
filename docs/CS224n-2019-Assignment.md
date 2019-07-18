@@ -546,7 +546,7 @@ $$
     
     -   转换为 $\text{(seq_len, batch, num_directions, hidden_size)}$ 后，num_directions 中的顺序是先 forward 再 backward，并且 forward 和 backward 的 hidden state 的顺序是相反的，即 $out[0][0][0]$ 是 forward 的第一个时间步的结果，而 $out[0][0][1]$ 是 backward 的最后一个时间步的结果。此外，**out** 只包含最后一层的结果
     
-    但对于 **h_n** (**c_n**同理) 而言，shape 为 $\text{(num_layers * num_directions, batch, hidden_size)}$ ，保存的是 forward 和 backward 的最后一个时间步的结果。
+    但对于 **h_n** ( **c_n** 同理) 而言，shape 为 $\text{(num_layers * num_directions, batch, hidden_size)}$ ，保存的是 forward 和 backward 的最后一个时间步的结果。
     
     -   转换为 $\text{(num_layers, num_directions, batch, hidden_size)}$ 后，第一维的 num_layers 和 真实的 layer 层数一一对应，即 $h_n[1][0][0]$ 与 $out[-1][0][0]$ 相等， $h_n[1][1][0]$  与 $out[0][0][1]$ 。
 
