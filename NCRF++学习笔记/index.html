@@ -1563,7 +1563,7 @@
 <h4 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h4>
 <p>序列标记模型在许多NLP任务中非常流行，例如命名实体识别（NER），词性（POS）标记和分词。最先进的序列标记模型主要利用具有输入字特征的CRF结构。 LSTM（或双向LSTM）是序列标记任务中流行的基于深度学习的特征提取器。并且由于更快的计算，也可以使用CNN。此外，单词中的特征对于表示单词也是有用的，可以通过字符LSTM或字符CNN结构或人类定义的神经特征来捕获单词。</p>
 <p>NCRF ++是一个基于PyTorch的框架，可灵活选择输入特征和输出结构。使用NCRF ++的神经序列标记模型的设计可通过配置文件完全配置，该配置文件不需要任何代码工作。 NCRF ++可以被视为 <a href="http://taku910.github.io/crfpp/">CRF++</a> 的神经网络版本，这是一个著名的统计CRF框架。</p>
-<p>该框架已被 <a href="https://arxiv.org/abs/1806.05626">ACL 2018</a> 接受为演示文件。使用NCRF ++的详细实验报告和分析已被 <a href="https://arxiv.org/abs/1806.04470">COLING 2018</a> 接受为最佳论文。</p>
+<p>该框架已被 <a href="https://arxiv.org/abs/1806.05626">ACL 2018</a> 接受为 demo 论文。使用NCRF ++的详细实验报告和分析已被 <a href="https://arxiv.org/abs/1806.04470">COLING 2018</a> 接受为最佳论文。</p>
 <p>NCRF ++支持三个级别的不同结构组合：character sequence layer; word sequence layer and inference layer. </p>
 <ul>
 <li>字符序列表示：字符LSTM，字符GRU，字符CNN和手工制作的单词特征。</li>

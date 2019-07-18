@@ -10,7 +10,7 @@
 
 NCRF ++是一个基于PyTorch的框架，可灵活选择输入特征和输出结构。使用NCRF ++的神经序列标记模型的设计可通过配置文件完全配置，该配置文件不需要任何代码工作。 NCRF ++可以被视为 [CRF++](http://taku910.github.io/crfpp/) 的神经网络版本，这是一个著名的统计CRF框架。
 
-该框架已被 [ACL 2018](https://arxiv.org/abs/1806.05626) 接受为演示文件。使用NCRF ++的详细实验报告和分析已被 [COLING 2018](https://arxiv.org/abs/1806.04470) 接受为最佳论文。
+该框架已被 [ACL 2018](https://arxiv.org/abs/1806.05626) 接受为 demo 论文。使用NCRF ++的详细实验报告和分析已被 [COLING 2018](https://arxiv.org/abs/1806.04470) 接受为最佳论文。
 
 NCRF ++支持三个级别的不同结构组合：character sequence layer; word sequence layer and inference layer. 
 
@@ -203,8 +203,6 @@ More details will be updated soon.
 ### 流程梳理
 
 In ***training*** status: `python main.py --config demo.train.config`
-
-
 
 In ***decoding*** status: `python main.py --config demo.decode.config`
 
