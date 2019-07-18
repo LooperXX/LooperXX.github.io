@@ -1,4 +1,4 @@
-# CRF++学习笔记
+# NCRF++学习笔记
 
 ## 文档学习
 
@@ -139,15 +139,15 @@ If you want to use this framework in new tasks or datasets, here are some tuning
 
 #### NetworkConfiguration
 
-| 指令                                 | 解释                                                         | 备注                                                  |
-| ------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------- |
-| use_crf=True                         | boolen (necessary in training). Flag of if using CRF layer. If it is set as False, then Softmax is used in inference layer. | `True` : CRF; `False` : Softmax                       |
-| use_char=True                        | boolen (necessary in training). Flag of if using character sequence layer. | `True` : 使用字符序列层                               |
-| word_seq_feature=XX                  | boolen (necessary in training): CNN/LSTM/GRU. Neural structure selection for word sequence. | 词序列特征提取模型：CNN/LSTM/GRU                      |
-| char_seq_feature=CNN                 | boolen (necessary in training): CNN/LSTM/GRU. Neural structure selection for character sequence, it only be used when use_char=True. | 字符特征提取模型：CNN/LSTM/GRU                        |
-| feature=[POS] emb_size=20 emb_dir=xx | feature configuration. It includes the feature prefix [POS], pretrained feature embedding file and the embedding size. | 特征配置：`feature=[特征名称] emb_size=20 emb_dir=xx` |
-| feature=[Cap] emb_size=20 emb_dir=xx | feature configuration. Another feature [Cap].                | 同上                                                  |
-| nbest=1                              | int (necessary in decoding). Set the nbest size during decoding. | 设置 nbest 的 size                                    |
+| 指令                                                | 解释                                                         | 备注                                                         |
+| --------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| use_crf=True                                        | boolen (necessary in training). Flag of if using CRF layer. If it is set as False, then Softmax is used in inference layer. | `True` : CRF; `False` : Softmax                              |
+| use_char=True                                       | boolen (necessary in training). Flag of if using character sequence layer. | `True` : 使用字符序列层                                      |
+| word_seq_feature=XX                                 | boolen (necessary in training): CNN/LSTM/GRU. Neural structure selection for word sequence. | 词序列特征提取模型：CNN/LSTM/GRU                             |
+| char_seq_feature=CNN                                | boolen (necessary in training): CNN/LSTM/GRU. Neural structure selection for character sequence, it only be used when use_char=True. | 字符特征提取模型：CNN/LSTM/GRU                               |
+| feature=[POS] emb_size=20 emb_dir=xx emb_norm=false | feature configuration. It includes the feature prefix [POS], pretrained feature embedding file and the embedding size. | 特征配置：`feature=[特征名称] emb_size=20 emb_dir=xx emb_norm=false` |
+| feature=[Cap] emb_size=20 emb_dir=xx emb_norm=false | feature configuration. Another feature [Cap].                | 同上                                                         |
+| nbest=1                                             | int (necessary in decoding). Set the nbest size during decoding. | 设置 nbest 的 size                                           |
 
 #### TrainingSetting
 
@@ -199,3 +199,13 @@ More details will be updated soon.
     -   You can refer the COLING paper "[Design Challenges and Misconceptions in Neural Sequence Labeling](https://arxiv.org/pdf/1806.04470.pdf)" for more hyperparameter settings.
 
 ## 源码学习
+
+### 流程梳理
+
+In ***training*** status: `python main.py --config demo.train.config`
+
+
+
+In ***decoding*** status: `python main.py --config demo.decode.config`
+
+### 架构梳理

@@ -1302,9 +1302,24 @@
 <p>(2) 若参数  <span><span class="MathJax_Preview">\mu</span><script type="math/tex">\mu</script></span> 为随机变量，并服从正态分布 <span><span class="MathJax_Preview">\mathcal{N}\left(\mu_{0}, \sigma_{0}^{2}\right)</span><script type="math/tex">\mathcal{N}\left(\mu_{0}, \sigma_{0}^{2}\right)</script></span> ，使用最大后验估计来求解最优参数 <span><span class="MathJax_Preview">\mu^{M A P}</span><script type="math/tex">\mu^{M A P}</script></span> 。</p>
 </div>
 <p><strong>Answer</strong></p>
-<ul>
+<ol>
+<li>由最大似然估计公式可知</li>
+</ol>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial \sum^N_{n=1}log \mathcal{N}\left(y^{(n)} | \mu, \sigma^{2}\right)}{\partial \mu} = 0 \\
+\frac{\partial \sum^N_{n=1} (y^{(n)}-\mu)^2}{\partial \mu} = 0 \\
+\mu^{M L} = \frac{1}{N} \sum^N_{n=1} y^{(n)}
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial \sum^N_{n=1}log \mathcal{N}\left(y^{(n)} | \mu, \sigma^{2}\right)}{\partial \mu} = 0 \\
+\frac{\partial \sum^N_{n=1} (y^{(n)}-\mu)^2}{\partial \mu} = 0 \\
+\mu^{M L} = \frac{1}{N} \sum^N_{n=1} y^{(n)}
+</script>
+</div>
+<ol>
 <li></li>
-</ul>
+</ol>
 <div class="admonition question">
 <p class="admonition-title">习题2-7</p>
 <p>在习题2-6中，证明当<span><span class="MathJax_Preview">N \rightarrow \infty</span><script type="math/tex">N \rightarrow \infty</script></span>时，最大后验估计趋向于最大似然估计。</p>

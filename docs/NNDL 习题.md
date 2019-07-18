@@ -112,7 +112,15 @@ $$
 
 **Answer**
 
--   
+1.  由最大似然估计公式可知
+
+$$
+\frac{\partial \sum^N_{n=1}log \mathcal{N}\left(y^{(n)} | \mu, \sigma^{2}\right)}{\partial \mu} = 0 \\
+\frac{\partial \sum^N_{n=1} (y^{(n)}-\mu)^2}{\partial \mu} = 0 \\
+\mu^{M L} = \frac{1}{N} \sum^N_{n=1} y^{(n)}
+$$
+
+2.  
 
 !!! question "习题2-7"
 

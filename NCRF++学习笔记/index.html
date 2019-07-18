@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#crf" tabindex="1" class="md-skip">
+      <a href="#ncrf" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -778,6 +778,26 @@
   <a href="#_2" title="源码学习" class="md-nav__link">
     源码学习
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="流程梳理" class="md-nav__link">
+    流程梳理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="架构梳理" class="md-nav__link">
+    架构梳理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1490,6 +1510,26 @@
     源码学习
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="流程梳理" class="md-nav__link">
+    流程梳理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="架构梳理" class="md-nav__link">
+    架构梳理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -1517,7 +1557,7 @@
                   <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/NCRF++学习笔记.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="crf">CRF++学习笔记<a class="headerlink" href="#crf" title="Permanent link">&para;</a></h1>
+                <h1 id="ncrf">NCRF++学习笔记<a class="headerlink" href="#ncrf" title="Permanent link">&para;</a></h1>
 <h2 id="_1">文档学习<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="readmemd">Readme.md<a class="headerlink" href="#readmemd" title="Permanent link">&para;</a></h3>
 <h4 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h4>
@@ -1760,12 +1800,12 @@ feature=[Cap] emb_size=20 emb_dir=%your_pretrained_Cap_embedding
 <td>字符特征提取模型：CNN/LSTM/GRU</td>
 </tr>
 <tr>
-<td>feature=[POS] emb_size=20 emb_dir=xx</td>
+<td>feature=[POS] emb_size=20 emb_dir=xx emb_norm=false</td>
 <td>feature configuration. It includes the feature prefix [POS], pretrained feature embedding file and the embedding size.</td>
-<td>特征配置：<code>feature=[特征名称] emb_size=20 emb_dir=xx</code></td>
+<td>特征配置：<code>feature=[特征名称] emb_size=20 emb_dir=xx emb_norm=false</code></td>
 </tr>
 <tr>
-<td>feature=[Cap] emb_size=20 emb_dir=xx</td>
+<td>feature=[Cap] emb_size=20 emb_dir=xx emb_norm=false</td>
 <td>feature configuration. Another feature [Cap].</td>
 <td>同上</td>
 </tr>
@@ -1904,6 +1944,10 @@ feature=[Cap] emb_size=20 emb_dir=%your_pretrained_Cap_embedding
 </li>
 </ol>
 <h2 id="_2">源码学习<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">流程梳理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>In <strong><em>training</em></strong> status: <code>python main.py --config demo.train.config</code></p>
+<p>In <strong><em>decoding</em></strong> status: <code>python main.py --config demo.decode.config</code></p>
+<h3 id="_4">架构梳理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
                 
                   
                 
