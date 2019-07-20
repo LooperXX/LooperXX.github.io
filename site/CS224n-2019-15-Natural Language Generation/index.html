@@ -1,0 +1,2303 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Looper's homepage">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-15-Natural Language Generation/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>15 Natural Language Generation - Science is interesting.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#cs224n-2019" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Science is interesting.
+            </span>
+            <span class="md-header-nav__topic">
+              
+                15 Natural Language Generation
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Attention/" title="ML & DL" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../面经/" title="Interview experience" class="md-tabs__link">
+          Interview experience
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Linux/" title="Math & CS & Coding" class="md-tabs__link">
+          Math & CS & Coding
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Science is interesting.
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      ML & DL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../花书经验法则/" title="花书经验法则" class="md-nav__link">
+      花书经验法则
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../经典网络/" title="经典网络" class="md-nav__link">
+      经典网络
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      框架学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        框架学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF++学习笔记/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      书籍笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP Concepts/" title="NLP Concepts" class="md-nav__link">
+      NLP Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL 习题/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+    
+    <label class="md-nav__link" for="nav-3-4">
+      课程笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        课程笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019 简介/" title="CS224n-2019简介" class="md-nav__link">
+      CS224n-2019简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">
+      CS224n-2019作业笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-4-3">
+      CS224n-2019学习笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-4-3">
+        CS224n-2019学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-01-Introduction and Word Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+      01 Introduction and Word Vectors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-02-Word Vectors 2 and Word Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+      02 Word Vectors 2 and Word Senses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-03-Word Window Classification,Neural Networks, and Matrix Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+      03 Word Window Classification,Neural Networks, and Matrix Calculus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-04-Backpropagation and Computation Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+      04 Backpropagation and Computation Graphs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-05-Linguistic Structure Dependency Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+      05 Linguistic Structure Dependency Parsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-06-The probability of a sentence Recurrent Neural Networks and Language Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+      06 The probability of a sentence Recurrent Neural Networks and Language Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-07-Vanishing Gradients and Fancy RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+      07 Vanishing Gradients and Fancy RNNs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+      08 Machine Translation, Sequence-to-sequence and Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-09-Practical Tips for Final Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
+      09 Practical Tips for Final Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-10-Question Answering and the Default Final Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+      10 Question Answering and the Default Final Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-11-ConvNets for NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+      11 ConvNets for NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-12-Information from parts of words Subword Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+      12 Information from parts of words Subword Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-13-Modeling contexts of use Contextual Representations and Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+      13 Modeling contexts of use Contextual Representations and Pretraining
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-14-Transformers and Self-Attention For Generative Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+      14 Transformers and Self-Attention For Generative Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        15 Natural Language Generation
+      </label>
+    
+    <a href="./" title="15 Natural Language Generation" class="md-nav__link md-nav__link--active">
+      15 Natural Language Generation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-natural-language-generation" title="Lecture 15 Natural Language Generation" class="md-nav__link">
+    Lecture 15 Natural Language Generation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-recap-lms-and-decoding-algorithms" title="Section 1: Recap: LMs and decoding algorithms" class="md-nav__link">
+    Section 1: Recap: LMs and decoding algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-2-nlg-tasks-and-neural-approaches-to-them" title="Section 2: NLG tasks and neural approaches to them" class="md-nav__link">
+    Section 2: NLG tasks and neural approaches to them
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-3-nlg-evaluation" title="Section 3: NLG evaluation" class="md-nav__link">
+    Section 3: NLG evaluation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-4-thoughts-on-nlg-research-current-trends-and-the-future" title="Section 4: Thoughts on NLG research, current trends, and the future" class="md-nav__link">
+    Section 4: Thoughts on NLG research, current trends, and the future
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Interview experience
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Interview experience
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../面经/" title="我的面经" class="md-nav__link">
+      我的面经
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      实训笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        实训笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">
+      Protobuf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus/" title="FDBus" class="md-nav__link">
+      FDBus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus API/" title="FDBus API" class="md-nav__link">
+      FDBus API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus内部结构/" title="FDBus内部结构" class="md-nav__link">
+      FDBus内部结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">
+      Cross compiler
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Math & CS & Coding
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Math & CS & Coding
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../专业知识面试准备/" title="CS专业课" class="md-nav__link">
+      CS专业课
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">
+      重点内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../历年机试/" title="历年机试" class="md-nav__link">
+      历年机试
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      For MkDocs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-15-natural-language-generation" title="Lecture 15 Natural Language Generation" class="md-nav__link">
+    Lecture 15 Natural Language Generation
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#section-1-recap-lms-and-decoding-algorithms" title="Section 1: Recap: LMs and decoding algorithms" class="md-nav__link">
+    Section 1: Recap: LMs and decoding algorithms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-2-nlg-tasks-and-neural-approaches-to-them" title="Section 2: NLG tasks and neural approaches to them" class="md-nav__link">
+    Section 2: NLG tasks and neural approaches to them
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-3-nlg-evaluation" title="Section 3: NLG evaluation" class="md-nav__link">
+    Section 3: NLG evaluation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#section-4-thoughts-on-nlg-research-current-trends-and-the-future" title="Section 4: Thoughts on NLG research, current trends, and the future" class="md-nav__link">
+    Section 4: Thoughts on NLG research, current trends, and the future
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-15-Natural Language Generation.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
+<ul>
+<li>结合每课时的课件、笔记与推荐读物等整理而成</li>
+<li>作业部分将单独整理</li>
+</ul>
+<h2 id="lecture-15-natural-language-generation">Lecture 15 Natural Language Generation<a class="headerlink" href="#lecture-15-natural-language-generation" title="Permanent link">&para;</a></h2>
+<details class="abstract"><summary>Lecture Plan</summary><ul>
+<li>Recap what we already know about NLG</li>
+<li>More on decoding algorithms</li>
+<li>NLG tasks and neural approaches to them</li>
+<li>NLG evaluation: a tricky situation</li>
+<li>Concluding thoughts on NLG research, current trends, and the future</li>
+</ul>
+</details>
+<p>Today we’ll be learning about what’s happening in the world of <strong>neural approaches</strong> to <mark>Natural Language Generation (NLG)</mark></p>
+<h3 id="section-1-recap-lms-and-decoding-algorithms">Section 1: Recap: LMs and decoding algorithms<a class="headerlink" href="#section-1-recap-lms-and-decoding-algorithms" title="Permanent link">&para;</a></h3>
+<p><strong>Natural Language Generation (NLG)</strong></p>
+<ul>
+<li>自然语言生成指的是我们生成（即写入）新文本的任何设置</li>
+<li>NLG 包括以下成员：<ul>
+<li>机器翻译</li>
+<li>摘要</li>
+<li>对话（闲聊和基于任务）</li>
+<li>创意写作：讲故事，诗歌创作</li>
+<li>自由形式问答（即生成答案，从文本或知识库中提取）</li>
+<li>图像字幕</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recap</strong></p>
+<ul>
+<li><strong>语言建模</strong> 是给定之前的单词，预测下一个单词的任务：</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P\left(y_{t} | y_{1}, \ldots, y_{t-1}\right)
+</div>
+<script type="math/tex; mode=display">
+P\left(y_{t} | y_{1}, \ldots, y_{t-1}\right)
+</script>
+</div>
+<ul>
+<li>一个产生这一概率分布的系统叫做 <strong>语言模型</strong></li>
+<li>
+<p>如果系统使用 RNN，则被称为 <strong>RNN-LM</strong></p>
+</li>
+<li>
+<p><strong>条件语言建模</strong> 是给定之前的单词以及一些其他输入 <span><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> ，预测下一个单词的任务：</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
+</div>
+<script type="math/tex; mode=display">
+P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
+</script>
+</div>
+<ul>
+<li>条件语言建模任务的例子：<ul>
+<li>机器翻译 x=source sentence, y=target sentence</li>
+<li>摘要 x=input text, y=summarized text</li>
+<li>对话 x=dialogue history, y=next utterance</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recap: training a (conditional) RNN-LM</strong></p>
+<p><img alt="image-20190716143441449" src="../imgs/image-20190716143441449.png" /></p>
+<ul>
+<li>这是神经机器翻译中的例子</li>
+<li>在训练期间,我们将正确的(又名引用)目标句子输入解码器，而不考虑
+    解码器预测的。这种培训方法称为 <strong>Teacher Forcing</strong></li>
+</ul>
+<p><strong>Recap: decoding algorithms</strong></p>
+<ul>
+<li>问题：训练条件语言模型后，如何使用它生成文本？</li>
+<li>答案：解码算法是一种算法，用于从语言模型生成文本</li>
+<li>我们了解了两种解码算法<ul>
+<li>贪婪解码</li>
+<li>光束搜索</li>
+</ul>
+</li>
+</ul>
+<p><strong>Recap: greedy decoding</strong></p>
+<ul>
+<li>一个简单的算法</li>
+<li>在每一步中，取最可能的单词（即argmax）</li>
+<li>将其用作下一个单词，并在下一步中将其作为输入提供</li>
+<li>继续前进，直到您产生 <span><span class="MathJax_Preview">\text{&lt;END&gt;}</span><script type="math/tex">\text{<END>}</script></span> 或达到某个最大长度</li>
+<li>由于缺乏回溯，输出可能很差（例如，不合语法，不自然，荒谬）</li>
+</ul>
+<p><img alt="image-20190716153134260" src="../imgs/image-20190716153134260.png" /></p>
+<p><strong>Recap: beam search decoding</strong></p>
+<ul>
+<li>一种旨在通过一次跟踪多个可能的序列，找到高概率序列（不一定是最佳序列）的搜索算法</li>
+<li>核心思想：在解码器的每一步，跟踪 k 个最可能的部分序列（我们称之为假设）<ul>
+<li>k是光束大小</li>
+</ul>
+</li>
+<li>达到某个停止标准后，选择概率最高的序列（考虑一些长度调整）</li>
+</ul>
+<p><img alt="image-20190716161205956" src="../imgs/image-20190716161205956.png" /></p>
+<p><strong>What’s the effect of changing beam size k?</strong></p>
+<ul>
+<li>小的 k 与贪心解码有类似的问题（k = 1）<ul>
+<li>不符合语法，不自然，荒谬，不正确</li>
+</ul>
+</li>
+<li>更大的 k 意味着您考虑更多假设<ul>
+<li>增加 k 可以减少上述一些问题</li>
+<li>更大的 k 在计算上更昂贵</li>
+<li>但增加 k 可能会引入其他问题：<ul>
+<li>对于NMT，增加k太多会降低BLEU评分(Tu et al, Koehnet al)。 这主要是因为大 k 光束搜索产生太短的翻译（即使得分归一化）</li>
+<li>在闲聊话等开放式任务中，大 k 可以输出更通用（见下一张幻灯片）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Effect of beam size in chitchat dialogue</strong></p>
+<p><img alt="image-20190716161621157" src="../imgs/image-20190716161621157.png" /></p>
+<ul>
+<li>低 beam size<ul>
+<li>更关于话题但是没有意义的</li>
+<li>语法差</li>
+</ul>
+</li>
+<li>高 beam size<ul>
+<li>融合安全</li>
+<li>“正确”的反应</li>
+<li>但它是通用的，不太相关</li>
+</ul>
+</li>
+</ul>
+<p><strong>Sampling-based decoding</strong></p>
+<ul>
+<li>纯采样<ul>
+<li>在每个步骤t，从概率分布 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 中随机抽样以获取你的下一个单词。</li>
+<li>像贪婪的解码，但是是采样而不是argmax。</li>
+</ul>
+</li>
+<li>Top-n 采样<ul>
+<li>在每个步骤 t ，从 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 中随机采样，仅限于前n个最可能的单词</li>
+<li>与纯采样一样，但截断概率分布</li>
+<li>n = 1是贪婪搜索，n = V是纯采样</li>
+<li>增加n以获得更多样化/风险的输出</li>
+<li>减少n以获得更通用/安全的输出</li>
+</ul>
+</li>
+<li>这两者都更多比光束搜索更有效——没有多重假设</li>
+</ul>
+<p><strong>Softmax temperature</strong></p>
+<ul>
+<li>回顾：在时间步 t ，语言模型通过对分数向量 <span><span class="MathJax_Preview">s \in \mathbb{R}^{|V|}</span><script type="math/tex">s \in \mathbb{R}^{|V|}</script></span> 使用 softmax 函数计算出概率分布 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> </li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P_{t}(w)=\frac{\exp \left(s_{w}\right)}{\sum_{w^{\prime} \in V} \exp \left(s_{w^{\prime}}\right)}
+</div>
+<script type="math/tex; mode=display">
+P_{t}(w)=\frac{\exp \left(s_{w}\right)}{\sum_{w^{\prime} \in V} \exp \left(s_{w^{\prime}}\right)}
+</script>
+</div>
+<ul>
+<li>你可以对 softmax 函数时候用温度超参数</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \left(s_{w^{\prime}} / \tau\right)}
+</div>
+<script type="math/tex; mode=display">
+P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \left(s_{w^{\prime}} / \tau\right)}
+</script>
+</div>
+<ul>
+<li>提高温度 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> : <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 变得更均匀<ul>
+<li>因此产出更多样化（概率分布在词汇中）</li>
+</ul>
+</li>
+<li>降低温度 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> : <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 变得更尖锐<ul>
+<li>因此输出的多样性较少（概率集中在顶层词汇上）</li>
+</ul>
+</li>
+</ul>
+<p><strong>Decoding algorithms: in summary</strong></p>
+<ul>
+<li><strong>贪心解码</strong> 是一种简单的译码方法；给低质量输出</li>
+<li><strong>Beam搜索</strong> (特别是高beam大小)搜索高概率输出<ul>
+<li>比贪婪提供更好的质量，但是如果 Beam 尺寸太大，可能会返回高概率但不合适的输出(如通用的或是短的)</li>
+</ul>
+</li>
+<li><strong>抽样方法</strong> 来获得更多的多样性和随机性<ul>
+<li>适合开放式/创意代(诗歌,故事)</li>
+<li>Top-n个抽样允许您控制多样性</li>
+</ul>
+</li>
+<li><strong>Softmax 温度控制</strong> 的另一种方式多样性<ul>
+<li>它不是一个解码算法！这种技术可以应用在任何解码算法。</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-2-nlg-tasks-and-neural-approaches-to-them">Section 2: NLG tasks and neural approaches to them<a class="headerlink" href="#section-2-nlg-tasks-and-neural-approaches-to-them" title="Permanent link">&para;</a></h3>
+<p><strong>Summarization: task definition</strong></p>
+<p>任务：给定输入文本x，写出更短的总结 y 并包含x的主要信息</p>
+<p>摘要可以是单文档，也可以是多文档</p>
+<ul>
+<li>
+<p>单文档意味着我们写一个文档 x 的总结 y</p>
+</li>
+<li>
+<p>多文档意味着我们写一个多个文档 <span><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> 的总结y</p>
+</li>
+</ul>
+<p>通常 <span><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> 有重叠的内容：如对同一事件的新闻文章</p>
+<p>在单文档总结，数据集中的源文档具有**不同长度和风格**</p>
+<ul>
+<li><strong>Gigaword</strong>: 新闻文章的前一两句 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 标题(即句子压缩)</li>
+<li><strong>LCSTS</strong> (中文微博)：段落 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 句子总结</li>
+<li><strong>NYT, CNN/DailyMail</strong>: 新闻文章  <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> (多个)句子总结</li>
+<li><strong>Wikihow (new!)</strong>: 完整的 how-to 文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 总结句子</li>
+</ul>
+<p><strong>句子简化</strong> 是一个不同但相关的任务：将源文本改写为更简单（有时是更短）的版本</p>
+<ul>
+<li>Simple Wikipedia：标准维基百科句子 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 简单版本</li>
+<li>Newsela：新闻文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 为儿童写的版本</li>
+</ul>
+<p><strong>Summarization: two main strategies</strong></p>
+<p><strong>抽取式总结 Extractive summarization</strong></p>
+<ul>
+<li><strong>选择部分</strong>(通常是句子)的原始文本来形成总结<ul>
+<li>更简单</li>
+<li>限定性的（无需解释）</li>
+</ul>
+</li>
+</ul>
+<p><strong>摘要式总结 Abstractive summarization</strong></p>
+<ul>
+<li>使用自然语言生成技术 <strong>生成新的文本</strong><ul>
+<li>更困难</li>
+<li>更多变（更人性化）</li>
+</ul>
+</li>
+</ul>
+<p><strong>Pre-neural summarization</strong></p>
+<p><img alt="image-20190716164931012" src="../imgs/image-20190716164931012.png" /></p>
+<ul>
+<li>Pre-neural总结系统大多是抽取式的</li>
+<li>类似Pre-neural MT，他们通常有一个流水线<ul>
+<li><strong>内容选择 Content selection</strong>：选择一些句子</li>
+<li><strong>信息排序 Information ordering</strong>：为选择的句子排序</li>
+<li><strong>句子实现 Sentence realization</strong>：编辑句子的顺序(例如，简化、删除部分、修复连续性问题)</li>
+</ul>
+</li>
+</ul>
+<p>Pre-neural <strong>内容选择</strong> 算法</p>
+<ul>
+<li><strong>句子得分函数</strong> 可以根据<ul>
+<li>主题关键词，通过计算如tf-idf等</li>
+<li>特性，例如这句话出现在文档的哪里</li>
+</ul>
+</li>
+<li><strong>图论算法</strong> 将文档为一组句子(节点)，每对句子之间存在边<ul>
+<li>边的权重与句子相似度成正比</li>
+<li>使用图算法来识别图中最重要的句子</li>
+</ul>
+</li>
+</ul>
+<p><strong>Summarization evaluation: ROUGE</strong></p>
+<p><strong>ROUGE</strong> (Recall-Oriented Understudy for Gisting Evaluation)</p>
+<p><img alt="image-20190716171149701" src="../imgs/image-20190716171149701.png" /></p>
+<p>类似于 BLEU，是基于 n-gram 覆盖的算法，不同之处在于：</p>
+<ul>
+<li>没有简洁惩罚</li>
+<li>基于召回率 recall，BLEU 是基于准确率的<ul>
+<li>可以说，准确率对于MT 来说是更重要的(通过添加简洁惩罚来修正翻译过短)，召回率对于总结来说是更重要的(假设你有一个最大长度限制)</li>
+<li>但是，通常使用 F1(结合了准确率和召回率)</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190716170453881" src="../imgs/image-20190716170453881.png" /></p>
+<p><strong>Neural summarization (2015 - present)</strong></p>
+<ul>
+<li>
+<p>2015: Rush et al. publish the first seq2seq summarization paper</p>
+</li>
+<li>
+<p>单文档摘要总结是一项翻译任务！</p>
+</li>
+<li>
+<p>因此我们可以使用标准的 seq2seq + attention NMT 方法</p>
+</li>
+</ul>
+<p><img alt="image-20190716170623755" src="../imgs/image-20190716170623755.png" /></p>
+<blockquote>
+<p>A Neural Attention Model for Abstractive Sentence Summarization, Rush et al, 2015 <a href="https://arxiv.org/pdf/1509.00685.pdf">https://arxiv.org/pdf/1509.00685.pdf</a></p>
+</blockquote>
+<ul>
+<li>自2015年以来，有了更多的发展<ul>
+<li>使其更容易复制<ul>
+<li>也防止太多的复制</li>
+</ul>
+</li>
+<li>分层/多层次的注意力机制</li>
+<li>更多的 全局/高级 的内容选择</li>
+<li>使用 RL 直接最大化 ROUGE 或者其他离散目标（例如长度）</li>
+<li>复兴 pre-neural 想法(例如图算法的内容选择)，把它们变成神经系统</li>
+</ul>
+</li>
+</ul>
+<p><strong>Neural summarization: copy mechanisms</strong></p>
+<ul>
+<li>Seq2seq+attention systems 善于生成流畅的输出，但是不擅长正确的复制细节(如罕见字)</li>
+<li>复制机制使用注意力机制，使seq2seq系统很容易从输入复制单词和短语到输出<ul>
+<li>显然这是非常有用的总结</li>
+<li>允许复制和创造给了我们一个混合抽取/摘要式的方法</li>
+</ul>
+</li>
+<li>There are several papers proposing copy mechanism variants:<ul>
+<li>Language as a Latent Variable: Discrete Generative Models for Sentence Compression, Miao et al, 2016 <a href="https://arxiv.org/pdf/1609.07317.pdf">https://arxiv.org/pdf/1609.07317.pdf</a></li>
+<li>Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond, Nallapati et al, 2016 <a href="https://arxiv.org/pdf/1602.06023.pdf">https://arxiv.org/pdf/1602.06023.pdf</a></li>
+<li>Incorporating Copying Mechanism in Sequence-to-Sequence Learning, Gu et al, 2016 <a href="https://arxiv.org/pdf/1603.06393.pdf">https://arxiv.org/pdf/1603.06393.pdf</a></li>
+<li>etc</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190716171128456" src="../imgs/image-20190716171128456.png" /></p>
+<p><img alt="image-20190716180321391" src="../imgs/image-20190716180321391.png" /></p>
+<blockquote>
+<p>Get To The Point: Summarization with Pointer-Generator Networks, See et al, 2017 <a href="https://arxiv.org/pdf/1704.04368.pdf">https://arxiv.org/pdf/1704.04368.pdf</a></p>
+</blockquote>
+<ul>
+<li>复制机制的大问题<ul>
+<li>他们复制太多<ul>
+<li>主要是长短语，有时甚至整个句子</li>
+</ul>
+</li>
+<li><strong>一个原本应该是抽象的系统，会崩溃为一个主要是抽取的系统</strong></li>
+</ul>
+</li>
+<li>另一个问题<ul>
+<li>他们不善于整体内容的选择，特别是如果输入文档很长的情况下</li>
+<li>没有选择内容的总体战略</li>
+</ul>
+</li>
+</ul>
+<p><strong>Neural summarization: better content selection</strong></p>
+<ul>
+<li>回忆：pre-neural总结是不同阶段的内容选择和表面实现(即文本生成)</li>
+<li>标准seq2seq + attention 的总结系统，这两个阶段是混合在一起的<ul>
+<li>每一步的译码器(即表面实现)，我们也能进行词级别的内容选择(注意力)</li>
+<li>这是不好的：没有全局内容选择策略</li>
+</ul>
+</li>
+<li>一个解决办法：自下而上的汇总</li>
+</ul>
+<p><strong>Bottom-up summarization</strong></p>
+<ul>
+<li>内容选择阶段：使用一个神经序列标注模型来将单词标注为 include / don’t-include</li>
+<li>自下而上的注意力阶段：seq2seq + attention 系统不能处理 don’t-include 的单词（使用 mask ）</li>
+</ul>
+<p>简单但是非常有效！</p>
+<ul>
+<li>更好的整体内容选择策略</li>
+<li>减少长序列的复制(即更摘要的输出)</li>
+</ul>
+<p><img alt="image-20190716180841829" src="../imgs/image-20190716180841829.png" /></p>
+<p><strong>Neural summarization via Reinforcement Learning</strong></p>
+<p><img alt="image-20190716181217546" src="../imgs/image-20190716181217546.png" /></p>
+<ul>
+<li>使用 RL 直接优化 ROUGE-L <ul>
+<li>相比之下，标准的最大似然(ML)训练不能直接优化ROUGE-L，因为它是一个不可微函数</li>
+</ul>
+</li>
+<li>有趣的发现<ul>
+<li>使用RL代替ML取得更高的ROUGE分数，但是人类判断的得分越低</li>
+</ul>
+</li>
+<li>混合模型最好</li>
+</ul>
+<blockquote>
+<p>A Deep Reinforced Model for Abstractive Summarization, Paulus et al, 2017 <a href="https://arxiv.org/pdf/1705.04304.pdf">https://arxiv.org/pdf/1705.04304.pdf</a></p>
+<p>Blog post: <a href="https://www.salesforce.com/products/einstein/ai-research/tl-dr-reinforced-model-abstractive-summarization/">https://www.salesforce.com/products/einstein/ai-research/tl-dr-reinforced-model-abstractive-summarization/</a></p>
+</blockquote>
+<p><strong>Dialogue</strong></p>
+<p>“对话”包括各种各样的设置</p>
+<ul>
+<li>面向任务的对话<ul>
+<li>辅助 (如客户服务、给予建议，回答问题，帮助用户完成任务，如购买或预订)</li>
+<li>合作 (两个代理通过对话在一起解决一个任务)</li>
+<li>对抗 (两个代理通过对话完成一个任务)</li>
+</ul>
+</li>
+<li>社会对话<ul>
+<li>闲聊 (为了好玩或公司)</li>
+<li>治疗/精神健康</li>
+</ul>
+</li>
+</ul>
+<p><strong>Pre- and post-neural dialogue</strong></p>
+<ul>
+<li>
+<p>由于开放式自由NLG的难度，pre-neural对话系统经常使用预定义的模板，或从语料库中检索一个适当的反应的反应</p>
+</li>
+<li>
+<p>总结过去的研究，自2015年以来有很多论文将seq2seq方法应用到对话，从而导致自由对话系统兴趣重燃</p>
+</li>
+<li>
+<p>一些早期seq2seq对话文章包括</p>
+<ul>
+<li>
+<p>A Neural Conversational Model, Vinyals et al, 2015</p>
+<p><a href="https://arxiv.org/pdf/1506.05869.pdf">https://arxiv.org/pdf/1506.05869.pdf</a></p>
+</li>
+<li>
+<p>Neural Responding Machine for Short-Text Conversation, Shang et al, 2015</p>
+<p><a href="https://www.aclweb.org/anthology/P15-1152">https://www.aclweb.org/anthology/P15-1152</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Seq2seq-based dialogue</strong></p>
+<p>然而，很快他们就明白简单的应用标准seq2seq +attention 的方法在对话(闲聊)任务中有严重的普遍缺陷</p>
+<ul>
+<li>一般性/无聊的反应</li>
+<li>无关的反应(与上下文不够相关)</li>
+<li>重复</li>
+<li>缺乏上下文(不记得谈话历史)</li>
+<li>缺乏一致的角色人格</li>
+</ul>
+<p><strong>Irrelevant response problem</strong></p>
+<ul>
+<li>问题：seq2seq经常产生与用户无关的话语<ul>
+<li>要么因为它是通用的(例如,“我不知道”)</li>
+<li>或因为改变话题为无关的一些事情</li>
+</ul>
+</li>
+<li>一个解决方案：优化输入S 和回复 T 之间的最大互信息Maximum Mutual Information (MMI)</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\log \frac{p(S, T)}{p(S) p(T)}
+</div>
+<script type="math/tex; mode=display">
+\log \frac{p(S, T)}{p(S) p(T)}
+</script>
+</div>
+<div>
+<div class="MathJax_Preview">
+\hat{T}=\underset{T}{\arg \max }\{\log p(T | S)-\log p(T)\}
+</div>
+<script type="math/tex; mode=display">
+\hat{T}=\underset{T}{\arg \max }\{\log p(T | S)-\log p(T)\}
+</script>
+</div>
+<p><strong>Genericness / boring response problem</strong></p>
+<ul>
+<li>简单的测试时修复<ul>
+<li>直接在Beam搜索中增大罕见字的概率</li>
+<li>使用抽样解码算法而不是Beam搜索</li>
+</ul>
+</li>
+<li>条件修复<ul>
+<li>用一些额外的内容训练解码器(如抽样一些内容词并处理)</li>
+<li>训练 retrieve-and-refine 模型而不是 generatefrom-scratch 模型<ul>
+<li>即从语料库采样人类书面话语并编辑它以适应当前的场景</li>
+<li>这通常产生更加多样化/人类/有趣的话语！</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Repetition problem</strong></p>
+<p>简单的解决方案</p>
+<ul>
+<li>直接在 Beam 搜索中禁止重复n-grams<ul>
+<li>通常非常有效</li>
+</ul>
+</li>
+<li>更复杂的解决方案<ul>
+<li>在seq2seq中训练一个覆盖机制，这是客观的，可以防止注意力机制多次注意相同的单词</li>
+<li>定义训练目标以阻止重复<ul>
+<li>如果这是一个不可微函数生成的输出，然后将需要一些技术例如RL来训练</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Lack of consistent persona problem</strong></p>
+<ul>
+<li>2016年，李等人提出了一个seq2seq对话模式，学会将两个对话伙伴的角色编码为嵌<ul>
+<li>生成的话语是以嵌入为条件的</li>
+</ul>
+</li>
+<li>最近有一个闲聊的数据集称为PersonaChat，包括每一次会话的角色(描述个人特质的5个句子的集合)<ul>
+<li>这提供了一种简单的方式，让研究人员构建 persona-conditional 对话代理</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>A Persona-Based Neural Conversation Model, Li et al 2016, <a href="https://arxiv.org/pdf/1603.06155.pdf">https://arxiv.org/pdf/1603.06155.pdf</a></p>
+<p>Personalizing Dialogue Agents: I have a dog, do you have pets too?, Zhang et al, 2018 <a href="https://arxiv.org/pdf/1801.07243.pdf">https://arxiv.org/pdf/1801.07243.pdf</a></p>
+</blockquote>
+<p><strong>Negotiation dialogue</strong></p>
+<p>2017年，Lewis et al收集谈判对话数据集</p>
+<ul>
+<li>两个代理协商谈判对话(通过自然语言)如何分配一组项目</li>
+<li>代理对项目有不同的估值函数</li>
+<li>代理人会一直交谈直到达成协议</li>
+</ul>
+<p><img alt="image-20190716183751265" src="../imgs/image-20190716183751265.png" /></p>
+<blockquote>
+<p>Deal or No Deal? End-to-End Learning for Negotiation Dialogues, Lewis et al, 2017 <a href="https://arxiv.org/pdf/1706.05125.pdf">https://arxiv.org/pdf/1706.05125.pdf</a></p>
+</blockquote>
+<ul>
+<li>他们发现用标准的最大似然(ML)来训练seq2seq系统的产生了流利但是缺乏策略的对话代理</li>
+<li>和Paulus等的总结论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)</li>
+<li>RL 的基于目的的目标函数与 ML 目标函数相结合</li>
+<li>潜在的陷阱：如果两两对话时，代理优化的只是RL目标，他们可能会偏离英语</li>
+</ul>
+<p><img alt="image-20190716184151261" src="../imgs/image-20190716184151261.png" /></p>
+<p>在测试时，模型通过计算 rollouts，选择可能的反应：模拟剩余的谈话和预期的回报</p>
+<ul>
+<li>
+<p>2018年，Yarats 等提出了另一个谈判任务的对话模型，将策略和NLG方面分开</p>
+</li>
+<li>
+<p>每个话语 <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> 都有一个对应的离散潜在变量 <span><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span></p>
+</li>
+<li><span><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span> 学习成为一个很好的预测对话中的未来事件的预测器(未来的消息，策略的最终收获)，但不是 <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> 本身的预测器</li>
+<li>这意味着 <span><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span> 学会代表 <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> 对对话的影响，而不是 <span><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> 的话</li>
+<li>因此 <span><span class="MathJax_Preview">z_t</span><script type="math/tex">z_t</script></span> 将任务的策略方面从 NLG方面分离出来</li>
+<li>这对可控制性、可解释性和更容易学习策略等是有用的</li>
+</ul>
+<blockquote>
+<p>Hierarchical Text Generation and Planning for Strategic Dialogue, Yarats et al, 2018 <a href="https://arxiv.org/pdf/1712.05846.pdf">https://arxiv.org/pdf/1712.05846.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190716184914108" src="../imgs/image-20190716184914108.png" /></p>
+<p><strong>Conversational question answering: CoQA</strong></p>
+<ul>
+<li>一个来自斯坦福NLP的新数据集</li>
+<li>任务：回答关于以一段对话为上下文的文本的问题</li>
+<li>答案必须写摘要地(不是复制)</li>
+<li>QA / 阅读理解任务，和对话任务</li>
+</ul>
+<p><img alt="image-20190716185204636" src="../imgs/image-20190716185204636.png" /></p>
+<blockquote>
+<p>CoQA: a Conversational Question Answering Challenge, Reddy et al, 2018 <a href="https://arxiv.org/pdf/1808.07042.pdf">https://arxiv.org/pdf/1808.07042.pdf</a></p>
+</blockquote>
+<p><strong>Storytelling</strong></p>
+<ul>
+<li>神经讲故事的大部分工作使用某种提示<ul>
+<li>给定图像生成的故事情节段落</li>
+<li>给定一个简短的写作提示生成一个故事</li>
+<li>给定迄今为止的故事，生成故事的下一个句子（故事续写）<ul>
+<li>这和前两个不同，因为我们不关心系统在几个生成的句子上的性能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>神经故事飞速发展<ul>
+<li>第一个故事研讨会于2018年举行</li>
+<li>它举行比赛(使用五张图片的序列生成一个故事)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Generating a story from an image</strong></p>
+<p><img alt="image-20190716185606836" src="../imgs/image-20190716185606836.png" /></p>
+<p>有趣的是，这并不是直接的监督图像标题。没有配对的数据可以学习。</p>
+<blockquote>
+<p>Generating Stories about Images, <a href="https://medium.com/@samim/generating-stories-about-images-d163ba41e4ed">https://medium.com/@samim/generating-stories-about-images-d163ba41e4ed</a></p>
+</blockquote>
+<ul>
+<li>问题：如何解决缺乏并行数据的问题</li>
+<li>回答：使用一个通用的sentence-encoding space</li>
+<li>Skip-thought 向量空间是一种通用的句子嵌入方法</li>
+<li>想法类似于我们如何学通过预测周围的文字来学习单词的嵌入</li>
+<li>使用COCO (图片标题数据集)，学习从图像到其标题的Skip-thought编码的映射</li>
+<li>使用目标样式语料库(Taylor Swift lyrics)，训练RNN-LM将Skip-thought向量解码为原文</li>
+<li>把两个房在一起</li>
+</ul>
+<blockquote>
+<p>Skip-Thought Vectors, Kiros 2015, <a href="https://arxiv.org/pdf/1506.06726v1.pdf">https://arxiv.org/pdf/1506.06726v1.pdf</a></p>
+</blockquote>
+<p><strong>Generating a story from a writing prompt</strong></p>
+<ul>
+<li>2018年，Fan 等发布了一个新故事生成数据集 collected from Reddit’s WritingPrompts subreddit.</li>
+<li>每个故事都有一个相关的简短写作提示</li>
+</ul>
+<p><img alt="image-20190716190126625" src="../imgs/image-20190716190126625.png" /></p>
+<p>Fan 等也提出了一个复杂的 seq2seq prompt-to-story 模型</p>
+<blockquote>
+<p>Hierarchical Neural Story Generation, Fan et al, 2018 <a href="https://arxiv.org/pdf/1805.04833.pdf">https://arxiv.org/pdf/1805.04833.pdf</a></p>
+</blockquote>
+<ul>
+<li>convolutional-based<ul>
+<li>这使它的速度比RNN-based seq2seq</li>
+</ul>
+</li>
+<li>封闭的多头多尺度的self-attention<ul>
+<li>self-attention 对于捕获远程上下文而言十分重要</li>
+<li>门控允许更有选择性的注意机制</li>
+<li>不同的注意力头在不同的尺度上注意不同的东西——这意味着有不同的注意机制用于检索细粒度和粗粒度的信息</li>
+</ul>
+</li>
+<li>模型融合<ul>
+<li>预训练一个seq2seq模型，然后训练第二个 seq2seq 模型访问的第一个 model 的隐状态</li>
+<li>想法是，第一seq2seq模型学习通用LM，第二个model学习基于提示的条件</li>
+</ul>
+</li>
+</ul>
+<p>结果令人印象深刻</p>
+<ul>
+<li>
+<p>与提示相关</p>
+</li>
+<li>
+<p>多样化，并不普通</p>
+</li>
+<li>
+<p>在文体上戏剧性</p>
+</li>
+</ul>
+<p>但是</p>
+<ul>
+<li>主要是氛围/描述性/场景设定，很少是事件/情节</li>
+<li>生成更长时，大多数停留在同样的想法并没有产生新的想法——一致性问题</li>
+</ul>
+<p><strong>Challenges in storytelling</strong></p>
+<p>由神经LM生成的故事听起来流畅…但是是曲折的，荒谬的，情节不连贯的</p>
+<p>缺失的是什么？</p>
+<p>LMs对单词序列进行建模。故事是事件序列</p>
+<ul>
+<li>为了讲一个故事，我们需要理解和模拟<ul>
+<li>事件和它们之间的因果关系结构</li>
+<li>人物，他们的个性、动机、历史、和其他人物之间的关系</li>
+<li>世界(谁、是什么和为什么)</li>
+<li>叙事结构(如说明 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 冲突 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 解决)</li>
+<li>良好的叙事原则(不要引入一个故事元素然后从未使用它)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Event2event Story Generation</strong></p>
+<p><img alt="image-20190716194342392" src="../imgs/image-20190716194342392.png" /></p>
+<p><img alt="image-20190716194350879" src="../imgs/image-20190716194350879.png" /></p>
+<blockquote>
+<p>Event Representations for Automated Story Generation with Deep Neural Nets, Martin et al, 2018</p>
+<p><a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/17046/15769">https://www.aaai.org/ocs/index.php/AAAI/AAAI18/paper/view/17046/15769</a></p>
+</blockquote>
+<p><strong>Structured Story Generation</strong></p>
+<p><img alt="image-20190716194406644" src="../imgs/image-20190716194406644.png" /></p>
+<blockquote>
+<p>Strategies for Structuring Story Generation, Fan et al, 2019 <a href="https://arxiv.org/pdf/1902.01109.pdf">https://arxiv.org/pdf/1902.01109.pdf</a></p>
+</blockquote>
+<p><strong>Tracking events, entities, state, etc.</strong></p>
+<ul>
+<li>旁注：在神经NLU(自然语言理解)领域，已经有大量关于跟踪事件/实体/状态的工作<ul>
+<li>例如，Yejin Choi’s group* 很多工作在这一领域</li>
+</ul>
+</li>
+<li>将这些方法应用到 NLG是更加困难的<ul>
+<li>如果你缩小范围，则更可控的</li>
+<li>不采用自然语言生成开放域的故事，而是跟踪状态</li>
+<li>生成一个配方(考虑到因素)，跟踪因素的状态</li>
+</ul>
+</li>
+</ul>
+<p><strong>Tracking world state while generating a recipe</strong></p>
+<ul>
+<li>过程神经网络：给定因素，生成配方指示</li>
+<li>显式跟踪所有因素的状态，并利用这些知识来决定下一步要采取什么行动</li>
+</ul>
+<p><img alt="image-20190716195018534" src="../imgs/image-20190716195018534.png" /></p>
+<blockquote>
+<p>Simulating Action Dynamics with Neural Process Networks, Bosselut et al, 2018 <a href="https://arxiv.org/pdf/1711.05313.pdf">https://arxiv.org/pdf/1711.05313.pdf</a></p>
+</blockquote>
+<p><strong>Poetry generation: Hafez</strong></p>
+<ul>
+<li>
+<p>Hafez：Ghazvininejad et al 的诗歌系统</p>
+</li>
+<li>
+<p>主要思想：使用一个有限状态受体(FSA)来定义所有可能的序列，服从希望满足的节奏约束</p>
+</li>
+<li>
+<p>然后使用FSA约束RNN-LM的输出</p>
+</li>
+</ul>
+<p>例如</p>
+<ul>
+<li>莎士比亚的十四行诗是14行的iambic pentameter</li>
+<li>所以莎士比亚的十四行诗的FSA是 <span><span class="MathJax_Preview">((01)^5)^{14}</span><script type="math/tex">((01)^5)^{14}</script></span></li>
+<li>在Beam搜索解码中，只有探索属于FSA的假设</li>
+</ul>
+<blockquote>
+<p>Generating Topical Poetry, Ghazvininejad et al, 2016 <a href="http://www.aclweb.org/anthology/D16-1126">http://www.aclweb.org/anthology/D16-1126</a></p>
+<p>Hafez: an Interactive Poetry Generation System, Ghazvininejad et al, 2017 <a href="http://www.aclweb.org/anthology/P17-4008">http://www.aclweb.org/anthology/P17-4008</a></p>
+</blockquote>
+<ul>
+<li>全系统</li>
+<li>用户提供主题字</li>
+<li>得到一个与主题相关的词的集合</li>
+<li>识别局部词语押韵。这将是每一行的结束</li>
+<li>使用受制于FSA的RNN-LM生成这首诗</li>
+<li>RNN-LM向后(自右向左)。这是必要的,因为每一行的最后一个词是固定的。</li>
+</ul>
+<p><img alt="image-20190716195527794" src="../imgs/image-20190716195527794.png" /></p>
+<p>在后续的一篇论文中，作者制作了系统交互和用户可控</p>
+<p>控制方法很简单：在Beam搜索中，增大具有期望特征的单词的分数</p>
+<p><strong>Poetry generation: Deep-speare</strong></p>
+<p>更多的诗歌生成的端到端方法(lau等)</p>
+<p>三个组件</p>
+<ul>
+<li>语言模型</li>
+<li>pentameter model</li>
+<li>rhyme model 韵律模型……</li>
+</ul>
+<p>作为一个多任务学习问题共同学习</p>
+<ul>
+<li>作者发现 meter 和押韵是相对容易的，但生成的诗歌上有些缺乏“情感和可读性”</li>
+</ul>
+<p><img alt="image-20190716195906899" src="../imgs/image-20190716195906899.png" /></p>
+<blockquote>
+<p>Deep-speare: A joint neural model of poetic language, meter and rhyme, Lau et al, 2018 <a href="http://aclweb.org/anthology/P18-1181">http://aclweb.org/anthology/P18-1181</a></p>
+</blockquote>
+<p><strong>Non-autoregressive generation for NMT</strong></p>
+<blockquote>
+<p>Non-Autoregressive Neural Machine Translation, Gu et al, 2018 <a href="https://arxiv.org/pdf/1711.02281.pdf">https://arxiv.org/pdf/1711.02281.pdf</a></p>
+</blockquote>
+<ul>
+<li>2018年,顾等发表了“Non-autoregressive 神经机器翻译”模型</li>
+<li>意义：它不是根据之前的每个单词，从左到右产生翻译</li>
+<li>它并行生成翻译</li>
+<li>这具有明显的效率优势，但从文本生成的角度来看也很有趣</li>
+<li>架构是基于Transformer 的；最大的区别是，解码器可以运行在测试时并行</li>
+</ul>
+<p><img alt="image-20190716200621035" src="../imgs/image-20190716200621035.png" /></p>
+<h3 id="section-3-nlg-evaluation">Section 3: NLG evaluation<a class="headerlink" href="#section-3-nlg-evaluation" title="Permanent link">&para;</a></h3>
+<p><strong>Automatic evaluation metrics for NLG</strong></p>
+<p>基于词重叠的指标(BLEU，ROUGE，METROR，F1，等等)</p>
+<ul>
+<li>我们知道他们不适合机器翻译</li>
+<li>对于总结而言是更差的，这比机器翻译更开放<ul>
+<li>不幸的是，与抽象系统相比，提取摘要系统也更受ROUGE青睐</li>
+</ul>
+</li>
+<li>对于对话甚至更糟，这比总结更开放<ul>
+<li>类似的例子还有故事生成</li>
+</ul>
+</li>
+</ul>
+<p><strong>Word overlap metrics are not good for dialogue</strong></p>
+<blockquote>
+<p>How NOT To Evaluate Your Dialogue System: An Empirical Study of Unsupervised Evaluation Metrics for</p>
+<p>Dialogue Response Generation, Liu et al, 2017 <a href="https://arxiv.org/pdf/1603.08023.pdf">https://arxiv.org/pdf/1603.08023.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190716200935260" src="../imgs/image-20190716200935260.png" /></p>
+<blockquote>
+<p>Why We Need New Evaluation Metrics for NLG, Novikova et al, 2017 <a href="https://arxiv.org/pdf/1707.06875.pdf">https://arxiv.org/pdf/1707.06875.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190716201013211" src="../imgs/image-20190716201013211.png" /></p>
+<p><strong>Automatic evaluation metrics for NLG</strong></p>
+<ul>
+<li>困惑度？<ul>
+<li>捕捉你的LM有多强大，但是不会告诉你关于生成的任何事情(例如，如果你的困惑度是未改变的，解码算法是不好的)</li>
+</ul>
+</li>
+<li>
+<p>词嵌入基础指标？</p>
+<ul>
+<li>主要思想：比较词嵌入的相似度(或词嵌入的均值)，而不仅仅是重叠的单词。以更灵活的方式捕获语义。</li>
+<li>不幸的是,仍然没有与类似对话的开放式任务的人类判断，产生很好的联系</li>
+</ul>
+</li>
+<li>
+<p>我们没有自动指标充分捕捉整体质量(即代表人类的质量判断)</p>
+</li>
+<li>但我们可以定义更多的集中自动度量来捕捉生成文本的特定方面<ul>
+<li>流利性(使用训练好的LM计算概率)</li>
+<li>正确的风格(使用目标语料库上训练好的LM的概率)</li>
+<li>多样性(罕见的用词，n-grams 的独特性)</li>
+<li>相关输入(语义相似性度量)</li>
+<li>简单的长度和重复</li>
+<li>特定于任务的指标，如总结的压缩率</li>
+</ul>
+</li>
+<li>虽然这些不衡量整体质量，他们可以帮助我们跟踪一些我们关心的重要品质</li>
+</ul>
+<p><strong>Human evaluation</strong></p>
+<ul>
+<li>人类的判断被认为是黄金标准</li>
+<li>当然，我们知道人类评价是缓慢而昂贵的</li>
+<li>但这些问题？</li>
+<li>假如你获得人类的评估：人类评估解决你所有的问题吗？</li>
+<li>不！</li>
+<li>进行人类有效评估非常困难</li>
+<li>人类<ul>
+<li>是不一致的</li>
+<li>可能是不合逻辑的</li>
+<li>失去注意力</li>
+<li>误解了你的问题</li>
+<li>不能总是解释为什么他们会这样做</li>
+</ul>
+</li>
+</ul>
+<p><strong>Detailed human eval of controllable chatbots</strong></p>
+<ul>
+<li>在聊天机器人项目上工作的个人经验（PersonaChat）</li>
+<li>我们研究了可控性（特别是控制所产生的话语，如重复，特异性，回应相关性和问题询问）</li>
+</ul>
+<blockquote>
+<p>What makes a good conversation? How controllable attributes affect human judgments,</p>
+<p>See et al, 2019 <a href="https://arxiv.org/pdf/1902.08654.pdf">https://arxiv.org/pdf/1902.08654.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190716202054760" src="../imgs/image-20190716202054760.png" /></p>
+<ul>
+<li>
+<p>如何要求人的质量判断？</p>
+</li>
+<li>
+<p>我们尝试了简单的整体质量（多项选择）问题，例如：</p>
+<ul>
+<li>这次对话有多好？</li>
+<li>这个用户有多吸引人？</li>
+<li>这些用户中哪一个给出了更好的响应？</li>
+</ul>
+<p>●您想再次与该用户交谈吗？</p>
+<p>●您认为该用户是人还是机器人？</p>
+</li>
+</ul>
+<p>主要问题：</p>
+<ul>
+<li>必然非常主观</li>
+<li>回答者有不同的期望；这会影响他们的判断</li>
+<li>对问题的灾难性误解（例如“聊天机器人非常吸引人，因为它总是回写”）</li>
+<li>总体质量取决于许多潜在因素；他们应该如何被称重和/或比较？</li>
+</ul>
+<p>最终，我们设计了一个详细的人类评价体系分离的重要因素，有助于整体chatbot质量</p>
+<p><img alt="image-20190716202330133" src="../imgs/image-20190716202330133.png" /></p>
+<p>发现：</p>
+<ul>
+<li>控制重复对于所有人类判断都非常重要</li>
+<li>提出更多问题可以提高参与度</li>
+<li>控制特异性（较少的通用话语）提高了聊天机器人的吸引力，趣味性和感知的听力能力。</li>
+<li>但是，人类评估人员对风险的容忍度较低（例如无意义或非流利的输出）与较不通用的机器人相关联</li>
+<li>
+<p>总体度量“吸引力”（即享受）很容易最大化 - 我们的机器人达到了近乎人性化的表现</p>
+</li>
+<li>
+<p>整体度量“人性化”（即图灵测试）根本不容易最大化 - 所有机器人远远低于人类表现</p>
+</li>
+<li>人性化与会话质量不一样！</li>
+<li>人类是次优的会话主义者：他们在有趣，流利，倾听上得分很低，并且问的问题太少</li>
+</ul>
+<p><strong>Possible new avenues for NLG eval?</strong></p>
+<ul>
+<li>语料库级别的评价指标<ul>
+<li>度量应独立应用于测试集的每个示例，或整个语料库的函数</li>
+<li>例如，如果对话模型对测试集中的每一个例子回答相同的通用答案，它应该被惩罚</li>
+</ul>
+</li>
+<li>评估衡量多样性安全权衡的评估指标</li>
+<li>免费的人类评估<ul>
+<li>游戏化：使任务（例如与聊天机器人交谈）变得有趣，这样人类就可以为免费提供监督和隐式评估，作为评估指标</li>
+</ul>
+</li>
+<li>对抗性鉴别器作为评估指标<ul>
+<li>测试NLG系统是否能愚弄经过训练能够区分人类文本和AI生成的文本的识别器</li>
+</ul>
+</li>
+</ul>
+<h3 id="section-4-thoughts-on-nlg-research-current-trends-and-the-future">Section 4: Thoughts on NLG research, current trends, and the future<a class="headerlink" href="#section-4-thoughts-on-nlg-research-current-trends-and-the-future" title="Permanent link">&para;</a></h3>
+<p><strong>Exciting current trends in NLG</strong></p>
+<ul>
+<li>将离散潜在变量纳入NLG<ul>
+<li>可以帮助在真正需要它的任务中建模结构，例如讲故事，任务导向对话等</li>
+</ul>
+</li>
+<li>严格的从左到右生成的替代方案<ul>
+<li>并行生成，迭代细化，自上而下生成较长的文本</li>
+</ul>
+</li>
+<li>替代teacher forcing的最大可能性培训<ul>
+<li>更全面的句子级别的目标函数（而不是单词级别）</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190716211809727" src="../imgs/image-20190716211809727.png" /></p>
+<p><strong>Neural NLG community is rapidly maturing</strong></p>
+<ul>
+<li>在NLP+深度学习的早期，社区主要将成功的非机动车交通方法转移到NLG任务中。</li>
+<li>现在，越来越多的创新NLG技术出现，针对非NMT生成环境。</li>
+<li>越来越多（神经）NLG研讨会和竞赛，特别关注开放式NLG<ul>
+<li>NeuralGen workshop</li>
+<li>Storytelling workshop</li>
+<li>Alexa challenge</li>
+<li>ConvAI2 NeurIPS challenge</li>
+</ul>
+</li>
+<li>这些对于组织社区提高再现性、标准化评估特别有用</li>
+<li>最大障碍是评估</li>
+</ul>
+<p><strong>8 things I’ve learnt from working in NLG</strong></p>
+<ol>
+<li>任务越开放，一切就越困难<ul>
+<li>约束有时是受欢迎的</li>
+</ul>
+</li>
+<li>针对特定改进的目标比旨在提高整体生成质量更易于管理</li>
+<li>如果你使用一个LM作为NLG：改进LM（即困惑）最有可能提高生成质量<ul>
+<li>但这并不是提高生成质量的唯一途径</li>
+</ul>
+</li>
+<li>多看看你的输出</li>
+<li>你需要一个自动度量，即使它是不受影响的<ul>
+<li>您可能需要几个自动度量</li>
+</ul>
+</li>
+<li>如果你做了人工评估，让问题尽可能的集中</li>
+<li>在今天的NLP + 深度学习和 NLG中，再现性是一个巨大的问题。<ul>
+<li>请公开发布所有生成的输出以及您的论文</li>
+</ul>
+</li>
+<li>在NLG工作可能很令人沮丧，但也很有趣</li>
+</ol>
+<p><img alt="image-20190716212604204" src="../imgs/image-20190716212604204.png" /></p>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/CS224n-2019-15-Natural Language Generation/";
+      this.page.identifier =
+        "CS224n-2019-15-Natural Language Generation/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../CS224n-2019-14-Transformers and Self-Attention For Generative Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                14 Transformers and Self-Attention For Generative Models
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../面经/" title="我的面经" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                我的面经
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Looper Xiao Xu
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.245445c6.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>
