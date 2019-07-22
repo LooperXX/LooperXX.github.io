@@ -64,7 +64,7 @@ $$
 -   答案：解码算法是一种算法，用于从语言模型生成文本
 -   我们了解了两种解码算法
     -   贪婪解码
-    -   光束搜索
+    -   Beam 搜索
 
 **Recap: greedy decoding**
 
@@ -87,14 +87,16 @@ $$
 
 **What’s the effect of changing beam size k?**
 
--   小的 k 与贪心解码有类似的问题（k = 1）
+-   小的 k 与贪心解码有类似的问题（k = 1时就是贪心解码）
     -   不符合语法，不自然，荒谬，不正确
 -   更大的 k 意味着您考虑更多假设
     -   增加 k 可以减少上述一些问题
     -   更大的 k 在计算上更昂贵
     -   但增加 k 可能会引入其他问题：
-        -   对于NMT，增加k太多会降低BLEU评分(Tu et al, Koehnet al)。 这主要是因为大 k 光束搜索产生太短的翻译（即使得分归一化）
-        -   在闲聊话等开放式任务中，大 k 可以输出更通用（见下一张幻灯片）
+        -   对于NMT，增加 k 太多会降低BLEU评分(Tu et al, Koehnet al)
+            -   beam size 和 BLEU 之间存在最优性之间的区别，高概率序列和高的 BLEU 得分是两件独立的事情
+            -    这主要是因为大 k 光束搜索产生太短的翻译（即使得分归一化）
+        -   在闲聊话等开放式任务中，大的 k 会输出非常通用的句子（见下一张幻灯片）
 
 **Effect of beam size in chitchat dialogue**
 
@@ -102,9 +104,9 @@ $$
 
 -   低 beam size
     -   更关于话题但是没有意义的
-    -   语法差
+    -   语法差，重复的
 -   高 beam size
-    -   融合安全
+    -   安全的反应
     -   “正确”的反应
     -   但它是通用的，不太相关
 
@@ -114,12 +116,12 @@ $$
     -   在每个步骤t，从概率分布 $P_t$ 中随机抽样以获取你的下一个单词。
     -   像贪婪的解码，但是是采样而不是argmax。
 -   Top-n 采样
-    -   在每个步骤 t ，从 $P_t$ 中随机采样，仅限于前n个最可能的单词
-    -   与纯采样一样，但截断概率分布
-    -   n = 1是贪婪搜索，n = V是纯采样
+    -   在每个步骤 t ，从 $P_t$ 的前 n 个最可能的单词中，进行随机采样（即若V = 10, n = 2，就相当于把选择范围限定在了概率排名前两个的单词，再在这两者之间做采样得到一个单词）
+    -   与纯采样类似，但截断概率分布
+    -   此时，n = 1 是贪婪搜索，n = V 是纯采样
     -   增加n以获得更多样化/风险的输出
     -   减少n以获得更通用/安全的输出
--   这两者都更多比光束搜索更有效——没有多重假设
+-   这两者都更多比光束搜索更有效率，不用跟踪多个假设
 
 **Softmax temperature**
 
@@ -136,7 +138,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 $$
 
 -   提高温度 $\tau$ : $P_t$ 变得更均匀
-    -   因此产出更多样化（概率分布在词汇中）
+    -   因此输出更多样化（概率分布在词汇中）
 -   降低温度 $\tau$ : $P_t$ 变得更尖锐
     -   因此输出的多样性较少（概率集中在顶层词汇上）
 
@@ -153,24 +155,26 @@ $$
 
 ### Section 2: NLG tasks and neural approaches to them
 
+>   List of summarization datasets, papers, and codebases: https://github.com/mathsyouth/awesome-text-summarization
+
 **Summarization: task definition**
 
-任务：给定输入文本x，写出更短的总结 y 并包含x的主要信息
+任务：给定输入文本x，写出更短的摘要 y 并包含 x  的主要信息
 
 摘要可以是单文档，也可以是多文档
 
--   单文档意味着我们写一个文档 x 的总结 y
+-   单文档意味着我们写一个文档 x 的摘要 y
 
--   多文档意味着我们写一个多个文档 $x_{1}, \ldots, x_{n}$ 的总结y
+-   多文档意味着我们写一个多个文档 $x_{1}, \ldots, x_{n}$ 的摘要y
 
 通常 $x_{1}, \ldots, x_{n}$ 有重叠的内容：如对同一事件的新闻文章
 
-在单文档总结，数据集中的源文档具有**不同长度和风格**
+在单文档摘要，数据集中的源文档具有**不同长度和风格**
 
 -   **Gigaword**: 新闻文章的前一两句 $\to$ 标题(即句子压缩)
--   **LCSTS** (中文微博)：段落 $\to$ 句子总结
--   **NYT, CNN/DailyMail**: 新闻文章  $\to$ (多个)句子总结
--   **Wikihow (new!)**: 完整的 how-to 文章 $\to$ 总结句子
+-   **LCSTS** (中文微博)：段落 $\to$ 句子摘要
+-   **NYT, CNN/DailyMail**: 新闻文章  $\to$ (多个)句子摘要
+-   **Wikihow (new!)**: 完整的 how-to 文章 $\to$ 摘要句子
 
 **句子简化** 是一个不同但相关的任务：将源文本改写为更简单（有时是更短）的版本
 
@@ -179,13 +183,13 @@ $$
 
 **Summarization: two main strategies**
 
-**抽取式总结 Extractive summarization**
+**抽取式摘要 Extractive summarization**
 
--   **选择部分**(通常是句子)的原始文本来形成总结
+-   **选择部分**(通常是句子)的原始文本来形成摘要
     -   更简单
     -   限定性的（无需解释）
 
-**摘要式总结 Abstractive summarization**
+**抽象式摘要 Abstractive summarization**
 
 -   使用自然语言生成技术 **生成新的文本**
     -   更困难
@@ -195,18 +199,20 @@ $$
 
 ![image-20190716164931012](imgs/image-20190716164931012.png)
 
--   Pre-neural总结系统大多是抽取式的
+>   Diagram credit: Speech and Language Processing, Jurafsky and Martin
+
+-   Pre-neural摘要系统大多是抽取式的
 -   类似Pre-neural MT，他们通常有一个流水线
     -   **内容选择 Content selection**：选择一些句子
     -   **信息排序 Information ordering**：为选择的句子排序
-    -   **句子实现 Sentence realization**：编辑句子的顺序(例如，简化、删除部分、修复连续性问题)
+    -   **句子实现 Sentence realization**：编辑并输出句子序列例如，简化、删除部分、修复连续性问题)
 
 Pre-neural **内容选择** 算法
 
 -   **句子得分函数** 可以根据
     -   主题关键词，通过计算如tf-idf等
     -   特性，例如这句话出现在文档的哪里
--   **图论算法** 将文档为一组句子(节点)，每对句子之间存在边
+-   **图算法** 将文档为一组句子(节点)，每对句子之间存在边
     -   边的权重与句子相似度成正比
     -   使用图算法来识别图中最重要的句子
 
@@ -216,11 +222,13 @@ Pre-neural **内容选择** 算法
 
 ![image-20190716171149701](imgs/image-20190716171149701.png)
 
+>   ROUGE: A Package for Automatic Evaluation of Summaries, Lin, 2004 http://www.aclweb.org/anthology/W04-1013
+
 类似于 BLEU，是基于 n-gram 覆盖的算法，不同之处在于：
 
 -   没有简洁惩罚
 -   基于召回率 recall，BLEU 是基于准确率的
-    -   可以说，准确率对于MT 来说是更重要的(通过添加简洁惩罚来修正翻译过短)，召回率对于总结来说是更重要的(假设你有一个最大长度限制)
+    -   可以说，准确率对于MT 来说是更重要的(通过添加简洁惩罚来修正翻译过短)，召回率对于摘要来说是更重要的(假设你有一个最大长度限制)，因为需要抓住重要的信息
     -   但是，通常使用 F1(结合了准确率和召回率)
 
 ![image-20190716170453881](imgs/image-20190716170453881.png)
@@ -229,7 +237,7 @@ Pre-neural **内容选择** 算法
 
 -   2015: Rush et al. publish the first seq2seq summarization paper
 
--   单文档摘要总结是一项翻译任务！
+-   单文档摘要摘要是一项翻译任务！
 
 -   因此我们可以使用标准的 seq2seq + attention NMT 方法
 
@@ -249,8 +257,8 @@ Pre-neural **内容选择** 算法
 
 -   Seq2seq+attention systems 善于生成流畅的输出，但是不擅长正确的复制细节(如罕见字)
 -   复制机制使用注意力机制，使seq2seq系统很容易从输入复制单词和短语到输出
-    -   显然这是非常有用的总结
-    -   允许复制和创造给了我们一个混合抽取/摘要式的方法
+    -   显然这是非常有用的摘要
+    -   允许复制和创造给了我们一个混合了抽取/抽象式的方法
 -   There are several papers proposing copy mechanism variants:
     -   Language as a Latent Variable: Discrete Generative Models for Sentence Compression, Miao et al, 2016 https://arxiv.org/pdf/1609.07317.pdf
     -   Abstractive Text Summarization using Sequence-to-sequence RNNs and Beyond, Nallapati et al, 2016 https://arxiv.org/pdf/1602.06023.pdf
@@ -266,15 +274,15 @@ Pre-neural **内容选择** 算法
 -   复制机制的大问题
     -   他们复制太多
         -   主要是长短语，有时甚至整个句子
-    -   **一个原本应该是抽象的系统，会崩溃为一个主要是抽取的系统**
+    -   **一个原本应该是抽象的摘要系统，会崩溃为一个主要是抽取的系统**
 -   另一个问题
     -   他们不善于整体内容的选择，特别是如果输入文档很长的情况下
     -   没有选择内容的总体战略
 
 **Neural summarization: better content selection**
 
--   回忆：pre-neural总结是不同阶段的内容选择和表面实现(即文本生成)
--   标准seq2seq + attention 的总结系统，这两个阶段是混合在一起的
+-   回忆：pre-neural摘要是不同阶段的内容选择和表面实现(即文本生成)
+-   标准seq2seq + attention 的摘要系统，这两个阶段是混合在一起的
     -   每一步的译码器(即表面实现)，我们也能进行词级别的内容选择(注意力)
     -   这是不好的：没有全局内容选择策略
 -   一个解决办法：自下而上的汇总
@@ -288,6 +296,7 @@ Pre-neural **内容选择** 算法
 
 -   更好的整体内容选择策略
 -   减少长序列的复制(即更摘要的输出)
+    -   因为长序列中包含了很多 don’t-include 的单词，所以模型必须学会跳过这些单词并将那些 include 的单词进行摘要与组合
 
 ![image-20190716180841829](imgs/image-20190716180841829.png)
 
@@ -321,7 +330,7 @@ Pre-neural **内容选择** 算法
 
 -   由于开放式自由NLG的难度，pre-neural对话系统经常使用预定义的模板，或从语料库中检索一个适当的反应的反应
 
--   总结过去的研究，自2015年以来有很多论文将seq2seq方法应用到对话，从而导致自由对话系统兴趣重燃
+-   摘要过去的研究，自2015年以来有很多论文将seq2seq方法应用到对话，从而导致自由对话系统兴趣重燃
 
 -   一些早期seq2seq对话文章包括
 
@@ -348,7 +357,7 @@ Pre-neural **内容选择** 算法
 -   问题：seq2seq经常产生与用户无关的话语
     -   要么因为它是通用的(例如,“我不知道”)
     -   或因为改变话题为无关的一些事情
--   一个解决方案：优化输入S 和回复 T 之间的最大互信息Maximum Mutual Information (MMI)
+-   一个解决方案：不是去优化输入 S 到回答 T 的映射来最大化给定 S 的 T 的条件概率，而是去优化输入S 和回复 T 之间的最大互信息Maximum Mutual Information (MMI)，从而抑制模型去选择那些本来就很大概率的通用句子
 
 $$
 \log \frac{p(S, T)}{p(S) p(T)}
@@ -365,8 +374,8 @@ $$
     -   使用抽样解码算法而不是Beam搜索
 -   条件修复
     -   用一些额外的内容训练解码器(如抽样一些内容词并处理)
-    -   训练 retrieve-and-refine 模型而不是 generatefrom-scratch 模型
-        -   即从语料库采样人类书面话语并编辑它以适应当前的场景
+    -   训练 retrieve-and-refine 模型而不是 generate-from-scratch 模型
+        -   即从语料库采样人类话语并编辑以适应当前的场景
         -   这通常产生更加多样化/人类/有趣的话语！
 
 **Repetition problem**
@@ -404,7 +413,7 @@ $$
 >   Deal or No Deal? End-to-End Learning for Negotiation Dialogues, Lewis et al, 2017 https://arxiv.org/pdf/1706.05125.pdf
 
 -   他们发现用标准的最大似然(ML)来训练seq2seq系统的产生了流利但是缺乏策略的对话代理
--   和Paulus等的总结论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)
+-   和Paulus等的摘要论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)
 -   RL 的基于目的的目标函数与 ML 目标函数相结合
 -   潜在的陷阱：如果两两对话时，代理优化的只是RL目标，他们可能会偏离英语
 
@@ -455,11 +464,11 @@ $$
 >   Generating Stories about Images, https://medium.com/@samim/generating-stories-about-images-d163ba41e4ed
 
 -   问题：如何解决缺乏并行数据的问题
--   回答：使用一个通用的sentence-encoding space
--   Skip-thought 向量空间是一种通用的句子嵌入方法
+-   回答：使用一个通用的 sentence-encoding space
+-   Skip-thought 向量是一种通用的句子嵌入方法
 -   想法类似于我们如何学通过预测周围的文字来学习单词的嵌入
--   使用COCO (图片标题数据集)，学习从图像到其标题的Skip-thought编码的映射
--   使用目标样式语料库(Taylor Swift lyrics)，训练RNN-LM将Skip-thought向量解码为原文
+-   使用 COCO (图片标题数据集)，学习从图像到其标题的 Skip-thought 编码的映射
+-   使用目标样式语料库(Taylor Swift lyrics)，训练RNN-LM， 将Skip-thought向量解码为原文
 -   把两个房在一起
 
 >   Skip-Thought Vectors, Kiros 2015, https://arxiv.org/pdf/1506.06726v1.pdf
@@ -615,9 +624,9 @@ LMs对单词序列进行建模。故事是事件序列
 基于词重叠的指标(BLEU，ROUGE，METROR，F1，等等)
 
 -   我们知道他们不适合机器翻译
--   对于总结而言是更差的，这比机器翻译更开放
-    -   不幸的是，与抽象系统相比，提取摘要系统也更受ROUGE青睐
--   对于对话甚至更糟，这比总结更开放
+-   对于摘要而言是更差的评价标准，因为摘要比机器翻译更开放
+    -   不幸的是，与抽象摘要系统相比，提取摘要系统更受ROUGE青睐
+-   对于对话甚至更糟，这比摘要更开放
     -   类似的例子还有故事生成
 
 **Word overlap metrics are not good for dialogue**
@@ -627,6 +636,8 @@ LMs对单词序列进行建模。故事是事件序列
 >   Dialogue Response Generation, Liu et al, 2017 https://arxiv.org/pdf/1603.08023.pdf
 
 ![image-20190716200935260](imgs/image-20190716200935260.png)
+
+上图展示了 BLEU-2、Embedding average 和人类评价的相关性都不高
 
 >    Why We Need New Evaluation Metrics for NLG, Novikova et al, 2017 https://arxiv.org/pdf/1707.06875.pdf
 
@@ -647,7 +658,7 @@ LMs对单词序列进行建模。故事是事件序列
     -   多样性(罕见的用词，n-grams 的独特性)
     -   相关输入(语义相似性度量)
     -   简单的长度和重复
-    -   特定于任务的指标，如总结的压缩率
+    -   特定于任务的指标，如摘要的压缩率
 -   虽然这些不衡量整体质量，他们可以帮助我们跟踪一些我们关心的重要品质
 
 **Human evaluation**

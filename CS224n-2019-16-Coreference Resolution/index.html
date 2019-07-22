@@ -1,0 +1,1887 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Looper's homepage">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-16-Coreference Resolution/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="jp">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>16 Coreference Resolution - Science is interesting.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#cs224n-2019" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Science is interesting.
+            </span>
+            <span class="md-header-nav__topic">
+              
+                16 Coreference Resolution
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Attention/" title="ML & DL" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../面经/" title="Interview experience" class="md-tabs__link">
+          Interview experience
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Linux/" title="Math & CS & Coding" class="md-tabs__link">
+          Math & CS & Coding
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Science is interesting.
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      ML & DL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../花书经验法则/" title="花书经验法则" class="md-nav__link">
+      花书经验法则
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../经典网络/" title="经典网络" class="md-nav__link">
+      经典网络
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
+    
+    <label class="md-nav__link" for="nav-3-1">
+      简介
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        简介
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      框架学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        框架学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF++学习笔记/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      书籍笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP Concepts/" title="NLP Concepts" class="md-nav__link">
+      NLP Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL 习题/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
+    
+    <label class="md-nav__link" for="nav-3-4">
+      课程笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        课程笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019 简介/" title="CS224n-2019简介" class="md-nav__link">
+      CS224n-2019简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">
+      CS224n-2019作业笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3" checked>
+    
+    <label class="md-nav__link" for="nav-3-4-3">
+      CS224n-2019学习笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-3-4-3">
+        CS224n-2019学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-01-Introduction and Word Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+      01 Introduction and Word Vectors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-02-Word Vectors 2 and Word Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+      02 Word Vectors 2 and Word Senses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-03-Word Window Classification,Neural Networks, and Matrix Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+      03 Word Window Classification,Neural Networks, and Matrix Calculus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-04-Backpropagation and Computation Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+      04 Backpropagation and Computation Graphs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-05-Linguistic Structure Dependency Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+      05 Linguistic Structure Dependency Parsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-06-The probability of a sentence Recurrent Neural Networks and Language Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+      06 The probability of a sentence Recurrent Neural Networks and Language Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-07-Vanishing Gradients and Fancy RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+      07 Vanishing Gradients and Fancy RNNs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+      08 Machine Translation, Sequence-to-sequence and Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-09-Practical Tips for Final Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
+      09 Practical Tips for Final Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-10-Question Answering and the Default Final Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+      10 Question Answering and the Default Final Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-11-ConvNets for NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+      11 ConvNets for NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-12-Information from parts of words Subword Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+      12 Information from parts of words Subword Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-13-Modeling contexts of use Contextual Representations and Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+      13 Modeling contexts of use Contextual Representations and Pretraining
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-14-Transformers and Self-Attention For Generative Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+      14 Transformers and Self-Attention For Generative Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-15-Natural Language Generation/" title="15 Natural Language Generation" class="md-nav__link">
+      15 Natural Language Generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        16 Coreference Resolution
+      </label>
+    
+    <a href="./" title="16 Coreference Resolution" class="md-nav__link md-nav__link--active">
+      16 Coreference Resolution
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16-coreference-resolution" title="Lecture 16 Coreference Resolution" class="md-nav__link">
+    Lecture 16 Coreference Resolution
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-coreference-resolution" title="1. What is Coreference Resolution?" class="md-nav__link">
+    1. What is Coreference Resolution?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mention-detection" title="3. Mention Detection" class="md-nav__link">
+    3. Mention Detection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-on-to-coreference-first-some-linguistics" title="4. On to Coreference! First, some linguistics" class="md-nav__link">
+    4. On to Coreference! First, some linguistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm" title="5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm" class="md-nav__link">
+    5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-coreference-models-mention-pair" title="6. Coreference Models: Mention Pair" class="md-nav__link">
+    6. Coreference Models: Mention Pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-coreference-models-mention-ranking" title="7. Coreference Models: Mention Ranking" class="md-nav__link">
+    7. Coreference Models: Mention Ranking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-end-to-end-model" title="C. End-to-end Model" class="md-nav__link">
+    C. End-to-end Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-last-coreference-approach-clustering-bas" title="8. Last Coreference Approach: Clustering-Bas" class="md-nav__link">
+    8. Last Coreference Approach: Clustering-Bas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-coreference-evaluation" title="9. Coreference Evaluation" class="md-nav__link">
+    9. Coreference Evaluation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Interview experience
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Interview experience
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../面经/" title="我的面经" class="md-nav__link">
+      我的面经
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      实训笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        实训笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">
+      Protobuf
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus/" title="FDBus" class="md-nav__link">
+      FDBus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus API/" title="FDBus API" class="md-nav__link">
+      FDBus API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FDBus内部结构/" title="FDBus内部结构" class="md-nav__link">
+      FDBus内部结构
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">
+      Cross compiler
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Math & CS & Coding
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Math & CS & Coding
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Linux/" title="Linux" class="md-nav__link">
+      Linux
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../专业知识面试准备/" title="CS专业课" class="md-nav__link">
+      CS专业课
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">
+      重点内容
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../历年机试/" title="历年机试" class="md-nav__link">
+      历年机试
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      For MkDocs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-16-coreference-resolution" title="Lecture 16 Coreference Resolution" class="md-nav__link">
+    Lecture 16 Coreference Resolution
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-what-is-coreference-resolution" title="1. What is Coreference Resolution?" class="md-nav__link">
+    1. What is Coreference Resolution?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-mention-detection" title="3. Mention Detection" class="md-nav__link">
+    3. Mention Detection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-on-to-coreference-first-some-linguistics" title="4. On to Coreference! First, some linguistics" class="md-nav__link">
+    4. On to Coreference! First, some linguistics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm" title="5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm" class="md-nav__link">
+    5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-coreference-models-mention-pair" title="6. Coreference Models: Mention Pair" class="md-nav__link">
+    6. Coreference Models: Mention Pair
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-coreference-models-mention-ranking" title="7. Coreference Models: Mention Ranking" class="md-nav__link">
+    7. Coreference Models: Mention Ranking
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-end-to-end-model" title="C. End-to-end Model" class="md-nav__link">
+    C. End-to-end Model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-last-coreference-approach-clustering-bas" title="8. Last Coreference Approach: Clustering-Bas" class="md-nav__link">
+    8. Last Coreference Approach: Clustering-Bas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-coreference-evaluation" title="9. Coreference Evaluation" class="md-nav__link">
+    9. Coreference Evaluation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-16-Coreference Resolution.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
+<ul>
+<li>结合每课时的课件、笔记与推荐读物等整理而成</li>
+<li>作业部分将单独整理</li>
+</ul>
+<h2 id="lecture-16-coreference-resolution">Lecture 16 Coreference Resolution<a class="headerlink" href="#lecture-16-coreference-resolution" title="Permanent link">&para;</a></h2>
+<details class="abstract"><summary>Lecture Plan</summary><ol>
+<li>What is Coreference Resolution? (15 mins)</li>
+<li>Applications of coreference resolution (5 mins)</li>
+<li>Mention Detection (5 mins)</li>
+<li>Some Linguistics: Types of Reference (5 mins) Four Kinds of Coreference Resolution Models</li>
+<li>Rule-based (Hobbs Algorithm) (10 mins)</li>
+<li>Mention-pair models (10 mins)</li>
+<li>
+<p>Mention ranking models (15 mins)</p>
+<ul>
+<li>Including the current state-of-the-art coreference system!</li>
+</ul>
+</li>
+<li>
+<p>Mention clustering model (5 mins – only partial coverage)</p>
+</li>
+<li>
+<p>Evaluation and current results (10 mins)</p>
+</li>
+</ol>
+</details>
+<h3 id="1-what-is-coreference-resolution">1. What is Coreference Resolution?<a class="headerlink" href="#1-what-is-coreference-resolution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>识别所有涉及到相同现实世界实体的 <strong>提及</strong></li>
+<li>He, her 都是实体的提及  mentions of entities </li>
+</ul>
+<p><img alt="image-20190721143456357" src="../imgs/image-20190721143456357.png" /></p>
+<p><img alt="image-20190721143725077" src="../imgs/image-20190721143725077.png" /></p>
+<p><img alt="image-20190721143737610" src="../imgs/image-20190721143737610.png" /></p>
+<p><img alt="image-20190721143756354" src="../imgs/image-20190721143756354.png" /></p>
+<p><img alt="image-20190721144347501" src="../imgs/image-20190721144347501.png" /></p>
+<p><strong>Applications</strong></p>
+<ul>
+<li>全文理解<ul>
+<li>信息提取, 回答问题, 总结, …</li>
+<li>“他生于1961年”(谁?)</li>
+</ul>
+</li>
+<li>机器翻译<ul>
+<li>语言对性别，数量等有不同的特征</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721144757952" src="../imgs/image-20190721144757952.png" /></p>
+<p><img alt="image-20190721144813358" src="../imgs/image-20190721144813358.png" /></p>
+<ul>
+<li>对话系统</li>
+</ul>
+<p><img alt="image-20190721144833546" src="../imgs/image-20190721144833546.png" /></p>
+<p><strong>Coreference Resolution in Two Steps</strong></p>
+<p><img alt="image-20190721144912598" src="../imgs/image-20190721144912598.png" /></p>
+<h3 id="3-mention-detection">3. Mention Detection<a class="headerlink" href="#3-mention-detection" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Mention : 指向某个实体的一段文本</li>
+<li>
+<p>三种 mention</p>
+</li>
+<li>
+<p>Pronouns 代词</p>
+<ul>
+<li>I, your, it, she, him, etc.</li>
+<li>因为代词是 POS 检测结果的一种，所以只要使用 POS 检测器即可</li>
+</ul>
+</li>
+<li>Named entities 命名实体<ul>
+<li>People, places, etc.</li>
+<li>Use a NER system (like hw3)</li>
+</ul>
+</li>
+<li>
+<p>Noun phrases 名词短语</p>
+<ul>
+<li>“a dog,” “the big fluffy cat stuck in the tree”</li>
+<li>Use a parser (especially a  依存解析器 constituency parser – next week!) </li>
+</ul>
+</li>
+<li>
+<p>Marking all pronouns, named entities, and NPs as mentions over-generates mentions</p>
+</li>
+<li>Are these mentions?<ul>
+<li>It is sunny</li>
+<li>Every student</li>
+<li>No student</li>
+<li>The best donut in the world</li>
+<li>100 miles</li>
+</ul>
+</li>
+</ul>
+<p><strong>How to deal with these bad mentions?</strong></p>
+<ul>
+<li>可以训练一个分类器过滤掉 spurious mentions</li>
+<li>更为常见的：保持所有 mentions 作为 “candidate mentions”<ul>
+<li>在你的共指系统运行完成后，丢弃所有的单例引用(即没有被标记为与其他任何东西共同引用的)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Can we avoid a pipelined system?</strong></p>
+<ul>
+<li>我们可以训练一个专门用于 mention 检测的分类器，而不是使用POS标记器、NER系统和解析器。</li>
+<li>甚至端到端共同完成 mention 检测和共指解析，而不是两步</li>
+</ul>
+<h3 id="4-on-to-coreference-first-some-linguistics">4. On to Coreference! First, some linguistics<a class="headerlink" href="#4-on-to-coreference-first-some-linguistics" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Coreference</strong> is when two mentions refer to the same entity in the world 当两个  mention 指向世界上的同一个实体时，被称为共指<ul>
+<li>Barack Obama 和 Obama</li>
+</ul>
+</li>
+<li>相关的语言概念是 anaphora 复指：when a term (anaphor) refers to another term (antecedent)<ul>
+<li>anaphor 的解释在某种程度上取决于 antecedent 先行词的解释</li>
+<li><img alt="image-20190721161814659" src="../imgs/image-20190721161814659.png" /></li>
+</ul>
+</li>
+</ul>
+<p><strong>Anaphora vs Coreference</strong></p>
+<p><img alt="image-20190721161900280" src="../imgs/image-20190721161900280.png" />
+<strong>Not all anaphoric relations are coreferential</strong></p>
+<ul>
+<li>
+<p>Not all noun phrases have reference 不是所有的名词短语都有指代</p>
+<ul>
+<li>Every dancer twisted her knee </li>
+<li>No dancer twisted her knee</li>
+<li>每一个句子有三个NPs；因为第一个是非指示性的，另外两个也不是</li>
+</ul>
+</li>
+<li>
+<p>Not all anaphoric relations are coreferential </p>
+<ul>
+<li>We went to see a concert last night. The tickets were really expensive.</li>
+<li>这被称为桥接回指 bridging anaphora</li>
+</ul>
+<p><img alt="image-20190721162243354" src="../imgs/image-20190721162243354.png" /></p>
+</li>
+<li>
+<p>通常先行词在复指（例如代词）之前，但并不总是</p>
+</li>
+</ul>
+<p><strong>Cataphora</strong></p>
+<p><img alt="image-20190721162438432" src="../imgs/image-20190721162438432.png" /></p>
+<p><strong>Four Kinds of Coreference Models</strong></p>
+<ul>
+<li>Rule-based (pronominal anaphora resolution)</li>
+<li>Mention Pair</li>
+<li>Mention Ranking</li>
+<li>Clustering</li>
+</ul>
+<h3 id="5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm">5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm<a class="headerlink" href="#5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Begin at the NP immediately dominating the pronoun</li>
+<li>Go up tree to first NP or S. Call this X, and the path p.</li>
+<li>Traverse all branches below X to the left of p, left-to-right,breadth-first. Propose as antecedent any NP that has a NP or Sbetween it and X</li>
+<li>If X is the highest S in the sentence, traverse the parse trees ofthe previous sentences in the order of recency. Traverse eachtree left-to-right, breadth first. When an NP is encountered,propose as antecedent. If X not the highest node, go to step 5.</li>
+<li>From node X, go up the tree to the first NP or S. Call it X, andthe path p.</li>
+<li>If X is an NP and the path p to X came from a non-head phraseof X (a specifier or adjunct, such as a possessive, PP, apposition, orrelative clause), propose X as antecedent(The original said “did not pass through the N’ that X immediatelydominates”, but the Penn Treebank grammar lacks N’ nodes….)</li>
+<li>Traverse all branches below X to the left of the path, in a leftto-right, breadth first manner. Propose any NP encountered asthe antecedent</li>
+<li>If X is an S node, traverse all branches of X to the right of thepath but do not go below any NP or S encountered. Proposeany NP as the antecedent.9. Go to step 4</li>
+</ol>
+<p><strong>Hobbs Algorithm Example</strong></p>
+<p><img alt="image-20190721162733091" src="../imgs/image-20190721162733091.png" /></p>
+<p><strong>Knowledge-based Pronominal Coreference</strong></p>
+<p><img alt="image-20190721162940972" src="../imgs/image-20190721162940972.png" /></p>
+<p><strong>Hobbs’ algorithm: commentary</strong></p>
+<p><img alt="image-20190721162959101" src="../imgs/image-20190721162959101.png" /></p>
+<h3 id="6-coreference-models-mention-pair">6. Coreference Models: Mention Pair<a class="headerlink" href="#6-coreference-models-mention-pair" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20190721163018507" src="../imgs/image-20190721163018507.png" /></p>
+<ul>
+<li>训练一个二元分类器，为每一对 mention 的分配共参的概率 <span><span class="MathJax_Preview">p(m_i,m_j)</span><script type="math/tex">p(m_i,m_j)</script></span><ul>
+<li>例如，为了寻找 “she” 的共指，查看所有候选先行词(以前出现的 mention )，并确定哪些与之相关</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721163213728" src="../imgs/image-20190721163213728.png" /></p>
+<p><img alt="image-20190721163305590" src="../imgs/image-20190721163305590.png" /></p>
+<p><img alt="image-20190721163315115" src="../imgs/image-20190721163315115.png" /></p>
+<ul>
+<li>文章的 N 个 mention</li>
+<li>如果 <span><span class="MathJax_Preview">m_i</span><script type="math/tex">m_i</script></span> 和 <span><span class="MathJax_Preview">m_j</span><script type="math/tex">m_j</script></span> 是共指的，则 <span><span class="MathJax_Preview">y_{ij} = 1</span><script type="math/tex">y_{ij} = 1</script></span> ，否则 <span><span class="MathJax_Preview">y_{ij} = -1</span><script type="math/tex">y_{ij} = -1</script></span></li>
+<li>只是训练正常的交叉熵损失(看起来有点不同，因为它是二元分类)</li>
+</ul>
+<p><img alt="image-20190721163451756" src="../imgs/image-20190721163451756.png" /></p>
+<ul>
+<li>遍历 mentions</li>
+<li>遍历候选先行词(前面出现的 mention)</li>
+<li>共指 mention 对应该得到高概率，其他应该得到低概率</li>
+</ul>
+<p><strong>Mention Pair Test Time</strong></p>
+<ul>
+<li>共指解析是一项聚类任务，但是我们只是对 mentions 对进行了评分……该怎么办？</li>
+<li>选择一些阈值(例如0.5)，并将 <span><span class="MathJax_Preview">p(m_i,m_j)</span><script type="math/tex">p(m_i,m_j)</script></span> 在阈值以上的 mentions 对之间添加共指链接</li>
+<li>利用传递闭包得到聚类</li>
+</ul>
+<p><img alt="image-20190721163923441" src="../imgs/image-20190721163923441.png" /></p>
+<p><img alt="image-20190721163932330" src="../imgs/image-20190721163932330.png" /></p>
+<p><img alt="image-20190721163950401" src="../imgs/image-20190721163950401.png" /></p>
+<p><strong>Mention Pair Models: Disadvantage</strong></p>
+<ul>
+<li>假设我们的长文档里有如下的 mentions</li>
+</ul>
+<p><img alt="image-20190721164037034" src="../imgs/image-20190721164037034.png" /></p>
+<ul>
+<li>许多 mentions 只有一个清晰的先行词<ul>
+<li>但我们要求模型来预测它们</li>
+</ul>
+</li>
+<li>解决方案：相反，训练模型只预测每次 mention 的前提<ul>
+<li>在语言上更合理</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-coreference-models-mention-ranking">7. Coreference Models: Mention Ranking<a class="headerlink" href="#7-coreference-models-mention-ranking" title="Permanent link">&para;</a></h3>
+<ul>
+<li>根据模型把其得分最高的先行词分配给每个 mention </li>
+<li>Dummy NA mention 允许模型拒绝将当前 mention 与任何内容联系起来(“singleton” or “first” mention)</li>
+</ul>
+<p><img alt="image-20190721164505507" src="../imgs/image-20190721164505507.png" /></p>
+<p><img alt="image-20190721164512734" src="../imgs/image-20190721164512734.png" /></p>
+<p><img alt="image-20190721164522124" src="../imgs/image-20190721164522124.png" /></p>
+<p><img alt="image-20190721164533323" src="../imgs/image-20190721164533323.png" /></p>
+<p><strong>Coreference Models: Training</strong></p>
+<ul>
+<li>我们希望当前 mention <span><span class="MathJax_Preview">m_j</span><script type="math/tex">m_j</script></span> 与它所关联的任何一个候选先行词相关联。</li>
+<li>在数学上，我们可能想要最大化这个概率</li>
+</ul>
+<p><img alt="image-20190721164743744" src="../imgs/image-20190721164743744.png" /></p>
+<ul>
+<li>该模型可以为一个正确的先行词产生概率 0.9 ，而对其他所有产生较低的概率，并且总和仍然很大</li>
+<li>Turning this into a loss function</li>
+</ul>
+<p><img alt="image-20190721164935839" src="../imgs/image-20190721164935839.png" /></p>
+<p><strong>Mention Ranking Models: Test Time</strong></p>
+<p>和 mention-pair 模型几乎一样，除了每个 mention 只分配一个先行词</p>
+<p><img alt="image-20190721165405721" src="../imgs/image-20190721165405721.png" />
+<strong>How do we compute the probabilities?</strong></p>
+<p>A. Non-neural statistical classifier</p>
+<p>B. Simple neural network</p>
+<p>C. More advanced model using LSTMs, attention</p>
+<p><strong>A. Non-Neural Coref Model: Features</strong></p>
+<p><img alt="image-20190721165613613" src="../imgs/image-20190721165613613.png" /></p>
+<p><strong>B. Neural Coref Model</strong></p>
+<ul>
+<li>标准的前馈神经网络<ul>
+<li>输入层：词嵌入和一些类别特征</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721165720759" src="../imgs/image-20190721165720759.png" /></p>
+<p><strong>Neural Coref Model: Inputs</strong></p>
+<ul>
+<li>嵌入<ul>
+<li>每个 mention 的前两个单词，第一个单词，最后一个单词，头单词，… <ul>
+<li>头单词是 mention 中“最重要”的单词—可以使用解析器找到它</li>
+<li>例如：<em>The fluffy</em> <strong>cat</strong> stuck in the tree</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>仍然需要一些其他特征<ul>
+<li>距离</li>
+<li>文档体裁</li>
+<li>说话者的信息</li>
+</ul>
+</li>
+</ul>
+<h3 id="c-end-to-end-model">C. End-to-end Model<a class="headerlink" href="#c-end-to-end-model" title="Permanent link">&para;</a></h3>
+<ul>
+<li>当前最先进的模型算法(Kenton Lee et al. from UW, EMNLP 2017)</li>
+<li>Mention 排名模型</li>
+<li>改进了简单的前馈神经网络<ul>
+<li>使用LSTM</li>
+<li>使用注意力</li>
+<li>端到端的完成 mention 检测和共指<ul>
+<li>没有 mention 检测步骤！</li>
+<li>而是考虑每段文本(一定长度)作为候选 mention<ul>
+<li>a <strong>span</strong> 是一个连续的序列</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>End-to-end Model</strong></p>
+<ul>
+<li>
+<p>首先将文档里的单词使用词嵌入矩阵和 charCNN embed 为词嵌入</p>
+</li>
+<li>
+<p>接着在文档上运行双向 LSTM</p>
+</li>
+<li>
+<p>接着将每段文本 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 从 <span><span class="MathJax_Preview">\text{START}(i)</span><script type="math/tex">\text{START}(i)</script></span> 到 <span><span class="MathJax_Preview">\text{END}(i)</span><script type="math/tex">\text{END}(i)</script></span> 表示为一个向量</p>
+<ul>
+<li>General, General Electric, General Electric said, … Electric, Electric said, …都会得到它自己的向量表示</li>
+<li>span representation</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\boldsymbol{g}_{i}=\left[\boldsymbol{x}_{\operatorname{START}(i)}^{*}, \boldsymbol{x}_{\mathrm{END}(i)}^{*}, \hat{\boldsymbol{x}}_{i}, \phi(i)\right]
+</div>
+<script type="math/tex; mode=display">
+\boldsymbol{g}_{i}=\left[\boldsymbol{x}_{\operatorname{START}(i)}^{*}, \boldsymbol{x}_{\mathrm{END}(i)}^{*}, \hat{\boldsymbol{x}}_{i}, \phi(i)\right]
+</script>
+</div>
+<ul>
+<li>例如 “the postal service”</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721171408231" src="../imgs/image-20190721171408231.png" /></p>
+<ul>
+<li><span><span class="MathJax_Preview">\hat{\boldsymbol{x}}_{i}</span><script type="math/tex">\hat{\boldsymbol{x}}_{i}</script></span> 是 span 的注意力加权平均的词向量</li>
+</ul>
+<p><img alt="image-20190721171528549" src="../imgs/image-20190721171528549.png" /></p>
+<ul>
+<li>为什么要在 span 中引入所有的这些不同的项</li>
+</ul>
+<p><img alt="image-20190721171610826" src="../imgs/image-20190721171610826.png" /></p>
+<ul>
+<li>最后，为每个 span 对打分来决定他们是不是共指 mentions</li>
+</ul>
+<p><img alt="image-20190721171653128" src="../imgs/image-20190721171653128.png" /></p>
+<ul>
+<li>打分函数以 span representations 作为输入</li>
+</ul>
+<p><img alt="image-20190721171745965" src="../imgs/image-20190721171745965.png" /></p>
+<ul>
+<li>为每对 span 打分是棘手的<ul>
+<li>一个文档中有 <span><span class="MathJax_Preview">O(T^2)</span><script type="math/tex">O(T^2)</script></span> spans，T 是词的个数</li>
+<li><span><span class="MathJax_Preview">O(T^4)</span><script type="math/tex">O(T^4)</script></span> 的运行时间</li>
+<li>所以必须做大量的修剪工作(只考虑一些可能是 mention 的span)</li>
+</ul>
+</li>
+<li>关注学习哪些单词是重要的在提到(有点像头单词)</li>
+</ul>
+<p><img alt="image-20190721172019696" src="../imgs/image-20190721172019696.png" /></p>
+<h3 id="8-last-coreference-approach-clustering-bas">8. Last Coreference Approach: Clustering-Bas<a class="headerlink" href="#8-last-coreference-approach-clustering-bas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>共指是个聚类任务，让我们使用一个聚类算法吧<ul>
+<li>特别是我们将使用 agglomerative 聚类</li>
+</ul>
+</li>
+<li>开始时，每个 mention 在它自己的单独集群中</li>
+<li>每一步合并两个集群<ul>
+<li>使用模型来打分那些聚类合并是好的</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721172233722" src="../imgs/image-20190721172233722.png" /></p>
+<p><img alt="image-20190721172307881" src="../imgs/image-20190721172307881.png" /></p>
+<p><strong>Clustering Model Architecture</strong></p>
+<p>From Clark &amp; Manning, 2016</p>
+<p><img alt="image-20190721172327952" src="../imgs/image-20190721172327952.png" /></p>
+<ul>
+<li>首先为每个 mention 对生成一个向量<ul>
+<li>例如，前馈神经网络模型中的隐藏层的输出</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721172419685" src="../imgs/image-20190721172419685.png" /></p>
+<ul>
+<li>接着将池化操作应用于 mentino-pair 表示的矩阵上，得到一个 cluster-pair 聚类对的表示</li>
+</ul>
+<p><img alt="image-20190721172546287" src="../imgs/image-20190721172546287.png" /></p>
+<ul>
+<li>通过用权重向量与表示向量的点积，对 candidate cluster merge 进行评分<ul>
+<li><span><span class="MathJax_Preview">s\left(\operatorname{MERGE}\left[c_{1}, c_{2}\right]\right)=u^{T} r_{c}\left(c_{1}, c_{2}\right)</span><script type="math/tex">s\left(\operatorname{MERGE}\left[c_{1}, c_{2}\right]\right)=u^{T} r_{c}\left(c_{1}, c_{2}\right)</script></span></li>
+</ul>
+</li>
+<li>当前候选簇的合并，取决于之前的合并<ul>
+<li>所以不能用常规的监督学习</li>
+<li>使用类似强化学习训练模型<ul>
+<li>为每个合并分配奖励：共指评价指标的变化</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-coreference-evaluation">9. Coreference Evaluation<a class="headerlink" href="#9-coreference-evaluation" title="Permanent link">&para;</a></h3>
+<ul>
+<li>许多不同的评价指标：MUC, CEAF, LEA, B-CUBED, BLANC<ul>
+<li>经常使用一些不同评价指标的均值</li>
+</ul>
+</li>
+<li>例如 B-cubed<ul>
+<li>对于每个 mention ，计算其准确率和召回率</li>
+<li>然后平均每个个体的准确率和召回率</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190721173348286" src="../imgs/image-20190721173348286.png" /></p>
+<p><img alt="image-20190721173431004" src="../imgs/image-20190721173431004.png" /></p>
+<p><strong>System Performance</strong></p>
+<ul>
+<li>OntoNotes数据集:~ 3000人类标注的文档<ul>
+<li>英语和中文</li>
+</ul>
+</li>
+<li>Report an F1 score averaged over 3 coreference metrics</li>
+</ul>
+<p><img alt="image-20190721173543814" src="../imgs/image-20190721173543814.png" /></p>
+<p><strong>Where do neural scoring models help?</strong></p>
+<ul>
+<li>特别是对于没有字符串匹配的NPs和命名实体。神经与非神经评分:</li>
+</ul>
+<p><img alt="image-20190721173615208" src="../imgs/image-20190721173615208.png" /></p>
+<p><strong>Conclusion</strong></p>
+<ul>
+<li>共指是一个有用的、具有挑战性和有趣的语言任务<ul>
+<li>许多不同种类的算法系统</li>
+</ul>
+</li>
+<li>系统迅速好转，很大程度上是由于更好的神经模型<ul>
+<li>但总的来说,还没有惊人的结果</li>
+</ul>
+</li>
+<li>Try out a coreference system yourself<ul>
+<li><a href="http://corenlp.run/">http://corenlp.run/</a> (ask for coref in Annotations)</li>
+<li><a href="https://huggingface.co/coref/">https://huggingface.co/coref/</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
+                
+                  
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://looperxx.github.io/CS224n-2019-16-Coreference Resolution/";
+      this.page.identifier =
+        "CS224n-2019-16-Coreference Resolution/";
+    };
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "//https-looperxx-github-io-my-wiki.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../CS224n-2019-15-Natural Language Generation/" title="15 Natural Language Generation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                15 Natural Language Generation
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../面经/" title="我的面经" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                我的面经
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Looper Xiao Xu
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.245445c6.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>

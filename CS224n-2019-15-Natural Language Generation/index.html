@@ -899,6 +899,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-16-Coreference Resolution/" title="16 Coreference Resolution" class="md-nav__link">
+      16 Coreference Resolution
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -1326,7 +1338,7 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <li>答案：解码算法是一种算法，用于从语言模型生成文本</li>
 <li>我们了解了两种解码算法<ul>
 <li>贪婪解码</li>
-<li>光束搜索</li>
+<li>Beam 搜索</li>
 </ul>
 </li>
 </ul>
@@ -1351,7 +1363,7 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <p><img alt="image-20190716161205956" src="../imgs/image-20190716161205956.png" /></p>
 <p><strong>What’s the effect of changing beam size k?</strong></p>
 <ul>
-<li>小的 k 与贪心解码有类似的问题（k = 1）<ul>
+<li>小的 k 与贪心解码有类似的问题（k = 1时就是贪心解码）<ul>
 <li>不符合语法，不自然，荒谬，不正确</li>
 </ul>
 </li>
@@ -1359,8 +1371,12 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <li>增加 k 可以减少上述一些问题</li>
 <li>更大的 k 在计算上更昂贵</li>
 <li>但增加 k 可能会引入其他问题：<ul>
-<li>对于NMT，增加k太多会降低BLEU评分(Tu et al, Koehnet al)。 这主要是因为大 k 光束搜索产生太短的翻译（即使得分归一化）</li>
-<li>在闲聊话等开放式任务中，大 k 可以输出更通用（见下一张幻灯片）</li>
+<li>对于NMT，增加 k 太多会降低BLEU评分(Tu et al, Koehnet al)<ul>
+<li>beam size 和 BLEU 之间存在最优性之间的区别，高概率序列和高的 BLEU 得分是两件独立的事情</li>
+<li>这主要是因为大 k 光束搜索产生太短的翻译（即使得分归一化）</li>
+</ul>
+</li>
+<li>在闲聊话等开放式任务中，大的 k 会输出非常通用的句子（见下一张幻灯片）</li>
 </ul>
 </li>
 </ul>
@@ -1371,11 +1387,11 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 <ul>
 <li>低 beam size<ul>
 <li>更关于话题但是没有意义的</li>
-<li>语法差</li>
+<li>语法差，重复的</li>
 </ul>
 </li>
 <li>高 beam size<ul>
-<li>融合安全</li>
+<li>安全的反应</li>
 <li>“正确”的反应</li>
 <li>但它是通用的，不太相关</li>
 </ul>
@@ -1389,14 +1405,14 @@ P\left(y_{t} | y_{1}, \dots, y_{t-1}, x\right)
 </ul>
 </li>
 <li>Top-n 采样<ul>
-<li>在每个步骤 t ，从 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 中随机采样，仅限于前n个最可能的单词</li>
-<li>与纯采样一样，但截断概率分布</li>
-<li>n = 1是贪婪搜索，n = V是纯采样</li>
+<li>在每个步骤 t ，从 <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 的前 n 个最可能的单词中，进行随机采样（即若V = 10, n = 2，就相当于把选择范围限定在了概率排名前两个的单词，再在这两者之间做采样得到一个单词）</li>
+<li>与纯采样类似，但截断概率分布</li>
+<li>此时，n = 1 是贪婪搜索，n = V 是纯采样</li>
 <li>增加n以获得更多样化/风险的输出</li>
 <li>减少n以获得更通用/安全的输出</li>
 </ul>
 </li>
-<li>这两者都更多比光束搜索更有效——没有多重假设</li>
+<li>这两者都更多比光束搜索更有效率，不用跟踪多个假设</li>
 </ul>
 <p><strong>Softmax temperature</strong></p>
 <ul>
@@ -1423,7 +1439,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </div>
 <ul>
 <li>提高温度 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> : <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 变得更均匀<ul>
-<li>因此产出更多样化（概率分布在词汇中）</li>
+<li>因此输出更多样化（概率分布在词汇中）</li>
 </ul>
 </li>
 <li>降低温度 <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> : <span><span class="MathJax_Preview">P_t</span><script type="math/tex">P_t</script></span> 变得更尖锐<ul>
@@ -1449,24 +1465,27 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </li>
 </ul>
 <h3 id="section-2-nlg-tasks-and-neural-approaches-to-them">Section 2: NLG tasks and neural approaches to them<a class="headerlink" href="#section-2-nlg-tasks-and-neural-approaches-to-them" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>List of summarization datasets, papers, and codebases: <a href="https://github.com/mathsyouth/awesome-text-summarization">https://github.com/mathsyouth/awesome-text-summarization</a></p>
+</blockquote>
 <p><strong>Summarization: task definition</strong></p>
-<p>任务：给定输入文本x，写出更短的总结 y 并包含x的主要信息</p>
+<p>任务：给定输入文本x，写出更短的摘要 y 并包含 x  的主要信息</p>
 <p>摘要可以是单文档，也可以是多文档</p>
 <ul>
 <li>
-<p>单文档意味着我们写一个文档 x 的总结 y</p>
+<p>单文档意味着我们写一个文档 x 的摘要 y</p>
 </li>
 <li>
-<p>多文档意味着我们写一个多个文档 <span><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> 的总结y</p>
+<p>多文档意味着我们写一个多个文档 <span><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> 的摘要y</p>
 </li>
 </ul>
 <p>通常 <span><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> 有重叠的内容：如对同一事件的新闻文章</p>
-<p>在单文档总结，数据集中的源文档具有**不同长度和风格**</p>
+<p>在单文档摘要，数据集中的源文档具有**不同长度和风格**</p>
 <ul>
 <li><strong>Gigaword</strong>: 新闻文章的前一两句 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 标题(即句子压缩)</li>
-<li><strong>LCSTS</strong> (中文微博)：段落 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 句子总结</li>
-<li><strong>NYT, CNN/DailyMail</strong>: 新闻文章  <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> (多个)句子总结</li>
-<li><strong>Wikihow (new!)</strong>: 完整的 how-to 文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 总结句子</li>
+<li><strong>LCSTS</strong> (中文微博)：段落 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 句子摘要</li>
+<li><strong>NYT, CNN/DailyMail</strong>: 新闻文章  <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> (多个)句子摘要</li>
+<li><strong>Wikihow (new!)</strong>: 完整的 how-to 文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 摘要句子</li>
 </ul>
 <p><strong>句子简化</strong> 是一个不同但相关的任务：将源文本改写为更简单（有时是更短）的版本</p>
 <ul>
@@ -1474,15 +1493,15 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>Newsela：新闻文章 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 为儿童写的版本</li>
 </ul>
 <p><strong>Summarization: two main strategies</strong></p>
-<p><strong>抽取式总结 Extractive summarization</strong></p>
+<p><strong>抽取式摘要 Extractive summarization</strong></p>
 <ul>
-<li><strong>选择部分</strong>(通常是句子)的原始文本来形成总结<ul>
+<li><strong>选择部分</strong>(通常是句子)的原始文本来形成摘要<ul>
 <li>更简单</li>
 <li>限定性的（无需解释）</li>
 </ul>
 </li>
 </ul>
-<p><strong>摘要式总结 Abstractive summarization</strong></p>
+<p><strong>抽象式摘要 Abstractive summarization</strong></p>
 <ul>
 <li>使用自然语言生成技术 <strong>生成新的文本</strong><ul>
 <li>更困难</li>
@@ -1492,12 +1511,15 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </ul>
 <p><strong>Pre-neural summarization</strong></p>
 <p><img alt="image-20190716164931012" src="../imgs/image-20190716164931012.png" /></p>
+<blockquote>
+<p>Diagram credit: Speech and Language Processing, Jurafsky and Martin</p>
+</blockquote>
 <ul>
-<li>Pre-neural总结系统大多是抽取式的</li>
+<li>Pre-neural摘要系统大多是抽取式的</li>
 <li>类似Pre-neural MT，他们通常有一个流水线<ul>
 <li><strong>内容选择 Content selection</strong>：选择一些句子</li>
 <li><strong>信息排序 Information ordering</strong>：为选择的句子排序</li>
-<li><strong>句子实现 Sentence realization</strong>：编辑句子的顺序(例如，简化、删除部分、修复连续性问题)</li>
+<li><strong>句子实现 Sentence realization</strong>：编辑并输出句子序列例如，简化、删除部分、修复连续性问题)</li>
 </ul>
 </li>
 </ul>
@@ -1508,7 +1530,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>特性，例如这句话出现在文档的哪里</li>
 </ul>
 </li>
-<li><strong>图论算法</strong> 将文档为一组句子(节点)，每对句子之间存在边<ul>
+<li><strong>图算法</strong> 将文档为一组句子(节点)，每对句子之间存在边<ul>
 <li>边的权重与句子相似度成正比</li>
 <li>使用图算法来识别图中最重要的句子</li>
 </ul>
@@ -1517,11 +1539,14 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p><strong>Summarization evaluation: ROUGE</strong></p>
 <p><strong>ROUGE</strong> (Recall-Oriented Understudy for Gisting Evaluation)</p>
 <p><img alt="image-20190716171149701" src="../imgs/image-20190716171149701.png" /></p>
+<blockquote>
+<p>ROUGE: A Package for Automatic Evaluation of Summaries, Lin, 2004 <a href="http://www.aclweb.org/anthology/W04-1013">http://www.aclweb.org/anthology/W04-1013</a></p>
+</blockquote>
 <p>类似于 BLEU，是基于 n-gram 覆盖的算法，不同之处在于：</p>
 <ul>
 <li>没有简洁惩罚</li>
 <li>基于召回率 recall，BLEU 是基于准确率的<ul>
-<li>可以说，准确率对于MT 来说是更重要的(通过添加简洁惩罚来修正翻译过短)，召回率对于总结来说是更重要的(假设你有一个最大长度限制)</li>
+<li>可以说，准确率对于MT 来说是更重要的(通过添加简洁惩罚来修正翻译过短)，召回率对于摘要来说是更重要的(假设你有一个最大长度限制)，因为需要抓住重要的信息</li>
 <li>但是，通常使用 F1(结合了准确率和召回率)</li>
 </ul>
 </li>
@@ -1533,7 +1558,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p>2015: Rush et al. publish the first seq2seq summarization paper</p>
 </li>
 <li>
-<p>单文档摘要总结是一项翻译任务！</p>
+<p>单文档摘要摘要是一项翻译任务！</p>
 </li>
 <li>
 <p>因此我们可以使用标准的 seq2seq + attention NMT 方法</p>
@@ -1560,8 +1585,8 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <ul>
 <li>Seq2seq+attention systems 善于生成流畅的输出，但是不擅长正确的复制细节(如罕见字)</li>
 <li>复制机制使用注意力机制，使seq2seq系统很容易从输入复制单词和短语到输出<ul>
-<li>显然这是非常有用的总结</li>
-<li>允许复制和创造给了我们一个混合抽取/摘要式的方法</li>
+<li>显然这是非常有用的摘要</li>
+<li>允许复制和创造给了我们一个混合了抽取/抽象式的方法</li>
 </ul>
 </li>
 <li>There are several papers proposing copy mechanism variants:<ul>
@@ -1583,7 +1608,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>主要是长短语，有时甚至整个句子</li>
 </ul>
 </li>
-<li><strong>一个原本应该是抽象的系统，会崩溃为一个主要是抽取的系统</strong></li>
+<li><strong>一个原本应该是抽象的摘要系统，会崩溃为一个主要是抽取的系统</strong></li>
 </ul>
 </li>
 <li>另一个问题<ul>
@@ -1594,8 +1619,8 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </ul>
 <p><strong>Neural summarization: better content selection</strong></p>
 <ul>
-<li>回忆：pre-neural总结是不同阶段的内容选择和表面实现(即文本生成)</li>
-<li>标准seq2seq + attention 的总结系统，这两个阶段是混合在一起的<ul>
+<li>回忆：pre-neural摘要是不同阶段的内容选择和表面实现(即文本生成)</li>
+<li>标准seq2seq + attention 的摘要系统，这两个阶段是混合在一起的<ul>
 <li>每一步的译码器(即表面实现)，我们也能进行词级别的内容选择(注意力)</li>
 <li>这是不好的：没有全局内容选择策略</li>
 </ul>
@@ -1610,7 +1635,10 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p>简单但是非常有效！</p>
 <ul>
 <li>更好的整体内容选择策略</li>
-<li>减少长序列的复制(即更摘要的输出)</li>
+<li>减少长序列的复制(即更摘要的输出)<ul>
+<li>因为长序列中包含了很多 don’t-include 的单词，所以模型必须学会跳过这些单词并将那些 include 的单词进行摘要与组合</li>
+</ul>
+</li>
 </ul>
 <p><img alt="image-20190716180841829" src="../imgs/image-20190716180841829.png" /></p>
 <p><strong>Neural summarization via Reinforcement Learning</strong></p>
@@ -1651,7 +1679,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p>由于开放式自由NLG的难度，pre-neural对话系统经常使用预定义的模板，或从语料库中检索一个适当的反应的反应</p>
 </li>
 <li>
-<p>总结过去的研究，自2015年以来有很多论文将seq2seq方法应用到对话，从而导致自由对话系统兴趣重燃</p>
+<p>摘要过去的研究，自2015年以来有很多论文将seq2seq方法应用到对话，从而导致自由对话系统兴趣重燃</p>
 </li>
 <li>
 <p>一些早期seq2seq对话文章包括</p>
@@ -1683,7 +1711,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>或因为改变话题为无关的一些事情</li>
 </ul>
 </li>
-<li>一个解决方案：优化输入S 和回复 T 之间的最大互信息Maximum Mutual Information (MMI)</li>
+<li>一个解决方案：不是去优化输入 S 到回答 T 的映射来最大化给定 S 的 T 的条件概率，而是去优化输入S 和回复 T 之间的最大互信息Maximum Mutual Information (MMI)，从而抑制模型去选择那些本来就很大概率的通用句子</li>
 </ul>
 <div>
 <div class="MathJax_Preview">
@@ -1710,8 +1738,8 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </li>
 <li>条件修复<ul>
 <li>用一些额外的内容训练解码器(如抽样一些内容词并处理)</li>
-<li>训练 retrieve-and-refine 模型而不是 generatefrom-scratch 模型<ul>
-<li>即从语料库采样人类书面话语并编辑它以适应当前的场景</li>
+<li>训练 retrieve-and-refine 模型而不是 generate-from-scratch 模型<ul>
+<li>即从语料库采样人类话语并编辑以适应当前的场景</li>
 <li>这通常产生更加多样化/人类/有趣的话语！</li>
 </ul>
 </li>
@@ -1762,7 +1790,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </blockquote>
 <ul>
 <li>他们发现用标准的最大似然(ML)来训练seq2seq系统的产生了流利但是缺乏策略的对话代理</li>
-<li>和Paulus等的总结论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)</li>
+<li>和Paulus等的摘要论文一样，他们使用强化学习来优化离散奖励(代理自己在训练自己)</li>
 <li>RL 的基于目的的目标函数与 ML 目标函数相结合</li>
 <li>潜在的陷阱：如果两两对话时，代理优化的只是RL目标，他们可能会偏离英语</li>
 </ul>
@@ -1820,11 +1848,11 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 </blockquote>
 <ul>
 <li>问题：如何解决缺乏并行数据的问题</li>
-<li>回答：使用一个通用的sentence-encoding space</li>
-<li>Skip-thought 向量空间是一种通用的句子嵌入方法</li>
+<li>回答：使用一个通用的 sentence-encoding space</li>
+<li>Skip-thought 向量是一种通用的句子嵌入方法</li>
 <li>想法类似于我们如何学通过预测周围的文字来学习单词的嵌入</li>
-<li>使用COCO (图片标题数据集)，学习从图像到其标题的Skip-thought编码的映射</li>
-<li>使用目标样式语料库(Taylor Swift lyrics)，训练RNN-LM将Skip-thought向量解码为原文</li>
+<li>使用 COCO (图片标题数据集)，学习从图像到其标题的 Skip-thought 编码的映射</li>
+<li>使用目标样式语料库(Taylor Swift lyrics)，训练RNN-LM， 将Skip-thought向量解码为原文</li>
 <li>把两个房在一起</li>
 </ul>
 <blockquote>
@@ -1988,11 +2016,11 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p>基于词重叠的指标(BLEU，ROUGE，METROR，F1，等等)</p>
 <ul>
 <li>我们知道他们不适合机器翻译</li>
-<li>对于总结而言是更差的，这比机器翻译更开放<ul>
-<li>不幸的是，与抽象系统相比，提取摘要系统也更受ROUGE青睐</li>
+<li>对于摘要而言是更差的评价标准，因为摘要比机器翻译更开放<ul>
+<li>不幸的是，与抽象摘要系统相比，提取摘要系统更受ROUGE青睐</li>
 </ul>
 </li>
-<li>对于对话甚至更糟，这比总结更开放<ul>
+<li>对于对话甚至更糟，这比摘要更开放<ul>
 <li>类似的例子还有故事生成</li>
 </ul>
 </li>
@@ -2003,6 +2031,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <p>Dialogue Response Generation, Liu et al, 2017 <a href="https://arxiv.org/pdf/1603.08023.pdf">https://arxiv.org/pdf/1603.08023.pdf</a></p>
 </blockquote>
 <p><img alt="image-20190716200935260" src="../imgs/image-20190716200935260.png" /></p>
+<p>上图展示了 BLEU-2、Embedding average 和人类评价的相关性都不高</p>
 <blockquote>
 <p>Why We Need New Evaluation Metrics for NLG, Novikova et al, 2017 <a href="https://arxiv.org/pdf/1707.06875.pdf">https://arxiv.org/pdf/1707.06875.pdf</a></p>
 </blockquote>
@@ -2029,7 +2058,7 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
 <li>多样性(罕见的用词，n-grams 的独特性)</li>
 <li>相关输入(语义相似性度量)</li>
 <li>简单的长度和重复</li>
-<li>特定于任务的指标，如总结的压缩率</li>
+<li>特定于任务的指标，如摘要的压缩率</li>
 </ul>
 </li>
 <li>虽然这些不衡量整体质量，他们可以帮助我们跟踪一些我们关心的重要品质</li>
@@ -2230,13 +2259,13 @@ P_{t}(w)=\frac{\exp \left(s_{w} / \tau\right)}{\sum_{w^{\prime} \in V} \exp \lef
           </a>
         
         
-          <a href="../面经/" title="我的面经" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../CS224n-2019-16-Coreference Resolution/" title="16 Coreference Resolution" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                我的面经
+                16 Coreference Resolution
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
