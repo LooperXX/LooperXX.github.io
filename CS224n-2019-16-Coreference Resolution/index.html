@@ -1415,11 +1415,11 @@
 <p>Marking all pronouns, named entities, and NPs as mentions over-generates mentions</p>
 </li>
 <li>Are these mentions?<ul>
-<li>It is sunny</li>
-<li>Every student</li>
-<li>No student</li>
-<li>The best donut in the world</li>
-<li>100 miles</li>
+<li><strong>It</strong> is sunny</li>
+<li><strong>Every student</strong></li>
+<li><strong>No student</strong></li>
+<li><strong>The best donut in the world</strong></li>
+<li><strong>100 miles</strong></li>
 </ul>
 </li>
 </ul>
@@ -1427,7 +1427,7 @@
 <ul>
 <li>可以训练一个分类器过滤掉 spurious mentions</li>
 <li>更为常见的：保持所有 mentions 作为 “candidate mentions”<ul>
-<li>在你的共指系统运行完成后，丢弃所有的单例引用(即没有被标记为与其他任何东西共同引用的)</li>
+<li>在你的共指系统运行完成后，丢弃所有的单个引用(即没有被标记为与其他任何东西共同引用的)</li>
 </ul>
 </li>
 </ul>
@@ -1442,7 +1442,7 @@
 <li>Barack Obama 和 Obama</li>
 </ul>
 </li>
-<li>相关的语言概念是 anaphora 复指：when a term (anaphor) refers to another term (antecedent)<ul>
+<li>相关的语言概念是 anaphora 回指：when a term (anaphor) refers to another term (antecedent) 下文的词返指或代替上文的词<ul>
 <li>anaphor 的解释在某种程度上取决于 antecedent 先行词的解释</li>
 <li><img alt="image-20190721161814659" src="../imgs/image-20190721161814659.png" /></li>
 </ul>
@@ -1455,8 +1455,8 @@
 <li>
 <p>Not all noun phrases have reference 不是所有的名词短语都有指代</p>
 <ul>
-<li>Every dancer twisted her knee </li>
-<li>No dancer twisted her knee</li>
+<li><strong>Every dancer</strong> twisted <strong>her knee</strong> </li>
+<li><strong>No dancer</strong> twisted <strong>her knee</strong></li>
 <li>每一个句子有三个NPs；因为第一个是非指示性的，另外两个也不是</li>
 </ul>
 </li>
@@ -1469,7 +1469,7 @@
 <p><img alt="image-20190721162243354" src="../imgs/image-20190721162243354.png" /></p>
 </li>
 <li>
-<p>通常先行词在复指（例如代词）之前，但并不总是</p>
+<p>通常先行词在回指（例如代词）之前，但并不总是</p>
 </li>
 </ul>
 <p><strong>Cataphora</strong></p>
@@ -1482,6 +1482,7 @@
 <li>Clustering</li>
 </ul>
 <h3 id="5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm">5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm<a class="headerlink" href="#5-traditional-pronominal-anaphora-resolutionhobbs-naive-algorithm" title="Permanent link">&para;</a></h3>
+<p>该算法仅用于寻找代词的参考，也可以延伸到其他案例</p>
 <ol>
 <li>Begin at the NP immediately dominating the pronoun</li>
 <li>Go up tree to first NP or S. Call this X, and the path p.</li>
@@ -1494,8 +1495,13 @@
 </ol>
 <p><strong>Hobbs Algorithm Example</strong></p>
 <p><img alt="image-20190721162733091" src="../imgs/image-20190721162733091.png" /></p>
+<p>这是一个很简单、但效果很好的共指消解的 baseline</p>
 <p><strong>Knowledge-based Pronominal Coreference</strong></p>
 <p><img alt="image-20190721162940972" src="../imgs/image-20190721162940972.png" /></p>
+<ul>
+<li>第一个例子中，两个句子具有相同的语法结构，但是出于外部世界知识，我们能够知道倒水之后，满的是杯子（第一个 it 指向的是 the cup），空的是壶（第二个 it 指向的是 the pitcher）</li>
+<li><strong>可以将世界知识编码成共指问题</strong></li>
+</ul>
 <p><strong>Hobbs’ algorithm: commentary</strong></p>
 <p><img alt="image-20190721162959101" src="../imgs/image-20190721162959101.png" /></p>
 <h3 id="6-coreference-models-mention-pair">6. Coreference Models: Mention Pair<a class="headerlink" href="#6-coreference-models-mention-pair" title="Permanent link">&para;</a></h3>
@@ -1528,7 +1534,14 @@
 </ul>
 <p><img alt="image-20190721163923441" src="../imgs/image-20190721163923441.png" /></p>
 <p><img alt="image-20190721163932330" src="../imgs/image-20190721163932330.png" /></p>
+<ul>
+<li>共指连接具有传递性，即使没有不存在 link 的两者也会由于传递性，处于同一个聚类中</li>
+</ul>
 <p><img alt="image-20190721163950401" src="../imgs/image-20190721163950401.png" /></p>
+<ul>
+<li>这是十分危险的</li>
+<li>如果有一个共指 link 判断错误，就会导致两个 cluster 被错误地合并了</li>
+</ul>
 <p><strong>Mention Pair Models: Disadvantage</strong></p>
 <ul>
 <li>假设我们的长文档里有如下的 mentions</li>
@@ -1539,7 +1552,7 @@
 <li>但我们要求模型来预测它们</li>
 </ul>
 </li>
-<li>解决方案：相反，训练模型只预测每次 mention 的前提<ul>
+<li>解决方案：相反，训练模型为每个 mention 只预测一个先行词<ul>
 <li>在语言上更合理</li>
 </ul>
 </li>
@@ -1547,7 +1560,10 @@
 <h3 id="7-coreference-models-mention-ranking">7. Coreference Models: Mention Ranking<a class="headerlink" href="#7-coreference-models-mention-ranking" title="Permanent link">&para;</a></h3>
 <ul>
 <li>根据模型把其得分最高的先行词分配给每个 mention </li>
-<li>Dummy NA mention 允许模型拒绝将当前 mention 与任何内容联系起来(“singleton” or “first” mention)</li>
+<li>虚拟的 NA mention 允许模型拒绝将当前 mention 与任何内容联系起来(“singleton” or “first” mention)<ul>
+<li>first mention： I 只能选择 NA 作为自己的先行词</li>
+</ul>
+</li>
 </ul>
 <p><img alt="image-20190721164505507" src="../imgs/image-20190721164505507.png" /></p>
 <p><img alt="image-20190721164512734" src="../imgs/image-20190721164512734.png" /></p>
@@ -1560,6 +1576,12 @@
 </ul>
 <p><img alt="image-20190721164743744" src="../imgs/image-20190721164743744.png" /></p>
 <ul>
+<li>公式解析<ul>
+<li>遍历候选先行词集合</li>
+<li>对于 <span><span class="MathJax_Preview">y_{ij} = 1</span><script type="math/tex">y_{ij} = 1</script></span> 的情况，即 <span><span class="MathJax_Preview">m_i</span><script type="math/tex">m_i</script></span> 与 <span><span class="MathJax_Preview">m_j</span><script type="math/tex">m_j</script></span> 是共指关系的情况</li>
+<li>我们希望模型能够给予其高可能性</li>
+</ul>
+</li>
 <li>该模型可以为一个正确的先行词产生概率 0.9 ，而对其他所有产生较低的概率，并且总和仍然很大</li>
 <li>Turning this into a loss function</li>
 </ul>
@@ -1573,6 +1595,17 @@
 <p>C. More advanced model using LSTMs, attention</p>
 <p><strong>A. Non-Neural Coref Model: Features</strong></p>
 <p><img alt="image-20190721165613613" src="../imgs/image-20190721165613613.png" /></p>
+<ul>
+<li>使用如下特征进行分类<ul>
+<li>人、数字、性别</li>
+<li>语义相容性</li>
+<li>句法约束</li>
+<li>更近的提到的实体是个可能的参考对象</li>
+<li>语法角色：偏好主语位置的实体</li>
+<li>排比</li>
+</ul>
+</li>
+</ul>
 <p><strong>B. Neural Coref Model</strong></p>
 <ul>
 <li>标准的前馈神经网络<ul>
@@ -1584,8 +1617,8 @@
 <p><strong>Neural Coref Model: Inputs</strong></p>
 <ul>
 <li>嵌入<ul>
-<li>每个 mention 的前两个单词，第一个单词，最后一个单词，头单词，… <ul>
-<li>头单词是 mention 中“最重要”的单词—可以使用解析器找到它</li>
+<li>每个 mention 的前两个单词，第一个单词，最后一个单词，head word，… <ul>
+<li>head word是 mention 中“最重要”的单词—可以使用解析器找到它</li>
 <li>例如：<em>The fluffy</em> <strong>cat</strong> stuck in the tree</li>
 </ul>
 </li>
@@ -1627,6 +1660,7 @@
 <li>
 <p>接着将每段文本 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 从 <span><span class="MathJax_Preview">\text{START}(i)</span><script type="math/tex">\text{START}(i)</script></span> 到 <span><span class="MathJax_Preview">\text{END}(i)</span><script type="math/tex">\text{END}(i)</script></span> 表示为一个向量</p>
 <ul>
+<li>span 是句子中任何单词的连续子句</li>
 <li>General, General Electric, General Electric said, … Electric, Electric said, …都会得到它自己的向量表示</li>
 <li>span representation</li>
 </ul>
@@ -1667,13 +1701,13 @@
 <li>所以必须做大量的修剪工作(只考虑一些可能是 mention 的span)</li>
 </ul>
 </li>
-<li>关注学习哪些单词是重要的在提到(有点像头单词)</li>
+<li>关注学习哪些单词是重要的在提到(有点像head word)</li>
 </ul>
 <p><img alt="image-20190721172019696" src="../imgs/image-20190721172019696.png" /></p>
 <h3 id="8-last-coreference-approach-clustering-bas">8. Last Coreference Approach: Clustering-Bas<a class="headerlink" href="#8-last-coreference-approach-clustering-bas" title="Permanent link">&para;</a></h3>
 <ul>
 <li>共指是个聚类任务，让我们使用一个聚类算法吧<ul>
-<li>特别是我们将使用 agglomerative 聚类</li>
+<li>特别是我们将使用 agglomerative 凝聚聚类 自下而上的</li>
 </ul>
 </li>
 <li>开始时，每个 mention 在它自己的单独集群中</li>

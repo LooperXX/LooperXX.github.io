@@ -13,7 +13,7 @@
         <meta name="description" content="Looper's homepage">
       
       
-        <link rel="canonical" href="https://looperxx.github.io/事理图谱研讨会记录/">
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-17-Multitask Learning/">
       
       
         <meta name="author" content="Looper - Xiao Xu">
@@ -42,7 +42,7 @@
     
     
       
-        <title>事理图谱研讨会记录 - Science is interesting.</title>
+        <title>CS224n-2019 学习笔记 - Science is interesting.</title>
       
     
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#_1" tabindex="1" class="md-skip">
+      <a href="#cs224n-2019" tabindex="1" class="md-skip">
         跳转至
       </a>
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                事理图谱研讨会记录
+                CS224n-2019 学习笔记
               
             </span>
           
@@ -1087,76 +1087,22 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">目录</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="李生老师致辞" class="md-nav__link">
-    李生老师致辞
+  <a href="#lecture-12-information-from-parts-of-words-subword-models" title="Lecture 12 Information from parts of words: Subword Models" class="md-nav__link">
+    Lecture 12 Information from parts of words: Subword Models
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="从知识图谱到事理图谱——丁效老师" class="md-nav__link">
-    从知识图谱到事理图谱——丁效老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="关联语法与精准解析——白硕老师" class="md-nav__link">
-    关联语法与精准解析——白硕老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" title="意合图和意合图谱——荀恩东老师" class="md-nav__link">
-    意合图和意合图谱——荀恩东老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" title="事件抽取技术及金融事件图谱构建——赵军老师" class="md-nav__link">
-    事件抽取技术及金融事件图谱构建——赵军老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" title="百度事件图谱及其应用——吴华老师" class="md-nav__link">
-    百度事件图谱及其应用——吴华老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#aser-a-large-scale-eventuality-knowledge-graph" title="ASER: A Large-scale Eventuality Knowledge Graph——宋阳秋老师" class="md-nav__link">
-    ASER: A Large-scale Eventuality Knowledge Graph——宋阳秋老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_7" title="政治领域事理图谱的构建——李斌阳老师" class="md-nav__link">
-    政治领域事理图谱的构建——李斌阳老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" title="金融事理图谱的构建与应用——李金龙老师" class="md-nav__link">
-    金融事理图谱的构建与应用——李金龙老师
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_9" title="事理图谱在金融行业的应用实践和前景展望——李世奇老师" class="md-nav__link">
-    事理图谱在金融行业的应用实践和前景展望——李世奇老师
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
   </a>
   
 </li>
@@ -1183,304 +1129,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/事理图谱研讨会记录.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-17-Multitask Learning.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>事理图谱研讨会记录</h1>
-                
-                <h2 id="_1">李生老师致辞<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>感知 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 认知</p>
-<p>最近的天花板理论</p>
+                <h1 id="cs224n-2019">CS224n-2019 学习笔记<a class="headerlink" href="#cs224n-2019" title="Permanent link">&para;</a></h1>
 <ul>
-<li>四大特点<ul>
-<li>贪婪<ul>
-<li>监督学习 数据标注 数据越多越好</li>
+<li>结合每课时的课件、笔记与推荐读物等整理而成</li>
+<li>作业部分将单独整理</li>
 </ul>
-</li>
-<li>脆弱<ul>
-<li>经不起折腾</li>
-<li>鲁棒性差</li>
-<li>数据质量的好坏影像了效果</li>
-<li>数据的偏见 导致了 最后学习效果的偏差</li>
-</ul>
-</li>
-<li>暗箱<ul>
-<li>不可解释性</li>
-</ul>
-</li>
-<li>表征学习<ul>
-<li>没有接触到实质</li>
-<li>知其然不知其所以然</li>
-<li>没有知识 不善于推理</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>知识图谱和事理图谱相结合</li>
-<li>深度学习是受脑启发的方法，算法上依赖于概率<ul>
-<li>从类脑到仿生脑 更难</li>
-<li>英特尔最近的芯片</li>
-</ul>
-</li>
-<li>相关关系 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 因果关系 离不开统计学习 但需要解决逻辑推理与知识推理问题<ul>
-<li>知识驱动下的逻辑推理？</li>
-</ul>
-</li>
-<li>事理图谱的内涵 知识图谱已有，那么事理图谱研究的必要性？意义？搞清楚研究的价值和意义 可行性</li>
-</ul>
-<h2 id="_2">从知识图谱到事理图谱——丁效老师<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>大数据驱动产业变革：人工处理 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 智能处理</p>
-<p>人类知识：语言知识 常识知识 世界知识 领域知识</p>
-<ul>
-<li>
-<p>知识库的构建、表示及应用</p>
-<ul>
-<li>手工 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 自动</li>
-<li>封闭域 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 开放域</li>
-</ul>
-</li>
-<li>
-<p>大词林</p>
-</li>
-</ul>
-<p>知识库普遍以概念及概念间的关系为核心，缺乏对事理逻辑的挖掘</p>
-<ul>
-<li>事理图谱是一个事理逻辑知识库</li>
-<li>研究对象：不是体词性的实体及其关系，而是谓词性的事件及其关系</li>
-<li>组织形式：有向图有环图</li>
-</ul>
-<p>事件关系可归纳：从事实到认知</p>
-<ul>
-<li>地震 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 房屋倒塌 与主体和客体并无大关系 与事件词有关</li>
-<li>事实与认知之间的互相转化</li>
-</ul>
-<p>事件间的</p>
-<ul>
-<li>顺承关系</li>
-<li>因果关系（是顺承关系的子集）</li>
-<li>上下位关系 名词 / 动词</li>
-<li>条件关系 <span><span class="MathJax_Preview">\neq</span><script type="math/tex">\neq</script></span> 因果关系 原因 <span><span class="MathJax_Preview">\neq</span><script type="math/tex">\neq</script></span> 理由</li>
-</ul>
-<p>事理图谱的三种典型子图结构</p>
-<ul>
-<li>链状</li>
-<li>树状</li>
-<li>环状</li>
-</ul>
-<p>事件的属性：程度和持续时间等</p>
-<p>因果事件对的获取</p>
-<ul>
-<li>无监督“因果事件关系”抽取方法<ul>
-<li>规则模板+POS</li>
-</ul>
-</li>
-<li>有监督“因果事件关系”抽取方法<ul>
-<li>基于 BERT 的因果关系抽取模型<ul>
-<li>使用 BERT 进行特征抽取</li>
-<li>使用 BILSTM+CRF 输出标签</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>因果强度计算</p>
-<p>事件上下位关系的获取</p>
-<ul>
-<li>大词林的事件名词性上下位关系获取</li>
-</ul>
-<p>事件合一</p>
-<ul>
-<li>将因果形成图谱形态</li>
-</ul>
-<p>事件泛化</p>
-<ul>
-<li>基于事件聚类的泛化方法</li>
-</ul>
-<p>应用</p>
-<ul>
-<li>脚本事件预测<ul>
-<li>描述特征场景/上下文的事件序列</li>
-<li>基于可扩展的 GNN ，解决了 GNN 中的事件推理问题</li>
-</ul>
-</li>
-</ul>
-<p>知识表示形式有待突破，推理能力有待提高</p>
-<p>以谓词性短语为节点，以事件演化（顺承、因果、上下位等）为边的事理图谱方兴未艾</p>
-<h2 id="_3">关联语法与精准解析——白硕老师<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<p>符号序列 符号结构 语义</p>
-<ul>
-<li>单一阶段的“意合”</li>
-<li>二阶段的“结构制导”</li>
-</ul>
-<p>太硬核了 <img alt="😓" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/4.0/png/64/1f613.png" title=":sweat:" /></p>
-<h2 id="_4">意合图和意合图谱——荀恩东老师<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>柑橘</p>
-<h2 id="_5">事件抽取技术及金融事件图谱构建——赵军老师<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>知识图谱</p>
-<ul>
-<li>实体图谱 </li>
-<li>事件图谱</li>
-</ul>
-<p>事件抽取</p>
-<ul>
-<li>事件的发现</li>
-<li>事件元素的抽取</li>
-</ul>
-<p>事件关系的抽取</p>
-<p>我们的工作</p>
-<ul>
-<li>特征表示<ul>
-<li>句法分析的效率低</li>
-<li>基于动态多池化CNN 的事件抽取方法<ul>
-<li>词向量学习</li>
-<li>词汇级特征抽取</li>
-<li>句子级特征抽取</li>
-<li>分类输出</li>
-<li>更适合一句话包含多个事件的情况</li>
-</ul>
-</li>
-<li>上下文中的实体信息有助于事件消歧</li>
-</ul>
-</li>
-<li>训练数据的生成和扩展<ul>
-<li>运用结构化的知识库自动生成语料</li>
-</ul>
-</li>
-<li>多事件协同抽取<ul>
-<li>一句话的多个事件之间具有依存关系</li>
-</ul>
-</li>
-<li>篇章级事件抽取</li>
-</ul>
-<p>总结</p>
-<ul>
-<li>事件知识不可获取</li>
-<li>开放域的事件抽取很难</li>
-<li>限定域的事件抽取式可行的</li>
-<li>未来工作<ul>
-<li>事件关系的抽取</li>
-<li>人机协同模式</li>
-</ul>
-</li>
-</ul>
-<h2 id="_6">百度事件图谱及其应用——吴华老师<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<p>多元异构知识图谱</p>
-<p>事件图谱</p>
-<ul>
-<li>事件的属性 事件之间的关联关系 构成以事件为基本单位的知识网</li>
-<li>认知能力</li>
-<li>技术价值<ul>
-<li>构建 计算 推理</li>
-</ul>
-</li>
-<li>应用价值<ul>
-<li>热点事件跟踪</li>
-<li>事件分析</li>
-</ul>
-</li>
-</ul>
-<p>事件图谱难点
-    -   事件标准
-       -   定义 表示 评估标准
-    -   事件抽取技术难度
-       -   异构的来源
-       -   复杂的知识
-       -   高精度的要求
-   -   事件应用场景
-           -   尚未大规模应用在业务场景</p>
-<p>事件图谱技术视图</p>
-<ul>
-<li>事件图谱应用</li>
-<li>事件图谱认知计算<ul>
-<li>事件链接</li>
-<li>事件计算</li>
-<li>事件推理</li>
-</ul>
-</li>
-<li>事件图谱构建</li>
-<li>数据</li>
-</ul>
-<p>事件图谱的构建</p>
-<ul>
-<li>事件知识的表示</li>
-<li>事件检测</li>
-<li>事件抽取</li>
-<li>事件关系抽取</li>
-</ul>
-<p>应用</p>
-<ul>
-<li>热点发现</li>
-<li>搜索</li>
-<li>机器写作</li>
-<li>POI 检测</li>
-<li>对话意图图谱</li>
-</ul>
-<p>汇聚知识 理解世界 用科技让复杂的世界更简单</p>
-<p>PaddleNLP</p>
-<h2 id="aser-a-large-scale-eventuality-knowledge-graph">ASER: A Large-scale Eventuality Knowledge Graph——宋阳秋老师<a class="headerlink" href="#aser-a-large-scale-eventuality-knowledge-graph" title="Permanent link">&para;</a></h2>
-<p>对话中需要使用很多的常识知识 如何获取常识</p>
-<ul>
-<li>对于人而言，是一个 good judgement </li>
-<li>对于机器而言，是fact 是 大部分人的认知</li>
-</ul>
-<p>怎么样定义一个语义机元 semantic primitive units</p>
-<ul>
-<li>不能太短或太长</li>
-</ul>
-<h2 id="_7">政治领域事理图谱的构建——李斌阳老师<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p>国际政治：复杂的 动态的 国际范围的社会现象</p>
-<ul>
-<li>国际关系主要研究各国之间政治上的重大事件及其影响</li>
-<li>研究一国对上述事件的态度</li>
-</ul>
-<p>研究</p>
-<ul>
-<li>民众态度<ul>
-<li>政治意识形态</li>
-<li>利用知识图谱结构辅助判别意识形态</li>
-</ul>
-</li>
-<li>执政党立场</li>
-</ul>
-<p>民众形态</p>
-<ul>
-<li>意识形态的定义：人的观点 思想 态度 价值观等的总和</li>
-<li>人不应该被任何事物左右</li>
-<li>但人会被一些事物左右</li>
-<li>人的意识形态由其所关注的话题/事件决定</li>
-</ul>
-<p>政治事件的描述与影响</p>
-<p>政治事件的预测</p>
-<p>难点</p>
-<ul>
-<li>事件的泛政治化<ul>
-<li>体育退赛、MH370</li>
-</ul>
-</li>
-<li>传统事件分类不适用<ul>
-<li>ACE 事件类别</li>
-</ul>
-</li>
-<li>事件表示难以归一化<ul>
-<li>恐怖袭击 vs  发动圣战</li>
-</ul>
-</li>
-<li>事件关系难以客观评价<ul>
-<li>“专家意见”</li>
-</ul>
-</li>
-<li>时限难确定，推理难推广<ul>
-<li>压倒骆驼的最后一根稻草</li>
-</ul>
-</li>
-</ul>
-<p>知识图谱+观点 是成功的 未来希望推广至 事理图谱+观点</p>
-<h2 id="_8">金融事理图谱的构建与应用——李金龙老师<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>事件 只有分类体系 没有逻辑体系 无法承载广泛应用</p>
-<p>有些事件具有可预测性 有些无法进行预测</p>
-<p>事理图谱怎么用来优化事件的提取</p>
-<h2 id="_9">事理图谱在金融行业的应用实践和前景展望——李世奇老师<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>借贷+资管 是金融最重要的核心</p>
+<h2 id="lecture-12-information-from-parts-of-words-subword-models">Lecture 12 Information from parts of words: Subword Models<a class="headerlink" href="#lecture-12-information-from-parts-of-words-subword-models" title="Permanent link">&para;</a></h2>
+<details class="abstract"><summary>Lecture Plan</summary><ol>
+<li>A tiny bit of linguistics</li>
+<li>Purely character-level models</li>
+<li>Subword-models: Byte Pair Encoding and friends</li>
+<li>Hybrid character and word level models</li>
+<li>fastText</li>
+</ol>
+</details>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
                 
                   
                 
@@ -1493,9 +1165,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://looperxx.github.io/事理图谱研讨会记录/";
+      this.page.url = "https://looperxx.github.io/CS224n-2019-17-Multitask Learning/";
       this.page.identifier =
-        "事理图谱研讨会记录/";
+        "CS224n-2019-17-Multitask Learning/";
     };
     (function() {
       var d = document, s = d.createElement("script");

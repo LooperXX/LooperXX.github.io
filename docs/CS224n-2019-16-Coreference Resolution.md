@@ -72,17 +72,17 @@
 
 -   Marking all pronouns, named entities, and NPs as mentions over-generates mentions
 -   Are these mentions?
-    -   It is sunny
-    -   Every student
-    -   No student
-    -   The best donut in the world
-    -   100 miles
+    -   **It** is sunny
+    -   **Every student**
+    -   **No student**
+    -   **The best donut in the world**
+    -   **100 miles**
 
 **How to deal with these bad mentions?**
 
 -   可以训练一个分类器过滤掉 spurious mentions
 -   更为常见的：保持所有 mentions 作为 “candidate mentions”
-    -   在你的共指系统运行完成后，丢弃所有的单例引用(即没有被标记为与其他任何东西共同引用的)
+    -   在你的共指系统运行完成后，丢弃所有的单个引用(即没有被标记为与其他任何东西共同引用的)
 
 **Can we avoid a pipelined system?**
 
@@ -93,7 +93,7 @@
 
 -   **Coreference** is when two mentions refer to the same entity in the world 当两个  mention 指向世界上的同一个实体时，被称为共指
     -   Barack Obama 和 Obama
--   相关的语言概念是 anaphora 复指：when a term (anaphor) refers to another term (antecedent)
+-   相关的语言概念是 anaphora 回指：when a term (anaphor) refers to another term (antecedent) 下文的词返指或代替上文的词
     -   anaphor 的解释在某种程度上取决于 antecedent 先行词的解释
     -   ![image-20190721161814659](imgs/image-20190721161814659.png)
 
@@ -104,8 +104,8 @@
 
 -   Not all noun phrases have reference 不是所有的名词短语都有指代
 
-    -   Every dancer twisted her knee 
-    -   No dancer twisted her knee
+    -   **Every dancer** twisted **her knee** 
+    -   **No dancer** twisted **her knee**
     -   每一个句子有三个NPs；因为第一个是非指示性的，另外两个也不是
 
 -   Not all anaphoric relations are coreferential 
@@ -115,7 +115,7 @@
 
     ![image-20190721162243354](imgs/image-20190721162243354.png)
 
--   通常先行词在复指（例如代词）之前，但并不总是
+-   通常先行词在回指（例如代词）之前，但并不总是
 
 **Cataphora**
 
@@ -130,6 +130,8 @@
 
 ### 5. Traditional pronominal anaphora resolution:Hobbs’ naive algorithm
 
+该算法仅用于寻找代词的参考，也可以延伸到其他案例
+
 1.  Begin at the NP immediately dominating the pronoun
 2.  Go up tree to first NP or S. Call this X, and the path p.
 3.  Traverse all branches below X to the left of p, left-to-right,breadth-first. Propose as antecedent any NP that has a NP or Sbetween it and X
@@ -143,9 +145,14 @@
 
 ![image-20190721162733091](imgs/image-20190721162733091.png)
 
+这是一个很简单、但效果很好的共指消解的 baseline
+
 **Knowledge-based Pronominal Coreference**
 
 ![image-20190721162940972](imgs/image-20190721162940972.png)
+
+-   第一个例子中，两个句子具有相同的语法结构，但是出于外部世界知识，我们能够知道倒水之后，满的是杯子（第一个 it 指向的是 the cup），空的是壶（第二个 it 指向的是 the pitcher）
+-   **可以将世界知识编码成共指问题**
 
 **Hobbs’ algorithm: commentary**
 
@@ -184,7 +191,12 @@
 
 ![image-20190721163932330](imgs/image-20190721163932330.png)
 
+-   共指连接具有传递性，即使没有不存在 link 的两者也会由于传递性，处于同一个聚类中
+
 ![image-20190721163950401](imgs/image-20190721163950401.png)
+
+-   这是十分危险的
+-   如果有一个共指 link 判断错误，就会导致两个 cluster 被错误地合并了
 
 **Mention Pair Models: Disadvantage**
 
@@ -194,13 +206,14 @@
 
 -   许多 mentions 只有一个清晰的先行词
     -   但我们要求模型来预测它们
--   解决方案：相反，训练模型只预测每次 mention 的前提
+-   解决方案：相反，训练模型为每个 mention 只预测一个先行词
     -   在语言上更合理
 
 ### 7. Coreference Models: Mention Ranking
 
 -   根据模型把其得分最高的先行词分配给每个 mention 
--   Dummy NA mention 允许模型拒绝将当前 mention 与任何内容联系起来(“singleton” or “first” mention)
+-   虚拟的 NA mention 允许模型拒绝将当前 mention 与任何内容联系起来(“singleton” or “first” mention)
+    -   first mention： I 只能选择 NA 作为自己的先行词
 
 ![image-20190721164505507](imgs/image-20190721164505507.png)
 
@@ -217,6 +230,10 @@
 
 ![image-20190721164743744](imgs/image-20190721164743744.png)
 
+-   公式解析
+    -   遍历候选先行词集合
+    -   对于 $y_{ij} = 1$ 的情况，即 $m_i$ 与 $m_j$ 是共指关系的情况
+    -   我们希望模型能够给予其高可能性
 -   该模型可以为一个正确的先行词产生概率 0.9 ，而对其他所有产生较低的概率，并且总和仍然很大
 -   Turning this into a loss function
 
@@ -239,6 +256,14 @@ C. More advanced model using LSTMs, attention
 
 ![image-20190721165613613](imgs/image-20190721165613613.png)
 
+-   使用如下特征进行分类
+    -   人、数字、性别
+    -   语义相容性
+    -   句法约束
+    -   更近的提到的实体是个可能的参考对象
+    -   语法角色：偏好主语位置的实体
+    -   排比
+
 **B. Neural Coref Model**
 
 -   标准的前馈神经网络
@@ -249,8 +274,8 @@ C. More advanced model using LSTMs, attention
 **Neural Coref Model: Inputs**
 
 -   嵌入
-    -   每个 mention 的前两个单词，第一个单词，最后一个单词，头单词，… 
-        -   头单词是 mention 中“最重要”的单词—可以使用解析器找到它
+    -   每个 mention 的前两个单词，第一个单词，最后一个单词，head word，… 
+        -   head word是 mention 中“最重要”的单词—可以使用解析器找到它
         -   例如：*The fluffy* **cat** stuck in the tree
 -   仍然需要一些其他特征
     -   距离
@@ -277,13 +302,14 @@ C. More advanced model using LSTMs, attention
 
 -   接着将每段文本 $i$ 从 $\text{START}(i)$ 到 $\text{END}(i)$ 表示为一个向量
 
+    -   span 是句子中任何单词的连续子句
     -   General, General Electric, General Electric said, … Electric, Electric said, …都会得到它自己的向量表示
-    -   span representation
-
+-   span representation
+    
     $$
     \boldsymbol{g}_{i}=\left[\boldsymbol{x}_{\operatorname{START}(i)}^{*}, \boldsymbol{x}_{\mathrm{END}(i)}^{*}, \hat{\boldsymbol{x}}_{i}, \phi(i)\right]
-    $$
-
+$$
+    
     -   例如 “the postal service”
 
 ![image-20190721171408231](imgs/image-20190721171408231.png)
@@ -308,14 +334,14 @@ C. More advanced model using LSTMs, attention
     -   一个文档中有 $O(T^2)$ spans，T 是词的个数
     -   $O(T^4)$ 的运行时间
     -   所以必须做大量的修剪工作(只考虑一些可能是 mention 的span)
--   关注学习哪些单词是重要的在提到(有点像头单词)
+-   关注学习哪些单词是重要的在提到(有点像head word)
 
 ![image-20190721172019696](imgs/image-20190721172019696.png)
 
 ### 8. Last Coreference Approach: Clustering-Bas
 
 -   共指是个聚类任务，让我们使用一个聚类算法吧
-    -   特别是我们将使用 agglomerative 聚类
+    -   特别是我们将使用 agglomerative 凝聚聚类 自下而上的
 -   开始时，每个 mention 在它自己的单独集群中
 -   每一步合并两个集群
     -   使用模型来打分那些聚类合并是好的
