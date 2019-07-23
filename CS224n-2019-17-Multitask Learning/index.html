@@ -42,7 +42,7 @@
     
     
       
-        <title>CS224n-2019 学习笔记 - Science is interesting.</title>
+        <title>17 Multitask Learning - Science is interesting.</title>
       
     
     
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                CS224n-2019 学习笔记
+                17 Multitask Learning
               
             </span>
           
@@ -177,14 +177,16 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href=".." title="Home" class="md-tabs__link md-tabs__link--active">
+      <a href=".." title="Home" class="md-tabs__link">
         Home
       </a>
     
@@ -405,10 +407,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       NLP
@@ -568,10 +572,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4" checked>
     
     <label class="md-nav__link" for="nav-3-4">
       课程笔记
@@ -611,10 +617,12 @@
           
           
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3" checked>
     
     <label class="md-nav__link" for="nav-3-4-3">
       CS224n-2019学习笔记
@@ -815,6 +823,69 @@
     <a href="../CS224n-2019-16-Coreference Resolution/" title="16 Coreference Resolution" class="md-nav__link">
       16 Coreference Resolution
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        17 Multitask Learning
+      </label>
+    
+    <a href="./" title="17 Multitask Learning" class="md-nav__link md-nav__link--active">
+      17 Multitask Learning
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-17-multitask-learning" title="Lecture 17 Multitask Learning" class="md-nav__link">
+    Lecture 17 Multitask Learning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+        <li class="md-nav__item">
+          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+            评论
+          </a>
+        </li>
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -1094,8 +1165,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lecture-12-information-from-parts-of-words-subword-models" title="Lecture 12 Information from parts of words: Subword Models" class="md-nav__link">
-    Lecture 12 Information from parts of words: Subword Models
+  <a href="#lecture-17-multitask-learning" title="Lecture 17 Multitask Learning" class="md-nav__link">
+    Lecture 17 Multitask Learning
   </a>
   
 </li>
@@ -1137,15 +1208,197 @@
 <li>结合每课时的课件、笔记与推荐读物等整理而成</li>
 <li>作业部分将单独整理</li>
 </ul>
-<h2 id="lecture-12-information-from-parts-of-words-subword-models">Lecture 12 Information from parts of words: Subword Models<a class="headerlink" href="#lecture-12-information-from-parts-of-words-subword-models" title="Permanent link">&para;</a></h2>
-<details class="abstract"><summary>Lecture Plan</summary><ol>
-<li>A tiny bit of linguistics</li>
-<li>Purely character-level models</li>
-<li>Subword-models: Byte Pair Encoding and friends</li>
-<li>Hybrid character and word level models</li>
-<li>fastText</li>
-</ol>
-</details>
+<h2 id="lecture-17-multitask-learning">Lecture 17 Multitask Learning<a class="headerlink" href="#lecture-17-multitask-learning" title="Permanent link">&para;</a></h2>
+<p><strong>The Natural Language Decathlon: Multitask Learning as Question Answering</strong></p>
+<p><img alt="image-20190722230235350" src="../imgs/image-20190722230235350.png" /></p>
+<p><strong>The Limits of Single-task Learning</strong></p>
+<ul>
+<li>鉴于{dataset，task，model，metric}，近年来性能得到了很大改善</li>
+<li>只要 <span><span class="MathJax_Preview">|\text{dataset}| &gt; 1000 \times C</span><script type="math/tex">|\text{dataset}| > 1000 \times C</script></span> ，我们就可以得到当前的最优结果 (C是输出类别的个数)</li>
+<li>对于更一般的 Al，我们需要在单个模型中继续学习</li>
+<li>模型通常从随机开始，仅部分预训练 <img alt="😞" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/4.0/png/64/1f61e.png" title=":disappointed:" /></li>
+</ul>
+<p><strong>Pre-training and sharing knowledge is great!</strong></p>
+<p><img alt="image-20190722233737113" src="../imgs/image-20190722233737113.png" /></p>
+<p><strong>Why has weight &amp; model sharing not happened as much in NLP?</strong></p>
+<ul>
+<li>NLP需要多种推理：逻辑，语言，情感，视觉，++</li>
+<li>需要短期和长期记忆</li>
+<li>NLP被分为中间任务和单独任务以取得进展<ul>
+<li>在每个社区中追逐基准</li>
+</ul>
+</li>
+<li>一个无人监督的任务可以解决所有问题吗？不可以</li>
+<li>语言显然需要监督</li>
+</ul>
+<p><strong>Why a unified multi-task model for NLP?</strong></p>
+<ul>
+<li>多任务学习是一般NLP系统的<u>阻碍</u></li>
+<li>统一模型可以决定如何转移知识（领域适应，权重分享，转移和零射击学习）</li>
+<li>统一的多任务模型可以<ul>
+<li>更容易适应新任务</li>
+<li>简化部署到生产的时间</li>
+<li>降低标准，让更多人解决新任务</li>
+<li>潜在地转向持续学习</li>
+</ul>
+</li>
+</ul>
+<p><strong>How to express many NLP tasks in the same framework?</strong></p>
+<ul>
+<li>序列标记<ul>
+<li>命名实体识别，aspect specific sentiment </li>
+</ul>
+</li>
+<li>文字分类<ul>
+<li>对话状态跟踪，情绪分类</li>
+</ul>
+</li>
+<li>Seq2seq<ul>
+<li>机器翻译，总结，问答</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190722234639005" src="../imgs/image-20190722234639005.png" /></p>
+<p><strong>The Natural Language Decathlon (decaNLP)</strong></p>
+<p><img alt="image-20190722235904970" src="../imgs/image-20190722235904970.png" /></p>
+<ul>
+<li>把 10 项不同的任务都写成了 QA 的形式，进行训练与测试</li>
+</ul>
+<p><strong>Multitask Learning as Question Answering</strong></p>
+<p><img alt="image-20190722235953660" src="../imgs/image-20190722235953660.png" /></p>
+<ul>
+<li>Meta-Supervised learning 元监督学习 ：<span><span class="MathJax_Preview">\text { From }\{x, y\} \text { to }\{x, t, y\}(t \text { is the task })</span><script type="math/tex">\text { From }\{x, y\} \text { to }\{x, t, y\}(t \text { is the task })</script></span></li>
+<li>使用问题 q 作为任务 t 的自然描述，以使模型使用语言信息来连接任务</li>
+<li>y 是 q 的答案，x 是回答 q 所必需的上下文</li>
+</ul>
+<p><strong>Designing a model for decaNLP</strong></p>
+<p>需求：</p>
+<ul>
+<li>没有任务特定的模块或参数，因为我们假设任务ID是未提供的</li>
+<li>必须能够在内部进行调整以执行不同的任务</li>
+<li>应该为看不见的任务留下零射击推断的可能性</li>
+</ul>
+<p><strong>A Multitask Question Answering Network for decaNLP</strong></p>
+<p><img alt="image-20190723000319226" src="../imgs/image-20190723000319226.png" /></p>
+<p><img alt="image-20190723094601544" src="../imgs/image-20190723094601544.png" /></p>
+<ul>
+<li>以一段上下文开始</li>
+<li>问一个问题</li>
+<li>一次生成答案的一个单词，通过<ul>
+<li>指向上下文</li>
+<li>指向问题</li>
+<li>或者从额外的词汇表中选择一个单词</li>
+</ul>
+</li>
+<li>每个输出单词的指针切换都在这三个选项中切换</li>
+</ul>
+<p><strong>Multitask Question Answering Network (MQAN)</strong></p>
+<p><img alt="image-20190723000558828" src="../imgs/image-20190723000558828.png" /></p>
+<ul>
+<li>For code and leaderboard see <a href="http://www.decaNLP.com">www.decaNLP.com</a></li>
+<li>固定的 GloVe 词嵌入 + 字符级的 n-gram 嵌入 <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> Linear <span><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> Shared BiLSTM with skip connection<ul>
+<li><img alt="image-20190723000813189" src="../imgs/image-20190723000813189.png" /></li>
+</ul>
+</li>
+<li>从一个序列到另一个序列的注意力总结，并通过跳过连接再次返回<ul>
+<li><img alt="image-20190723000820616" src="../imgs/image-20190723000820616.png" /></li>
+</ul>
+</li>
+<li>分离BiLSTM以减少维数，两个变压器层，另一个BiLSTM<ul>
+<li><img alt="image-20190723000847329" src="../imgs/image-20190723000847329.png" /></li>
+</ul>
+</li>
+<li>自回归解码器使用固定的 GloVe 和字符 n-gram 嵌入，两个变压器层和一个LSTM层来参加编码器最后三层的输出<ul>
+<li><img alt="image-20190723001037457" src="../imgs/image-20190723001037457.png" /></li>
+</ul>
+</li>
+<li>LSTM解码器状态用于计算上下文与问题中的被用作指针注意力分布问题<ul>
+<li><img alt="image-20190723001203672" src="../imgs/image-20190723001203672.png" /></li>
+</ul>
+</li>
+<li>对上下文和问题的关注会影响两个**开关**：<ul>
+<li>gamma决定是复制还是从外部词汇表中选择</li>
+<li>lambda决定是从上下文还是在问题中复制</li>
+<li><img alt="image-20190723001317970" src="../imgs/image-20190723001317970.png" /></li>
+</ul>
+</li>
+<li><img alt="image-20190723001332804" src="../imgs/image-20190723001332804.png" /></li>
+</ul>
+<p><img alt="image-20190723001444684" src="../imgs/image-20190723001444684.png" /></p>
+<ul>
+<li>S2S 是 seq2seq</li>
+<li>+SelfAtt = plus self attention</li>
+<li>+CoAtt = plus coattention</li>
+<li>+QPtr = plus question pointer == MQAN</li>
+<li>Transformer 层在单任务和多任务设置中有 收益</li>
+<li>多任务训练一开始会获得很差的效果（干扰和遗忘），但是如果顺序训练这些任务，将很快就会好起来</li>
+<li>QA和SRL有很强的关联性</li>
+<li>指向问题至关重要</li>
+<li>多任务处理有助于实现零射击</li>
+<li>组合的单任务模型和单个多任务模型之间存在差距</li>
+</ul>
+<p><strong>Training Strategies: Fully Joint</strong></p>
+<p>简单的全联合训练策略</p>
+<p><img alt="image-20190723001844618" src="../imgs/image-20190723001844618.png" /></p>
+<p><img alt="image-20190723001858272" src="../imgs/image-20190723001858272.png" /></p>
+<p><strong>Training Strategies: Anti-Curriculum Pre-training</strong></p>
+<p><img alt="image-20190723001919657" src="../imgs/image-20190723001919657.png" /></p>
+<p><img alt="image-20190723001937196" src="../imgs/image-20190723001937196.png" /></p>
+<p><img alt="image-20190723001951823" src="../imgs/image-20190723001951823.png" /></p>
+<p><img alt="image-20190723001959807" src="../imgs/image-20190723001959807.png" /></p>
+<p><img alt="image-20190723002008316" src="../imgs/image-20190723002008316.png" /></p>
+<ul>
+<li>困难：在单任务设置中收敛多少次迭代</li>
+<li>
+<p>带红色的任务：预训练阶段包含的任务</p>
+</li>
+<li>
+<p>QA 的 Anti-curriculum 反课程预训练改进了完全联合培训</p>
+</li>
+<li>但MT仍然很糟糕</li>
+</ul>
+<p><strong>Closing the Gap: Some Recent Experiments</strong></p>
+<p><img alt="image-20190723002255241" src="../imgs/image-20190723002255241.png" /></p>
+<p><img alt="image-20190723102202010" src="../imgs/image-20190723102202010.png" /></p>
+<p><strong>Where MQAN Points</strong></p>
+<p><img alt="image-20190723002343646" src="../imgs/image-20190723002343646.png" /></p>
+<ul>
+<li>答案从上下文或问题中正确的复制</li>
+<li>没有混淆模型应该执行哪个任务或使用哪个输出空间</li>
+</ul>
+<p><strong>Pretraining on decaNLP improves final performance</strong></p>
+<ul>
+<li>例如额外的 IWSLT language pairs </li>
+<li>或者是新的类似 NER 的任务</li>
+</ul>
+<p><img alt="image-20190723002526948" src="../imgs/image-20190723002526948.png" /></p>
+<p><strong>Zero-Shot Domain Adaptation of pretrained MQAN:</strong></p>
+<ul>
+<li>在 Amazon and Yelp reviews 上获得了 80% 的 精确率</li>
+<li>在 SNLI 上获得了 62% （参数微调的版本获得了 87% 的精确率，比使用随机初始化的高 2%）</li>
+</ul>
+<p><strong>Zero-Shot Classification</strong></p>
+<ul>
+<li>问题指针使得我们可以处理问题的改变（例如，将标签转换为满意/支持和消极/悲伤/不支持）而无需任何额外的微调</li>
+<li>使模型无需训练即可响应新任务</li>
+</ul>
+<p><img alt="image-20190723002905041" src="../imgs/image-20190723002905041.png" /></p>
+<p><strong>decaNLP: A Benchmark for Generalized NLP</strong></p>
+<ul>
+<li>为多个NLP任务训练单问题回答模型</li>
+<li>解决方案<ul>
+<li>更一般的语言理解</li>
+<li>多任务学习</li>
+<li>领域适应</li>
+<li>迁移学习</li>
+<li>权重分享，预训练，微调（对于NLP的ImageNet-CNN？）</li>
+<li>零射击学习</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190723003057521" src="../imgs/image-20190723003057521.png" /></p>
+<p><img alt="image-20190723103523393" src="../imgs/image-20190723103523393.png" /></p>
+<p><a href="https://einstein.ai">https://einstein.ai</a></p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
@@ -1185,6 +1438,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../CS224n-2019-16-Coreference Resolution/" title="16 Coreference Resolution" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                16 Coreference Resolution
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../面经/" title="我的面经" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                我的面经
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
