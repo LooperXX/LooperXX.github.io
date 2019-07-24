@@ -521,7 +521,7 @@ $$
 -   将我们刚刚手工完成的转换成算法
 -   用于深度学习软件框架(TensorFlow, PyTorch, Chainer, etc.)
 
-## Notes 03 Neural Networks, Backpropagation(Lecture 03 and 04)
+## Notes 03 Neural Networks, Backpropagation
 
 ??? abstract "Keyphrases"
 

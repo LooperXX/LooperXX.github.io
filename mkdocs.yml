@@ -50,6 +50,7 @@ nav:
           - '15 Natural Language Generation' : 'CS224n-2019-15-Natural Language Generation.md'
           - '16 Coreference Resolution' : 'CS224n-2019-16-Coreference Resolution.md'
           - '17 Multitask Learning' : 'CS224n-2019-17-Multitask Learning.md'
+          - '18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment' : 'CS224n-2019-18-Tree Recursive Neural Networks, Constituency Parsing, and Sentiment.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
