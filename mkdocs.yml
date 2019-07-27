@@ -51,6 +51,8 @@ nav:
           - '16 Coreference Resolution' : 'CS224n-2019-16-Coreference Resolution.md'
           - '17 Multitask Learning' : 'CS224n-2019-17-Multitask Learning.md'
           - '18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment' : 'CS224n-2019-18-Tree Recursive Neural Networks, Constituency Parsing, and Sentiment.md'
+          - '19 Safety, Bias, and Fairness' : 'CS224n-2019-19-Safety, Bias, and Fairness.md'
+          - '20 Future of NLP + Deep Learning' : 'CS224n-2019-20-Future of NLP + Deep Learning.md'
   - Interview experience:
     - '我的面经' : '面经.md'
     - 实训笔记:
