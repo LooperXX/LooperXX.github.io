@@ -31,9 +31,9 @@
 -   一个人想用语言、符号等来表达的想法。
 -   表达在作品、艺术等方面的思想
 
-理解意义的最普遍的语言方式(***linguistic way***) : 语言符号与语言符号的意义的转化
+理解意义的最普遍的语言方式(**linguistic way**) : 语言符号与语言符号的意义的转化
 $$
-signifier(symbol)\Leftrightarrow signified(idea \ or \ thing) \\
+signifier(symbol)\Leftrightarrow signified(\text{idea or thing}) \\
 = \textbf{denotational semantics}
 $$
 
@@ -354,7 +354,7 @@ Natural language is a discrete/symbolic/categorical system
 在这里，我们介绍一个非常有效的概率模型：Word2vec。Word2vec 是一个软件包实际上包含：
 
 -   **两个算法**：continuous bag-of-words（CBOW）和 skip-gram。CBOW 是根据中心词周围的上下文单词来预测该词的词向量。skip-gram 则相反，是根据中心词预测周围上下文的词的概率分布。
--   **两个训练方法：**negative sampling 和 hierarchical softmax。Negative sampling 通过抽取负样本来定义目标，hierarchical softmax 通过使用一个有效的树结构来计算所有词的概率来定义目标。
+-   **两个训练方法**：negative sampling 和 hierarchical softmax。Negative sampling 通过抽取负样本来定义目标，hierarchical softmax 通过使用一个有效的树结构来计算所有词的概率来定义目标。
 
 **Language Models (Unigrams, Bigrams, etc.)**
 
@@ -413,7 +413,7 @@ $$
 
 ![1560088203499](imgs/1560088203499.png)
 
-如果有 $\mathcal{V}$ 和 $\mathcal{U}$ ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个**度量两个概率分布的距离**的方法。这里我们采用一个常见的距离/损失方法，交叉熵 $H(\widehat{y}, y)$ 。
+如果有 $\mathcal{V}$ 和 $\mathcal{U}$ ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个 **度量两个概率分布的距离** 的方法。这里我们采用一个常见的距离/损失方法，交叉熵 $H(\widehat{y}, y)$ 。
 
 在离散情况下使用交叉熵可以直观地得出损失函数的公式
 
@@ -616,5 +616,5 @@ model.doesnt_match("breakfast cereal dinner lunch".split())
 
 [斯坦福大学 CS224n自然语言处理与深度学习笔记汇总](<https://zhuanlan.zhihu.com/p/31977759>) {>>这是针对note部分的翻译<<}
 
-[Notes on Stanford CS224n](<https://lintongmao.github.io/>) {>>我的同学[@lintongmao](<https://github.com/lintongmao/>)的学习笔记 采用英文记录 更加符合课程原义<<}
+[Notes on Stanford CS224n](https://lintongmao.github.io/nlp_wv/) (我的同学 [@lintongmao](<https://github.com/lintongmao/>) 的学习笔记)
 

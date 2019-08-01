@@ -1447,9 +1447,9 @@
 <li>一个人想用语言、符号等来表达的想法。</li>
 <li>表达在作品、艺术等方面的思想</li>
 </ul>
-<p>理解意义的最普遍的语言方式(<strong><em>linguistic way</em></strong>) : 语言符号与语言符号的意义的转化
+<p>理解意义的最普遍的语言方式(<strong>linguistic way</strong>) : 语言符号与语言符号的意义的转化
 $$
-signifier(symbol)\Leftrightarrow signified(idea  or  thing) \
+signifier(symbol)\Leftrightarrow signified(\text{idea or thing}) \
 = \textbf{denotational semantics}
 $$</p>
 <div class="admonition info">
@@ -1785,7 +1785,7 @@ $$
 <p>在这里，我们介绍一个非常有效的概率模型：Word2vec。Word2vec 是一个软件包实际上包含：</p>
 <ul>
 <li><strong>两个算法</strong>：continuous bag-of-words（CBOW）和 skip-gram。CBOW 是根据中心词周围的上下文单词来预测该词的词向量。skip-gram 则相反，是根据中心词预测周围上下文的词的概率分布。</li>
-<li>**两个训练方法：**negative sampling 和 hierarchical softmax。Negative sampling 通过抽取负样本来定义目标，hierarchical softmax 通过使用一个有效的树结构来计算所有词的概率来定义目标。</li>
+<li><strong>两个训练方法</strong>：negative sampling 和 hierarchical softmax。Negative sampling 通过抽取负样本来定义目标，hierarchical softmax 通过使用一个有效的树结构来计算所有词的概率来定义目标。</li>
 </ul>
 <p><strong>Language Models (Unigrams, Bigrams, etc.)</strong></p>
 <p>首先，我们需要创建一个模型来为一系列的单词分配概率。我们从一个例子开始：</p>
@@ -1836,7 +1836,7 @@ $$
 </ul>
 <p>下图是 CBOW 模型的计算图示</p>
 <p><img alt="1560088203499" src="../imgs/1560088203499.png" /></p>
-<p>如果有 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个**度量两个概率分布的距离**的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span><span class="MathJax_Preview">H(\widehat{y}, y)</span><script type="math/tex">H(\widehat{y}, y)</script></span> 。</p>
+<p>如果有 <span><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个 <strong>度量两个概率分布的距离</strong> 的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span><span class="MathJax_Preview">H(\widehat{y}, y)</span><script type="math/tex">H(\widehat{y}, y)</script></span> 。</p>
 <p>在离散情况下使用交叉熵可以直观地得出损失函数的公式</p>
 <p>$$
 H(\hat{y}, y)=-\sum_{j=1}^{|V|} y_{j} \log \left(\hat{y}_{j}\right)
@@ -2032,7 +2032,7 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
 <p>以下是整理笔记的过程中参考的博客：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
 <p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
-<p><a href="https://lintongmao.github.io/">Notes on Stanford CS224n</a> <span class="critic comment">我的同学[@lintongmao](&lt;https://github.com/lintongmao/&gt;)的学习笔记 采用英文记录 更加符合课程原义</span></p>
+<p><a href="https://lintongmao.github.io/nlp_wv/">Notes on Stanford CS224n</a> (我的同学 <a href="https://github.com/lintongmao/">@lintongmao</a> 的学习笔记)</p>
                 
                   
                 
