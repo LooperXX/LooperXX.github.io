@@ -255,6 +255,8 @@ Pytorch 中提供了 `torch.nn.utils.rnn.PackedSequence` 的相关 API，输入�
 
 如上操作后，sequence 中的 word-level 的 padding 以及排序工作就完成了，随后进行 char-level 的 padding 以及排序工作
 
+-   这里的 word-level 的 padding，是对每个 batch 的每个句子，都填充为最长的句子长度
+
 首先将原本的 chars 列表进行 padding ：
 
 -   chars list 中的chars[3] 如下图所示
@@ -263,8 +265,9 @@ Pytorch 中提供了 `torch.nn.utils.rnn.PackedSequence` 的相关 API，输入�
 
 -   可以看到 chars[3] 中的为一个 sequence ，其中每一项均为 sequence 中的某一个单词，如 chars[3] 的第 8 项即为一个长度为 2 的单词，由字符 15 和 40 组成
 -   先对每个 sequence 进行 padding，保证 sequence 的长度均为 max_seq_len
+    -   即对 chars[3] 这一 sequence 末尾，添加[[0], [0], [0], …… , [0]]
 -   而后对本 batch 内的所有 sequence 中的所有 word 统计得到最长单词长度 max_word_len
--   初始化 size 为 `batch_size, max_seq_len, max_word_len` 的 zeros Tensor `char_seq_tensor` ，统计当前 chars 中所有单词的长度获得 size 为 `batch_size, max_seq_len` 的 char_seq_lengths
+-   初始化 size 为 `batch_size, max_seq_len, max_word_len` 的 zeros Tensor `char_seq_tensor` ，统计当前 chars 中所有单词的长度，获得 size 为 `batch_size, max_seq_len` 的 char_seq_lengths
 -   将每个 sequence 的每个 word 的每个 char_Id 填入 `char_seq_tensor` 中这样就完成了  char-level 的 padding 工作
 
 接着我们我们对数据做进一步的处理
@@ -284,7 +287,239 @@ Pytorch 中提供了 `torch.nn.utils.rnn.PackedSequence` 的相关 API，输入�
 
 运行时，模型首先需要完成对 char sequence layer 的运算，获得 char-level 的 word embedding，然后与 word embedding 和 feature embedding 进行 concatenate，得到最终的 word embedding，再通过多层的 LSTM / GRU / CNN 得到最终的 size 为 `batch_size, seq_len, classes` 的特征向量
 
-最后的 inference layer 可以有两种选择：CRF / Softmax ，这里我们先讨论 Softmax 的方式。对特征向量的最后一维做 log_softmax ，而后计算其 NLLLoss 并将其 最大值对应的 class 作为分类结果。
+最后的 inference layer 可以有两种选择：CRF / Softmax ，这里我们先讨论 Softmax 的方式。对特征向量的最后一维做 log_softmax ，而后计算其 NLLLoss 并将其最大值对应的 class 作为分类结果。
+
+#### CRF 笔记
+
+条件随机场(Conditional Random Fields, 以下简称CRF)是给定一组输入序列条件下另一组输出序列的条件概率分布模型，在自然语言处理中得到了广泛应用。
+
+##### 什么样的问题需要CRF模型
+
+对于 A 的一天从早到晚的一系列照片，我们想要知道每张照片对应的活动，如果我们用传统的分类思路去做，即对每张照片分别预测其活动类别，这就忽略了活动之间的关联性和内在约束，比如对于一张 A 闭着嘴巴的照片，如果前一张照片是 A 在吃东西的照片，那么此时 A 就是在咀嚼；如果前一张照片是 A 在唱歌的照片，那么此时 A 就是在唱歌。
+
+这就需要我们考虑 **相邻数据的标记信息** 。自然语言处理中的**词性标注**(Part-Of-Speech Tagging)正是此类问题的经典任务。
+
+##### 随机场，马尔科夫随机场，条件随机场
+
+-   随机场：当给每一个位置中按照某种分布随机赋予相空间的一个值之后，其全体就叫做随机场。我们不妨拿种地来打个比方。其中有两个概念：位置（site），相空间（phase space）。“位置”好比是一亩亩农田；“相空间”好比是种的各种庄稼。我们可以给不同的地种上不同的庄稼，这就好比给随机场的每个“位置”，赋予相空间里不同的值。所以，俗气点说，随机场就是在哪块地里种什么庄稼的事情。
+-   马尔科夫随机场：马尔科夫随机场是随机场的特例，它假设随机场中某一个位置的赋值仅仅与和它相邻的位置的赋值有关，和与其不相邻的位置的赋值无关。
+    -   马尔科夫性质：它指的是一个随机变量序列按时间先后关系依次排开的时候，第N+1时刻的分布特性，与N时刻以前的随机变量的取值无关。拿天气来打个比方。如果我们假定天气是马尔可夫的，其意思就是我们假设今天的天气仅仅与昨天的天气存在概率上的关联，而与前天及前天以前的天气没有关系。其它如传染病和谣言的传播规律，就是马尔可夫的。
+-   CRF是马尔科夫随机场的特例，它假设马尔科夫随机场中只有X和Y两种变量，X一般是给定的，而Y一般是在给定X的条件下的输出。这样马尔科夫随机场就特化成了条件随机场。设X与Y是随机变量，P(Y|X)是给定X时Y的条件概率分布，若随机变量Y构成的是一个马尔科夫随机场，则称条件概率分布P(Y|X)是条件随机场。
+
+##### Softmax 与 CRF
+
+![image-20190802135238183](imgs/image-20190802135238183.png)
+
+上图为用 CNN 或者 RNN 对序列进行编码后，使用 Softmax 作为分类器，完成 POS 任务。
+
+以 RNN 为例，对于 t 时刻来说，输出层 yt 受到隐层 ht（包含上下文信息）和输入层 xt（当前的输入）的影响，但是yt和其他时刻的yt'是相互独立的，并没有直接考虑输出的上下文关系。
+
+![image-20190802135618452](imgs/image-20190802135618452.png)
+
+上图为使用 CRF 进行 POS 时，由 CRF 对输出层的上下文关系进行直接关联，即 CRF 在输出端显式地考虑了上下文关联。
+
+##### 公式推导
+
+CRF 的真正精巧的地方，是它以路径为单位，考虑的是路径的概率。 
+
+假如一个输入有 n 帧，每一帧的标签有 k 种可能性，那么理论上就有 $k^n$ 中不同的结果标签序列。我们可以将它用如下的网络图进行简单的可视化。在下图中，每个点代表一个标签的可能性，点之间的连线表示标签之间的关联，而每一种标注结果，都对应着图上的一条完整的路径。
+
+![image-20190802140002173](imgs/image-20190802140002173.png)
+
+而在序列标注任务中，我们的正确答案是一般是唯一的。比如“今天天气不错”，如果对应的分词结果是“今天/天气/不/错”，那么目标输出序列就是 bebess，除此之外别的路径都不符合要求。
+
+换言之，在序列标注任务中，我们的研究的基本单位应该是路径，我们要做的事情，是从 $k^n$ 条路径选出正确的一条，那就意味着，如果将它视为一个分类问题，那么将是 $k^n$ 类中选一类的分类问题。
+
+逐帧 softmax 和 CRF 的根本区别
+
+-    **前者将序列标注看成是 n 个 k 分类问题，后者将序列标注看成是 1 个 k^n 分类问题**
+
+具体来讲，在 CRF 的序列标注问题中，我们要计算的是条件概率：
+$$
+P\left(y_{1}, \ldots, y_{n} | x_{1}, \ldots, x_{n}\right)=P\left(y_{1}, \ldots, y_{n} | x\right), \quad x=\left(x_{1}, \ldots, x_{n}\right)
+$$
+为了得到这个概率的估计，CRF 做了两个假设：
+
+**假设一：该分布是指数族分布**
+
+这个假设意味着存在函数 $f(y_1,…,y_n;x)$，使得
+$$
+P\left(y_{1}, \ldots, y_{n} | \mathbf{x}\right)=\frac{1}{Z(\mathbf{x})} \exp \left(f\left(y_{1}, \ldots, y_{n} ; \mathbf{x}\right)\right)
+$$
+其中 $$ 是归一化因子，因为这个是条件分布，所以归一化因子跟 x 有关。这个 f 函数可以视为一个打分函数，打分函数取指数并归一化后就得到概率分布。 
+
+**假设二：输出之间的关联仅发生在相邻位置，并且关联是指数加性的**
+
+下式为链式结构的条件概率（即 x 与 y 的结构相同）
+$$
+p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{t=1}^{T} \theta_{1}^{\mathrm{T}} f_{1}\left(\mathbf{x}, y_{t}\right)+\sum_{t=1}^{T-1} \theta_{2}^{\mathrm{T}} f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)\right)
+$$
+其中，$f_{1}\left(\mathbf{x}, y_{t}\right)$ 为状态特征，与位置 $t$ 相关；$f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)$ 为转移特征。
+
+#### Pytorch API 
+
+我们先来介绍几个需要用到的 API
+
+##### gather
+
+理解：将 input 按照 dim 指定的维度以及 index 中指定的顺序，取出的对应值
+
+```python
+torch.gather(input, dim, index, out=None, sparse_grad=False) → Tensor
+```
+
+Gathers values along an axis specified by dim.
+
+For a 3-D tensor the output is specified by:
+
+```python
+out[i][j][k] = input[index[i][j][k]][j][k]  # if dim == 0
+out[i][j][k] = input[i][index[i][j][k]][k]  # if dim == 1
+out[i][j][k] = input[i][j][index[i][j][k]]  # if dim == 2
+```
+
+If `input` is an n-dimensional tensor with size $(x_0, x_1..., x_{i-1}, x_i, x_{i+1}, ..., x_{n-1})$ and `dim = i`, then `index` must be an n-dimensional tensor with size $(x_0, x_1, ..., x_{i-1}, y, x_{i+1}, ..., x_{n-1})$ where $y \geq 1$ and `out` will  **have the same size** as `index`.
+
+Parameters
+
+-    **input** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html#torch.Tensor)) – the source tensor
+-   **dim** ([*int*](https://docs.python.org/3/library/functions.html#int)) – the axis along which to index
+-   **index** (*LongTensor*) – the indices of elements to gather
+-   **out** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html#torch.Tensor)*,* *optional*) – the destination tensor
+-   **sparse_grad** ([*bool*](https://docs.python.org/3/library/functions.html#bool)*,optional*) – If `True`, gradient w.r.t. `input` will be a sparse tensor.
+
+Example:
+
+```python
+>>> t = torch.tensor([[1,2],[3,4]])
+>>> torch.gather(t, 1, torch.tensor([[0,0],[1,0]]))
+tensor([[ 1,  1],
+        [ 4,  3]])
+```
+
+##### scatter
+
+将 src 的值按照 dim  和 index 的要求填入 self 中
+
+```python
+scatter_(dim, index, src) → Tensor
+```
+
+Writes all values from the tensor `src` into `self` at the indices specified in the `index` tensor. For each value in `src`, its output index is specified by its index in `src` for `dimension != dim` and by the corresponding value in `index` for `dimension = dim`.
+
+For a 3-D tensor, `self` is updated as:
+
+```python
+self[index[i][j][k]][j][k] = src[i][j][k]  # if dim == 0
+self[i][index[i][j][k]][k] = src[i][j][k]  # if dim == 1
+self[i][j][index[i][j][k]] = src[i][j][k]  # if dim == 2
+```
+
+This is the reverse operation of the manner described in [`gather()`](https://pytorch.org/docs/stable/tensors.html?highlight=scatter#torch.Tensor.gather).
+
+`self`, `index` and `src` (if it is a Tensor) should have same number of dimensions. It is also required that `index.size(d) <= src.size(d)` for all dimensions `d`, and that `index.size(d) <= self.size(d)` for all dimensions `d != dim`.
+
+Moreover, as for [`gather()`](https://pytorch.org/docs/stable/tensors.html?highlight=scatter#torch.Tensor.gather), the values of `index` must be between `0` and `self.size(dim) - 1` inclusive, and all values in a row along the specified dimension [`dim`](https://pytorch.org/docs/stable/tensors.html?highlight=scatter#torch.Tensor.dim) must be unique.
+
+Parameters
+
+-    **dim** ([*int*](https://docs.python.org/3/library/functions.html#int)) – the axis along which to index
+-   **index** (*LongTensor*) – the indices of elements to scatter, can be either empty or the same size of src. When empty, the operation returns identity
+-   **src** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html?highlight=scatter#torch.Tensor)) – the source element(s) to scatter, incase value is not specified
+-   **value** ([*float*](https://docs.python.org/3/library/functions.html#float)) – the source element(s) to scatter, incase src is not specified
+
+Example:
+
+```python
+>>> x = torch.rand(2, 5)
+>>> x
+tensor([[ 0.3992,  0.2908,  0.9044,  0.4850,  0.6004],
+        [ 0.5735,  0.9006,  0.6797,  0.4152,  0.1732]])
+>>> torch.zeros(3, 5).scatter_(0, torch.tensor([[0, 1, 2, 0, 0], [2, 0, 0, 1, 2]]), x)
+tensor([[ 0.3992,  0.9006,  0.6797,  0.4850,  0.6004],
+        [ 0.0000,  0.2908,  0.0000,  0.4152,  0.0000],
+        [ 0.5735,  0.0000,  0.9044,  0.0000,  0.1732]])
+
+>>> z = torch.zeros(2, 4).scatter_(1, torch.tensor([[2], [3]]), 1.23)
+>>> z
+tensor([[ 0.0000,  0.0000,  1.2300,  0.0000],
+        [ 0.0000,  0.0000,  0.0000,  1.2300]])
+```
+
+##### masked_select
+
+从 input 中选出 mask 中为 1 的对应位置的值，拼为新的 Tensor 并返回
+
+```python
+torch.masked_select(input, mask, out=None) → Tensor
+```
+
+Returns a new 1-D tensor which indexes the `input` tensor according to the binary mask `mask` which is a ByteTensor.
+
+The shapes of the `mask` tensor and the `input` tensor don’t need to match, but they must be [broadcastable](https://pytorch.org/docs/stable/notes/broadcasting.html#broadcasting-semantics).
+
+NOTE
+
+The returned tensor does **not** use the same storage as the original tensor
+
+Parameters
+
+-    **input** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html#torch.Tensor)) – the input data
+-   **mask** ([*ByteTensor*](https://pytorch.org/docs/stable/tensors.html#torch.ByteTensor)) – the tensor containing the binary mask to index with
+-   **out** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html#torch.Tensor)*,* *optional*) – the output tensor
+
+Example:
+
+```python
+>>> x = torch.randn(3, 4)
+>>> x
+tensor([[ 0.3552, -2.3825, -0.8297,  0.3477],
+        [-1.2035,  1.2252,  0.5002,  0.6248],
+        [ 0.1307, -2.0608,  0.1244,  2.0139]])
+>>> mask = x.ge(0.5)
+>>> mask
+tensor([[ 0,  0,  0,  0],
+        [ 0,  1,  1,  1],
+        [ 0,  0,  0,  1]], dtype=torch.uint8)
+>>> torch.masked_select(x, mask)
+tensor([ 1.2252,  0.5002,  0.6248,  2.0139])
+```
+
+##### masked_scatter\_
+
+将 mask 为 1 的对应 source 中的值复制到 self 中
+
+```python
+masked_scatter_(mask, source) 
+```
+
+Copies elements from `source` into `self` tensor at positions where the `mask` is one. The shape of `mask`must be [broadcastable](https://pytorch.org/docs/stable/notes/broadcasting.html#broadcasting-semantics) with the shape of the underlying tensor. The `source` should have at least as many elements as the number of ones in `mask`
+
+Parameters
+
+-    **mask** ([*ByteTensor*](https://pytorch.org/docs/stable/tensors.html?highlight=masked_scatter#torch.ByteTensor)) – the binary mask
+-   **source** ([*Tensor*](https://pytorch.org/docs/stable/tensors.html?highlight=masked_scatter#torch.Tensor)) – the tensor to copy from
+
+NOTE
+
+The `mask` operates on the `self` tensor, not on the given `source` tensor.
+
+##### masked_fill\_
+
+将 mask 为 1 的 self 中的对应位置的值改为 value
+
+```python
+masked_fill_(mask, value)
+```
+
+Fills elements of `self` tensor with `value` where `mask` is one. The shape of `mask` must be [broadcastable](https://pytorch.org/docs/stable/notes/broadcasting.html#broadcasting-semantics) with the shape of the underlying tensor.
+
+Parameters
+
+-    **mask** ([*ByteTensor*](https://pytorch.org/docs/stable/tensors.html?highlight=masked_scatter#torch.ByteTensor)) – the binary mask
+-   **value** ([*float*](https://docs.python.org/3/library/functions.html#float)) – the value to fill in with
+
+#### CRF 源码解析
 
 现在来看 **CRF** ，CRF 考虑的不是每次转移时的最优概率，考虑的整体序列的可能性。
 
@@ -294,14 +529,24 @@ Previous_to $\to$ current_from
 
 转移矩阵的 $[i, j]$ 代表的是由状态 $i$ 转移到状态 $j$ 的可能性
 
-首先我们将获得的 size 为 `batch_size, seq_len, tag_size` 的特征向量调整为`seq_len, batch_size, tag_size` ，方便随后依时间步访问序列，而后再调整为`seq_len * batch_size, 1, tag_size`，再扩展成为 `seq_len * batch_size, tag_size, tag_size` 与转移矩阵相加得到 scores 。可以理解成是将通过 model 获得到的每个时间步的所有的 tag 的可能性都加到转移矩阵之上，即当我们按时间步遍历每个时间步上的 size 为`batch_size, tag_size, tag_size` 的 cur_values 矩阵时，这里的矩阵是由原始的转移矩阵 + 之前 model 得到的每一时间步上的 word 的每种 tag 的可能性。这里我们将特征向量 feature 从一个行向量(不看 batch_size )扩展为一个矩阵，其实就是不管 start 状态是什么，转移到 j 状态的可能性都会加上 扩展前的 feature[j]。
+注意，CRF 中的 tag_size 是真实的 tag_size + 2 
 
-而在每次随时间步的迭代中，我们都会将前一时间步传来的 size 为 `batch_size, tag_size, 1` 的 partition 数组，扩展为 `batch_size, tag_size, tag_size` 并加上。
+##### _calculate_PZ(self, feats, mask)
 
--   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的可能性，也就是当前时间步对应的 word 的 tag 的可能性。将这一列向量扩展后并与 cur_values 相加后，相当于每一行都加上同样的值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的、新的状态转移矩阵。
+首先我们将获得的 size 为 `batch_size, seq_len, tag_size` 的特征向量调整为`seq_len, batch_size, tag_size` ，方便随后依时间步访问序列。
+
+而后再调整为`seq_len * batch_size, 1, tag_size`，再扩展成为 `seq_len * batch_size, tag_size, tag_size` 与转移矩阵相加得到 scores 。
+
+-   可以理解成是将通过 model 获得到的每个时间步的所有的 tag 的可能性都加到转移矩阵之上，即当我们按时间步遍历每个时间步上的 size 为`batch_size, tag_size, tag_size` 的 cur_values 矩阵时，这里的矩阵是由原始的转移矩阵 + 之前 model 得到的每一时间步上的 word 的每种 tag 的可能性。这里我们将特征向量 feature 从一个行向量(不看 batch_size )扩展为一个矩阵，其实就是不管 start 状态是什么，转移到 j 状态的可能性都会加上 扩展前的 feature[j]。
+
+而在每次随时间步的迭代中，我们都会将前一时间步传来的 size 为 `batch_size, tag_size, 1` 的 partition 数组，扩展为 `batch_size, tag_size, tag_size` 并加上 cur_values 。
+
+-   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一列向量扩展后并与 cur_values 相加后，相当于每一行都加上同样的值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的、新的状态转移矩阵。
 -   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。
 -   遍历完序列后，得到 `final_partition = cur_partition[:, STOP_TAG] ` ，即各个状态转移到 stop_tag 的可能性，求得其 sum 并返回 sum 与 scores
 -   需要注意的是，上述过程未提及 mask 步骤，实际操作中需要使用 mask 操作完成对 partition 的更新
+
+##### _score_sentence(self, scores, mask, tags)
 
 而今我们已经获得了 `forward_score, scores` ，接下来继续计算 gold_score
 
@@ -320,3 +565,13 @@ Previous_to $\to$ current_from
 -   最后计算 decode_idx，用于在 decode 阶段解析得到 decoded sequence
     -   pointer 是 decode_idx 的最后一项，因为其保存的是最有可能转移至 STOP_TAG 的 from_target ，即 end_id
     -   倒序解码时，前一时间步的 pointer 就变成了当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并保存在 decode_idx 中
+
+## Reference
+
+[CRFS](<http://www.cs.columbia.edu/~mcollins/crf.pdf>)
+
+[条件随机场CRF](https://zhuanlan.zhihu.com/p/29989121)
+
+[简明条件随机场CRF介绍 | 附带纯Keras实现](https://www.jiqizhixin.com/articles/2018-05-23-3)
+
+[自然语言处理之序列标注问题](https://www.cnblogs.com/jiangxinyang/p/9368482.html)
