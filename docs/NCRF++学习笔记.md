@@ -550,19 +550,24 @@ Previous_to $\to$ current_from
 -   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一 **列向量** 扩展后并与 cur_values 相加后，相当于每一行的各个数值都加上了同一值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。
     -   这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，也就是当前状态为 i 的可能性。
     -   那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。对每行分别处理一次，经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的，新的状态转移矩阵。
--   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum (第 i 列的和的意义是下一状态为 i 的可能性之和) ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。
+-   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是非正数，逐元素作用 exp 函数将其按列 sum (第 i 列的和的意义是下一状态为 i 的可能性之和) ，逐元素作用 log 函数，最终得到的新的矩阵 temp 是一个行向量(不看 batch_size )，temp[j] 代表的是转移到状态 j 的可能性之和。再将其与 max_score相加，得到最终的 cur_partition。
+    -   需要注意的是，上述过程未提及 mask 步骤，实际操作中需要使用 mask 操作完成对 partition 的更新
+    -   即，将 cur_partition 中对应 mask 为 1 的取出并拼接为一维的 masked_cur_partition ，再将masked_cur_partition 中 更新到 partition 的对应位置，获得新的 partition
 -   遍历完序列后，得到 `final_partition = cur_partition[:, STOP_TAG] ` ，即各个状态转移到 stop_tag 的可能性，求得其 sum 并返回 sum 与 scores
--   需要注意的是，上述过程未提及 mask 步骤，实际操作中需要使用 mask 操作完成对 partition 的更新
 
 ##### _score_sentence(self, scores, mask, tags)
 
 而今我们已经获得了 `forward_score, scores` ，接下来继续计算 gold_score
 
--   首先获取到真实 tags 中 length_mask-1 位置的真实的 end_ids，再从转移矩阵的 end_transition 中取出对应的值，得到 end_energy 。其中，end_transition指的是 transitions[:, STOP_TAG] 扩展为 `(batch_size, tag_size)` 后的结果。end_energy 中的每个值是每种状态转化为 stop_tag 的可能性，即 end_id to stop_tag  的可能性
-
--   接着，从 scores 中取出各个 tag 的 score，构成 tg_energy
-    -   这里对 tag 进行了处理，tag 和 scores 进行了压缩并且可以通过 tag 的 index 值，找到从 i 到 j 的转移概率值
--   最后求和得到 gold_score
+-   tags 的 size 为 (batch, seq_len) ，存放的是每个 batch 内每个 sequence 的对应位置的 tag 类型。为了能够从 scores 中取出对应的 tg_energy，做了如下处理
+    -   首先将 size 为 (seq_len, batch, tag_size, tag_size) 的 scores 调整为 (seq_len, batch, tag_size * tag_size)
+    -   接着将 tags 的数值调整为 `new_tags[:, idx] = tags[:, idx - 1] * tag_size + tags[:, idx]` ，此时的矩阵存储的数值正和 scores 矩阵压缩后的对应位置一致，即将 from_tag & to_tag 的信息存储在了这一数值中，new_tags 的 size 为 (batch_size, seq_len)
+    -   将 new_tags 交换 0 1 维并调整为 (seq_len, batch_size, 1)，然后从 scores 中取出对应的 tg_energy ，size 为 (seq_len, batch_size) 
+    -   再使用 mask 矩阵过滤一遍
+-   取出转移矩阵中所有 tag 变为 STOP_TAG 的概率值并扩展为 (batch_size, tag_size) 作为 end_transition
+-   通过对 size 为 (batch, seq_len) 的 mask 的每行求和，得到每个 sequence 的 length，再从原 tags 中取出每个 sequence 的最后一个 tag 的 ID 形成 size 为 (batch_size, 1) 的 end_ids
+-   接着从 end_transition 中取出 end_ids 对应的 end_energy
+-   对 tg_energy 和 end_energy 分别求和并相加，得到 gold_score
 
 ##### _viterbi_decode(self, feats, mask)
 
@@ -571,10 +576,13 @@ Previous_to $\to$ current_from
 -   首先和之前的计算过程类似，得到 scores 矩阵后进行遍历。不同之处在于，需要记录所有的 partition 以及 cur_bp 分别保存在 partition_history 和 back_points ，并且计算方式为 `partition, cur_bp = torch.max(cur_values, 1)` 
     -   partition 为每一时间步上的各个 to_target 的最大可能性
     -   cur_bp 为 partition 的每个值的 from_target
--   接着，取出 mask 处理后的真实的 last_partition，再与转移矩阵 transitions 相加，得到从最后一个 tag 转移到状态 j 的转移矩阵，而后求得其每列的最大值对应的 index ，再取出 STOP_TAG 对应的列，就获得了pointer ，即最有可能转移至 STOP_TAG 的 from_target 。再将这一 from_target 覆盖到 back_points 的对应位置中
+    -   再通过 mask 将 cur_bp 中mask 为 0 的对应位置赋值为 0
+-   接着，通过 length_mask 获得 last_position 即每个 sequence 的结束位置的 index，再从 partition_history 中取出 last_partition ，与转移矩阵 transitions 相加，得到序列的结尾处的转移矩阵 last_values ，而后求得其每列的最大值对应的 index ，再取出 STOP_TAG 对应的列，就获得了 size 为 (batch_size) 的pointer ，即最有可能转移至 STOP_TAG 的 from_target 。再将这一 from_target 放到 back_points 的末尾
 -   最后计算 decode_idx，用于在 decode 阶段解析得到 decoded sequence
     -   pointer 是 decode_idx 的最后一项，因为其保存的是最有可能转移至 STOP_TAG 的 from_target ，即 end_id
-    -   倒序解码时，前一时间步的 pointer 就变成了当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并保存在 decode_idx 中
+    -   倒序解码时，前一时间步的 pointer 就变成了当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并保存在 decode_idx 中，以此类推
+
+
 
 ## Reference
 
