@@ -836,6 +836,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_viterbi_decodeself-feats-mask" title="_viterbi_decode(self, feats, mask)" class="md-nav__link">
+    _viterbi_decode(self, feats, mask)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1828,6 +1835,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_viterbi_decodeself-feats-mask" title="_viterbi_decode(self, feats, mask)" class="md-nav__link">
+    _viterbi_decode(self, feats, mask)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2385,23 +2399,38 @@ feature=[Cap] emb_size=20 emb_dir=%your_pretrained_Cap_embedding
 <ul>
 <li><strong>前者将序列标注看成是 n 个 k 分类问题，后者将序列标注看成是 1 个 k^n 分类问题</strong></li>
 </ul>
-<p>具体来讲，在 CRF 的序列标注问题中，我们要计算的是条件概率：
-$$
+<p>具体来讲，在 CRF 的序列标注问题中，我们要计算的是条件概率：</p>
+<div>
+<div class="MathJax_Preview">
 P\left(y_{1}, \ldots, y_{n} | x_{1}, \ldots, x_{n}\right)=P\left(y_{1}, \ldots, y_{n} | x\right), \quad x=\left(x_{1}, \ldots, x_{n}\right)
-$$
-为了得到这个概率的估计，CRF 做了两个假设：</p>
+</div>
+<script type="math/tex; mode=display">
+P\left(y_{1}, \ldots, y_{n} | x_{1}, \ldots, x_{n}\right)=P\left(y_{1}, \ldots, y_{n} | x\right), \quad x=\left(x_{1}, \ldots, x_{n}\right)
+</script>
+</div>
+<p>为了得到这个概率的估计，CRF 做了两个假设：</p>
 <p><strong>假设一：该分布是指数族分布</strong></p>
-<p>这个假设意味着存在函数 <span><span class="MathJax_Preview">f(y_1,…,y_n;x)</span><script type="math/tex">f(y_1,…,y_n;x)</script></span>，使得
-$$
+<p>这个假设意味着存在函数 <span><span class="MathJax_Preview">f(y_1,…,y_n;x)</span><script type="math/tex">f(y_1,…,y_n;x)</script></span>，使得</p>
+<div>
+<div class="MathJax_Preview">
 P\left(y_{1}, \ldots, y_{n} | \mathbf{x}\right)=\frac{1}{Z(\mathbf{x})} \exp \left(f\left(y_{1}, \ldots, y_{n} ; \mathbf{x}\right)\right)
-$$
-其中 $$ 是归一化因子，因为这个是条件分布，所以归一化因子跟 x 有关。这个 f 函数可以视为一个打分函数，打分函数取指数并归一化后就得到概率分布。 </p>
+</div>
+<script type="math/tex; mode=display">
+P\left(y_{1}, \ldots, y_{n} | \mathbf{x}\right)=\frac{1}{Z(\mathbf{x})} \exp \left(f\left(y_{1}, \ldots, y_{n} ; \mathbf{x}\right)\right)
+</script>
+</div>
+<p>其中 <span><span class="MathJax_Preview">Z(x)</span><script type="math/tex">Z(x)</script></span> 是归一化因子，因为这个是条件分布，所以归一化因子跟 x 有关。这个 f 函数可以视为一个打分函数，打分函数取指数并归一化后就得到概率分布。 </p>
 <p><strong>假设二：输出之间的关联仅发生在相邻位置，并且关联是指数加性的</strong></p>
-<p>下式为链式结构的条件概率（即 x 与 y 的结构相同）
-$$
+<p>下式为链式结构的条件概率（即 x 与 y 的结构相同）</p>
+<div>
+<div class="MathJax_Preview">
 p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{t=1}^{T} \theta_{1}^{\mathrm{T}} f_{1}\left(\mathbf{x}, y_{t}\right)+\sum_{t=1}^{T-1} \theta_{2}^{\mathrm{T}} f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)\right)
-$$
-其中，<span><span class="MathJax_Preview">f_{1}\left(\mathbf{x}, y_{t}\right)</span><script type="math/tex">f_{1}\left(\mathbf{x}, y_{t}\right)</script></span> 为状态特征，与位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 相关；<span><span class="MathJax_Preview">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</span><script type="math/tex">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</script></span> 为转移特征。</p>
+</div>
+<script type="math/tex; mode=display">
+p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{t=1}^{T} \theta_{1}^{\mathrm{T}} f_{1}\left(\mathbf{x}, y_{t}\right)+\sum_{t=1}^{T-1} \theta_{2}^{\mathrm{T}} f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)\right)
+</script>
+</div>
+<p>其中，<span><span class="MathJax_Preview">f_{1}\left(\mathbf{x}, y_{t}\right)</span><script type="math/tex">f_{1}\left(\mathbf{x}, y_{t}\right)</script></span> 为状态特征，与位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 相关；<span><span class="MathJax_Preview">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</span><script type="math/tex">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</script></span> 为转移特征。</p>
 <h4 id="pytorch-api">Pytorch API<a class="headerlink" href="#pytorch-api" title="Permanent link">&para;</a></h4>
 <p>我们先来介绍几个需要用到的 API</p>
 <h5 id="gather">gather<a class="headerlink" href="#gather" title="Permanent link">&para;</a></h5>
@@ -2580,8 +2609,12 @@ $$
 </ul>
 <p>而在每次随时间步的迭代中，我们都会将前一时间步传来的 size 为 <code>batch_size, tag_size, 1</code> 的 partition 数组，扩展为 <code>batch_size, tag_size, tag_size</code> 并加上 cur_values 。</p>
 <ul>
-<li>第一次迭代中，partition 是由 <code>inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1</code> 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一列向量扩展后并与 cur_values 相加后，相当于每一行都加上同样的值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的、新的状态转移矩阵。</li>
-<li>接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。</li>
+<li>第一次迭代中，partition 是由 <code>inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1</code> 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一 <strong>列向量</strong> 扩展后并与 cur_values 相加后，相当于每一行的各个数值都加上了同一值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。<ul>
+<li>这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，也就是当前状态为 i 的可能性。</li>
+<li>那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。对每行分别处理一次，经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的，新的状态转移矩阵。</li>
+</ul>
+</li>
+<li>接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum (第 i 列的和的意义是下一状态为 i 的可能性之和) ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。</li>
 <li>遍历完序列后，得到 <code>final_partition = cur_partition[:, STOP_TAG]</code> ，即各个状态转移到 stop_tag 的可能性，求得其 sum 并返回 sum 与 scores</li>
 <li>需要注意的是，上述过程未提及 mask 步骤，实际操作中需要使用 mask 操作完成对 partition 的更新</li>
 </ul>
@@ -2599,6 +2632,7 @@ $$
 </li>
 <li>最后求和得到 gold_score</li>
 </ul>
+<h5 id="_viterbi_decodeself-feats-mask">_viterbi_decode(self, feats, mask)<a class="headerlink" href="#_viterbi_decodeself-feats-mask" title="Permanent link">&para;</a></h5>
 <p>现在我们来看 viterbi_decode </p>
 <ul>
 <li>首先和之前的计算过程类似，得到 scores 矩阵后进行遍历。不同之处在于，需要记录所有的 partition 以及 cur_bp 分别保存在 partition_history 和 back_points ，并且计算方式为 <code>partition, cur_bp = torch.max(cur_values, 1)</code> <ul>

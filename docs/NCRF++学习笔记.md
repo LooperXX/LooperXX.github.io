@@ -335,25 +335,31 @@ CRF 的真正精巧的地方，是它以路径为单位，考虑的是路径的�
 -    **前者将序列标注看成是 n 个 k 分类问题，后者将序列标注看成是 1 个 k^n 分类问题**
 
 具体来讲，在 CRF 的序列标注问题中，我们要计算的是条件概率：
+
 $$
 P\left(y_{1}, \ldots, y_{n} | x_{1}, \ldots, x_{n}\right)=P\left(y_{1}, \ldots, y_{n} | x\right), \quad x=\left(x_{1}, \ldots, x_{n}\right)
 $$
+
 为了得到这个概率的估计，CRF 做了两个假设：
 
 **假设一：该分布是指数族分布**
 
 这个假设意味着存在函数 $f(y_1,…,y_n;x)$，使得
+
 $$
 P\left(y_{1}, \ldots, y_{n} | \mathbf{x}\right)=\frac{1}{Z(\mathbf{x})} \exp \left(f\left(y_{1}, \ldots, y_{n} ; \mathbf{x}\right)\right)
 $$
-其中 $$ 是归一化因子，因为这个是条件分布，所以归一化因子跟 x 有关。这个 f 函数可以视为一个打分函数，打分函数取指数并归一化后就得到概率分布。 
+
+其中 $Z(x)$ 是归一化因子，因为这个是条件分布，所以归一化因子跟 x 有关。这个 f 函数可以视为一个打分函数，打分函数取指数并归一化后就得到概率分布。 
 
 **假设二：输出之间的关联仅发生在相邻位置，并且关联是指数加性的**
 
 下式为链式结构的条件概率（即 x 与 y 的结构相同）
+
 $$
 p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\sum_{t=1}^{T} \theta_{1}^{\mathrm{T}} f_{1}\left(\mathbf{x}, y_{t}\right)+\sum_{t=1}^{T-1} \theta_{2}^{\mathrm{T}} f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)\right)
 $$
+
 其中，$f_{1}\left(\mathbf{x}, y_{t}\right)$ 为状态特征，与位置 $t$ 相关；$f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)$ 为转移特征。
 
 #### Pytorch API 
@@ -541,8 +547,10 @@ Previous_to $\to$ current_from
 
 而在每次随时间步的迭代中，我们都会将前一时间步传来的 size 为 `batch_size, tag_size, 1` 的 partition 数组，扩展为 `batch_size, tag_size, tag_size` 并加上 cur_values 。
 
--   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一列向量扩展后并与 cur_values 相加后，相当于每一行都加上同样的值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的、新的状态转移矩阵。
--   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。
+-   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一 **列向量** 扩展后并与 cur_values 相加后，相当于每一行的各个数值都加上了同一值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。
+    -   这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，也就是当前状态为 i 的可能性。
+    -   那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。对每行分别处理一次，经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的，新的状态转移矩阵。
+-   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是负数，逐元素作用 exp 函数将其按列 sum (第 i 列的和的意义是下一状态为 i 的可能性之和) ，逐元素作用 log 函数，最终得到的新的 partition 是一个行向量(不看 batch_size )，partition[j] 代表的是由转移到状态 j 的可能性之和。
 -   遍历完序列后，得到 `final_partition = cur_partition[:, STOP_TAG] ` ，即各个状态转移到 stop_tag 的可能性，求得其 sum 并返回 sum 与 scores
 -   需要注意的是，上述过程未提及 mask 步骤，实际操作中需要使用 mask 操作完成对 partition 的更新
 
@@ -555,6 +563,8 @@ Previous_to $\to$ current_from
 -   接着，从 scores 中取出各个 tag 的 score，构成 tg_energy
     -   这里对 tag 进行了处理，tag 和 scores 进行了压缩并且可以通过 tag 的 index 值，找到从 i 到 j 的转移概率值
 -   最后求和得到 gold_score
+
+##### _viterbi_decode(self, feats, mask)
 
 现在我们来看 viterbi_decode 
 
