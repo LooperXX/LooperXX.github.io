@@ -291,7 +291,7 @@ Pytorch 中提供了 `torch.nn.utils.rnn.PackedSequence` 的相关 API，输入�
 
 #### CRF 笔记
 
-条件随机场(Conditional Random Fields, 以下简称CRF)是给定一组输入序列条件下另一组输出序列的条件概率分布模型，在自然语言处理中得到了广泛应用。
+条件随机场(Conditional Random Fields, 以下简称CRF)是给定一组输入随机变量条件下另一组输出随机变量的条件概率分布模型。其特点是假设输出随机变量构成马尔科夫随机场。条件随机场可以用于不同的预测问题，本文讨论的是其在标注问题中的应用，因此主要讲述线性链条件随机场。这时，问题变成由输入序列对输出序列预测的判别模型，形式为对数线性模型，其学习方法通常是极大似然估计或正则化的极大似然估计。
 
 ##### 什么样的问题需要CRF模型
 
@@ -361,6 +361,15 @@ p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\s
 $$
 
 其中，$f_{1}\left(\mathbf{x}, y_{t}\right)$ 为状态特征，与位置 $t$ 相关；$f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)$ 为转移特征。
+
+**损失函数**
+
+极大似然估计
+$$
+L(x) = -\log P\left(y_{1}, \ldots, y_{n} | x\right) \\
+= 
+$$
+
 
 #### Pytorch API 
 
@@ -614,6 +623,8 @@ Previous_to $\to$ current_from
         -   使用的第一个 pointer 是所有 sequence 的最后一个 tag_id，即使 tag_id 并不是 back_points[idx] 的 to_target 也没关系，取得的 from_target 仍然会因为之前的 mask 处理 而为 0；随后的 pointer 亦然
 
 ## Reference
+
+《统计学习方法》
 
 [CRFS](<http://www.cs.columbia.edu/~mcollins/crf.pdf>)
 

@@ -2384,7 +2384,7 @@ feature=[Cap] emb_size=20 emb_dir=%your_pretrained_Cap_embedding
 <p>运行时，模型首先需要完成对 char sequence layer 的运算，获得 char-level 的 word embedding，然后与 word embedding 和 feature embedding 进行 concatenate，得到最终的 word embedding，再通过多层的 LSTM / GRU / CNN 得到最终的 size 为 <code>batch_size, seq_len, classes</code> 的特征向量</p>
 <p>最后的 inference layer 可以有两种选择：CRF / Softmax ，这里我们先讨论 Softmax 的方式。对特征向量的最后一维做 log_softmax ，而后计算其 NLLLoss 并将其最大值对应的 class 作为分类结果。</p>
 <h4 id="crf">CRF 笔记<a class="headerlink" href="#crf" title="Permanent link">&para;</a></h4>
-<p>条件随机场(Conditional Random Fields, 以下简称CRF)是给定一组输入序列条件下另一组输出序列的条件概率分布模型，在自然语言处理中得到了广泛应用。</p>
+<p>条件随机场(Conditional Random Fields, 以下简称CRF)是给定一组输入随机变量条件下另一组输出随机变量的条件概率分布模型。其特点是假设输出随机变量构成马尔科夫随机场。条件随机场可以用于不同的预测问题，本文讨论的是其在标注问题中的应用，因此主要讲述线性链条件随机场。这时，问题变成由输入序列对输出序列预测的判别模型，形式为对数线性模型，其学习方法通常是极大似然估计或正则化的极大似然估计。</p>
 <h5 id="crf_1">什么样的问题需要CRF模型<a class="headerlink" href="#crf_1" title="Permanent link">&para;</a></h5>
 <p>对于 A 的一天从早到晚的一系列照片，我们想要知道每张照片对应的活动，如果我们用传统的分类思路去做，即对每张照片分别预测其活动类别，这就忽略了活动之间的关联性和内在约束，比如对于一张 A 闭着嘴巴的照片，如果前一张照片是 A 在吃东西的照片，那么此时 A 就是在咀嚼；如果前一张照片是 A 在唱歌的照片，那么此时 A 就是在唱歌。</p>
 <p>这就需要我们考虑 <strong>相邻数据的标记信息</strong> 。自然语言处理中的**词性标注**(Part-Of-Speech Tagging)正是此类问题的经典任务。</p>
@@ -2445,6 +2445,12 @@ p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\s
 </script>
 </div>
 <p>其中，<span><span class="MathJax_Preview">f_{1}\left(\mathbf{x}, y_{t}\right)</span><script type="math/tex">f_{1}\left(\mathbf{x}, y_{t}\right)</script></span> 为状态特征，与位置 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 相关；<span><span class="MathJax_Preview">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</span><script type="math/tex">f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)</script></span> 为转移特征。</p>
+<p><strong>损失函数</strong></p>
+<p>极大似然估计
+$$
+L(x) = -\log P\left(y_{1}, \ldots, y_{n} | x\right) \
+= 
+$$</p>
 <h4 id="pytorch-api">Pytorch API<a class="headerlink" href="#pytorch-api" title="Permanent link">&para;</a></h4>
 <p>我们先来介绍几个需要用到的 API</p>
 <h5 id="gather">gather<a class="headerlink" href="#gather" title="Permanent link">&para;</a></h5>
@@ -2712,6 +2718,7 @@ p(\mathbf{y} | \mathbf{x}, \theta)=\frac{1}{Z(\mathbf{x}, \theta)} \exp \left(\s
 </li>
 </ul>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>《统计学习方法》</p>
 <p><a href="http://www.cs.columbia.edu/~mcollins/crf.pdf">CRFS</a></p>
 <p><a href="https://zhuanlan.zhihu.com/p/29989121">条件随机场CRF</a></p>
 <p><a href="https://www.jiqizhixin.com/articles/2018-05-23-3">简明条件随机场CRF介绍 | 附带纯Keras实现</a></p>
