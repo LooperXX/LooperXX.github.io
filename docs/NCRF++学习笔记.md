@@ -367,9 +367,13 @@ $$
 极大似然估计
 $$
 L(x) = -\log P\left(y_{1}, \ldots, y_{n} | x\right) \\
-= 
+= log(Z(x)) -\left(\sum_{t=1}^{T} \theta_{1}^{\mathrm{T}} f_{1}\left(\mathbf{x}, y_{t}\right)+\sum_{t=1}^{T-1} \theta_{2}^{\mathrm{T}} f_{2}\left(\mathbf{x}, y_{t}, y_{t+1}\right)\right)
 $$
+**预测问题**
 
+模型训练完成后，如何根据输入找出最优路径？同样的，这也是一个从 $k^n$ 条路径中选最优的问题，而因为马尔可夫假设的存在，它可以转化为一个动态规划问题，用 viterbi 算法解决，计算量正比于 n。 
+
+**递归思想就是：一条最优路径切成两段，那么每一段都是一条（局部）最优路径**
 
 #### Pytorch API 
 
@@ -627,6 +631,8 @@ Previous_to $\to$ current_from
 《统计学习方法》
 
 [CRFS](<http://www.cs.columbia.edu/~mcollins/crf.pdf>)
+
+[理解条件随机场](http://www.tensorinfinity.com/paper_170.html)
 
 [条件随机场CRF](https://zhuanlan.zhihu.com/p/29989121)
 
