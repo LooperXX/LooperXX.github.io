@@ -547,7 +547,7 @@ Previous_to $\to$ current_from
 
 而在每次随时间步的迭代中，我们都会将前一时间步传来的 size 为 `batch_size, tag_size, 1` 的 partition 数组，扩展为 `batch_size, tag_size, tag_size` 并加上 cur_values 。
 
--   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的各概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一 **列向量** 扩展后并与 cur_values 相加后，相当于每一行的各个数值都加上了同一值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。
+-   第一次迭代中，partition 是由 `inivalues[:, START_TAG, :].clone().view(batch_size, tag_size, 1` 得到的，其含义是 start_tag 之后的下一个 tag 的概率值，也就是当前时间步对应的 word 的 tag 的可能性。将这一 **列向量** 扩展后并与 cur_values 相加后，相当于每一行的各个数值都加上了同一值，也就是从状态 i 到其他任何状态都加上了 inivalues[START_TAG, i] (不看 batch_size )。
     -   这是因为这一数值的含义是从 start_tag 到状态 i 的可能性，也就是当前状态为 i 的可能性。
     -   那么 cur_values 需要将由状态 i 出发的所有状态 j 的可能性都增加这一数值，即cur_values[i] = inivalues[START_TAG, i].view(1, tag_size) + cur_values[i]。对每行分别处理一次，经过这样的 tag_size 次运算，我们就可以得到一个新的、考虑到前一状态转移矩阵的，新的状态转移矩阵。
 -   接下来我们需要对这一矩阵进行处理，得到新的 partition 传递给下一次的迭代。我们先计算矩阵每一列的最大值，构成一个行向量 max_value ，max_value[j] 含义是下一状态为 j 的最大转移可能性， 将其拓展为和输入的 partition 一样的 size 后用 partition - max_value，矩阵的所有值都是非正数，逐元素作用 exp 函数将其按列 sum (第 i 列的和的意义是下一状态为 i 的可能性之和) ，逐元素作用 log 函数，最终得到的新的矩阵 temp 是一个行向量(不看 batch_size )，temp[j] 代表的是转移到状态 j 的可能性之和。再将其与 max_score相加，得到最终的 cur_partition。
@@ -573,16 +573,45 @@ Previous_to $\to$ current_from
 
 现在我们来看 viterbi_decode 
 
--   首先和之前的计算过程类似，得到 scores 矩阵后进行遍历。不同之处在于，需要记录所有的 partition 以及 cur_bp 分别保存在 partition_history 和 back_points ，并且计算方式为 `partition, cur_bp = torch.max(cur_values, 1)` 
+-   首先和之前 _calculate_PZ 的计算过程类似，得到 scores 矩阵后进行遍历。不同之处在于，需要记录所有的 partition 以及 cur_bp 分别保存在 partition_history 和 back_points ，并且计算方式为 `partition, cur_bp = torch.max(cur_values, 1)` ，此外 mask 需要 reverse ，即 `mask = (1 - mask.long()).byte()` ，此时 mask 中为 1 的部分表示 padding
     -   partition 为每一时间步上的各个 to_target 的最大可能性
     -   cur_bp 为 partition 的每个值的 from_target
-    -   再通过 mask 将 cur_bp 中mask 为 0 的对应位置赋值为 0
+    -   再通过 mask 将 cur_bp 中mask 为 1 的对应位置赋值为 0
 -   接着，通过 length_mask 获得 last_position 即每个 sequence 的结束位置的 index，再从 partition_history 中取出 last_partition ，与转移矩阵 transitions 相加，得到序列的结尾处的转移矩阵 last_values ，而后求得其每列的最大值对应的 index ，再取出 STOP_TAG 对应的列，就获得了 size 为 (batch_size) 的pointer ，即最有可能转移至 STOP_TAG 的 from_target 。再将这一 from_target 放到 back_points 的末尾
 -   最后计算 decode_idx，用于在 decode 阶段解析得到 decoded sequence
     -   pointer 是 decode_idx 的最后一项，因为其保存的是最有可能转移至 STOP_TAG 的 from_target ，即 end_id
-    -   倒序解码时，前一时间步的 pointer 就变成了当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并保存在 decode_idx 中，以此类推
+    -   倒序解码时，后一时间步的 pointer 即为当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并保存在 decode_idx 中，以此类推
 
+##### _viterbi_decode_nbest(self, feats, mask, nbest)
 
+-   首先和 _calculate_PZ 的计算过程类似，获得 scores 矩阵，再取出 start_tag 之后的下一个 tag 的概率值，并扩展为 (batch_size, tag_size, nbest) ，在添加到 partition_history 中，此时 idx 为 0。此外 mask 需要 reverse ，即 `mask = (1 - mask.long()).byte()` ，此时 mask 中为 1 的部分表示 padding
+-   接着遍历 scores
+    -   第一次遍历时
+        -   idx 已经为 1 , 将 cur_values 与 partition 相加获得 size 为 (batch_size, tag_size, tag_size) 的 新 cur_values
+        -   接着取出 cur_values 中的 topk dim=1 的排序结果作为新的 partition 以及对应的 index -- cur_bp，即获得了下一状态的 topk 的可能性以及对应的 from_target ，size 均为 (batch_size, nbest, tag_size)
+        -   将 cur_bp 的所有值都 * nbest ，与后续的 index 一致
+        -   将 partition 和 cur_bp 的 1 2 维对调，size 变为  (batch_size, tag_size, nbest)，并将 partition 保存在 partition_history 中
+        -   再通过 mask 将 cur_bp 中mask 为 0 的对应位置赋值为 0，并将 cur_bp 保存在 back_points 中
+    -   其他时候
+        -   $\text{idx} \gt 1$ ，将 cur_values 调整为 (batch_size, tag_size, 1, tag_size) 并扩展为 (batch_size, tag_size, nbest, tag_size) ，将 partition 调整为 (batch_size, tag_size, nbest, 1) 并扩展为 (batch_size, tag_size, nbest, tag_size) ，再将两者相加，获得新的 cur_values 并调整size 为 (batch_size, tag_size * nbest, tag_size)
+            -   这里的两次扩展：对于 nbest 而言，cur_values 是不变的，故可以直接拓展，而 partition 调整为 (batch_size, tag_size, nbest, 1) 后的含义是上一时间步作为 to_target 的每种 tag 的 topk 的概率值，即当前时间步的每一种 tag 作为 from_target 的 topk 的概率值，扩展后相当于 topk 中每个 topn 对应的 (tag_size, tag_size) 的转移矩阵，这里的转移矩阵是由 (tag_size, 1) 的列向量扩展而来的，相当于无论当前时间步的 to_target 是什么， 特定 from_target 的转移概率是一样的
+            -   相加后调整为 (batch_size, tag_size * nbest, tag_size) 
+        -   接着取出 cur_values 中的 topk dim=1 的排序结果作为新的 partition 以及对应的 index -- cur_bp，即获得了下一状态的 topk 的可能性以及对应的 from_target ，size 均为 (batch_size, nbest, tag_size) 
+            -    由于已经将 size 调整为 (batch_size, tag_size * nbest, tag_size) ，所以 topk 的排序范围是 tag_size * nbest ，即对记录的 tag_size 个 size 为 [nbest, tag_size] 的转移矩阵纵向连接形成 (tag_size * nbest, tag_size) 的矩阵，而后对每列的 topk 取出数值与 index
+            -    这里的 index 的范围是 [0, tag_size * nbest - 1]，index / nbest 就可以得到范围为 [0, tag_size - 1] 的真实的 index ，即 from_target
+            -   例如from_target 为 5 的 top2 的 nbest 下的 index 就为 nbest * 5 + 2， index / nbest 后即可得到 from_target = 5
+        -   将 partition 和 cur_bp 的 1 2 维对调，size 变为  (batch_size, tag_size, nbest)，并将 partition 保存在 partition_history 中
+        -   再通过 mask 将 cur_bp 中mask 为 0 的对应位置赋值为 0，并将 cur_bp 保存在 back_points 中
+-   获得了 size 为 (batch_size, seq_len, nbest, tag_size) 的 partition_history，通过 length_mask 获得 size 为 (batch_size, 1, tag_size, nbest) 的 last_position，再从 partition_history 取出 sequence 末尾得到 last_partition 并调整其 size 为 (batch_size, tag_size, nbest, 1)，再扩展为 (batch_size, tag_size, nbest, tag_size) 并与转移矩阵 transitions 相加，得到序列的结尾处的转移矩阵 last_values 
+-   接着与遍历 scores 时类似，取出压缩后的 end_partition 和 end_bp 并取出 STOP_TAG 对应的矩阵，就获得了 size 为 (batch_size, nbest) 的pointer ，即最有可能转移至 STOP_TAG 的 from_target 。再将这一 from_target 放到 back_points 的末尾
+-   最后计算 decode_idx，用于在 decode 阶段解析得到 decoded sequence
+    -   pointer 是 decode_idx 的最后一项，因为其保存的是最有可能转移至 STOP_TAG 的 from_target ，即 end_id ，但由于之前已将 index 压缩，所以 `decode_idx[-1] = pointer.data / nbest` ，从而获得真正的 index
+    -   倒序解码时，后一时间步的 pointer 即为当前时间步的 to_target 了，所以对应从 back_points 中取得其 from_target 并 / nbest，然后保存在 decode_idx 中，以此类推
+    -   注意，此处的 pointer 需要保存 `the last end nbest ids for non longest`
+        -   所有的 back_points 保存的都是经过 mask 处理的 tag_id ，padding 的 tag_id 均为 0
+        -   对于 _viterbi_decode 的解码过程，pointer 扩展为 (batch_size, 1, tag_size) 后成为 insert_last 并放在 sequence 的 last_position 的位置，所以对于某一 sequence 而言，不管到达这一位置的 pointer 的对应位置是几，只要到达了该 sequence 的最后一个位置，都会得到其 tag，从而完成对应的解码
+        -   对于 nbest 时的解码过程，需要考虑 n 种情况，在解码的第一次更新 pointer 时，所有长度小于最大长度的 sequence 的 pointer 都会变为 0，而由于 back_points[idx] 被调整为 (batch_size, tag_size * nbest)， 无法对每个 nbest 都访问 0 以获得其 last end nbest ids ，压缩后所有的 0 都只能访问到同一个值，这只是 top1 的 last end id，那么就会丢失 last end nbest ids。所以需要将会被 0 覆盖掉的 last end nbest ids 保存并重新覆盖
+        -   使用的第一个 pointer 是所有 sequence 的最后一个 tag_id，即使 tag_id 并不是 back_points[idx] 的 to_target 也没关系，取得的 from_target 仍然会因为之前的 mask 处理 而为 0；随后的 pointer 亦然
 
 ## Reference
 
