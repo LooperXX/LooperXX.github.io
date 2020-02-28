@@ -1,233 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url>
      <loc>https://looperxx.github.io/</loc>
-     <lastmod>2019-08-07</lastmod>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
+     <loc>https://looperxx.github.io/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://looperxx.github.io/NLP%E7%9A%84%E5%B7%A8%E4%BA%BA%E8%82%A9%E8%86%80/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://looperxx.github.io/Attention/</loc>
-     <lastmod>2019-08-07</lastmod>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
+     <loc>https://looperxx.github.io/NCRF%2B%2B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://looperxx.github.io/Neural%20Reading%20Comprehension%20and%20beyond/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://looperxx.github.io/NLP%20Concepts/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://looperxx.github.io/NNDL%20%E4%B9%A0%E9%A2%98/</loc>
+     <lastmod>2020-02-29</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://looperxx.github.io/Normalization/</loc>
-     <lastmod>2019-08-07</lastmod>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Concepts/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/%E8%8A%B1%E4%B9%A6%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/花书经验法则/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019%20%E7%AE%80%E4%BB%8B/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/经典网络/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/自然语言处理简介/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/NLP的巨人肩膀/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/NCRF++学习笔记/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/NLP Concepts/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/NNDL 习题/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Neural Reading Comprehension and beyond/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019 简介/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://looperxx.github.io/CS224n-2019-Assignment/</loc>
-     <lastmod>2019-08-07</lastmod>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-01-Introduction and Word Vectors/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-01-Introduction%20and%20Word%20Vectors/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-02-Word Vectors 2 and Word Senses/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-02-Word%20Vectors%202%20and%20Word%20Senses/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-03-Word Window Classification,Neural Networks, and Matrix Calculus/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-04-Backpropagation and Computation Graphs/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-05-Linguistic Structure Dependency Parsing/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-05-Linguistic%20Structure%20Dependency%20Parsing/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-06-The probability of a sentence Recurrent Neural Networks and Language Models/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-06-The%20probability%20of%20a%20sentence%20Recurrent%20Neural%20Networks%20and%20Language%20Models/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-07-Vanishing Gradients and Fancy RNNs/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-09-Practical Tips for Final Projects/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-10-Question Answering and the Default Final Project/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-11-ConvNets for NLP/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-11-ConvNets%20for%20NLP/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-12-Information from parts of words Subword Models/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-12-Information%20from%20parts%20of%20words%20Subword%20Models/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-13-Modeling contexts of use Contextual Representations and Pretraining/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-13-Modeling%20contexts%20of%20use%20Contextual%20Representations%20and%20Pretraining/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-14-Transformers and Self-Attention For Generative Models/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-14-Transformers%20and%20Self-Attention%20For%20Generative%20Models/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-15-Natural Language Generation/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-15-Natural%20Language%20Generation/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-16-Coreference Resolution/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-16-Coreference%20Resolution/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-17-Multitask Learning/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-17-Multitask%20Learning/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-18-Tree Recursive Neural Networks, Constituency Parsing, and Sentiment/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-18-Tree%20Recursive%20Neural%20Networks%2C%20Constituency%20Parsing%2C%20and%20Sentiment/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-19-Safety, Bias, and Fairness/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-19-Safety%2C%20Bias%2C%20and%20Fairness/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/CS224n-2019-20-The Future of NLP + Deep Learning/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/CS224n-2019-20-The%20Future%20of%20NLP%20%2B%20Deep%20Learning/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/面经/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Protocol Buffers/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/FDBus/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/FDBus API/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/FDBus内部结构/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Cross compiler/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Linux/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/专业知识面试准备/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Coding Knowledge/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/历年机试/</loc>
-     <lastmod>2019-08-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
+    </url><url>
      <loc>https://looperxx.github.io/MkDocs_demo/</loc>
-     <lastmod>2019-08-07</lastmod>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>https://looperxx.github.io/Material Theme Tutorial/</loc>
-     <lastmod>2019-08-07</lastmod>
+    </url><url>
+     <loc>https://looperxx.github.io/Material%20Theme%20Tutorial/</loc>
+     <lastmod>2020-02-29</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

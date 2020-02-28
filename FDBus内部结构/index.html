@@ -13,7 +13,7 @@
         <meta name="description" content="Looper's homepage">
       
       
-        <link rel="canonical" href="https://looperxx.github.io/FDBus内部结构/">
+        <link rel="canonical" href="https://looperxx.github.io/FDBus%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84/">
       
       
         <meta name="author" content="Looper - Xiao Xu">
@@ -38,25 +38,25 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
-        <title>FDBus内部结构 - Science is interesting.</title>
+        <title>FDBus API - Science is interesting.</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -83,7 +83,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#fdbus-api" tabindex="1" class="md-skip">
+      <a href="#fdbus-api" tabindex="0" class="md-skip">
         跳转至
       </a>
     
@@ -92,7 +92,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo">
+        <a href="https://looperxx.github.io/" title="Science is interesting." aria-label="Science is interesting." class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -109,7 +109,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                FDBus内部结构
+                FDBus API
               
             </span>
           
@@ -123,7 +123,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -177,16 +177,14 @@
       
         
 
-  
-
-<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+<nav class="md-tabs" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
         
   <li class="md-tabs__item">
     
-      <a href=".." title="Home" class="md-tabs__link">
+      <a href=".." class="md-tabs__link md-tabs__link--active">
         Home
       </a>
     
@@ -196,26 +194,13 @@
         
   
   
-    <li class="md-tabs__item">
-      
-        <a href="../Attention/" title="ML & DL" class="md-tabs__link">
-          ML & DL
-        </a>
-      
-    </li>
-  
-
-      
-        
-  
-  
     
     
   
   
     <li class="md-tabs__item">
       
-        <a href="../自然语言处理简介/" title="NLP" class="md-tabs__link">
+        <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
           NLP
         </a>
       
@@ -230,8 +215,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="../面经/" title="Interview experience" class="md-tabs__link md-tabs__link--active">
-          Interview experience
+        <a href="../Normalization/" class="md-tabs__link">
+          ML & DL
         </a>
       
     </li>
@@ -243,8 +228,8 @@
   
     <li class="md-tabs__item">
       
-        <a href="../Linux/" title="Math & CS & Coding" class="md-tabs__link">
-          Math & CS & Coding
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          CS224n学习笔记
         </a>
       
     </li>
@@ -256,7 +241,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../MkDocs_demo/" title="For MkDocs" class="md-tabs__link">
+        <a href="../MkDocs_demo/" class="md-tabs__link">
           For MkDocs
         </a>
       
@@ -268,7 +253,7 @@
   </div>
 </nav>
       
-      <main class="md-main">
+      <main class="md-main" role="main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
             
@@ -329,14 +314,57 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
-      ML & DL
+      NLP
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
-        ML & DL
+        NLP
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      理论笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        理论笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%E7%9A%84%E5%B7%A8%E4%BA%BA%E8%82%A9%E8%86%80/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
         
           
           
@@ -349,6 +377,131 @@
     </a>
   </li>
 
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      代码学习
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        代码学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF%2B%2B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      书籍笔记
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural%20Reading%20Comprehension%20and%20beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%20Concepts/" title="Some Concepts" class="md-nav__link">
+      Some Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL%20%E4%B9%A0%E9%A2%98/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ML & DL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -368,36 +521,12 @@
 
 
   <li class="md-nav__item">
-    <a href="../Concepts/" title="Concepts" class="md-nav__link">
-      Concepts
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../花书经验法则/" title="花书经验法则" class="md-nav__link">
+    <a href="../%E8%8A%B1%E4%B9%A6%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" title="花书经验法则" class="md-nav__link">
       花书经验法则
     </a>
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../经典网络/" title="经典网络" class="md-nav__link">
-      经典网络
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -410,33 +539,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-3">
-      NLP
+    <label class="md-nav__link" for="nav-4">
+      CS224n学习笔记
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        NLP
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1">
-    
-    <label class="md-nav__link" for="nav-3-1">
-      简介
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
-        简介
+      <label class="md-nav__title" for="nav-4">
+        CS224n学习笔记
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -447,151 +557,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../自然语言处理简介/" title="自然语言处理简介" class="md-nav__link">
-      自然语言处理简介
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../NLP的巨人肩膀/" title="NLP的巨人肩膀" class="md-nav__link">
-      NLP的巨人肩膀
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
-    
-    <label class="md-nav__link" for="nav-3-2">
-      框架学习
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-2">
-        框架学习
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../NCRF++学习笔记/" title="NCRF++" class="md-nav__link">
-      NCRF++
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
-    
-    <label class="md-nav__link" for="nav-3-3">
-      书籍笔记
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-3">
-        书籍笔记
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../NLP Concepts/" title="NLP Concepts" class="md-nav__link">
-      NLP Concepts
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../NNDL 习题/" title="NNDL 习题" class="md-nav__link">
-      NNDL 习题
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Neural Reading Comprehension and beyond/" title="Machine Reading Comprehension" class="md-nav__link">
-      Machine Reading Comprehension
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
-    
-    <label class="md-nav__link" for="nav-3-4">
-      课程笔记
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-4">
-        课程笔记
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../CS224n-2019 简介/" title="CS224n-2019简介" class="md-nav__link">
+    <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" title="CS224n-2019简介" class="md-nav__link">
       CS224n-2019简介
     </a>
   </li>
@@ -614,27 +580,8 @@
           
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4-3" type="checkbox" id="nav-3-4-3">
-    
-    <label class="md-nav__link" for="nav-3-4-3">
-      CS224n-2019学习笔记
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
-      <label class="md-nav__title" for="nav-3-4-3">
-        CS224n-2019学习笔记
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../CS224n-2019-01-Introduction and Word Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+    <a href="../CS224n-2019-01-Introduction%20and%20Word%20Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
       01 Introduction and Word Vectors
     </a>
   </li>
@@ -646,7 +593,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-02-Word Vectors 2 and Word Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+    <a href="../CS224n-2019-02-Word%20Vectors%202%20and%20Word%20Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
       02 Word Vectors 2 and Word Senses
     </a>
   </li>
@@ -658,7 +605,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-03-Word Window Classification,Neural Networks, and Matrix Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+    <a href="../CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
       03 Word Window Classification,Neural Networks, and Matrix Calculus
     </a>
   </li>
@@ -670,7 +617,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-04-Backpropagation and Computation Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+    <a href="../CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
       04 Backpropagation and Computation Graphs
     </a>
   </li>
@@ -682,7 +629,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-05-Linguistic Structure Dependency Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+    <a href="../CS224n-2019-05-Linguistic%20Structure%20Dependency%20Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
       05 Linguistic Structure Dependency Parsing
     </a>
   </li>
@@ -694,7 +641,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-06-The probability of a sentence Recurrent Neural Networks and Language Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+    <a href="../CS224n-2019-06-The%20probability%20of%20a%20sentence%20Recurrent%20Neural%20Networks%20and%20Language%20Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
       06 The probability of a sentence Recurrent Neural Networks and Language Models
     </a>
   </li>
@@ -706,7 +653,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-07-Vanishing Gradients and Fancy RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+    <a href="../CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
       07 Vanishing Gradients and Fancy RNNs
     </a>
   </li>
@@ -718,7 +665,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+    <a href="../CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
       08 Machine Translation, Sequence-to-sequence and Attention
     </a>
   </li>
@@ -730,7 +677,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-09-Practical Tips for Final Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
+    <a href="../CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
       09 Practical Tips for Final Projects
     </a>
   </li>
@@ -742,7 +689,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-10-Question Answering and the Default Final Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+    <a href="../CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
       10 Question Answering and the Default Final Project
     </a>
   </li>
@@ -754,7 +701,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-11-ConvNets for NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+    <a href="../CS224n-2019-11-ConvNets%20for%20NLP/" title="11 ConvNets for NLP" class="md-nav__link">
       11 ConvNets for NLP
     </a>
   </li>
@@ -766,7 +713,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-12-Information from parts of words Subword Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+    <a href="../CS224n-2019-12-Information%20from%20parts%20of%20words%20Subword%20Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
       12 Information from parts of words Subword Models
     </a>
   </li>
@@ -778,7 +725,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-13-Modeling contexts of use Contextual Representations and Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+    <a href="../CS224n-2019-13-Modeling%20contexts%20of%20use%20Contextual%20Representations%20and%20Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
       13 Modeling contexts of use Contextual Representations and Pretraining
     </a>
   </li>
@@ -790,7 +737,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-14-Transformers and Self-Attention For Generative Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+    <a href="../CS224n-2019-14-Transformers%20and%20Self-Attention%20For%20Generative%20Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
       14 Transformers and Self-Attention For Generative Models
     </a>
   </li>
@@ -802,7 +749,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-15-Natural Language Generation/" title="15 Natural Language Generation" class="md-nav__link">
+    <a href="../CS224n-2019-15-Natural%20Language%20Generation/" title="15 Natural Language Generation" class="md-nav__link">
       15 Natural Language Generation
     </a>
   </li>
@@ -814,7 +761,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-16-Coreference Resolution/" title="16 Coreference Resolution" class="md-nav__link">
+    <a href="../CS224n-2019-16-Coreference%20Resolution/" title="16 Coreference Resolution" class="md-nav__link">
       16 Coreference Resolution
     </a>
   </li>
@@ -826,7 +773,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-17-Multitask Learning/" title="17 Multitask Learning" class="md-nav__link">
+    <a href="../CS224n-2019-17-Multitask%20Learning/" title="17 Multitask Learning" class="md-nav__link">
       17 Multitask Learning
     </a>
   </li>
@@ -838,7 +785,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-18-Tree Recursive Neural Networks, Constituency Parsing, and Sentiment/" title="18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment" class="md-nav__link">
+    <a href="../CS224n-2019-18-Tree%20Recursive%20Neural%20Networks%2C%20Constituency%20Parsing%2C%20and%20Sentiment/" title="18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment" class="md-nav__link">
       18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment
     </a>
   </li>
@@ -850,7 +797,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-19-Safety, Bias, and Fairness/" title="19 Safety, Bias, and Fairness" class="md-nav__link">
+    <a href="../CS224n-2019-19-Safety%2C%20Bias%2C%20and%20Fairness/" title="19 Safety, Bias, and Fairness" class="md-nav__link">
       19 Safety, Bias, and Fairness
     </a>
   </li>
@@ -862,565 +809,9 @@
 
 
   <li class="md-nav__item">
-    <a href="../CS224n-2019-20-The Future of NLP + Deep Learning/" title="20 The Future of NLP + Deep Learning" class="md-nav__link">
+    <a href="../CS224n-2019-20-The%20Future%20of%20NLP%20%2B%20Deep%20Learning/" title="20 The Future of NLP + Deep Learning" class="md-nav__link">
       20 The Future of NLP + Deep Learning
     </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      Interview experience
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Interview experience
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../面经/" title="我的面经" class="md-nav__link">
-      我的面经
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2" checked>
-    
-    <label class="md-nav__link" for="nav-4-2">
-      实训笔记
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
-      <label class="md-nav__title" for="nav-4-2">
-        实训笔记
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Protocol Buffers/" title="Protobuf" class="md-nav__link">
-      Protobuf
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../FDBus/" title="FDBus" class="md-nav__link">
-      FDBus
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../FDBus API/" title="FDBus API" class="md-nav__link">
-      FDBus API
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        FDBus内部结构
-      </label>
-    
-    <a href="./" title="FDBus内部结构" class="md-nav__link md-nav__link--active">
-      FDBus内部结构
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">目录</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="基础平台抽象层" class="md-nav__link">
-    基础平台抽象层
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#thread-cbasethread" title="Thread - CBaseThread" class="md-nav__link">
-    Thread - CBaseThread
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#mutex-cbasemutexlock" title="Mutex - CBaseMutexLock" class="md-nav__link">
-    Mutex - CBaseMutexLock
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#autolock-cautolock" title="Autolock - CAutoLock" class="md-nav__link">
-    Autolock - CAutoLock
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#semaphore-cbasesemaphore" title="Semaphore - CBaseSemaphore" class="md-nav__link">
-    Semaphore - CBaseSemaphore
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pipe-cbasepipe" title="Pipe - CBasePipe" class="md-nav__link">
-    Pipe - CBasePipe
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#socket" title="Socket" class="md-nav__link">
-    Socket
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#event-loop" title="Event Loop" class="md-nav__link">
-    Event Loop
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="高级平台抽象层" class="md-nav__link">
-    高级平台抽象层
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#job-cbasejob" title="Job - CBaseJob" class="md-nav__link">
-    Job - CBaseJob
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#worker-cbaseworker" title="Worker - CBaseWorker" class="md-nav__link">
-    Worker - CBaseWorker
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#timer-cbaselooptimer" title="Timer - CBaseLoopTimer" class="md-nav__link">
-    Timer - CBaseLoopTimer
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#watch-cbasefdwatch" title="Watch - CBaseFdWatch" class="md-nav__link">
-    Watch - CBaseFdWatch
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#notification" title="Notification" class="md-nav__link">
-    Notification
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inter-process-communicationipc" title="Inter-Process Communication(IPC)" class="md-nav__link">
-    Inter-Process Communication(IPC)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" title="基本概念" class="md-nav__link">
-    基本概念
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ipc" title="IPC" class="md-nav__link">
-    IPC
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" title="消息结构" class="md-nav__link">
-    消息结构
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" title="消息数据" class="md-nav__link">
-    消息数据
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#endpointclientserver" title="通信Endpoint：Client与Server" class="md-nav__link">
-    通信Endpoint：Client与Server
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cfdbbaseobjectendpoint" title="CFdbBaseObject：更基础的Endpoint" class="md-nav__link">
-    CFdbBaseObject：更基础的Endpoint
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cfdbbaseobjectexample" title="CFdbBaseObject：Example" class="md-nav__link">
-    CFdbBaseObject：Example
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clientserver" title="Client/Server回调(虚)函数" class="md-nav__link">
-    Client/Server回调(虚)函数
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#context-fdbus" title="Context – FDBus的工作线程" class="md-nav__link">
-    Context – FDBus的工作线程
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clientserver_1" title="Client/Server的工作线程" class="md-nav__link">
-    Client/Server的工作线程
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fdbus" title="FDBus进程部署图" class="md-nav__link">
-    FDBus进程部署图
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#fdbus_1" title="FDBus开发框架" class="md-nav__link">
-    FDBus开发框架
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server" title="Client-Server请求" class="md-nav__link">
-    Client-Server请求
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server_1" title="Client-Server连接" class="md-nav__link">
-    Client-Server连接
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server_2" title="Client-Server方法调用" class="md-nav__link">
-    Client-Server方法调用
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#server" title="Server的消息推送" class="md-nav__link">
-    Server的消息推送
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" title="推送（广播）消息的注册" class="md-nav__link">
-    推送（广播）消息的注册
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" title="注册广播消息" class="md-nav__link">
-    注册广播消息
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_8" title="寻址和组网" class="md-nav__link">
-    寻址和组网
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server_1" title="Server地址" class="md-nav__link">
-    Server地址
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#server_2" title="Server命名与名字解析" class="md-nav__link">
-    Server命名与名字解析
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_9" title="地址分配表" class="md-nav__link">
-    地址分配表
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#server_3" title="Server名字解析" class="md-nav__link">
-    Server名字解析
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hostserver" title="HostServer与节点名字" class="md-nav__link">
-    HostServer与节点名字
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#server_4" title="Server名字的唯一性" class="md-nav__link">
-    Server名字的唯一性
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" title="超时与重连" class="md-nav__link">
-    超时与重连
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
-    Commands
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logging" title="Logging" class="md-nav__link">
-    Logging
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#log" title="Log系统" class="md-nav__link">
-    Log系统
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#log_1" title="调试Log输出" class="md-nav__link">
-    调试Log输出
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logapi-tag" title="调试Log输出API – 带tag版本" class="md-nav__link">
-    调试Log输出API – 带tag版本
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logapi-tag_1" title="调试Log输出API – 无tag版本" class="md-nav__link">
-    调试Log输出API – 无tag版本
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logserver" title="LogServer" class="md-nav__link">
-    LogServer
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#logviewer" title="LogViewer" class="md-nav__link">
-    LogViewer
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-        <li class="md-nav__item">
-          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
-            评论
-          </a>
-        </li>
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Cross compiler/" title="Cross compiler" class="md-nav__link">
-      Cross compiler
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
         
@@ -1439,82 +830,10 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Math & CS & Coding
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Math & CS & Coding
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Linux/" title="Linux" class="md-nav__link">
-      Linux
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../专业知识面试准备/" title="CS专业课" class="md-nav__link">
-      CS专业课
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Coding Knowledge/" title="重点内容" class="md-nav__link">
-      重点内容
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../历年机试/" title="历年机试" class="md-nav__link">
-      历年机试
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
       For MkDocs
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-5">
         For MkDocs
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1538,7 +857,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../Material Theme Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+    <a href="../Material%20Theme%20Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
       Material Theme Tutorial
     </a>
   </li>
@@ -1570,7 +889,7 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" title="基础平台抽象层" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     基础平台抽象层
   </a>
   
@@ -1578,14 +897,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#thread-cbasethread" title="Thread - CBaseThread" class="md-nav__link">
+  <a href="#thread-cbasethread" class="md-nav__link">
     Thread - CBaseThread
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#mutex-cbasemutexlock" title="Mutex - CBaseMutexLock" class="md-nav__link">
+  <a href="#mutex-cbasemutexlock" class="md-nav__link">
     Mutex - CBaseMutexLock
   </a>
   
@@ -1593,7 +912,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#autolock-cautolock" title="Autolock - CAutoLock" class="md-nav__link">
+  <a href="#autolock-cautolock" class="md-nav__link">
     Autolock - CAutoLock
   </a>
   
@@ -1605,28 +924,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#semaphore-cbasesemaphore" title="Semaphore - CBaseSemaphore" class="md-nav__link">
+  <a href="#semaphore-cbasesemaphore" class="md-nav__link">
     Semaphore - CBaseSemaphore
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#pipe-cbasepipe" title="Pipe - CBasePipe" class="md-nav__link">
+  <a href="#pipe-cbasepipe" class="md-nav__link">
     Pipe - CBasePipe
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#socket" title="Socket" class="md-nav__link">
+  <a href="#socket" class="md-nav__link">
     Socket
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#event-loop" title="Event Loop" class="md-nav__link">
+  <a href="#event-loop" class="md-nav__link">
     Event Loop
   </a>
   
@@ -1638,7 +957,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" title="高级平台抽象层" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     高级平台抽象层
   </a>
   
@@ -1646,35 +965,35 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#job-cbasejob" title="Job - CBaseJob" class="md-nav__link">
+  <a href="#job-cbasejob" class="md-nav__link">
     Job - CBaseJob
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#worker-cbaseworker" title="Worker - CBaseWorker" class="md-nav__link">
+  <a href="#worker-cbaseworker" class="md-nav__link">
     Worker - CBaseWorker
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#timer-cbaselooptimer" title="Timer - CBaseLoopTimer" class="md-nav__link">
+  <a href="#timer-cbaselooptimer" class="md-nav__link">
     Timer - CBaseLoopTimer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#watch-cbasefdwatch" title="Watch - CBaseFdWatch" class="md-nav__link">
+  <a href="#watch-cbasefdwatch" class="md-nav__link">
     Watch - CBaseFdWatch
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#notification" title="Notification" class="md-nav__link">
+  <a href="#notification" class="md-nav__link">
     Notification
   </a>
   
@@ -1686,7 +1005,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#inter-process-communicationipc" title="Inter-Process Communication(IPC)" class="md-nav__link">
+  <a href="#inter-process-communicationipc" class="md-nav__link">
     Inter-Process Communication(IPC)
   </a>
   
@@ -1694,126 +1013,126 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" title="基本概念" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     基本概念
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#ipc" title="IPC" class="md-nav__link">
+  <a href="#ipc" class="md-nav__link">
     IPC
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" title="消息结构" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     消息结构
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" title="消息数据" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     消息数据
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#endpointclientserver" title="通信Endpoint：Client与Server" class="md-nav__link">
+  <a href="#endpointclientserver" class="md-nav__link">
     通信Endpoint：Client与Server
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cfdbbaseobjectendpoint" title="CFdbBaseObject：更基础的Endpoint" class="md-nav__link">
+  <a href="#cfdbbaseobjectendpoint" class="md-nav__link">
     CFdbBaseObject：更基础的Endpoint
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cfdbbaseobjectexample" title="CFdbBaseObject：Example" class="md-nav__link">
+  <a href="#cfdbbaseobjectexample" class="md-nav__link">
     CFdbBaseObject：Example
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clientserver" title="Client/Server回调(虚)函数" class="md-nav__link">
+  <a href="#clientserver" class="md-nav__link">
     Client/Server回调(虚)函数
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#context-fdbus" title="Context – FDBus的工作线程" class="md-nav__link">
+  <a href="#context-fdbus" class="md-nav__link">
     Context – FDBus的工作线程
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#clientserver_1" title="Client/Server的工作线程" class="md-nav__link">
+  <a href="#clientserver_1" class="md-nav__link">
     Client/Server的工作线程
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fdbus" title="FDBus进程部署图" class="md-nav__link">
+  <a href="#fdbus" class="md-nav__link">
     FDBus进程部署图
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#fdbus_1" title="FDBus开发框架" class="md-nav__link">
+  <a href="#fdbus_1" class="md-nav__link">
     FDBus开发框架
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-server" title="Client-Server请求" class="md-nav__link">
+  <a href="#client-server" class="md-nav__link">
     Client-Server请求
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-server_1" title="Client-Server连接" class="md-nav__link">
+  <a href="#client-server_1" class="md-nav__link">
     Client-Server连接
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-server_2" title="Client-Server方法调用" class="md-nav__link">
+  <a href="#client-server_2" class="md-nav__link">
     Client-Server方法调用
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#server" title="Server的消息推送" class="md-nav__link">
+  <a href="#server" class="md-nav__link">
     Server的消息推送
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" title="推送（广播）消息的注册" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     推送（广播）消息的注册
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" title="注册广播消息" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     注册广播消息
   </a>
   
@@ -1825,7 +1144,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" title="寻址和组网" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     寻址和组网
   </a>
   
@@ -1833,14 +1152,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#server_1" title="Server地址" class="md-nav__link">
+  <a href="#server_1" class="md-nav__link">
     Server地址
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#server_2" title="Server命名与名字解析" class="md-nav__link">
+  <a href="#server_2" class="md-nav__link">
     Server命名与名字解析
   </a>
   
@@ -1848,14 +1167,14 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" title="地址分配表" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     地址分配表
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#server_3" title="Server名字解析" class="md-nav__link">
+  <a href="#server_3" class="md-nav__link">
     Server名字解析
   </a>
   
@@ -1867,28 +1186,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#hostserver" title="HostServer与节点名字" class="md-nav__link">
+  <a href="#hostserver" class="md-nav__link">
     HostServer与节点名字
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#server_4" title="Server名字的唯一性" class="md-nav__link">
+  <a href="#server_4" class="md-nav__link">
     Server名字的唯一性
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" title="超时与重连" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     超时与重连
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#commands" title="Commands" class="md-nav__link">
+  <a href="#commands" class="md-nav__link">
     Commands
   </a>
   
@@ -1900,7 +1219,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#logging" title="Logging" class="md-nav__link">
+  <a href="#logging" class="md-nav__link">
     Logging
   </a>
   
@@ -1908,42 +1227,42 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#log" title="Log系统" class="md-nav__link">
+  <a href="#log" class="md-nav__link">
     Log系统
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#log_1" title="调试Log输出" class="md-nav__link">
+  <a href="#log_1" class="md-nav__link">
     调试Log输出
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logapi-tag" title="调试Log输出API – 带tag版本" class="md-nav__link">
+  <a href="#logapi-tag" class="md-nav__link">
     调试Log输出API – 带tag版本
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logapi-tag_1" title="调试Log输出API – 无tag版本" class="md-nav__link">
+  <a href="#logapi-tag_1" class="md-nav__link">
     调试Log输出API – 无tag版本
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logserver" title="LogServer" class="md-nav__link">
+  <a href="#logserver" class="md-nav__link">
     LogServer
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#logviewer" title="LogViewer" class="md-nav__link">
+  <a href="#logviewer" class="md-nav__link">
     LogViewer
   </a>
   
@@ -1959,7 +1278,7 @@
       
       
         <li class="md-nav__item">
-          <a href="#__comments" title="评论" class="md-nav__link md-nav__link--active">
+          <a href="#__comments" class="md-nav__link md-nav__link--active">
             评论
           </a>
         </li>
@@ -2125,7 +1444,7 @@
 <li>exit(int32_t exit_code = 1)：退出Worker的工作线程。该函数调用后，如果Worker正在处理Job则无法立刻退出，要等到Job处理完毕才能退出。exit_code必须非0，表明退出的原因，通常可以在teardown()里使用。</li>
 <li>sendAsync(CBaseJob *job, bool urgent = false)：以异步方式提交Job给Worker。Job必须是用new的方式动态创建，且使用者不需要释放，Worker会在处理完毕后释放掉。Urgent选择发送到普通队列还是紧急队列。</li>
 <li>sendAsyncEndeavor(CBaseJob *job, bool urgent = false)：同上，区别是，如果该函数被worker线程自身调用时，Job将不被送入任何队列，而是直接运行该Job。这样做效率较高，但会打乱Job处理的FIFO顺序。</li>
-<li>sendSync(CBaseJob *job, long milliseconds = 0, bool urgent = false)：以同步方式提交Job给Worker。Job必须是用new的方式动态创建，且使用者不需要释放，Worker会在处理完毕后释放掉。 milliseconds设置最长阻塞时间（<strong>默认0为无限等待</strong>）。urgent选择发送到普通队列还是紧急队列。<strong>要注意，该函数不能被worker线程自身调用，否则会死锁</strong>。</li>
+<li>sendSync(CBaseJob <em>job, long milliseconds = 0, bool urgent = false)：以同步方式提交Job给Worker。Job必须是用new的方式动态创建，且使用者不需要释放，Worker会在处理完毕后释放掉。 milliseconds设置最长阻塞时间（**默认0为无限等待*</em>）。urgent选择发送到普通队列还是紧急队列。<strong>要注意，该函数不能被worker线程自身调用，否则会死锁</strong>。</li>
 <li>sendSyncEndeavor(CBaseJob *job, long milliseconds = 0, bool urgent = false)：同上，区别是，如果该函数被worker线程自身调用时，job将不被送入任何队列，而是直接运行该Job 。这样做效率较高，但会打乱Job处理的FIFO顺序。</li>
 <li>sendSync(CBaseJob::Ptr &amp;job, long milliseconds = 0, bool urgent = false)：同上sendSync()，区别是Job传入的是引用而非指针，使用者可能还持有该Job，因此该函数调用完毕Worker不会释放Job的内存，只是减少引用计数。 Urgent选择发送到普通队列还是紧急队列。</li>
 <li>sendSyncEndeavor(CBaseJob::Ptr &amp;job, long milliseconds = 0, bool urgent = false)：同上，区别是，如果该函数被worker线程自身调用时，job将不被送入任何队列，而是直接运行该Job 。这样做效率较高，但会打乱Job处理的FIFO顺序。</li>
@@ -2481,9 +1800,9 @@
 <li>
 <p>在文件里使用如下方式定义无tag版本：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="cp">#define _FDB_LOG_TAG_ “my_tag&quot;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code><span class="cp">#define _FDB_LOG_TAG_ “my_tag&quot;</span>
 <span class="cp">#include</span> <span class="cpf">&lt;common_base/fdb_log_trace.h&gt;</span><span class="cp"></span>
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 </li>
@@ -2544,7 +1863,7 @@
 18
 19
 20
-21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>==== fdbus monitor log format: ====
+21</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>==== fdbus monitor log format: ====
     [F]
     [pid of message sender]
     [host name of message sender]
@@ -2565,7 +1884,7 @@
     [host name of log generator]
     [time stamp]
     log information
-</pre></div>
+</code></pre></div>
 </td></tr></table>
 
 <h4 id="logviewer">LogViewer<a class="headerlink" href="#logviewer" title="Permanent link">&para;</a></h4>
@@ -2579,6 +1898,7 @@
                 
                   
                 
+                
               
               
                 
@@ -2588,9 +1908,9 @@
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
-      this.page.url = "https://looperxx.github.io/FDBus内部结构/";
+      this.page.url = "https://looperxx.github.io/FDBus%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84/";
       this.page.identifier =
-        "FDBus内部结构/";
+        "FDBus%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84/";
     };
     (function() {
       var d = document, s = d.createElement("script");
@@ -2609,41 +1929,6 @@
         
 <footer class="md-footer">
   
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../FDBus API/" title="FDBus API" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  上一页
-                </span>
-                FDBus API
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../Cross compiler/" title="Cross compiler" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  下一页
-                </span>
-                Cross compiler
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -2653,18 +1938,18 @@
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/looperXX" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
@@ -2674,7 +1959,7 @@
       
     </div>
     
-      <script src="../assets/javascripts/application.245445c6.js"></script>
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
       
         
         
@@ -2689,7 +1974,7 @@
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:".."}})</script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
       
