@@ -1104,7 +1104,7 @@
 <p><strong>Tips for unknown words with word vectors</strong></p>
 <ul>
 <li>简单且常见的解决方案</li>
-<li>训练时：词汇表 Vocab 为 <span><span class="MathJax_Preview">\{\text { words occurring, say, } \geq 5 \text { times }\} \cup\{&lt;\cup N K&gt;\}</span><script type="math/tex">\{\text { words occurring, say, } \geq 5 \text { times }\} \cup\{<\cup N K>\}</script></span></li>
+<li>训练时：词汇表 Vocab 为 <span><span class="MathJax_Preview">\{\text { words occurring, say, } \geq 5 \text { times }\} \cup\{&lt;\text{UNK}&gt;\}</span><script type="math/tex">\{\text { words occurring, say, } \geq 5 \text { times }\} \cup\{<\text{UNK}>\}</script></span></li>
 <li>将所有罕见的词（数据集中出现次数小于 5）都映射为 <span><span class="MathJax_Preview">&lt;\text{UNK}&gt;</span><script type="math/tex"><\text{UNK}></script></span> ，为其训练一个词向量</li>
 <li>运行时：使用 <span><span class="MathJax_Preview">&lt;\text{UNK}&gt;</span><script type="math/tex"><\text{UNK}></script></span> 代替词汇表之外的词 OOV</li>
 <li>问题<ul>
@@ -1149,7 +1149,7 @@
 <li>但这些语言模型在每一个位置生成特定于上下文的词表示</li>
 </ul>
 <h3 id="2-peters-et-al-2017-taglm-pre-elmo">2. Peters et al. (2017): TagLM – “Pre-ELMo”<a class="headerlink" href="#2-peters-et-al-2017-taglm-pre-elmo" title="Permanent link">&para;</a></h3>
-<p><a href="https://arxiv.org/pdf/1705.00108.pdf">https://arxiv.org/pdf/1705.00108.pdf</a></p>
+<p><a href="https://arxiv.org/pdf/1705.00108.pdf">Semi-supervised sequence tagging with bidirectional language models</a></p>
 <ul>
 <li>想法：想要获得单词在上下文的意思，但标准的 RNN 学习任务只在 task-labeled 的小数据上（如 NER ）</li>
 <li>为什么不通过半监督学习的方式在大型无标签数据集上训练 NLM，而不只是词向量 </li>
@@ -1198,7 +1198,7 @@
 </li>
 </ul>
 <p><strong>Also in the air: McCann et al. 2017: CoVe</strong></p>
-<p><a href="https://arxiv.org/pdf/1708.00107.pdf">https://arxiv.org/pdf/1708.00107.pdf</a></p>
+<p><a href="https://arxiv.org/pdf/1708.00107.pdf">Learned in Translation: Contextualized Word Vectors</a></p>
 <ul>
 <li>也有使用训练好的序列模型为其他NLP模型提供上下文的想法</li>
 <li>想法：机器翻译是为了保存意思，所以这也许是个好目标？</li>
@@ -1211,8 +1211,7 @@
 </li>
 </ul>
 <p><strong>Peters et al. (2018): ELMo: Embeddings from Language Models</strong> </p>
-<p>Deep contextualized word representations. NAACL 2018.
-<a href="https://arxiv.org/abs/1802.05365">https://arxiv.org/abs/1802.05365</a></p>
+<p><a href="https://arxiv.org/abs/1802.05365">Deep contextualized word representations. NAACL 2018.</a> </p>
 <ul>
 <li><strong>word token vectors</strong> or <strong>contextual word vectors</strong> 的爆发版本</li>
 <li>使用长上下文而不是上下文窗口学习 word token 向量(这里，整个句子可能更长)</li>
@@ -1286,8 +1285,7 @@
 <li>这似乎很有趣，但它是如何通过两层以上的网络来实现的看起来更有趣</li>
 </ul>
 <p><strong>Also around: ULMfit</strong></p>
-<p>Howard and Ruder (2018) Universal Language Model Fine-tuning
-for Text Classification. <a href="https://arxiv.org/pdf/1801.06146.pdf">https://arxiv.org/pdf/1801.06146.pdf</a></p>
+<p><a href="https://arxiv.org/pdf/1801.06146.pdf">Howard and Ruder (2018) Universal Language Model Fine-tuning for Text Classification.</a></p>
 <ul>
 <li>转移NLM知识的一般思路是一样的</li>
 <li>这里应用于文本分类</li>
@@ -1341,8 +1339,7 @@ for Text Classification. <a href="https://arxiv.org/pdf/1801.06146.pdf">https://
 <li>但如果注意力让我们进入任何一个状态……也许我们可以只用注意力而不需要RNN?</li>
 </ul>
 <p><strong>Transformer Overview</strong></p>
-<p>Attention is all you need. 2017. Aswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin
-<a href="https://arxiv.org/pdf/1706.03762.pdf">https://arxiv.org/pdf/1706.03762.pdf</a></p>
+<p><a href="https://arxiv.org/pdf/1706.03762.pdf">Attention is all you need. 2017. Aswani, Shazeer, Parmar, Uszkoreit, Jones, Gomez, Kaiser, Polosukhin</a></p>
 <ul>
 <li>Non-recurrent sequence-to-sequence encoder-decoder model</li>
 <li>任务：平行语料库的机器翻译</li>
@@ -1454,7 +1451,7 @@ A(Q, K, V)=\operatorname{softmax}\left(\frac{Q K^{T}}{\sqrt{d_{k}}}\right) V
 \mu^{l}=\frac{1}{H} \sum_{i=1}^{H} a_{i}^{l} \quad \sigma^{l}=\sqrt{\frac{1}{H} \sum_{i=1}^{H}\left(a_{i}^{l}-\mu^{l}\right)^{2}} \quad h_{i}=f\left(\frac{g_{i}}{\sigma_{i}}\left(a_{i}-\mu_{i}\right)+b_{i}\right)
 </script>
 </div>
-<p>Layer Normalization by Ba, Kiros and Hinton, <a href="https://arxiv.org/pdf/1607.06450.pdf">https://arxiv.org/pdf/1607.06450.pdf</a></p>
+<p><a href="https://arxiv.org/pdf/1607.06450.pdf">Layer Normalization by Ba, Kiros and Hinton</a></p>
 <p><strong>Encoder Input</strong></p>
 <p><img alt="image-20190711202903031" src="../imgs/image-20190711202903031.png" /></p>
 <ul>
@@ -1529,7 +1526,7 @@ PE(\text {pos}, 2 i+1)=\cos \left(pos / 10000^{2 i / d_{model}}\right)
 <p><img alt="image-20190711210356881" src="../imgs/image-20190711210356881.png" /></p>
 <h3 id="5-bert-devlin-chang-lee-toutanova-2018">5. BERT: Devlin, Chang, Lee, Toutanova (2018)<a class="headerlink" href="#5-bert-devlin-chang-lee-toutanova-2018" title="Permanent link">&para;</a></h3>
 <p>BERT (Bidirectional Encoder Representations from Transformers):</p>
-<p>Pre-training of Deep Bidirectional Transformers for Language Understanding</p>
+<p><a href="https://arxiv.org/abs/1810.04805">Pre-training of Deep Bidirectional Transformers for Language Understanding</a></p>
 <ul>
 <li><strong>问题</strong>：语言模型只使用左上下文或右上下文，但语言理解是双向的</li>
 <li>为什么LMs是单向的？</li>
