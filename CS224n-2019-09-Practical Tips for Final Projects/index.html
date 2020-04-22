@@ -1,0 +1,1686 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LooperXX's homepage">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>09 Practical Tips for Final Projects - Science is interesting.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-164217558-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    <body dir="">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-09-practical-tips-for-final-projects" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Science is interesting.
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              09 Practical Tips for Final Projects
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Normalization/" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link md-tabs__link--active">
+          CS224n学习笔记
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    Science is interesting.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      NLP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="NLP" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      理论笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="理论笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        理论笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%E7%9A%84%E5%B7%A8%E4%BA%BA%E8%82%A9%E8%86%80/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      代码学习
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="代码学习" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        代码学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF%2B%2B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      书籍笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="书籍笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural%20Reading%20Comprehension%20and%20beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%20Concepts/" title="Some Concepts" class="md-nav__link">
+      Some Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL%20%E4%B9%A0%E9%A2%98/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ML & DL
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ML & DL" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%8A%B1%E4%B9%A6%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" title="花书经验法则" class="md-nav__link">
+      花书经验法则
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      CS224n学习笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="CS224n学习笔记" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        CS224n学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" title="CS224n-2019简介" class="md-nav__link">
+      CS224n-2019简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">
+      CS224n-2019作业笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-01-Introduction%20and%20Word%20Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+      01 Introduction and Word Vectors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-02-Word%20Vectors%202%20and%20Word%20Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+      02 Word Vectors 2 and Word Senses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+      03 Word Window Classification,Neural Networks, and Matrix Calculus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+      04 Backpropagation and Computation Graphs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-05-Linguistic%20Structure%20Dependency%20Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+      05 Linguistic Structure Dependency Parsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-06-The%20probability%20of%20a%20sentence%20Recurrent%20Neural%20Networks%20and%20Language%20Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+      06 The probability of a sentence Recurrent Neural Networks and Language Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+      07 Vanishing Gradients and Fancy RNNs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+      08 Machine Translation, Sequence-to-sequence and Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        09 Practical Tips for Final Projects
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="09 Practical Tips for Final Projects" class="md-nav__link md-nav__link--active">
+      09 Practical Tips for Final Projects
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-09-practical-tips-for-final-projects" class="md-nav__link">
+    Lecture 09 Practical Tips for Final Projects
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 09 Practical Tips for Final Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-finding-research-topics" class="md-nav__link">
+    2. Finding Research Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-finding-data" class="md-nav__link">
+    3. Finding data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-one-more-look-at-gated-recurrent-units-and-mt" class="md-nav__link">
+    4. One more look at gated recurrent units and MT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-large-output-vocabulary-problem-in-nmt-or-all-nlg" class="md-nav__link">
+    5. The large output vocabulary problem in NMT (or all NLG)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-doing-your-research-example-straightforward-class-project-apply-nnets-to-task" class="md-nav__link">
+    6. Doing your research example: Straightforward Class Project: Apply NNets to Task
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+      10 Question Answering and the Default Final Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-11-ConvNets%20for%20NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+      11 ConvNets for NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-12-Information%20from%20parts%20of%20words%20Subword%20Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+      12 Information from parts of words Subword Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-13-Modeling%20contexts%20of%20use%20Contextual%20Representations%20and%20Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+      13 Modeling contexts of use Contextual Representations and Pretraining
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-14-Transformers%20and%20Self-Attention%20For%20Generative%20Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+      14 Transformers and Self-Attention For Generative Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-15-Natural%20Language%20Generation/" title="15 Natural Language Generation" class="md-nav__link">
+      15 Natural Language Generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-16-Coreference%20Resolution/" title="16 Coreference Resolution" class="md-nav__link">
+      16 Coreference Resolution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-17-Multitask%20Learning/" title="17 Multitask Learning" class="md-nav__link">
+      17 Multitask Learning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-18-Tree%20Recursive%20Neural%20Networks%2C%20Constituency%20Parsing%2C%20and%20Sentiment/" title="18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment" class="md-nav__link">
+      18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-19-Safety%2C%20Bias%2C%20and%20Fairness/" title="19 Safety, Bias, and Fairness" class="md-nav__link">
+      19 Safety, Bias, and Fairness
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-20-The%20Future%20of%20NLP%20%2B%20Deep%20Learning/" title="20 The Future of NLP + Deep Learning" class="md-nav__link">
+      20 The Future of NLP + Deep Learning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      For MkDocs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material%20Theme%20Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lecture-09-practical-tips-for-final-projects" class="md-nav__link">
+    Lecture 09 Practical Tips for Final Projects
+  </a>
+  
+    <nav class="md-nav" aria-label="Lecture 09 Practical Tips for Final Projects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-finding-research-topics" class="md-nav__link">
+    2. Finding Research Topics
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-finding-data" class="md-nav__link">
+    3. Finding data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-one-more-look-at-gated-recurrent-units-and-mt" class="md-nav__link">
+    4. One more look at gated recurrent units and MT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-the-large-output-vocabulary-problem-in-nmt-or-all-nlg" class="md-nav__link">
+    5. The large output vocabulary problem in NMT (or all NLG)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-doing-your-research-example-straightforward-class-project-apply-nnets-to-task" class="md-nav__link">
+    6. Doing your research example: Straightforward Class Project: Apply NNets to Task
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-09-Practical Tips for Final Projects.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                  <h1>09 Practical Tips for Final Projects</h1>
+                
+                <h2 id="lecture-09-practical-tips-for-final-projects">Lecture 09 Practical Tips for Final Projects<a class="headerlink" href="#lecture-09-practical-tips-for-final-projects" title="Permanent link">&para;</a></h2>
+<p><strong>Lecture Plan</strong></p>
+<ol>
+<li>Final project types and details; assessment revisited </li>
+<li>Finding research topics; a couple of examples </li>
+<li>Finding data </li>
+<li>Review of gated neural sequence models </li>
+<li>A couple of MT topics </li>
+<li>Doing your research </li>
+<li>Presenting your results and evaluation</li>
+</ol>
+<p><strong>This lecture is still relevant ... Even if doing DFP</strong> </p>
+<ul>
+<li>
+<p>At a lofty level </p>
+<ul>
+<li>了解一些关于做研究的知识是有好处的</li>
+</ul>
+</li>
+<li>
+<p>我们将接触到:</p>
+<ul>
+<li>基线</li>
+<li>基准</li>
+<li>评估</li>
+<li>错误分析</li>
+<li>论文写作</li>
+</ul>
+<p>这也是 默认最终项目 的一大特点</p>
+</li>
+</ul>
+<h3 id="2-finding-research-topics">2. Finding Research Topics<a class="headerlink" href="#2-finding-research-topics" title="Permanent link">&para;</a></h3>
+<p>所有科学的两个基本出发点</p>
+<ul>
+<li>[钉子]从一个(领域)感兴趣的问题开始，并试图找到比目前已知的/使用的更好的方法来解决它。</li>
+<li>[锤子]从一个感兴趣的技术方法开始，找出扩展或改进它或应用它的新方法的好方法</li>
+</ul>
+<p><strong>Project types</strong></p>
+<p>这不是一个详尽的列表，但大多数项目都是其中之一</p>
+<ul>
+<li>找到感兴趣的应用程序/任务，探索如何有效地接近/解决它，通常应用现有的神经网络模型</li>
+<li>实现了一个复杂的神经结构，并在一些数据上展示了它的性能</li>
+<li>提出一种新的或变异的神经网络模型，并探讨其经验上的成功</li>
+<li>分析项目。分析一个模型的行为：它如何表示语言知识，或者它能处理什么样的现象，或者它犯了什么样的错误</li>
+<li>稀有的理论项目：显示模型类型、数据或数据表示的一些有趣的、重要的属性</li>
+</ul>
+<p><strong>How to find an interesting place to start?</strong></p>
+<ul>
+<li>Look at ACL anthology for NLP papers<ul>
+<li><a href="https://aclanthology.info">https://aclanthology.info</a></li>
+</ul>
+</li>
+<li>Also look at the online proceedings of major ML conferences<ul>
+<li>NeurIPS, ICML, ICLR • </li>
+</ul>
+</li>
+<li>Look at past cs224n project<ul>
+<li>See the class website </li>
+</ul>
+</li>
+<li>Look at online preprint servers, especially<ul>
+<li><a href="https://arxiv.org">https://arxiv.org</a></li>
+</ul>
+</li>
+<li>Even better: look for an interesting problem in the world</li>
+<li><a href="http://www.arxiv-sanity.com">ArxivSanity Preserver by Stanford grad Andrej Karpathy of cs231n</a></li>
+<li><a href="https://paperswithcode.com/sota">Great new site –a much needed resource for this – lots of NLP tasks</a></li>
+<li>Not always correct, though</li>
+</ul>
+<p><strong>Finding a topic</strong> </p>
+<blockquote>
+<p>“If you see a research area where many people are working, go somewhere else.”</p>
+</blockquote>
+<p><strong>Must-haves (for most* custom final projects)</strong></p>
+<ul>
+<li>合适的数据<ul>
+<li>通常目标:10000 +标记的例子里程碑</li>
+</ul>
+</li>
+<li>可行的任务</li>
+<li>自动评估指标</li>
+<li>NLP是项目的核心</li>
+</ul>
+<h3 id="3-finding-data">3. Finding data<a class="headerlink" href="#3-finding-data" title="Permanent link">&para;</a></h3>
+<ul>
+<li>有些人会为一个项目收集他们自己的数据<ul>
+<li>你可能有一个使用“无监督”数据的项目</li>
+<li>你可以注释少量的数据</li>
+<li>你可以找到一个网站，有效地提供注释，如喜欢，明星，评级等</li>
+</ul>
+</li>
+<li>有些人使用现有的研究项目或公司的数据<ul>
+<li>如果你可以提供提交、报告等数据样本</li>
+</ul>
+</li>
+<li>大多数人使用现有的，由以前的研究人员建立的数据集<ul>
+<li>你有一个快速的开始，有明显的前期工作和基线</li>
+</ul>
+</li>
+</ul>
+<p><strong>linguistic data consortium</strong> </p>
+<p>语言数据联盟</p>
+<ul>
+<li><a href="https://catalog.ldc.upenn.edu/">https://catalog.ldc.upenn.edu/</a> </li>
+<li>Stanford licenses data; you can get access by signing up at:<ul>
+<li><a href="https://linguistics.stanford.edu/resources/resources-corpora">https://linguistics.stanford.edu/resources/resources-corpora</a></li>
+</ul>
+</li>
+<li>Treebanks, named entities, coreference data,lots of newswire, lots of speech with transcription, parallel MT data<ul>
+<li>Look at their catalog</li>
+<li>Don’t use for non Stanford purposes!</li>
+</ul>
+</li>
+</ul>
+<p><strong>Machine translation</strong> </p>
+<ul>
+<li><a href="http://statmt.org">http://statmt.org</a></li>
+<li>特别要注意各种 WMT 共享任务</li>
+</ul>
+<p><strong>Dependency parsing: Universal Dependencies</strong> </p>
+<p><a href="https://universaldependencies.org">https://universaldependencies.org</a></p>
+<p><strong>Many, many more</strong> </p>
+<p>现在网上有很多其他的数据集可以用于各种各样的目的</p>
+<ul>
+<li>看Kaggle</li>
+<li>看研究论文</li>
+<li>看数据集列表<ul>
+<li><a href="https://machinelearningmastery.com/datasets-natural-languageprocessing/">https://machinelearningmastery.com/datasets-natural-languageprocessing/</a> </li>
+<li><a href="https://github.com/niderhoff/nlp-datasets">https://github.com/niderhoff/nlp-datasets</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="4-one-more-look-at-gated-recurrent-units-and-mt">4. One more look at gated recurrent units and MT<a class="headerlink" href="#4-one-more-look-at-gated-recurrent-units-and-mt" title="Permanent link">&para;</a></h3>
+<p><img alt="1561360747181" src="../imgs/1561360747181.png" /></p>
+<p><strong>Backpropagation through Time</strong></p>
+<p>梯度消失问题十分严重</p>
+<ul>
+<li>当梯度趋近于 0 时，我们无法判断<ul>
+<li>数据中det 和 t+n 之间不再存在依赖关系</li>
+<li>参数设置错误（梯度消失条件）</li>
+</ul>
+</li>
+<li>这是原始转换函数的问题吗？</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+f(h_{t-1}, x_t) = \tanh(W[x_t] + U h_{t-1} + b)
+</div>
+<script type="math/tex; mode=display">
+f(h_{t-1}, x_t) = \tanh(W[x_t] + U h_{t-1} + b)
+</script>
+</div>
+<ul>
+<li>有了它，时间导数就会消失</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\frac{\partial h_{t+1}}{\partial h_{t}}=U^{\top} \frac{\partial \tanh (a)}{\partial a}
+</div>
+<script type="math/tex; mode=display">
+\frac{\partial h_{t+1}}{\partial h_{t}}=U^{\top} \frac{\partial \tanh (a)}{\partial a}
+</script>
+</div>
+<p><strong>Gated Recurrent Unit</strong></p>
+<ul>
+<li>这意味着错误必须通过所有中间节点反向传播</li>
+</ul>
+<p><img alt="1561361236690" src="../imgs/1561361236690.png" /></p>
+<ul>
+<li>或许我们可以创建快捷连接</li>
+</ul>
+<p><img alt="1561361245890" src="../imgs/1561361245890.png" /></p>
+<p>我们可以创建自适应的快捷连接</p>
+<div>
+<div class="MathJax_Preview">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</div>
+<script type="math/tex; mode=display">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</script>
+</div>
+<ul>
+<li>候选更新 <span><span class="MathJax_Preview">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U h_{t-1}+b\right)</span><script type="math/tex">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U h_{t-1}+b\right)</script></span></li>
+<li>更新门 <span><span class="MathJax_Preview">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</span><script type="math/tex">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</script></span></li>
+<li><span><span class="MathJax_Preview">\odot</span><script type="math/tex">\odot</script></span> 表示逐元素的乘法</li>
+</ul>
+<p>让网络自适应地修剪不必要的连接</p>
+<p><img alt="1561361425117" src="../imgs/1561361425117.png" /></p>
+<div>
+<div class="MathJax_Preview">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</div>
+<script type="math/tex; mode=display">
+f\left(h_{t-1}, x_{t}\right)=u_{t} \odot \tilde{h}_{t}+\left(1-u_{t}\right) \odot h_{t-1}
+</script>
+</div>
+<ul>
+<li>候选更新 <span><span class="MathJax_Preview">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U\left(r_{t} \odot h_{t-1}\right)+b\right)</span><script type="math/tex">\tilde{h}_{t}=\tanh \left(W\left[x_{t}\right]+U\left(r_{t} \odot h_{t-1}\right)+b\right)</script></span></li>
+<li>重置门 <span><span class="MathJax_Preview">r_{t}=\sigma\left(W_{r}\left[x_{t}\right]+U_{r} h_{t-1}+b_{r}\right)</span><script type="math/tex">r_{t}=\sigma\left(W_{r}\left[x_{t}\right]+U_{r} h_{t-1}+b_{r}\right)</script></span></li>
+<li>更新门 <span><span class="MathJax_Preview">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</span><script type="math/tex">u_{t}=\sigma\left(W_{u}\left[x_{t}\right]+U_{u} h_{t-1}+b_{u}\right)</script></span></li>
+</ul>
+<p><strong>将RNN单元想象为一个微型计算机</strong></p>
+<p>tanh-RNN</p>
+<p><img alt="1561361588650" src="../imgs/1561361588650.png" /></p>
+<p>GRU</p>
+<p><img alt="1561361604358" src="../imgs/1561361604358.png" /></p>
+<ul>
+<li>
+<p>门控循环单位更现实</p>
+</li>
+<li>
+<p>注意，在思想和注意力上有一些重叠</p>
+</li>
+</ul>
+<p>两个最广泛使用的门控循环单位：GRU和LSTM</p>
+<p><img alt="1561361661947" src="../imgs/1561361661947.png" /></p>
+<p><strong>The LSTM</strong></p>
+<p><img alt="1561361705456" src="../imgs/1561361705456.png" /></p>
+<ul>
+<li>(绿色)LSTM门的所有操作都可以被遗忘/忽略，而不是把所有的东西都塞到其他所有东西上面</li>
+<li>(橙色)下一步的非线性更新就像一个RNN</li>
+<li>(紫色)这部分是核心（ResNets也是如此）不是乘，而是将非线性的东西和 <span><span class="MathJax_Preview">c_{t-1}</span><script type="math/tex">c_{t-1}</script></span> 相加得到 <span><span class="MathJax_Preview">c_t</span><script type="math/tex">c_t</script></span> 。<span><span class="MathJax_Preview">c_t, c_{t-1}</span><script type="math/tex">c_t, c_{t-1}</script></span>之间存在线性联络</li>
+</ul>
+<h3 id="5-the-large-output-vocabulary-problem-in-nmt-or-all-nlg">5. The large output vocabulary problem in NMT (or all NLG)<a class="headerlink" href="#5-the-large-output-vocabulary-problem-in-nmt-or-all-nlg" title="Permanent link">&para;</a></h3>
+<p>Softmax 计算代价昂贵</p>
+<p><img alt="1561362408709" src="../imgs/1561362408709.png" /></p>
+<p><strong>The word generation problem</strong> </p>
+<ul>
+<li>词汇生成问题<ul>
+<li>词汇量通常适中:50K</li>
+</ul>
+</li>
+</ul>
+<p><img alt="1561362476732" src="../imgs/1561362476732.png" /></p>
+<p><strong>Possible approaches for output</strong> </p>
+<ul>
+<li><strong>Hierarchical softmax</strong> : tree-structured vocabulary</li>
+<li><strong>Noise-contrastive estimation</strong> : binary classification</li>
+<li>Train on a subset of the vocabulary at a time; test on a smart on the set of possible translations <ul>
+<li>每次在词汇表的子集上进行训练，测试时自适应的选择词汇表的子集</li>
+<li>Jean, Cho, Memisevic, Bengio. ACL2015</li>
+</ul>
+</li>
+<li><strong>Use attention to work out what you are translating</strong><ul>
+<li>You can do something simple like dictionary lookup</li>
+<li>直接复制原句中的生词： “复制”模型</li>
+</ul>
+</li>
+<li><strong>More ideas we will get to</strong> : Word pieces; char. models</li>
+</ul>
+<p><strong>MT Evaluation –an example of eval</strong></p>
+<ul>
+<li>人工(最好的!?)<ul>
+<li><strong>Adequacy and Fluency</strong>  充分性和流畅性(5或7尺度)</li>
+<li>错误分类</li>
+<li>翻译排名比较（例如人工判断两个翻译哪一个更好）</li>
+</ul>
+</li>
+<li>在使用MT作为子组件的应用程序中进行测试<ul>
+<li>如问答从外语文件<ul>
+<li>无法测试翻译的很多方面(例如,跨语言IR)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自动度量<ul>
+<li>BLEU (双语评价替手)</li>
+<li>Others like TER, METEOR, ……</li>
+</ul>
+</li>
+</ul>
+<p><strong>BLEU Evaluation Metric</strong></p>
+<ul>
+<li>N-gram 精度(得分在0和1之间)<ul>
+<li>参考译文中机器译文的 N-gram 的百分比是多少?<ul>
+<li>一个n-gram是由n个单词组成的序列</li>
+</ul>
+</li>
+<li>在一定的n-gram水平上不允许两次匹配相同的参考译文部分(两个MT单词airport只有在两个参考单词airport时才正确；不能通过输入“the the the the the”来作弊)</li>
+<li>也要用 unigrams 来计算单位的精度，等等</li>
+</ul>
+</li>
+<li>简洁惩罚 BP<ul>
+<li>不能只输入一个单词“the”(精确度1.0!)</li>
+</ul>
+</li>
+<li>人们认为要“玩弄”这个系统是相当困难的。例如找到一种方法来改变机器的输出，使BLEU上升，但质量不会下降。</li>
+<li>BLEU是一个加权的几何平均值，加上一个简洁的惩罚因子</li>
+<li>注意：只在语料库级起作用(0会杀死它)；句子级有一个平滑的变体</li>
+<li>下图是 n-grams 1-4 的BLEU计算公式</li>
+</ul>
+<p><img alt="1561363105610" src="../imgs/1561363105610.png" /></p>
+<p><strong>Initial results showed that BLEU predicts human judgments well</strong></p>
+<p><img alt="1561363153745" src="../imgs/1561363153745.png" /></p>
+<p><strong>Automatic evaluation of MT</strong></p>
+<ul>
+<li>人们开始优化系统最大化BLEU分数<ul>
+<li>BLEU分数迅速提高</li>
+<li>BLEU和人类判断质量之间的关系一直下降</li>
+<li>MT BLEU分数接近人类翻译但是他们的真实质量仍然远低于人类翻译</li>
+</ul>
+</li>
+<li>想出自动MT评估已经成为自己的研究领域<ul>
+<li>有许多建议:TER, METEOR, MaxSim, SEPIA，我们自己的RTE-MT </li>
+<li>TERpA 是一个具有代表性的，好处理一些词的选择变化的度量</li>
+<li>MT研究需要一些自动的度量，以允许快速的开发和评估</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-doing-your-research-example-straightforward-class-project-apply-nnets-to-task">6. Doing your research example: Straightforward Class Project: Apply NNets to Task<a class="headerlink" href="#6-doing-your-research-example-straightforward-class-project-apply-nnets-to-task" title="Permanent link">&para;</a></h3>
+<ol>
+<li>定义任务<ul>
+<li>示例：总结</li>
+</ul>
+</li>
+<li>定义数据集<ol>
+<li>搜索学术数据集<ul>
+<li>他们已经有基线</li>
+<li>例如 Newsroom Summarization Dataset <a href="https://summari.es">https://summari.es</a></li>
+</ul>
+</li>
+<li>定义你自己的数据(更难，需要新的基线)<ul>
+<li>允许连接到你的研究</li>
+<li>新问题提供了新的机会</li>
+<li>有创意:Twitter、博客、新闻等等。有许多整洁的网站为新任务提供了创造性的机会</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>数据集卫生<ul>
+<li>开始的时候，分离devtest and test<ul>
+<li>接下来讨论更多</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定义您的度量(s)<ul>
+<li>在线搜索此任务的已建立的度量</li>
+<li>摘要: Rouge (Recall-Oriented Understudy for GistingEvaluation) ，它定义了人工摘要的 n-gram重叠</li>
+<li>人工评价仍然更适合于摘要；你可以做一个小规模的人类计算</li>
+</ul>
+</li>
+<li>建立基线<ul>
+<li>首先实现最简单的模型(通常对unigrams、bigrams 或平均字向量进行逻辑回归)</li>
+<li>在训练和开发中计算指标</li>
+<li>如果度量令人惊讶且没有错误，那么<ul>
+<li>完成!问题太简单了。需要重启</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现现有的神经网络模型<ul>
+<li>在训练和开发中计算指标</li>
+<li>分析输出和错误</li>
+<li>这门课的最低标准</li>
+</ul>
+</li>
+<li>永远要接近您的数据（除了最后的测试集）<ul>
+<li>可视化数据集</li>
+<li>收集汇总统计信息</li>
+<li>查看错误</li>
+<li>分析不同的超参数如何影响性能</li>
+</ul>
+</li>
+<li>通过良好的实验设置，尝试不同的模型和模型变体，达到快速迭代的目的<ul>
+<li>Fixed window neural model</li>
+<li>Recurrent neural network</li>
+<li>Recursive neural network</li>
+<li>Convolutional neural network</li>
+<li>Attention-basedmodel </li>
+</ul>
+</li>
+</ol>
+<p><strong>Pots of data</strong></p>
+<ul>
+<li>许多公开可用的数据集都是使用train/dev/test结构发布的。我们都在荣誉系统上，只在开发完成时才运行测试集</li>
+<li>这样的分割假设有一个相当大的数据集</li>
+<li>如果没有开发集或者您想要一个单独的调优集，那么您可以通过分割训练数据来创建一个调优集，尽管您必须权衡它的大小/有用性与训练集大小的减少</li>
+<li>拥有一个固定的测试集，确保所有系统都使用相同的黄金数据进行评估。这通常是好的，但是如果测试集具有不寻常的属性，从而扭曲了任务的进度，那么就会出现问题。</li>
+</ul>
+<p><strong>Training models and pots of data</strong></p>
+<ul>
+<li>训练时,模型过拟合<ul>
+<li>该模型正确地描述了您所训练的特定数据中发生的情况，但是模式还不够通用，不适合应用于新数据</li>
+<li>监控和避免问题过度拟合的方法是使用独立的验证和测试集…</li>
+</ul>
+</li>
+</ul>
+<p><img alt="1561364107999" src="../imgs/1561364107999.png" /></p>
+<ul>
+<li>您在一个训练集上构建(评价/训练)一个模型。</li>
+<li>通常，然后在另一个独立的数据集上设置进一步的超参数，即调优集<ul>
+<li>调优集是用来调整超参数的训练集</li>
+</ul>
+</li>
+<li>在开发集(开发测试集或验证集)上度量进度<ul>
+<li>如果您经常这样做，就会过度适应开发集，所以最好有第二个开发集，即dev2set</li>
+</ul>
+</li>
+<li>只有最后,你评估和最终数据在一个测试集<ul>
+<li>非常少地使用最终测试集……理想情况下只使用一次</li>
+</ul>
+</li>
+<li>培训、调优、开发和测试集需要完全不同</li>
+<li>在训练所使用的数据集上进行测试是无效的<ul>
+<li>您将得到一个错误的良好性能。我们通常训练时会过拟合</li>
+</ul>
+</li>
+<li>您需要一个独立的调优<ul>
+<li>如果调优与train相同，则无法正确设置超参数</li>
+</ul>
+</li>
+<li>如果你一直运行在相同的评价集，你开始在评价集上过拟合<ul>
+<li>实际上，你是在对评估集进行“训练”……你在学习那些对特定的评估集有用和没用的东西，并利用这些信息</li>
+</ul>
+</li>
+<li>要获得系统性能的有效度量，您需要另一个未经训练的独立测试集，即 dev2 和最终测试</li>
+</ul>
+<p><strong>我们需要意识到，每一次通过评估结果的变化而完成的调整，都是对数据集的拟合过程。我们需要对数据集的过拟合，但是不可以在独立测试集上过拟合，否则就失去了测试集的意义</strong></p>
+<p><strong>Getting your neural network to train</strong></p>
+<ul>
+<li>从积极的态度开始<ul>
+<li>神经网络想要学习<ul>
+<li>如果网络没有学习，你就是在做一些事情来阻止它成功地学习</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>认清残酷的现实<ul>
+<li>有很多事情会导致神经网络完全不学习或者学习不好</li>
+<li>找到并修复它们(“调试和调优”)通常需要更多的时间，而不是实现您的模型</li>
+</ul>
+</li>
+<li>很难算出这些东西是什么<ul>
+<li>但是经验、实验和经验法则会有所帮助！</li>
+</ul>
+</li>
+</ul>
+<p><strong>Models are sensitive to learning rates</strong> </p>
+<p>From Andrej Karpathy, CS231n course notes </p>
+<p><img alt="1561364564304" src="../imgs/1561364564304.png" /></p>
+<p><strong>Models are sensitive to initialization</strong></p>
+<p>From Michael Nielsen <a href="http://neuralnetworksanddeeplearning.com/chap3.html">http://neuralnetworksanddeeplearning.com/chap3.html</a></p>
+<p><img alt="1561364593093" src="../imgs/1561364593093.png" /></p>
+<p><strong>Training a (gated) RNN</strong></p>
+<ol>
+<li>使用LSTM或GRU：它使您的生活变得更加简单！</li>
+<li>初始化递归矩阵为正交矩阵</li>
+<li>用一个可感知的(小的)比例初始化其他矩阵</li>
+<li>初始化忘记门偏差为1：默认记住</li>
+<li>使用自适应学习速率算法：Adam, AdaDelta，…</li>
+<li>梯度范数的裁剪：1-5似乎是一个合理的阈值，当与Adam 或 AdaDelta一起使用</li>
+<li>要么只使用 dropout vertically，要么研究使用Bayesian dropout(Gal和gahramani -不在PyTorch中原生支持)</li>
+<li>要有耐心！优化需要时间</li>
+</ol>
+<p><strong>Experimental strategy</strong> </p>
+<ul>
+<li>增量地工作！</li>
+<li>从一个非常简单的模型开始</li>
+<li>让它开始工作一个接一个地添加修饰物，让模型使用它们中的每一个(或者放弃它们)</li>
+<li>
+<p>最初运行在少量数据上</p>
+<ul>
+<li>你会更容易在一个小的数据集中看到bug</li>
+<li>像8个例子这样的东西很好</li>
+<li>通常合成数据对这很有用</li>
+<li>确保你能得到100%的数据<ul>
+<li>否则你的模型肯定要么不够强大，要么是破碎的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>在大型数据集中运行</p>
+<ul>
+<li>模型优化后的训练数据仍应接近100%<ul>
+<li>否则，您可能想要考虑一种更强大的模式来过拟合训练数据</li>
+<li>对训练数据的过拟合在进行深度学习时并不可怕<ul>
+<li>这些模型通常善于一般化，因为分布式表示共享统计强度，和对训练数据的过度拟合无关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>但是，现在仍然需要良好的泛化性能<ul>
+<li>对模型进行正则化，直到它不与dev数据过拟合为止<ul>
+<li>像L2正则化这样的策略是有用的</li>
+<li>但通常Dropout是成功的秘诀</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Details matter!</strong></p>
+<ul>
+<li>查看您的数据，收集汇总统计信息</li>
+<li>查看您的模型的输出，进行错误分析</li>
+<li>调优超参数对于神经网络几乎所有的成功都非常重要</li>
+</ul>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>以下是学习本课程时的可用参考书籍：</p>
+<p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
+<p><a href="https://nndl.github.io/">《神经网络与深度学习》</a></p>
+<p>以下是整理笔记的过程中参考的博客：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://looperxx.github.io/CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/",this.page.identifier="CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/"};!function(){var e=document,i=e.createElement("script");i.src="//https-looperxx-github-io-my-wiki.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                08 Machine Translation, Sequence-to-sequence and Attention
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/" title="10 Question Answering and the Default Final Project" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                10 Question Answering and the Default Final Project
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Xiao Xu
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>

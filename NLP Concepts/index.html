@@ -1,0 +1,1137 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LooperXX's homepage">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/NLP%20Concepts/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Some Concepts - Science is interesting.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-164217558-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    <body dir="">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nlp-concepts" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Science is interesting.
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Some Concepts
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Normalization/" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          CS224n学习笔记
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    Science is interesting.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      NLP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="NLP" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      理论笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="理论笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        理论笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%E7%9A%84%E5%B7%A8%E4%BA%BA%E8%82%A9%E8%86%80/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      代码学习
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="代码学习" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        代码学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF%2B%2B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3" checked>
+    
+    <label class="md-nav__link" for="nav-2-3">
+      书籍笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="书籍笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural%20Reading%20Comprehension%20and%20beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Some Concepts
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="Some Concepts" class="md-nav__link md-nav__link--active">
+      Some Concepts
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nmt-concepts" class="md-nav__link">
+    NMT Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-concepts" class="md-nav__link">
+    MRC Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa-concepts" class="md-nav__link">
+    QA Concepts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL%20%E4%B9%A0%E9%A2%98/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ML & DL
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ML & DL" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%8A%B1%E4%B9%A6%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" title="花书经验法则" class="md-nav__link">
+      花书经验法则
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      CS224n学习笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="CS224n学习笔记" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        CS224n学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" title="CS224n-2019简介" class="md-nav__link">
+      CS224n-2019简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">
+      CS224n-2019作业笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-01-Introduction%20and%20Word%20Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+      01 Introduction and Word Vectors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-02-Word%20Vectors%202%20and%20Word%20Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+      02 Word Vectors 2 and Word Senses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+      03 Word Window Classification,Neural Networks, and Matrix Calculus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+      04 Backpropagation and Computation Graphs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-05-Linguistic%20Structure%20Dependency%20Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+      05 Linguistic Structure Dependency Parsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-06-The%20probability%20of%20a%20sentence%20Recurrent%20Neural%20Networks%20and%20Language%20Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+      06 The probability of a sentence Recurrent Neural Networks and Language Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+      07 Vanishing Gradients and Fancy RNNs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+      08 Machine Translation, Sequence-to-sequence and Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
+      09 Practical Tips for Final Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+      10 Question Answering and the Default Final Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-11-ConvNets%20for%20NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+      11 ConvNets for NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-12-Information%20from%20parts%20of%20words%20Subword%20Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+      12 Information from parts of words Subword Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-13-Modeling%20contexts%20of%20use%20Contextual%20Representations%20and%20Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+      13 Modeling contexts of use Contextual Representations and Pretraining
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-14-Transformers%20and%20Self-Attention%20For%20Generative%20Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+      14 Transformers and Self-Attention For Generative Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-15-Natural%20Language%20Generation/" title="15 Natural Language Generation" class="md-nav__link">
+      15 Natural Language Generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-16-Coreference%20Resolution/" title="16 Coreference Resolution" class="md-nav__link">
+      16 Coreference Resolution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-17-Multitask%20Learning/" title="17 Multitask Learning" class="md-nav__link">
+      17 Multitask Learning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-18-Tree%20Recursive%20Neural%20Networks%2C%20Constituency%20Parsing%2C%20and%20Sentiment/" title="18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment" class="md-nav__link">
+      18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-19-Safety%2C%20Bias%2C%20and%20Fairness/" title="19 Safety, Bias, and Fairness" class="md-nav__link">
+      19 Safety, Bias, and Fairness
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-20-The%20Future%20of%20NLP%20%2B%20Deep%20Learning/" title="20 The Future of NLP + Deep Learning" class="md-nav__link">
+      20 The Future of NLP + Deep Learning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      For MkDocs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material%20Theme%20Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nmt-concepts" class="md-nav__link">
+    NMT Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mrc-concepts" class="md-nav__link">
+    MRC Concepts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#qa-concepts" class="md-nav__link">
+    QA Concepts
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/NLP Concepts.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="nlp-concepts">NLP Concepts<a class="headerlink" href="#nlp-concepts" title="Permanent link">&para;</a></h1>
+<h2 id="nmt-concepts">NMT Concepts<a class="headerlink" href="#nmt-concepts" title="Permanent link">&para;</a></h2>
+<p>这是一门将一种自然源语言转换为另一种自然目标语言的技术。</p>
+<p>近些年来，以数据为驱动的解决方案是研究者们的主流方向，例如统计机器翻译SMT和神经机器翻译NMT。</p>
+<p>尽管SMT在过去的二十年中取得了巨大的进步，基于单词、短语以及语法的模型层出不穷，但翻译质量并没有真正达到让用户满意的水准，并且SMT系统变得越来越复杂，许多不同的组件都是单独构建的，这使得进一步开发变得极其困难。SMT的缺点很明显，离散表示的数据稀疏问题、难以解决的长距离依赖问题以及需要专门设计的特征、隐式结构与翻译过程。</p>
+<p>而NMT利用连续的表示代替离散表示，利用神经网络实现高维空间下的自然语言之间的相互映射。基于Encoder-Decoder框架和RNN，可以将源语言的语句转化为context vector，再转化为目标语言的语句，尽管可以通过LSTM和GRU等门阀机制帮助缓解梯度消失与梯度爆炸问题，但是其根本缺点在于将任意长度的句子都编码为固定长度。为此，引入注意力机制，例如通过计算encoder和decoder中隐层向量的相关性作为context vector的加权权重，动态计算关联强度以提升长句翻译效果；引入CNN，解决RNN无法并行化计算的问题，并容易捕捉到一些全局的结构信息，再借助残差连接和注意力机制，获得具有更大模型容量、更强模型表示能力的深层模型；使用纯粹的注意力机制Self-Attention，与传统的Attention机制非常的不同：传统的Attention是基于source端和target端的hidden state计算Attention的，得到的结果是源端的每个词与目标端每个词之间的依赖关系；但Self Attention不同，它可以不仅可以得到源端与目标端词与词之间的依赖关系，同时还可以有效获取源端或目标端自身词与词之间的依赖关系，计算复杂度减小，可并行化并且利于长距离依赖学习。</p>
+<p>机器翻译还在持续发展，需要克服领域误匹配、训练数据的总量、生僻词、长句子、词对齐和束搜索的挑战，实现翻译质量、翻译领域、翻译语言种类三个维度的高水平机器翻译。</p>
+<h2 id="mrc-concepts">MRC Concepts<a class="headerlink" href="#mrc-concepts" title="Permanent link">&para;</a></h2>
+<p>关于机器阅读理解，学生认为这是一门让机器像人类一样阅读文本，进而根据对该文本的理解来回答问题的技术。</p>
+<p>这一任务主要分为四类：完形填空、单项选择、范围预测以及开放式问答，基于EM、F1 Score和BLEU等指标评价模型。为了降低难度，模型大都将世界知识排除在外。相较于QA，阅读理解则更强调文本理解，并以回答问题的形式衡量语言理解的程度，所以回答理解问题的信息都是来自于文章本身而不是世界知识。</p>
+<p>传统的MRC基于(passage,question,answer)的三元组训练出实现f:(passage,question)-&gt;answer的统计学模型，高度依赖已有的语言工具，手工设计大量特征，但特征通常非常稀疏并且概括性差。15年大规模数据集和神经模型的出现促进了MRC领域的发展，神经阅读理解具备以下优点：自动学习特征；词嵌入缓解变量稀疏的问题；概念简单，将任务转换为构建神经网络结构的问题。其工作流程主要分为：理解文章，理解问题以及理解文章和问题之间的联系。以THE STANFORD ATTENTIVE READER为例，通过双向LSTM(多层)的Encoder-Decoder框架，首先以词嵌入为问题构建一个向量表示，并且为文中的每一个token构建向量表示(同时考虑单词自身属性以及单词和问题的相关性)，然后计算上下文中问题及其单词之间的相似度函数，对于范围预测问题而言，使用问题-单词相似度评分来决定答案跨度的起始和结束位置，模型对文章/问题编码的所有参数和相似度函数进行联合优化，实现最终的答案预测。随着研究的深入，字符级别的embedding可以提升少见词和词库外单词的表征，依靠上下文动态调整embedding可以解决多义词问题，不同层次的attention组合、双向attention以及使用self-attention机制的Transformer架构的引入，都一定程度上提升了模型的性能。</p>
+<p>MRC领域未来需要建立更具备难度，更接近真实应用场景的大规模数据集，并引入世界知识，发展更完善的推理机制，同时需要应用大规模预训练模型，再将阅读理解技术推广到多语言、以及QA等其他NLP任务中。真正做到，更多数据，更多知识，更深理解。</p>
+<h2 id="qa-concepts">QA Concepts<a class="headerlink" href="#qa-concepts" title="Permanent link">&para;</a></h2>
+<p>这是一门准确地理解以自然语言形式描述的用户提问，并通过检索异构语料库或问答知识库返回简洁、精确的匹配答案的技术。</p>
+<p>问答系统之间的区别，主要在问题、数据和答案三个维度上：限定域/开放域的问题、结构化/半结构化/非结构化的数据、抽取式/生成式的答案。</p>
+<p>基于信息检索的问答系统是结合关键词匹配和信息抽取的经典浅层语义分析方法，处理流程可以简单地分为问题解析（处理问题并生成问题关键词）、信息检索、答案抽取三步。简而言之，是在 IR 检索出与 Query 相关的文档 Document 的基础上，模型去阅读并理解 Q 和 D，得到答案 Answer。</p>
+<p>随后出现了基于问答知识库KB、基于知识图谱KG等方法，问答系统往往是多种机制的组合。传统的基于符号表示的知识库问答是基于知识库的浅层推断，通过实体链接和关系抽取建立自然语言和知识库之间的映射，将问题的语义表示与知识库进行关联，依靠过多的人工介入、规则与模板等，效果始终不如人意。</p>
+<p>随着深度学习的发展，神经答案抽取帮助基于IR的QA取得了令人瞩目的效果：THE STANFORD ATTENTIVE READER通过双向LSTM(多层)的Encoder-Decoder框架，首先为问题构建一个向量表示，并且为文中的每一个token构建向量表示(同时考虑单词自身属性以及单词和问题的相关性)，然后计算上下文中问题及其单词之间的相似度函数，对于范围预测问题而言，使用问题-单词相似度评分来决定答案跨度的起始和结束位置，模型对文章/问题编码的所有参数和相似度函数进行联合优化，实现最终的答案预测。</p>
+<p>而对于KBQA而言，模型需要对给定的自然语言问题进行语义理解和解析，进而用知识库进行语义匹配、查询与推理得出答案，主要包括知识库的建立以及如何使用该知识库查询/推理答案两个关键部分。通过RDF或图数据库存储结构化/半结构化/非结构化数据，经过信息抽取(实体抽取、关系抽取、属性抽取)，知识融合(实体链接、知识合并)，知识加工(本体构建、知识推理)，知识更新等步骤，建立起完备有效的知识库/知识图谱，完成了将知识、文档、句子、词汇映射到统一语义空间下，实现跨领域、跨对象的知识迁移，提供多任务学习的统一底层表示。再通过语义解析、信息抽取、向量建模等方法，实现问题语义和知识语义的理解和匹配，即完成问题的理解与表示，再将其关联到知识库的结构化查询中完成语义关联。</p>
+<p>QA领域目前还在持续发展，对于复杂问题和推理性问题的研究还在继续。</p>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://looperxx.github.io/NLP%20Concepts/",this.page.identifier="NLP%20Concepts/"};!function(){var e=document,i=e.createElement("script");i.src="//https-looperxx-github-io-my-wiki.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="">
+        
+          <a href="../Neural%20Reading%20Comprehension%20and%20beyond/" title="Machine Reading Comprehension" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                Machine Reading Comprehension
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../NNDL%20%E4%B9%A0%E9%A2%98/" title="NNDL 习题" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                NNDL 习题
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" /></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Xiao Xu
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>

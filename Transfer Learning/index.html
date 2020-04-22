@@ -1,0 +1,2813 @@
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="LooperXX's homepage">
+      
+      
+        <link rel="canonical" href="https://looperxx.github.io/Transfer%20Learning/">
+      
+      
+        <meta name="author" content="Looper - Xiao Xu">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.1">
+    
+    
+      
+        <title>Transfer Learning in Natural Language Processing - Science is interesting.</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.a676eddb.min.css">
+      
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<link rel="preconnect dns-prefetch" href="https://www.google-analytics.com">
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-164217558-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview")})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    <body dir="">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transfer-learning-in-natural-language-processing" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-header-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Science is interesting.
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Transfer Learning in Natural Language Processing
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+          
+
+<nav class="md-tabs" aria-label="" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          NLP
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Normalization/" class="md-tabs__link">
+          ML & DL
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          CS224n学习笔记
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://looperxx.github.io/" title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting.">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,8A3,3 0 0,0 15,5A3,3 0 0,0 12,2A3,3 0 0,0 9,5A3,3 0 0,0 12,8M12,11.54C9.64,9.35 6.5,8 3,8V19C6.5,19 9.64,20.35 12,22.54C14.36,20.35 17.5,19 21,19V8C17.5,8 14.36,9.35 12,11.54Z" /></svg>
+
+    </a>
+    Science is interesting.
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往 GitHub 仓库" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LooperXX/LooperXX.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      NLP
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="NLP" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1">
+    
+    <label class="md-nav__link" for="nav-2-1">
+      理论笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="理论笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        理论笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E7%AE%80%E4%BB%8B/" title="自然语言处理简介" class="md-nav__link">
+      自然语言处理简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%E7%9A%84%E5%B7%A8%E4%BA%BA%E8%82%A9%E8%86%80/" title="NLP的巨人肩膀" class="md-nav__link">
+      NLP的巨人肩膀
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Attention/" title="Attention" class="md-nav__link">
+      Attention
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      代码学习
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="代码学习" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        代码学习
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NCRF%2B%2B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="NCRF++" class="md-nav__link">
+      NCRF++
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      书籍笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="书籍笔记" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        书籍笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Neural%20Reading%20Comprehension%20and%20beyond/" title="Machine Reading Comprehension" class="md-nav__link">
+      Machine Reading Comprehension
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NLP%20Concepts/" title="Some Concepts" class="md-nav__link">
+      Some Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../NNDL%20%E4%B9%A0%E9%A2%98/" title="NNDL 习题" class="md-nav__link">
+      NNDL 习题
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      ML & DL
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="ML & DL" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        ML & DL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Normalization/" title="Normalization" class="md-nav__link">
+      Normalization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../%E8%8A%B1%E4%B9%A6%E7%BB%8F%E9%AA%8C%E6%B3%95%E5%88%99/" title="花书经验法则" class="md-nav__link">
+      花书经验法则
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      CS224n学习笔记
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="CS224n学习笔记" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        CS224n学习笔记
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" title="CS224n-2019简介" class="md-nav__link">
+      CS224n-2019简介
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-Assignment/" title="CS224n-2019作业笔记" class="md-nav__link">
+      CS224n-2019作业笔记
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-01-Introduction%20and%20Word%20Vectors/" title="01 Introduction and Word Vectors" class="md-nav__link">
+      01 Introduction and Word Vectors
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-02-Word%20Vectors%202%20and%20Word%20Senses/" title="02 Word Vectors 2 and Word Senses" class="md-nav__link">
+      02 Word Vectors 2 and Word Senses
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/" title="03 Word Window Classification,Neural Networks, and Matrix Calculus" class="md-nav__link">
+      03 Word Window Classification,Neural Networks, and Matrix Calculus
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/" title="04 Backpropagation and Computation Graphs" class="md-nav__link">
+      04 Backpropagation and Computation Graphs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-05-Linguistic%20Structure%20Dependency%20Parsing/" title="05 Linguistic Structure Dependency Parsing" class="md-nav__link">
+      05 Linguistic Structure Dependency Parsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-06-The%20probability%20of%20a%20sentence%20Recurrent%20Neural%20Networks%20and%20Language%20Models/" title="06 The probability of a sentence Recurrent Neural Networks and Language Models" class="md-nav__link">
+      06 The probability of a sentence Recurrent Neural Networks and Language Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/" title="07 Vanishing Gradients and Fancy RNNs" class="md-nav__link">
+      07 Vanishing Gradients and Fancy RNNs
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/" title="08 Machine Translation, Sequence-to-sequence and Attention" class="md-nav__link">
+      08 Machine Translation, Sequence-to-sequence and Attention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-09-Practical%20Tips%20for%20Final%20Projects/" title="09 Practical Tips for Final Projects" class="md-nav__link">
+      09 Practical Tips for Final Projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-10-Question%20Answering%20and%20the%20Default%20Final%20Project/" title="10 Question Answering and the Default Final Project" class="md-nav__link">
+      10 Question Answering and the Default Final Project
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-11-ConvNets%20for%20NLP/" title="11 ConvNets for NLP" class="md-nav__link">
+      11 ConvNets for NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-12-Information%20from%20parts%20of%20words%20Subword%20Models/" title="12 Information from parts of words Subword Models" class="md-nav__link">
+      12 Information from parts of words Subword Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-13-Modeling%20contexts%20of%20use%20Contextual%20Representations%20and%20Pretraining/" title="13 Modeling contexts of use Contextual Representations and Pretraining" class="md-nav__link">
+      13 Modeling contexts of use Contextual Representations and Pretraining
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-14-Transformers%20and%20Self-Attention%20For%20Generative%20Models/" title="14 Transformers and Self-Attention For Generative Models" class="md-nav__link">
+      14 Transformers and Self-Attention For Generative Models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-15-Natural%20Language%20Generation/" title="15 Natural Language Generation" class="md-nav__link">
+      15 Natural Language Generation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-16-Coreference%20Resolution/" title="16 Coreference Resolution" class="md-nav__link">
+      16 Coreference Resolution
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-17-Multitask%20Learning/" title="17 Multitask Learning" class="md-nav__link">
+      17 Multitask Learning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-18-Tree%20Recursive%20Neural%20Networks%2C%20Constituency%20Parsing%2C%20and%20Sentiment/" title="18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment" class="md-nav__link">
+      18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-19-Safety%2C%20Bias%2C%20and%20Fairness/" title="19 Safety, Bias, and Fairness" class="md-nav__link">
+      19 Safety, Bias, and Fairness
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CS224n-2019-20-The%20Future%20of%20NLP%20%2B%20Deep%20Learning/" title="20 The Future of NLP + Deep Learning" class="md-nav__link">
+      20 The Future of NLP + Deep Learning
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      For MkDocs
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
+      </span>
+    </label>
+    <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+        </span>
+        For MkDocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MkDocs_demo/" title="Demo" class="md-nav__link">
+      Demo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Material%20Theme%20Tutorial/" title="Material Theme Tutorial" class="md-nav__link">
+      Material Theme Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    1. Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pretraining" class="md-nav__link">
+    2. Pretraining
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pretraining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lm-pretraining" class="md-nav__link">
+    LM pretraining
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#word-vectors" class="md-nav__link">
+    Word vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sentence-and-document-vectors" class="md-nav__link">
+    Sentence and document vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contextual-word-vectors" class="md-nav__link">
+    Contextual word vectors
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interesting-properties-of-pretraining" class="md-nav__link">
+    Interesting properties of pretraining
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-lingual-pretraining" class="md-nav__link">
+    Cross-lingual pretraining
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-1-pretraining-a-transformer-language-model" class="md-nav__link">
+    Hands-on #1: Pretraining a Transformer Language Model
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-what-is-in-a-representation" class="md-nav__link">
+    3. What is in a Representation?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-adaptation" class="md-nav__link">
+    4. Adaptation
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Adaptation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-architecture" class="md-nav__link">
+    4.1 Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41a-architecture-keep-model-unchanged" class="md-nav__link">
+    4.1.A – Architecture: Keep model unchanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41b-architecture-modifying-model-internals" class="md-nav__link">
+    4.1.B – Architecture: Modifying model internals
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-2-adapting-our-pretrained-model" class="md-nav__link">
+    Hands-on #2: Adapting our pretrained model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-optimization" class="md-nav__link">
+    4.2 Optimization
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#42a-optimization-which-weights" class="md-nav__link">
+    4.2.A – Optimization: Which weights?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-3-using-adapters-and-freezing" class="md-nav__link">
+    Hands-on #3: Using Adapters and freezing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42b-optimization-what-schedule" class="md-nav__link">
+    4.2.B – Optimization: What schedule?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-4using-gradual-unfreezing" class="md-nav__link">
+    Hands-on #4:Using gradual unfreezing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42b-optimization-learning-rates" class="md-nav__link">
+    4.2.B – Optimization: Learning rates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42b-optimization-regularization" class="md-nav__link">
+    4.2.B – Optimization: Regularization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-5using-discriminative-learning" class="md-nav__link">
+    Hands-on #5:Using discriminative learning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42c-optimization-trade-offs" class="md-nav__link">
+    4.2.C – Optimization: Trade-offs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-getting-more-signal" class="md-nav__link">
+    4.3 – Getting more signal
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 – Getting more signal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#43a-getting-more-signal-basic-fine-tuning" class="md-nav__link">
+    4.3.A – Getting more signal: Basic fine-tuning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-getting-more-signal-related-datasetstasks" class="md-nav__link">
+    4.3.B – Getting more signal: Related datasets/tasks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-getting-more-signal-sequential-adaptation" class="md-nav__link">
+    4.3.B – Getting more signal: Sequential adaptation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-getting-more-signal-multi-task-fine-tuning" class="md-nav__link">
+    4.3.B – Getting more signal: Multi-task fine-tuning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-getting-more-signal-dataset-slicing" class="md-nav__link">
+    4.3.B – Getting more signal: Dataset slicing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43b-getting-more-signal-semi-supervised-learning" class="md-nav__link">
+    4.3.B – Getting more signal: Semi-supervised learning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43c-getting-more-signal-ensembling" class="md-nav__link">
+    4.3.C – Getting more signal: Ensembling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hands-on-6using-multi-task-learning" class="md-nav__link">
+    Hands-on #6:Using multi-task learning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-downstream-applications-hands-on-examples" class="md-nav__link">
+    5. Downstream applications Hands-on examples
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Downstream applications Hands-on examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5a-sequence-document-level-classification" class="md-nav__link">
+    5.A – Sequence &amp; document level classification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5b-token-level-classification-bert-tensorflow" class="md-nav__link">
+    5.B – Token level classification: BERT &amp; Tensorflow
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-open-problems-and-future-directions" class="md-nav__link">
+    6. Open problems and future directions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" class="md-nav__link">
+    Reference
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/Transfer Learning.md" title="编辑此页" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" /></svg>
+                  </a>
+                
+                
+                  
+                
+                
+                <h1 id="transfer-learning-in-natural-language-processing">Transfer Learning in Natural Language Processing<a class="headerlink" href="#transfer-learning-in-natural-language-processing" title="Permanent link">&para;</a></h1>
+<p><a href="https://www.youtube.com/watch?list=PLBmcuObd5An4UC6jvK_-eSl6jCvP1gwXc&amp;v=hNPwRPg9BrQ">Sebastian Ruder: Transfer Learning in Open-Source Natural Language Processing (spaCy IRL 2019)</a></p>
+<p><a href="http://ruder.io/state-of-transfer-learning-in-nlp/">The State of Transfer Learning in NLP</a></p>
+<p><a href="https://www.aclweb.org/anthology/N19-5004">Transfer Learning in Natural Language Processing Tutorial</a></p>
+<p>Follow along with the tutorial:</p>
+<ul>
+<li>Slides: <a href="http://tiny.cc/NAACLTransfer">http://tiny.cc/NAACLTransfer</a></li>
+<li>Colab: <a href="http://tiny.cc/NAACLTransferColab">http://tiny.cc/NAACLTransferColab</a></li>
+<li>Code: <a href="http://tiny.cc/NAACLTransferCode">http://tiny.cc/NAACLTransferCode</a></li>
+</ul>
+<p><strong>What is transfer learning ?</strong></p>
+<p><img alt="image-20190807144002774" src="../imgs/image-20190807144002774.png" /></p>
+<blockquote>
+<p><a href="https://www.cse.ust.hk/~qyang/Docs/2009/tkde_transfer_learning.pdf">Pan and Yang (2010)</a></p>
+<p>在许多机器学习和数据挖掘算法中，一个主要的假设是训练和未来的数据必须在相同的特征空间中，并且具有相同的分布。然而，在许多实际应用程序中，这种假设可能不成立。例如，我们有时在一个感兴趣的领域中有一个分类任务，但是我们只在另一个感兴趣的领域中有足够的训练数据，并且后者可能位于不同的特征空间或遵循不同的数据分布。在这种情况下，如果成功地进行知识转移，就可以避免昂贵的数据标记工作，从而大大提高学习性能。近年来，迁移学习作为一种新的学习框架应运而生。本研究的重点是分类和回顾目前迁移学习在分类、回归和聚类问题上的进展。在本研究中，我们讨论了迁移学习与其他相关机器学习技术的关系，如领域适应、多任务学习、样本选择偏差以及协变量偏移。同时，我们也探讨了迁移学习研究中一些潜在的未来问题。</p>
+</blockquote>
+<p><strong>Why transfer learning in NLP ?</strong></p>
+<ul>
+<li>许多NLP任务共享关于语言的共同知识(例如语言表示、结构相似性)<ul>
+<li>可以跨任务共享的不同层次的含义和结构的表示</li>
+</ul>
+</li>
+<li>任务之间可以互通有无——例如语法和语义</li>
+<li>带注释的数据很少见，尽可能多地利用监督学习</li>
+<li>经验上看，迁移学习促成了许多有监督的 NLP 任务的 SOTA (如分类、信息提取、问答等)。</li>
+</ul>
+<p><strong>Why transfer learning in NLP? (Empirically)</strong></p>
+<p><img alt="image-20190807144525187" src="../imgs/image-20190807144525187.png" /></p>
+<p><strong>Types of transfer learning in NLP</strong></p>
+<p><img alt="image-20190807144534488" src="../imgs/image-20190807144534488.png" /></p>
+<p><strong>What this tutorial is about and what it’s not about</strong></p>
+<ul>
+<li>目标：提供NLP中转移方法的广泛概述，重点介绍截至目前(2019年年中)最成功的经验方法。</li>
+<li>提供实用的，动手的建议→在教程结束时，每个人都有能力应用最新的进展到文本分类任务</li>
+<li>这不是什么：全面的(不可能在一个教程中涵盖所有相关的论文！)</li>
+<li>(Bender Rule：本教程主要针对用英语完成的工作，对其他语言的可扩展性取决于数据和资源的可用性。)</li>
+</ul>
+<p><img alt="image-20190813165056164" src="../imgs/image-20190813165056164.png" /></p>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20190813165241836" src="../imgs/image-20190813165241836.png" /></p>
+<p>Sequential transfer learning 指的是在一个任务/数据集上学习后迁移到其他任务/数据集上。</p>
+<p><strong>Pretraining tasks and datasets</strong></p>
+<ul>
+<li>Unlabeled data and self-supervision<ul>
+<li>很容易收集非常大的语料库：维基百科，新闻，网页抓取，社交媒体等。</li>
+<li>利用分布假设进行训练：“You shall know a word by the company it keeps”(Firth, 1957)，通常形式化为训练某种语言模型的变体</li>
+<li>关注使用有效的算法以利用丰富的数据</li>
+</ul>
+</li>
+<li>Supervised pretraining<ul>
+<li>在视觉领域很常见，但由于缺乏大型监督数据集，在NLP中较少</li>
+<li>机器翻译</li>
+<li>NLI用于句子表示</li>
+<li>任务特定——从一个问答数据集转移到另一个</li>
+</ul>
+</li>
+</ul>
+<p><strong>Target tasks and datasets</strong></p>
+<ul>
+<li>目标任务通常是监督的，并跨越一系列常见的NLP任务:<ul>
+<li>句子或文档分类(例如情绪)</li>
+<li>句子对分类(如NLI，解释)</li>
+<li>单词级别(如序列标注、抽取问答)</li>
+<li>结构化预测(例如解析)</li>
+<li>生成(例如对话、总结)</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190813170059332" src="../imgs/image-20190813170059332.png" /></p>
+<p><img alt="image-20190818130210692" src="../imgs/image-20190818130210692.png" /></p>
+<p><strong>Major themes: LM pretraining</strong></p>
+<ul>
+<li>许多成功的预训练方法都是基于语言模型的</li>
+<li>非正式地，语言模型学习 <span><span class="MathJax_Preview">P_{\theta}(\text { text }) \text { or } P_{\theta}(\text { text } | \text { some other text })</span><script type="math/tex">P_{\theta}(\text { text }) \text { or } P_{\theta}(\text { text } | \text { some other text })</script></span></li>
+<li>不需要人工注释</li>
+<li>许多语言都有足够的文本来学习高容量模型</li>
+<li>语言模型是“多才多艺”的——可以学习句子和单词的表示，具有多种目标函数</li>
+</ul>
+<p><strong>Major themes: From shallow to deep</strong></p>
+<p><img alt="image-20190818130644343" src="../imgs/image-20190818130644343.png" /></p>
+<blockquote>
+<p><a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">Bengio et al 2003</a><a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf">: A Neural Probabilistic Language Model</a></p>
+<p><a href="https://arxiv.org/abs/1810.04805">Devlin et al 2019: BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding </a></p>
+</blockquote>
+<p><strong>Major themes: pretraining vs target task</strong></p>
+<p>预训练的选择和目标任务是耦合的</p>
+<ul>
+<li>句子/文档表示对单词级别的预测没有帮助</li>
+<li>词向量可以跨上下文聚合，但通常会被其他方法超越</li>
+<li>在语境词向量中，双向语境非常重要</li>
+</ul>
+<p>通常</p>
+<ul>
+<li>相似的预训练和目标任务 → 最好结果</li>
+</ul>
+<h2 id="2-pretraining">2. Pretraining<a class="headerlink" href="#2-pretraining" title="Permanent link">&para;</a></h2>
+<h3 id="lm-pretraining">LM pretraining<a class="headerlink" href="#lm-pretraining" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20190818130815813" src="../imgs/image-20190818130815813.png" /></p>
+<p><strong>word2vec</strong></p>
+<ul>
+<li>以 CBOW 为例，输入层将目标词语境 c 中的每一个词向量简单求和（当然，也可以求平均）后得到语境向量，然后直接与目标词的输出向量求点积，目标函数也就是要让这个与目标词向量的点积取得最大值，对应的与非目标词的点积尽量取得最小值。</li>
+<li>word2vec 的出现，极大促进了 NLP 的发展，尤其是促进了深度学习在 NLP 中的应用（不过有意思的是，word2vec 算法本身其实并不是一个深度模型，它只有两层全连接），<strong>利用预训练好的词向量来初始化网络结构的第一层几乎已经成了标配，尤其是在只有少量监督数据的情况下，如果不拿预训练的 embedding 初始化第一层，几乎可以被认为是在蛮干。</strong></li>
+</ul>
+<p><strong>Skip-Thought</strong></p>
+<p><img alt="image-20190818132836031" src="../imgs/image-20190818132836031.png" /></p>
+<ul>
+<li>
+<p>借鉴 Skip-gram 的思想，<strong>Skip-thoughts 直接在句子间进行预测，也就是将 Skip-gram 中以词为基本单位，替换成了以句子为基本单位</strong>，具体做法就是选定一个窗口，遍历其中的句子，然后分别利用当前句子去预测和输出它的上一句和下一句。</p>
+</li>
+<li>
+<p>不过和普通框架不一样的是，Skip-thoughts有两个Decoder。在今天看来，这个框架还有很多不完善或者可以改进的地方（作者也在论文中分别提到了这些future works），比如输入的Encoder可以引入attention机制，从而让Decoder的输入不再只是依赖Encoder最后一个时刻的输出；Encoder和Decoder可以利用更深层的结构；Decoder也可以继续扩大，可以预测上下文中更多的句子；RNN也不是唯一的选择，诸如CNN以及2017年谷歌提出的Transformer的结构也可以利用进来，后来果不其然谷歌的BERT便借鉴了这一思路。</p>
+</li>
+</ul>
+<p><img alt="image-20190819204714553" src="../imgs/image-20190819204714553.png" /></p>
+<ul>
+<li>Quick-thoughts 在此基础上进一步改进，将生成任务改为分类任务。具体说来就是把同一个上下文窗口中的句子对标记为正例，把不是出现在同一个上下文窗口中的句子对标记为负例，并将这些句子对输入模型，让模型判断这些句子对是否是同一个上下文窗口中，很明显，这是一个分类任务。<strong>可以说，仅仅几个月之后的BERT正是利用的这种思路。而这些方法都和Skip-thoughts一脉相承。</strong></li>
+</ul>
+<p><strong>ELMo</strong></p>
+<p><img alt="img" src="../imgs/v2-fe335ea9fdcd6e0e5ec4a9ac0e2290db_hd.jpg" /></p>
+<ul>
+<li>word2vec 最显著的问题是多义词问题，13 年提出后有很多方法试图解决多义词问题，但都成本太高或者太繁琐了。</li>
+<li>《Deep contextualized word representations》一文提出了 ELMo，基本框架是2-stacked biLSTM + Residual的结构</li>
+<li>使用这个网络结构利用大量语料做语言模型任务就能预先训练好这个网络，如果训练好这个网络后，输入一个新句子，句子中每个单词都能得到对应的三个Embedding:最底层是单词的Word Embedding，往上走是第一层双向LSTM中对应单词位置的Embedding，这层编码单词的句法信息更多一些；再往上走是第二层LSTM中对应单词位置的Embedding，这层编码单词的语义信息更多一些。也就是说，ELMO的预训练过程不仅仅学会单词的Word Embedding，还学会了一个双层双向的LSTM网络结构，而这两者后面都有用。</li>
+</ul>
+<p><img alt="image-20190818163642294" src="../imgs/image-20190818163642294.png" /></p>
+<ul>
+<li>对于每一个词，可以根据下面的式子得到它的向量，其中 γ 是一个scale因子，加入这个因子主要是想要将ELMo的向量于具体任务的向量分布拉平到同一个分布水平，这个时候便需要这么一个缩放因子了。另外，<span><span class="MathJax_Preview">s_j</span><script type="math/tex">s_j</script></span> 便是针对每一层的输出向量，利用一个softmax的参数来学习不同层的权值参数，因为不同的任务需要的词语意义的粒度也不一致，一般认为浅层的表征比较倾向于句法，而高层输出的向量比较倾向于语义信息，因此通过一个softmax的结构让任务自动去学习各层之间的权重，自然也是比较合理的做法。</li>
+<li>此外，ELMo 还使用了《Exploring the Limits of Language Modeling》中提出的 char-based CNN 结构，应用到输入层和输出层上，减少了参数规模，并解决了令人头痛的 OOV 问题。</li>
+<li>ELMo 使用LSTM 而不是 Transformer 作为特征抽取器，而很多研究已经证明了Transformer提取特征的能力是要远强于LSTM的；另外，ELMO采取双向拼接这种融合特征的能力可能比Bert一体化的融合特征方式弱，但是，这只是一种从道理推断产生的怀疑，目前并没有具体实验说明这一点。</li>
+<li>ELMo 代表着基于特征融合的预训练方法，而 GPT 则是基于Fine-tuning的模式的开创者。</li>
+</ul>
+<p><strong>GPT</strong></p>
+<p><img alt="image-20190818184733719" src="../imgs/image-20190818184733719.png" /></p>
+<ul>
+<li>
+<p>GPT也采用两阶段过程，第一个阶段是利用语言模型进行预训练，第二阶段通过Fine-tuning的模式解决下游任务。下图展示了GPT的预训练过程（按照论文中的说法，GPT中使用的Transformer是只用了Decoder），其实和ELMO是类似的，主要不同在于两点：首先，特征抽取器不是用的RNN，而是用的Transformer，上面提到过它的特征抽取能力要强于RNN，这个选择很明显是很明智的；其次，GPT的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，所谓“单向”的含义是指：语言模型训练的任务目标是根据单词的上下文去正确预测单词 ，GPT则只采用这个单词的上文来进行预测，而抛开了下文。</p>
+</li>
+<li>
+<p>下游任务怎么使用 GPT 呢？首先，对于不同的下游任务来说，本来你可以任意设计自己的网络结构，现在不行了，你要向GPT的网络结构看齐，把任务的网络结构改造成和GPT的网络结构是一样的。然后，在做下游任务的时候，利用第一步预训练好的参数初始化GPT的网络结构，这样通过预训练学到的语言学知识就被引入到你手头的任务里来了，这是个非常好的事情。再次，你可以用手头的任务去训练这个网络，对网络参数进行Fine-tuning，使得这个网络更适合解决手头的问题。</p>
+<p><img alt="preview" src="../imgs/v2-4c1dbed34a8f8469dc0fefe44b860edc_r.jpg" /></p>
+</li>
+<li>
+<p>对于NLP各种花样的不同任务，怎么改造才能靠近GPT的网络结构呢？</p>
+</li>
+<li>
+<p>GPT论文给了一个改造施工图如上，其实也很简单：对于分类问题，不用怎么动，加上一个起始和终结符号即可；对于句子关系判断问题，比如Entailment，两个句子中间再加个分隔符即可；对文本相似性判断问题，把两个句子顺序颠倒下做出两个输入即可，这是为了告诉模型句子顺序不重要；对于多项选择问题，则多路输入，每一路把文章和答案选项拼接作为输入即可。从上图可看出，这种改造还是很方便的，不同任务只需要在输入部分施工即可。</p>
+</li>
+</ul>
+<p><strong>BERT</strong></p>
+<ul>
+<li>Bert 采用和GPT完全相同的两阶段模型，首先是语言模型预训练；其次是使用Fine-Tuning模式解决下游任务。和GPT的最主要不同在于在预训练阶段采用了类似ELMO的双向语言模型，当然另外一点是语言模型的数据规模要比GPT大。</li>
+<li>BERT最主要的几个特征分别是<ul>
+<li>利用了真双向的Transformer</li>
+<li>为了利用双向信息，改进了普通语言模型成为完形填空式的Mask-LM(Mask-Language Model)</li>
+<li>利用Next Sentence Prediction任务学习句子级别信息</li>
+<li>进一步完善和扩展了GPT中设计的通用任务框架，使得BERT能够支持包括：句子对分类任务、单句子分类任务、阅读理解任务和序列标注任务</li>
+</ul>
+</li>
+</ul>
+<p>预训练阶段</p>
+<ul>
+<li>
+<p>因为Encoder中用了Self-attention机制，而这个机制会将每一个词在整个输入序列中进行加权求和得到新的表征，更通俗的说法是每一个词在经过Self-attention之后，其新的表征将会是整个输入序列中所有词（当然也包括它本身）的加权求和。在ELMo与GPT中，它们并没有用上这种交融模式，也就是它们本质上还是一个单向的模型，ELMo稍微好一点，将两个单向模型的信息concat起来，GPT则只用了单向模型，这是因为它没有用上Transformer Encoder，只用了Decdoer的天生基因决定的，其实，很多人就把这种left-to-right的Transformer框架叫做Decoder，因为事实上Decoder就是如此（具体做的时候需要提前把未来待生成的词做好mask，细节上通过上三角矩阵来实现），这也是OpenAI把他们的模型叫做"Generative"的原因所在。</p>
+</li>
+<li>
+<p><strong>Masked-LM</strong> 双向Transformer下的语言模型</p>
+<ul>
+<li>然而在语言模型中，我们通过某个词的上下文语境预测当前词的概率，如果直接把这个套用到Transformer的Encoder中，会发现待预测的输出和序列输入已经糅合在一块了。那么，如何解决Self-attention中带来了表征性能卓越的双向机制，却又同时带来了信息泄露的这一问题？Bert 受到完形填空任务的启发：输入序列依然和普通Transformer保持一致，只不过把挖掉的一个词用"[MASK]"替换
+    ，Transformer的Encoder部分按正常进行，输出层在被挖掉的词位置，接一个分类层做词典大小上的分类问题，得到被mask掉的词概率大小。</li>
+</ul>
+<p><img alt="img" src="../imgs/v2-86848ce681172c13c7197b07fe47fd63_hd.jpg" /></p>
+<ul>
+<li>直接把普通语言模型中的生成问题（正如GPT中把它当做一个生成问题一样，虽然其本质上也是一个序列生成问题），变为一个简单的分类问题，并且也直接解决了Encoder中多层Self-attention的双向机制带来的泄密问题（单层Self-attention是真双向，但不会带来泄密问题，只有多层累加的Self-attention才会带来泄密问题），使得语言模型中的真双向机制变为现实。</li>
+<li>不过，BERT针对如何做“[MASK]”，做了一些更深入的研究，它做了如下处理<ul>
+<li>选取语料中所有词的15%进行随机mask</li>
+<li>选中的词在80%的概率下被真实mask</li>
+<li>选中的词在10%的概率下不做mask，而被随机替换成其他一个词</li>
+<li>选中的词在10%的概率下不做mask，仍然保留原来真实的词</li>
+</ul>
+</li>
+<li>这使得Transformer编码器不知道它将被要求预测哪些单词或哪些单词已被随机单词替换，因此它被迫保持每个输入标记的分布式上下文表示。</li>
+</ul>
+</li>
+<li>
+<p><strong>Next Sentence Prediction</strong></p>
+<ul>
+<li>利用和借鉴了Skip-thoughts方法中的句子预测问题，来学习句子级别的语义关系，具体做法则是将两个句子组合成一个序列，当然组合方式会按照下面将要介绍的方式，然后让模型预测这两个句子是否是先后近邻的两个句子，也就是会把"Next Sentence Prediction"问题建模成为一个二分类问题。训练的时候，数据中有50%的情况这两个句子是先后关系，而另外50%的情况下，这两个句子是随机从语料中凑到一起的，也就是不具备先后关系，以此来构造训练数据。句子级别的预测思路和之前介绍的Skip-thoughts基本一致，当然更本质的思想来源还是来自于word2vec中的skip-gram模型。</li>
+<li>要求模型除了做上述的Masked语言模型任务外，附带再做个句子关系预测，判断第二个句子是不是真的是第一个句子的后续句子。之所以这么做，是考虑到很多NLP任务是句子关系判断任务，单词预测粒度的训练到不了句子关系这个层级，增加这个任务有助于下游句子关系判断任务。所以可以看到，它的预训练是个多任务过程。这也是Bert的一个创新。</li>
+<li>在预训练阶段，因为有两个任务需要训练：Mask-LM和Next Sentence Prediction，因此BERT的预训练过程实质上是一个Multi-task Learning，具体说来，BERT的损失函数由两部分组成，第一部分是来自于Mask-LM的单词级别的分类任务，另一部分是句子级别的分类任务，通过这两个任务的联合学习，可以使得BERT学习到的表征既有token级别的信息，同时也包含了句子级别的语义信息。具体的损失函数如下</li>
+<li><img alt="image-20190818195011218" src="../imgs/image-20190818195011218.png" /></li>
+</ul>
+</li>
+</ul>
+<p>Fine-Tuning 阶段</p>
+<p><img alt="image-20190818195648171" src="../imgs/image-20190818195648171.png" /></p>
+<ul>
+<li><strong>输入层</strong>：如果输入只有一个句子的话，则直接在句子的前后添加句子的起始标记位和句子的结束符号，在BERT中，起始标记都用“[CLS]”来表示，结束标记符用"[SEP]"表示，对于两个句子的输入情况，除了起始标记和结束标记之外，两个句子间通过"[SEP]"来进行区分。除了这些之外，BERT还用了两个表示当前是句子A还是句子B的向量来进行表示，对于句子A来说，每一词都会添加一个同样的表示当前句子为句子A的向量，相应的，如果有句子B的话，句子B中的每一个词也都会添加一个表示当前句子为句子B的向量。</li>
+</ul>
+<p>NLP 的**四大任务**：一类是序列标注，这是最典型的NLP任务，比如中文分词，词性标注，命名实体识别，语义角色标注等都可以归入这一类问题，它的特点是句子中每个单词要求模型根据上下文都要给出一个分类类别。第二类是分类任务，比如我们常见的文本分类，情感计算等都可以归入这一类。它的特点是不管文章有多长，总体给出一个分类类别即可。第三类任务是句子关系判断，比如Entailment，QA，语义改写，自然语言推理等任务都是这个模式，它的特点是给定两个句子，模型判断出两个句子是否具备某种语义关系；第四类是生成式任务，比如机器翻译，文本摘要，写诗造句，看图说话等都属于这一类。它的特点是输入文本内容后，需要自主生成另外一段文字。</p>
+<p><img alt="image-20190818200249179" src="../imgs/image-20190818200249179.png" /></p>
+<p>对于种类如此繁多而且各具特点的下游NLP任务，Bert如何改造输入输出部分使得大部分NLP任务都可以使用Bert预训练好的模型参数呢？上图给出示例，对于句子关系类任务，很简单，和GPT类似，加上一个起始和终结符号，句子之间加个分隔符即可。对于输出来说，把第一个起始符号对应的Transformer最后一层位置上面串接一个softmax分类层即可。对于分类问题，与GPT一样，只需要增加起始和终结符号，输出部分和句子关系判断任务类似改造；对于序列标注问题，输入部分和单句分类是一样的，只需要输出部分Transformer最后一层每个单词对应位置都进行分类即可。从这里可以看出，上面列出的NLP四大任务里面，除了生成类任务外，Bert其它都覆盖到了，而且改造起来很简单直观。尽管Bert论文没有提，但是稍微动动脑子就可以想到，其实对于机器翻译或者文本摘要，聊天机器人这种生成式任务，同样可以稍作改造即可引入Bert的预训练成果。只需要附着在S2S结构上，encoder部分是个深度Transformer结构，decoder部分也是个深度Transformer结构。根据任务选择不同的预训练数据初始化encoder和decoder即可。这是相当直观的一种改造方法。当然，也可以更简单一点，比如直接在单个Transformer结构上加装隐层产生输出也是可以的。不论如何，从这里可以看出，NLP四大类任务都可以比较方便地改造成Bert能够接受的方式。这其实是Bert的非常大的优点，这意味着它几乎可以做任何NLP的下游任务，具备普适性，这是很强的。</p>
+<p>最后，我们再次总结下BERT的几个主要特点：</p>
+<ul>
+<li><strong>Transformer Encoder因为有Self-attention机制，因此BERT自带双向功能</strong></li>
+<li><strong>因为双向功能以及多层Self-attention机制的影响，使得BERT必须使用Cloze版的语言模型Masked-LM来完成token级别的预训练</strong></li>
+<li><strong>为了获取比词更高级别的句子级别的语义表征，BERT加入了Next Sentence Prediction来和Masked-LM一起做联合训练</strong></li>
+<li><strong>为了适配多任务下的迁移学习，BERT设计了更通用的输入层和输出层</strong></li>
+</ul>
+<p>然后，我们再来看看BERT的工作都站在了哪些“巨人肩膀”上：</p>
+<ul>
+<li><strong>针对第一点，双向功能是Transformer Encoder自带的，因此这个“巨人肩膀”是Transformer</strong></li>
+<li><strong>第二点中Masked-LM的巨人肩膀是语言模型，CBOW以及Cloze问题</strong></li>
+<li><strong>第三点中Next Sentence Prediction的“巨人肩膀”是Skip-gram，Skip-thoughts和Quick-thoughts等工作</strong></li>
+<li><strong>第四点中，对输入层和输出层的改造，借鉴了T-DMCA以及GPT的做法</strong></li>
+</ul>
+<h3 id="word-vectors">Word vectors<a class="headerlink" href="#word-vectors" title="Permanent link">&para;</a></h3>
+<p>为什么要词嵌入？</p>
+<ul>
+<li>词嵌入是可以学习的参数</li>
+<li>在不同任务中共享表示</li>
+<li>低维空间更好计算——难以处理稀疏向量</li>
+</ul>
+<p><strong>Unsupervised pretraining: Pre-Neural</strong></p>
+<p><img alt="image-20190818201941186" src="../imgs/image-20190818201941186.png" /></p>
+<p><strong>Word vector pretraining</strong></p>
+<p><img alt="image-20190818202008843" src="../imgs/image-20190818202008843.png" /></p>
+<p><img alt="image-20190818202021954" src="../imgs/image-20190818202021954.png" /></p>
+<p>Word2vec 与 NNLM 都是语言模型，但不同的是 word2vec 的重点是通过训练语言模型从而得到词向量，因此以词向量为重点对 NNLM 进行了改进优化，并且使用 CBOW 和 Skip-gram 两种方式学习词向量，GloVe 则通过构建共现矩阵，不通过传统的 SVD 进行计算复杂度较高的矩阵分解，而是使用平方误差促使点积尽可能得接近共现概率的对数，因为如果使向量点积等于共现概率的对数，向量差异变成了共现概率的比率即单词 j 出现在单词 i 的上下文中的概率，这一比值蕴含了语义信息。</p>
+<p><strong>相比word2vec，GloVe却更加充分的利用了词的共现信息</strong>，word2vec中则是直接粗暴的让两个向量的点乘相比其他词的点乘最大，至少在表面上看来似乎是没有用到词的共现信息，不像GloVe这里明确的就是拟合词对的共现频率。</p>
+<p>fastText则是利用带有监督标记的文本分类数据完成训练，框架和 CBOW 一致，不过输入数据不再是 bag-of-words 的信息，还加上了 ngram 信息，这就加入了语序信息，而且输出的是当前输入文本的类别。此外还引入subword来处理长词，处理 OOV 问题。</p>
+<h3 id="sentence-and-document-vectors">Sentence and document vectors<a class="headerlink" href="#sentence-and-document-vectors" title="Permanent link">&para;</a></h3>
+<p><strong>Paragraph vector</strong></p>
+<p><img alt="image-20190819143448984" src="../imgs/image-20190819143448984.png" /></p>
+<p>PV-DM的全称是Distributed Memory Model of Paragraph Vectors，和CBOW类似，也是通过上下文预测下一个词，不过在输入层的时候，同时也维护了一个文档ID映射到一个向量的look-up table，模型的目的便是将当前文档的向量以及上下文向量联合输入模型，并让模型预测下一个词，训练结束后，对于现有的文档，便可以直接通过查表的方式快速得到该文档的向量，而对于新的一篇文档，那么则需要将已有的look-up table添加相应的列，然后重新走一遍训练流程，只不过此时固定好其他的参数，只调整look-up table，收敛后便可以得到新文档对应的向量了。PV-DBOW的全称则是Distributed Bag of Words version of Paragraph Vector，和Skip-gram类似，通过文档来预测文档内的词，训练的时候，随机采样一些文本片段，然后再从这个片段中采样一个词，让PV-DBOW模型来预测这个词，以此分类任务作为训练方法，说白了，本质上和Skip-gram是一样的。这个方法有个致命的弱点，就是为了获取新文档的向量，还得继续走一遍训练流程，并且由于模型主要是针对文档向量预测词向量的过程进行建模，其实很难去表征词语之间的更丰富的语义结构，所以这两种获取文档向量的方法都未能大规模应用开来。</p>
+<p><strong>Skip-Thought Vectors</strong></p>
+<p><img alt="image-20190819143956584" src="../imgs/image-20190819143956584.png" /></p>
+<p><strong>Autoencoder pretraining</strong></p>
+<p><img alt="image-20190819144501927" src="../imgs/image-20190819144501927.png" /></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1511.01432.pdf">Semi-supervised Sequence Learning</a></p>
+</blockquote>
+<p>论文提出了2个方法，用无标签数据进行无监督训练的参数来初始化有监督学习的模型：一种是用基础的语言模型，另一种是用seq2seq自编码模型（sequence autoencoder， SA-LSTM），encoder输入为这个WXYZ，decoder输出为依然为WXYZ，和普通的seq2seq模型相比不同的是，这里的encoder和decoder隐层是共享的。有种提前让循环神经网络学会句子的表达，再之后根据标签去学习分类的能力的思想。</p>
+<p><strong>Supervised sentence embeddings</strong></p>
+<p>也可以有监督训练句子嵌入</p>
+<ul>
+<li>
+<p>Paragram-phrase: uses paraphrase database for supervision, best for paraphrase and semantic similarity (<a href="https://arxiv.org/abs/1511.08198">Wieting </a><a href="https://arxiv.org/abs/1511.08198">et al.</a><a href="https://arxiv.org/abs/1511.08198">2016</a>)</p>
+</li>
+<li>
+<p>InferSent: bi-LSTM trained on SNLI + MNLI (<a href="https://arxiv.org/abs/1705.02364">Conneau </a><a href="https://arxiv.org/abs/1705.02364">et al.</a><a href="https://arxiv.org/abs/1705.02364">2017</a>)</p>
+</li>
+<li>
+<p>GenSen: multitask training(skip-thought, machine translation, NLI, parsing) (<a href="https://arxiv.org/abs/1804.00079">Subramanian et al. 2018</a>)</p>
+</li>
+</ul>
+<p>InferSent 是设计一个模型在斯坦福的SNLI（Stanford Natural Language Inference）数据集上训练，尔后将训练好的模型当做特征提取器，以此来获得一个句子的向量表示，再将这个句子的表示应用在新的分类任务上，来评估句子向量的优劣。框架结构如下图所示</p>
+<p><img alt="image-20190819145357664" src="../imgs/image-20190819145357664.png" /></p>
+<p>这个框架最底层是一个 Encoder，也就是最终要获取的句子向量提取器，然后将得到的句子向量通过一些向量操作后得到句子对的混合语义特征，最后接上全连接层并做 SNLI 上的三分类任务。</p>
+<h3 id="contextual-word-vectors">Contextual word vectors<a class="headerlink" href="#contextual-word-vectors" title="Permanent link">&para;</a></h3>
+<p><strong>Motivation</strong></p>
+<p>词向量将所有的上下文都压缩到一个单一向量中</p>
+<p><img alt="image-20190819145924518" src="../imgs/image-20190819145924518.png" /></p>
+<p><strong>Key Idea</strong></p>
+<p>不是每个单词学习一个向量，而是学习依赖于上下文的向量。</p>
+<p><strong>context2vec</strong></p>
+<blockquote>
+<p><a href="http://u.cs.biu.ac.il/~melamuo/publications/context2vec_conll16.pdf">http://u.cs.biu.ac.il/~melamuo/publications/context2vec_conll16.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819150549988" src="../imgs/image-20190819150549988.png" /></p>
+<p>基于 CBOW 框架，为了捕捉句子语境的本质，使用双向 LSTM 提取特征。</p>
+<p><strong>TagLM</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1705.00108.pdf">https://arxiv.org/pdf/1705.00108.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819152603229" src="../imgs/image-20190819152603229.png" /></p>
+<p><img alt="image-20190711183028894" src="../imgs/image-20190711183028894-6202489.png" /></p>
+<ul>
+<li>与上文无关的单词嵌入 + RNN model 得到的 hidden states 作为特征输入</li>
+</ul>
+<p><img alt="image-20190819162135868" src="../imgs/image-20190819162135868.png" />
+$$
+\mathbf{h}<em>{k, l}=\left[\overrightarrow{\mathbf{h}}</em>{k, 1} ; \overleftarrow{\mathbf{h}}<em>{k, 1} ; \mathbf{h}</em>{k}^{L M}\right]
+$$</p>
+<ul>
+<li>Char CNN / RNN + Token Embedding 作为 bi-LSTM 的输入</li>
+<li>得到的 hidden states 与 Pre-trained bi-LM（冻结的） 的 hidden states 连接起来输入到第二层的 bi-LSTM 中</li>
+</ul>
+<p><strong>Unsupervised Pretraining for Seq2Seq</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1611.02683.pdf">https://arxiv.org/pdf/1611.02683.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819164419393" src="../imgs/image-20190819164419393.png" /></p>
+<p><img alt="image-20190819164431858" src="../imgs/image-20190819164431858.png" /></p>
+<p>提出一种通用的提高seq2seq模型的无监督训练方法。seq2seq模型的encoder和decoder的权重用两个预训练语言模型初始化然后微调。</p>
+<p>seq2seq模型的缺点：监督学习的语料有限，容易过拟合。本文提出了改善seq2seq效果的无监督训练方法。在微调阶段，训练任务为语言模型任务和seq2seq的联合任务。(开始fune-tuning可能导致灾难性的遗忘：模型在语言模型上的性能急剧下降，可能损害模型的泛化能力。为保证模型不在有监督语料上过拟合，在fine-tuning阶段继续单语言语言模型任务，seq2seq和语言模型任务的损失相加作为最终损失。) 此外还用了残差连接，Encoder 和 Decoder 之间也用了 Attention。</p>
+<p><strong>CoVe</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1708.00107.pdf">https://arxiv.org/pdf/1708.00107.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819170037458" src="../imgs/image-20190819170037458.png" /></p>
+<p><img alt="image-20190819165546137" src="../imgs/image-20190819165546137.png" /></p>
+<p>CoVe更侧重于如何将现有数据上预训练得到的表征迁移到新任务场景中，而之前的句子级任务中大多数都只把迁移过程当做一个评估他们表征效果的手段，因此观念上有所不同</p>
+<ul>
+<li>也有使用训练好的序列模型为其他NLP模型提供上下文的想法</li>
+<li>想法：机器翻译是为了保存意思，所以这也许是个好目标？</li>
+<li>使用seq2seq + attention NMT system中的Encoder，即 2层 bi-LSTM ，作为上下文提供者</li>
+<li>所得到的 CoVe 向量在各种任务上都优于 GloVe 向量</li>
+<li>但是，结果并不像其他更简单的NLM培训那么好，所以似乎被放弃了<ul>
+<li>也许NMT只是比语言建模更难？</li>
+<li>或许有一天这个想法会回来？</li>
+</ul>
+</li>
+</ul>
+<p><strong>ELMo</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/abs/1802.05365.pdf">https://arxiv.org/abs/1802.05365.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819170054659" src="../imgs/image-20190819170054659.png" /></p>
+<ul>
+<li>
+<p>使用长上下文而不是上下文窗口学习 word token 向量(这里，整个句子可能更长)</p>
+</li>
+<li>
+<p>学习深度Bi-NLM，并在预测中使用它的所有层</p>
+</li>
+<li>
+<p>训练一个双向LM</p>
+</li>
+<li>
+<p>目标是 performant 但LM不要太大</p>
+<ul>
+<li>使用2个biLSTM层<ul>
+<li>这两个biLSTM NLM层有不同的用途/含义</li>
+<li>低层更适合低级语法，例如<ul>
+<li>词性标注(part-of-speech tagging)、句法依赖(syntacticdependency)、NER</li>
+</ul>
+</li>
+<li>高层更适合更高级别的语义<ul>
+<li>情绪、Semantic role labeling 语义角色标记 、question answering、SNLI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>目标函数为 <span><span class="MathJax_Preview">\sum_{k=1}^{N} \log p\left(t_{k} | t_{1}, \ldots, t_{k-1}\right)+\log p\left(t_{k} | t_{k+1}, \ldots, t_{N}\right)</span><script type="math/tex">\sum_{k=1}^{N} \log p\left(t_{k} | t_{1}, \ldots, t_{k-1}\right)+\log p\left(t_{k} | t_{k+1}, \ldots, t_{N}\right)</script></span></li>
+<li>(仅)使用字符CNN构建初始单词表示<ul>
+<li>如下图所示，在输入层和输出层均使用了如下CNN结构，减少了参数规模，解决了 OOV 问题，并且每一个词向量的计算可以预先做好，更能够减轻inference阶段的计算压力。</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190819195326970" src="../imgs/image-20190819195326970.png" /></p>
+<ul>
+<li>2048 个 char n-gram filters 和 2 个 highway layers，512 维的 projection</li>
+<li>4096 dim hidden/cell LSTM状态，使用 512 dim的对下一个输入的投影</li>
+<li>使用残差连接</li>
+<li>绑定 token 的输入和输出的参数(softmax)，并将这些参数绑定到正向和反向LMs之间</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190819195537045" src="../imgs/image-20190819195537045.png" /> </p>
+<ul>
+<li>
+<p>ELMo学习biLM表示的特定任务组合</p>
+</li>
+<li>
+<p>这是一个创新，TagLM 中仅仅使用堆叠LSTM的顶层，ELMo 认为BiLSTM所有层都是有用的</p>
+</li>
+</ul>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned} R_{k} &amp;=\left\{\mathbf{x}_{k}^{L M}, \overrightarrow{\mathbf{h}}_{k, j}^{L M}, \overleftarrow{\mathbf{h}}_{k, j}^{L M} | j=1, \ldots, L\right\} \\ &amp;=\left\{\mathbf{h}_{k, j}^{L M} | j=0, \ldots, L\right\} \end{aligned}
+\\ \mathbf{E} \mathbf{L} \mathbf{M} \mathbf{o}_{k}^{t a s k}=E\left(R_{k} ; \Theta^{t a s k}\right)=\gamma^{t a s k} \sum_{j=0}^{L} s_{j}^{t a s k} \mathbf{h}_{k, j}^{L M}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned} R_{k} &=\left\{\mathbf{x}_{k}^{L M}, \overrightarrow{\mathbf{h}}_{k, j}^{L M}, \overleftarrow{\mathbf{h}}_{k, j}^{L M} | j=1, \ldots, L\right\} \\ &=\left\{\mathbf{h}_{k, j}^{L M} | j=0, \ldots, L\right\} \end{aligned}
+\\ \mathbf{E} \mathbf{L} \mathbf{M} \mathbf{o}_{k}^{t a s k}=E\left(R_{k} ; \Theta^{t a s k}\right)=\gamma^{t a s k} \sum_{j=0}^{L} s_{j}^{t a s k} \mathbf{h}_{k, j}^{L M}
+</script>
+</div>
+<p><img alt="image-20190819195600832" src="../imgs/image-20190819195600832.png" /></p>
+<ul>
+<li><span><span class="MathJax_Preview">\gamma^{t a s k}</span><script type="math/tex">\gamma^{t a s k}</script></span> 衡量ELMo对任务的总体有用性，是为特定任务学习的全局比例因子</li>
+<li><span><span class="MathJax_Preview">\mathbf{s}^{t a s k}</span><script type="math/tex">\mathbf{s}^{t a s k}</script></span> 是 softmax 归一化的混合模型权重，是 BiLSTM 的加权平均值的权重，对不同的任务是不同的，因为不同的任务对不同层的 BiLSTM 的</li>
+</ul>
+<p><strong>ULMFit</strong></p>
+<blockquote>
+<p><a href="https://arxiv.org/pdf/1801.06146.pdf">https://arxiv.org/pdf/1801.06146.pdf</a></p>
+</blockquote>
+<p><img alt="image-20190819170252798" src="../imgs/image-20190819170252798.png" /></p>
+<ul>
+<li>
+<p>在大型通用领域的无监督语料库上使用 biLM 训练</p>
+</li>
+<li>
+<p>在目标任务数据上调整 LM</p>
+</li>
+<li>
+<p>对特定任务将分类器进行微调</p>
+</li>
+<li>
+<p>使用合理大小的“1 GPU”语言模型，并不是真的很大</p>
+</li>
+</ul>
+<p><img alt="image-20190819195738769" src="../imgs/image-20190819195738769.png" /></p>
+<ul>
+<li>
+<p>在LM调优中要注意很多</p>
+<ul>
+<li>
+<p>ULMFit的预训练和finetune过程主要可以分为三个阶段，分别是在大规模语料集上（比如Wikitext 103，有103million个词）先预训练，然后再将预训练好的模型在具体任务的数据上重新利用语言模型来finetune一下（这是第一次finetune，叫做LM finetune），尔后再根据具体任务设计的一个模型上，将预训练好的模型当做这个任务模型的多层，再一次finetune（这是第二次finetune，如果是分类问题的话可以叫做Classifier finetune）</p>
+</li>
+<li>
+<p><img alt="image-20190819195803432" src="../imgs/image-20190819195803432.png" /></p>
+</li>
+<li>
+<p>AWD-LSTM</p>
+<ul>
+<li><span><span class="MathJax_Preview">w_{k+1}=w_{k}-\gamma_{k} \nabla f\left(w_{k}\right), w=\frac{1}{K-T+1} \sum_{i=T}^{K} w_{i}</span><script type="math/tex">w_{k+1}=w_{k}-\gamma_{k} \nabla f\left(w_{k}\right), w=\frac{1}{K-T+1} \sum_{i=T}^{K} w_{i}</script></span></li>
+<li>其中T是一个阈值，而K则是总共的迭代次数，这个式子的意思就是把迭代到第T次之后，对该参数在其后的第T轮到最后一轮之间的所有值求平均，从而得到最后模型的该参数值，而相应的，普通的SGD则是直接取 <span><span class="MathJax_Preview">w = w_K</span><script type="math/tex">w = w_K</script></span> 作为最后模型的参数值。</li>
+<li>并且在每个时间步之间都是用一个全连接层，并且使用DropConnect的方法随机drop掉一些连接减少一些过拟合的风险</li>
+</ul>
+</li>
+<li>
+<p>微调技巧</p>
+<ul>
+<li>
+<p>discriminative fine-tuning</p>
+</li>
+<li>
+<p>针对不同的层在训练更新参数的时候，赋予不同的学习率。这里的出发点是，一般来说，对于NLP的深度学习模型来说，不同层的表征有不同的物理含义，比如浅层偏句法信息，高层偏语义信息，因此对于不同层的学习率不同，自然就是比较合理的了。具体来说，公式如下 <span><span class="MathJax_Preview">\theta_{t}^{l}=\theta_{t-1}^{l}+\eta^{l} \nabla_{\theta^{l}} J(\theta)</span><script type="math/tex">\theta_{t}^{l}=\theta_{t-1}^{l}+\eta^{l} \nabla_{\theta^{l}} J(\theta)</script></span> ，这里的 <span><span class="MathJax_Preview">n^l</span><script type="math/tex">n^l</script></span> 便是不同的层 <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> 有不同的学习率，原文也给出了具体的选择：先指定最后一层的学习率，然后根据下式得到前面层的学习率，基本思想是让浅层的学习率要更小一些。 <span><span class="MathJax_Preview">\eta^{l-1}=\frac{\eta^{l}}{2.6}</span><script type="math/tex">\eta^{l-1}=\frac{\eta^{l}}{2.6}</script></span></p>
+</li>
+<li>
+<p>slanted triangular learning rates</p>
+<ul>
+<li>在finetune的第一阶段，希望能够先稳定住原来已经在大规模语料集上已经预训练好的参数，所以选择一个比较小的finetune学习率；尔后希望能够逐步加大学习率，使得学习过程能够尽量快速；最后，当训练接近尾声时，逐步减小学习率，这样让模型逐渐平稳收敛（这个思想大概借鉴了2017年谷歌提出Transformer时用到的warm up的学习率调节方法，这个方法也是在训练的时候先将学习率逐步增大，尔后再逐步减小）。因此，这样一个三段论式的学习过程，用图表示如下：</li>
+</ul>
+</li>
+<li>
+<p>gradual unfreezing</p>
+<ul>
+<li>主要思想是把预训练的模型在新任务上finetune时，逐层解冻模型，也就是先finetune最后一层，然后再解冻倒数第二层，把倒数第二层和最后一层一起finetune，然后再解冻第三层，以此类推，逐层往浅层推进，最终finetune整个模型或者终止到某个中间层。这样做的目的也是为了finetune的过程能够更平稳。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>因为ULMFiT中包含了两次finetune，即在新任务上用语言模型finetune和在新任务上finetune训练一个最终的task-specifi-model（比如分类器），而论文中主要把discriminative fine-tuning, slanted triangular learning rates这两个技巧用在了语言模型的finetune阶段，把最后一个gradual unfreezing的技巧应用在最终task-specifi-model的finetune阶段。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>使用大型的预训练语言模型是一种提高性能的非常有效的方法</p>
+</li>
+</ul>
+<p><strong>GPT</strong></p>
+<p><img alt="image-20190819170307998" src="../imgs/image-20190819170307998.png" /></p>
+<p><img alt="image-20190819203419238" src="../imgs/image-20190819203419238.png" /></p>
+<p>GPT采用两阶段过程，第一个阶段是利用语言模型进行预训练，第二阶段通过Fine-tuning的模式解决下游任务。上图展示了GPT的预训练过程，其实和ELMO是类似的，主要不同在于两点：首先，特征抽取采用Transformer；其次，GPT的预训练虽然仍然是以语言模型作为目标任务，但是采用的是单向的语言模型，所谓“单向”的含义是指：只使用单词的上文进行预测，而抛开了下文。</p>
+<p>GPT论文给了一个改造施工图如上，其实也很简单：对于分类问题，不用怎么动，加上一个起始和终结符号即可；对于句子关系判断问题，比如Entailment，两个句子中间再加个分隔符即可；对文本相似性判断问题，把两个句子顺序颠倒下做出两个输入即可，这是为了告诉模型句子顺序不重要；对于多项选择问题，则多路输入，每一路把文章和答案选项拼接作为输入即可。从上图可看出，这种改造还是很方便的，不同任务只需要在输入部分施工即可。</p>
+<p><strong>BERT</strong></p>
+<p><img alt="image-20190819204157694" src="../imgs/image-20190819204157694.png" /></p>
+<ul>
+<li><strong>利用了真双向的Transformer</strong></li>
+<li><strong>为了利用双向信息，改进了普通语言模型成为完形填空式的Mask-LM(Mask-Language Model)</strong></li>
+<li><strong>利用Next Sentence Prediction任务学习句子级别信息</strong></li>
+<li><strong>进一步完善和扩展了GPT中设计的通用任务框架，使得BERT能够支持包括：句子对分类任务、单句子分类任务、阅读理解任务和序列标注任务</strong></li>
+</ul>
+<p><strong>Why does language modeling work so well?</strong></p>
+<ul>
+<li>语言建模是一项非常困难的任务，即使对人类来说也是如此。</li>
+<li>预期语言模型将任何可能的上下文压缩到一个向量中，该向量概括了可能的完成后的句子。<ul>
+<li>“They walked down the street to ???”</li>
+</ul>
+</li>
+<li>为了有机会解决这个任务，模型必须学习语法、语义、对世界事实编码等等。</li>
+<li>给定足够的数据、一个巨大的模型和足够的计算，就可以完成一项合理的工作！</li>
+<li>从经验上看，语言模型比翻译，自编码更有效：“Language Modeling Teaches You More Syntax than Translation Does” (<a href="https://arxiv.org/abs/1809.10040">Zhang et al. 2018</a>)</li>
+</ul>
+<h3 id="interesting-properties-of-pretraining">Interesting properties of pretraining<a class="headerlink" href="#interesting-properties-of-pretraining" title="Permanent link">&para;</a></h3>
+<p><strong>Pretraining reduces need for annotated data</strong></p>
+<p><img alt="image-20190819205725742" src="../imgs/image-20190819205725742.png" /></p>
+<p><img alt="image-20190819205732263" src="../imgs/image-20190819205732263.png" /></p>
+<p><img alt="image-20190819205746878" src="../imgs/image-20190819205746878.png" /></p>
+<p><strong>Scaling up pretraining</strong></p>
+<p><img alt="image-20190819205818604" src="../imgs/image-20190819205818604.png" /></p>
+<ul>
+<li>上图为 GloVe 中增加语料库规模对模型准确度的影响。</li>
+<li>数据集越大越好，并且维基百科数据集比新闻文本数据集要好<ul>
+<li>因为维基百科就是在解释概念以及他们之间的相互关联，更多的说明性文本显示了事物之间的所有联系</li>
+<li>而新闻并不去解释，而只是去阐述一些事件</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190819205855405" src="../imgs/image-20190819205855405.png" /></p>
+<p><img alt="image-20190819205903083" src="../imgs/image-20190819205903083.png" /></p>
+<h3 id="cross-lingual-pretraining">Cross-lingual pretraining<a class="headerlink" href="#cross-lingual-pretraining" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Much work on training cross-lingual word embeddings(Overview: <a href="https://arxiv.org/abs/1706.04902">Ruder et al. (2017)</a>)</li>
+<li>Idea: train each language separately, then align.</li>
+<li>Recent work aligning ELMo: <a href="https://arxiv.org/abs/1902.09492">Schuster et al., (NAACL 2019)</a></li>
+<li><a href="http://www.acl2019.org/EN/tutorials.xhtml">ACL 2019 Tutorial on Unsupervised Cross-lingual Representation Learning</a></li>
+</ul>
+<blockquote>
+<p><a href="https://looperxx.github.io/CS224n-2019-20-The Future of NLP + Deep Learning/#using-unlabeled-data-for-translation">CS224n-2019-20 The Future of NLP + Deep Learning</a></p>
+</blockquote>
+<p><strong>Cross-lingual Polyglot Pretraining</strong></p>
+<p>关键思想:通过在多种语言上训练一个模型，实现跨语言的词汇表和表示。</p>
+<p>优点:易于实现，可单独进行跨语言预培训</p>
+<p>缺点:低资源语言导致其表示学习的不够好</p>
+<ul>
+<li>LASER:Use parallel data for sentence representations(<a href="https://arxiv.org/abs/1812.10464">Artetxe &amp; Schwenk, 2018</a>)</li>
+<li><a href="https://github.com/google-research/bert/blob/master/multilingual.md">Multilingual BERT</a>: BERT trained jointly on 100 languages</li>
+<li>Rosita:Polyglot contextual representations(<a href="https://arxiv.org/abs/1902.09697">Mulcaire et al., NAACL 2019</a>)</li>
+<li>XLM: Cross lingualLM (<a href="https://arxiv.org/abs/1901.07291">Lample &amp; Conneau, 2019</a>)</li>
+</ul>
+<h3 id="hands-on-1-pretraining-a-transformer-language-model">Hands-on #1: Pretraining a Transformer Language Model<a class="headerlink" href="#hands-on-1-pretraining-a-transformer-language-model" title="Permanent link">&para;</a></h3>
+<p><img alt="image-20190819210913004" src="../imgs/image-20190819210913004.png" /></p>
+<p><img alt="image-20190819212432078" src="../imgs/image-20190819212432078.png" /></p>
+<p><img alt="image-20190819214202839" src="../imgs/image-20190819214202839.png" /></p>
+<p>两个 mask</p>
+<ul>
+<li><code>padding_mask</code> masks the padding tokens. It is specific to each sample in the batch:</li>
+</ul>
+<p><img alt="image-20190819214915353" src="../imgs/image-20190819214915353.png" /></p>
+<ul>
+<li><code>attn_mask</code> is the same for all samples in the batch. It masks the previous tokens for causal transformers:</li>
+</ul>
+<p><img alt="image-20190819214926053" src="../imgs/image-20190819214926053.png" /></p>
+<p><img alt="image-20190819215058554" src="../imgs/image-20190819215058554.png" /></p>
+<p><img alt="image-20190820164023130" src="../imgs/image-20190820164023130.png" /></p>
+<h2 id="3-what-is-in-a-representation">3. What is in a Representation?<a class="headerlink" href="#3-what-is-in-a-representation" title="Permanent link">&para;</a></h2>
+<p><strong>Why care about what is in a representation?</strong></p>
+<ul>
+<li>带有下游任务的外部评估<ul>
+<li>复杂多样，随特定任务而不同</li>
+</ul>
+</li>
+<li>知道语言的表示<ul>
+<li>泛化到其他任务的新的输入</li>
+<li>作为可能改进预训练工作的中间</li>
+</ul>
+</li>
+<li>可解释！<ul>
+<li>我们得到结果的原因是否正确?</li>
+<li>发现偏见……</li>
+</ul>
+</li>
+</ul>
+<p><strong>What to analyze?</strong></p>
+<p><img alt="image-20190820165224243" src="../imgs/image-20190820165224243.png" /></p>
+<p><strong>Analysis Method 1: Visualization</strong></p>
+<p>Hold the embeddings / network activations static or frozen</p>
+<p><img alt="image-20190820165812106" src="../imgs/image-20190820165812106.png" /></p>
+<p><img alt="image-20190820165822255" src="../imgs/image-20190820165822255.png" /></p>
+<ul>
+<li>Plotting embeddings in a lower dimensional (2D/3D) space <ul>
+<li>t-SNE van der Maaten &amp; Hinton, 2008</li>
+<li>PCA projections </li>
+</ul>
+</li>
+<li>Visualizing word analogies Mikolov et al. 2013<ul>
+<li>空间关联 </li>
+<li><span><span class="MathJax_Preview">w_{king} - w_{man} + w_{woman} \approx w_{queen}</span><script type="math/tex">w_{king} - w_{man} + w_{woman} \approx w_{queen}</script></span></li>
+</ul>
+</li>
+<li>High-level view of lexical semantics <ul>
+<li>Only a limited number of examples</li>
+<li>Connection to other tasks is unclear Goldberg, 2017</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190820170115688" src="../imgs/image-20190820170115688.png" /></p>
+<ul>
+<li>神经元激活值与特征/标签相关</li>
+</ul>
+<p><img alt="image-20190820170209788" src="../imgs/image-20190820170209788.png" /></p>
+<ul>
+<li>表示对可识别特征的学习<ul>
+<li>如何选择哪个神经元？</li>
+<li>可解释 != 重要(<a href="https://arxiv.org/abs/1803.06959">Morcos et al., 2018</a>)</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190820170408277" src="../imgs/image-20190820170408277.png" /></p>
+<ul>
+<li>流行于机器翻译，或其他seq2seq架构:<ul>
+<li>源和目标字之间的对齐。</li>
+<li>长距离词-词依赖(句内注意)</li>
+</ul>
+</li>
+<li>结构上的亮点<ul>
+<li>拥有复杂的注意力机制可能是一件好事!</li>
+<li>分层的</li>
+</ul>
+</li>
+<li>解释可能很棘手<ul>
+<li>只有几个例子？</li>
+<li>Robust corpus-wide trends? Next !</li>
+</ul>
+</li>
+</ul>
+<p><strong>Analysis Method 2: Behavioral Probes</strong></p>
+<ul>
+<li>RNN-based语言模型<ul>
+<li>主谓关系中的数字一致性</li>
+<li>自然的、不自然的或不合语法的句子</li>
+<li>对输出困惑度进行评估</li>
+</ul>
+</li>
+<li>RNNs优于其他非神经Baseline</li>
+<li>当显式地使用语法训练时，性能会提高(Kuncoro等，2018)。</li>
+<li>Probe:可能易受共现偏差的影响<ul>
+<li>“dogs in the neighborhood bark(s)”</li>
+<li>以前的句子可能和原来的太不一样了…</li>
+</ul>
+</li>
+</ul>
+<p><strong>Analysis Method 3: Classifier Probes</strong></p>
+<p>Hold the embeddings / network activations static and train a simple supervised model on top</p>
+<p><strong>Probing Surface-level Features</strong></p>
+<ul>
+<li>给定一个句子，预测属性如<ul>
+<li>长度</li>
+<li>这个句子里有一个单词吗</li>
+</ul>
+</li>
+<li>给出句子中的单词预测属性，例如：<ul>
+<li>以前见过的词，与语言模型形成对比</li>
+<li>词在句子中的位置</li>
+</ul>
+</li>
+<li>检查记忆的能力<ul>
+<li>训练有素的、更丰富的体系结构往往运行得更好</li>
+<li>在语言数据上训练能记忆的更好</li>
+</ul>
+</li>
+</ul>
+<p><strong>Probing Morphology, Syntax, Semantics</strong></p>
+<p><img alt="image-20190820171517730" src="../imgs/image-20190820171517730.png" /></p>
+<ul>
+<li>形态</li>
+<li>词级别的语法<ul>
+<li>POS tags, CCG supertags</li>
+<li>Constituent parent, grandparent</li>
+</ul>
+</li>
+<li>部分语法<ul>
+<li>依赖关系</li>
+</ul>
+</li>
+<li>部分语义<ul>
+<li>实体关系</li>
+<li>指称相同</li>
+<li>角色</li>
+</ul>
+</li>
+</ul>
+<p><strong>Probing classifier findings</strong></p>
+<ul>
+<li>
+<p>Contextualized &gt; non-contextualized</p>
+<ul>
+<li>尤其是在句法任务上</li>
+<li>语义任务的更紧密性能</li>
+<li>双向上下文很重要</li>
+</ul>
+</li>
+<li>
+<p>BERT (large) almost always gets the highest performance</p>
+</li>
+<li>Grain of salt: 不同的上下文表示在不同的数据上训练，使用不同的架构……</li>
+</ul>
+<p><strong>Probing: Layers of the network</strong></p>
+<ul>
+<li>RNN层:<strong>通用语言属性</strong><ul>
+<li>最低层:形态学</li>
+<li>中间层:语法</li>
+<li>最高层次:特定于任务的语义</li>
+</ul>
+</li>
+<li>Transformer 层:<ul>
+<li>不同任务的不同趋势；middle-heavy</li>
+<li>参见<a href="https://ai.google/research/pubs/pub48153">Tenney et. al., 2019</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>Probing: Pretraining Objectives</strong></p>
+<ul>
+<li>
+<p>语言建模优于其他非监督和监督目标。</p>
+<ul>
+<li>机器翻译</li>
+<li>依赖性解析</li>
+<li>Skip-thought</li>
+</ul>
+</li>
+<li>
+<p>低资源设置(训练数据的大小)可能导致相反的趋势。</p>
+</li>
+</ul>
+<p><strong>What have we learnt so far?</strong></p>
+<ul>
+<li>表征是对某些语言现象的预测:<ul>
+<li>翻译中的对齐，句法层次</li>
+</ul>
+</li>
+<li>有语法和没有语法的预训练:<ul>
+<li>有语法的预训练具有更好的性能</li>
+<li>但是如果没有语法，至少还是会学到些语法概念 (<a href="https://www.mitpressjournals.org/doi/pdfplus/10.1162/tacl_a_00019">Williams et al. 2018</a>)</li>
+</ul>
+</li>
+<li>网络架构决定了表示中的内容<ul>
+<li>句法与Bert Transformer (<a href="https://arxiv.org/abs/1905.05950">Tenney et al., 2019</a>; <a href="https://arxiv.org/abs/1901.05287">Goldberg, 2019</a>)</li>
+<li>跨架构的不同层次趋势</li>
+</ul>
+</li>
+</ul>
+<p><strong>Open questions about probes</strong></p>
+<ul>
+<li>一个好的探测器应该寻找什么信息?<ul>
+<li>探索一个探测器</li>
+</ul>
+</li>
+<li>探测性能告诉我们什么?<ul>
+<li>很难综合各种基线的结果…</li>
+</ul>
+</li>
+<li>它本身会带来一些复杂性吗<ul>
+<li>线性或非线性分类。</li>
+<li>行为:输入句子的设计</li>
+</ul>
+</li>
+<li>我们应该使用探针作为评估指标吗?<ul>
+<li>可能会破坏目的…</li>
+</ul>
+</li>
+</ul>
+<p><strong>Analysis Method 4: Model Alterations</strong></p>
+<p><img alt="image-20190821200106676" src="../imgs/image-20190821200106676.png" /></p>
+<p><a href="https://arxiv.org/abs/1612.08220">Li et al., 2016</a></p>
+<ul>
+<li>逐步删除或屏蔽网络组件<ul>
+<li>词嵌入维度</li>
+<li>隐藏单位</li>
+<li>输入-单词/短语</li>
+</ul>
+</li>
+</ul>
+<p><strong>So, what is in a representation?</strong></p>
+<ul>
+<li>这要看你怎么看了!<ul>
+<li>可视化:<ul>
+<li>鸟瞰</li>
+<li>很少的样品——可能会让人想起挑选</li>
+</ul>
+</li>
+<li>调查:<ul>
+<li>发现微粒范围内的特定属性</li>
+<li>可能会引入自己的偏见…</li>
+</ul>
+</li>
+<li>网络的替代品:<ul>
+<li>对改进建模很有帮助，</li>
+<li>可以是特定于任务的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interpretability + transferability to downstream tasks is key</strong> </p>
+<h2 id="4-adaptation">4. Adaptation<a class="headerlink" href="#4-adaptation" title="Permanent link">&para;</a></h2>
+<p><strong>How to adapt the pretrained model</strong></p>
+<p>我们可以在几个正交方向上做决定:</p>
+<ul>
+<li>结构的修改？<ul>
+<li>为了适应，需要对预训练的模型体系结构进行多大的更改</li>
+</ul>
+</li>
+<li>优化方案？<ul>
+<li>在适应过程中需要训练哪些重量以及遵循什么时间表</li>
+</ul>
+</li>
+<li>更多信号:弱监督、多任务和 Ensembling<ul>
+<li>如何为目标任务获取更多的监控信号</li>
+</ul>
+</li>
+</ul>
+<h3 id="41-architecture">4.1 Architecture<a class="headerlink" href="#41-architecture" title="Permanent link">&para;</a></h3>
+<p>两个通用选项：</p>
+<ul>
+<li>保持预训练模型内部不变<ul>
+<li>在顶部添加分类器，在底部添加嵌入，将输出作为特征</li>
+</ul>
+</li>
+<li>修改预先训练的模型内部架构<ul>
+<li>初始化编码器-解码器、特定于任务的修改、适配器</li>
+</ul>
+</li>
+</ul>
+<h4 id="41a-architecture-keep-model-unchanged">4.1.A – Architecture: Keep model unchanged<a class="headerlink" href="#41a-architecture-keep-model-unchanged" title="Permanent link">&para;</a></h4>
+<p><strong>常规工作流</strong></p>
+<p><img alt="image-20190821215704364" src="../imgs/image-20190821215704364.png" /></p>
+<ul>
+<li>
+<p>如果对目标任务无效，则删除  预训练的任务头</p>
+<ul>
+<li>示例：从预训练语言模型中删除softmax分类器</li>
+<li>不总是需要:一些适应方案重用了预训练的目标/任务，例如用于多任务学习</li>
+</ul>
+</li>
+<li>
+<p>在预训练模型的顶部/底部添加特定于任务的目标层</p>
+<p><img alt="image-20190821225651897" src="../imgs/image-20190821225651897.png" /></p>
+<ul>
+<li>简单：在预训练的模型上添加线性层</li>
+</ul>
+<p><img alt="image-20190821225720061" src="../imgs/image-20190821225720061.png" /></p>
+<ul>
+<li>更复杂的:将模型输出作为单独模型的输入</li>
+<li>当目标任务需要预先训练的嵌入中不可用的交互时，通常是有益的</li>
+</ul>
+</li>
+</ul>
+<h4 id="41b-architecture-modifying-model-internals">4.1.B – Architecture: Modifying model internals<a class="headerlink" href="#41b-architecture-modifying-model-internals" title="Permanent link">&para;</a></h4>
+<p>各种各样的原因:</p>
+<p><img alt="image-20190821230028852" src="../imgs/image-20190821230028852.png" /></p>
+<ul>
+<li>适应结构上不同的目标任务</li>
+<li>例如:使用单个输入序列(例如:语言建模)进行预训练，但是适应多个输入序列的任务(例如:翻译、条件生成……)</li>
+<li>使用预训练的模型权重尽可能初始化结构不同的目标任务模型</li>
+<li>例如:使用单语LMs初始化MT的编码器和解码器参数</li>
+</ul>
+<p><img alt="image-20190821231742316" src="../imgs/image-20190821231742316.png" /></p>
+<ul>
+<li>特定于任务的修改</li>
+<li>提供对目标任务有用的预训练模型</li>
+<li>例如：添加跳过/剩余连接，注意力</li>
+</ul>
+<p><img alt="image-20190821232001879" src="../imgs/image-20190821232001879.png" /></p>
+<ul>
+<li>使用较少的参数进行调整:<ul>
+<li>更少的参数进行微调</li>
+<li>在模型参数不断增大的情况下，非常有用</li>
+<li>例如:在预训练模型的层之间添加瓶颈模块(“适配器”)(<a href="https://arxiv.org/abs/1705.08045">Rebuffi et al., NIPS 2017</a>;<a href="https://arxiv.org/abs/1803.10082">CVPR 2018</a>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Adapters</strong></p>
+<ul>
+<li>通常在于现有层平行的基础上使用剩余连接连接</li>
+<li>每层放置效果最佳(底层效果较小)</li>
+<li>不同的操作(卷积，自我注意)是可能的</li>
+<li>特别适合 Transformer 等模块化架构(<a href="https://arxiv.org/abs/1902.00751">Houlsby et al., ICML 2019</a>; <a href="https://arxiv.org/abs/1902.02671">Stickland and Murray, ICML 2019</a>)</li>
+</ul>
+<p><img alt="image-20190821232356141" src="../imgs/image-20190821232356141.png" /></p>
+<p><strong>Adapters (</strong><a href="https://arxiv.org/abs/1902.02671">Stickland &amp; Murray, ICML 2019</a>)</p>
+<ul>
+<li>多头的关注(MH;跨层共享)与BERT的self-attention (SA)层并行使用</li>
+<li>两者都被加在一起，并输入到 Layer-norm (LN)中</li>
+</ul>
+<h3 id="hands-on-2-adapting-our-pretrained-model">Hands-on #2: Adapting our pretrained model<a class="headerlink" href="#hands-on-2-adapting-our-pretrained-model" title="Permanent link">&para;</a></h3>
+<p>Let’s see how a simple fine-tuning scheme can be implemented with our pretrained model:</p>
+<ul>
+<li>Plan<ul>
+<li>Start from our Transformer language model</li>
+<li>Adapt the model to a target task:<ul>
+<li>keep the model core unchanged, load the pretrained weights</li>
+<li>add a linear layer on top, newly initialized</li>
+<li>use additional embeddings at the bottom, newly initialized</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Adaptation task</strong></p>
+<ul>
+<li>我们选择一个文本分类任务作为下游任务</li>
+<li>TREC-6: The Text REtrieval Conference (TREC) Question Classification (Li et al., COLING 2002)</li>
+<li>TREC consists of open-domain, fact-based questions divided into broad semantic categories contains 5500 labeled training questions &amp; 500 testing questions with 6 labels:  <ul>
+<li>NUM, LOC, HUM, DESC, ENTY, ABBR</li>
+</ul>
+</li>
+<li>
+<p>例如</p>
+<ul>
+<li><img alt="image-20190821233714338" src="../imgs/image-20190821233714338.png" /></li>
+</ul>
+</li>
+<li>
+<p>迁移学习模型适用于这种低资源的任务</p>
+</li>
+</ul>
+<p><img alt="image-20190821233749051" src="../imgs/image-20190821233749051.png" /></p>
+<p><strong>First adaptation scheme</strong></p>
+<p><img alt="image-20190821233857260" src="../imgs/image-20190821233857260.png" /></p>
+<ul>
+<li>修改:<ul>
+<li>保持模型内部不变</li>
+<li>在上面添加一个线性图层</li>
+<li>在底部添加额外的嵌入(分类标记)</li>
+</ul>
+</li>
+<li>计算流程:<ul>
+<li>模型输入:最后带有分类标记的标记化问题</li>
+<li>提取与分类令牌关联的最后一个隐藏状态</li>
+<li>通过线性层中的隐藏状态和softmax得到类概率</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190822001447762" src="../imgs/image-20190822001447762.png" /></p>
+<p><img alt="image-20190822002703368" src="../imgs/image-20190822002703368.png" /></p>
+<p><img alt="image-20190822002716700" src="../imgs/image-20190822002716700.png" /></p>
+<p><img alt="image-20190822002759713" src="../imgs/image-20190822002759713.png" /></p>
+<p>备注:</p>
+<ul>
+<li>错误率下降得很快！在一个循环之后，我们已经有了&gt;90%的准确率。<ul>
+<li>Fine-tuning 在 Transfer Learning 中是高度数据高效的</li>
+</ul>
+</li>
+<li>我们的预训练和微调超参数直接来自于相关模型的文献<ul>
+<li>Fine-tuning 往往在精确超参数的选择下是健壮的</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190822011022916" src="../imgs/image-20190822011022916.png" /></p>
+<p>让我们用一些关于稳健性和方差的额外词汇来结束这个实践</p>
+<ul>
+<li>大型预训练模型(如BERT Large)在对小训练集的任务进行微调时，容易导致性能下降。</li>
+<li>观察到的行为通常是“断断续续的”:要么效果很好，要么根本不管用。</li>
+<li>理解这种行为的条件和原因(模型、适应方案)是一个开放的研究问题。</li>
+</ul>
+<h3 id="42-optimization">4.2 Optimization<a class="headerlink" href="#42-optimization" title="Permanent link">&para;</a></h3>
+<p>涉及到优化本身的几个方向:</p>
+<ul>
+<li>选择我们应该更新的权重<ul>
+<li>Feature extraction, fine-tuning, adapters</li>
+</ul>
+</li>
+<li>选择如何以及何时更新权重<ul>
+<li>From top to bottom, gradual unfreezing, discriminative fine-tuning</li>
+</ul>
+</li>
+<li>考虑实事求是的权衡<ul>
+<li>Space and time complexity, performance</li>
+</ul>
+</li>
+</ul>
+<h4 id="42a-optimization-which-weights">4.2.A – Optimization: Which weights?<a class="headerlink" href="#42a-optimization-which-weights" title="Permanent link">&para;</a></h4>
+<p>主要问题:调整还是不调整(预先训练好的重量)?</p>
+<ul>
+<li>不改变预先训练的重量<ul>
+<li>Feature extraction, adapters</li>
+</ul>
+</li>
+<li>改变预训练权重<ul>
+<li>fine-tuning</li>
+</ul>
+</li>
+</ul>
+<p><strong>不要碰预先训练好的权重！</strong></p>
+<p>Feature extraction:</p>
+<ul>
+<li>(预训练的)权重被冻结</li>
+</ul>
+<p><img alt="image-20190822011536063" src="../imgs/image-20190822011536063.png" /></p>
+<ul>
+<li>线性分类器是在预训练的表示上进行训练的</li>
+</ul>
+<p><img alt="image-20190822011556002" src="../imgs/image-20190822011556002.png" /></p>
+<ul>
+<li>不要只使用顶层的特性!</li>
+<li>学习层的线性组合</li>
+</ul>
+<p><img alt="image-20190822011646841" src="../imgs/image-20190822011646841.png" /></p>
+<ul>
+<li>或者，在下游模型中使用预先训练的表示作为特性</li>
+</ul>
+<p>Adapters：</p>
+<p><img alt="image-20190830171520037" src="../imgs/image-20190830171520037.png" /></p>
+<ul>
+<li>在现有层之间添加的特定于任务的模块</li>
+<li>只有 adapters 被训练</li>
+</ul>
+<p><strong>修改预训练权重！</strong></p>
+<p>Fine-tuning:</p>
+<ul>
+<li>采用预训练的权值作为下游模型参数的初始化</li>
+<li>整个预训练的体系结构在适应阶段进行培训</li>
+</ul>
+<h4 id="hands-on-3-using-adapters-and-freezing">Hands-on #3: Using Adapters and freezing<a class="headerlink" href="#hands-on-3-using-adapters-and-freezing" title="Permanent link">&para;</a></h4>
+<p><strong>Second adaptation scheme: Using Adapters</strong></p>
+<p><img src="imgs/image-20190904180919293.png" alt="image-20190904180919293" style="zoom:50%;" /></p>
+<ul>
+<li>Modifications:<ul>
+<li>add Adapters inside the backbone model: Linear ⇨ ReLU ⇨ Linear with a skip-connection</li>
+</ul>
+</li>
+<li>As previously:<ul>
+<li>add a linear layer on top</li>
+<li>use an additional embedding (classification token) at the bottom</li>
+</ul>
+</li>
+</ul>
+<p>We will <strong>only</strong> train the adapters, the added linear layer and the embeddings. The other parameters of the model will be <strong>frozen</strong>.</p>
+<p><img alt="image-20190904181337958" src="../imgs/image-20190904181337958.png" /></p>
+<h4 id="42b-optimization-what-schedule">4.2.B – Optimization: What schedule?<a class="headerlink" href="#42b-optimization-what-schedule" title="Permanent link">&para;</a></h4>
+<p><img src="imgs/image-20190904205336856.png" alt="image-20190904205336856" style="zoom:50%;" /></p>
+<ul>
+<li>我们已经决定要更新哪些权重，但是以什么顺序以及如何更新它们？</li>
+<li>动机：我们希望避免覆盖有用的预训练信息并最大化积极的知识迁移。</li>
+<li>相关概念：灾难遗忘（McCloskey＆Cohen，1989; French，1999）一个模型忘记了它最初受过训练的任务</li>
+</ul>
+<p>指导原则：从上到下更新</p>
+<ul>
+<li>时间上渐进：冻结</li>
+<li>强度上渐进：改变学习速度</li>
+<li>渐进与预训练模型:正则化</li>
+</ul>
+<p><strong>Optimization: Freezing</strong></p>
+<ul>
+<li>主要直觉：在不同分布和任务的数据上同时训练所有层可能导致不稳定的不良解决方案。</li>
+<li>解决方案：单独训练每一层，使他们有时间适应新的任务和数据。</li>
+<li>回到早期深度神经网络的分层训练（<a href="https://www.cs.toronto.edu/~hinton/absps/fastnc.pdf">Hinton et al., 2006</a>; <a href="https://papers.nips.cc/paper/3048-greedy-layer-wise-training-of-deep-networks.pdf">Bengio et al., 2007</a>）</li>
+</ul>
+<p>相关实例</p>
+<ul>
+<li>Freezing all but the top layer (<a href="https://arxiv.org/abs/1502.02791">Long et al., ICML 2015</a>)</li>
+<li>Chain-thaw (<a href="https://www.aclweb.org/anthology/D17-1169">Felbo et al., EMNLP 2017</a>):每次训练一层 <ul>
+<li>先训练新增的层</li>
+<li>再自底向上，每次训练一层（不再训练新增的那一层，其余层以会在不训练时被同时冻结）</li>
+<li>训练所有层（包括新增层）</li>
+</ul>
+</li>
+<li>Gradually unfreezing (<a href="https://arxiv.org/abs/1801.06146">Howard &amp; Ruder, ACL 2018</a>): 逐层解冻（自顶向下）</li>
+<li>Sequential unfreezing (<a href="https://arxiv.org/abs/1902.10547">Chronopoulou et al., NAACL 2019</a>): 超参数控制微调轮数<ul>
+<li>微调 n 轮次新增参数（冻结除了新增层以外的层）</li>
+<li>微调 k 轮次嵌入层以外的预训练层</li>
+<li>训练所有层直到收敛</li>
+</ul>
+</li>
+</ul>
+<p>共性：最后对所有参数进行联合训练</p>
+<h4 id="hands-on-4using-gradual-unfreezing">Hands-on #4:Using gradual unfreezing<a class="headerlink" href="#hands-on-4using-gradual-unfreezing" title="Permanent link">&para;</a></h4>
+<p>逐步解冻类似于我们之前的冻结过程。我们先冻结除新增参数外的所有模型:</p>
+<p><img alt="img" src="../imgs/ALOd6zO-iF9Na7JWGFr428a59CLdoqJkrkKPZOTcLzDGSErqRS-2Oh7QHvxAXWqbZPgBWoVzEtoCGTd1xunRdY3ax-bhEMX_JjuszqcqFQ1QrcaGuJlQbKrXPtNrD9tROKUvWlXaA8g.png" /></p>
+<p>然后我们在训练过程中逐渐解冻一个额外的模块，这样我们在最后就可以训练完整的模型了:<img alt="image-20190904214617470" src="../imgs/image-20190904214617470.png" /></p>
+<p>Transformer 中的逐步解冻尚未得到详细的研究</p>
+<ul>
+<li>没有文献提到具体的超参数</li>
+</ul>
+<p>残差连接可能会对方法产生影响</p>
+<ul>
+<li>应该适应 LSTM 超参数</li>
+</ul>
+<h4 id="42b-optimization-learning-rates">4.2.B – Optimization: Learning rates<a class="headerlink" href="#42b-optimization-learning-rates" title="Permanent link">&para;</a></h4>
+<p><strong>主要想法：使用更低的学习率来避免覆盖掉有用的信息</strong></p>
+<p>在哪里以及在什么时候？</p>
+<ul>
+<li>低层(捕获一般信息)</li>
+<li>训练初期(模型仍需适应目标分布)</li>
+<li>训练后期(模型接近收敛)</li>
+</ul>
+<p>相关实例 (<a href="https://arxiv.org/abs/1801.06146">Howard &amp; Ruder, ACL 2018</a>) </p>
+<p>Lower layers capture general information
+→ Use lower learning rates for lower layers</p>
+<ul>
+<li>Discriminative fine-tuning<ul>
+<li>较低的层捕获一般信息</li>
+<li>对较低的层次使用较低的学习率</li>
+<li><span><span class="MathJax_Preview">\eta^{(i)}=\eta \times d_{f}^{-i}</span><script type="math/tex">\eta^{(i)}=\eta \times d_{f}^{-i}</script></span></li>
+</ul>
+</li>
+<li>Triangular learning rates <ul>
+<li>快速移动到一个合适的区域，然后随着时间慢慢收敛<ul>
+<li><img alt="Points scored" src="../imgs/BpTOnPb5cey3qCJvC8TGPF72wZTdkent5ONox9e17ZWl26wvUh-XBWJ2Q0GPUkedYEh9mJDMk9o34MvScX2MAdo5ZJkMe1mkEM8POA-Nu7vR5agdLdQma84SAQ8RV8cZbwEthURVt-Q.png" /></li>
+</ul>
+</li>
+<li>也被称为 “learning rate warm-up”</li>
+<li>用于 Transformer (<a href="https://arxiv.org/abs/1706.03762">Vaswani et al., NIPS 2017</a>) 和 Transformer-based methods (BERT, GPT) 等</li>
+<li>有利于优化；更容易摆脱次优局部极小值</li>
+</ul>
+</li>
+</ul>
+<h4 id="42b-optimization-regularization">4.2.B – Optimization: Regularization<a class="headerlink" href="#42b-optimization-regularization" title="Permanent link">&para;</a></h4>
+<p>主要思想：通过使用正则化项 <span><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 鼓励目标模型参数接近预先训练的模型参数，将灾难性遗忘最小化。</p>
+<ul>
+<li>简单的方法:将新参数正则化，不要与预训练的参数偏离太多 (<a href="https://www.aclweb.org/anthology/K17-1029">Wiese et al., CoNLL 2017</a>)<ul>
+<li><span><span class="MathJax_Preview">\Omega=\Sigma_{1}\left\|L_{i}-L_{i}^{\prime}\right\|_{2}</span><script type="math/tex">\Omega=\Sigma_{1}\left\|L_{i}-L_{i}^{\prime}\right\|_{2}</script></span></li>
+<li><img src="imgs/image-20190904223940984.png" alt="image-20190904223940984" style="zoom:50%;" /></li>
+</ul>
+</li>
+<li>更高级(elastic weight consolidation; <strong>EWC</strong>)(<a href="https://www.pnas.org/content/114/13/3521">Kirkpatrick et al., PNAS 2017</a>)<ul>
+<li>基于 Fisher信息矩阵 F ，关注对预训练任务重要的参数 </li>
+<li><span><span class="MathJax_Preview">\Omega=\sum_{i} \frac{\lambda}{2} F_{i}\left(\theta_{i}^{\prime}-\theta_{i}\right)^{2}</span><script type="math/tex">\Omega=\sum_{i} \frac{\lambda}{2} F_{i}\left(\theta_{i}^{\prime}-\theta_{i}\right)^{2}</script></span></li>
+<li><img src="imgs/image-20190904224304408.png" alt="image-20190904224304408" style="zoom:50%;" /></li>
+<li>EWC在持续学习方面有缺点:<ul>
+<li>可能过度约束参数</li>
+<li>计算成本与任务数量成线性关系(<a href="https://arxiv.org/abs/1805.06370">Schwarz et al., ICML 2018</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果任务相似，我们也可以鼓励基于交叉熵的源和目标预测接近，类似于蒸馏:<ul>
+<li><span><span class="MathJax_Preview">\Omega=\mathcal{H}\left(\hat{y}, \hat{y}^{\prime}\right)</span><script type="math/tex">\Omega=\mathcal{H}\left(\hat{y}, \hat{y}^{\prime}\right)</script></span></li>
+</ul>
+</li>
+</ul>
+<h4 id="hands-on-5using-discriminative-learning">Hands-on #5:Using discriminative learning<a class="headerlink" href="#hands-on-5using-discriminative-learning" title="Permanent link">&para;</a></h4>
+<p><img alt="image-20190904224451711" src="../imgs/image-20190904224451711.png" /></p>
+<h4 id="42c-optimization-trade-offs">4.2.C – Optimization: Trade-offs<a class="headerlink" href="#42c-optimization-trade-offs" title="Permanent link">&para;</a></h4>
+<p>在选择更新哪些权重时，需要权衡以下几个方面：</p>
+<p>A. 空间复杂度</p>
+<ul>
+<li>特定于任务的修改、附加参数、参数重用</li>
+</ul>
+<p><img alt="image-20190904225735622" src="../imgs/image-20190904225735622.png" /></p>
+<p>B. 时间复杂度</p>
+<ul>
+<li>训练时间</li>
+</ul>
+<p><img alt="image-20190904225841028" src="../imgs/image-20190904225841028.png" /></p>
+<p>C. 性能</p>
+<ul>
+<li>经验法则：如果任务源和目标任务不相似*，使用特征提取(<a href="https://arxiv.org/abs/1903.05987">Peters et al., 2019</a>)</li>
+<li>否则，特征提取和微调常常效果类似（此时用微调更好）</li>
+<li>在文本相似性任务上对BERT进行微调，效果明显更好</li>
+<li>适配器实现了与微调相比具有竞争力的性能</li>
+<li>有趣的是，Transformer 比 LSTMs 更容易微调(对超参数不那么敏感)</li>
+</ul>
+<p>*不相似：某些能力(例如句子间关系建模)对目标任务是有益的，但预训练的模型缺乏这些能力能(参见后面的更多内容)</p>
+<h3 id="43-getting-more-signal">4.3 – Getting more signal<a class="headerlink" href="#43-getting-more-signal" title="Permanent link">&para;</a></h3>
+<p>目标任务通常是低资源任务。我们经常可以通过组合不同的信号，提高迁移学习的效果:</p>
+<ul>
+<li>在单个适应任务上微调单个模型<ul>
+<li>基本原理：用一个简单的分类目标对模型进行微调</li>
+</ul>
+</li>
+<li>其他数据集和相关任务中收集信号。<ul>
+<li>微调与弱监督，多任务和顺序适应</li>
+</ul>
+</li>
+<li>集成模型<ul>
+<li>结合几个微调模型的预测</li>
+</ul>
+</li>
+</ul>
+<h4 id="43a-getting-more-signal-basic-fine-tuning">4.3.A – Getting more signal: Basic fine-tuning<a class="headerlink" href="#43a-getting-more-signal-basic-fine-tuning" title="Permanent link">&para;</a></h4>
+<p>微调文本分类任务的简单例子:</p>
+<ul>
+<li>从模型中提取单个定长向量:<ul>
+<li>第一个/最后一个令牌的隐藏状态，或者是隐藏状态的平均值/最大值</li>
+</ul>
+</li>
+<li>使用附加的分类器投影到分类空间</li>
+<li>用分类目标函数训练</li>
+</ul>
+<h4 id="43b-getting-more-signal-related-datasetstasks">4.3.B – Getting more signal: Related datasets/tasks<a class="headerlink" href="#43b-getting-more-signal-related-datasetstasks" title="Permanent link">&para;</a></h4>
+<ul>
+<li>顺序适应 Sequential adaptation<ul>
+<li>对相关数据集和任务进行中间微调</li>
+</ul>
+</li>
+<li>与相关任务进行多任务微调<ul>
+<li>如 GLUE 中的 NLI 任务</li>
+</ul>
+</li>
+<li>数据集分割<ul>
+<li>当模型在特定的数据片上始终表现不佳时</li>
+</ul>
+</li>
+<li>半监督学习<ul>
+<li>使用未标记的数据来提高模型的一致性</li>
+</ul>
+</li>
+</ul>
+<h4 id="43b-getting-more-signal-sequential-adaptation">4.3.B – Getting more signal: Sequential adaptation<a class="headerlink" href="#43b-getting-more-signal-sequential-adaptation" title="Permanent link">&para;</a></h4>
+<p>在相关高资源数据集进行微调</p>
+<ol>
+<li>在拥有更多的数据的相关任务对模型进行微调</li>
+<li>在目标任务上微调数据集<ul>
+<li>对于数据有限并且有类似任务的任务尤其有用(<a href="https://arxiv.org/abs/1811.01088v2">Phang et al., 2018</a>)</li>
+<li>提高目标任务的样本复杂度(<a href="https://arxiv.org/abs/1901.11373">Yogatama et al., 2019</a>)</li>
+</ul>
+</li>
+</ol>
+<h4 id="43b-getting-more-signal-multi-task-fine-tuning">4.3.B – Getting more signal: Multi-task fine-tuning<a class="headerlink" href="#43b-getting-more-signal-multi-task-fine-tuning" title="Permanent link">&para;</a></h4>
+<p>在相关任务上共同微调模型</p>
+<p><img src="imgs/image-20190905000109832.png" alt="image-20190905000109832" style="zoom:50%;" /></p>
+<ul>
+<li>对于每个优化步骤，取样一个任务和一批数据进行训练</li>
+<li>通过多任务学习训练多轮</li>
+<li>只在最后几个阶段对目标任务进行微调</li>
+</ul>
+<p><img src="imgs/image-20190905000419593.png" alt="image-20190905000419593" style="zoom:50%;" /></p>
+<ul>
+<li>语言建模是一个相关的任务！</li>
+<li>微调语言模型有助于将预训练的参数调整到目标数据集</li>
+<li>即使没有预训练，也会起到帮助(<a href="https://arxiv.org/abs/1704.07156">Rei et al., ACL 2017</a>)</li>
+<li>可选退火比 <span><span class="MathJax_Preview">\lambda</span><script type="math/tex">\lambda</script></span> (<a href="https://arxiv.org/abs/1902.10547">Chronopoulou et al., NAACL 2019</a>)</li>
+<li>作为ULMFiT中的一个单独步骤使用</li>
+</ul>
+<h4 id="43b-getting-more-signal-dataset-slicing">4.3.B – Getting more signal: Dataset slicing<a class="headerlink" href="#43b-getting-more-signal-dataset-slicing" title="Permanent link">&para;</a></h4>
+<p>使用仅在数据的特定子集上训练的辅助头</p>
+<ul>
+<li>分析模型误差</li>
+<li>使用启发式方法自动识别训练数据的挑战性子集</li>
+<li>与主头一起联合训练辅助头</li>
+</ul>
+<p>See also <a href="https://dawn.cs.stanford.edu/2019/03/22/glue/">Massive Multi-task Learning with Snorkel MeTaL</a></p>
+<h4 id="43b-getting-more-signal-semi-supervised-learning">4.3.B – Getting more signal: Semi-supervised learning<a class="headerlink" href="#43b-getting-more-signal-semi-supervised-learning" title="Permanent link">&para;</a></h4>
+<p>使用未标记的数据可以使模型预测更加一致</p>
+<p><img src="imgs/image-20190905002631795.png" alt="image-20190905002631795" style="zoom:50%;" /></p>
+<ul>
+<li>主要思想:使对原始输入 x 和扰动输入 x' 的预测之间的距离最小化</li>
+<li>扰动可以是噪声、掩蔽(<a href="https://arxiv.org/abs/1809.08370">Clark et al., EMNLP 2018</a>)、数据增强，例如 back-translation (<a href="https://arxiv.org/abs/1904.12848">Xie et al., 2019</a>)</li>
+</ul>
+<h4 id="43c-getting-more-signal-ensembling">4.3.C – Getting more signal: Ensembling<a class="headerlink" href="#43c-getting-more-signal-ensembling" title="Permanent link">&para;</a></h4>
+<p>通过集成独立的微调模型达到最先进水平
+- 集成模型：使用各种超参数微调模型预测的组合</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><code>&lt;img src=&quot;imgs/image-20190905003312221.png&quot; alt=&quot;image-20190905003312221&quot; style=&quot;zoom:50%;&quot; /&gt;
+
+- 在不同的任务
+- 在不同的数据集分块
+- 使用不同的参数(dropout, initializations…)
+- 来自预训练模型的变体(例如 cased/uncased )
+</code></pre></div>
+</td></tr></table>
+
+<ul>
+<li>知识蒸馏：在一个更小的模型中提取一组调优模型</li>
+</ul>
+<p><img src="imgs/image-20190905003504801.png" alt="image-20190905003504801" style="zoom:50%;" /></p>
+<ul>
+<li>知识蒸馏：在教师（集成模型）制作的软目标上训练学生模型 <span><span class="MathJax_Preview">-\sum_{c} Q(c | X) \log \left(P_{r}(c | X)\right)</span><script type="math/tex">-\sum_{c} Q(c | X) \log \left(P_{r}(c | X)\right)</script></span></li>
+<li>教师标签的相对概率包含教师如何概括的信息</li>
+</ul>
+<h4 id="hands-on-6using-multi-task-learning">Hands-on #6:Using multi-task learning<a class="headerlink" href="#hands-on-6using-multi-task-learning" title="Permanent link">&para;</a></h4>
+<p><img alt="image-20190905003624125" src="../imgs/image-20190905003624125.png" /></p>
+<h2 id="5-downstream-applications-hands-on-examples">5. Downstream applications Hands-on examples<a class="headerlink" href="#5-downstream-applications-hands-on-examples" title="Permanent link">&para;</a></h2>
+<p>在本节中，我们将沿两个正交方向探索下游的应用和实际考虑:</p>
+<ul>
+<li>迁移学习在自然语言处理中的各种应用是什么<ul>
+<li>文档/句子分类、令牌级分类、结构化预测和语言生成</li>
+</ul>
+</li>
+<li>如何利用多个框架和库来实现实际应用<ul>
+<li>Tensorflow、PyTorch、Keras和第三方库，例如 fast.ai, HuggingFace……</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190905190408293" src="../imgs/image-20190905190408293.png" /></p>
+<ul>
+<li>句子和文档级分类<ul>
+<li>动手实践：文档级分类(fast.ai)</li>
+</ul>
+</li>
+<li>令牌分类<ul>
+<li>实践：问答(谷歌BERT &amp; Tensorflow/TF Hub)</li>
+</ul>
+</li>
+<li>语言生成<ul>
+<li>实践：对话生成(OpenAI GPT &amp; HuggingFace/PyTorch Hub)</li>
+</ul>
+</li>
+</ul>
+<h3 id="5a-sequence-document-level-classification">5.A – Sequence &amp; document level classification<a class="headerlink" href="#5a-sequence-document-level-classification" title="Permanent link">&para;</a></h3>
+<p>使用 fast.ai 库完成文档分类的迁移学习</p>
+<ul>
+<li>目标任务<ul>
+<li>IMDB：一个二元情绪分类数据集，包含用于训练的25k个高度极性的电影评论，用于测试的25k个，以及其他未标记的数据。
+    <a href="http://ai.stanford.edu/~amaas/data/sentiment/">http://ai.stanford.edu/~amaas/data/sentiment/</a></li>
+<li><a href="https://www.fast.ai/">Fast.ai</a> 特别提供了:<ul>
+<li>一个预先训练的英文模型可供下载</li>
+<li>一个标准化的数据块API</li>
+<li>易于访问标准数据集，如IMDB</li>
+</ul>
+</li>
+<li>fast.ai 基于 PyTorch</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://github.com/fastai">fast.ai</a> 为视觉、文本、表格数据和协同过滤提供了许多开箱即用的高级API</p>
+<p>库的设计是为了加快实验的速度，例如在互动计算环境中一次导入所有必需的模块，例如:</p>
+<p><img src="imgs/zCeIqSKbW07yNCpDVFJd-iWm9qZJ6fZw69HWXsF6LCUXwXZ6fozHBTuWSm14Keyvbihyq-AXeNc2SeUxrKclF2h8CBXs38R9L_SzE-ZlXVjDEliMm73YZNzuqNHkU78anygDMWqe6-U.png" alt="img" style="zoom:50%;" /></p>
+<p>Fast.ai 包含快速设置迁移学习实验所需的所有高级模块。</p>
+<p><img src="imgs/image-20190905202727421.png" alt="image-20190905202727421" style="zoom:50%;" /></p>
+<ul>
+<li>加载数据集</li>
+<li>使用语言模型和分类器的 DataBunch</li>
+<li>使用语言模型损失函数，在 WikiText-103 上预训练的 AWD-LSTM 并在 IMDB 数据集上微调</li>
+</ul>
+<p>一旦我们有了微调的语言模型(AWD-LSTM)，我们可以创建一个文本分类器，添加一个分类头:
+- 将RNN的最终输出的最大值与所有中间输出(沿着序列长度)的平均值连接起来的层
+- Two blocks of nn.BatchNorm1d ⇨ nn.Dropout ⇨ nn.Linear ⇨ nn.ReLU 的隐藏维度为50
+- 分两步微调
+    - 只训练分类头，同时保持语言模型不变
+    - 微调整个结构
+- Colab: <a href="http://tiny.cc/NAACLTransferFastAiColab">http://tiny.cc/NAACLTransferFastAiColab</a></p>
+<p><img src="imgs/image-20190905205626491.png" alt="image-20190905205626491" style="zoom:50%;" /></p>
+<h3 id="5b-token-level-classification-bert-tensorflow">5.B – Token level classification: BERT &amp; Tensorflow<a class="headerlink" href="#5b-token-level-classification-bert-tensorflow" title="Permanent link">&para;</a></h3>
+<p>用于令牌级分类的转移学习:谷歌的BERT in TensorFlow</p>
+<ul>
+<li>目标任务:<ul>
+<li>SQuAD: 回答问题的数据集 <a href="https://rajpurkar.github.io/SQuAD-explorer/">https://rajpurkar.github.io/SQuAD-explorer/</a></li>
+</ul>
+</li>
+<li>在本例中，我们将直接使用 Tensorflow checkpoint<ul>
+<li>例如：<a href="https://github.com/google-research/bert">https://github.com/google-research/bert</a></li>
+<li>我们使用通常的Tensorflow工作流：创建包含核心模型和添加/修改元素的模型图</li>
+<li>加载检查点时要注意变量分配</li>
+</ul>
+</li>
+</ul>
+<p><img alt="image-20190905210306076" src="../imgs/image-20190905210306076.png" /></p>
+<p><img alt="image-20190905210540317" src="../imgs/image-20190905210540317.png" /></p>
+<p><img alt="image-20190905210652677" src="../imgs/image-20190905210652677.png" /></p>
+<p><img alt="image-20190905210735797" src="../imgs/image-20190905210735797.png" /></p>
+<p>语言生成迁移学习：OpenAI GPT 和 HuggingFace 库</p>
+<ul>
+<li>目标任务:<ul>
+<li>ConvAI2 -第二届会话智能挑战，用于训练和评估非目标导向对话系统的模型，例如闲聊<ul>
+<li><a href="http://convai.io">http://convai.io</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>预训练模型的 HuggingFace 仓库<ul>
+<li>大型预先训练模型 BERT, GPT, GPT-2, Transformer-XL 的仓库</li>
+<li>提供一个简单的方法来下载、实例化和训练PyTorch中预先训练好的模型</li>
+</ul>
+</li>
+<li>HuggingFace的模型现在也可以通过PyTorch Hub访问</li>
+</ul>
+<p><img alt="image-20190905211400179" src="../imgs/image-20190905211400179.png" /></p>
+<p>语言生成任务接近语言建模训练前的目标，但是:</p>
+<ul>
+<li>语言建模前的训练只需要一个输入：一系列单词</li>
+<li>在对话框设置中：提供了几种类型的上下文来生成输出序列<ul>
+<li>知识库：角色句</li>
+<li>对话的历史：至少是用户的最后一句话</li>
+<li>已生成的输出序列的标记</li>
+</ul>
+</li>
+</ul>
+<p>我们应该如何适应这种模式?</p>
+<p><img alt="image-20190905211817858" src="../imgs/image-20190905211817858.png" /></p>
+<p><img alt="image-20190905211837029" src="../imgs/image-20190905211837029.png" /></p>
+<p><img alt="image-20190905212052311" src="../imgs/image-20190905212052311.png" /></p>
+<h2 id="6-open-problems-and-future-directions">6. Open problems and future directions<a class="headerlink" href="#6-open-problems-and-future-directions" title="Permanent link">&para;</a></h2>
+<p><strong>Shortcomings of pretrained language models</strong></p>
+<ul>
+<li>
+<p>概述：语言模型可视为一般的预训练任务；有了足够的数据、计算和容量，LM可以学到很多东西</p>
+</li>
+<li>
+<p>在实践中，许多在文本中表示较少的东西更难学习</p>
+</li>
+<li>预先训练好的语言模型并不擅长<ul>
+<li>细粒度语言任务 (<a href="https://arxiv.org/abs/1903.08855">Liu et al., NAACL 2019</a>)</li>
+<li>常识(当你真的让它变得困难 <a href="https://arxiv.org/abs/1905.07830">Zellers et al., ACL 2019</a>)；自然语言生成(维护长期依赖、关系、一致性等)</li>
+<li>当微调时，倾向于过度适应表面形成的信息；‘rapid surface learners’</li>
+</ul>
+</li>
+</ul>
+<p>大型的、预先训练的语言模型很难优化。</p>
+<ul>
+<li>微调通常是不稳定的，并且有很高的方差，特别是在目标数据集非常小的情况下</li>
+<li><a href="https://arxiv.org/abs/1810.04805">Devlin et al. (NAACL 2019)</a> 指出，BERT的大版本(24层)特别容易导致性能退化；多次随机重启有时是必要的，这在(<a href="https://arxiv.org/abs/1811.01088">Phang et al., 2018</a>)中也有详细的研究</li>
+</ul>
+<p>当前的预训练语言模型非常大。</p>
+<ul>
+<li>我们真的需要所有这些参数吗？</li>
+<li>最近的研究表明，BERT中只需要几个注意力头(<a href="https://arxiv.org/abs/1905.09418">Voita et al., ACL 2019</a>)</li>
+<li>需要做更多的工作来理解模型参数</li>
+<li>修剪和蒸馏是两种处理方法</li>
+<li>参见:彩票假说(<a href="https://arxiv.org/abs/1803.03635">Frankle et al., ICLR 2019</a>)</li>
+</ul>
+<p><strong>Pretraining tasks</strong></p>
+<p>语言建模目标的不足</p>
+<ul>
+<li>并不适用于所有模型<ul>
+<li>如果我们需要更多的输入，就需要对这些部件进行预培训</li>
+<li>例如序列到序列学习中的解码器(<a href="https://arxiv.org/abs/1905.02450">Song et al., ICML 2019</a>)</li>
+</ul>
+</li>
+<li>从左到右的偏见并不总是最好的<ul>
+<li>考虑更多上下文(如屏蔽)的目标似乎有用(采样效率较低)</li>
+<li>可能组合不同LM变种(<a href="https://arxiv.org/abs/1905.03197">Dong et al., 2019</a>)</li>
+</ul>
+</li>
+<li>语义和长期上下文的弱信号与语法和短期单词共存的强信号<ul>
+<li>需要激励机制来促进我们所关心的编码，例如语义</li>
+</ul>
+</li>
+</ul>
+<p>更加多样化的自我监督目标</p>
+<ul>
+<li>从计算机视觉中获得灵感</li>
+<li>语言中的自我监督主要基于词的共现(<a href="http://www.jmlr.org/papers/volume6/ando05a/ando05a.pdf">Ando and Zhang, 2005</a>)</li>
+<li>不同层次意义上的监督<ul>
+<li>论述、文件、句子等。</li>
+<li>使用其他信号，例如元数据</li>
+</ul>
+</li>
+<li>强调语言的不同性质</li>
+</ul>
+<p><img src="imgs/lIWhmhRuLDm7gzHdsicS9IKAzmKUNDkmR2WomJbSicAnzfVXABitQec66TqOXNSgcZqIkgTDlkwXB3ZVs5yTzkbcLGmQERI5M2taLKvStZ5BMQnvwEDMq2jFZSN9z7Is9-hY0XeM34c.png" alt="img" style="zoom: 25%;" /></p>
+<p>抽样一个补丁和一个邻居，并预测它们的空间配置(<a href="https://arxiv.org/abs/1505.05192">Doersch et al., ICCV 2015</a>)</p>
+<p><img src="imgs/t2KvxWAGL1rPdoPOMndcunrV6dhAL_AOmvo7XOqraFACvRnpGJzf8ZBlwMB_DtL3v3zp9N4fWcD-fjRwvE5nULP0xfz6Fy7d_9Db_1XDR1BkK0kWGvMyOCFJFItygTJfaFEv5jVMHwo.png" alt="img" style="zoom: 25%;" /></p>
+<p>图片着色 (<a href="https://arxiv.org/abs/1603.08511">Zhang et al., ECCV 2016</a>)</p>
+<p>专门的预训练任务来教我们的模型缺少的东西</p>
+<ul>
+<li>
+<p>制定专门的预训练任务，明确学习这些关系</p>
+<ul>
+<li>获取背景知识的单词对关系 (<a href="https://arxiv.org/abs/1810.08854">Joshi et al., NAACL 2019</a>)</li>
+<li>范围级表示(<a href="https://arxiv.org/abs/1808.10485">Swayamdipta et al., EMNLP 2018</a>)</li>
+<li>不同的预训练词嵌入是有用的(<a href="https://arxiv.org/abs/1804.07983">Kiela et al., EMNLP 2018</a>)</li>
+</ul>
+</li>
+<li>
+<p>其他预训练的任务可以明确地学习推理或理解</p>
+<ul>
+<li>算术、时间、因果等；话语、叙述、谈话等。</li>
+</ul>
+</li>
+<li>预训练的表示可以以稀疏和模块化的方式连接<ul>
+<li>基于语言子结构(<a href="https://arxiv.org/abs/1601.01705">Andreas et al., NAACL 2016</a>) 或专家 (<a href="https://openreview.net/forum?id=B1ckMDqlg">Shazeer et al., ICLR 2017</a>)</li>
+</ul>
+</li>
+</ul>
+<p>Need for grounded representations</p>
+<ul>
+<li>分布式假设的局限性——很难从原始文本中学习特定类型的信息<ul>
+<li>人类报告偏见：不陈述显而易见的(<a href="https://openreview.net/forum?id=AzxEzvpdE3Wcy">Gordon and Van Durme, AKBC 2013</a>)</li>
+<li>常识不是写下来的</li>
+<li>关于命名实体的事实</li>
+<li>没有其他模式的基础</li>
+</ul>
+</li>
+<li>可能的解决方式:<ul>
+<li>吸收其他结构化知识(e.g. knowledge bases like ERNIE, <a href="http://arxiv.org/abs/1905.07129">Zhang et al 2019</a>)</li>
+<li>多模态学习(e.g. with visual representations like VideoBERT, <a href="https://arxiv.org/abs/1904.01766">Sun et al. 2019</a>)</li>
+<li>交互式/human-in-the-loop 的方法(e.g. dialog, <a href="https://arxiv.org/abs/1901.05415">Hancock et al. 2018</a>)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Tasks and task similarity</strong></p>
+<p>许多任务可以表示为语言建模的变体</p>
+<ul>
+<li>语言本身可以直接用于指定任务、输入和输出，例如，通过构建QA (<a href="https://arxiv.org/abs/1806.08730">McCann et al., 2018</a>)</li>
+<li>基于对话的学习，不受正向预测的监督 (<a href="https://arxiv.org/abs/1604.06045">Weston, NIPS 2016</a>)</li>
+<li>将NLP任务制定为完形填空预测目标 (Children Book Test, LAMBADA, Winograd, ...)</li>
+<li>通过提示触发任务行为，例如翻译提示 (<a href="https://openai.com/blog/better-language-models/">Radford, Wu et al. 2019</a>); 使zero-shot适应</li>
+<li>质疑NLP中的“任务”概念</li>
+<li>预训练和目标任务(NLI，分类)的直觉相似性与较好的下游性能相关</li>
+<li>不清楚两个任务在什么时候以及如何相似和相关</li>
+<li>获得更多理解的方法之一：大规模的迁移实证研究，如 Taskonomy (<a href="https://arxiv.org/abs/1804.08328">Zamir et al., CVPR 2018</a>)</li>
+<li>是否有助于设计更好和更专业的预训练任务</li>
+</ul>
+<p><strong>Continual and meta-learning</strong></p>
+<ul>
+<li>当前迁移学习只进行一次适应。</li>
+<li>最终，我们希望拥有能够在许多任务中持续保留和积累知识的模型(<a href="https://arxiv.org/abs/1901.11373">Yogatama et al., 2019</a>)</li>
+<li>预训练和适应之间没有区别；只有一个任务流</li>
+<li>主要的挑战是:灾难性的遗忘</li>
+<li>
+<p>不同的研究方法：</p>
+<ul>
+<li>记忆、正则化、任务特定权重等</li>
+</ul>
+</li>
+<li>
+<p>转移学习的目的：学习一种对许多任务都通用且有用的表示方法</p>
+</li>
+<li>客观因素不会刺激适应的易用性(通常不稳定)；没有学会如何适应它</li>
+<li>元学习与迁移学习相结合可以使这一方法更加可行</li>
+<li>然而，大多数现有的方法都局限于few-shot场景，并且只学习了几个适应步骤</li>
+</ul>
+<p><strong>Bias</strong></p>
+<ul>
+<li>偏见已经被证明普遍存在于单词嵌入和一般的神经模型中</li>
+<li>大型预训练的模型必然有自己的一套偏见</li>
+<li>常识和偏见之间的界限很模糊</li>
+<li>我们需要在适应过程中消除这种偏见</li>
+<li>一个小的微调模型应该更不易被误用</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<ul>
+<li>主题：语境中的词汇，语言模型预培训，深度模型</li>
+<li>预训练具有较好的 sample-efficiency ，可按比例放大</li>
+<li>对某些特性的预测——取决于您如何看待它</li>
+<li>性能权衡，自顶向下</li>
+<li>迁移学习易于实现，实用性强</li>
+<li>仍然存在许多不足和尚未解决的问题</li>
+</ul>
+<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p><a href="https://zhuanlan.zhihu.com/p/50443871">NLP的巨人肩膀 - weizier的文章 - 知乎</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/49271699">从Word Embedding到Bert模型—自然语言处理中的预训练技术发展史 - 张俊林的文章 - 知乎</a></p>
+<p><a href="https://my.oschina.net/findbill/blog/535044">从SVD到PCA——奇妙的数学游戏</a></p>
+<p><a href="https://www.jianshu.com/p/5b5194208dd2">【论文笔记】Semi-supervised Sequence Learning</a></p>
+<p><a href="https://www.jianshu.com/p/6684a2372335">论文笔记-Unsupervised Pretraining for Sequence to Sequence Learning</a></p>
+                
+              
+              
+                
+
+
+  <h2 id="__comments">评论</h2>
+  <div id="disqus_thread"></div>
+  <script>var disqus_config=function(){this.page.url="https://looperxx.github.io/Transfer%20Learning/",this.page.identifier="Transfer%20Learning/"};!function(){var e=document,i=e.createElement("script");i.src="//https-looperxx-github-io-my-wiki.disqus.com/embed.js",i.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(i)}()</script>
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 - 2020 Xiao Xu
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      </a>
+    
+      
+      
+      <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.c51dfa35.min.js"></script>
+      <script src="../assets/javascripts/bundle.eaaa3931.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "", "search.config.separator": "[\\uff0c\\u3002]+", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ["tabs"],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.58d22e8e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="../js/baidu-tongji.js"></script>
+      
+    
+  </body>
+</html>
