@@ -1378,7 +1378,7 @@ Person ID: <span class="m">123456</span>
 <span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">Importer</span> <span class="n">importer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sourceTree</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">errorCollector</span><span class="p">);</span> 
 <span class="n">sourceTree</span><span class="p">.</span><span class="n">MapPath</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">protosrc</span><span class="p">);</span> 
  
-<span class="n">importer</span><span class="p">.</span><span class="n">import</span><span class="p">(</span><span class="s">&quot;lm.helloworld.proto&quot;</span><span class="p">);</span>
+<span class="n">importer</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="s">&quot;lm.helloworld.proto&quot;</span><span class="p">);</span>
 </code></pre></div>
 
 <p>首先构造一个 importer 对象。构造函数需要两个入口参数，一个是 <code>sourceTree</code> 对象，该对象指定了存放 <code>.proto</code> 文件的源目录。第二个参数是一个 <code>error collector</code> 对象，该对象有一个 <code>AddError</code> 方法，用来处理解析 <code>.proto</code> 文件时遇到的语法错误。之后，需要动态编译一个 <code>.proto</code> 文件时，只需调用 <code>importer</code> 对象的 <code>import</code>方法。非常简单。</p>
