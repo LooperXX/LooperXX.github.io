@@ -152,6 +152,73 @@
       
       
         
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link">
+        Homepage
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Attention/" class="md-tabs__link">
+          Notes
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link md-tabs__link--active">
+          Notes on CS224n
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -193,7 +260,7 @@
 
   <li class="md-nav__item">
     <a href=".." class="md-nav__link">
-      Home
+      Homepage
     </a>
   </li>
 
@@ -629,54 +696,6 @@
     1 Dynamic Memory Networks for Question Answering over Text and Images
   </a>
   
-    <nav class="md-nav" aria-label="1 Dynamic Memory Networks for Question Answering over Text and Images">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-input-module" class="md-nav__link">
-    1.1 Input Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-question-module" class="md-nav__link">
-    1.2 Question Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-episodic-memory-module" class="md-nav__link">
-    1.3 Episodic Memory Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-answer-module" class="md-nav__link">
-    1.4 Answer Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-experiments" class="md-nav__link">
-    1.5 Experiments
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#16-summary" class="md-nav__link">
-    1.6 Summary
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
       </ul>
@@ -961,54 +980,6 @@
   <a href="#1-dynamic-memory-networks-for-question-answering-over-text-and-images" class="md-nav__link">
     1 Dynamic Memory Networks for Question Answering over Text and Images
   </a>
-  
-    <nav class="md-nav" aria-label="1 Dynamic Memory Networks for Question Answering over Text and Images">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#11-input-module" class="md-nav__link">
-    1.1 Input Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#12-question-module" class="md-nav__link">
-    1.2 Question Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#13-episodic-memory-module" class="md-nav__link">
-    1.3 Episodic Memory Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#14-answer-module" class="md-nav__link">
-    1.4 Answer Module
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#15-experiments" class="md-nav__link">
-    1.5 Experiments
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#16-summary" class="md-nav__link">
-    1.6 Summary
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1424,12 +1395,12 @@ S_{i j}=\operatorname{Relu}\left(c_{i}^{T} W^{T}\right) \operatorname{DRelu}\lef
 <p>为了实现这一目标，我们面临两大障碍。许多NLP任务使用不同的架构，如TreeLSTM (Tai et al., 2015)用于情绪分析，Memory Network (Weston et al., 2015) 用于回答问题，以及双向LSTM-CRF  (Huang et al., 2015) 用于词性标注。第二个问题是全面的多任务学习往往非常困难，迁移学习仍然是当前人工智能领域(计算机视觉、强化学习等)神经网络架构的主要障碍。</p>
 <p>我们可以使用NLP的共享体系结构来解决第一个问题：动态内存网络(DMN)，这是一种为一般QA任务设计的体系结构。QA很难，部分原因是阅读一段很长的文字很难。即使对于人类，我们也不能在你的工作记忆中存储一个很长的文档。</p>
 <p><img alt="1561450892215" src="../imgs/1561450892215.png" /></p>
-<h4 id="11-input-module">1.1 Input Module<a class="headerlink" href="#11-input-module" title="Permanent link">&para;</a></h4>
+<h4>1.1 Input Module</h4>
 <p>将DMN分为多个模块。首先我们来看输入模块。输入模块以单词序列 <span><span class="MathJax_Preview">T_I</span><script type="math/tex">T_I</script></span> 作为输入，输出事实表示序列 <span><span class="MathJax_Preview">T_C</span><script type="math/tex">T_C</script></span> 。如果输出是一个单词列表，我们有 <span><span class="MathJax_Preview">T_C = T_I</span><script type="math/tex">T_C = T_I</script></span> 。如果输出是一个句子列表，我们有 <span><span class="MathJax_Preview">T_C</span><script type="math/tex">T_C</script></span> 作为句子的数量， <span><span class="MathJax_Preview">T_I</span><script type="math/tex">T_I</script></span> 作为句子中的单词数量。我们使用一个简单的GRU来读取其中的句子，即隐藏状态 <span><span class="MathJax_Preview">h_{t}=\operatorname{GRU}\left(x_{t}, h_{t-1}\right)</span><script type="math/tex">h_{t}=\operatorname{GRU}\left(x_{t}, h_{t-1}\right)</script></span> ，其中<span><span class="MathJax_Preview">x_{t}=L\left[w_{t}\right]</span><script type="math/tex">x_{t}=L\left[w_{t}\right]</script></span> ， <span><span class="MathJax_Preview">L</span><script type="math/tex">L</script></span> 为嵌入矩阵，<span><span class="MathJax_Preview">w_t</span><script type="math/tex">w_t</script></span> 为 <span><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 时刻的单词，我们使用Bi-GRU进一步改进，如下图所示。</p>
 <p><img alt="1561450908124" src="../imgs/1561450908124.png" /></p>
-<h4 id="12-question-module">1.2 Question Module<a class="headerlink" href="#12-question-module" title="Permanent link">&para;</a></h4>
+<h4>1.2 Question Module</h4>
 <p>我们也使用标准的GRU来读取问题(使用嵌入矩阵<span><span class="MathJax_Preview">L : q_{t}=\operatorname{GRU}\left(L\left[w_{t}^{Q}\right], q_{t-1}\right)</span><script type="math/tex">L : q_{t}=\operatorname{GRU}\left(L\left[w_{t}^{Q}\right], q_{t-1}\right)</script></span>)，但是问题模块的输出是问题的编码表示。</p>
-<h4 id="13-episodic-memory-module">1.3 Episodic Memory Module<a class="headerlink" href="#13-episodic-memory-module" title="Permanent link">&para;</a></h4>
+<h4>1.3 Episodic Memory Module</h4>
 <p>动态记忆网络的一个显著特征是情景记忆模块，它在输入序列上运行多次，每次关注输入的不同事实子集。</p>
 <p>它使用Bi-GRU实现这一点，Bi-GRU接收输入模块传入的句子级别表示的输入，并生成情景记忆表示。</p>
 <p>我们将情景记忆表征表示为 <span><span class="MathJax_Preview">m^i</span><script type="math/tex">m^i</script></span> ，情景表征(由注意机制输出)表示为 <span><span class="MathJax_Preview">e^i</span><script type="math/tex">e^i</script></span> 。情景记忆表示使用 <span><span class="MathJax_Preview">m^0 = q</span><script type="math/tex">m^0 = q</script></span> 初始化，然后继续使用 <span><span class="MathJax_Preview">\mathrm{GRU} : m^{i}=\mathrm{GRU}\left(e^{i}, m^{i-1}\right)</span><script type="math/tex">\mathrm{GRU} : m^{i}=\mathrm{GRU}\left(e^{i}, m^{i-1}\right)</script></span> 。使用来自输入模块的隐藏状态输出更新情景表征，如下所示，其中 <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> 是注意机制
@@ -1444,15 +1415,15 @@ g_{t}^{i}=G\left(c_{t}, m^{i-1}, q\right) \
 {z(c, m, q)=\left[c, m, q, c \circ q, c \circ m,|c-q|,|c-m|, c^{T} W^{(b)} q_{,} c^{T} W^{(b)} m\right]}\end{array}
 $$
 这样，如果句子与问题或记忆有关，这个模块中的门就会被激活。在第 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 遍中，如果总结不足以回答问题，我们可以在第 <span><span class="MathJax_Preview">i +1</span><script type="math/tex">i +1</script></span> 遍中重复输入序列。例如，考虑这样一个问题“Where is the football?”以及输入序列“John kicked the football”和“John was in the ﬁeld”。在这个例子中，John和football可以在一个pass中连接，然后John和field可以在第二个pass中连接，这样网络就可以根据这两个信息进行传递推断。</p>
-<h4 id="14-answer-module">1.4 Answer Module<a class="headerlink" href="#14-answer-module" title="Permanent link">&para;</a></h4>
+<h4>1.4 Answer Module</h4>
 <p>答案模块是一个简单的GRU解码器，它接收问题模块、情景记忆模块的输出，并输出一个单词(或者通常是一个计算结果)。其工作原理如下:
 $$
 \begin{aligned} y_{t} &amp;=\operatorname{softmax}\left(W^{(a)} a_{t}\right) \ a_{t} &amp;=\operatorname{GRU}\left(\left[y_{t-1}, q\right], a_{t-1}\right) \end{aligned}
 $$</p>
-<h4 id="15-experiments">1.5 Experiments<a class="headerlink" href="#15-experiments" title="Permanent link">&para;</a></h4>
+<h4>1.5 Experiments</h4>
 <p>通过实验可以看出，DMN在babl问答任务中的表现优于MemNN，在情绪分析和词性标注方面也优于其他体系结构。情景记忆需要多少个情景？答案是，任务越难，通过的次数就越多。多次传递还可以让网络真正理解句子，只关注最后一项任务的相关部分，而不是只对单词嵌入的信息做出反应。</p>
 <p>关键思想是模块化系统，您可以通过更改输入模块来允许不同类型的输入。例如，如果我们用一个基于卷积神经网络的模块替换输入模块，那么这个架构就可以处理一个称为可视化问题回答(VQA)的任务。它也能够在这项任务中胜过其他模型。</p>
-<h4 id="16-summary">1.6 Summary<a class="headerlink" href="#16-summary" title="Permanent link">&para;</a></h4>
+<h4>1.6 Summary</h4>
 <p>自2015年以来，寻找能够解决所有问题的通用体系结构的热情略有减退，但在一个领域进行训练并推广到其他领域的愿望有所增强。要理解更高级的问答模块，读者可以参考动态注意力网络(DCN)。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
@@ -1563,7 +1534,7 @@ $$</p>
       <script>
         app = initialize({
           base: "..",
-          features: ['tabs'],
+          features: ['navigation.tabs', 'header.autohide'],
           search: Object.assign({
             worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)

@@ -152,6 +152,71 @@
       
       
         
+          
+
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." class="md-tabs__link md-tabs__link--active">
+        Homepage
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../Attention/" class="md-tabs__link">
+          Notes
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+          Notes on CS224n
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../MkDocs_demo/" class="md-tabs__link">
+          For MkDocs
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
       
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
@@ -193,7 +258,7 @@
 
   <li class="md-nav__item">
     <a href=".." class="md-nav__link">
-      Home
+      Homepage
     </a>
   </li>
 
@@ -804,19 +869,6 @@
     第2题 上凸函数
   </a>
   
-    <nav class="md-nav" aria-label="第2题 上凸函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    思路
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -830,19 +882,6 @@
   <a href="#dijkstra" class="md-nav__link">
     第四题 堆优化双向Dijkstra
   </a>
-  
-    <nav class="md-nav" aria-label="第四题 堆优化双向Dijkstra">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    思路
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1128,7 +1167,7 @@
 <p>然后N行，按顺序输入f(i)</p>
 <p>然后M行，每行两个整数 a,b</p>
 </blockquote>
-<h5 id="_1">思路<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h5>
+<h5>思路</h5>
 <ul>
 <li>运用性质：<code>f[i]-a*i-b</code>最大值处的f函数的切线斜率等于a</li>
 <li>二分查找f'[i] = diff[i]（离散差分数组）中最小的大于等于a的数的坐标i（可能出现连续多个diff[i]相等的情况，取边缘）</li>
@@ -1288,7 +1327,7 @@
 <p>注意：铁路是双向的，保证解唯一</p>
 <p>80%数据N,M&lt;5000,100%数据N,M&lt;1000000</p>
 </blockquote>
-<h4 id="_2">思路<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<h4>思路</h4>
 <ul>
 <li>从节点1和节点n分别做一次Dijkstra求从节点1出发的到每个点的最短路（保存在d1里）和从节点n出发到每个点的最短路（保存在d2里）。然后遍历m条边，建高铁后从节点1到节点n的最短路为<code>min(d1[u] + d2[v] + len[u,v])</code></li>
 <li>d1[u]的路径有可能包含边(u,v)，d2[v]的路径也有可能包含边(u,v)，</li>
@@ -1736,7 +1775,7 @@ https://blog.csdn.net/qq_40760407/article/details/83514782
       <script>
         app = initialize({
           base: "..",
-          features: ['tabs'],
+          features: ['navigation.tabs', 'header.autohide'],
           search: Object.assign({
             worker: "../assets/javascripts/worker/search.4ac00218.min.js"
           }, typeof search !== "undefined" && search)
