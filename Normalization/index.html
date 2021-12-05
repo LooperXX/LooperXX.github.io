@@ -1048,7 +1048,6 @@
   <span class="p">[[</span><span class="mf">9.5</span><span class="p">]]]]</span> 
 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>
 <p>在batch方向上，即对同一mini-batch内的某一通道的所有数据，求得均值与方差</p>
@@ -1060,7 +1059,7 @@
 <li>保证每一次数据经过归一化后还保留原有学习来的特征，同时又能完成归一化操作，加速训练 </li>
 <li>这两个参数是可学习的参数</li>
 </ul>
-<h4>Pros &amp; Cons</h4>
+<h4 id="pros-cons">Pros &amp; Cons<a class="headerlink" href="#pros-cons" title="Permanent link">&para;</a></h4>
 <ul>
 <li>对batchsize的大小比较敏感，由于每次计算均值和方差是在一个batch上，所以如果batchsize太小，则计算的均值、方差不足以代表整个数据分布；</li>
 <li>BN实际使用时需要计算并且保存某一层神经网络batch的均值和方差等统计信息，</li>
@@ -1069,7 +1068,7 @@
 <li>BN 比较适用的场景是：每个 mini-batch 比较大，数据分布比较接近。在进行训练之前，要做好充分的 shuffle. 否则效果会差很多</li>
 <li>不适用于动态的网络结构和RNN网络</li>
 </ul>
-<h4>Notes</h4>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
 <p><img alt="1558627177098" src="../imgs/1558627177098.png" /></p>
 <h3 id="layer-normalization">Layer Normalization<a class="headerlink" href="#layer-normalization" title="Permanent link">&para;</a></h3>
 <p><img alt="LayerNormalization" src="../imgs/LayerNormalization.jpg" /></p>
@@ -1090,7 +1089,6 @@
  <span class="p">[[[</span><span class="mf">6.5</span><span class="p">]]]]</span> 
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>在Channel方向上，对同一输入样本的所有channel内的数据，求得均值和方差</li>
 <li>其中 <span><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 枚举了该层所有的输入神经元。对应到标准公式中，四大参数<span><span class="MathJax_Preview">\mu,\sigma,g,b</span><script type="math/tex">\mu,\sigma,g,b</script></span>为标量（BN中是向量），所有输入共享一个规范化变换。</li>
@@ -1098,7 +1096,7 @@
 <li>但是，BN 的转换是针对单个神经元可训练的——不同神经元的输入经过再平移和再缩放后分布在不同的区间，而 LN 对于一整层的神经元训练得到同一个转换——所有的输入都在同一个区间范围内。</li>
 <li><strong>如果不同输入特征不属于相似的类别（比如颜色和大小），那么 LN 的处理可能会降低模型的表达能力。</strong></li>
 </ul>
-<h4>Pros &amp; Cons</h4>
+<h4 id="pros-cons_1">Pros &amp; Cons<a class="headerlink" href="#pros-cons_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>LN中同层神经元输入拥有相同的均值和方差，同Batch内的不同的输入样本有不同的均值和方差</li>
 <li>BN中则针对不同神经元输入计算均值和方差，同一个batch中的输入拥有相同的均值和方差</li>
@@ -1126,11 +1124,10 @@
   <span class="p">[[</span><span class="mf">9.5</span><span class="p">]]]]</span> 
 <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>对每个输入样本的每个Channel内的所有数据，分别求得均值和方差</li>
 </ul>
-<h4>Pros &amp; Cons</h4>
+<h4 id="pros-cons_2">Pros &amp; Cons<a class="headerlink" href="#pros-cons_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>BN注重对每个batch进行归一化，保证数据分布一致，因为判别模型中结果取决于数据整体分布</li>
 <li>但是图像风格化中，生成结果主要依赖于某个图像实例，所以对整个batch归一化不适合图像风格化中，因而对HW做归一化。可以加速模型收敛，并且保持每个图像实例之间的独立</li>
@@ -1149,12 +1146,11 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">N</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">+</span> <span class="n">beta</span>
 </code></pre></div>
-
 <ul>
 <li>针对BN对小batch_size效果差的问题，将channel方向分成group，并对每个group内做归一化，算<span><span class="MathJax_Preview">(C//G)*H*W</span><script type="math/tex">(C//G)*H*W</script></span>的均值，这样与batchsize无关，不受其约束</li>
 <li>相当于将**Layer Norm**的基础上，把channel方向上分为多组并分别归一化，可以说是介于**Layer Norm**和 **Instance Norm**之间</li>
 </ul>
-<h4>Switchable Normalization</h4>
+<h4 id="switchable-normalization">Switchable Normalization<a class="headerlink" href="#switchable-normalization" title="Permanent link">&para;</a></h4>
 <p>本篇论文作者认为，
 1. 归一化虽然提高模型泛化能力，然而归一化层的操作是人工设计的。在实际应用中，解决不同的问题原则上需要设计不同的归一化操作，并没有一个通用的归一化方法能够解决所有应用问题；
 2. 第二，一个深度神经网络往往包含几十个归一化层，通常这些归一化层都使用同样的归一化操作，因为手工为每一个归一化层设计操作需要进行大量的实验。</p>
@@ -1181,7 +1177,7 @@ f_w(WN(x)) = w \cdot WN(x) = g \cdot \frac {v}{||v||} \cdot x = v \cdot g \cdot 
 f_w(WN(x)) = w \cdot WN(x) = g \cdot \frac {v}{||v||} \cdot x = v \cdot g \cdot \frac {x}{||v||}= f_v(g \cdot \frac {x}{||v||})
 </script>
 </div>
-<h4>Pros &amp; Cons</h4>
+<h4 id="pros-cons_3">Pros &amp; Cons<a class="headerlink" href="#pros-cons_3" title="Permanent link">&para;</a></h4>
 <ul>
 <li>BN 和 LN 是用输入的特征数据的方差对输入数据进行 scale，而 WN 则是用 神经元的权重的欧氏范式对输入数据进行 scale。</li>
 <li><strong>虽然在原始方法中分别进行的是特征数据规范化和参数的规范化，但本质上都实现了对数据的规范化，只是用于 scale 的参数来源不同。</strong></li>
@@ -1231,7 +1227,7 @@ f_w(WN(x))) = f_v(g\cdot \frac {x}{||v||})
 <ul>
 <li>一定程度上可以理解为，WN 用 权重的模<span><span class="MathJax_Preview">||v||</span><script type="math/tex">||v||</script></span>对输入向量进行 scale，而 CN 在此基础上用输入向量的模<span><span class="MathJax_Preview">||x||</span><script type="math/tex">||x||</script></span> 对输入向量进行了进一步的 scale</li>
 </ul>
-<h4>Pros &amp; Cons</h4>
+<h4 id="pros-cons_4">Pros &amp; Cons<a class="headerlink" href="#pros-cons_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>CN 通过用余弦计算代替内积计算实现了规范化，但成也萧何败萧何。原始的内积计算，其几何意义是 输入向量在权重向量上的投影，既包含 二者的夹角信息，也包含 两个向量的scale信息。去掉scale信息，可能导致表达能力的下降，因此也引起了一些争议和讨论。具体效果如何，可能需要在特定的场景下深入实验。</li>
 </ul>

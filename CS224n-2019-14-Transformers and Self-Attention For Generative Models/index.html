@@ -1010,14 +1010,14 @@
 </li>
 </ul>
 <h3 id="text-generation">Text generation<a class="headerlink" href="#text-generation" title="Permanent link">&para;</a></h3>
-<h4>Previous work</h4>
+<h4 id="previous-work">Previous work<a class="headerlink" href="#previous-work" title="Permanent link">&para;</a></h4>
 <p><strong>Classification &amp; regression with self-attention:</strong></p>
 <p>Parikh et al. (2016), Lin et al. (2016)</p>
 <p><strong>Self-attention with RNNs:</strong></p>
 <p>Long et al. (2016), Shao, Gows et al. (2017)</p>
 <p><strong>Recurrent attention:</strong></p>
 <p>Sukhbaatar et al. (2015)</p>
-<h4>The Transformer</h4>
+<h4 id="the-transformer">The Transformer<a class="headerlink" href="#the-transformer" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715171550360" src="../imgs/image-20190715171550360.png" /></p>
 <p><strong>Encoder Self-Attention</strong></p>
 <p><img alt="image-20190715172626199" src="../imgs/image-20190715172626199.png" /></p>
@@ -1028,13 +1028,13 @@
 <p>由于计算只涉及到两个矩阵乘法，所以是序列长度的平方</p>
 <p>当维度比长度大得多的时候，非常有效</p>
 <p><img alt="image-20190715173427233" src="../imgs/image-20190715173427233.png" /></p>
-<h4>Problem</h4>
+<h4 id="problem">Problem<a class="headerlink" href="#problem" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715173449641" src="../imgs/image-20190715173449641.png" /></p>
 <p>上例中，我们想要知道谁对谁做了什么，通过卷积中的多个卷积核的**不同的**线性操作，我们可以分别获取到 who, did what, to whom 的信息。</p>
 <p><img alt="image-20190715174820614" src="../imgs/image-20190715174820614.png" /></p>
 <p>但是对于 Attention 而言，如果只有一个Attention layer，那么对于一句话里的每个词都是同样的线性变换，不能够做到在**不同的位置提取不同的信息**</p>
 <span class="critic comment">这就是多头注意力的来源，灵感来源于 CNN 中的多个卷积核的设计</span>
-<h4>Solution</h4>
+<h4 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715174837833" src="../imgs/image-20190715174837833.png" /></p>
 <p><strong>Who, Did What, To Whom 分别拥有注意力头</strong></p>
 <p><img alt="image-20190715180108257" src="../imgs/image-20190715180108257.png" /></p>
@@ -1048,7 +1048,7 @@
 </ul>
 <p><img alt="image-20190715180829776" src="../imgs/image-20190715180829776.png" /></p>
 <p><img alt="image-20190715180837326" src="../imgs/image-20190715180837326.png" /></p>
-<h4>Results</h4>
+<h4 id="results">Results<a class="headerlink" href="#results" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715181040144" src="../imgs/image-20190715181040144.png" /></p>
 <ul>
 <li>但我们并不一定比 LSTM 取得了更好的表示，只是我们更适合 SGD，可以更好的训练</li>
@@ -1071,7 +1071,7 @@
 <h3 id="self-similarity-image-and-music-generation">Self-Similarity, Image and Music Generation<a class="headerlink" href="#self-similarity-image-and-music-generation" title="Permanent link">&para;</a></h3>
 <p><img alt="image-20190715182250559" src="../imgs/image-20190715182250559.png" /></p>
 <p><img alt="image-20190715182302515" src="../imgs/image-20190715182302515.png" /></p>
-<h4>Probabilistic Image Generation</h4>
+<h4 id="probabilistic-image-generation">Probabilistic Image Generation<a class="headerlink" href="#probabilistic-image-generation" title="Permanent link">&para;</a></h4>
 <ul>
 <li>模拟像素的联合分布</li>
 <li>把它变成一个序列建模问题</li>
@@ -1097,15 +1097,15 @@
 <p><img alt="image-20190715183259902" src="../imgs/image-20190715183259902.png" /></p>
 <p>A Non-local Algorithm for Image Denoising (Buades, Coll, and Morel. CVPR 2005)</p>
 <p>Non-local Neural Networks (Wang et al., 2018)</p>
-<h4>Previous work</h4>
+<h4 id="previous-work_1">Previous work<a class="headerlink" href="#previous-work_1" title="Permanent link">&para;</a></h4>
 <p><strong>Self-attention:</strong></p>
 <p>Parikh et al. (2016), Lin et al. (2016), Vaswani et al. (2017)</p>
 <p><strong>Autoregressive Image Generation:</strong></p>
 <p>A Oord et al. (2016), Salimans et al. (2017)</p>
-<h4>The Image Transformer</h4>
+<h4 id="the-image-transformer">The Image Transformer<a class="headerlink" href="#the-image-transformer" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715183437738" src="../imgs/image-20190715183437738.png" /></p>
 <p><img alt="image-20190715183512197" src="../imgs/image-20190715183512197.png" /></p>
-<h4>Combining Locality with Self-Attention</h4>
+<h4 id="combining-locality-with-self-attention">Combining Locality with Self-Attention<a class="headerlink" href="#combining-locality-with-self-attention" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715184109768" src="../imgs/image-20190715184109768.png" /></p>
 <p><img alt="image-20190715184119735" src="../imgs/image-20190715184119735.png" /></p>
 <ul>
@@ -1117,7 +1117,7 @@
 <p><img alt="image-20190715184817391" src="../imgs/image-20190715184817391.png" /></p>
 <p><img alt="image-20190715184921021" src="../imgs/image-20190715184921021.png" /></p>
 <p>传统的 RNN 模型需要将长序列嵌入到固定长度的向量中</p>
-<h4>Continuations to given initial motif</h4>
+<h4 id="continuations-to-given-initial-motif">Continuations to given initial motif<a class="headerlink" href="#continuations-to-given-initial-motif" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20190715185230155" src="../imgs/image-20190715185230155.png" /></p>
 <p>给定一段音乐并生成后续音乐</p>
 <ul>

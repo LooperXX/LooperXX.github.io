@@ -824,7 +824,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     寻址和组网
   </a>
   
@@ -868,7 +868,7 @@
 <li>其它系统无关API (CBaseSysDep.h)</li>
 </ul>
 <p>基础平台组件是实现整个FDBus的基础，目前基础平台组件支持QNX，Windows和Linux。</p>
-<h4>Thread - CBaseThread</h4>
+<h4 id="thread-cbasethread">Thread - CBaseThread<a class="headerlink" href="#thread-cbasethread" title="Permanent link">&para;</a></h4>
 <ul>
 <li>创建，退出线程以及设置线程属性</li>
 <li>类CBaseThread API——供外部调用<ul>
@@ -886,7 +886,7 @@
 </ul>
 </li>
 </ul>
-<h4>Mutex - CBaseMutexLock</h4>
+<h4 id="mutex-cbasemutexlock">Mutex - CBaseMutexLock<a class="headerlink" href="#mutex-cbasemutexlock" title="Permanent link">&para;</a></h4>
 <ul>
 <li>跨平台的互斥锁</li>
 <li>类CBaseMutexLock的API<ul>
@@ -896,13 +896,13 @@
 </ul>
 </li>
 </ul>
-<h5>Autolock - CAutoLock</h5>
+<h5 id="autolock-cautolock">Autolock - CAutoLock<a class="headerlink" href="#autolock-cautolock" title="Permanent link">&para;</a></h5>
 <ul>
 <li>Auto lock和Mutex一起使用，主要功能是自动加锁和解锁，尤其是防止忘记解锁，造成死锁。</li>
 <li>以Mutex为参数创建CAutoLock变量，将自动调用Mutex::lock()。</li>
 <li>当CAutoLock变量出了作用域后会被析构。在析构过程中会自动调用Mutex::unlock()。</li>
 </ul>
-<h4>Semaphore - CBaseSemaphore</h4>
+<h4 id="semaphore-cbasesemaphore">Semaphore - CBaseSemaphore<a class="headerlink" href="#semaphore-cbasesemaphore" title="Permanent link">&para;</a></h4>
 <ul>
 <li>跨平台的信号量实现</li>
 <li>类CBaseSemaphore的API<ul>
@@ -912,7 +912,7 @@
 </ul>
 </li>
 </ul>
-<h4>Pipe - CBasePipe</h4>
+<h4 id="pipe-cbasepipe">Pipe - CBasePipe<a class="headerlink" href="#pipe-cbasepipe" title="Permanent link">&para;</a></h4>
 <ul>
 <li>跨平台的匿名管道</li>
 <li>类CBasePipe的API – CBasePipe() 创建匿名管道<ul>
@@ -923,7 +923,7 @@
 </ul>
 </li>
 </ul>
-<h4>Socket</h4>
+<h4 id="socket">Socket<a class="headerlink" href="#socket" title="Permanent link">&para;</a></h4>
 <ul>
 <li>跨平台的Socket实现</li>
 <li>Unix平台上支持TCP socket和Unix domain socket；Windows平台只支持TCP socket。</li>
@@ -952,7 +952,7 @@
 </ul>
 </li>
 </ul>
-<h4>Event Loop</h4>
+<h4 id="event-loop">Event Loop<a class="headerlink" href="#event-loop" title="Permanent link">&para;</a></h4>
 <ul>
 <li>线程的主循环，分为两类<ul>
 <li>CThreadEventLoop – 基于Semaphore实现，能够处理Job和Timer</li>
@@ -973,7 +973,7 @@
 </li>
 <li>高级平台抽象层也是FDBus实现的基础</li>
 </ul>
-<h4>Job - CBaseJob</h4>
+<h4 id="job-cbasejob">Job - CBaseJob<a class="headerlink" href="#job-cbasejob" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Job是可以在Worker上运行的对象。Job被提交到Worker的普通或紧急队列，按FIFO方式处理</li>
 <li>提交给Worker运行的Job必须是用new创建的堆上对象，不能是栈或data区对象。这是因为Worker会负责销毁处理完毕的Job。</li>
@@ -985,7 +985,7 @@
 </ul>
 </li>
 </ul>
-<h4>Worker - CBaseWorker</h4>
+<h4 id="worker-cbaseworker">Worker - CBaseWorker<a class="headerlink" href="#worker-cbaseworker" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Worker继承于CBaseThread，是可以处理Timer，Job和Watch的线程</li>
 <li>Worker的实现主体是Event Loop。启动Worker线程时可以选择使用CThreadEventLoop还是CFdEventLoop。如果没有文件读写要求选择前者，否则选择后者。</li>
@@ -1009,7 +1009,7 @@
 </ul>
 </li>
 </ul>
-<h4>Timer - CBaseLoopTimer</h4>
+<h4 id="timer-cbaselooptimer">Timer - CBaseLoopTimer<a class="headerlink" href="#timer-cbaselooptimer" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Timer提供毫秒级精度，无抖动保障的定时器。优点是资源占用少，和Worker融合在一起，使用方便。</li>
 <li>由于Timer和Job，Watch可以在同一Worker线程中运行，一旦Job或Watch执行时间过长，超出Timer间隔，会导致Timer触发时间的抖动。</li>
@@ -1031,7 +1031,7 @@
 </ul>
 </li>
 </ul>
-<h4>Watch - CBaseFdWatch</h4>
+<h4 id="watch-cbasefdwatch">Watch - CBaseFdWatch<a class="headerlink" href="#watch-cbasefdwatch" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Watch基于select()，将多个文件的输入输出的合并在一起，统一等待，串行处理。</li>
 <li>每个Watch对应一个文件描述符(File Descriptor)。使用者负责打开文件并交给Watch。</li>
@@ -1050,7 +1050,7 @@
 </ul>
 </li>
 </ul>
-<h4>Notification</h4>
+<h4 id="notification">Notification<a class="headerlink" href="#notification" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Notification是一个轻量级事件订阅-发布机制，用于同一进程内的线程之间一对多的消息通知。相比之下，Job只能点对点通信。</li>
 <li>CBaseNotification定义消息通知的订阅方，API包括<ul>
@@ -1069,7 +1069,7 @@
 </li>
 </ul>
 <h3 id="inter-process-communicationipc">Inter-Process Communication(IPC)<a class="headerlink" href="#inter-process-communicationipc" title="Permanent link">&para;</a></h3>
-<h4>基本概念</h4>
+<h4 id="_3">基本概念<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>server vs. socket</p>
@@ -1104,7 +1104,7 @@
 </ul>
 </li>
 </ul>
-<h4>IPC</h4>
+<h4 id="ipc">IPC<a class="headerlink" href="#ipc" title="Permanent link">&para;</a></h4>
 <ul>
 <li>IPC提供进程间通信机制。根据通信双方进程的部署位置分为本地进程间通信和节点间进程通信。
     不同于Job的点对点通信，IPC采用Client-Server模式，具备如下特性<ul>
@@ -1117,7 +1117,7 @@
 </li>
 <li>IPC底层实现基于Socket，目前使用TCP socket和Unix domain socket。</li>
 </ul>
-<h4>消息结构</h4>
+<h4 id="_4">消息结构<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>FDBus消息由ID + 数据组成</li>
 <li>ID是强制项，为32位整型，每个Message必须由ID标识。对于一个Server，ID必须唯一，不能重复。更准确地说，所有request-reply消息的ID必须唯一；所有广播推送的消息必须唯一；二者之间可以有重复</li>
@@ -1127,34 +1127,34 @@
 </ul>
 </li>
 </ul>
-<h4>消息数据</h4>
+<h4 id="_5">消息数据<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <ul>
 <li>**<u>原始数据</u>**没有格式，只是将一片内存数据从一个进程发送到另一个进程。通常用于文件，升级包，音频数据的传输。</li>
 <li>**<u>Protocol Buffer</u>**是谷歌开源的，语言独立，平台独立的数据交换格式，适用于网络传输，数据存储等多领域。</li>
 <li>Protocol Buffer支持大部分C++基本类型，由基本类型组合成的复合类型，复合类型的嵌套，以及基本类型和复合类型组成的，长度可变的数组（vector）类型。Protocol Buffer的数据成员可以是必选或可选，使得消息定义更加灵活。</li>
 <li>Protocol Buffer消息用特定的IDL格式定义，自动生成包括C++在内的多种语言的源代码，避免繁琐的组包和解包。开发者只要了解C++的基本类型，类和容器操作，不必关心具体的包格式。</li>
 </ul>
-<h4>通信Endpoint：Client与Server</h4>
+<h4 id="endpointclientserver">通信Endpoint：Client与Server<a class="headerlink" href="#endpointclientserver" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Client与Server是FDBus通信的参与者，统称Endpoint。Client是服务/功能的发起者和使用者；Server是功能/服务的提供者。</li>
 <li>Client继承自CBaseClient，通过connect()方法连接到Server绑定的地址。</li>
 <li>Server继承自CBaseServer，通过bind()方法绑定自己的地址。</li>
 <li>connect()/bind()的地址为的url格式，包括TCP，Unix domain和名字地址，通常使用需要NameServer解析的名字地址（见后）。</li>
 </ul>
-<h4>CFdbBaseObject：更基础的Endpoint</h4>
+<h4 id="cfdbbaseobjectendpoint">CFdbBaseObject：更基础的Endpoint<a class="headerlink" href="#cfdbbaseobjectendpoint" title="Permanent link">&para;</a></h4>
 <ul>
 <li>无论是Client还是Server，都是以CFdbBaseObject为基类，所有方法和回调都在该基类里</li>
 <li>CFdbBaseObject可以看成在Client和Server之间创建的通道，每个通道的ID就是CFdbBaseObject的ID。CBaseClient和CBaseServer使用通道0来通信；1~65535通道用于CFdbBaseObject之间的通信。</li>
 </ul>
 <p><img alt="1557308564094" src="../imgs/1557308564094.png" /></p>
-<h4>CFdbBaseObject：Example</h4>
+<h4 id="cfdbbaseobjectexample">CFdbBaseObject：Example<a class="headerlink" href="#cfdbbaseobjectexample" title="Permanent link">&para;</a></h4>
 <ul>
 <li>通过继承CBaseClient和CBaseServer，创建媒体服务MediaService的Client端和Server端，使用通道0通信；</li>
 <li>通过继承CFdbBaseObject，在MediaService的Client端和Server端创建多个媒体播放器实例的Client端和Server端，使用通道1，2…通信</li>
 <li>每个client object和server object支持request-response, subscribe-publish</li>
 </ul>
 <p><img alt="1557370134174" src="../imgs/1557370134174.png" /></p>
-<h4>Client/Server回调(虚)函数</h4>
+<h4 id="clientserver">Client/Server回调(虚)函数<a class="headerlink" href="#clientserver" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Client/Server连接建立后，有事件发生时，FDBus调用CBaseClient/CBaseServer相关虚函数通知Client/Server做相应处理。这些事件包括<ul>
 <li>Client连接上Server或与Server断开时</li>
@@ -1166,23 +1166,23 @@
 </li>
 <li>在实现具体的Client/Server时要**重载基类的虚函数**，捕获这些事件，处理相关业务。</li>
 </ul>
-<h4>Context – FDBus的工作线程</h4>
+<h4 id="context-fdbus">Context – FDBus的工作线程<a class="headerlink" href="#context-fdbus" title="Permanent link">&para;</a></h4>
 <ul>
 <li>每个挂在FDBus上的进程必须启动一个Worker处理IPC数据的读写和消息交互管理，该Worker叫做FDBus的Context。</li>
 <li>无论是Client还是Server，对socket的读写都委托Context线程来执行。故所有对FDBus的访问首先必须以Job的形式提交给Context；Context收到的消息也会以Job形式转给工作线程处理。</li>
 <li>Context是个普通的Worker，可以运行Watch，Job，Timer，甚至Client和Server。对于简单的进程，只要一个Context线程就可以实现所有功能。</li>
 </ul>
-<h4>Client/Server的工作线程</h4>
+<h4 id="clientserver_1">Client/Server的工作线程<a class="headerlink" href="#clientserver_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>除Context外，根据需要还可以启动其它Worker线程执行Client/Server的回调函数。执行回调函数的线程叫做Client/Server的工作线程。</li>
 <li>每个挂在FDBus上的进程可以启动数目不受限制的Client和Server。这些Client/Server可以有自己专属的工作线程，也可以共享同一工作线程。</li>
 <li>在实例化Client/Server时，可以指定一个Worker作为其工作线程。如果几个Endpoint指定同一线程，那么它们的业务将共享该线程；如果不指定工作线程，那么Context就是默认的工作线程。一个Endpoint不能指定多个工作线程。</li>
 </ul>
-<h4>FDBus进程部署图</h4>
+<h4 id="fdbus">FDBus进程部署图<a class="headerlink" href="#fdbus" title="Permanent link">&para;</a></h4>
 <p><img alt="1557371963406" src="../imgs/1557371963406.png" /></p>
-<h4>FDBus开发框架</h4>
+<h4 id="fdbus_1">FDBus开发框架<a class="headerlink" href="#fdbus_1" title="Permanent link">&para;</a></h4>
 <p><img alt="1557371990176" src="../imgs/1557371990176.png" /></p>
-<h4>Client-Server请求</h4>
+<h4 id="client-server">Client-Server请求<a class="headerlink" href="#client-server" title="Permanent link">&para;</a></h4>
 <ul>
 <li>从Client向Server发送的请求包括以下类型<ul>
 <li>带超时的异步请求：向Server发送请求后，不会等待Server的回复。随后的回复通过回调函数onReply()获得。如果在指定的时间没有回复会取消本次交互</li>
@@ -1192,11 +1192,11 @@
 </li>
 <li>无论何种请求，Server都通过onInvoke()回调函数来接收并处理。</li>
 </ul>
-<h4>Client-Server连接</h4>
+<h4 id="client-server_1">Client-Server连接<a class="headerlink" href="#client-server_1" title="Permanent link">&para;</a></h4>
 <p><img alt="1557380459404" src="../imgs/1557380459404.png" /></p>
-<h4>Client-Server方法调用</h4>
+<h4 id="client-server_2">Client-Server方法调用<a class="headerlink" href="#client-server_2" title="Permanent link">&para;</a></h4>
 <p><img alt="1557380468004" src="../imgs/1557380468004.png" /></p>
-<h4>Server的消息推送</h4>
+<h4 id="server">Server的消息推送<a class="headerlink" href="#server" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Server可以主动向Client推送消息，而无需Client请求。但是需要注册后，Client才能收到推送的消息。</li>
 <li>消息通过ID注册。除了ID，注册时还可以附加一个字符串作为“filter”。Server在推送消息时，只有ID和filter都匹配时，Client才能收到消息。<ul>
@@ -1205,15 +1205,15 @@
 </li>
 <li>消息以一对多的形式推送，所有注册过消息的Client都能收到。<strong>但接收消息的先后顺序没有保证</strong>。</li>
 </ul>
-<h4>推送（广播）消息的注册</h4>
+<h4 id="_6">推送（广播）消息的注册<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li>当Client注册消息时，Server能够通过onSubscribe()回调函数获知。</li>
 <li>该回调函数的目的是在Client注册某个属性时，Server有机会将属性的初始值发送给Client端。通常只有属性发生变化时，Server才会通过消息将变化推送给Client端。有了该回调函数，当Client注册某个属性时，即使属性没有变化也能获得属性的当前值，且无需发送额外的请求。</li>
 </ul>
-<h4>注册广播消息</h4>
+<h4 id="_7">注册广播消息<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p><img alt="1557380675729" src="../imgs/1557380675729.png" /></p>
-<h3 id="_3">寻址和组网<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4>Server地址</h4>
+<h3 id="_8">寻址和组网<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="server_1">Server地址<a class="headerlink" href="#server_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Server地址代表Server在网络中的位置，通过该地址Client可以定位并和Server建立通信。</li>
 <li>Server可以同时绑定多个地址，每个地址可以接受Client的连接。一旦连接上，每个地址都提供同样的服务，所以Client可以选择任意一个地址连接。</li>
@@ -1224,7 +1224,7 @@
 </li>
 </ul>
 <p><img alt="1557381270741" src="../imgs/1557381270741.png" /></p>
-<h4>Server命名与名字解析</h4>
+<h4 id="server_2">Server命名与名字解析<a class="headerlink" href="#server_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Server地址不直观，会随组网方式变化，使用不方便。</li>
 <li>FDBus采用类似DNS方式实现Server寻址：每个Server可以拥有自己的名字，并运行一个叫NameServer的服务，负责为Server分配地址，管理Server名字-地址映射，解析Server名字，发布Server地址</li>
@@ -1236,7 +1236,7 @@
 <li>如果Server绑定名字地址，NameServer会为其分配实际地址(tcp://或file://开头的地址)，并将名字和地址注册到映射表里</li>
 <li>如果Client连接名字地址，NameServer会根据名字查找到Server的实际地址，选择一个最合适的地址发布给Client。Client通过该地址与Server建立点对点的直连。</li>
 </ul>
-<h5>地址分配表</h5>
+<h5 id="_9">地址分配表<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
 <ul>
 <li>NameServer用如下规则分配Server地址：</li>
 </ul>
@@ -1266,9 +1266,9 @@
 </tr>
 </tbody>
 </table>
-<h5>Server名字解析</h5>
+<h5 id="server_3">Server名字解析<a class="headerlink" href="#server_3" title="Permanent link">&para;</a></h5>
 <p><img alt="1557382450575" src="../imgs/1557382450575.png" /></p>
-<h4>HostServer与节点名字</h4>
+<h4 id="hostserver">HostServer与节点名字<a class="headerlink" href="#hostserver" title="Permanent link">&para;</a></h4>
 <ul>
 <li>NameServer只能解析本地Server名字，但Server可能位于网络中任意节点上。为了将整个网络连接在一起，需要启动HostServer</li>
 <li>网络里只有一个HostServer，可以运行于任意一个节点上，通常是连接性能较好的节点</li>
@@ -1276,13 +1276,13 @@
 <li>同时NameServer从HostServer处获得表里其它节点上NameServer信息，并逐一与它们建立连接。这样节点里NameServer和唯一的HostServer构成星形连接，而各NameServer之间两两相连。</li>
 </ul>
 <p><img alt="1557382688215" src="../imgs/1557382688215.png" /></p>
-<h4>Server名字的唯一性</h4>
+<h4 id="server_4">Server名字的唯一性<a class="headerlink" href="#server_4" title="Permanent link">&para;</a></h4>
 <ul>
 <li>在节点内部，Server名字必须唯一，否则无法在NameServer里注册</li>
 <li>在不同节点上，Server可以重名。但这样会造成困惑：假如Client已经连接到节点A上的MediaServer，但节点B上又启动了MediaServer。此时该Client又会收到MediaServer上线的通知。是连还是不连？</li>
 <li>Client提供一个回调函数connectionEnabled()，允许Client在服务重名时选择连接哪个节点的服务。</li>
 </ul>
-<h4>超时与重连</h4>
+<h4 id="_10">超时与重连<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <ul>
 <li>超时与重连确保网络不稳或异常时FDBus各服务始终保持连接；同时确保以任何顺序启动Client/Server，名字解析都能正常工作，它们之间都能连接上</li>
 <li>HostServer每秒钟向各NameServer广播心跳消息。如果5秒内没有收到某个NameServer的确认则认为该NameServer所在的节点掉线，将清除该节点的注册信息</li>
@@ -1290,7 +1290,7 @@
 <li>当NameServer启动时没有获得IP地址，将启动300毫秒的定时器尝试反复获取IP地址</li>
 <li>当Server/Client希望NameServer解析名字时无法与NameServer取得联系，将启动300毫秒的定时器尝试反复连接NameServer</li>
 </ul>
-<h4>Commands</h4>
+<h4 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">&para;</a></h4>
 <ul>
 <li>host_server: start host server</li>
 <li>name_server: start name server<ul>
@@ -1320,7 +1320,7 @@
 </li>
 </ul>
 <h3 id="logging">Logging<a class="headerlink" href="#logging" title="Permanent link">&para;</a></h3>
-<h4>Log系统</h4>
+<h4 id="log">Log系统<a class="headerlink" href="#log" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Log系统可以抓取FDBus上所有消息，包括本主机和所有联网的主机</li>
 <li>Log系统同时还支持调试Log输出</li>
@@ -1328,7 +1328,7 @@
 <li>LogServer可以把收集到的Log打印在终端上。也可以启动LogViewer连接到LogServer上来查看Log</li>
 </ul>
 <p><img alt="1557384051992" src="../imgs/1557384051992.png" /></p>
-<h4>调试Log输出</h4>
+<h4 id="log_1">调试Log输出<a class="headerlink" href="#log_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>优先级（从低到高）：<ul>
 <li>Debug</li>
@@ -1340,7 +1340,7 @@
 </li>
 <li>输出时LogServer可以设置不同的优先级等级；级别低的不输出</li>
 </ul>
-<h4>调试Log输出API – 带tag版本</h4>
+<h4 id="logapi-tag">调试Log输出API – 带tag版本<a class="headerlink" href="#logapi-tag" title="Permanent link">&para;</a></h4>
 <ul>
 <li>FDB_TLOG_D(tag, format, param1, param2…)：输出调试级别的Log。Tag通常代表模块名；Format, param1, param2…格式与printf()相同。</li>
 <li>对于不同等级分别提供以下方法<ul>
@@ -1351,14 +1351,13 @@
 </ul>
 </li>
 </ul>
-<h4>调试Log输出API – 无tag版本</h4>
+<h4 id="logapi-tag_1">调试Log输出API – 无tag版本<a class="headerlink" href="#logapi-tag_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
 <p>在文件里使用如下方式定义无tag版本：</p>
 <div class="highlight"><pre><span></span><code><span class="cp">#define _FDB_LOG_TAG_ “my_tag&quot;</span>
 <span class="cp">#include</span> <span class="cpf">&lt;common_base/fdb_log_trace.h&gt;</span><span class="cp"></span>
 </code></pre></div>
-
 </li>
 <li>
 <p>以后就可以使用FDB_LOG_D(format, param1, param2…)：输出调试级别的Log。Format, param1, param2…格式与printf()相同。Tag使用的就是_FDB_LOG_TAG_。</p>
@@ -1373,7 +1372,7 @@
 </ul>
 </li>
 </ul>
-<h4>LogServer</h4>
+<h4 id="logserver">LogServer<a class="headerlink" href="#logserver" title="Permanent link">&para;</a></h4>
 <ul>
 <li>系统里只能存在一个LogServer，启动方式为：logsvc [options]</li>
 <li>FDBus Log选项:<ul>
@@ -1419,8 +1418,7 @@
     [time stamp]
     log information
 </code></pre></div>
-
-<h4>LogViewer</h4>
+<h4 id="logviewer">LogViewer<a class="headerlink" href="#logviewer" title="Permanent link">&para;</a></h4>
 <ul>
 <li>系统里可以存在多个输出内容完全相同的LogViewer，启动方式为：logclt [options]<ul>
 <li>logclt –n [options]     配置LogServer。配置选项options和LogServer的启动选项相同</li>

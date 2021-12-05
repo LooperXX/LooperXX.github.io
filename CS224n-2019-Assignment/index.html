@@ -1345,14 +1345,14 @@ $$
 \ \frac{\partial J_{s g}}{\partial v_{w}}&amp;=0(\text { when } w \neq c) \end{array}
 $$</p>
 <h3 id="2-coding-implementing-word2vec">2 Coding: Implementing word2vec<a class="headerlink" href="#2-coding-implementing-word2vec" title="Permanent link">&para;</a></h3>
-<h4>word2vec.py</h4>
+<h4 id="word2vecpy">word2vec.py<a class="headerlink" href="#word2vecpy" title="Permanent link">&para;</a></h4>
 <p>本部分要求实现 <span><span class="MathJax_Preview">sigmoid, naiveSoftmaxLossAndGradient, negSamplingLossAndGradient, skipgram</span><script type="math/tex">sigmoid, naiveSoftmaxLossAndGradient, negSamplingLossAndGradient, skipgram</script></span>  四个函数，主要考察对第一部分中反向传播计算结果的实现。代码实现中，通过优化偏导数结合偏导数计算结果与 <span><span class="MathJax_Preview">\sigma(x) + \sigma(-x) = 1</span><script type="math/tex">\sigma(x) + \sigma(-x) = 1</script></span> 对公式进行转化，从而实现了全矢量化。这部分需要大家自行结合代码与公式进行推导。</p>
-<h4>sgd.py</h4>
+<h4 id="sgdpy">sgd.py<a class="headerlink" href="#sgdpy" title="Permanent link">&para;</a></h4>
 <p>实现 SGD 
 $$
 \theta^{n e w}=\theta^{o l d} - \alpha \nabla_{\theta} J(\theta)
 $$</p>
-<h4>run.py</h4>
+<h4 id="runpy">run.py<a class="headerlink" href="#runpy" title="Permanent link">&para;</a></h4>
 <p>首先要说明的是，这个真的要跑好久 <img alt="😅" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f605.svg" title=":sweat_smile:" /></p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -1370,7 +1370,7 @@ $$</p>
 </ul>
 <h2 id="assignment-03">Assignment 03<a class="headerlink" href="#assignment-03" title="Permanent link">&para;</a></h2>
 <h3 id="1-machine-learning-neural-networks">1. Machine Learning &amp; Neural Networks<a class="headerlink" href="#1-machine-learning-neural-networks" title="Permanent link">&para;</a></h3>
-<h4>(a) Adam Optimizer</h4>
+<h4 id="a-adam-optimizer">(a) Adam Optimizer<a class="headerlink" href="#a-adam-optimizer" title="Permanent link">&para;</a></h4>
 <p>回忆一下标准随机梯度下降的更新规则
 $$
 \boldsymbol{\theta} \leftarrow \boldsymbol{\theta}-\alpha \nabla_{\boldsymbol{\theta}}{J_{\mathrm{minibatch}}(\boldsymbol{\theta})}
@@ -1424,7 +1424,7 @@ $$
 <li>移动平均梯度最小的模型参数将得到较大的更新。</li>
 <li>一方面，将梯度较小的参数的更新变大，帮助其走出局部最优点（鞍点）；另一方面，将梯度较大的参数的更新变小，使其更新更加稳定。结合以上两个方面，使学习更加快速的同时也更加稳定。</li>
 </ul>
-<h4>(b) Dropout</h4>
+<h4 id="b-dropout">(b) Dropout<a class="headerlink" href="#b-dropout" title="Permanent link">&para;</a></h4>
 <p><a href="https://www.cs.toronto.edu/˜hinton/absps/JMLRdropout.pdf">Dropout</a> 是一种正则化技术。在训练期间，Dropout 以 <span><span class="MathJax_Preview">p_{drop}</span><script type="math/tex">p_{drop}</script></span> 的概率随机设置隐藏层 <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> 中的神经元为零(每个minibatch中 dropout 不同的神经元),然后将 <span><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> 乘以一个常数 <span><span class="MathJax_Preview">\gamma</span><script type="math/tex">\gamma</script></span> 。我们可以写为</p>
 <div>
 <div class="MathJax_Preview">

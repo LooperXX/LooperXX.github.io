@@ -912,7 +912,6 @@
    <span class="k">optional</span> <span class="kt">int32</span>     <span class="na">opt</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">//optional field </span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>在上例中，package名字叫做 lm，定义了一个消息 helloworld</li>
 <li>该消息有三个成员，类型为 int32 的 id，另一个为类型为 string 的成员 str</li>
@@ -929,9 +928,9 @@
 <p>现在，在 Writer 代码中，将要存入磁盘的结构化数据由一个 <code>lm::helloworld</code> 类的对象表示，它提供了一系列的 get/set 函数用来修改和读取结构化数据中的数据成员，或者叫 field。</p>
 <p>当我们需要将该结构化数据保存到磁盘上时，类 lm::helloworld 已经提供相应的方法来把一个复杂的数据变成一个字节序列，我们可以将这个字节序列写入磁盘。对于想要读取这个数据的程序来说，也只需要使用类 <code>lm::helloworld</code> 的相应反序列化方法来将这个字节序列重新转换回结构化数据。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// writer.cc</span>
-<span class="cp">#include</span> <span class="cpf">&quot;helloworld.pb.h&quot;    </span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;    </span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>    
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>     
@@ -944,17 +943,16 @@
 
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">SerializeToOstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">output</span><span class="p">))</span> <span class="p">{</span>     
         <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Failed to write msg.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     
-        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>     
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>     
     <span class="p">}</span>            
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>     
 <span class="p">}</span>  
 </code></pre></div>
-
 <p>Msg1 是一个 <code>helloworld</code>类的对象，<code>set_id()</code>用来设置 id 的值。<code>SerializeToOstream</code>将对象序列化后写入一个 fstream 流。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// reader.cc</span>
-<span class="cp">#include</span> <span class="cpf">&quot;helloworld.pb.h&quot;    </span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;    </span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
 <span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>    
 
 <span class="kt">void</span> <span class="nf">ListMsg</span><span class="p">(</span><span class="k">const</span> <span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span> <span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>      
@@ -970,7 +968,7 @@
         <span class="n">fstream</span> <span class="n">input</span><span class="p">(</span><span class="s">&quot;./write_log&quot;</span><span class="p">,</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="o">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>     
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">ParseFromIstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">))</span> <span class="p">{</span>     
             <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Failed to parse address book.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>     
-            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>     
+            <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>     
         <span class="p">}</span>           
     <span class="p">}</span>     
     <span class="n">ListMsg</span><span class="p">(</span><span class="n">msg1</span><span class="p">);</span>  
@@ -983,7 +981,6 @@
     <span class="p">}</span>  
 <span class="p">}</span> 
 </code></pre></div>
-
 <p>同样，Reader 声明类 helloworld 的对象 msg1，然后利用 ParseFromIstream 从一个 fstream 流中读取信息并反序列化。此后，ListMsg 中采用 get 方法读取消息的内部信息，并进行打印输出操作。</p>
 <div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> protobuf  
 $ g++  helloworld.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
@@ -993,7 +990,6 @@ $ ./reader
 $ <span class="m">101</span>
 $ hello 
 </code></pre></div>
-
 <h3 id="conpro">Con&amp;Pro<a class="headerlink" href="#conpro" title="Permanent link">&para;</a></h3>
 <ul>
 <li>优点：简单，快</li>
@@ -1004,7 +1000,7 @@ $ hello
 </ul>
 <h2 id="_2">高级用法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="message">嵌套message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="na">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
 
 <span class="kn">package</span> <span class="nn">tutorial</span><span class="p">;</span>
 
@@ -1031,7 +1027,6 @@ $ hello
   <span class="k">repeated</span> <span class="n">Person</span> <span class="na">people</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>数据类型包括<code>bool</code>、<code>int32</code>、<code>float</code>、<code>double</code>、<code>string</code>，还可以定义枚举类型<code>enum</code></li>
 <li>在 Person 中，定义了嵌套消息 PhoneNumber，并用来定义 Person 消息中的 phones 域，这就可以实现复杂的数据结构</li>
@@ -1042,7 +1037,7 @@ $ hello
 </ul>
 </li>
 </ul>
-<h4>Writer</h4>
+<h4 id="writer">Writer<a class="headerlink" href="#writer" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
 <span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
 <span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
@@ -1137,8 +1132,7 @@ $ hello
   <span class="n">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<h4>Reader</h4>
+<h4 id="reader">Reader<a class="headerlink" href="#reader" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
 <span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
 <span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
@@ -1206,8 +1200,7 @@ $ hello
   <span class="n">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
-<h4>Run</h4>
+<h4 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>$ protoc -I<span class="o">=</span>./ --cpp_out<span class="o">=</span>./ ./addressbook.proto 
 $ g++ addressbook.pb.cc reader.cc -o reader  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
 $ g++ addressbook.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
@@ -1226,7 +1219,6 @@ Person ID: <span class="m">123456</span>
   E-mail address: LooperXX@outlook.com
   Mobile phone <span class="c1">#: 77777777777</span>
 </code></pre></div>
-
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>在一个 .proto 文件中，还可以用 Import 关键字引入在其他 .proto 文件中定义的消息，这可以称做 Import Message，或者 Dependency Message。
@@ -1252,7 +1244,6 @@ Person ID: <span class="m">123456</span>
  
 <span class="n">importer</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="s">&quot;lm.helloworld.proto&quot;</span><span class="p">);</span>
 </code></pre></div>
-
 <p>首先构造一个 importer 对象。构造函数需要两个入口参数，一个是 <code>sourceTree</code> 对象，该对象指定了存放 <code>.proto</code> 文件的源目录。第二个参数是一个 <code>error collector</code> 对象，该对象有一个 <code>AddError</code> 方法，用来处理解析 <code>.proto</code> 文件时遇到的语法错误。之后，需要动态编译一个 <code>.proto</code> 文件时，只需调用 <code>importer</code> 对象的 <code>import</code>方法。非常简单。</p>
 <p>如何使用动态编译后的 <code>Message</code> 呢？<code>Package google::protobuf::compiler</code> 中提供了以下几个类，用来表示一个 <code>.proto</code> 文件中定义的 <code>message</code>，以及 <code>Message</code> 中的 <code>field</code>，如图所示。</p>
 <p><img alt="各个Compiler类之间的关系" src="../imgs/image003.jpg" /></p>
@@ -1263,7 +1254,6 @@ Person ID: <span class="m">123456</span>
 <span class="k">const</span> <span class="n">protobuf</span><span class="o">::</span><span class="n">FieldDescriptor</span><span class="o">*</span> <span class="n">field</span> <span class="o">=</span> 
    <span class="n">desc</span><span class="o">-&gt;</span><span class="n">pool</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindFileByName</span> <span class="p">(</span><span class="err">“</span><span class="n">id</span><span class="err">”</span><span class="p">);</span>
 </code></pre></div>
-
 <p>通过 <code>Descriptor</code>，<code>FieldDescriptor</code> 的各种方法和属性，应用程序可以获得各种关于 <code>Message</code> 定义的信息。比如通过 <code>field-&gt;name()</code> 得到<code>field</code> 的名字。这样，就可以使用一个动态定义的消息了。</p>
                 
               

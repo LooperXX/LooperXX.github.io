@@ -902,7 +902,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步 (同步：调用后阻塞，直至收到对方回复；异步：调用后立刻返回。对方的回复通过回调函数获得)</li>
 <li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer在回调函数中调用。参数receiver可以从CBaseServer回调函数的参数msg_ref获得。</li>
@@ -921,7 +920,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer在回调函数中调用。参数receiver可以从CBaseServer回调函数的参数msg_ref获得。</li>
@@ -938,7 +936,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CbaseClient</li>
@@ -955,7 +952,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseClient</li>
@@ -974,7 +970,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：同步</li>
 <li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer</li>
@@ -991,7 +986,6 @@
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span>
                 <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：同步</li>
 <li>调用者：CBaseClient</li>
@@ -1008,7 +1002,6 @@
               <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
               <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseServer/CBaseClient；但通常是CBaseServer</li>
@@ -1023,7 +1016,6 @@
               <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
               <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseClient</li>
@@ -1039,7 +1031,6 @@
                    <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
                    <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：N/A</li>
 <li>调用者：CBaseServer</li>
@@ -1050,7 +1041,6 @@
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span>
                    <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseClient</li>
@@ -1062,7 +1052,6 @@
                    <span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span>
                    <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseClient</li>
@@ -1074,7 +1063,6 @@
                    <span class="p">,</span> <span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span>
                    <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：同步</li>
 <li>调用者：CBaseClient</li>
@@ -1084,7 +1072,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">unsubscribe</span><span class="p">(</span><span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgSubscribe</span> <span class="o">&amp;</span><span class="n">msg_list</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>同步/异步：异步</li>
 <li>调用者：CBaseClient</li>
@@ -1096,7 +1083,6 @@
 <h3 id="cbaseclient">类CBaseClient<a class="headerlink" href="#cbaseclient" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">CBaseClient</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：构造函数；创建Client</li>
 <li>参数<ul>
@@ -1107,7 +1093,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">FdbSessionId_t</span> <span class="n">connect</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：连接到Server上</li>
 <li>参数：<ul>
@@ -1117,7 +1102,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">disconnect</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：断开连接</li>
 <li>参数<ul>
@@ -1128,7 +1112,6 @@
 <h3 id="cbaseserver">类CBaseServer<a class="headerlink" href="#cbaseserver" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">CBaseServer</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">,</span> <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：构造函数；创建Server</li>
 <li>参数<ul>
@@ -1139,7 +1122,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">FdbSocketId_t</span> <span class="nf">bind</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：绑定地址</li>
 <li>参数<ul>
@@ -1149,7 +1131,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="nf">unbind</span><span class="p">(</span><span class="n">FdbSocketId_t</span> <span class="n">skid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：解除地址绑定</li>
 <li>参数<ul>
@@ -1162,7 +1143,6 @@
                <span class="n">CBaseWorker</span> <span class="o">*</span><span class="n">worker</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
                <span class="n">EFdbEndpointRole</span> <span class="n">role</span> <span class="o">=</span> <span class="n">FDB_OBJECT_ROLE_UNKNOWN</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：构造函数；创建对象</li>
 <li>参数<ul>
@@ -1175,7 +1155,6 @@
 <div class="highlight"><pre><span></span><code><span class="n">FdbObjectId_t</span> <span class="n">bind</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> 
                    <span class="n">FdbObjectId_t</span> <span class="n">oid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：绑定对象ID，将对象角色设置为Server。</li>
 <li>参数<ul>
@@ -1187,7 +1166,6 @@
 <div class="highlight"><pre><span></span><code><span class="n">FdbObjectId_t</span> <span class="n">connect</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> 
                       <span class="n">FdbObjectId_t</span> <span class="n">oid</span> <span class="o">=</span> <span class="n">FDB_INVALID_ID</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：绑定对象ID，将对象角色设置为Client。</li>
 <li>参数<ul>
@@ -1198,20 +1176,17 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">unbind</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：解除Server对象的绑定</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">disconnect</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：解除Client对象的绑定</li>
 </ul>
 <h3 id="fdb_context">类FDB_CONTEXT<a class="headerlink" href="#fdb_context" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">start</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">flag</span> <span class="o">=</span> <span class="n">FDB_WORKER_ENABLE_FD_LOOP</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：启动fdbus收发线程；其本质就是一个worker线程</li>
 <li>参数<ul>
@@ -1226,7 +1201,6 @@
 <p><strong>回调函数 (CFdbBaseObject, CBaseServer或CBaseClient)</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onOnline</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">is_first</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer：当有Client连上时被调用到；is_first表示是第一个Client来连接</li>
@@ -1237,7 +1211,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onOffline</span><span class="p">(</span><span class="n">FdbSessionId_t</span> <span class="n">sid</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">is_last</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer：当有Client断开连接时被调用到；is_last表示最后一个client断开连接</li>
@@ -1248,7 +1221,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onInvoke</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer：当相连的Client调用CBaseClient::invoke()时被调用到；</li>
@@ -1259,7 +1231,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onReply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer通常不需要实现这个方法；</li>
@@ -1270,7 +1241,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onBroadcast</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer通常不需要实现这个方法；</li>
@@ -1281,7 +1251,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="kt">void</span> <span class="n">onSubscribe</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer：当有client调用CBaseClient::subscribe()时被调用到；该函数必须调用</li>
@@ -1293,7 +1262,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="n">onCreateObject</span><span class="p">(</span><span class="n">CBaseEndpoint</span> <span class="o">*</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">CFdbMessage</span> <span class="o">*</span><span class="n">msg</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer/CBaseClient：当对方和object通信，但object尚未创建时，该方法被调用到。该方法必须根据msg里的内容创建指定的CBaseObject并bind/connect。</li>
@@ -1303,7 +1271,6 @@
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">connectionEnabled</span><span class="p">(</span><span class="k">const</span> <span class="n">NFdbBase</span><span class="o">::</span><span class="n">FdbMsgAddressList</span> <span class="o">&amp;</span><span class="n">addr_list</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>触发条件<ul>
 <li>CBaseServer：无此回调</li>
@@ -1314,73 +1281,62 @@
 </ul>
 <h2 id="message">Message方法调换<a class="headerlink" href="#message" title="Permanent link">&para;</a></h2>
 <p><strong>方法 (CBaseMessage或CFdbMessage)</strong></p>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="n">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
                   <span class="k">const</span> <span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">data</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：Server端收到Client发送过来的Message后，通过该函数将Protobuf格式的数据包返回给该Client</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="nf">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
+<div class="highlight"><pre><span></span><code><span class="k">static</span> <span class="kt">void</span> <span class="n">reply</span><span class="p">(</span><span class="n">CBaseJob</span><span class="o">::</span><span class="n">Ptr</span> <span class="o">&amp;</span><span class="n">msg_ref</span><span class="p">,</span> 
                   <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
                   <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：同上，只是返回的是raw data</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">deserialize</span><span class="p">(</span><span class="n">CFdbBasePayload</span> <span class="o">&amp;</span><span class="n">payload</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：将收到的protobuf格式的流反序列化成C++数据结构</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span> <span class="o">*</span><span class="n">getPayloadBuffer</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：获得消息中payload数据的起始地址。对于protobuf格式的payload，通过调用deserialize()可以获得消息数据，无需调用该函数。该函数用于raw data的消息</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isRawData</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：如果消息数据是protobuf则返回false；否则返回true</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">FdbMsgCode_t</span> <span class="n">code</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：获得消息ID</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">getFilter</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：用于onBroadcast()，获得广播过来的消息的filter</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">FdbSessionId_t</span> <span class="n">session</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：获得消息的session</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isError</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：用在onReply()里，检查对方返回的消息里是否置上了错误标记；如果置上错误标记说明这次请求发生了错误。此时需要调用decodeStatus()获得错误代码和错误描述从而做进一步检查</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">isStatus</span><span class="p">()</span>
 </code></pre></div>
-
 <ul>
 <li>描述：为true说明返回的消息不包含实际数据，而是个状态，表明请求是成功处理了还是发生其它情况，例如请求超时。isError()是isStatus()的一个特例。</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span> <span class="n">decodeStatus</span><span class="p">(</span><span class="kt">int32_t</span> <span class="o">&amp;</span><span class="n">error_code</span><span class="p">,</span> 
                   <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">description</span><span class="p">)</span>
 </code></pre></div>
-
 <ul>
 <li>描述：当isStatus()或isError()为true时，获得状态的ID和描述。</li>
 </ul>
@@ -1388,7 +1344,6 @@
             <span class="kt">int32_t</span> <span class="n">error_code</span><span class="p">,</span> 
             <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">description</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：和reply()类似，只是返回的不是数据，而是状态。通常用于没有数据返回的请求。</li>
 </ul>
@@ -1400,7 +1355,6 @@
                    <span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span> <span class="o">=</span> <span class="mi">0</span>
                    <span class="p">,</span> <span class="kt">int32_t</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">);</span>
 </code></pre></div>
-
 <ul>
 <li>描述：在CBaseServer的onBroadcast调用，将所注册消息的初始值返回给前来注册的client端。</li>
 </ul>
@@ -1414,7 +1368,6 @@
     <span class="k">optional</span> <span class="kt">string</span> <span class="na">host_name</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-
 <ul>
 <li>
 <p>Generated C++ Class：<code>::NFdbBase::FdbMsgHostAddress</code></p>

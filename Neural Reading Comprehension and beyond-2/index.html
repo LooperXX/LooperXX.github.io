@@ -888,7 +888,7 @@
 <p>还有大量使用大量资源的高度开发的全流水线 QA 方法，包括文本集合(网页，Wikipedia，新闻专线文章)和结构化知识库(FREEBASE，DBPEDIA等)。几个著名的系统包括Microsoft的ASKMSR，IBM的DEEPQA和YODAQA。 ASKMSR是基于搜索引擎的问题解答系统，它依赖于“数据冗余而不是对问题或候选答案的复杂语言分析”。DEEPQA是一个非常复杂的系统，由许多不同的部分组成，它依赖于非结构化信息以及结构化数据来生成候选答案或对证据进行投票。图5.1说明了高级架构。 YODAQA是一个以 DEEPQA 为模型的开源系统，特别是将网站，数据库和 Wikipedia 组合在一起。与这些方法进行比较可为性能的“上限”基准提供有用的参照。</p>
 <p>我们的DRQA系统(第5.2节)专注于使用Wikipedia作为唯一知识源的问题解答，例如在百科全书中寻找答案时所做的回答。在此之前，已经有很多关于使用Wikipedia作为资源的问题解答模型。 Ryu 等人使用基于 Wikipedia 的知识模型执行开放域问题解答。他们根据不同类型的半结构化知识(例如信息框，文章结构，类别结构和定义)将文章内容与其他多个答案匹配模块结合在一起。同样，Ahn等人也将Wikipedia作为文本资源与其他资源相结合，在这种情况下，它还具有对其他文档的信息检索。Buscaldi和Rosso还从Wikipedia挖掘知识以进行问题解答。 他们没有将其用作寻找问题答案的资源，而是专注于验证其问题解答系统返回的答案，并使用Wikipedia类别来确定应与预期答案匹配的一组模式。 <u>在我们的工作中，我们仅考虑文本理解，并使用Wikipedia文本文档作为唯一资源，以强调阅读理解的任务</u>。 我们相信，添加其他知识资源或信息将进一步改善我们系统的性能。</p>
 <h3 id="52-our-system-drqa">5.2 Our System: DRQA<a class="headerlink" href="#52-our-system-drqa" title="Permanent link">&para;</a></h3>
-<h4>5.2.1 An Overview</h4>
+<h4 id="521-an-overview">5.2.1 An Overview<a class="headerlink" href="#521-an-overview" title="Permanent link">&para;</a></h4>
 <p>在下文中，我们描述了我们的系统DRQA，<u>该系统着重于使用英语维基百科作为文档的唯一知识源来回答问题</u>。我们有兴趣构建一个通用知识的问题回答系统，该系统可以回答包含答案并可以从Wikipedia中提取的任何形式的问题。我们选择使用Wikipedia的原因有很多：</p>
 <ul>
 <li>Wikipedia是不断发展的大规模，丰富，详细信息的来源，可以促进智能机器的发展。与诸如FREEBASE或DBPEDIA之类的知识库(KB)一样，它们对于计算机来说较容易处理，但对于开放域问题的回答却过于稀疏，因此Wikipedia包含人类感兴趣的最新知识。</li>
@@ -897,14 +897,14 @@
 </ul>
 <p>使用Wikipedia文章作为知识源会导致问题解答的任务结合了大规模开放域问答和机器阅读理解的挑战。为了回答任何问题，必须首先检索超过500万个项目中的几篇相关文章，然后仔细扫描它们以找出答案。这让人想起传统的TREC QA系统是如何工作的，但是我们认为神经阅读理解模型将在阅读检索到的文章/段落以获取最终答案方面发挥关键作用。如图5.2所示，我们的系统主要由两个组件组成：(1)用于查找相关文章的DOCUMENT RETRIEVER模块，以及(2)用于从单个文档或少量集合中提取答案的阅读理解模型DOCUMENT READER。</p>
 <p>我们的系统将Wikipedia视为<u>文章的集合</u>，并且<u>不依赖于其内部图结构</u>。因此，我们的方法是通用的，可以转换为其他文档，书籍甚至每日更新的报纸。接下来，我们将详细介绍这两个组件。</p>
-<h4>5.2.2 Document Retriever</h4>
+<h4 id="522-document-retriever">5.2.2 Document Retriever<a class="headerlink" href="#522-document-retriever" title="Permanent link">&para;</a></h4>
 <p>遵循经典的QA系统，我们使用高效的(非机器学习)文档检索系统来首先缩小搜索范围，并专注于仅阅读可能相关的文章。 与内置的基于 ElasticSearch 的 Wikipedia 搜索API相比，简单的倒排索引查找后再进行(term vector model scoring)术语向量模型评分，在许多任务类型上都能很好地完成此任务。将文章和问题作为TF-IDF加权词袋向量进行比较。</p>
 <p>我们通过使用 n-gram 特征考虑局部单词顺序来进一步改善我们的系统。我们性能最好的系统通过使用散列将bigram映射到<span><span class="MathJax_Preview">2^{24}</span><script type="math/tex">2^{24}</script></span> bins(with an unsigned <em>murmur3</em> hash)，从而在保持速度和内存效率的同时使用bigram计数。
 通过将DOCUMENT RETRIEVER设置为返回给定任何问题的5篇Wikipedia文章，我们将其用作完整模型的第一部分。 这些文章然后由DOCUMENT READER处理。</p>
-<h4>5.2.3 Document Reader</h4>
+<h4 id="523-document-reader">5.2.3 Document Reader<a class="headerlink" href="#523-document-reader" title="Permanent link">&para;</a></h4>
 <p>DOCUMENT READER 旨在阅读所有段落并从中提取可能的答案。这正是我们在基于跨度的阅读理解问题中所做的设置，我们可以将在3.2节中描述的STANFORD ATTENTIVE READER模型直接加入此流水线中。</p>
 <p>我们将出现在前5篇文章中的每个段落都输入经过训练的文档阅读器，它可以用信心分数来预测答案范围。 为了使分数在一个或多个检索到的文档中的各个段落之间兼容，我们使用非归一化指数，并在所有考虑的段落范围内采用argmax 作为最终预测。 这只是一个非常简单的启发式方法，并且有更好的方法可以汇总不同段落的证据。 我们将在5.4节中讨论未来的工作。</p>
-<h4>5.2.4 Distant Supervision</h4>
+<h4 id="524-distant-supervision">5.2.4 Distant Supervision<a class="headerlink" href="#524-distant-supervision" title="Permanent link">&para;</a></h4>
 <p>我们已经建立了完整的流水线，其中集成了经典的检索模块和我们以前的神经阅读理解组件。剩下的关键问题是我们如何为开放域问答设置训练该阅读理解模块？</p>
 <p>最直接的方法就是将SQuAD数据集作为训练语料库使用，该数据集也建立在Wikipedia段落的基础上。但是，此方法受到以下方式的限制：</p>
 <ul>
@@ -919,7 +919,7 @@ if  p \in \text{Document Retriever} (q)  \text{and}  a  \text{appears in}  p
 $$
 这个想法与使用 distant supervision 进行关系提取的流行方法很相似。尽管这些示例在某种程度上可能很嘈杂，但它提供了一种便宜的解决方案来为开放域问题解答创建distant supervision的示例，并且可以是SQUAD示例的有用补充。 我们将在第5.3节中描述这些远程监督示例的有效性。</p>
 <h3 id="53-evaluation">5.3 Evaluation<a class="headerlink" href="#53-evaluation" title="Permanent link">&para;</a></h3>
-<h4>5.3.1 Question Answering Datasets</h4>
+<h4 id="531-question-answering-datasets">5.3.1 Question Answering Datasets<a class="headerlink" href="#531-question-answering-datasets" title="Permanent link">&para;</a></h4>
 <p>第一个问题是我们应该对哪个问题回答数据集进行评估。 正如我们所讨论的，SQUAD是目前可用于回答问题的最大的通用QA数据集之一，但与开放域QA场景有很大不同。 我们建议在针对开放域问答开发的其他数据集上训练和评估我们的系统，这些数据集以不同的方式构造。 因此，我们采用以下三个数据集：</p>
 <p><strong>TREC</strong> 数据集基于TREC QA任务基准。我们使用大型版本，其中包含总共2180个问题。</p>
 <p><strong>WebQuestions</strong> 数据集旨在回答Freebase KB中的问题。它是通过GOOGLE SUGGEST API抓取问题，然后使用Amazon Mechanical Turk获得答案而创建的。我们使用实体名称将每个答案转换为文本，以使数据集不引用Freebase ID，而仅由纯文本问题对组成。</p>
@@ -929,7 +929,7 @@ $$
 <p><img alt="image-20191112155006143" src="../imgs/image-20191112155006143.png" /></p>
 <p>表5.1和图5.3给出了这些问答数据集的详细统计信息。我们可以看到，SQUAD示例的分布与其他QA数据集完全不同。由于构造方法的原因，SQUAD的问题更长(平均10.4个令牌与6.7-7.5个令牌)。同样，所有这些数据集都有简短的答案(尽管SQUAD中的答案稍长)，而且大多数都是事实。</p>
 <p>请注意，这些问答数据集中的许多问题可能有多个答案(请参见表5.1的“answers”列)。例如，WEBQUESTIONS中的问题：在巴基斯坦人说什么语言？有两个有效答案：英语和乌尔都语。由于我们的系统旨在返回一个答案，因此如果评估给出任何答案，则我们的评估会认为该预测是正确的。</p>
-<h4>5.3.3 Document Retriever Performance</h4>
+<h4 id="533-document-retriever-performance">5.3.3 Document Retriever Performance<a class="headerlink" href="#533-document-retriever-performance" title="Permanent link">&para;</a></h4>
 <p><img alt="image-20191112160703553" src="../imgs/image-20191112160703553.png" /></p>
 <p>我们首先检查所有 QA 数据集上检索模块的性能。 表5.2将5.2.2节中描述的两种方法的性能与Wikipedia搜索引擎的性能进行了比较，以查找包含给定问题的答案的文章。</p>
 <p>具体来说，我们计算每个系统所返回的前5个相关页面中的至少一个相关问题的答案，这些问题的答案与它们的任何关联答案的文本跨度都至少一样。 </p>

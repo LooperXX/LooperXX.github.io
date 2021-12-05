@@ -1094,7 +1094,6 @@
 <span class="n">hidden1</span> <span class="o">=</span> <span class="n">conv1</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 <span class="n">hidden2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hidden1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># max pool</span>
 </code></pre></div>
-
 <p><strong>Other less useful notions: stride = 2</strong></p>
 <p><img alt="1561455353605" src="../imgs/1561455353605.png" /></p>
 <ul>
@@ -1406,32 +1405,32 @@ y=\operatorname{softmax}\left(W^{(S)}(r \circ z)+b\right)
 </ul>
 <h2 id="notes-08-convolutional-neural-networks">Notes 08 Convolutional Neural Networks<a class="headerlink" href="#notes-08-convolutional-neural-networks" title="Permanent link">&para;</a></h2>
 <h3 id="1-cnns-convolutional-neural-networks">1 CNNs (Convolutional Neural Networks)<a class="headerlink" href="#1-cnns-convolutional-neural-networks" title="Permanent link">&para;</a></h3>
-<h4>1.1 Why CNNs?</h4>
+<h4 id="11-why-cnns">1.1 Why CNNs?<a class="headerlink" href="#11-why-cnns" title="Permanent link">&para;</a></h4>
 <p>卷积神经网络接收词向量的序列，并首先为所有子短语创建短语向量，而不仅仅是语法正确的短语(与递归神经网络一样，将在下一组笔记中讨论)。然后，CNNs将他们分组完成手头的任务。</p>
-<h4>1.2 What is Convolution?</h4>
+<h4 id="12-what-is-convolution">1.2 What is Convolution?<a class="headerlink" href="#12-what-is-convolution" title="Permanent link">&para;</a></h4>
 <p>我们从一维的情况开始。考虑两个一维向量 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 和 <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> ，其中 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 是主向量，g 是 filter。<span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 和 <span><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> 之间的卷积，第n项处的值表示为 <span><span class="MathJax_Preview">(f * g)[n]</span><script type="math/tex">(f * g)[n]</script></span>，它等于 <span><span class="MathJax_Preview">\sum_{m=-M}^{M} f[n-m] g[m]</span><script type="math/tex">\sum_{m=-M}^{M} f[n-m] g[m]</script></span> 。</p>
 <p><img alt="1561540176263" src="../imgs/1561540176263.png" /></p>
 <p>上图显示了二维卷积的情况。<span><span class="MathJax_Preview">9\times9</span><script type="math/tex">9\times9</script></span> 的绿色矩阵表示关注的主矩阵 <span><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 。<span><span class="MathJax_Preview">3\times3</span><script type="math/tex">3\times3</script></span> 的红色矩阵表示 filter g，当前正在计算的卷积位于位置[2,2]。图1显示了第二个表中[2,2]= 4处卷积的值。你能完成第二张表格吗?</p>
 <h3 id="13-a-single-layer-cnn">1.3 A Single-Layer CNN<a class="headerlink" href="#13-a-single-layer-cnn" title="Permanent link">&para;</a></h3>
 <p><img alt="1561540397352" src="../imgs/1561540397352.png" /></p>
 <p>考虑单词向量 <span><span class="MathJax_Preview">x_{i} \in R^{k}</span><script type="math/tex">x_{i} \in R^{k}</script></span> 和一个n个单词的句子的单词向量串联， <span><span class="MathJax_Preview">x_{1 : n}=x_{1} \oplus x_{2} \ldots \oplus x_{n}</span><script type="math/tex">x_{1 : n}=x_{1} \oplus x_{2} \ldots \oplus x_{n}</script></span> 。最后，考虑卷积滤波器 <span><span class="MathJax_Preview">w \in R^{h k}</span><script type="math/tex">w \in R^{h k}</script></span> ，即作用于 h 个单词。对于<span><span class="MathJax_Preview">k = 2, n = 5, h = 3</span><script type="math/tex">k = 2, n = 5, h = 3</script></span>，图 2 为NLP的单层卷积层。在"the country of my birth"这个句子中，连续三个单词的每一个可能组合都将得到一个值。注意，滤波器 w 本身是一个向量，我们将有 <span><span class="MathJax_Preview">c_{i}=f\left(w^{T} x_{i : i | h-1}+b\right)</span><script type="math/tex">c_{i}=f\left(w^{T} x_{i : i | h-1}+b\right)</script></span> 来给出 <span><span class="MathJax_Preview">\mathbf{c}=\left[c_{1}, c_{2} \dots c_{n-h+1}\right] \in R^{n-h+1}</span><script type="math/tex">\mathbf{c}=\left[c_{1}, c_{2} \dots c_{n-h+1}\right] \in R^{n-h+1}</script></span> 。最后两个时间步，即从“my”或“birth”开始，我们没有足够的字向量来与滤波器相乘(因为h = 3)。如果我们需要与后两个词向量相关的卷积，一个常见的技巧是用h - 1个零向量填充句子的右边，如上图3所示。</p>
-<h4>1.4 Pooling</h4>
+<h4 id="14-pooling">1.4 Pooling<a class="headerlink" href="#14-pooling" title="Permanent link">&para;</a></h4>
 <p>假设我们不使用补零，我们将得到最终的卷积输出， <span><span class="MathJax_Preview">\mathbf{c}</span><script type="math/tex">\mathbf{c}</script></span> 有 <span><span class="MathJax_Preview">n-h+1</span><script type="math/tex">n-h+1</script></span> 个数。通常，我们希望接收CNN的输出，并将其作为输入，输入到更深层，如前馈神经网络或RecNN。但是，所有这些都需要一个固定长度的输入，而CNN输出的长度依赖于句子的长度 <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 。解决这个问题的一个聪明的方法是使用max-pooling。CNN的输出 <span><span class="MathJax_Preview">\mathbf{c} \in \mathbb{R}^{n-h-1}</span><script type="math/tex">\mathbf{c} \in \mathbb{R}^{n-h-1}</script></span> 是 max-pooling 层的输入。max-pooling的输出层 <span><span class="MathJax_Preview">\hat{c}=\max \{\mathbf{c}\}</span><script type="math/tex">\hat{c}=\max \{\mathbf{c}\}</script></span> ，因此 <span><span class="MathJax_Preview">\hat{c} \in \mathbb{R}</span><script type="math/tex">\hat{c} \in \mathbb{R}</script></span> 。</p>
 <p>我们也可以使用最小池化，因为通常我们使用ReLU作为非线性激活函数而ReLU的下界是0。因此，一个最小池化可能会被ReLU覆盖，所以我们几乎总是使用最大池化而不是最小池化。</p>
-<h4>1.5 Multiple-Filters</h4>
+<h4 id="15-multiple-filters">1.5 Multiple-Filters<a class="headerlink" href="#15-multiple-filters" title="Permanent link">&para;</a></h4>
 <p>在上面与图2相关的例子中，我们有 h = 2，这意味着我们只使用一个特定的组合方法，即使用过滤器来查看bi-grams。我们可以使用多个bi-grams过滤器，因为每个过滤器将学习识别不同类型的bi-grams。更一般地说，我们并不仅限于使用bi-grams，还可以使用tri-grams、 quad-grams 甚至更长的过滤器。每个过滤器都有一个关联的最大池化层。因此，CNN层的最终输出将是一个长度等于过滤器数量的向量</p>
-<h4>1.6 Multiple-Channels</h4>
+<h4 id="16-multiple-channels">1.6 Multiple-Channels<a class="headerlink" href="#16-multiple-channels" title="Permanent link">&para;</a></h4>
 <p>如果我们允许梯度流入这里使用的单词向量，那么单词向量可能会随着训练而发生显著变化。这是需要的，因为它将单词向量专门用于当前特定任务(远离GloVe初始化)。但是，如果单词只出现在测试集中而没有出现在训练集上呢？虽然出现在训练集中的其他语义相关的单词向量将从它们的起始点显著移动，但是这些单词仍将处于它们的初始点。神经网络将专门用于已更新的输入。因此，我们在使用这些单词的句子中会表现得很差。</p>
 <p>一种方法是维护两组单词向量，一组“静态”(没有梯度流)和一组“动态”(通过SGD更新)。它们最初是一样的（GloVe 或者其他初始化）。这两个集合同时作为神经网络的输入。因此，初始化的词向量在神经网络的训练中始终起着重要的作用。在测试中给出看不见的单词可以提高正确理解的几率。</p>
 <p>有几种处理这两个channel的方法，最常见的是在CNN中使用之前对它们进行平均。另一种方法是将CNN过滤器的长度加倍。</p>
-<h4>1.7 CNN Options</h4>
+<h4 id="17-cnn-options">1.7 CNN Options<a class="headerlink" href="#17-cnn-options" title="Permanent link">&para;</a></h4>
 <p><img alt="1561541394114" src="../imgs/1561541394114.png" /></p>
-<h5>Narrow vs Wide</h5>
+<h5 id="narrow-vs-wide">Narrow vs Wide<a class="headerlink" href="#narrow-vs-wide" title="Permanent link">&para;</a></h5>
 <p>参见图4。另一种问这个问题的方法是我们应该缩小还是扩大 ？即我们是否使用zero-pad ？</p>
 <p>如果我们使用窄卷积，我们只在一个滤波器的所有分量都有一个匹配输入分量的位置计算卷积。在输入的开始和结束边界处显然不是这样，如图4中的左侧网络所示。</p>
 <p>如果我们使用宽卷积，我们有一个输出分量对应于卷积滤波器的每个对齐。为此，我们必须在输入的开始和结束处填充 <span><span class="MathJax_Preview">h - 1</span><script type="math/tex">h - 1</script></span> 个零。</p>
 <p>在窄卷积情况下，输出长度为 <span><span class="MathJax_Preview">n - h+ 1</span><script type="math/tex">n - h+ 1</script></span> ，而在宽卷积情况下，输出长度为 <span><span class="MathJax_Preview">n+h - 1</span><script type="math/tex">n+h - 1</script></span></p>
-<h5>k-max pooling</h5>
+<h5 id="k-max-pooling">k-max pooling<a class="headerlink" href="#k-max-pooling" title="Permanent link">&para;</a></h5>
 <p>这是对最大池化层的概括。k-max 池化层不是只从它的输入中选择最大的值，而是选择k个最大的值（并且保持原有的顺序）。设置 <span><span class="MathJax_Preview">k = 1</span><script type="math/tex">k = 1</script></span> 则是我们前面看到的最大池化层。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
