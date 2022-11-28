@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://looperxx.github.io/</loc>
-         <lastmod>2022-11-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://looperxx.github.io/Attention/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
@@ -152,6 +147,11 @@
     </url>
     <url>
          <loc>https://looperxx.github.io/FDBus%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84/</loc>
+         <lastmod>2022-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://looperxx.github.io/Index/</loc>
          <lastmod>2022-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
