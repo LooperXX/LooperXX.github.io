@@ -6,42 +6,60 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="LooperXX's homepage">
+        <meta name="description" content="Xiao Xu - Homepage">
       
       
-        <meta name="author" content="Looper - Xiao Xu">
+        <meta name="author" content="Xiao Xu">
       
+      
+        <link rel="canonical" href="https://looperxx.github.io/Protocol%20Buffers/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>Protocol Buffers - Science is interesting.</title>
+        <title>Protocol Buffers - The sun also rises.</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
 
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-CV5JZHXZY8"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-CV5JZHXZY8",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-CV5JZHXZY8",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
     
     
   </head>
@@ -49,12 +67,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,22 +96,24 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Science is interesting." class="md-header__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-header__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Science is interesting.
+            The sun also rises.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,10 +126,34 @@
       </div>
     </div>
     
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -113,15 +161,21 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -139,10 +193,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -152,14 +206,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -184,18 +232,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
       <a href="../Attention/" class="md-tabs__link">
         Notes
       </a>
     </li>
-  
-
   
 
       
@@ -208,8 +249,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
-        Notes on CS224n
+      <a href="../CS224n-2019-00-Info/" class="md-tabs__link">
+        Chinese Notes on CS224n-2019
       </a>
     </li>
   
@@ -225,7 +266,7 @@
   
     <li class="md-tabs__item">
       <a href="../MkDocs_demo/" class="md-tabs__link">
-        For MkDocs
+        MkDocs
       </a>
     </li>
   
@@ -234,7 +275,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -252,20 +299,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-nav__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Science is interesting.
+    The sun also rises.
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -305,6 +352,20 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_2">
           Notes
@@ -315,32 +376,6 @@
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Notes
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1">
-          Theory
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Theory" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          Theory
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -372,39 +407,6 @@
 
             
           
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Code
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Code" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Code
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
             
               
   
@@ -418,39 +420,6 @@
   
 
             
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3">
-          Book
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Book" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Book
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -499,13 +468,6 @@
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -522,16 +484,62 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_3">
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Notes on CS224n" data-md-level="1">
+      <nav class="md-nav" aria-label="Chinese Notes on CS224n-2019" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -541,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      <a href="../CS224n-2019-00-Info/" class="md-nav__link">
         CS224n-2019 Introduction
       </a>
     </li>
@@ -864,16 +872,22 @@
       
       
       
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_4">
-          For MkDocs
+          MkDocs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <nav class="md-nav" aria-label="MkDocs" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          For MkDocs
+          MkDocs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -984,6 +998,33 @@
     嵌套message
   </a>
   
+    <nav class="md-nav" aria-label="嵌套message">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#writer" class="md-nav__link">
+    Writer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reader" class="md-nav__link">
+    Reader
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run" class="md-nav__link">
+    Run
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1013,13 +1054,16 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/Protocol Buffers.md" title="编辑此页" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/Protocol Buffers.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
 
 
 <h1 id="protocol-buffers">Protocol Buffers<a class="headerlink" href="#protocol-buffers" title="Permanent link">&para;</a></h1>
@@ -1039,13 +1083,13 @@
 <p><code>helloworld.proto</code>  命名规则：<code>MessageName.proto</code></p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span> <span class="nn">lm</span><span class="p">;</span> 
-<span class="kd">message</span> <span class="nc">helloworld</span> 
-<span class="p">{</span> 
-   <span class="k">required</span> <span class="kt">int32</span>     <span class="na">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  
-   <span class="k">required</span> <span class="kt">string</span>    <span class="na">str</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>   
-   <span class="k">optional</span> <span class="kt">int32</span>     <span class="na">opt</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>  <span class="c1">//optional field </span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">lm</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">message</span><span class="w"> </span><span class="nc">helloworld</span><span class="w"> </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">   </span><span class="k">required</span><span class="w"> </span><span class="kt">int32</span><span class="w">     </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">   </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w">    </span><span class="na">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">   </span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">   </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w">     </span><span class="na">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">  </span><span class="c1">//optional field </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div>
 <ul>
 <li>在上例中，package名字叫做 lm，定义了一个消息 helloworld</li>
@@ -1062,68 +1106,68 @@
 <p>使用 Protobuf，Writer 的工作很简单，需要处理的结构化数据由<code>.proto</code>文件描述，经过上一节中的编译过程后，该数据化结构对应了一个 C++ 的类，并定义在 <code>lm.helloworld.pb.h</code> 中。对于本例，类名为 <code>lm::helloworld</code>。Writer 需要 include 该头文件，然后便可以使用该类。</p>
 <p>现在，在 Writer 代码中，将要存入磁盘的结构化数据由一个 <code>lm::helloworld</code> 类的对象表示，它提供了一系列的 get/set 函数用来修改和读取结构化数据中的数据成员，或者叫 field。</p>
 <p>当我们需要将该结构化数据保存到磁盘上时，类 lm::helloworld 已经提供相应的方法来把一个复杂的数据变成一个字节序列，我们可以将这个字节序列写入磁盘。对于想要读取这个数据的程序来说，也只需要使用类 <code>lm::helloworld</code> 的相应反序列化方法来将这个字节序列重新转换回结构化数据。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// writer.cc</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w">    </span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">     </span>
-<span class="p">{</span><span class="w">     </span>
-
-<span class="w">    </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="n">msg1</span><span class="p">;</span><span class="w">     </span>
-<span class="w">    </span><span class="n">msg1</span><span class="p">.</span><span class="n">set_id</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span><span class="w">     </span>
-<span class="w">    </span><span class="n">msg1</span><span class="p">.</span><span class="n">set_str</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span><span class="w">     </span>
-<span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">output</span><span class="p">(</span><span class="s">&quot;./write_log&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w">     </span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">SerializeToOstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">output</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
-<span class="w">        </span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to write msg.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span>
-<span class="w">    </span><span class="p">}</span><span class="w">            </span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">     </span>
-<span class="p">}</span><span class="w">  </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// writer.cc</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w">     </span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">{</span><span class="w">     </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="n">msg1</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="n">msg1</span><span class="p">.</span><span class="n">set_id</span><span class="p">(</span><span class="mi">101</span><span class="p">);</span><span class="w">     </span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="n">msg1</span><span class="p">.</span><span class="n">set_str</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">);</span><span class="w">     </span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">output</span><span class="p">(</span><span class="s">&quot;./write_log&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w">     </span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">SerializeToOstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">output</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to write msg.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="p">}</span><span class="w">            </span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">}</span><span class="w">  </span>
 </code></pre></div>
 <p>Msg1 是一个 <code>helloworld</code>类的对象，<code>set_id()</code>用来设置 id 的值。<code>SerializeToOstream</code>将对象序列化后写入一个 fstream 流。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// reader.cc</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
-<span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w">    </span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">ListMsg</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
-<span class="p">}</span><span class="w">     </span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
-
-<span class="w">    </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="n">msg1</span><span class="p">;</span><span class="w">     </span>
-
-<span class="w">    </span><span class="p">{</span><span class="w">     </span>
-<span class="w">        </span><span class="n">fstream</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="s">&quot;./write_log&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w">     </span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">ParseFromIstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
-<span class="w">            </span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to parse address book.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span>
-<span class="w">        </span><span class="p">}</span><span class="w">           </span>
-<span class="w">    </span><span class="p">}</span><span class="w">     </span>
-<span class="w">    </span><span class="n">ListMsg</span><span class="p">(</span><span class="n">msg1</span><span class="p">);</span><span class="w">  </span>
-<span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">out</span><span class="p">(</span><span class="s">&quot;./reader_log&quot;</span><span class="p">,</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="p">);</span><span class="w">   </span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w">  </span>
-<span class="w">    </span><span class="p">{</span><span class="w">  </span>
-<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg1</span><span class="p">.</span><span class="n">id</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
-<span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg1</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span>
-<span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">close</span><span class="p">();</span><span class="w">  </span>
-<span class="w">    </span><span class="p">}</span><span class="w">  </span>
-<span class="p">}</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// reader.cc</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;helloworld.pb.h&quot;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fstream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1">    </span><span class="cp"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">std</span><span class="p">;</span><span class="w">    </span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="kt">void</span><span class="w"> </span><span class="nf">ListMsg</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">      </span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="p">}</span><span class="w">     </span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span><span class="n">lm</span><span class="o">::</span><span class="n">helloworld</span><span class="w"> </span><span class="n">msg1</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">    </span><span class="p">{</span><span class="w">     </span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="n">fstream</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="s">&quot;./write_log&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span><span class="w">     </span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">msg1</span><span class="p">.</span><span class="n">ParseFromIstream</span><span class="p">(</span><span class="o">&amp;</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">            </span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to parse address book.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">        </span><span class="p">}</span><span class="w">           </span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">    </span><span class="p">}</span><span class="w">     </span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="n">ListMsg</span><span class="p">(</span><span class="n">msg1</span><span class="p">);</span><span class="w">  </span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">out</span><span class="p">(</span><span class="s">&quot;./reader_log&quot;</span><span class="p">,</span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="p">);</span><span class="w">   </span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">out</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w">  </span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">    </span><span class="p">{</span><span class="w">  </span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg1</span><span class="p">.</span><span class="n">id</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">     </span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">msg1</span><span class="p">.</span><span class="n">str</span><span class="p">()</span><span class="o">&lt;&lt;</span><span class="n">endl</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">        </span><span class="n">out</span><span class="p">.</span><span class="n">close</span><span class="p">();</span><span class="w">  </span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="p">}</span><span class="w">  </span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">}</span><span class="w"> </span>
 </code></pre></div>
 <p>同样，Reader 声明类 helloworld 的对象 msg1，然后利用 ParseFromIstream 从一个 fstream 流中读取信息并反序列化。此后，ListMsg 中采用 get 方法读取消息的内部信息，并进行打印输出操作。</p>
-<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> protobuf  
-$ g++  helloworld.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
-$ g++  helloworld.pb.cc reader.cc -o reader  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
-$ ./writer  
-$ ./reader 
-$ <span class="m">101</span>
-$ hello 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>$ <span class="nb">cd</span> protobuf  
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>$ g++  helloworld.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>$ g++  helloworld.pb.cc reader.cc -o reader  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>$ ./writer  
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>$ ./reader 
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>$ <span class="m">101</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>$ hello 
 </code></pre></div>
 <h3 id="conpro">Con&amp;Pro<a class="headerlink" href="#conpro" title="Permanent link">&para;</a></h3>
 <ul>
@@ -1135,32 +1179,32 @@ $ hello
 </ul>
 <h2 id="_2">高级用法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <h3 id="message">嵌套message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">syntax</span> <span class="o">=</span> <span class="s">&quot;proto2&quot;</span><span class="p">;</span>
-
-<span class="kn">package</span> <span class="nn">tutorial</span><span class="p">;</span>
-
-<span class="kd">message</span> <span class="nc">Person</span> <span class="p">{</span>
-  <span class="k">required</span> <span class="kt">string</span> <span class="na">name</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="k">required</span> <span class="kt">int32</span> <span class="na">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="k">optional</span> <span class="kt">string</span> <span class="na">email</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-
-  <span class="kd">enum</span> <span class="n">PhoneType</span> <span class="p">{</span>
-    <span class="na">MOBILE</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="na">HOME</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="na">WORK</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="kd">message</span> <span class="nc">PhoneNumber</span> <span class="p">{</span>
-    <span class="k">required</span> <span class="kt">string</span> <span class="na">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">optional</span> <span class="n">PhoneType</span> <span class="na">type</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">[</span><span class="k">default</span> <span class="o">=</span> <span class="n">HOME</span><span class="p">];</span>
-  <span class="p">}</span>
-
-  <span class="k">repeated</span> <span class="n">PhoneNumber</span> <span class="na">phones</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">message</span> <span class="nc">AddressBook</span> <span class="p">{</span>
-  <span class="k">repeated</span> <span class="n">Person</span> <span class="na">people</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;proto2&quot;</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">package</span><span class="w"> </span><span class="nn">tutorial</span><span class="p">;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="k">required</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="kd">enum</span><span class="w"> </span><span class="n">PhoneType</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="na">MOBILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="na">HOME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="na">WORK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="kd">message</span><span class="w"> </span><span class="nc">PhoneNumber</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="k">optional</span><span class="w"> </span><span class="n">PhoneType</span><span class="w"> </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="k">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOME</span><span class="p">];</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">PhoneNumber</span><span class="w"> </span><span class="na">phones</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="kd">message</span><span class="w"> </span><span class="nc">AddressBook</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="k">repeated</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="na">people</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="p">}</span>
 </code></pre></div>
 <ul>
 <li>数据类型包括<code>bool</code>、<code>int32</code>、<code>float</code>、<code>double</code>、<code>string</code>，还可以定义枚举类型<code>enum</code></li>
@@ -1173,197 +1217,197 @@ $ hello
 </li>
 </ul>
 <h4 id="writer">Writer<a class="headerlink" href="#writer" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="s">&quot;addressbook.pb.h&quot;</span>
-<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="c1">// This function fills in a Person message based on user input.</span>
-<span class="n">void</span> <span class="n">PromptForAddress</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="err">*</span> <span class="n">person</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Enter person ID number: &quot;</span><span class="p">;</span>
-  <span class="n">int</span> <span class="n">id</span><span class="p">;</span>
-  <span class="n">cin</span> <span class="p">&gt;&gt;</span> <span class="n">id</span><span class="p">;</span>
-  <span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_id</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-  <span class="n">cin.ignore</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="s">&#39;\n&#39;</span><span class="p">);</span>
-
-  <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Enter name: &quot;</span><span class="p">;</span>
-  <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="err">*</span><span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">mutable_name</span><span class="p">());</span>
-
-  <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Enter email address (blank for none): &quot;</span><span class="p">;</span>
-  <span class="kt">string</span> <span class="n">email</span><span class="p">;</span>
-  <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">email</span><span class="p">);</span>
-  <span class="n">if</span> <span class="p">(</span><span class="err">!</span><span class="n">email.empty</span><span class="p">())</span> <span class="p">{</span>
-    <span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_email</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="n">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Enter a phone number (or leave blank to finish): &quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="n">number</span><span class="p">;</span>
-    <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">number</span><span class="p">);</span>
-    <span class="n">if</span> <span class="p">(</span><span class="n">number.empty</span><span class="p">())</span> <span class="p">{</span>
-      <span class="n">break</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">PhoneNumber</span><span class="err">*</span> <span class="na">phone_number</span> <span class="o">=</span> <span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">add_phones</span><span class="p">();</span>
-    <span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_number</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
-
-    <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Is this a mobile, home, or work phone? &quot;</span><span class="p">;</span>
-    <span class="kt">string</span> <span class="n">type</span><span class="p">;</span>
-    <span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span> <span class="n">type</span><span class="p">);</span>
-    <span class="n">if</span> <span class="p">(</span><span class="na">type</span> <span class="o">==</span> <span class="s">&quot;mobile&quot;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">MOBILE</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">else</span> <span class="n">if</span> <span class="p">(</span><span class="na">type</span> <span class="o">==</span> <span class="s">&quot;home&quot;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">HOME</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">else</span> <span class="n">if</span> <span class="p">(</span><span class="na">type</span> <span class="o">==</span> <span class="s">&quot;work&quot;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">WORK</span><span class="p">);</span>
-    <span class="p">}</span> <span class="n">else</span> <span class="p">{</span>
-      <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Unknown phone type.  Using default.&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Main function:  Reads the entire address book from a file,</span>
-<span class="c1">//   adds one person based on user input, then writes it back out to the same</span>
-<span class="c1">//   file.</span>
-<span class="n">int</span> <span class="n">main</span><span class="p">(</span><span class="n">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="err">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
-  <span class="c1">// Verify that the version of the library that we linked against is</span>
-  <span class="c1">// compatible with the version of the headers we compiled against.</span>
-  <span class="n">GOOGLE_PROTOBUF_VERIFY_VERSION</span><span class="p">;</span>
-
-  <span class="n">if</span> <span class="p">(</span><span class="n">argc</span> <span class="err">!</span><span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cerr</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Usage:  &quot;</span> <span class="p">&lt;&lt;</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">&lt;&lt;</span> <span class="s">&quot; ADDRESS_BOOK_FILE&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span> <span class="n">address_book</span><span class="p">;</span>
-
-  <span class="p">{</span>
-    <span class="c1">// Read the existing address book.</span>
-    <span class="n">fstream</span> <span class="n">input</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="err">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-    <span class="n">if</span> <span class="p">(</span><span class="err">!</span><span class="n">input</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;: File not found.  Creating a new file.&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span> <span class="n">else</span> <span class="n">if</span> <span class="p">(</span><span class="err">!</span><span class="n">address_book.ParseFromIstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">input</span><span class="p">))</span> <span class="p">{</span>
-      <span class="n">cerr</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Failed to parse address book.&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-      <span class="n">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Add an address.</span>
-  <span class="n">PromptForAddress</span><span class="p">(</span><span class="n">address_book.add_people</span><span class="p">());</span>
-
-  <span class="p">{</span>
-    <span class="c1">// Write the new address book back to disk.</span>
-    <span class="n">fstream</span> <span class="n">output</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ios</span><span class="o">::</span><span class="n">out</span> <span class="err">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">trunc</span> <span class="err">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-    <span class="n">if</span> <span class="p">(</span><span class="err">!</span><span class="n">address_book.SerializeToOstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">output</span><span class="p">))</span> <span class="p">{</span>
-      <span class="n">cerr</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Failed to write address book.&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-      <span class="n">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="c1">// Optional:  Delete all global objects allocated by libprotobuf.</span>
-  <span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">ShutdownProtobufLibrary</span><span class="p">();</span>
-
-  <span class="n">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="s">&quot;addressbook.pb.h&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">// This function fills in a Person message based on user input.</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">void</span><span class="w"> </span><span class="n">PromptForAddress</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="err">*</span><span class="w"> </span><span class="n">person</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter person ID number: &quot;</span><span class="p">;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="n">int</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span><span class="n">cin</span><span class="w"> </span><span class="p">&gt;&gt;</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span><span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_id</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span><span class="n">cin.ignore</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;\n&#39;</span><span class="p">);</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter name: &quot;</span><span class="p">;</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">  </span><span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="err">*</span><span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">mutable_name</span><span class="p">());</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter email address (blank for none): &quot;</span><span class="p">;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span><span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">);</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">email.empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_email</span><span class="p">(</span><span class="n">email</span><span class="p">);</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">  </span><span class="n">while</span><span class="w"> </span><span class="p">(</span><span class="kc">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter a phone number (or leave blank to finish): &quot;</span><span class="p">;</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">number</span><span class="p">;</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="p">);</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="n">number.empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">      </span><span class="n">break</span><span class="p">;</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">PhoneNumber</span><span class="err">*</span><span class="w"> </span><span class="na">phone_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person</span><span class="o">-</span><span class="p">&gt;</span><span class="n">add_phones</span><span class="p">();</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="w">    </span><span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_number</span><span class="p">(</span><span class="n">number</span><span class="p">);</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Is this a mobile, home, or work phone? &quot;</span><span class="p">;</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">    </span><span class="n">getline</span><span class="p">(</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;mobile&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">      </span><span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">MOBILE</span><span class="p">);</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;home&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">      </span><span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">HOME</span><span class="p">);</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="na">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;work&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">      </span><span class="n">phone_number</span><span class="o">-</span><span class="p">&gt;</span><span class="n">set_type</span><span class="p">(</span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">WORK</span><span class="p">);</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Unknown phone type.  Using default.&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="p">}</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="c1">// Main function:  Reads the entire address book from a file,</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="c1">//   adds one person based on user input, then writes it back out to the same</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="c1">//   file.</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="n">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">char</span><span class="err">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">  </span><span class="c1">// Verify that the version of the library that we linked against is</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">  </span><span class="c1">// compatible with the version of the headers we compiled against.</span>
+<a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="w">  </span><span class="n">GOOGLE_PROTOBUF_VERIFY_VERSION</span><span class="p">;</span>
+<a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a>
+<a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">  </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="err">!</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">    </span><span class="n">cerr</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Usage:  &quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ADDRESS_BOOK_FILE&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">    </span><span class="n">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a>
+<a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">  </span><span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span><span class="w"> </span><span class="n">address_book</span><span class="p">;</span>
+<a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a>
+<a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">    </span><span class="c1">// Read the existing address book.</span>
+<a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;: File not found.  Creating a new file.&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">else</span><span class="w"> </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">address_book.ParseFromIstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">      </span><span class="n">cerr</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to parse address book.&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a>
+<a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a><span class="w">  </span><span class="c1">// Add an address.</span>
+<a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="w">  </span><span class="n">PromptForAddress</span><span class="p">(</span><span class="n">address_book.add_people</span><span class="p">());</span>
+<a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a>
+<a id="__codelineno-5-80" name="__codelineno-5-80" href="#__codelineno-5-80"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-5-81" name="__codelineno-5-81" href="#__codelineno-5-81"></a><span class="w">    </span><span class="c1">// Write the new address book back to disk.</span>
+<a id="__codelineno-5-82" name="__codelineno-5-82" href="#__codelineno-5-82"></a><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">output</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">out</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">trunc</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<a id="__codelineno-5-83" name="__codelineno-5-83" href="#__codelineno-5-83"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">address_book.SerializeToOstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">output</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-5-84" name="__codelineno-5-84" href="#__codelineno-5-84"></a><span class="w">      </span><span class="n">cerr</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to write address book.&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-5-85" name="__codelineno-5-85" href="#__codelineno-5-85"></a><span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-5-86" name="__codelineno-5-86" href="#__codelineno-5-86"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-5-87" name="__codelineno-5-87" href="#__codelineno-5-87"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-5-88" name="__codelineno-5-88" href="#__codelineno-5-88"></a>
+<a id="__codelineno-5-89" name="__codelineno-5-89" href="#__codelineno-5-89"></a><span class="w">  </span><span class="c1">// Optional:  Delete all global objects allocated by libprotobuf.</span>
+<a id="__codelineno-5-90" name="__codelineno-5-90" href="#__codelineno-5-90"></a><span class="w">  </span><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">ShutdownProtobufLibrary</span><span class="p">();</span>
+<a id="__codelineno-5-91" name="__codelineno-5-91" href="#__codelineno-5-91"></a>
+<a id="__codelineno-5-92" name="__codelineno-5-92" href="#__codelineno-5-92"></a><span class="w">  </span><span class="n">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-5-93" name="__codelineno-5-93" href="#__codelineno-5-93"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="reader">Reader<a class="headerlink" href="#reader" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
-<span class="err">#</span><span class="n">include</span> <span class="s">&quot;addressbook.pb.h&quot;</span>
-<span class="n">using</span> <span class="n">namespace</span> <span class="n">std</span><span class="p">;</span>
-
-<span class="c1">// Iterates though all people in the AddressBook and prints info about them.</span>
-<span class="n">void</span> <span class="n">ListPeople</span><span class="p">(</span><span class="n">const</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span><span class="err">&amp;</span> <span class="n">address_book</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">for</span> <span class="p">(</span><span class="n">int</span> <span class="na">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">address_book.people_size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">const</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="err">&amp;</span> <span class="na">person</span> <span class="o">=</span> <span class="n">address_book.people</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-
-    <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Person ID: &quot;</span> <span class="p">&lt;&lt;</span> <span class="n">person.id</span><span class="p">()</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;  Name: &quot;</span> <span class="p">&lt;&lt;</span> <span class="n">person.name</span><span class="p">()</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">if</span> <span class="p">(</span><span class="n">person.has_email</span><span class="p">())</span> <span class="p">{</span>
-      <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;  E-mail address: &quot;</span> <span class="p">&lt;&lt;</span> <span class="n">person.email</span><span class="p">()</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="n">for</span> <span class="p">(</span><span class="n">int</span> <span class="na">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="p">&lt;</span> <span class="n">person.phones_size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-      <span class="n">const</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">PhoneNumber</span><span class="err">&amp;</span> <span class="na">phone_number</span> <span class="o">=</span> <span class="n">person.phones</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
-
-      <span class="n">switch</span> <span class="p">(</span><span class="n">phone_number.type</span><span class="p">())</span> <span class="p">{</span>
-        <span class="n">case</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">MOBILE</span><span class="o">:</span>
-          <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;  Mobile phone #: &quot;</span><span class="p">;</span>
-          <span class="n">break</span><span class="p">;</span>
-        <span class="n">case</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">HOME</span><span class="o">:</span>
-          <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;  Home phone #: &quot;</span><span class="p">;</span>
-          <span class="n">break</span><span class="p">;</span>
-        <span class="n">case</span> <span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">WORK</span><span class="o">:</span>
-          <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;  Work phone #: &quot;</span><span class="p">;</span>
-          <span class="n">break</span><span class="p">;</span>
-      <span class="p">}</span>
-      <span class="n">cout</span> <span class="p">&lt;&lt;</span> <span class="n">phone_number.number</span><span class="p">()</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1">// Main function:  Reads the entire address book from a file and prints all</span>
-<span class="c1">//   the information inside.</span>
-<span class="n">int</span> <span class="n">main</span><span class="p">(</span><span class="n">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span><span class="err">*</span> <span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
-  <span class="c1">// Verify that the version of the library that we linked against is</span>
-  <span class="c1">// compatible with the version of the headers we compiled against.</span>
-  <span class="n">GOOGLE_PROTOBUF_VERIFY_VERSION</span><span class="p">;</span>
-
-  <span class="n">if</span> <span class="p">(</span><span class="n">argc</span> <span class="err">!</span><span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">cerr</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Usage:  &quot;</span> <span class="p">&lt;&lt;</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">&lt;&lt;</span> <span class="s">&quot; ADDRESS_BOOK_FILE&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-    <span class="n">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-  <span class="p">}</span>
-
-  <span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span> <span class="n">address_book</span><span class="p">;</span>
-
-  <span class="p">{</span>
-    <span class="c1">// Read the existing address book.</span>
-    <span class="n">fstream</span> <span class="n">input</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ios</span><span class="o">::</span><span class="n">in</span> <span class="err">|</span> <span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
-    <span class="n">if</span> <span class="p">(</span><span class="err">!</span><span class="n">address_book.ParseFromIstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">input</span><span class="p">))</span> <span class="p">{</span>
-      <span class="n">cerr</span> <span class="p">&lt;&lt;</span> <span class="s">&quot;Failed to parse address book.&quot;</span> <span class="p">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-      <span class="n">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="n">ListPeople</span><span class="p">(</span><span class="n">address_book</span><span class="p">);</span>
-
-  <span class="c1">// Optional:  Delete all global objects allocated by libprotobuf.</span>
-  <span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">ShutdownProtobufLibrary</span><span class="p">();</span>
-
-  <span class="n">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="n">iostream</span><span class="p">&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="n">fstream</span><span class="p">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="err">#</span><span class="n">include</span><span class="w"> </span><span class="s">&quot;addressbook.pb.h&quot;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">using</span><span class="w"> </span><span class="n">namespace</span><span class="w"> </span><span class="n">std</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1">// Iterates though all people in the AddressBook and prints info about them.</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">void</span><span class="w"> </span><span class="n">ListPeople</span><span class="p">(</span><span class="n">const</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span><span class="err">&amp;</span><span class="w"> </span><span class="n">address_book</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span><span class="n">for</span><span class="w"> </span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="na">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">address_book.people_size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="n">const</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="err">&amp;</span><span class="w"> </span><span class="na">person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">address_book.people</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Person ID: &quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">person.id</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Name: &quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">person.name</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="n">person.has_email</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  E-mail address: &quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">person.email</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span><span class="n">for</span><span class="w"> </span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="na">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="p">&lt;</span><span class="w"> </span><span class="n">person.phones_size</span><span class="p">();</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">      </span><span class="n">const</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">PhoneNumber</span><span class="err">&amp;</span><span class="w"> </span><span class="na">phone_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">person.phones</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">      </span><span class="n">switch</span><span class="w"> </span><span class="p">(</span><span class="n">phone_number.type</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">        </span><span class="n">case</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">MOBILE</span><span class="o">:</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">          </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Mobile phone #: &quot;</span><span class="p">;</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">          </span><span class="n">break</span><span class="p">;</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">        </span><span class="n">case</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">HOME</span><span class="o">:</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">          </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Home phone #: &quot;</span><span class="p">;</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">          </span><span class="n">break</span><span class="p">;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">        </span><span class="n">case</span><span class="w"> </span><span class="n">tutorial</span><span class="o">::</span><span class="n">Person</span><span class="o">::</span><span class="n">WORK</span><span class="o">:</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">          </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;  Work phone #: &quot;</span><span class="p">;</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="w">          </span><span class="n">break</span><span class="p">;</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="w">      </span><span class="n">cout</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">phone_number.number</span><span class="p">()</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="p">}</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="c1">// Main function:  Reads the entire address book from a file and prints all</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="c1">//   the information inside.</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a><span class="n">int</span><span class="w"> </span><span class="n">main</span><span class="p">(</span><span class="n">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">char</span><span class="err">*</span><span class="w"> </span><span class="n">argv</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a><span class="w">  </span><span class="c1">// Verify that the version of the library that we linked against is</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a><span class="w">  </span><span class="c1">// compatible with the version of the headers we compiled against.</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a><span class="w">  </span><span class="n">GOOGLE_PROTOBUF_VERIFY_VERSION</span><span class="p">;</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a><span class="w">  </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="err">!</span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a><span class="w">    </span><span class="n">cerr</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Usage:  &quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ADDRESS_BOOK_FILE&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="w">    </span><span class="n">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a><span class="w">  </span><span class="n">tutorial</span><span class="o">::</span><span class="n">AddressBook</span><span class="w"> </span><span class="n">address_book</span><span class="p">;</span>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a><span class="w">    </span><span class="c1">// Read the existing address book.</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="w">    </span><span class="n">fstream</span><span class="w"> </span><span class="n">input</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">in</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="w">    </span><span class="n">if</span><span class="w"> </span><span class="p">(</span><span class="err">!</span><span class="n">address_book.ParseFromIstream</span><span class="p">(</span><span class="err">&amp;</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-55" name="__codelineno-6-55" href="#__codelineno-6-55"></a><span class="w">      </span><span class="n">cerr</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Failed to parse address book.&quot;</span><span class="w"> </span><span class="p">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-6-56" name="__codelineno-6-56" href="#__codelineno-6-56"></a><span class="w">      </span><span class="n">return</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-6-57" name="__codelineno-6-57" href="#__codelineno-6-57"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-58" name="__codelineno-6-58" href="#__codelineno-6-58"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-6-59" name="__codelineno-6-59" href="#__codelineno-6-59"></a>
+<a id="__codelineno-6-60" name="__codelineno-6-60" href="#__codelineno-6-60"></a><span class="w">  </span><span class="n">ListPeople</span><span class="p">(</span><span class="n">address_book</span><span class="p">);</span>
+<a id="__codelineno-6-61" name="__codelineno-6-61" href="#__codelineno-6-61"></a>
+<a id="__codelineno-6-62" name="__codelineno-6-62" href="#__codelineno-6-62"></a><span class="w">  </span><span class="c1">// Optional:  Delete all global objects allocated by libprotobuf.</span>
+<a id="__codelineno-6-63" name="__codelineno-6-63" href="#__codelineno-6-63"></a><span class="w">  </span><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">ShutdownProtobufLibrary</span><span class="p">();</span>
+<a id="__codelineno-6-64" name="__codelineno-6-64" href="#__codelineno-6-64"></a>
+<a id="__codelineno-6-65" name="__codelineno-6-65" href="#__codelineno-6-65"></a><span class="w">  </span><span class="n">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-6-66" name="__codelineno-6-66" href="#__codelineno-6-66"></a><span class="p">}</span>
 </code></pre></div>
 <h4 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$ protoc -I<span class="o">=</span>./ --cpp_out<span class="o">=</span>./ ./addressbook.proto 
-$ g++ addressbook.pb.cc reader.cc -o reader  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
-$ g++ addressbook.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
-$ ./writer addressbook
-addressbook: File not found.  Creating a new file.
-Enter person ID number: <span class="m">123456</span>  
-Enter name: XiaoXu
-Enter email address <span class="o">(</span>blank <span class="k">for</span> none<span class="o">)</span>: LooperXX@outlook.com
-Enter a phone number <span class="o">(</span>or leave blank to finish<span class="o">)</span>: <span class="m">77777777777</span>
-Is this a mobile, home, or work phone? mobile
-Enter a phone number <span class="o">(</span>or leave blank to finish<span class="o">)</span>: 
-
-$ ./reader addressbook
-Person ID: <span class="m">123456</span>
-  Name: XiaoXu
-  E-mail address: LooperXX@outlook.com
-  Mobile phone <span class="c1">#: 77777777777</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$ protoc -I<span class="o">=</span>./ --cpp_out<span class="o">=</span>./ ./addressbook.proto 
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>$ g++ addressbook.pb.cc reader.cc -o reader  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>$ g++ addressbook.pb.cc writer.cc -o writer  <span class="sb">`</span>pkg-config --cflags --libs protobuf<span class="sb">`</span> -lpthread  
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>$ ./writer addressbook
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>addressbook: File not found.  Creating a new file.
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>Enter person ID number: <span class="m">123456</span>  
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>Enter name: XiaoXu
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>Enter email address <span class="o">(</span>blank <span class="k">for</span> none<span class="o">)</span>: LooperXX@outlook.com
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>Enter a phone number <span class="o">(</span>or leave blank to finish<span class="o">)</span>: <span class="m">77777777777</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>Is this a mobile, home, or work phone? mobile
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>Enter a phone number <span class="o">(</span>or leave blank to finish<span class="o">)</span>: 
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>$ ./reader addressbook
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>Person ID: <span class="m">123456</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  Name: XiaoXu
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>  E-mail address: LooperXX@outlook.com
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>  Mobile phone <span class="c1">#: 77777777777</span>
 </code></pre></div>
 <h3 id="import">Import<a class="headerlink" href="#import" title="Permanent link">&para;</a></h3>
 <blockquote>
 <p>在一个 .proto 文件中，还可以用 Import 关键字引入在其他 .proto 文件中定义的消息，这可以称做 Import Message，或者 Dependency Message。
 例中 ,common.info_header定义在common.header包内。
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="n">common.header</span><span class="p">;</span> 
-
-<span class="kd">message</span> <span class="nc">youMsg</span><span class="p">{</span> 
- <span class="k">required</span> <span class="n">common.info_header</span> <span class="na">header</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> 
- <span class="k">required</span> <span class="kt">string</span> <span class="na">youPrivateData</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> 
-<span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">import</span><span class="w"> </span><span class="n">common.header</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="kd">message</span><span class="w"> </span><span class="nc">youMsg</span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="n">common.info_header</span><span class="w"> </span><span class="na">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w"> </span><span class="k">required</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">youPrivateData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="p">}</span>
 </code></pre></div></p>
 </blockquote>
 <h3 id="_3">动态编译<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -1371,30 +1415,43 @@ Person ID: <span class="m">123456</span>
 <p>Protobuf 提供了 <code>google::protobuf::compiler</code> 包来完成动态编译的功能。主要的类叫做 <code>importer</code>，定义在 <code>importer.h</code> 中。使用 <code>Importer</code> 非常简单，下图展示了与 <code>Import</code> 和其它几个重要的类的关系。</p>
 <p><img alt="import" src="../imgs/import.gif" /></p>
 <p>Import 类对象中包含三个主要的对象，分别为处理错误的 <code>MultiFileErrorCollector</code> 类，定义 <code>.proto</code> 文件源目录的 <code>SourceTree</code> 类。</p>
-<div class="highlight"><pre><span></span><code><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">MultiFileErrorCollector</span><span class="w"> </span><span class="n">errorCollector</span><span class="err">；</span><span class="w"></span>
-<span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">DiskSourceTree</span><span class="w"> </span><span class="n">sourceTree</span><span class="p">;</span><span class="w"> </span>
-<span class="w"> </span>
-<span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">Importer</span><span class="w"> </span><span class="nf">importer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sourceTree</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCollector</span><span class="p">);</span><span class="w"> </span>
-<span class="n">sourceTree</span><span class="p">.</span><span class="n">MapPath</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">protosrc</span><span class="p">);</span><span class="w"> </span>
-<span class="w"> </span>
-<span class="n">importer</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="s">&quot;lm.helloworld.proto&quot;</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">MultiFileErrorCollector</span><span class="w"> </span><span class="n">errorCollector</span><span class="err">；</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">DiskSourceTree</span><span class="w"> </span><span class="n">sourceTree</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w"> </span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="n">google</span><span class="o">::</span><span class="n">protobuf</span><span class="o">::</span><span class="n">compiler</span><span class="o">::</span><span class="n">Importer</span><span class="w"> </span><span class="nf">importer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sourceTree</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">errorCollector</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">sourceTree</span><span class="p">.</span><span class="n">MapPath</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">protosrc</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w"> </span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="n">importer</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="s">&quot;lm.helloworld.proto&quot;</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>首先构造一个 importer 对象。构造函数需要两个入口参数，一个是 <code>sourceTree</code> 对象，该对象指定了存放 <code>.proto</code> 文件的源目录。第二个参数是一个 <code>error collector</code> 对象，该对象有一个 <code>AddError</code> 方法，用来处理解析 <code>.proto</code> 文件时遇到的语法错误。之后，需要动态编译一个 <code>.proto</code> 文件时，只需调用 <code>importer</code> 对象的 <code>import</code>方法。非常简单。</p>
 <p>如何使用动态编译后的 <code>Message</code> 呢？<code>Package google::protobuf::compiler</code> 中提供了以下几个类，用来表示一个 <code>.proto</code> 文件中定义的 <code>message</code>，以及 <code>Message</code> 中的 <code>field</code>，如图所示。</p>
 <p><img alt="各个Compiler类之间的关系" src="../imgs/image003.jpg" /></p>
 <p>类 <code>FileDescriptor</code> 表示一个编译后的 <code>.proto</code> 文件；类 <code>Descriptor</code> 对应该文件中的一个 <code>Message</code>；类 <code>FieldDescriptor</code> 描述一个 <code>Message</code> 中的一个具体 <code>Field</code>。</p>
 <p>比如编译完 <code>lm.helloworld.proto</code> 之后，可以通过如下代码得到 <code>lm.helloworld.id</code>的定义：</p>
-<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">protobuf</span><span class="o">::</span><span class="n">Descriptor</span><span class="w"> </span><span class="o">*</span><span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">   </span><span class="n">importer_</span><span class="p">.</span><span class="n">pool</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindMessageTypeByName</span><span class="p">(</span><span class="err">“</span><span class="n">lm</span><span class="p">.</span><span class="n">helloworld</span><span class="err">”</span><span class="p">);</span><span class="w"> </span>
-<span class="k">const</span><span class="w"> </span><span class="n">protobuf</span><span class="o">::</span><span class="n">FieldDescriptor</span><span class="o">*</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
-<span class="w">   </span><span class="n">desc</span><span class="o">-&gt;</span><span class="n">pool</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindFileByName</span><span class="w"> </span><span class="p">(</span><span class="err">“</span><span class="n">id</span><span class="err">”</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">const</span><span class="w"> </span><span class="n">protobuf</span><span class="o">::</span><span class="n">Descriptor</span><span class="w"> </span><span class="o">*</span><span class="n">desc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">   </span><span class="n">importer_</span><span class="p">.</span><span class="n">pool</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindMessageTypeByName</span><span class="p">(</span><span class="err">“</span><span class="n">lm</span><span class="p">.</span><span class="n">helloworld</span><span class="err">”</span><span class="p">);</span><span class="w"> </span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="k">const</span><span class="w"> </span><span class="n">protobuf</span><span class="o">::</span><span class="n">FieldDescriptor</span><span class="o">*</span><span class="w"> </span><span class="n">field</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">   </span><span class="n">desc</span><span class="o">-&gt;</span><span class="n">pool</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">FindFileByName</span><span class="w"> </span><span class="p">(</span><span class="err">“</span><span class="n">id</span><span class="err">”</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
 <p>通过 <code>Descriptor</code>，<code>FieldDescriptor</code> 的各种方法和属性，应用程序可以获得各种关于 <code>Message</code> 定义的信息。比如通过 <code>field-&gt;name()</code> 得到<code>field</code> 的名字。这样，就可以使用一个动态定义的消息了。</p>
 
-              
-            </article>
-          </div>
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
         
       </main>
       
@@ -1405,7 +1462,7 @@ Person ID: <span class="m">123456</span>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2019 - 2020 Xiao Xu
+      Copyright &copy; 2019 - 2022; Xiao Xu
     </div>
   
   
@@ -1424,7 +1481,16 @@ Person ID: <span class="m">123456</span>
       
     
     <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/looperxx_nlp" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
     
@@ -1433,7 +1499,7 @@ Person ID: <span class="m">123456</span>
       
     
     <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
 </div>
@@ -1446,14 +1512,19 @@ Person ID: <span class="m">123456</span>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="../js/baidu-tongji.js"></script>
+      
+        <script src="../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

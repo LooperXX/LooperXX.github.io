@@ -6,42 +6,60 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="LooperXX's homepage">
+        <meta name="description" content="Xiao Xu - Homepage">
       
       
-        <meta name="author" content="Looper - Xiao Xu">
+        <meta name="author" content="Xiao Xu">
       
+      
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-08-Machine%20Translation%2C%20Sequence-to-sequence%20and%20Attention/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>08 Machine Translation, Sequence-to-sequence and Attention - Science is interesting.</title>
+        <title>08 Machine Translation, Sequence-to-sequence and Attention - The sun also rises.</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
 
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-CV5JZHXZY8"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-CV5JZHXZY8",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-CV5JZHXZY8",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
     
     
   </head>
@@ -49,12 +67,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,22 +96,24 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Science is interesting." class="md-header__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-header__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Science is interesting.
+            The sun also rises.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,10 +126,34 @@
       </div>
     </div>
     
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -113,15 +161,21 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -139,10 +193,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -152,14 +206,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -184,18 +232,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
       <a href="../Attention/" class="md-tabs__link">
         Notes
       </a>
     </li>
-  
-
   
 
       
@@ -210,8 +251,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link md-tabs__link--active">
-        Notes on CS224n
+      <a href="../CS224n-2019-00-Info/" class="md-tabs__link md-tabs__link--active">
+        Chinese Notes on CS224n-2019
       </a>
     </li>
   
@@ -227,7 +268,7 @@
   
     <li class="md-tabs__item">
       <a href="../MkDocs_demo/" class="md-tabs__link">
-        For MkDocs
+        MkDocs
       </a>
     </li>
   
@@ -236,7 +277,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -254,20 +301,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-nav__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Science is interesting.
+    The sun also rises.
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -307,6 +354,20 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_2">
           Notes
@@ -317,32 +378,6 @@
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Notes
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1">
-          Theory
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Theory" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          Theory
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -374,39 +409,6 @@
 
             
           
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Code
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Code" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Code
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
             
               
   
@@ -420,39 +422,6 @@
   
 
             
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3">
-          Book
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Book" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Book
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -501,13 +470,6 @@
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -526,16 +488,62 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_3">
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Notes on CS224n" data-md-level="1">
+      <nav class="md-nav" aria-label="Chinese Notes on CS224n-2019" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -545,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      <a href="../CS224n-2019-00-Info/" class="md-nav__link">
         CS224n-2019 Introduction
       </a>
     </li>
@@ -1001,16 +1009,22 @@
       
       
       
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_4">
-          For MkDocs
+          MkDocs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <nav class="md-nav" aria-label="MkDocs" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          For MkDocs
+          MkDocs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1183,13 +1197,16 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention.md" title="编辑此页" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-08-Machine Translation, Sequence-to-sequence and Attention.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
 
 
   <h1>08 Machine Translation, Sequence-to-sequence and Attention</h1>
@@ -1214,43 +1231,33 @@
 <p><strong>1950s: Early Machine Translation</strong></p>
 <p>机器翻译研究始于20世纪50年代初。</p>
 <ul>
-<li>俄语 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 英语(冷战的推动)</li>
+<li>俄语 <span class="arithmatex">\(\to\)</span> 英语(冷战的推动)</li>
 <li>系统主要是基于规则的，使用双语词典来讲俄语单词映射为对应的英语部分</li>
 </ul>
 <p><strong>1990s-2010s: Statistical Machine Translation</strong></p>
 <ul>
 <li><u>核心想法</u>：从数据中学习概率模型。</li>
-<li>假设我们正在翻译法语 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 英语。</li>
+<li>假设我们正在翻译法语 <span class="arithmatex">\(\to\)</span> 英语。</li>
 <li>我们想要找到最好的英语句子 y ，给定法语句子 x </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 argmax_yP(y|x)
-</div>
-<script type="math/tex; mode=display">
-argmax_yP(y|x)
-</script>
-</div>
+\]</div>
 <ul>
 <li>使用Bayes规则将其分解为两个组件从而分别学习</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 argmax_yP(x|y)P(y)
-</div>
-<script type="math/tex; mode=display">
-argmax_yP(x|y)P(y)
-</script>
-</div>
+\]</div>
 <ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">P(x|y)</span><script type="math/tex">P(x|y)</script></span> <ul>
+<li><span class="arithmatex">\(P(x|y)\)</span> <ul>
 <li>翻译模型</li>
 <li>分析单词和短语应该如何翻译(逼真)</li>
 <li>从并行数据中学习</li>
 </ul>
 </li>
 <li>
-<p><span class="arithmatex"><span class="MathJax_Preview">P(y)</span><script type="math/tex">P(y)</script></span> </p>
+<p><span class="arithmatex">\(P(y)\)</span> </p>
 <ul>
 <li>语言模型</li>
 <li>模型如何写出好英语(流利)</li>
@@ -1258,25 +1265,20 @@ argmax_yP(x|y)P(y)
 </ul>
 </li>
 <li>
-<p><u>问题</u>：如何学习翻译模型 <span class="arithmatex"><span class="MathJax_Preview">P(x|y)</span><script type="math/tex">P(x|y)</script></span></p>
+<p><u>问题</u>：如何学习翻译模型 <span class="arithmatex">\(P(x|y)\)</span></p>
 </li>
 <li>首先，需要大量的并行数据(例如成对的人工翻译的法语/英语句子)</li>
 </ul>
 <p><strong>Learning alignment for SMT</strong></p>
 <ul>
-<li><u>问题</u>：如何从并行语料库中学习翻译模型 <span class="arithmatex"><span class="MathJax_Preview">P(x|y)</span><script type="math/tex">P(x|y)</script></span></li>
+<li><u>问题</u>：如何从并行语料库中学习翻译模型 <span class="arithmatex">\(P(x|y)\)</span></li>
 <li>进一步分解:我们实际上想要考虑</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 P(x,a|y)
-</div>
-<script type="math/tex; mode=display">
-P(x,a|y)
-</script>
-</div>
+\]</div>
 <ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 是对齐，即法语句子 x 和英语句子 y 之间的单词级对应</li>
+<li><span class="arithmatex">\(a\)</span> 是对齐，即法语句子 x 和英语句子 y 之间的单词级对应</li>
 </ul>
 <p><strong>What is alignment?</strong></p>
 <p>对齐是翻译句子中特定词语之间的对应关系。</p>
@@ -1306,7 +1308,7 @@ P(x,a|y)
 <p><strong>Decoding for SMT</strong></p>
 <p><strong><u>问题</u></strong> ：如何计算argmax</p>
 <ul>
-<li>我们可以列举所有可能的 y 并计算概率？<span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 太贵了</li>
+<li>我们可以列举所有可能的 y 并计算概率？<span class="arithmatex">\(\to\)</span> 太贵了</li>
 <li>使用启发式搜索算法搜索最佳翻译，丢弃概率过低的假设</li>
 <li>这个过程称为解码</li>
 </ul>
@@ -1349,7 +1351,7 @@ P(x,a|y)
 </ul>
 </li>
 <li>解码器RNN是一种以编码为条件生成目标句的语言模型</li>
-<li>注意：此图显示了测试时行为 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 解码器输出作为下一步的输入</li>
+<li>注意：此图显示了测试时行为 <span class="arithmatex">\(\to\)</span> 解码器输出作为下一步的输入</li>
 </ul>
 <p><strong>Sequence-to-sequence is versatile!</strong></p>
 <ul>
@@ -1357,10 +1359,10 @@ P(x,a|y)
 <li>
 <p>许多NLP任务可以按照顺序进行表达</p>
 <ul>
-<li>摘要(长文本 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 短文本)</li>
-<li>对话(前一句话 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 下一句话)</li>
-<li>解析(输入文本 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 输出解析为序列)</li>
-<li>代码生成(自然语言 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> Python代码)</li>
+<li>摘要(长文本 <span class="arithmatex">\(\to\)</span> 短文本)</li>
+<li>对话(前一句话 <span class="arithmatex">\(\to\)</span> 下一句话)</li>
+<li>解析(输入文本 <span class="arithmatex">\(\to\)</span> 输出解析为序列)</li>
+<li>代码生成(自然语言 <span class="arithmatex">\(\to\)</span> Python代码)</li>
 </ul>
 </li>
 <li>
@@ -1370,16 +1372,11 @@ P(x,a|y)
 <li>有条件的，因为它的预测也取决于源句 x</li>
 </ul>
 </li>
-<li>NMT直接计算 <span class="arithmatex"><span class="MathJax_Preview">P(y|x)</span><script type="math/tex">P(y|x)</script></span></li>
+<li>NMT直接计算 <span class="arithmatex">\(P(y|x)\)</span></li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y_{1}, y_{2}, x\right) \ldots P\left(y_{T} | y_{1}, \ldots, y_{T-1}, x\right)
-</div>
-<script type="math/tex; mode=display">
-P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y_{1}, y_{2}, x\right) \ldots P\left(y_{T} | y_{1}, \ldots, y_{T-1}, x\right)
-</script>
-</div>
+\]</div>
 <ul>
 <li>上式中最后一项为，给定到目前为止的目标词和源句 x ，下一个目标词的概率</li>
 <li><strong><u>问题</u></strong> ：如何培训NMT系统？</li>
@@ -1414,8 +1411,8 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 <li>
 <p>我们可以尝试计算所有可能的序列 y </p>
 <ul>
-<li>这意味着在解码器的每一步 t ，我们跟踪 <span class="arithmatex"><span class="MathJax_Preview">V^t</span><script type="math/tex">V^t</script></span> 个可能的部分翻译，其中 <span class="arithmatex"><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 是 vocab 大小</li>
-<li>这种 <span class="arithmatex"><span class="MathJax_Preview">O(V^T)</span><script type="math/tex">O(V^T)</script></span> 的复杂性太昂贵了！</li>
+<li>这意味着在解码器的每一步 t ，我们跟踪 <span class="arithmatex">\(V^t\)</span> 个可能的部分翻译，其中 <span class="arithmatex">\(V\)</span> 是 vocab 大小</li>
+<li>这种 <span class="arithmatex">\(O(V^T)\)</span> 的复杂性太昂贵了！</li>
 </ul>
 </li>
 </ul>
@@ -1426,16 +1423,11 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 </ul>
 </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\log P_{\mathrm{LM}}\left(y_{1}, \ldots, y_{t} | x\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</div>
-<script type="math/tex; mode=display">
-\operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\log P_{\mathrm{LM}}\left(y_{1}, \ldots, y_{t} | x\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</script>
-</div>
+\]</div>
 <ul>
-<li>假设 <span class="arithmatex"><span class="MathJax_Preview">y_{1}, \dots, y_{t}</span><script type="math/tex">y_{1}, \dots, y_{t}</script></span> 有一个分数，即它的对数概率<ul>
+<li>假设 <span class="arithmatex">\(y_{1}, \dots, y_{t}\)</span> 有一个分数，即它的对数概率<ul>
 <li>分数都是负数，分数越高越好</li>
 <li>我们寻找得分较高的假设，跟踪每一步的 top k 个部分翻译</li>
 </ul>
@@ -1445,22 +1437,22 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 </ul>
 <p><strong>Beam search decoding: example</strong> </p>
 <p>Beam size = k = 2</p>
-<p>蓝色的数字是 <span class="arithmatex"><span class="MathJax_Preview">\operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)</span><script type="math/tex">\operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)</script></span> 的结果</p>
+<p>蓝色的数字是 <span class="arithmatex">\(\operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)\)</span> 的结果</p>
 <ul>
 <li>计算下一个单词的概率分布</li>
 <li>取前k个单词并计算分数</li>
 <li>对于每一次的 k 个假设，找出最前面的 k 个单词并计算分数</li>
-<li>在 <span class="arithmatex"><span class="MathJax_Preview">k^2</span><script type="math/tex">k^2</script></span> 的假设中，保留 k 个最高的分值，如 t = 2 时，保留分数最高的 hit 和 was</li>
+<li>在 <span class="arithmatex">\(k^2\)</span> 的假设中，保留 k 个最高的分值，如 t = 2 时，保留分数最高的 hit 和 was</li>
 </ul>
 <p><img alt="1561087894142" src="../imgs/1561087894142.png" /></p>
 <p><strong>Beam search decoding: stopping criterion</strong></p>
 <ul>
-<li>在贪心解码中，我们通常解码到模型产生一个 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;END&gt;}</span><script type="math/tex">\text{<END>}</script></span> 令牌<ul>
-<li>例如:<span class="arithmatex"><span class="MathJax_Preview">\text{&lt;START&gt;}</span><script type="math/tex">\text{<START>}</script></span> he hit me with a pie <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;END&gt;}</span><script type="math/tex">\text{<END>}</script></span></li>
+<li>在贪心解码中，我们通常解码到模型产生一个 <span class="arithmatex">\(\text{&lt;END&gt;}\)</span> 令牌<ul>
+<li>例如:<span class="arithmatex">\(\text{&lt;START&gt;}\)</span> he hit me with a pie <span class="arithmatex">\(\text{&lt;END&gt;}\)</span></li>
 </ul>
 </li>
-<li>在 Beam Search 解码中，不同的假设可能在不同的时间步长上产生 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;END&gt;}</span><script type="math/tex">\text{<END>}</script></span> 令牌<ul>
-<li>当一个假设生成了 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;END&gt;}</span><script type="math/tex">\text{<END>}</script></span> 令牌，该假设完成</li>
+<li>在 Beam Search 解码中，不同的假设可能在不同的时间步长上产生 <span class="arithmatex">\(\text{&lt;END&gt;}\)</span> 令牌<ul>
+<li>当一个假设生成了 <span class="arithmatex">\(\text{&lt;END&gt;}\)</span> 令牌，该假设完成</li>
 <li>把它放在一边，通过 Beam Search 继续探索其他假设</li>
 </ul>
 </li>
@@ -1474,28 +1466,18 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 <ul>
 <li>我们有完整的假设列表</li>
 <li>如何选择得分最高的？</li>
-<li>我们清单上的每个假设 <span class="arithmatex"><span class="MathJax_Preview">y_{1}, \dots, y_{t}</span><script type="math/tex">y_{1}, \dots, y_{t}</script></span> 都有一个分数</li>
+<li>我们清单上的每个假设 <span class="arithmatex">\(y_{1}, \dots, y_{t}\)</span> 都有一个分数</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\log P_{\mathrm{LM}}\left(y_{1}, \ldots, y_{t} | x\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</div>
-<script type="math/tex; mode=display">
-\operatorname{score}\left(y_{1}, \ldots, y_{t}\right)=\log P_{\mathrm{LM}}\left(y_{1}, \ldots, y_{t} | x\right)=\sum_{i=1}^{t} \log P_{\operatorname{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</script>
-</div>
+\]</div>
 <ul>
 <li><u>问题在于</u> ：较长的假设得分较低</li>
 <li><u>修正</u> ：按长度标准化。用下式来选择top one</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \frac{1}{t} \sum_{i=1}^{t} \log P_{\mathrm{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</div>
-<script type="math/tex; mode=display">
-\frac{1}{t} \sum_{i=1}^{t} \log P_{\mathrm{LM}}\left(y_{i} | y_{1}, \ldots, y_{i-1}, x\right)
-</script>
-</div>
+\]</div>
 <p><strong>Advantages of NMT</strong></p>
 <p>与SMT相比，NMT有很多优点</p>
 <ul>
@@ -1602,7 +1584,7 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 </ul>
 <p><img alt="1561104190887" src="../imgs/1561104190887.png" /></p>
 <ul>
-<li>将解码器部分的第一个token <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;START&gt;}</span><script type="math/tex">\text{<START>}</script></span> 与源语句中的每一个时间步的隐藏状态进行 Dot Product 得到每一时间步的分数</li>
+<li>将解码器部分的第一个token <span class="arithmatex">\(\text{&lt;START&gt;}\)</span> 与源语句中的每一个时间步的隐藏状态进行 Dot Product 得到每一时间步的分数</li>
 <li>通过softmax将分数转化为概率分布<ul>
 <li>在这个解码器时间步长上，我们主要关注第一个编码器隐藏状态(“he”)</li>
 </ul>
@@ -1615,7 +1597,7 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 </ul>
 <p><img alt="1561104403007" src="../imgs/1561104403007.png" /></p>
 <ul>
-<li>连接的 注意力输出 与 解码器隐藏状态 ，然后用来计算 <span class="arithmatex"><span class="MathJax_Preview">\hat y_1</span><script type="math/tex">\hat y_1</script></span></li>
+<li>连接的 注意力输出 与 解码器隐藏状态 ，然后用来计算 <span class="arithmatex">\(\hat y_1\)</span></li>
 </ul>
 <p><img alt="1561104507830" src="../imgs/1561104507830.png" /></p>
 <ul>
@@ -1624,51 +1606,31 @@ P(y | x)=P\left(y_{1} | x\right) P\left(y_{2} | y_{1}, x\right) P\left(y_{3} | y
 <p><img alt="1561104538792" src="../imgs/1561104538792.png" /></p>
 <p><strong>Attention: in equations</strong></p>
 <ul>
-<li>我们有编码器隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">h_{1}, \ldots, h_{N} \in \mathbb{R}^{h}</span><script type="math/tex">h_{1}, \ldots, h_{N} \in \mathbb{R}^{h}</script></span></li>
-<li>在时间步 t 上，我们有解码器隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">s_{t} \in \mathbb{R}^{h}</span><script type="math/tex">s_{t} \in \mathbb{R}^{h}</script></span></li>
+<li>我们有编码器隐藏状态 <span class="arithmatex">\(h_{1}, \ldots, h_{N} \in \mathbb{R}^{h}\)</span></li>
+<li>在时间步 t 上，我们有解码器隐藏状态 <span class="arithmatex">\(s_{t} \in \mathbb{R}^{h}\)</span></li>
 <li>我们得到这一步的注意分数</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsymbol{h}_{N}\right] \in \mathbb{R}^{N}
-</div>
-<script type="math/tex; mode=display">
-e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsymbol{h}_{N}\right] \in \mathbb{R}^{N}
-</script>
-</div>
+\]</div>
 <ul>
-<li>我们使用softmax得到这一步的注意分布 <span class="arithmatex"><span class="MathJax_Preview">\alpha^{t}</span><script type="math/tex">\alpha^{t}</script></span> (这是一个概率分布，和为1)</li>
+<li>我们使用softmax得到这一步的注意分布 <span class="arithmatex">\(\alpha^{t}\)</span> (这是一个概率分布，和为1)</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \alpha^{t}=\operatorname{softmax}\left(e^{t}\right) \in \mathbb{R}^{N}
-</div>
-<script type="math/tex; mode=display">
-\alpha^{t}=\operatorname{softmax}\left(e^{t}\right) \in \mathbb{R}^{N}
-</script>
-</div>
+\]</div>
 <ul>
-<li>我们使用 <span class="arithmatex"><span class="MathJax_Preview">\alpha^{t}</span><script type="math/tex">\alpha^{t}</script></span> 来获得编码器隐藏状态的加权和，得到注意力输出 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{a}_{t}</span><script type="math/tex">\boldsymbol{a}_{t}</script></span></li>
+<li>我们使用 <span class="arithmatex">\(\alpha^{t}\)</span> 来获得编码器隐藏状态的加权和，得到注意力输出 <span class="arithmatex">\(\boldsymbol{a}_{t}\)</span></li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \boldsymbol{a}_{t}=\sum_{i=1}^{N} \alpha_{i}^{t} \boldsymbol{h}_{i} \in \mathbb{R}^{h}
-</div>
-<script type="math/tex; mode=display">
-\boldsymbol{a}_{t}=\sum_{i=1}^{N} \alpha_{i}^{t} \boldsymbol{h}_{i} \in \mathbb{R}^{h}
-</script>
-</div>
+\]</div>
 <ul>
-<li>最后，我们将注意输出 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{a}_{t}</span><script type="math/tex">\boldsymbol{a}_{t}</script></span> 与解码器隐藏状态连接起来，并按照非注意seq2seq模型继续进行</li>
+<li>最后，我们将注意输出 <span class="arithmatex">\(\boldsymbol{a}_{t}\)</span> 与解码器隐藏状态连接起来，并按照非注意seq2seq模型继续进行</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \left[\boldsymbol{a}_{t} ; \boldsymbol{s}_{t}\right] \in \mathbb{R}^{2 h}
-</div>
-<script type="math/tex; mode=display">
-\left[\boldsymbol{a}_{t} ; \boldsymbol{s}_{t}\right] \in \mathbb{R}^{2 h}
-</script>
-</div>
+\]</div>
 <p><strong>Attention is great</strong></p>
 <ul>
 <li>注意力显著提高了NMT性能<ul>
@@ -1714,56 +1676,46 @@ e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsy
 <p><strong>There are several attention variants</strong></p>
 <ul>
 <li>
-<p>我们有一些值 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</span><script type="math/tex">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</script></span> 和一个查询 <span class="arithmatex"><span class="MathJax_Preview">s \in \mathbb{R}^{d_{2}}</span><script type="math/tex">s \in \mathbb{R}^{d_{2}}</script></span></p>
+<p>我们有一些值 <span class="arithmatex">\(\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}\)</span> 和一个查询 <span class="arithmatex">\(s \in \mathbb{R}^{d_{2}}\)</span></p>
 </li>
 <li>
 <p>注意力总是包括</p>
 <ol>
 <li>
-<p>计算注意力得分 <span class="arithmatex"><span class="MathJax_Preview">e \in \mathbb{R}^{N}</span><script type="math/tex">e \in \mathbb{R}^{N}</script></span> （很多种计算方式）</p>
+<p>计算注意力得分 <span class="arithmatex">\(e \in \mathbb{R}^{N}\)</span> （很多种计算方式）</p>
 </li>
 <li>
-<p>采取softmax来获得注意力分布 <span class="arithmatex"><span class="MathJax_Preview">\alpha</span><script type="math/tex">\alpha</script></span></p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>采取softmax来获得注意力分布 <span class="arithmatex">\(\alpha\)</span></p>
+<div class="arithmatex">\[
 \alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
-</div>
-<script type="math/tex; mode=display">
-\alpha=\operatorname{softmax}(\boldsymbol{e}) \in \mathbb{R}^{N}
-</script>
-</div>
+\]</div>
 </li>
 <li>
-<p>使用注意力分布对值进行加权求和：从而得到注意输出 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{a}</span><script type="math/tex">\boldsymbol{a}</script></span> (有时称为上下文向量)</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>使用注意力分布对值进行加权求和：从而得到注意输出 <span class="arithmatex">\(\boldsymbol{a}\)</span> (有时称为上下文向量)</p>
+<div class="arithmatex">\[
 \boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}_{i} \in \mathbb{R}^{d_{1}}
-</div>
-<script type="math/tex; mode=display">
-\boldsymbol{a}=\sum_{i=1}^{N} \alpha_{i} \boldsymbol{h}_{i} \in \mathbb{R}^{d_{1}}
-</script>
-</div>
+\]</div>
 </li>
 </ol>
 </li>
 </ul>
 <p><strong>Attention variants</strong></p>
-<p>有几种方法可以从 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</span><script type="math/tex">\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}</script></span> 计算 <span class="arithmatex"><span class="MathJax_Preview">e \in \mathbb{R}^{N}</span><script type="math/tex">e \in \mathbb{R}^{N}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</span><script type="math/tex">\boldsymbol{s} \in \mathbb{R}^{d_{2}}</script></span> </p>
+<p>有几种方法可以从 <span class="arithmatex">\(\boldsymbol{h}_{1}, \ldots, \boldsymbol{h}_{N} \in \mathbb{R}^{d_{1}}\)</span> 计算 <span class="arithmatex">\(e \in \mathbb{R}^{N}\)</span> 和 <span class="arithmatex">\(\boldsymbol{s} \in \mathbb{R}^{d_{2}}\)</span> </p>
 <ul>
-<li>基本的点乘注意力 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}</span><script type="math/tex">\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}</script></span><ul>
-<li>注意：这里假设 <span class="arithmatex"><span class="MathJax_Preview">d_1 = d_2</span><script type="math/tex">d_1 = d_2</script></span></li>
+<li>基本的点乘注意力 <span class="arithmatex">\(\boldsymbol{e}_{i}=\boldsymbol{s}^{T} \boldsymbol{h}_{i} \in \mathbb{R}\)</span><ul>
+<li>注意：这里假设 <span class="arithmatex">\(d_1 = d_2\)</span></li>
 <li>这是我们之前看到的版本</li>
 </ul>
 </li>
-<li>乘法注意力 <span class="arithmatex"><span class="MathJax_Preview">e_{i}=s^{T} \boldsymbol{W} \boldsymbol{h}_{i} \in \mathbb{R}</span><script type="math/tex">e_{i}=s^{T} \boldsymbol{W} \boldsymbol{h}_{i} \in \mathbb{R}</script></span><ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{W} \in \mathbb{R}^{d_{2} \times d_{1}}</span><script type="math/tex">\boldsymbol{W} \in \mathbb{R}^{d_{2} \times d_{1}}</script></span> 是权重矩阵</li>
+<li>乘法注意力 <span class="arithmatex">\(e_{i}=s^{T} \boldsymbol{W} \boldsymbol{h}_{i} \in \mathbb{R}\)</span><ul>
+<li><span class="arithmatex">\(\boldsymbol{W} \in \mathbb{R}^{d_{2} \times d_{1}}\)</span> 是权重矩阵</li>
 </ul>
 </li>
 <li>
-<p>加法注意力 <span class="arithmatex"><span class="MathJax_Preview">e_{i}=\boldsymbol{v}^{T} \tanh \left(\boldsymbol{W}_{1} \boldsymbol{h}_{i}+\boldsymbol{W}_{2} \boldsymbol{s}\right) \in \mathbb{R}</span><script type="math/tex">e_{i}=\boldsymbol{v}^{T} \tanh \left(\boldsymbol{W}_{1} \boldsymbol{h}_{i}+\boldsymbol{W}_{2} \boldsymbol{s}\right) \in \mathbb{R}</script></span></p>
+<p>加法注意力 <span class="arithmatex">\(e_{i}=\boldsymbol{v}^{T} \tanh \left(\boldsymbol{W}_{1} \boldsymbol{h}_{i}+\boldsymbol{W}_{2} \boldsymbol{s}\right) \in \mathbb{R}\)</span></p>
 <ul>
-<li>其中 <span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{W}_{1} \in \mathbb{R}^{d_{3} \times d_{1}}, \boldsymbol{W}_{2} \in \mathbb{R}^{d_{3} \times d_{2}}</span><script type="math/tex">\boldsymbol{W}_{1} \in \mathbb{R}^{d_{3} \times d_{1}}, \boldsymbol{W}_{2} \in \mathbb{R}^{d_{3} \times d_{2}}</script></span> 是权重矩阵，<span class="arithmatex"><span class="MathJax_Preview">\boldsymbol{v} \in \mathbb{R}^{d_{3}}</span><script type="math/tex">\boldsymbol{v} \in \mathbb{R}^{d_{3}}</script></span> 是权重向量</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">d_3</span><script type="math/tex">d_3</script></span>(注意力维度)是一个超参数</li>
+<li>其中 <span class="arithmatex">\(\boldsymbol{W}_{1} \in \mathbb{R}^{d_{3} \times d_{1}}, \boldsymbol{W}_{2} \in \mathbb{R}^{d_{3} \times d_{2}}\)</span> 是权重矩阵，<span class="arithmatex">\(\boldsymbol{v} \in \mathbb{R}^{d_{3}}\)</span> 是权重向量</li>
+<li><span class="arithmatex">\(d_3\)</span>(注意力维度)是一个超参数</li>
 </ul>
 </li>
 <li>
@@ -1799,13 +1751,13 @@ e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsy
 </ul>
 <p>因此，Seq2Seq 模型通常被称为“编码器-解码器模型”。接下来我们将分别讨论这两个网络的细节。</p>
 <p><strong>1.3 Seq2Seq architecture - encoder</strong></p>
-<p>编码器网络的作用是读取输入序列到我们的 Seq2Seq 模型中，然后对该序列生成一个固定维度的上下文向量 <span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 。为此，编码器使用一个循环神经网络单元——一般使用 LSTM——每个时间步读取一个输入单词。单元的最终隐藏状态就是 <span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 。然而，因为将一个任意长度序列压缩到一个单一固定大小的向量是很困难的（特别是像翻译这样的困难任务），编码器通常由堆叠的 LSTM 组成：一系列 LSTM“层”，其中每层的输出是下一层的输入序列。LSTM 最后一层的最终隐藏状态就是 <span class="arithmatex"><span class="MathJax_Preview">C</span><script type="math/tex">C</script></span> 。</p>
+<p>编码器网络的作用是读取输入序列到我们的 Seq2Seq 模型中，然后对该序列生成一个固定维度的上下文向量 <span class="arithmatex">\(C\)</span> 。为此，编码器使用一个循环神经网络单元——一般使用 LSTM——每个时间步读取一个输入单词。单元的最终隐藏状态就是 <span class="arithmatex">\(C\)</span> 。然而，因为将一个任意长度序列压缩到一个单一固定大小的向量是很困难的（特别是像翻译这样的困难任务），编码器通常由堆叠的 LSTM 组成：一系列 LSTM“层”，其中每层的输出是下一层的输入序列。LSTM 最后一层的最终隐藏状态就是 <span class="arithmatex">\(C\)</span> 。</p>
 <p>Seq2Seq 编码器通常会做一些奇怪的事情：它们将反向处理输入序列。实际上这么处理是有目的的。通过这样做，编码器看到的最后的信息（粗略地）对应于模型输出的开始信息；这使得解码器更容易在输出上“开始”，同时解码器也更容易地产生适当的输出句子。在翻译的环境中，我们允许网络在看到输入的前几个单词时就进行翻译；一旦前几个单词被正确地翻译，构建一个正确的句子比从头开始更加容易。</p>
 <p>下图是一个展示编码器的例子，这个例子是翻译英语句子“what is your name?”注意这里是反向读取输入单词的。注意网络是展开的，每一列是一个时间步和每一行是单一层，所以水平箭头是对应隐藏状态和垂直箭头是 LSTM 的输入/输出。</p>
 <p><img alt="1561110857153" src="../imgs/1561110857153.png" /></p>
 <p><strong>1.4 Seq2Seq architecture - decoder</strong> </p>
 <p>解码器也是一个 LSTM 网络，但是它的使用比编码器网络略微复杂。从本质上讲，我们希望它能作为一个语言模型，可以“知道”到目前为止生成的单词和输入。为此，我们将编码器保持“堆叠”的 LSTM 架构，但是我们将使用编码器生成的上下文向量来初始化第一层的隐藏层；然后编码器将使用输入的上下文向量来逐词地生成输出。</p>
-<p>一旦编码器使用其上下文向量设置好，我们将传入一个特殊的字符来表示生成输出的开始。在文献中，一般是附加到输入结尾的 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;EOS&gt;}</span><script type="math/tex">\text{<EOS>}</script></span> 标记（在输出的结尾也有这样的标记，表示生成输出完成）。然后我们第一个时间步将一层接一层地运行这个三层的 LSTM，将最后一层的输出放到 softmax 函数中生成一个输出单词。然后我们把这个词传递到下一个时间步的第一层，重复上述的流程生成输出单词。这就是我们如何使 LSTM 像语言模型一样起作用。</p>
+<p>一旦编码器使用其上下文向量设置好，我们将传入一个特殊的字符来表示生成输出的开始。在文献中，一般是附加到输入结尾的 <span class="arithmatex">\(\text{&lt;EOS&gt;}\)</span> 标记（在输出的结尾也有这样的标记，表示生成输出完成）。然后我们第一个时间步将一层接一层地运行这个三层的 LSTM，将最后一层的输出放到 softmax 函数中生成一个输出单词。然后我们把这个词传递到下一个时间步的第一层，重复上述的流程生成输出单词。这就是我们如何使 LSTM 像语言模型一样起作用。</p>
 <p>下图是一个展示解码器的例子。该解码器正在解码“what is your name?”的上下文向量。注意在生成的开始使用了一个特殊的符号“GO”，而且解码的生成是按照正常的句子顺序，而不是反向读取的输入。注意输入和输出长度不需要相同。</p>
 <p><img alt="1561112464274" src="../imgs/1561112464274.png" /></p>
 <p>一旦我们有了输出序列，我们就像往常一样使用相同的学习策略。我们对预测序列定义一个交叉熵损失函数，然后用梯度下降算法和反向传播算法来最小化损失函数。同时对编码器和解码器进行训练，使得它们都学习到相同的上下文向量表示。</p>
@@ -1816,73 +1768,53 @@ e^{t}=\left[s_{t}^{T} \boldsymbol{h}_{1}, \ldots, \boldsymbol{s}_{t}^{T} \boldsy
 <p>Decoder：逐时间步运行，每一个时间步的最后一层的输出是下一个时间步的第一层的输入</p>
 <p><strong>1.6 Bidirectional RNNs</strong></p>
 <p>之前讨论过句子的依赖不仅仅在一个方向的传播起作用；一个单词可以依赖它前面或者后面的单词。到目前为止，我们已经讨论过的 Seq2Seq 模型并没有考虑到这一点；在每个时间步，我们只是考虑当前时间步的单词的前面单词的信息（通过 LSTM 的隐藏状态）。对于 NMT，我们需要能够有效地对任意输入进行编码，而不管与输入之间的依赖关系的方向，因此这才能够让获得的信息不会减少。</p>
-<p>双向RNN通过遍历序列的两个方向并连接所得到的输出（神经元输出和最终隐藏状态都进行连接）来解决这个问题。对于每个 RNN 神经元，我们简单地添加另一个神经元，但是以相反的方向向其放入输入；对应第 t 个单词的输出 <span class="arithmatex"><span class="MathJax_Preview">o_t</span><script type="math/tex">o_t</script></span> 是连接了向量 <span class="arithmatex"><span class="MathJax_Preview">\left[o_{t}^{(f)} \quad o_{t}^{(b)}\right]</span><script type="math/tex">\left[o_{t}^{(f)} \quad o_{t}^{(b)}\right]</script></span> ，其中 <span class="arithmatex"><span class="MathJax_Preview">o_{t}^{(f)}</span><script type="math/tex">o_{t}^{(f)}</script></span> 是词 t 在正向的 RNN 的输出， <span class="arithmatex"><span class="MathJax_Preview">o_{t}^{(b)}</span><script type="math/tex">o_{t}^{(b)}</script></span> 是词 t 在反向的 RNN 的输出。类似地，最终隐藏状态是 <span class="arithmatex"><span class="MathJax_Preview">\left[h^{(f)} \quad h^{(b)}\right]</span><script type="math/tex">\left[h^{(f)} \quad h^{(b)}\right]</script></span> ，其中 <span class="arithmatex"><span class="MathJax_Preview">h^{(f)}</span><script type="math/tex">h^{(f)}</script></span> 是正向的 RNN 的最终隐藏状态和 <span class="arithmatex"><span class="MathJax_Preview">h^{(b)}</span><script type="math/tex">h^{(b)}</script></span> 是反向的 RNN 的最终隐藏状态。下图是一个双向 LSTM 解码器的例子。</p>
+<p>双向RNN通过遍历序列的两个方向并连接所得到的输出（神经元输出和最终隐藏状态都进行连接）来解决这个问题。对于每个 RNN 神经元，我们简单地添加另一个神经元，但是以相反的方向向其放入输入；对应第 t 个单词的输出 <span class="arithmatex">\(o_t\)</span> 是连接了向量 <span class="arithmatex">\(\left[o_{t}^{(f)} \quad o_{t}^{(b)}\right]\)</span> ，其中 <span class="arithmatex">\(o_{t}^{(f)}\)</span> 是词 t 在正向的 RNN 的输出， <span class="arithmatex">\(o_{t}^{(b)}\)</span> 是词 t 在反向的 RNN 的输出。类似地，最终隐藏状态是 <span class="arithmatex">\(\left[h^{(f)} \quad h^{(b)}\right]\)</span> ，其中 <span class="arithmatex">\(h^{(f)}\)</span> 是正向的 RNN 的最终隐藏状态和 <span class="arithmatex">\(h^{(b)}\)</span> 是反向的 RNN 的最终隐藏状态。下图是一个双向 LSTM 解码器的例子。</p>
 <p><img alt="1561196418355" src="../imgs/1561196418355.png" /></p>
 <h3 id="2-attention-mechanism">2 Attention Mechanism<a class="headerlink" href="#2-attention-mechanism" title="Permanent link">&para;</a></h3>
 <p><strong>2.1 Motivation</strong></p>
 <p>当你听到句子“the ball is on the ﬁeld”，你不会认为这 6 个单词都一样重要。你首先会注意到单词“ball”，“on” 和 “ﬁeld”，因为这些单词你是觉得最“重要”的。类似的，Bahdanau 等人注意到使用 RNN 的最终状态作为 Seq2Seq 模型的单一“上下文向量”的缺点：一般而言，输入的不同部分具有不同的重要程度。再者，此外，输出的不同部分甚至可以考虑输入的不同部分是“重要”的。例如，在翻译任务中，输出的第一个单词是一般是基于输入的前几个词，输出的最后几个词可能基于输入的几个词。</p>
 <p>注意机制利用这一观察结果，为解码器网络提供了在每个解码步骤查看整个输入序列的功能；然后解码器可以在任何时间点决定哪些输入单词是重要的。有很多类型的编码器机制，但是我们将讨论由 Bahdanau 提出的机制。</p>
 <p><strong>2.2 Bahdanau et al. NMT model</strong></p>
-<p>再回顾一下我们的 Seq2Seq 模型是由两部分组成，一个编码器将一个输入句子编码，以及利用解码器所提取的信息生成翻译句子的解码器。基本上，我们的输入句子是一个我们想要翻译的词序列  <span class="arithmatex"><span class="MathJax_Preview">x_{1}, \ldots, x_{n}</span><script type="math/tex">x_{1}, \ldots, x_{n}</script></span> ，我们的翻译过结果（目标句子）是一个词序列 <span class="arithmatex"><span class="MathJax_Preview">y_{1}, \ldots, y_{m}</span><script type="math/tex">y_{1}, \ldots, y_{m}</script></span> 。</p>
+<p>再回顾一下我们的 Seq2Seq 模型是由两部分组成，一个编码器将一个输入句子编码，以及利用解码器所提取的信息生成翻译句子的解码器。基本上，我们的输入句子是一个我们想要翻译的词序列  <span class="arithmatex">\(x_{1}, \ldots, x_{n}\)</span> ，我们的翻译过结果（目标句子）是一个词序列 <span class="arithmatex">\(y_{1}, \ldots, y_{m}\)</span> 。</p>
 <p><strong>Encoder</strong></p>
 <ul>
-<li>令 <span class="arithmatex"><span class="MathJax_Preview">\left(h_{1}, \ldots, h_{n}\right)</span><script type="math/tex">\left(h_{1}, \ldots, h_{n}\right)</script></span> 是输入句子的隐藏向量表示。这些向量是例如 bi-LSTM 的输出，并且捕获句子中每个单词的上下文表示。</li>
+<li>令 <span class="arithmatex">\(\left(h_{1}, \ldots, h_{n}\right)\)</span> 是输入句子的隐藏向量表示。这些向量是例如 bi-LSTM 的输出，并且捕获句子中每个单词的上下文表示。</li>
 </ul>
 <p><strong>Decoder</strong></p>
 <ul>
-<li>我们想使用以下形式的递归公式计算解码器的隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">s_i</span><script type="math/tex">s_i</script></span></li>
+<li>我们想使用以下形式的递归公式计算解码器的隐藏状态 <span class="arithmatex">\(s_i\)</span></li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 s_{i}=f\left(s_{i-1}, y_{i-1}, c_{i}\right)
-</div>
-<script type="math/tex; mode=display">
-s_{i}=f\left(s_{i-1}, y_{i-1}, c_{i}\right)
-</script>
-</div>
+\]</div>
 <ul>
 <li>
-<p>其中 <span class="arithmatex"><span class="MathJax_Preview">s_{i-1}</span><script type="math/tex">s_{i-1}</script></span> 是前面的隐藏向量， <span class="arithmatex"><span class="MathJax_Preview">y_{i-1}</span><script type="math/tex">y_{i-1}</script></span> 是前面时间步生成的单词，和 <span class="arithmatex"><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span> 是从原始句子捕获与解码器的时间步 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 相关的上下文的上下文向量。</p>
+<p>其中 <span class="arithmatex">\(s_{i-1}\)</span> 是前面的隐藏向量， <span class="arithmatex">\(y_{i-1}\)</span> 是前面时间步生成的单词，和 <span class="arithmatex">\(c_i\)</span> 是从原始句子捕获与解码器的时间步 <span class="arithmatex">\(i\)</span> 相关的上下文的上下文向量。</p>
 </li>
 <li>
-<p>上下文向量 <span class="arithmatex"><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span> 捕获对第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个解码时间步的相关信息（与标准的的 Seq2Seq 模型只有一个上下文向量不同）。对每个原始句子的隐藏向量 <span class="arithmatex"><span class="MathJax_Preview">h_j</span><script type="math/tex">h_j</script></span> ，计算分数</p>
+<p>上下文向量 <span class="arithmatex">\(c_i\)</span> 捕获对第 <span class="arithmatex">\(i\)</span> 个解码时间步的相关信息（与标准的的 Seq2Seq 模型只有一个上下文向量不同）。对每个原始句子的隐藏向量 <span class="arithmatex">\(h_j\)</span> ，计算分数</p>
 </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 e_{i, j}=a\left(s_{i-1}, h_{j}\right)
-</div>
-<script type="math/tex; mode=display">
-e_{i, j}=a\left(s_{i-1}, h_{j}\right)
-</script>
-</div>
+\]</div>
 <ul>
-<li>其中 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 是在 <span class="arithmatex"><span class="MathJax_Preview">\mathbb{R}</span><script type="math/tex">\mathbb{R}</script></span> 中具有值的任意函数，例如是一个单层的全连接神经网络。然后，我们得到一系列标量值 <span class="arithmatex"><span class="MathJax_Preview">e_{i, 1}, \ldots, e_{i, n}</span><script type="math/tex">e_{i, 1}, \ldots, e_{i, n}</script></span> 。然后，使用 softmax 层对这些分数进行归一化，得到向量 <span class="arithmatex"><span class="MathJax_Preview">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</span><script type="math/tex">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</script></span> </li>
+<li>其中 <span class="arithmatex">\(a\)</span> 是在 <span class="arithmatex">\(\mathbb{R}\)</span> 中具有值的任意函数，例如是一个单层的全连接神经网络。然后，我们得到一系列标量值 <span class="arithmatex">\(e_{i, 1}, \ldots, e_{i, n}\)</span> 。然后，使用 softmax 层对这些分数进行归一化，得到向量 <span class="arithmatex">\(\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)\)</span> </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \alpha_{i, j}=\frac{\exp \left(e_{i, j}\right)}{\sum_{k=1}^{n} \exp \left(e_{i, k}\right)}
-</div>
-<script type="math/tex; mode=display">
-\alpha_{i, j}=\frac{\exp \left(e_{i, j}\right)}{\sum_{k=1}^{n} \exp \left(e_{i, k}\right)}
-</script>
-</div>
+\]</div>
 <ul>
-<li>然后，计算原始句子的隐藏向量与注意力向量的加权平均值作为上下向量  <span class="arithmatex"><span class="MathJax_Preview">c_i</span><script type="math/tex">c_i</script></span></li>
+<li>然后，计算原始句子的隐藏向量与注意力向量的加权平均值作为上下向量  <span class="arithmatex">\(c_i\)</span></li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
-</div>
-<script type="math/tex; mode=display">
-c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
-</script>
-</div>
+\]</div>
 <ul>
-<li>直观上看，该向量从原始句子的解码器的第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个时间步中捕获相关的上下文信息。</li>
+<li>直观上看，该向量从原始句子的解码器的第 <span class="arithmatex">\(i\)</span> 个时间步中捕获相关的上下文信息。</li>
 </ul>
 <p><strong>2.3 Connection with translation alignment</strong></p>
-<p>基于注意力的模型为输出的每个时间步分配对输入的不同部分的显着性（“重要性”）。在翻译任务中，注意力可以认为是“对齐”。Bahdanau 等人认为在解码的时间步 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 中的注意力分数 <span class="arithmatex"><span class="MathJax_Preview">\alpha_{ij}</span><script type="math/tex">\alpha_{ij}</script></span> 表示源句子中的单词对齐目标句子中的单词 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span>。注意到这一点，我们可以使用注意力分数来构建一个对齐表——这个表是将源句子中的单词映射到目标句子中的相应单词——基于从我们从 Seq2Seq NMT 系统中学习到的编码器和解码器。下图是一个对齐表的例子：</p>
+<p>基于注意力的模型为输出的每个时间步分配对输入的不同部分的显着性（“重要性”）。在翻译任务中，注意力可以认为是“对齐”。Bahdanau 等人认为在解码的时间步 <span class="arithmatex">\(i\)</span> 中的注意力分数 <span class="arithmatex">\(\alpha_{ij}\)</span> 表示源句子中的单词对齐目标句子中的单词 <span class="arithmatex">\(i\)</span>。注意到这一点，我们可以使用注意力分数来构建一个对齐表——这个表是将源句子中的单词映射到目标句子中的相应单词——基于从我们从 Seq2Seq NMT 系统中学习到的编码器和解码器。下图是一个对齐表的例子：</p>
 <p><img alt="1561197254477" src="../imgs/1561197254477.png" /></p>
 <p><strong>2.4 Performance on long sentences</strong></p>
 <p>基于注意力模型的主要优点是能够有效地翻译长句。当句子的输入长度变大时，模型如果只使用最终隐藏状态表示而不使用注意机制，这会丢失信息和降低准确度。注意力机制是一个聪明的方式来解决这个问题，并且现在很多实验也证实了确实如此。下图是长句子在不同的 NMT 模型中的表现</p>
@@ -1890,47 +1822,27 @@ c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
 <h3 id="3-other-models">3 Other Models<a class="headerlink" href="#3-other-models" title="Permanent link">&para;</a></h3>
 <p><strong>3.1 Luong et al. NMT model</strong></p>
 <p>Luong 等人在论文 《Effective Approaches to Attention-based Neural Machine Translation》 提出了一个注意力机制模型的变体，是由两个不同的注意力机制组成。</p>
-<p><strong>Global attention</strong> ：我们运行简单的 Seq2Seq NMT。我们称编码器的隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">h_{1}, \ldots, h_{n}</span><script type="math/tex">h_{1}, \ldots, h_{n}</script></span> ，解码器的隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">\overline{h}_{1}, \ldots, \overline{h}_{n}</span><script type="math/tex">\overline{h}_{1}, \ldots, \overline{h}_{n}</script></span> 。现在对每个 <span class="arithmatex"><span class="MathJax_Preview">\overline{h}_{i}</span><script type="math/tex">\overline{h}_{i}</script></span> ，我们计算编码器的隐藏状态的注意力向量。我们可以使用下面其中一个得分函数：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p><strong>Global attention</strong> ：我们运行简单的 Seq2Seq NMT。我们称编码器的隐藏状态 <span class="arithmatex">\(h_{1}, \ldots, h_{n}\)</span> ，解码器的隐藏状态 <span class="arithmatex">\(\overline{h}_{1}, \ldots, \overline{h}_{n}\)</span> 。现在对每个 <span class="arithmatex">\(\overline{h}_{i}\)</span> ，我们计算编码器的隐藏状态的注意力向量。我们可以使用下面其中一个得分函数：</p>
+<div class="arithmatex">\[
 \operatorname{score}\left(h_{i}, \overline{h}_{j}\right)=\left\{\begin{array}{l}{h_{i}^{T} \overline{h}_{j}} \\ {h_{i}^{T} W \overline{h}_{j} \quad \in \mathbb{R}} \\ {W\left[h_{i}, \overline{h}_{j}\right]}\end{array}\right.
-</div>
-<script type="math/tex; mode=display">
-\operatorname{score}\left(h_{i}, \overline{h}_{j}\right)=\left\{\begin{array}{l}{h_{i}^{T} \overline{h}_{j}} \\ {h_{i}^{T} W \overline{h}_{j} \quad \in \mathbb{R}} \\ {W\left[h_{i}, \overline{h}_{j}\right]}\end{array}\right.
-</script>
-</div>
+\]</div>
 <ul>
-<li>现在我们有一个分数的向量，然后可以用 Bahdanau 等人提出的方法来计算一个上下文向量。首先，我们通过一个 softmax 层来对分数进行归一化，得到向量 <span class="arithmatex"><span class="MathJax_Preview">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</span><script type="math/tex">\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)</script></span></li>
+<li>现在我们有一个分数的向量，然后可以用 Bahdanau 等人提出的方法来计算一个上下文向量。首先，我们通过一个 softmax 层来对分数进行归一化，得到向量 <span class="arithmatex">\(\alpha_{i}=\left(\alpha_{i, 1}, \ldots, \alpha_{i, n}\right)\)</span></li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \alpha_{i, j}=\frac{\exp \left(\operatorname{score}\left(h_{j}, \overline{h}_{i}\right)\right)}{\sum_{k=1}^{n} \exp \left(\operatorname{score}\left(h_{k}, \overline{h}_{i}\right)\right)}
-</div>
-<script type="math/tex; mode=display">
-\alpha_{i, j}=\frac{\exp \left(\operatorname{score}\left(h_{j}, \overline{h}_{i}\right)\right)}{\sum_{k=1}^{n} \exp \left(\operatorname{score}\left(h_{k}, \overline{h}_{i}\right)\right)}
-</script>
-</div>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<div class="arithmatex">\[
 c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
-</div>
-<script type="math/tex; mode=display">
-c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
-</script>
-</div>
+\]</div>
 <ul>
-<li>然后再计算上下文向量，我们可以使用上下文向量和隐藏状态对解码器的第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个时间步计算一个新的向量</li>
+<li>然后再计算上下文向量，我们可以使用上下文向量和隐藏状态对解码器的第 <span class="arithmatex">\(i\)</span> 个时间步计算一个新的向量</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \tilde{h}_{i}=f\left(\left[\overline{h}_{i}, c_{i}\right]\right)
-</div>
-<script type="math/tex; mode=display">
-\tilde{h}_{i}=f\left(\left[\overline{h}_{i}, c_{i}\right]\right)
-</script>
-</div>
+\]</div>
 <ul>
-<li>最后一步是使用 <span class="arithmatex"><span class="MathJax_Preview">\tilde{h}_{i}</span><script type="math/tex">\tilde{h}_{i}</script></span> 来对解码器进行最终预测。为了解决覆盖问题，Luong 等人使用了一个 input-feeding 方法。注意力加权的向量 <span class="arithmatex"><span class="MathJax_Preview">\tilde{h}_{i}</span><script type="math/tex">\tilde{h}_{i}</script></span> 是作为解码器的输入，而不是最终预测。这类似于 Bahdanau 等人提出的方法，他们使用上下文向量来计算解码器的隐藏向量。</li>
+<li>最后一步是使用 <span class="arithmatex">\(\tilde{h}_{i}\)</span> 来对解码器进行最终预测。为了解决覆盖问题，Luong 等人使用了一个 input-feeding 方法。注意力加权的向量 <span class="arithmatex">\(\tilde{h}_{i}\)</span> 是作为解码器的输入，而不是最终预测。这类似于 Bahdanau 等人提出的方法，他们使用上下文向量来计算解码器的隐藏向量。</li>
 </ul>
 <p><strong>Local attention</strong> ：该模型预测输入序列中的对齐位置。然后，它使用以此位置为中心的窗口来计算上下文向量。这个计算耗费的计算资源是恒定的，不会随着句子的长度而暴增。</p>
 <p>有很多方法来使用注意力机制</p>
@@ -1954,63 +1866,33 @@ c_{i}=\sum_{j=1}^{n} \alpha_{i, j} h_{j}
 </li>
 </ul>
 <h3 id="4-sequence-model-decoders">4 Sequence model decoders<a class="headerlink" href="#4-sequence-model-decoders" title="Permanent link">&para;</a></h3>
-<p>机器翻译的另一种方法来自统计机器翻译。考虑一个计算给定原始句子 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 的翻译 <span class="arithmatex"><span class="MathJax_Preview">\overline{s}</span><script type="math/tex">\overline{s}</script></span> 的概率模型 <span class="arithmatex"><span class="MathJax_Preview">P(\overline{s} | s)</span><script type="math/tex">P(\overline{s} | s)</script></span> 。我们想从这个概率模型中选择概率最高的翻译 <span class="arithmatex"><span class="MathJax_Preview">\overline{s} *</span><script type="math/tex">\overline{s} *</script></span> 。换而言之，我们希望</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>机器翻译的另一种方法来自统计机器翻译。考虑一个计算给定原始句子 <span class="arithmatex">\(s\)</span> 的翻译 <span class="arithmatex">\(\overline{s}\)</span> 的概率模型 <span class="arithmatex">\(P(\overline{s} | s)\)</span> 。我们想从这个概率模型中选择概率最高的翻译 <span class="arithmatex">\(\overline{s} *\)</span> 。换而言之，我们希望</p>
+<div class="arithmatex">\[
 \overline{s} *=\arg \max _{\overline{s}} P(\overline{s} | s)
-</div>
-<script type="math/tex; mode=display">
-\overline{s} *=\arg \max _{\overline{s}} P(\overline{s} | s)
-</script>
-</div>
+\]</div>
 <p>因为搜索的空间可能会非常的大，所以我们需要缩小它的大小。以下是序列模型解码器的列表（包含好的和不好的）。</p>
 <p><strong>Exhaustive search</strong> ：这是最简单的思路。对每个可能的序列计算其概率，然后我们从中选择概率最高的序列。但是，搜索空间对输入的大小是呈指数级增长的，所以这个方法在很难扩展到大规模输出的情况。在这个情况的解码过程是 NP 难度的问题。</p>
-<p><strong>Ancestral sampling</strong> ：在时间步 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> ，我们计算基于时间步 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span> 前面的单词的条件概率分布，并从该分布中进行抽样得到 <span class="arithmatex"><span class="MathJax_Preview">x_t</span><script type="math/tex">x_t</script></span> 。</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p><strong>Ancestral sampling</strong> ：在时间步 <span class="arithmatex">\(t\)</span> ，我们计算基于时间步 <span class="arithmatex">\(t\)</span> 前面的单词的条件概率分布，并从该分布中进行抽样得到 <span class="arithmatex">\(x_t\)</span> 。</p>
+<div class="arithmatex">\[
 x_{t} \sim \mathbb{P}\left(x_{l} | x_{1}, \ldots, x_{n}\right)
-</div>
-<script type="math/tex; mode=display">
-x_{t} \sim \mathbb{P}\left(x_{l} | x_{1}, \ldots, x_{n}\right)
-</script>
-</div>
+\]</div>
 <p>理论上这个技术是有效的渐进精确的。然而在实际中，这个方法的表现很差和会出现高方差。</p>
 <p><strong>Greedy Search</strong> ：在每个时间步，我们选择最可能的单词，换而言之</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 x_{l}=\operatorname{argmax}_{x_{l}} \mathbb{P}\left(\tilde{x}_{t} | x_{1}, \ldots, x_{n}\right)
-</div>
-<script type="math/tex; mode=display">
-x_{l}=\operatorname{argmax}_{x_{l}} \mathbb{P}\left(\tilde{x}_{t} | x_{1}, \ldots, x_{n}\right)
-</script>
-</div>
+\]</div>
 <p>这种技术是有效的，但是它探索了一小部分的搜索空间，如果我们在一个时间步中出现一个错误，那么剩下的句子生成可能会受到很大的影响。</p>
 <p><strong>Beam search</strong> ：这个方法是在每个时间步保持着 K 个候选单词</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \mathcal{H}_{t}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right\}
-</div>
-<script type="math/tex; mode=display">
-\mathcal{H}_{t}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}\right)\right\}
-</script>
-</div>
-<p>通过扩展 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{H}_{t}</span><script type="math/tex">\mathcal{H}_{t}</script></span> 并保持 K 个最好的候选单词来计算 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{H}_{t+1}</span><script type="math/tex">\mathcal{H}_{t+1}</script></span> 。换而言之，我们在下面的集合中选择最好的 K 个序列</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>通过扩展 <span class="arithmatex">\(\mathcal{H}_{t}\)</span> 并保持 K 个最好的候选单词来计算 <span class="arithmatex">\(\mathcal{H}_{t+1}\)</span> 。换而言之，我们在下面的集合中选择最好的 K 个序列</p>
+<div class="arithmatex">\[
 \tilde{\mathcal{H}}_{t+1}=\bigcup_{k=1}^{K} \mathcal{H}_{t+1}^{\tilde{k}}
-</div>
-<script type="math/tex; mode=display">
-\tilde{\mathcal{H}}_{t+1}=\bigcup_{k=1}^{K} \mathcal{H}_{t+1}^{\tilde{k}}
-</script>
-</div>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<div class="arithmatex">\[
 \mathcal{H}_{t+1}^{\tilde{k}}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}, v_{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}, v_{|V|}\right)\right\}
-</div>
-<script type="math/tex; mode=display">
-\mathcal{H}_{t+1}^{\tilde{k}}=\left\{\left(x_{1}^{1}, \ldots, x_{t}^{1}, v_{1}\right), \ldots,\left(x_{1}^{K}, \ldots, x_{t}^{K}, v_{|V|}\right)\right\}
-</script>
-</div>
+\]</div>
 <p>随着增加 K 的增加，我们获得了准确率和渐近地精确。然而，提高并不具有单调性，所以我们要设置一个 K，既要考虑合理性能又要考虑计算效率。正因为如此，beam search 是在 NMT 中最常见的方法。</p>
 <h3 id="5-evaluation-of-machine-translation-systems">5 Evaluation of Machine Translation Systems<a class="headerlink" href="#5-evaluation-of-machine-translation-systems" title="Permanent link">&para;</a></h3>
 <p>现在我们知道有关机器翻译系统的基础知识，我们将讨论一些评估这些模型的方法。评估翻译质量是一个非常棘手和主观的任务。在现实生活中，如果您给十个不同的翻译者提供一段相同的文字，您将获得十个不同的翻译结果。翻译在实践中是不完美和有噪声的。他们关注不同的信息，强调不同的含义。一种翻译可以保存隐喻和长期思想的完整性，而而另一种翻译可以更忠实地重构句法和风格，尝试逐字翻译。注意，这种灵活性并不是负担；这证明了语言的复杂性和我们解码和解释意思的能力，也是我们交流能力的一个奇妙方面。</p>
@@ -2031,84 +1913,64 @@ x_{l}=\operatorname{argmax}_{x_{l}} \mathbb{P}\left(\tilde{x}_{t} | x_{1}, \ldot
 <p><img alt="1561198494344" src="../imgs/1561198494344.png" /></p>
 <p>BELU 算法通过识别上述所有的 n-grams 匹配，包括 unigram 匹配，然后用精确度分数来评估翻译的好坏。精确度分数是 n-grams 既出现在参考翻译中也出现在机器翻译中的百分比。</p>
 <p>这个算法也满足其他的两个限制。对每个 n-grams 的大小，参考翻译中的 gram 不能匹配多于一次。例如，unigram “a” 在 B 中出现了两次而在 A 中只出现了一次。这只统计两个翻译句子之间匹配一次的的次数。另外，我们强加一个简单的惩罚，使得精确度分数是 1.0（“完美”匹配）的短句子不被认为是一个很好的翻译结果。例如，对单个单词 there 会得到一个精确度分数为 1.0 的匹配，但是很明显这不是一个好的匹配。</p>
-<p>接下来我们看看实际中如何计算 BELU 分数。首先令 k 是我们要评估的分数的最大 n-gram 。即如果 k=4，BELU 分数仅计算大小 <span class="arithmatex"><span class="MathJax_Preview">\leq 4</span><script type="math/tex">\leq 4</script></span> 的 n-grams ，并忽略大于 4 的 n-grams 。令</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>接下来我们看看实际中如何计算 BELU 分数。首先令 k 是我们要评估的分数的最大 n-gram 。即如果 k=4，BELU 分数仅计算大小 <span class="arithmatex">\(\leq 4\)</span> 的 n-grams ，并忽略大于 4 的 n-grams 。令</p>
+<div class="arithmatex">\[
 p_{n}=\# \text {matched n-grams} / \text{# n-grams in candidate translation}
-</div>
-<script type="math/tex; mode=display">
-p_{n}=\# \text {matched n-grams} / \text{# n-grams in candidate translation}
-</script>
-</div>
-<p>为对长度是 n 的 grams 的精确度分数。最后，令 <span class="arithmatex"><span class="MathJax_Preview">w_{n}=1 / 2^{n}</span><script type="math/tex">w_{n}=1 / 2^{n}</script></span> 是第 n 个 gram 的几何加权。我们简单惩罚的定义为</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>为对长度是 n 的 grams 的精确度分数。最后，令 <span class="arithmatex">\(w_{n}=1 / 2^{n}\)</span> 是第 n 个 gram 的几何加权。我们简单惩罚的定义为</p>
+<div class="arithmatex">\[
 \beta=e^{\min \left(0,1-\frac{len_{ref}}{len_{MT}}\right)}
-</div>
-<script type="math/tex; mode=display">
-\beta=e^{\min \left(0,1-\frac{len_{ref}}{len_{MT}}\right)}
-</script>
-</div>
-<p>其中 <span class="arithmatex"><span class="MathJax_Preview">len_{ref}</span><script type="math/tex">len_{ref}</script></span> 是参考翻译的句子长度， <span class="arithmatex"><span class="MathJax_Preview">len_{MT}</span><script type="math/tex">len_{MT}</script></span> 是机器翻译的句子长度。</p>
+\]</div>
+<p>其中 <span class="arithmatex">\(len_{ref}\)</span> 是参考翻译的句子长度， <span class="arithmatex">\(len_{MT}\)</span> 是机器翻译的句子长度。</p>
 <p>BELU 分数然后定义为：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 B E L U=\beta \prod_{i=1}^{k} p_{n}^{w_{n}}
-</div>
-<script type="math/tex; mode=display">
-B E L U=\beta \prod_{i=1}^{k} p_{n}^{w_{n}}
-</script>
-</div>
+\]</div>
 <p>BLEU 评分与人类对优秀翻译的判断密切相关，因此仍然是所有评估指标的基准。然而，它还是有许多限制的。它只能在语料库级别上工作得很好，因为精度得分中的任何零都将使整个BLEU得分为零。另外，BLEU 得分仅仅将机器翻译与单个人工翻译进行比较，这肯定需要匹配相关的 n-grams 的噪声表示。BLEU 的变体已经将这个算法修改为可以将候选机器翻译与多个人工翻译进行比较。此外，BLEU分数可能只是一个必要的，但并不足以通过一个良好的机器翻译系统的基准。许多研究人员对 BLEU 的分数进行了优化，直到他们开始接近参考译文之间相同的BLEU分数，但真正的质量仍然远远低于人类译文。</p>
 <h3 id="6-dealing-with-the-large-output-vocabulary">6 Dealing with the large output vocabulary<a class="headerlink" href="#6-dealing-with-the-large-output-vocabulary" title="Permanent link">&para;</a></h3>
 <p>尽管现代的 NMT 系统取得了成功，但是他们很难处理大量的词汇量。特别地，这些 Seq2Seq 模型通过使用 softmax 计算整个词汇表上的目标概率分布来预测序列中的下一个单词。事实证明，使用大量词汇表来计算 softmax 可能相当耗费计算资源，而且时间复杂度也会与词汇大小成正比。我们现在将研究一些解决这个问题的方法。</p>
 <p><strong>6.1 Scaling softmax</strong></p>
 <p>一个非常自然的想法是问“我们能找到更有效的方法来计算目标概率分布吗？”答案是可以的！实际上，我们已经学会了两种可以降低“softmax”复杂度的方法，我们将在下面回顾一下（更多细节请看 lecture one 中的相关方法的介绍）。</p>
 <p><strong>Noise Contrastive Estimation</strong></p>
-<p>NCE 的想法是通过随机地从负样本中抽取 K 个单词来近似“softmax”。因此，我们将计算复杂度降低了 <span class="arithmatex"><span class="MathJax_Preview">\frac{|V|}{K}</span><script type="math/tex">\frac{|V|}{K}</script></span> 倍，其中 <span class="arithmatex"><span class="MathJax_Preview">{|V|}</span><script type="math/tex">{|V|}</script></span> 是词汇表的大小。这个方法在 word2vec 中证明了非常有效。Zoph 等人最近的一项工作是应用这种技术来学习 LSTM 语言模型，他们还通过使用每个 mini batch 的相同样本来引入一个技巧，使 GPU 的训练效率更高。</p>
+<p>NCE 的想法是通过随机地从负样本中抽取 K 个单词来近似“softmax”。因此，我们将计算复杂度降低了 <span class="arithmatex">\(\frac{|V|}{K}\)</span> 倍，其中 <span class="arithmatex">\({|V|}\)</span> 是词汇表的大小。这个方法在 word2vec 中证明了非常有效。Zoph 等人最近的一项工作是应用这种技术来学习 LSTM 语言模型，他们还通过使用每个 mini batch 的相同样本来引入一个技巧，使 GPU 的训练效率更高。</p>
 <p><strong>Hierarchical Softmax</strong></p>
-<p>Morin 等人提出了一个二叉树结构从而能够更有效率地计算 目标分布中的每个概率都是通过将树上的一个路径计算出来“softmax”，该计算该路径只需要 <span class="arithmatex"><span class="MathJax_Preview">O(\log |V|)</span><script type="math/tex">O(\log |V|)</script></span> 步长。值得注意的是，尽管 Hierarchical Softmax 可以节省计算量，但是它不能在 GPU 上并行运算。</p>
+<p>Morin 等人提出了一个二叉树结构从而能够更有效率地计算 目标分布中的每个概率都是通过将树上的一个路径计算出来“softmax”，该计算该路径只需要 <span class="arithmatex">\(O(\log |V|)\)</span> 步长。值得注意的是，尽管 Hierarchical Softmax 可以节省计算量，但是它不能在 GPU 上并行运算。</p>
 <p>这两种方法的一个限制是它们仅在训练阶段中节省计算量（当目标词已知时）。在测试阶段，我们还需要计算词汇表中的所有单词的概率，然后做出预测。</p>
 <p><strong>6.2 Reducing vocabulary</strong></p>
-<p>除了优化“softmax”，我们还可以尝试减少有效的词汇量，这将加快训练和测试过程。一种简单的方法是将词汇量限制在一个很小的数量上，用一个标签 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 替换限制后的词汇表外的单词。现在，无论是训练和测试时间可以显着地降低了，但这显然是不理想的，因为我们可能会产生很多  <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 的输出。</p>
-<p>Jean 等人提出了一种保持固定词汇大小 <span class="arithmatex"><span class="MathJax_Preview">\left|V^{\prime}\right|</span><script type="math/tex">\left|V^{\prime}\right|</script></span> 的方法， 通过将训练数据分成具有 <span class="arithmatex"><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> 个唯一目标单词的子集，其中 <span class="arithmatex"><span class="MathJax_Preview">\tau=\left|V^{\prime}\right|</span><script type="math/tex">\tau=\left|V^{\prime}\right|</script></span> 。可以通过依次扫描原始数据集直到检测 <span class="arithmatex"><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> 个唯一的目标单词，从而形成一个子集（如下图所示）</p>
+<p>除了优化“softmax”，我们还可以尝试减少有效的词汇量，这将加快训练和测试过程。一种简单的方法是将词汇量限制在一个很小的数量上，用一个标签 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 替换限制后的词汇表外的单词。现在，无论是训练和测试时间可以显着地降低了，但这显然是不理想的，因为我们可能会产生很多  <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 的输出。</p>
+<p>Jean 等人提出了一种保持固定词汇大小 <span class="arithmatex">\(\left|V^{\prime}\right|\)</span> 的方法， 通过将训练数据分成具有 <span class="arithmatex">\(\tau\)</span> 个唯一目标单词的子集，其中 <span class="arithmatex">\(\tau=\left|V^{\prime}\right|\)</span> 。可以通过依次扫描原始数据集直到检测 <span class="arithmatex">\(\tau\)</span> 个唯一的目标单词，从而形成一个子集（如下图所示）</p>
 <p><img alt="1561198801494" src="../imgs/1561198801494.png" /></p>
-<p>然后按照上述过程遍历整个数据集，以产生所有的 mini-batch 子集。实际中，我们可以通过这个方法词汇量为 <span class="arithmatex"><span class="MathJax_Preview">|V|=500 K</span><script type="math/tex">|V|=500 K</script></span> 实现了 10 倍以上的节省（ <span class="arithmatex"><span class="MathJax_Preview">\left|V^{\prime}\right|=30 K, 50 K</span><script type="math/tex">\left|V^{\prime}\right|=30 K, 50 K</script></span> ）。</p>
-<p>这个概念和 NCE 非常类似，对任意给定的单词，输出的词汇包含目标单词和 <span class="arithmatex"><span class="MathJax_Preview">\left|V^{\prime}\right|-1</span><script type="math/tex">\left|V^{\prime}\right|-1</script></span> 个负（噪声）样例。然而，这两个方法主要的不同是，对每个子集 <span class="arithmatex"><span class="MathJax_Preview">\left|V^{\prime}\right|</span><script type="math/tex">\left|V^{\prime}\right|</script></span> ，是从偏置分布 <span class="arithmatex"><span class="MathJax_Preview">|Q|</span><script type="math/tex">|Q|</script></span> 中采样这些负样例，其中</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>然后按照上述过程遍历整个数据集，以产生所有的 mini-batch 子集。实际中，我们可以通过这个方法词汇量为 <span class="arithmatex">\(|V|=500 K\)</span> 实现了 10 倍以上的节省（ <span class="arithmatex">\(\left|V^{\prime}\right|=30 K, 50 K\)</span> ）。</p>
+<p>这个概念和 NCE 非常类似，对任意给定的单词，输出的词汇包含目标单词和 <span class="arithmatex">\(\left|V^{\prime}\right|-1\)</span> 个负（噪声）样例。然而，这两个方法主要的不同是，对每个子集 <span class="arithmatex">\(\left|V^{\prime}\right|\)</span> ，是从偏置分布 <span class="arithmatex">\(|Q|\)</span> 中采样这些负样例，其中</p>
+<div class="arithmatex">\[
 \mathcal{Q}_{y_{t}}=\left\{\begin{array}{l}{\frac{1}{\left|V^{\prime}\right|}, \text { if } y_{t} \in\left|V^{\prime}\right|} \\ {0, \text { otherwise }}\end{array}\right.
-</div>
-<script type="math/tex; mode=display">
-\mathcal{Q}_{y_{t}}=\left\{\begin{array}{l}{\frac{1}{\left|V^{\prime}\right|}, \text { if } y_{t} \in\left|V^{\prime}\right|} \\ {0, \text { otherwise }}\end{array}\right.
-</script>
-</div>
-<p>在测试阶段，也可以从整个词汇表中选择一个子集(称为候选列表)来预测目标单词。挑战在于，正确的目标词是未知的，我们必须“猜测”目标词可能是什么。在论文中，作者提出使用 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 个最常用的单词（基于 unigram 概率）和 <span class="arithmatex"><span class="MathJax_Preview">K'</span><script type="math/tex">K'</script></span> 个可能的目标词为每个源句构建一个候选列表。在下图中展示了一个 <span class="arithmatex"><span class="MathJax_Preview">K^{\prime}=3</span><script type="math/tex">K^{\prime}=3</script></span> 的例子和候选列表由紫色框中的所有单词组成。在实际中，我们可以选择以下的参数值： <span class="arithmatex"><span class="MathJax_Preview">K=15 k, 30 k, 50 k, K^{\prime}=10,20</span><script type="math/tex">K=15 k, 30 k, 50 k, K^{\prime}=10,20</script></span> 。</p>
+\]</div>
+<p>在测试阶段，也可以从整个词汇表中选择一个子集(称为候选列表)来预测目标单词。挑战在于，正确的目标词是未知的，我们必须“猜测”目标词可能是什么。在论文中，作者提出使用 <span class="arithmatex">\(K\)</span> 个最常用的单词（基于 unigram 概率）和 <span class="arithmatex">\(K'\)</span> 个可能的目标词为每个源句构建一个候选列表。在下图中展示了一个 <span class="arithmatex">\(K^{\prime}=3\)</span> 的例子和候选列表由紫色框中的所有单词组成。在实际中，我们可以选择以下的参数值： <span class="arithmatex">\(K=15 k, 30 k, 50 k, K^{\prime}=10,20\)</span> 。</p>
 <p><img alt="1561198919712" src="../imgs/1561198919712.png" /></p>
 <p><strong>6.3 Handling unknown words</strong></p>
-<p>当 NMT 系统使用上面提到的方法来以降低有效词汇量，不可避免地，某些单词将被映射到 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span>。例如，当预测词（通常是罕见词）不在候选列表中或当我们在测试阶段遇到未知的单词时，可能会发生这种情况。我们需要新的机制来解决罕见和未知的单词问题。</p>
-<p>Gulcehre 等人提出了一个想法来处理这些问题：学习从源文本中“复制”。该模型应用了注意力分布 <span class="arithmatex"><span class="MathJax_Preview">l_t</span><script type="math/tex">l_t</script></span> 来决定源文本中的指向位置，并使用解码器的隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">S_t</span><script type="math/tex">S_t</script></span> 来预测二分类变量 <span class="arithmatex"><span class="MathJax_Preview">Z_t</span><script type="math/tex">Z_t</script></span> ，从而决定何时从源文本中复制。</p>
+<p>当 NMT 系统使用上面提到的方法来以降低有效词汇量，不可避免地，某些单词将被映射到 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span>。例如，当预测词（通常是罕见词）不在候选列表中或当我们在测试阶段遇到未知的单词时，可能会发生这种情况。我们需要新的机制来解决罕见和未知的单词问题。</p>
+<p>Gulcehre 等人提出了一个想法来处理这些问题：学习从源文本中“复制”。该模型应用了注意力分布 <span class="arithmatex">\(l_t\)</span> 来决定源文本中的指向位置，并使用解码器的隐藏状态 <span class="arithmatex">\(S_t\)</span> 来预测二分类变量 <span class="arithmatex">\(Z_t\)</span> ，从而决定何时从源文本中复制。</p>
 <p><img alt="1561198974177" src="../imgs/1561198974177.png" /></p>
-<p>最后的预测结果是根据 <span class="arithmatex"><span class="MathJax_Preview">Z_t</span><script type="math/tex">Z_t</script></span> 的值，在候选列表中由前面介绍的方法使用 softmax 选择的词 <span class="arithmatex"><span class="MathJax_Preview">y_{t}^{w}</span><script type="math/tex">y_{t}^{w}</script></span> ，或者从源文本复制的 <span class="arithmatex"><span class="MathJax_Preview">y_{t}^{l}</span><script type="math/tex">y_{t}^{l}</script></span> 。他们在论文中的结果表明，该方法提高了机器翻译和文本摘要等任务的表现。</p>
+<p>最后的预测结果是根据 <span class="arithmatex">\(Z_t\)</span> 的值，在候选列表中由前面介绍的方法使用 softmax 选择的词 <span class="arithmatex">\(y_{t}^{w}\)</span> ，或者从源文本复制的 <span class="arithmatex">\(y_{t}^{l}\)</span> 。他们在论文中的结果表明，该方法提高了机器翻译和文本摘要等任务的表现。</p>
 <p>然而可以想到的是，这种方法也是有局限性的。这是要重点指出的是在 Google NMT 论文中对这个方法的一个评论：“这种做法在规模很大时是不可靠的——当网络是很深的时候，注意力机制是不稳定的——而复制机制可能不是最适合处理罕见单词的策略——有时音译更合适”。</p>
 <h3 id="7-word-and-character-based-models">7 Word and character-based models<a class="headerlink" href="#7-word-and-character-based-models" title="Permanent link">&para;</a></h3>
 <p>如上一部分所述，“复制”机制在处理罕见或未知词语上仍然存在不足。解决这些问题的另一个思路是在 sub-word 的级别进行操作。一个趋势是使用相同的 Seq2Seq 架构，但是在更小的单元上操作——基于字符的分词模型。另一个趋势是对单词和字符采用混合架构。</p>
 <p><strong>7.1 Word segmentation</strong></p>
 <p>Sennrich 等人提出了一种通过将罕见和未知的单词作为一个 subword units 的序列来实现开放词汇翻译的方法。</p>
-<p>这通过调整称为 <strong>Byte Pair Encoding</strong> 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 <span class="arithmatex"><span class="MathJax_Preview">(p,q,f)</span><script type="math/tex">(p,q,f)</script></span> 来表示一个 n-gram 对 <span class="arithmatex"><span class="MathJax_Preview">p,q</span><script type="math/tex">p,q</script></span> 和出现的频率 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 。如图中所示，我们已经选择的频率最高的的 n-gram 对 <span class="arithmatex"><span class="MathJax_Preview">(e,s,9)</span><script type="math/tex">(e,s,9)</script></span>，然后我们现在增加当前频率最高的的 n-gram 对 <span class="arithmatex"><span class="MathJax_Preview">(es,t,9)</span><script type="math/tex">(es,t,9)</script></span> 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。</p>
+<p>这通过调整称为 <strong>Byte Pair Encoding</strong> 的压缩算法来实现。基本思想是从字符词汇表开始，并且继续扩展数据集中最常见的 n-gram 对。例如，在下图中，我们的数据集包含 4 个单词，图中的左边的表示单词频率，例如“low”出现了 5 次。用 <span class="arithmatex">\((p,q,f)\)</span> 来表示一个 n-gram 对 <span class="arithmatex">\(p,q\)</span> 和出现的频率 <span class="arithmatex">\(f\)</span> 。如图中所示，我们已经选择的频率最高的的 n-gram 对 <span class="arithmatex">\((e,s,9)\)</span>，然后我们现在增加当前频率最高的的 n-gram 对 <span class="arithmatex">\((es,t,9)\)</span> 。重复此过程，直到所有 n-gram 对被选择过或词汇大小达到某个阈值。</p>
 <p><img alt="1561199106928" src="../imgs/1561199106928.png" /></p>
 <p>我们可以选择为训练集和测试集构建单独的词汇表，或者共同构建一个词汇表。在构建词汇表之后，一个带有 Seq2Seq 体系结构的 NMT 系统（Bahdanau 等人在论文中使用的），可以直接训练这些词段。值得注意的是，这种方法赢得了 WMT 2016 的第一名。</p>
 <p><strong>7.2 Character-based model</strong></p>
-<p>Ling 等人提出了一种基于字符的模型来实现开放词汇表示。对于具有 m 个字符的每个单词 w，该模型不是存储单词的词向量，而是遍历所有字符 <span class="arithmatex"><span class="MathJax_Preview">c_{1}, c_{2} \dots c_{m}</span><script type="math/tex">c_{1}, c_{2} \dots c_{m}</script></span> 查找字符嵌入 <span class="arithmatex"><span class="MathJax_Preview">e_{1}, e_{2} \dots e_{m}</span><script type="math/tex">e_{1}, e_{2} \dots e_{m}</script></span> 。然后将这些字符嵌入作为 biLSTM 输入，以分别获得用于前向和后向的最终隐藏状态 <span class="arithmatex"><span class="MathJax_Preview">h_{f}, h_{b}</span><script type="math/tex">h_{f}, h_{b}</script></span> 。最终的词向量是由两个隐藏状态的仿射变换来计算而得：
+<p>Ling 等人提出了一种基于字符的模型来实现开放词汇表示。对于具有 m 个字符的每个单词 w，该模型不是存储单词的词向量，而是遍历所有字符 <span class="arithmatex">\(c_{1}, c_{2} \dots c_{m}\)</span> 查找字符嵌入 <span class="arithmatex">\(e_{1}, e_{2} \dots e_{m}\)</span> 。然后将这些字符嵌入作为 biLSTM 输入，以分别获得用于前向和后向的最终隐藏状态 <span class="arithmatex">\(h_{f}, h_{b}\)</span> 。最终的词向量是由两个隐藏状态的仿射变换来计算而得：
 $$
 e_{w}=W_{f} H_{f}+W_{b} H_{b}+b
 $$</p>
 <p><strong>7.3 Hybrid NMT</strong></p>
 <p>Luong 等人提出了一个混合词字模型来处理未知词，从而实现开放词汇 NMT。系统主要进行单词级翻译，并查阅罕见单词的字符组成。在高层次上，字符级循环神经网络计算源单词词表示，并在需要时重新获得未知目标单词。这种混合方法的双重优点在于，它的训练比基于字符的方法要快得多，而且更容易进行训练；同时，它不会像基于单词的模型，产生未知的单词。</p>
-<p><strong>基于单词的翻译作为主干</strong> ：混合 NMT 的核心是一个单词级翻译的深度 LSTM 编码器—解码器。我们对每种语言维护大小 <span class="arithmatex"><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 的词汇表和使用 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 来表示 OOV 词汇。</p>
-<p><strong>基于字符表示</strong> ：在常规的基于单词的 NMT，是使用一个通用的 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 词向量来表示全部 OOV 词汇。这是有问题的，因为它丢弃了关于源单词的有价值的信息。相反，我们学习了一个关于罕见单词的字符的深层 LSTM 模型，并使用 LSTM 的最终隐藏状态作为罕见单词的表示（如下图所示）。</p>
+<p><strong>基于单词的翻译作为主干</strong> ：混合 NMT 的核心是一个单词级翻译的深度 LSTM 编码器—解码器。我们对每种语言维护大小 <span class="arithmatex">\(|V|\)</span> 的词汇表和使用 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 来表示 OOV 词汇。</p>
+<p><strong>基于字符表示</strong> ：在常规的基于单词的 NMT，是使用一个通用的 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 词向量来表示全部 OOV 词汇。这是有问题的，因为它丢弃了关于源单词的有价值的信息。相反，我们学习了一个关于罕见单词的字符的深层 LSTM 模型，并使用 LSTM 的最终隐藏状态作为罕见单词的表示（如下图所示）。</p>
 <p><img alt="1561199114562" src="../imgs/1561199114562.png" /></p>
-<p><strong>目标字符级别生成</strong> ：一般基于单词的 NMT 允许目标输出生成的 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 。相反，这里的目标是创建一个处理无限输出词汇表的连贯框架。解决方案是，在给定当前单词级别的状态下，使用一个单独的深层 LSTM 来进行字符级别的“翻译”。注意，当前单词上下文用于初始化字符级编码器。该系统的训练方法是，每当单词级别的 NMT 产生一个的 <span class="arithmatex"><span class="MathJax_Preview">\text{&lt;UNK&gt;}</span><script type="math/tex">\text{<UNK>}</script></span> 时候，字符级的解码器就被要求重新未知目标单词的正确的 surface form。</p>
+<p><strong>目标字符级别生成</strong> ：一般基于单词的 NMT 允许目标输出生成的 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 。相反，这里的目标是创建一个处理无限输出词汇表的连贯框架。解决方案是，在给定当前单词级别的状态下，使用一个单独的深层 LSTM 来进行字符级别的“翻译”。注意，当前单词上下文用于初始化字符级编码器。该系统的训练方法是，每当单词级别的 NMT 产生一个的 <span class="arithmatex">\(\text{&lt;UNK&gt;}\)</span> 时候，字符级的解码器就被要求重新未知目标单词的正确的 surface form。</p>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <p>以下是学习本课程时的可用参考书籍：</p>
 <p><a href="https://item.jd.com/12355569.html">《基于深度学习的自然语言处理》</a> （车万翔老师等翻译）</p>
@@ -2117,21 +1979,35 @@ $$</p>
 <p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
 <p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
 
-              
-            </article>
-          </div>
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
         
       </main>
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../CS224n-2019-07-Vanishing%20Gradients%20and%20Fancy%20RNNs/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 07 Vanishing Gradients and Fancy RNNs" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -2155,7 +2031,7 @@ $$</p>
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -2166,7 +2042,7 @@ $$</p>
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2019 - 2020 Xiao Xu
+      Copyright &copy; 2019 - 2022; Xiao Xu
     </div>
   
   
@@ -2185,7 +2061,16 @@ $$</p>
       
     
     <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/looperxx_nlp" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
     
@@ -2194,7 +2079,7 @@ $$</p>
       
     
     <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
 </div>
@@ -2207,14 +2092,19 @@ $$</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="../js/baidu-tongji.js"></script>
+      
+        <script src="../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

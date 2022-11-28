@@ -6,42 +6,60 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="LooperXX's homepage">
+        <meta name="description" content="Xiao Xu - Homepage">
       
       
-        <meta name="author" content="Looper - Xiao Xu">
+        <meta name="author" content="Xiao Xu">
       
+      
+        <link rel="canonical" href="https://looperxx.github.io/CS224n-2019-04-Backpropagation%20and%20Computation%20Graphs/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>04 Backpropagation and Computation Graphs - Science is interesting.</title>
+        <title>04 Backpropagation and Computation Graphs - The sun also rises.</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
 
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-CV5JZHXZY8"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-CV5JZHXZY8",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-CV5JZHXZY8",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
     
     
   </head>
@@ -49,12 +67,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,22 +96,24 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Science is interesting." class="md-header__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-header__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Science is interesting.
+            The sun also rises.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,10 +126,34 @@
       </div>
     </div>
     
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -113,15 +161,21 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -139,10 +193,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -152,14 +206,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -184,18 +232,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
       <a href="../Attention/" class="md-tabs__link">
         Notes
       </a>
     </li>
-  
-
   
 
       
@@ -210,8 +251,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link md-tabs__link--active">
-        Notes on CS224n
+      <a href="../CS224n-2019-00-Info/" class="md-tabs__link md-tabs__link--active">
+        Chinese Notes on CS224n-2019
       </a>
     </li>
   
@@ -227,7 +268,7 @@
   
     <li class="md-tabs__item">
       <a href="../MkDocs_demo/" class="md-tabs__link">
-        For MkDocs
+        MkDocs
       </a>
     </li>
   
@@ -236,7 +277,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -254,20 +301,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-nav__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Science is interesting.
+    The sun also rises.
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -307,6 +354,20 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_2">
           Notes
@@ -317,32 +378,6 @@
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Notes
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1">
-          Theory
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Theory" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          Theory
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -374,39 +409,6 @@
 
             
           
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Code
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Code" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Code
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
             
               
   
@@ -420,39 +422,6 @@
   
 
             
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3">
-          Book
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Book" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Book
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -501,13 +470,6 @@
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -526,16 +488,62 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_3">
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Notes on CS224n" data-md-level="1">
+      <nav class="md-nav" aria-label="Chinese Notes on CS224n-2019" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -545,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      <a href="../CS224n-2019-00-Info/" class="md-nav__link">
         CS224n-2019 Introduction
       </a>
     </li>
@@ -939,16 +947,22 @@
       
       
       
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_4">
-          For MkDocs
+          MkDocs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <nav class="md-nav" aria-label="MkDocs" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          For MkDocs
+          MkDocs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1059,13 +1073,16 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-04-Backpropagation and Computation Graphs.md" title="编辑此页" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/CS224n-2019-04-Backpropagation and Computation Graphs.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
 
 
   <h1>04 Backpropagation and Computation Graphs</h1>
@@ -1089,94 +1106,72 @@
 </ol>
 <h3 id="1-derivative-wrt-a-weight-matrix">1. Derivative wrt a weight matrix<a class="headerlink" href="#1-derivative-wrt-a-weight-matrix" title="Permanent link">&para;</a></h3>
 <ul>
-<li>让我们仔细看看计算 <span class="arithmatex"><span class="MathJax_Preview">\frac{\partial s}{\partial \textbf{W}}</span><script type="math/tex">\frac{\partial s}{\partial \textbf{W}}</script></span><ul>
+<li>让我们仔细看看计算 <span class="arithmatex">\(\frac{\partial s}{\partial \textbf{W}}\)</span><ul>
 <li>再次使用链式法则</li>
 </ul>
 </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \frac{\partial s}{\partial \boldsymbol{W}}=\frac{\partial s}{\partial \boldsymbol{h}} \frac{\partial \boldsymbol{h}}{\partial \boldsymbol{z}} \frac{\partial \boldsymbol{z}}{\partial \boldsymbol{W}}
-</div>
-<script type="math/tex; mode=display">
-\frac{\partial s}{\partial \boldsymbol{W}}=\frac{\partial s}{\partial \boldsymbol{h}} \frac{\partial \boldsymbol{h}}{\partial \boldsymbol{z}} \frac{\partial \boldsymbol{z}}{\partial \boldsymbol{W}}
-</script>
-</div>
+\]</div>
 <p><img alt="1560439330500" src="../imgs/1560439330500.png" /></p>
 <p><strong>Deriving gradients for backprop</strong></p>
 <ul>
 <li>这个函数(从上次开始)<ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">\frac{\partial s}{\partial W}=\delta \frac{\partial \mathbf{z}}{\partial W}=\boldsymbol{\delta} \frac{\partial}{\partial \boldsymbol{W}} \boldsymbol{W} \boldsymbol{x}+\boldsymbol{b}</span><script type="math/tex">\frac{\partial s}{\partial W}=\delta \frac{\partial \mathbf{z}}{\partial W}=\boldsymbol{\delta} \frac{\partial}{\partial \boldsymbol{W}} \boldsymbol{W} \boldsymbol{x}+\boldsymbol{b}</script></span></li>
+<li><span class="arithmatex">\(\frac{\partial s}{\partial W}=\delta \frac{\partial \mathbf{z}}{\partial W}=\boldsymbol{\delta} \frac{\partial}{\partial \boldsymbol{W}} \boldsymbol{W} \boldsymbol{x}+\boldsymbol{b}\)</span></li>
 </ul>
 </li>
-<li>考虑单个权重 <span class="arithmatex"><span class="MathJax_Preview">W_{ij}</span><script type="math/tex">W_{ij}</script></span> 的导数</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">W_{ij}</span><script type="math/tex">W_{ij}</script></span> 只对 <span class="arithmatex"><span class="MathJax_Preview">z_i</span><script type="math/tex">z_i</script></span> 有贡献<ul>
-<li>例如 <span class="arithmatex"><span class="MathJax_Preview">W_{23}</span><script type="math/tex">W_{23}</script></span> 只对 <span class="arithmatex"><span class="MathJax_Preview">z_2</span><script type="math/tex">z_2</script></span> 有贡献，对没有 <span class="arithmatex"><span class="MathJax_Preview">z_1</span><script type="math/tex">z_1</script></span> 贡献</li>
+<li>考虑单个权重 <span class="arithmatex">\(W_{ij}\)</span> 的导数</li>
+<li><span class="arithmatex">\(W_{ij}\)</span> 只对 <span class="arithmatex">\(z_i\)</span> 有贡献<ul>
+<li>例如 <span class="arithmatex">\(W_{23}\)</span> 只对 <span class="arithmatex">\(z_2\)</span> 有贡献，对没有 <span class="arithmatex">\(z_1\)</span> 贡献</li>
 </ul>
 </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \begin{aligned} \frac{\partial z_{i}}{\partial W_{i j}} &amp;=\frac{\partial}{\partial W_{i j}} W_{i \cdot} x+b_{i} \\ &amp;=\frac{\partial}{\partial W_{i j}} \sum_{k=1}^{d} W_{i k} x_{k}=x_{j} \end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned} \frac{\partial z_{i}}{\partial W_{i j}} &=\frac{\partial}{\partial W_{i j}} W_{i \cdot} x+b_{i} \\ &=\frac{\partial}{\partial W_{i j}} \sum_{k=1}^{d} W_{i k} x_{k}=x_{j} \end{aligned}
-</script>
-</div>
+\]</div>
 <p><img alt="1560439647414" src="../imgs/1560439647414.png" /></p>
 <ul>
-<li>对于单个 <span class="arithmatex"><span class="MathJax_Preview">W_{ij}</span><script type="math/tex">W_{ij}</script></span> 的导数</li>
+<li>对于单个 <span class="arithmatex">\(W_{ij}\)</span> 的导数</li>
 </ul>
 <p><img alt="1560440166199" src="../imgs/1560440166199.png" /></p>
 <ul>
 <li>我们想要整个 <strong>W</strong> 的梯度，但是每种情况都是一样的</li>
 <li>总体答案：外积</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \begin{array}{l}{\frac{\partial s}{\partial \boldsymbol{W}}=\boldsymbol{\delta}^{T} \quad \boldsymbol{x}^{T}} \\ {[n \times m] \quad[n \times 1][1 \times m]}\end{array}
-</div>
-<script type="math/tex; mode=display">
-\begin{array}{l}{\frac{\partial s}{\partial \boldsymbol{W}}=\boldsymbol{\delta}^{T} \quad \boldsymbol{x}^{T}} \\ {[n \times m] \quad[n \times 1][1 \times m]}\end{array}
-</script>
-</div>
+\]</div>
 <p><strong>Deriving gradients: Tips</strong></p>
 <ul>
 <li>技巧1：仔细定义变量并跟踪它们的维度！</li>
-<li>技巧2：链式法则！如果 <span class="arithmatex"><span class="MathJax_Preview">y = f(u)</span><script type="math/tex">y = f(u)</script></span> , <span class="arithmatex"><span class="MathJax_Preview">u = g(x)</span><script type="math/tex">u = g(x)</script></span>，即 <span class="arithmatex"><span class="MathJax_Preview">y = f(g(x))</span><script type="math/tex">y = f(g(x))</script></span> 则<ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{u}} \frac{\partial \boldsymbol{u}}{\partial \boldsymbol{x}}</span><script type="math/tex">\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{u}} \frac{\partial \boldsymbol{u}}{\partial \boldsymbol{x}}</script></span></li>
+<li>技巧2：链式法则！如果 <span class="arithmatex">\(y = f(u)\)</span> , <span class="arithmatex">\(u = g(x)\)</span>，即 <span class="arithmatex">\(y = f(g(x))\)</span> 则<ul>
+<li><span class="arithmatex">\(\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}=\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{u}} \frac{\partial \boldsymbol{u}}{\partial \boldsymbol{x}}\)</span></li>
 <li>要清楚哪些变量用于哪些计算</li>
 </ul>
 </li>
-<li>提示3：模型的最上面的softmax部分：首先考虑当 <span class="arithmatex"><span class="MathJax_Preview">c = y</span><script type="math/tex">c = y</script></span> (正确的类)的导数 <span class="arithmatex"><span class="MathJax_Preview">f_c</span><script type="math/tex">f_c</script></span> ，然后再考虑当 <span class="arithmatex"><span class="MathJax_Preview">c \neq y</span><script type="math/tex">c \neq y</script></span> (所有不正确的类)的导数 <span class="arithmatex"><span class="MathJax_Preview">f_c</span><script type="math/tex">f_c</script></span> </li>
+<li>提示3：模型的最上面的softmax部分：首先考虑当 <span class="arithmatex">\(c = y\)</span> (正确的类)的导数 <span class="arithmatex">\(f_c\)</span> ，然后再考虑当 <span class="arithmatex">\(c \neq y\)</span> (所有不正确的类)的导数 <span class="arithmatex">\(f_c\)</span> </li>
 <li>技巧4：如果你被矩阵微积分搞糊涂了，请计算逐个元素的偏导数！</li>
-<li>技巧5：使用形状约定。注意：到达隐藏层的错误消息 <span class="arithmatex"><span class="MathJax_Preview">\delta</span><script type="math/tex">\delta</script></span> 具有与该隐藏层相同的维度</li>
+<li>技巧5：使用形状约定。注意：到达隐藏层的错误消息 <span class="arithmatex">\(\delta\)</span> 具有与该隐藏层相同的维度</li>
 </ul>
 <p><strong>Deriving gradients wrt words for window model</strong></p>
 <ul>
 <li>到达并更新单词向量的梯度可以简单地分解为每个单词向量的梯度</li>
-<li>令 <span class="arithmatex"><span class="MathJax_Preview">\nabla_{x} J=W^{T} \delta=\delta_{x_{w i n d o w}}</span><script type="math/tex">\nabla_{x} J=W^{T} \delta=\delta_{x_{w i n d o w}}</script></span> ，当 <span class="arithmatex"><span class="MathJax_Preview">X_{\text { window }}=\left[\begin{array}{llll}{\mathrm{X}_{\text { museums }}} &amp; {\mathrm{X}_{\text { in }}} &amp; {\mathrm{X}_{\text { Paris }}} &amp; {\mathrm{X}_{\text { are }}} &amp; {\mathrm{X}_{\text { amazing }}}\end{array}\right]</span><script type="math/tex">X_{\text { window }}=\left[\begin{array}{llll}{\mathrm{X}_{\text { museums }}} & {\mathrm{X}_{\text { in }}} & {\mathrm{X}_{\text { Paris }}} & {\mathrm{X}_{\text { are }}} & {\mathrm{X}_{\text { amazing }}}\end{array}\right]</script></span> </li>
+<li>令 <span class="arithmatex">\(\nabla_{x} J=W^{T} \delta=\delta_{x_{w i n d o w}}\)</span> ，当 <span class="arithmatex">\(X_{\text { window }}=\left[\begin{array}{llll}{\mathrm{X}_{\text { museums }}} &amp; {\mathrm{X}_{\text { in }}} &amp; {\mathrm{X}_{\text { Paris }}} &amp; {\mathrm{X}_{\text { are }}} &amp; {\mathrm{X}_{\text { amazing }}}\end{array}\right]\)</span> </li>
 <li>则得到</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \begin{align}
 \delta_{\text {window}}=\left[\begin{array}{c}{\nabla_{x_{\text {museums}}}} \\ {\nabla_{x_{i n}}} \\ {\nabla_{x_{\text {Pare}}}} \\ {\nabla_{x_{\text {are}}}} \\ {\nabla_{x_{\text {amazing}}}}\end{array}\right] \in \mathbb{R}^{5 d}
 \end{align}
-</div>
-<script type="math/tex; mode=display">
-\begin{align}
-\delta_{\text {window}}=\left[\begin{array}{c}{\nabla_{x_{\text {museums}}}} \\ {\nabla_{x_{i n}}} \\ {\nabla_{x_{\text {Pare}}}} \\ {\nabla_{x_{\text {are}}}} \\ {\nabla_{x_{\text {amazing}}}}\end{array}\right] \in \mathbb{R}^{5 d}
-\end{align}
-</script>
-</div>
+\]</div>
 <blockquote>
 <p>我们将根据梯度逐个更新对应的词向量矩阵中的词向量，所以实际上是对词向量矩阵的更新是非常稀疏的</p>
 </blockquote>
 <p><strong>Updating word gradients in window model</strong></p>
 <ul>
 <li>当我们将梯度更新到词向量中时，这将推动单词向量，使它们(在原则上)在确定命名实体时更有帮助。</li>
-<li>例如，模型可以了解到，当看到 <span class="arithmatex"><span class="MathJax_Preview">x_{in}</span><script type="math/tex">x_{in}</script></span> 是中心词之前的单词时，指示中心词是一个 <strong>Location</strong></li>
+<li>例如，模型可以了解到，当看到 <span class="arithmatex">\(x_{in}\)</span> 是中心词之前的单词时，指示中心词是一个 <strong>Location</strong></li>
 </ul>
 <p><strong>A pitfall when retraining word vectors</strong></p>
 <ul>
@@ -1244,14 +1239,9 @@ $$
 </ul>
 <p><strong>Backpropagation: Single Node</strong></p>
 <p><img alt="1560500111369" src="../imgs/1560500111369.png" /></p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \textbf{h} = f(\textbf{z})
-</div>
-<script type="math/tex; mode=display">
-\textbf{h} = f(\textbf{z})
-</script>
-</div>
+\]</div>
 <ul>
 <li>节点接收“上游梯度”</li>
 <li>目标是传递正确的“下游梯度”</li>
@@ -1267,7 +1257,7 @@ $$
 \textbf{z} = \textbf{W}\textbf{x}
 $$</p>
 <ul>
-<li>多个输入 <span class="arithmatex"><span class="MathJax_Preview">\to</span><script type="math/tex">\to</script></span> 多个局部梯度</li>
+<li>多个输入 <span class="arithmatex">\(\to\)</span> 多个局部梯度</li>
 </ul>
 <p><strong>An Example</strong></p>
 <p><strong>Forward</strong></p>
@@ -1282,7 +1272,7 @@ $$
 \end{aligned}
 $$
 <strong>Gradients sum at outward branches</strong></p>
-<p>上图中的 <span class="arithmatex"><span class="MathJax_Preview">\frac{\partial f}{\partial y}</span><script type="math/tex">\frac{\partial f}{\partial y}</script></span> 的梯度的计算</p>
+<p>上图中的 <span class="arithmatex">\(\frac{\partial f}{\partial y}\)</span> 的梯度的计算</p>
 <p><img alt="1560503966935" src="../imgs/1560503966935.png" />
 $$
 a = x + y \
@@ -1292,9 +1282,9 @@ f = ab \
 $$
 <strong>Node Intuitions</strong></p>
 <ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">+</span><script type="math/tex">+</script></span> “分发” 上游梯度给每个 <span class="arithmatex"><span class="MathJax_Preview">summand</span><script type="math/tex">summand</script></span></li>
-<li><span class="arithmatex"><span class="MathJax_Preview">max</span><script type="math/tex">max</script></span> “路由” 上游梯度，将梯度发送到最大的方向</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">*</span><script type="math/tex">*</script></span> “切换”上游梯度</li>
+<li><span class="arithmatex">\(+\)</span> “分发” 上游梯度给每个 <span class="arithmatex">\(summand\)</span></li>
+<li><span class="arithmatex">\(max\)</span> “路由” 上游梯度，将梯度发送到最大的方向</li>
+<li><span class="arithmatex">\(*\)</span> “切换”上游梯度</li>
 </ul>
 <p><strong>Efficiency: compute all gradients at once</strong></p>
 <ul>
@@ -1312,8 +1302,8 @@ $$
 <li>Bprop：<ul>
 <li>初始化输出梯度为 1</li>
 <li>以相反的顺序方位节点，使用节点的后继的梯度来计算每个节点的梯度</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">\{y_1,y_2,\dots,y_n\}</span><script type="math/tex">\{y_1,y_2,\dots,y_n\}</script></span>  是 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 的后继</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">\frac{\partial z}{\partial x} = \sum_{i=1}^n \frac{\partial z}{\partial y_i}\frac{\partial y_i}{\partial x}</span><script type="math/tex">\frac{\partial z}{\partial x} = \sum_{i=1}^n \frac{\partial z}{\partial y_i}\frac{\partial y_i}{\partial x}</script></span> </li>
+<li><span class="arithmatex">\(\{y_1,y_2,\dots,y_n\}\)</span>  是 <span class="arithmatex">\(x\)</span> 的后继</li>
+<li><span class="arithmatex">\(\frac{\partial z}{\partial x} = \sum_{i=1}^n \frac{\partial z}{\partial y_i}\frac{\partial y_i}{\partial x}\)</span> </li>
 <li>正确地说，Fprop 和 Bprop 的计算复杂度是一样的</li>
 <li>一般来说，我们的网络有固定的层结构，所以我们可以使用矩阵和雅可比矩阵</li>
 </ul>
@@ -1332,10 +1322,10 @@ $$
 <p><img alt="1560525631163" src="../imgs/1560525631163.png" /></p>
 <p><strong>Gradient checking: Numeric Gradient</strong></p>
 <ul>
-<li>对于 <span class="arithmatex"><span class="MathJax_Preview">h \approx 1e^{-4}</span><script type="math/tex">h \approx 1e^{-4}</script></span> ,  <span class="arithmatex"><span class="MathJax_Preview">f^{\prime}(x) \approx \frac{f(x+h)-f(x-h)}{2 h}</span><script type="math/tex">f^{\prime}(x) \approx \frac{f(x+h)-f(x-h)}{2 h}</script></span></li>
+<li>对于 <span class="arithmatex">\(h \approx 1e^{-4}\)</span> ,  <span class="arithmatex">\(f^{\prime}(x) \approx \frac{f(x+h)-f(x-h)}{2 h}\)</span></li>
 <li>易于正确实现</li>
 <li>但近似且非常缓慢<ul>
-<li>必须对模型的每个参数重新计算 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span></li>
+<li>必须对模型的每个参数重新计算 <span class="arithmatex">\(f\)</span></li>
 </ul>
 </li>
 <li>用于检查您的实现<ul>
@@ -1371,16 +1361,11 @@ $$
 </ul>
 <h3 id="3-we-have-models-with-many-params-regularization">3. We have models with many params! Regularization!<a class="headerlink" href="#3-we-have-models-with-many-params-regularization" title="Permanent link">&para;</a></h3>
 <ul>
-<li>实际上一个完整的损失函数包含了所有参数 <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 的正则化（下式中最后一项），例如L2正则化：</li>
+<li>实际上一个完整的损失函数包含了所有参数 <span class="arithmatex">\(\theta\)</span> 的正则化（下式中最后一项），例如L2正则化：</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 J(\theta)=\frac{1}{N} \sum_{i=1}^{N}-\log \left(\frac{e^{f_{y_{i}}}}{\sum_{c=1}^{C} e^{f_{c}}}\right)+\lambda \sum_{k} \theta_{k}^{2}
-</div>
-<script type="math/tex; mode=display">
-J(\theta)=\frac{1}{N} \sum_{i=1}^{N}-\log \left(\frac{e^{f_{y_{i}}}}{\sum_{c=1}^{C} e^{f_{c}}}\right)+\lambda \sum_{k} \theta_{k}^{2}
-</script>
-</div>
+\]</div>
 <ul>
 <li>正则化(在很大程度上)可以防止在我们有很多特征时过拟合(或者是一个非常强大/深层的模型等等)</li>
 </ul>
@@ -1396,7 +1381,7 @@ J(\theta)=\frac{1}{N} \sum_{i=1}^{N}-\log \left(\frac{e^{f_{y_{i}}}}{\sum_{c=1}^
 <p>10000 loops, best of 3: <strong>53.8 μs</strong> per loop</p>
 </li>
 <li>
-<p>(10x)更快的方法是使用 <span class="arithmatex"><span class="MathJax_Preview">C \times N</span><script type="math/tex">C \times N</script></span> 矩阵</p>
+<p>(10x)更快的方法是使用 <span class="arithmatex">\(C \times N\)</span> 矩阵</p>
 </li>
 <li>总是尝试使用向量和矩阵，而不是循环</li>
 <li>你也应该快速测试你的代码</li>
@@ -1431,16 +1416,11 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
 </li>
 <li>初始化隐含层偏差为0，如果权重为0，则输出(或重构)偏差为最优值(例如，均值目标或均值目标的反s形)</li>
 <li>初始化 <strong>所有其他权重</strong> 为Uniform(–r, r)，选择使数字既不会太大也不会太小的 r</li>
-<li>Xavier初始化中，方差与 fan-in <span class="arithmatex"><span class="MathJax_Preview">n_{in}</span><script type="math/tex">n_{in}</script></span> (前一层尺寸)和 fan-out <span class="arithmatex"><span class="MathJax_Preview">n_{out}</span><script type="math/tex">n_{out}</script></span>(下一层尺寸)成反比</li>
+<li>Xavier初始化中，方差与 fan-in <span class="arithmatex">\(n_{in}\)</span> (前一层尺寸)和 fan-out <span class="arithmatex">\(n_{out}\)</span>(下一层尺寸)成反比</li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \operatorname{Var}\left(W_{i}\right)=\frac{2}{n_{\mathrm{in}}+n_{\mathrm{out}}}
-</div>
-<script type="math/tex; mode=display">
-\operatorname{Var}\left(W_{i}\right)=\frac{2}{n_{\mathrm{in}}+n_{\mathrm{out}}}
-</script>
-</div>
+\]</div>
 <p><strong>Optimizers</strong></p>
 <ul>
 <li>通常，简单的SGD就可以了<ul>
@@ -1452,7 +1432,7 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
 <li>这些模型给出了每个参数的学习速度<ul>
 <li>Adagrad</li>
 <li>RMSprop</li>
-<li>Adam <span class="arithmatex"><span class="MathJax_Preview">\leftarrow</span><script type="math/tex">\leftarrow</script></span> 相当好,在许多情况下是安全的选择</li>
+<li>Adam <span class="arithmatex">\(\leftarrow\)</span> 相当好,在许多情况下是安全的选择</li>
 <li>SparseAdam</li>
 <li>…</li>
 </ul>
@@ -1469,11 +1449,11 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
 </ul>
 </li>
 <li>如果你在训练时降低学习速度，通常可以获得更好的效果<ul>
-<li>手工：每隔 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个阶段(epoch)将学习速度减半<ul>
+<li>手工：每隔 <span class="arithmatex">\(k\)</span> 个阶段(epoch)将学习速度减半<ul>
 <li>epoch = 遍历一次数据 (打乱或采样的)</li>
 </ul>
 </li>
-<li>通过一个公式： <span class="arithmatex"><span class="MathJax_Preview">l r=l r_{0} e^{-k t}, \text{for  epoch }t</span><script type="math/tex">l r=l r_{0} e^{-k t}, \text{for  epoch }t</script></span> </li>
+<li>通过一个公式： <span class="arithmatex">\(l r=l r_{0} e^{-k t}, \text{for  epoch }t\)</span> </li>
 <li>还有更新奇的方法，比如循环学习率(q.v.)</li>
 </ul>
 </li>
@@ -1487,21 +1467,35 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
 <p><a href="https://zhuanlan.zhihu.com/p/59011576">斯坦福CS224N深度学习自然语言处理2019冬学习笔记目录</a> (课件核心内容的提炼，并包含作者的见解与建议)</p>
 <p><a href="https://zhuanlan.zhihu.com/p/31977759">斯坦福大学 CS224n自然语言处理与深度学习笔记汇总</a> <span class="critic comment">这是针对note部分的翻译</span></p>
 
-              
-            </article>
-          </div>
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
         
       </main>
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="页脚">
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
       
         
         <a href="../CS224n-2019-03-Word%20Window%20Classification%2CNeural%20Networks%2C%20and%20Matrix%20Calculus/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 03 Word Window Classification,Neural Networks, and Matrix Calculus" rel="prev">
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
           <div class="md-footer__title">
             <div class="md-ellipsis">
@@ -1525,7 +1519,7 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
             </div>
           </div>
           <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
           </div>
         </a>
       
@@ -1536,7 +1530,7 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2019 - 2020 Xiao Xu
+      Copyright &copy; 2019 - 2022; Xiao Xu
     </div>
   
   
@@ -1555,7 +1549,16 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
       
     
     <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/looperxx_nlp" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
     
@@ -1564,7 +1567,7 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
       
     
     <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
 </div>
@@ -1577,14 +1580,19 @@ logistic 和 tanh 仍然被用于特定的用途，但不再是构建深度网�
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="../js/baidu-tongji.js"></script>
+      
+        <script src="../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

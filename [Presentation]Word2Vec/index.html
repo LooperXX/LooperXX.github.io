@@ -6,42 +6,60 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="LooperXX's homepage">
+        <meta name="description" content="Xiao Xu - Homepage">
       
       
-        <meta name="author" content="Looper - Xiao Xu">
+        <meta name="author" content="Xiao Xu">
       
+      
+        <link rel="canonical" href="https://looperxx.github.io/%5BPresentation%5DWord2Vec/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
     
     
       
-        <title>[Presentation]Word2Vec - Science is interesting.</title>
+        <title>[Presentation]Word2Vec - The sun also rises.</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.472b142f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.08040f6c.min.css">
         
       
+      
+
     
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
+  
 
+
+  
+  
+
+
+  <script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-CV5JZHXZY8"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-CV5JZHXZY8",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-CV5JZHXZY8",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
     
     
   </head>
@@ -49,12 +67,16 @@
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="" data-md-color-accent="">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -74,22 +96,24 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Science is interesting." class="md-header__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-header__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Science is interesting.
+            The sun also rises.
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -102,10 +126,34 @@
       </div>
     </div>
     
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -113,15 +161,21 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -139,10 +193,10 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+        <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -152,14 +206,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -184,18 +232,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
       <a href="../Attention/" class="md-tabs__link">
         Notes
       </a>
     </li>
-  
-
   
 
       
@@ -208,8 +249,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
-        Notes on CS224n
+      <a href="../CS224n-2019-00-Info/" class="md-tabs__link">
+        Chinese Notes on CS224n-2019
       </a>
     </li>
   
@@ -225,7 +266,7 @@
   
     <li class="md-tabs__item">
       <a href="../MkDocs_demo/" class="md-tabs__link">
-        For MkDocs
+        MkDocs
       </a>
     </li>
   
@@ -234,7 +275,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -252,20 +299,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Science is interesting." class="md-nav__button md-logo" aria-label="Science is interesting." data-md-component="logo">
+    <a href=".." title="The sun also rises." class="md-nav__button md-logo" aria-label="The sun also rises." data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
 
     </a>
-    Science is interesting.
+    The sun also rises.
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/LooperXX/LooperXX.github.io/" title="前往仓库" class="md-source" data-md-component="source">
+      <a href="https://github.com/LooperXX/LooperXX.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     LooperXX/LooperXX.github.io
@@ -305,6 +352,20 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_2">
           Notes
@@ -315,32 +376,6 @@
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Notes
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_1">
-          Theory
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Theory" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          Theory
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -372,39 +407,6 @@
 
             
           
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_2">
-          Code
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Code" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_2">
-          <span class="md-nav__icon md-icon"></span>
-          Code
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
             
               
   
@@ -418,39 +420,6 @@
   
 
             
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2_3">
-          Book
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Book" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_3">
-          <span class="md-nav__icon md-icon"></span>
-          Book
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
           
             
               
@@ -499,13 +468,6 @@
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -522,16 +484,62 @@
       
       
       
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_3">
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Notes on CS224n" data-md-level="1">
+      <nav class="md-nav" aria-label="Chinese Notes on CS224n-2019" data-md-level="1">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Notes on CS224n
+          Chinese Notes on CS224n-2019
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -541,7 +549,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CS224n-2019%20%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+      <a href="../CS224n-2019-00-Info/" class="md-nav__link">
         CS224n-2019 Introduction
       </a>
     </li>
@@ -864,16 +872,22 @@
       
       
       
+        
+          
+        
+          
+        
+      
       
         <label class="md-nav__link" for="__nav_4">
-          For MkDocs
+          MkDocs
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="For MkDocs" data-md-level="1">
+      <nav class="md-nav" aria-label="MkDocs" data-md-level="1">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          For MkDocs
+          MkDocs
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -978,13 +992,16 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-<a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/[Presentation]Word2Vec.md" title="编辑此页" class="md-content__button md-icon">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-</a>
+                  
+
+  <a href="https://github.com/LooperXX/LooperXX.github.io/edit/master/docs/[Presentation]Word2Vec.md" title="编辑此页" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
 
 
   <h1>[Presentation]Word2Vec</h1>
@@ -1028,14 +1045,9 @@ $$</p>
 </ul>
 <p><strong>Representing words as discrete symbols</strong></p>
 <p>在传统的自然语言处理中，我们把词语看作离散的符号: hotel, conference, motel - a <strong>localist</strong> representation。单词可以通过独热向量(one-hot vectors，只有一个1，其余均为0的稀疏向量) 。向量维度=词汇量(如500,000)。</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
-</div>
-<script type="math/tex; mode=display">
-motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0] \\ hotel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0 \  0 \  0 \  0]
-</script>
-</div>
+\]</div>
 <p><strong>Problem with words as discrete symbols</strong></p>
 <p>所有向量是正交的。对于独热向量，没有关于相似性概念，并且向量维度过大。</p>
 <p><strong>Solutions</strong></p>
@@ -1051,8 +1063,8 @@ motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0
 <li>有点物以类聚，人以群分的感觉</li>
 </ul>
 </li>
-<li>当一个单词<span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>出现在文本中时，它的上下文是出现在其附近的一组单词(在一个固定大小的窗口中)。</li>
-<li>使用<span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>的许多上下文来构建<span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span>的表示</li>
+<li>当一个单词<span class="arithmatex">\(w\)</span>出现在文本中时，它的上下文是出现在其附近的一组单词(在一个固定大小的窗口中)。</li>
+<li>使用<span class="arithmatex">\(w\)</span>的许多上下文来构建<span class="arithmatex">\(w\)</span>的表示</li>
 </ul>
 <p><img alt="示例" src="../imgs/1560069660365.png" /></p>
 <h3 id="word2vec-introduction">Word2vec introduction<a class="headerlink" href="#word2vec-introduction" title="Permanent link">&para;</a></h3>
@@ -1065,35 +1077,25 @@ motel = [0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  0 \  1 \  0 \  0 \  0 \  0
 <ul>
 <li>我们有大量的文本 (corpus means 'body' in Latin. 复数为corpora)</li>
 <li>固定词汇表中的每个单词都由一个向量表示</li>
-<li>文本中的每个位置 <span class="arithmatex"><span class="MathJax_Preview">t</span><script type="math/tex">t</script></span>，其中有一个中心词 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和上下文(“外部”)单词 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
-<li>使用 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>词向量的相似性</strong> 来计算给定 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 的 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> 的 <strong>概率</strong> (反之亦然)</li>
+<li>文本中的每个位置 <span class="arithmatex">\(t\)</span>，其中有一个中心词 <span class="arithmatex">\(c\)</span> 和上下文(“外部”)单词 <span class="arithmatex">\(o\)</span> </li>
+<li>使用 <span class="arithmatex">\(c\)</span> 和 <span class="arithmatex">\(o\)</span> 的 <strong>词向量的相似性</strong> 来计算给定 <span class="arithmatex">\(c\)</span> 的 <span class="arithmatex">\(o\)</span> 的 <strong>概率</strong> (反之亦然)</li>
 <li><strong>不断调整词向量</strong> 来最大化这个概率</li>
 </ul>
-<p>下图为窗口大小 <span class="arithmatex"><span class="MathJax_Preview">j=2</span><script type="math/tex">j=2</script></span> 时的 <span class="arithmatex"><span class="MathJax_Preview">P\left(w_{t+j} | w_{t}\right)</span><script type="math/tex">P\left(w_{t+j} | w_{t}\right)</script></span> 计算过程，center word分别为 <span class="arithmatex"><span class="MathJax_Preview">into</span><script type="math/tex">into</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">banking</span><script type="math/tex">banking</script></span></p>
+<p>下图为窗口大小 <span class="arithmatex">\(j=2\)</span> 时的 <span class="arithmatex">\(P\left(w_{t+j} | w_{t}\right)\)</span> 计算过程，center word分别为 <span class="arithmatex">\(into\)</span> 和 <span class="arithmatex">\(banking\)</span></p>
 <p><img alt="1560070410531" src="../imgs/1560070410531.png" /></p>
 <p><img alt="1560070494437" src="../imgs/1560070494437.png" /></p>
 <h3 id="word2vec-objective-function">Word2vec objective function<a class="headerlink" href="#word2vec-objective-function" title="Permanent link">&para;</a></h3>
-<p>对于每个位置<span class="arithmatex"><span class="MathJax_Preview">t=1, \ldots, T</span><script type="math/tex">t=1, \ldots, T</script></span> ，在大小为<span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>的固定窗口内预测上下文单词，给定中心词 <span class="arithmatex"><span class="MathJax_Preview">w_j</span><script type="math/tex">w_j</script></span></p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>对于每个位置<span class="arithmatex">\(t=1, \ldots, T\)</span> ，在大小为<span class="arithmatex">\(m\)</span>的固定窗口内预测上下文单词，给定中心词 <span class="arithmatex">\(w_j\)</span></p>
+<div class="arithmatex">\[
 Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
-</div>
-<script type="math/tex; mode=display">
-Likelihoood = L(\theta) = \prod^{T}_{t=1} \prod_{-m \leq j \leq m \atop j \neq 0} P(w_{t+j} | w_{t} ; \theta)
-</script>
-</div>
+\]</div>
 <ul>
-<li>其中，<span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 为所有需要优化的变量</li>
+<li>其中，<span class="arithmatex">\(\theta\)</span> 为所有需要优化的变量</li>
 </ul>
-<p>目标函数<span class="arithmatex"><span class="MathJax_Preview">J(\theta)</span><script type="math/tex">J(\theta)</script></span> (有时被称为代价函数或损失函数) 是(平均)负对数似然</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>目标函数<span class="arithmatex">\(J(\theta)\)</span> (有时被称为代价函数或损失函数) 是(平均)负对数似然</p>
+<div class="arithmatex">\[
 J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
-</div>
-<script type="math/tex; mode=display">
-J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m \atop j \neq 0} \log P\left(w_{t+j} | w_{t} ; \theta\right)
-</script>
-</div>
+\]</div>
 <p>其中log形式是方便将连乘转化为求和，负号是希望将极大化似然率转化为极小化损失函数的等价问题。</p>
 <blockquote>
 <p>在连乘之前使用log转化为求和非常有效，特别是在做优化时
@@ -1102,53 +1104,42 @@ J(\theta)=-\frac{1}{T} \log L(\theta)=-\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq 
   $$</p>
 </blockquote>
 <ul>
-<li><strong>最小化目标函数 <span class="arithmatex"><span class="MathJax_Preview">\Leftrightarrow</span><script type="math/tex">\Leftrightarrow</script></span>  最大化预测精度</strong></li>
-<li><u>问题</u>：如何计算 <span class="arithmatex"><span class="MathJax_Preview">P(w_{t+j} | w_{t} ; \theta)</span><script type="math/tex">P(w_{t+j} | w_{t} ; \theta)</script></span> ？</li>
+<li><strong>最小化目标函数 <span class="arithmatex">\(\Leftrightarrow\)</span>  最大化预测精度</strong></li>
+<li><u>问题</u>：如何计算 <span class="arithmatex">\(P(w_{t+j} | w_{t} ; \theta)\)</span> ？</li>
 <li><u>回答</u>：对于每个单词都是用两个向量<ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">v_w</span><script type="math/tex">v_w</script></span> 当 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 是中心词时</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">u_w</span><script type="math/tex">u_w</script></span> 当 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 是上下文词时</li>
+<li><span class="arithmatex">\(v_w\)</span> 当 <span class="arithmatex">\(w\)</span> 是中心词时</li>
+<li><span class="arithmatex">\(u_w\)</span> 当 <span class="arithmatex">\(w\)</span> 是上下文词时</li>
 </ul>
 </li>
-<li>于是对于一个中心词 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 和一个上下文词  <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> </li>
+<li>于是对于一个中心词 <span class="arithmatex">\(c\)</span> 和一个上下文词  <span class="arithmatex">\(o\)</span> </li>
 </ul>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
-</div>
-<script type="math/tex; mode=display">
-P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
-</script>
-</div>
+\]</div>
 <blockquote>
-<p>公式中，向量 <span class="arithmatex"><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 和向量 <span class="arithmatex"><span class="MathJax_Preview">v_c</span><script type="math/tex">v_c</script></span> 进行点乘。向量之间越相似，点乘结果越大，从而归一化后得到的概率值也越大。模型的训练正是为了使得具有相似上下文的单词，具有相似的向量。</p>
+<p>公式中，向量 <span class="arithmatex">\(u_o\)</span> 和向量 <span class="arithmatex">\(v_c\)</span> 进行点乘。向量之间越相似，点乘结果越大，从而归一化后得到的概率值也越大。模型的训练正是为了使得具有相似上下文的单词，具有相似的向量。</p>
 </blockquote>
 <h3 id="word2vec-prediction-function">Word2vec prediction function<a class="headerlink" href="#word2vec-prediction-function" title="Permanent link">&para;</a></h3>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
-</div>
-<script type="math/tex; mode=display">
-P(o | c)=\frac{\exp \left(u_{o}^{T} v_{c}\right)}{\sum_{w \in V} \exp \left(u_{w}^{T} v_{c}\right)}
-</script>
-</div>
+\]</div>
 <ul>
 <li>取幂使任何数都为正</li>
-<li>点积比较o和c的相似性 <span class="arithmatex"><span class="MathJax_Preview">u^{T} v=u . v=\sum_{i=1}^{n} u_{i} v_{i}</span><script type="math/tex">u^{T} v=u . v=\sum_{i=1}^{n} u_{i} v_{i}</script></span> ，点积越大则概率越大</li>
+<li>点积比较o和c的相似性 <span class="arithmatex">\(u^{T} v=u . v=\sum_{i=1}^{n} u_{i} v_{i}\)</span> ，点积越大则概率越大</li>
 <li>分母：对整个词汇表进行标准化，从而给出概率分布</li>
 </ul>
-<p><strong>softmax function</strong> <span class="arithmatex"><span class="MathJax_Preview">\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}</span><script type="math/tex">\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}</script></span>
+<p><strong>softmax function</strong> <span class="arithmatex">\(\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}\)</span>
 $$
 \operatorname{softmax}\left(x_{i}\right)=\frac{\exp \left(x_{i}\right)}{\sum_{j=1}^{n} \exp \left(x_{j}\right)}=p_{i}
 $$
-将任意值 <span class="arithmatex"><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 映射到概率分布 <span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span></p>
+将任意值 <span class="arithmatex">\(x_i\)</span> 映射到概率分布 <span class="arithmatex">\(p_i\)</span></p>
 <ul>
 <li><strong>max</strong> ：因为放大了最大的概率</li>
-<li><strong>soft</strong> ：因为仍然为较小的 <span class="arithmatex"><span class="MathJax_Preview">x_i</span><script type="math/tex">x_i</script></span> 赋予了一定概率</li>
+<li><strong>soft</strong> ：因为仍然为较小的 <span class="arithmatex">\(x_i\)</span> 赋予了一定概率</li>
 <li>深度学习中常用</li>
 </ul>
-<p>首先我们随机初始化 <span class="arithmatex"><span class="MathJax_Preview">u_{w}\in\mathbb{R}^d</span><script type="math/tex">u_{w}\in\mathbb{R}^d</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">v_{w}\in\mathbb{R}^d</span><script type="math/tex">v_{w}\in\mathbb{R}^d</script></span> ，而后使用梯度下降法进行更新</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>首先我们随机初始化 <span class="arithmatex">\(u_{w}\in\mathbb{R}^d\)</span> 和 <span class="arithmatex">\(v_{w}\in\mathbb{R}^d\)</span> ，而后使用梯度下降法进行更新</p>
+<div class="arithmatex">\[
 \begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &amp;=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
@@ -1156,17 +1147,7 @@ $$
 &amp;=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
 &amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
 \end{align}
-</div>
-<script type="math/tex; mode=display">
-\begin{align}
-\frac{\partial}{\partial v_c}\log P(o|c)
-&=\frac{\partial}{\partial v_c}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=\frac{\partial}{\partial v_c}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
-&=\frac{\partial}{\partial v_c}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
-&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}
-\end{align}
-</script>
-</div>
+\]</div>
 <blockquote>
 <p>偏导数可以移进求和中，对应上方公式的最后两行的推导
   $$
@@ -1174,27 +1155,16 @@ $$
   $$</p>
 </blockquote>
 <p>我们可以对上述结果重新排列如下，第一项是真正的上下文单词，第二项是预测的上下文单词。使用梯度下降法，模型的预测上下文将逐步接近真正的上下文。</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 \begin{align}
 \frac{\partial}{\partial v_c}\log P(o|c)
 &amp;=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
 &amp;=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
 &amp;=u_o-\sum_{w\in V}P(w|c)u_w
 \end{align}
-</div>
-<script type="math/tex; mode=display">
-\begin{align}
-\frac{\partial}{\partial v_c}\log P(o|c)
-&=u_o-\frac{\sum_{w\in V}\exp(u_w^Tv_c)u_w}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=u_o-\sum_{w\in V}\frac{\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}u_w\\
-&=u_o-\sum_{w\in V}P(w|c)u_w
-\end{align}
-</script>
-</div>
-<p>再对 <span class="arithmatex"><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 进行偏微分计算，注意这里的 <span class="arithmatex"><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">u_{w=o}</span><script type="math/tex">u_{w=o}</script></span> 的简写，故可知 <span class="arithmatex"><span class="MathJax_Preview">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</span><script type="math/tex">\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c</script></span> </p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>再对 <span class="arithmatex">\(u_o\)</span> 进行偏微分计算，注意这里的 <span class="arithmatex">\(u_o\)</span> 是 <span class="arithmatex">\(u_{w=o}\)</span> 的简写，故可知 <span class="arithmatex">\(\frac{\partial}{\partial u_o}\sum_{w \in V } u_w^T v_c = \frac{\partial}{\partial u_o} u_o^T v_c = \frac{\partial u_o}{\partial u_o}v_c + \frac{\partial v_c}{\partial u_o}u_o= v_c\)</span> </p>
+<div class="arithmatex">\[
 \begin{align}
 \frac{\partial}{\partial u_o}\log P(o|c)
 &amp;=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
@@ -1206,22 +1176,8 @@ $$
 &amp;=v_c - P(o|c)v_c\\
 &amp;=(1-P(o|c))v_c
 \end{align}
-</div>
-<script type="math/tex; mode=display">
-\begin{align}
-\frac{\partial}{\partial u_o}\log P(o|c)
-&=\frac{\partial}{\partial u_o}\log \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=\frac{\partial}{\partial u_o}\left(\log \exp(u_o^Tv_c)-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
-&=\frac{\partial}{\partial u_o}\left(u_o^Tv_c-\log{\sum_{w\in V}\exp(u_w^Tv_c)}\right)\\
-&=v_c-\frac{\sum\frac{\partial}{\partial u_o}\exp(u_w^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=v_c - \frac{\exp(u_o^Tv_c)v_c}{\sum_{w\in V}\exp(u_w^Tv_c)}\\
-&=v_c - \frac{\exp(u_o^Tv_c)}{\sum_{w\in V}\exp(u_w^Tv_c)}v_c\\
-&=v_c - P(o|c)v_c\\
-&=(1-P(o|c))v_c
-\end{align}
-</script>
-</div>
-<p>可以理解，当 <span class="arithmatex"><span class="MathJax_Preview">P(o|c) \to 1</span><script type="math/tex">P(o|c) \to 1</script></span> ，即通过中心词 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 我们可以正确预测上下文词 <span class="arithmatex"><span class="MathJax_Preview">o</span><script type="math/tex">o</script></span> ，此时我们不需要调整 <span class="arithmatex"><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> ，反之，则相应调整 <span class="arithmatex"><span class="MathJax_Preview">u_o</span><script type="math/tex">u_o</script></span> 。</p>
+\]</div>
+<p>可以理解，当 <span class="arithmatex">\(P(o|c) \to 1\)</span> ，即通过中心词 <span class="arithmatex">\(c\)</span> 我们可以正确预测上下文词 <span class="arithmatex">\(o\)</span> ，此时我们不需要调整 <span class="arithmatex">\(u_o\)</span> ，反之，则相应调整 <span class="arithmatex">\(u_o\)</span> 。</p>
 <h3 id="deeper">Deeper<a class="headerlink" href="#deeper" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>两个算法</strong>：continuous bag-of-words（CBOW）和 skip-gram。CBOW 是根据中心词周围的上下文单词来预测该词的词向量。skip-gram 则相反，是根据中心词预测周围上下文的词的概率分布。</li>
@@ -1248,33 +1204,33 @@ $$
 <p>这一方法是把 {"The","cat","over","the","puddle"} 作为上下文，希望从这些词中能够预测或者生成中心词“jumped”。这样的模型我们称之为 continuous bag-of-words（CBOW）模型。</p>
 <p>它是从上下文中预测中心词的方法，在这个模型中的每个单词，我们希望学习两个向量</p>
 <ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> (输入向量) 当词在上下文中</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">u</span><script type="math/tex">u</script></span> (输出向量) 当词是中心词</li>
+<li><span class="arithmatex">\(v\)</span> (输入向量) 当词在上下文中</li>
+<li><span class="arithmatex">\(u\)</span> (输出向量) 当词是中心词</li>
 </ul>
-<p>首先我们设定已知参数。令我们模型的已知参数是 one-hot 形式的词向量表示。输入的 one-hot 向量或者上下文我们用 <span class="arithmatex"><span class="MathJax_Preview">x^{(c)}</span><script type="math/tex">x^{(c)}</script></span> 表示，输出用 <span class="arithmatex"><span class="MathJax_Preview">y^{(c)}</span><script type="math/tex">y^{(c)}</script></span> 表示。在 CBOW 模型中，因为我们只有一个输出，因此我们把 y 称为是已知中心词的的 one-hot 向量。现在让我们定义模型的未知参数。</p>
+<p>首先我们设定已知参数。令我们模型的已知参数是 one-hot 形式的词向量表示。输入的 one-hot 向量或者上下文我们用 <span class="arithmatex">\(x^{(c)}\)</span> 表示，输出用 <span class="arithmatex">\(y^{(c)}\)</span> 表示。在 CBOW 模型中，因为我们只有一个输出，因此我们把 y 称为是已知中心词的的 one-hot 向量。现在让我们定义模型的未知参数。</p>
 <p>首先我们对 CBOW 模型作出以下定义</p>
 <ul>
-<li><span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> ：词汇表 <span class="arithmatex"><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 中的单词 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span></li>
-<li><span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}\in \mathbb{R}^{n\times |V|}</span><script type="math/tex">\mathcal{V}\in \mathbb{R}^{n\times |V|}</script></span> ：输入词矩阵</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">v_{i} ： \mathcal{V}</span><script type="math/tex">v_{i} ： \mathcal{V}</script></span> 的第 i 列，单词 <span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输入向量表示</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> ：输出词矩阵</li>
-<li><span class="arithmatex"><span class="MathJax_Preview">u_{i} ： \mathcal{U}</span><script type="math/tex">u_{i} ： \mathcal{U}</script></span> 的第 i 行，单词 <span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的输出向量表示</li>
+<li><span class="arithmatex">\(w_{i}\)</span> ：词汇表 <span class="arithmatex">\(V\)</span> 中的单词 <span class="arithmatex">\(i\)</span></li>
+<li><span class="arithmatex">\(\mathcal{V}\in \mathbb{R}^{n\times |V|}\)</span> ：输入词矩阵</li>
+<li><span class="arithmatex">\(v_{i} ： \mathcal{V}\)</span> 的第 i 列，单词 <span class="arithmatex">\(w_{i}\)</span> 的输入向量表示</li>
+<li><span class="arithmatex">\(\mathcal{U}\in \mathbb{R}^{|V|\times n}\)</span> ：输出词矩阵</li>
+<li><span class="arithmatex">\(u_{i} ： \mathcal{U}\)</span> 的第 i 行，单词 <span class="arithmatex">\(w_{i}\)</span> 的输出向量表示</li>
 </ul>
-<p>我们创建两个矩阵，<span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}\in \mathbb{R}^{n\times |V|}</span><script type="math/tex">\mathcal{V}\in \mathbb{R}^{n\times |V|}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}\in \mathbb{R}^{|V|\times n}</span><script type="math/tex">\mathcal{U}\in \mathbb{R}^{|V|\times n}</script></span> 。其中 n 是嵌入空间的任意维度大小。 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 是输入词矩阵，使得当其为模型的输入时，<span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 的第 i 列是词 <span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的 n 维嵌入向量。我们定义这个 <span class="arithmatex"><span class="MathJax_Preview">n \times 1</span><script type="math/tex">n \times 1</script></span> 的向量为 <span class="arithmatex"><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 。相似地， <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是输出词矩阵。当其为模型的输入时， <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的第 j 行是词 <span class="arithmatex"><span class="MathJax_Preview">w_{j}</span><script type="math/tex">w_{j}</script></span> 的 n 维嵌入向量。我们定义 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 的这行为 <span class="arithmatex"><span class="MathJax_Preview">u_{j}</span><script type="math/tex">u_{j}</script></span> 。注意实际上对每个词 <span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 我们需要学习两个词向量（即输入词向量 <span class="arithmatex"><span class="MathJax_Preview">v_{i}</span><script type="math/tex">v_{i}</script></span> 和输出词向量 <span class="arithmatex"><span class="MathJax_Preview">u_{i}</span><script type="math/tex">u_{i}</script></span> ）。</p>
+<p>我们创建两个矩阵，<span class="arithmatex">\(\mathcal{V}\in \mathbb{R}^{n\times |V|}\)</span> 和 <span class="arithmatex">\(\mathcal{U}\in \mathbb{R}^{|V|\times n}\)</span> 。其中 n 是嵌入空间的任意维度大小。 <span class="arithmatex">\(\mathcal{V}\)</span> 是输入词矩阵，使得当其为模型的输入时，<span class="arithmatex">\(\mathcal{V}\)</span> 的第 i 列是词 <span class="arithmatex">\(w_{i}\)</span> 的 n 维嵌入向量。我们定义这个 <span class="arithmatex">\(n \times 1\)</span> 的向量为 <span class="arithmatex">\(v_{i}\)</span> 。相似地， <span class="arithmatex">\(\mathcal{U}\)</span> 是输出词矩阵。当其为模型的输入时， <span class="arithmatex">\(\mathcal{U}\)</span> 的第 j 行是词 <span class="arithmatex">\(w_{j}\)</span> 的 n 维嵌入向量。我们定义 <span class="arithmatex">\(\mathcal{U}\)</span> 的这行为 <span class="arithmatex">\(u_{j}\)</span> 。注意实际上对每个词 <span class="arithmatex">\(w_{i}\)</span> 我们需要学习两个词向量（即输入词向量 <span class="arithmatex">\(v_{i}\)</span> 和输出词向量 <span class="arithmatex">\(u_{i}\)</span> ）。</p>
 <p>我们将这个模型分解为以下步骤</p>
 <ul>
-<li>我们为大小为 m 的输入上下文，生成 one-hot 词向量 <span class="arithmatex"><span class="MathJax_Preview"><span class="arithmatex"><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></span><script type="math/tex"><span class="arithmatex"><span class="MathJax_Preview">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</span><script type="math/tex">(x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})</script></span></script></span>  </li>
-<li>我们从上下文  <span class="arithmatex"><span class="MathJax_Preview">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</span><script type="math/tex">(v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})</script></span> 得到嵌入词向量。</li>
-<li>对上述的向量求平均值 <span class="arithmatex"><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}</script></span> 。</li>
-<li>生成一个分数向量 <span class="arithmatex"><span class="MathJax_Preview">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</span><script type="math/tex">z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}</script></span> 。当相似向量的点积越高，就会令到相似的词更为靠近，从而获得更高的分数。将分数转换为概率 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}</script></span> 。<ul>
-<li>这里 softmax 是一个常用的函数。它将一个向量转换为另外一个向量，其中转换后的向量的第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个元素是 <span class="arithmatex"><span class="MathJax_Preview">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</span><script type="math/tex">\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}</script></span> 。因为该函数是一个指数函数，所以值一定为正数；通过除以 <span class="arithmatex"><span class="MathJax_Preview">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</span><script type="math/tex">\sum_{k=1}^{|V|}e^{\widehat{y}_k}</script></span> 来归一化向量（使得 <span class="arithmatex"><span class="MathJax_Preview">\sum_{k=1}^{|V|}\widehat{y}_k=1</span><script type="math/tex">\sum_{k=1}^{|V|}\widehat{y}_k=1</script></span>）得到概率。</li>
+<li>我们为大小为 m 的输入上下文，生成 one-hot 词向量 <span class="arithmatex">\(<span class="arithmatex">\((x^{(c-m)},...,x^{(c-1)},x^{(c+1)},...,x^{(c+m)}\in \mathbb{R}^{|V|})\)</span>\)</span>  </li>
+<li>我们从上下文  <span class="arithmatex">\((v_{c-m}=\mathcal{V}x^{(c-m)},v_{c-m+1}=\mathcal{V}x^{(c-m+1)},...,v_{c+m}=\mathcal{V}x^{(c+m)}\in \mathbb{R}^{n})\)</span> 得到嵌入词向量。</li>
+<li>对上述的向量求平均值 <span class="arithmatex">\(\widehat{v}=\frac{v_{c-m}+v_{c-m+1+...+v_{c+m}}}{2m}\in \mathbb{R}^{n}\)</span> 。</li>
+<li>生成一个分数向量 <span class="arithmatex">\(z = \mathcal{U}\widehat{v}\in \mathbb{R}^{|V|}\)</span> 。当相似向量的点积越高，就会令到相似的词更为靠近，从而获得更高的分数。将分数转换为概率 <span class="arithmatex">\(\widehat{y}=softmax(z)\in \mathbb{R}^{|V|}\)</span> 。<ul>
+<li>这里 softmax 是一个常用的函数。它将一个向量转换为另外一个向量，其中转换后的向量的第 <span class="arithmatex">\(i\)</span> 个元素是 <span class="arithmatex">\(\frac{e^{\widehat{y}_i}}{\sum_{k=1}^{|V|}e^{\widehat{y}_k}}\)</span> 。因为该函数是一个指数函数，所以值一定为正数；通过除以 <span class="arithmatex">\(\sum_{k=1}^{|V|}e^{\widehat{y}_k}\)</span> 来归一化向量（使得 <span class="arithmatex">\(\sum_{k=1}^{|V|}\widehat{y}_k=1\)</span>）得到概率。</li>
 </ul>
 </li>
-<li>我们希望生成的概率 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y} \in \mathbb{R}^{|V|}</span><script type="math/tex">\widehat{y} \in \mathbb{R}^{|V|}</script></span> 与实际的概率 <span class="arithmatex"><span class="MathJax_Preview">y \in \mathbb{R}^{|V|}</span><script type="math/tex">y \in \mathbb{R}^{|V|}</script></span> 匹配。使得其刚好是实际的词就是这个 one-hot 向量。</li>
+<li>我们希望生成的概率 <span class="arithmatex">\(\widehat{y} \in \mathbb{R}^{|V|}\)</span> 与实际的概率 <span class="arithmatex">\(y \in \mathbb{R}^{|V|}\)</span> 匹配。使得其刚好是实际的词就是这个 one-hot 向量。</li>
 </ul>
 <p>下图是 CBOW 模型的计算图示</p>
 <p><img alt="1560088203499" src="../imgs/1560088203499.png" /></p>
-<p>如果有 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个 <strong>度量两个概率分布的距离</strong> 的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span class="arithmatex"><span class="MathJax_Preview">H(\widehat{y}, y)</span><script type="math/tex">H(\widehat{y}, y)</script></span> 。</p>
+<p>如果有 <span class="arithmatex">\(\mathcal{V}\)</span> 和 <span class="arithmatex">\(\mathcal{U}\)</span> ，我们知道这个模型是如何工作的，那我们如何学习这两个矩阵呢？这需要创建一个目标函数。一般我们想从一些真实的概率中学习一个概率，信息论提供了一个 <strong>度量两个概率分布的距离</strong> 的方法。这里我们采用一个常见的距离/损失方法，交叉熵 <span class="arithmatex">\(H(\widehat{y}, y)\)</span> 。</p>
 <p>在离散情况下使用交叉熵可以直观地得出损失函数的公式</p>
 <p>$$
 H(\hat{y}, y)=-\sum_{j=1}^{|V|} y_{j} \log \left(\hat{y}_{j}\right)
@@ -1283,27 +1239,22 @@ $$
 <p>$$
 H(\widehat{y}, y)= - y_{j}\,log(\widehat{y}_{j})
 $$
-c 是正确词的 one-hot 向量的索引。我们现在可以考虑我们的预测是完美并且 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}_{c}=1</span><script type="math/tex">\widehat{y}_{c}=1</script></span> 的情况。然后我们可以计算 <span class="arithmatex"><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(1)=0</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(1)=0</script></span> 。因此，对一个完美的预测，我们不会面临任何惩罚或者损失。现在我们考虑一个相反的情况，预测非常差并且 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}_{c}=0.01</span><script type="math/tex">\widehat{y}_{c}=0.01</script></span> 。和前面类似，我们可以计算损失 <span class="arithmatex"><span class="MathJax_Preview">H(\widehat{y}, y)=-1\,log(0.01)=4.605</span><script type="math/tex">H(\widehat{y}, y)=-1\,log(0.01)=4.605</script></span> 。因此，我们可以看到，对于概率分布，交叉熵为我们提供了一个很好的距离度量。因此我们的优化目标函数公式为：</p>
+c 是正确词的 one-hot 向量的索引。我们现在可以考虑我们的预测是完美并且 <span class="arithmatex">\(\widehat{y}_{c}=1\)</span> 的情况。然后我们可以计算 <span class="arithmatex">\(H(\widehat{y}, y)=-1\,log(1)=0\)</span> 。因此，对一个完美的预测，我们不会面临任何惩罚或者损失。现在我们考虑一个相反的情况，预测非常差并且 <span class="arithmatex">\(\widehat{y}_{c}=0.01\)</span> 。和前面类似，我们可以计算损失 <span class="arithmatex">\(H(\widehat{y}, y)=-1\,log(0.01)=4.605\)</span> 。因此，我们可以看到，对于概率分布，交叉熵为我们提供了一个很好的距离度量。因此我们的优化目标函数公式为：</p>
 <p>$$
 \begin{aligned} \text { minimize } J &amp;=-\log P\left(w_{c} | w_{c-m}, \ldots, w_{c-1}, w_{c+1}, \ldots, w_{c+m}\right) \ &amp;=-\log P\left(u_{c} | \hat{v}\right) \ &amp;=-\log \frac{\exp \left(u_{c}^{T} \hat{v}\right)}{\sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right)} \ &amp;=-u_{c}^{T} \hat{v}+\log \sum_{j=1}^{|V|} \exp \left(u_{j}^{T} \hat{v}\right) \end{aligned}
 $$
-我们使用 SGD 来更新所有相关的词向量 <span class="arithmatex"><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">v_{j}</span><script type="math/tex">v_{j}</script></span> 。SGD 对一个窗口计算梯度和更新参数：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+我们使用 SGD 来更新所有相关的词向量 <span class="arithmatex">\(u_{c}\)</span> 和 <span class="arithmatex">\(v_{j}\)</span> 。SGD 对一个窗口计算梯度和更新参数：</p>
+<div class="arithmatex">\[
 \begin{array}{l}{\mathcal{U}_{\text {new}} \leftarrow \mathcal{U}_{\text {old}}-\alpha \nabla_{\mathcal{U}} J} \\ {\mathcal{V}_{\text {old}} \leftarrow \mathcal{V}_{\text {old}}-\alpha \nabla_{\mathcal{V}} J}\end{array}
-</div>
-<script type="math/tex; mode=display">
-\begin{array}{l}{\mathcal{U}_{\text {new}} \leftarrow \mathcal{U}_{\text {old}}-\alpha \nabla_{\mathcal{U}} J} \\ {\mathcal{V}_{\text {old}} \leftarrow \mathcal{V}_{\text {old}}-\alpha \nabla_{\mathcal{V}} J}\end{array}
-</script>
-</div>
+\]</div>
 <p><strong>Skip-Gram Model</strong></p>
-<p>Skip-Gram模型与CBOW大体相同，但是交换了我们的 x 和 y，即 CBOW 中的 x 现在是 y，y 现在是 x。输入的 one-hot 向量（中心词）我们表示为 x，输出向量为 <span class="arithmatex"><span class="MathJax_Preview">y^{(j)}</span><script type="math/tex">y^{(j)}</script></span> 。我们定义的 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> 是和 CBOW 一样的。</p>
+<p>Skip-Gram模型与CBOW大体相同，但是交换了我们的 x 和 y，即 CBOW 中的 x 现在是 y，y 现在是 x。输入的 one-hot 向量（中心词）我们表示为 x，输出向量为 <span class="arithmatex">\(y^{(j)}\)</span> 。我们定义的 <span class="arithmatex">\(\mathcal{V}\)</span> 和 <span class="arithmatex">\(\mathcal{U}\)</span> 是和 CBOW 一样的。</p>
 <ul>
-<li>生成中心词的 one-hot 向量 <span class="arithmatex"><span class="MathJax_Preview">x\in \mathbb{R}^{|V|}</span><script type="math/tex">x\in \mathbb{R}^{|V|}</script></span> </li>
-<li>我们对中心词 <span class="arithmatex"><span class="MathJax_Preview">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</span><script type="math/tex">v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}</script></span> 得到词嵌入向量</li>
-<li>生成分数向量 <span class="arithmatex"><span class="MathJax_Preview">z = \mathcal{U}v_{c}</span><script type="math/tex">z = \mathcal{U}v_{c}</script></span> </li>
-<li>将分数向量转化为概率， <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}=softmax(z)</span><script type="math/tex">\widehat{y}=softmax(z)</script></span> 注意 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</span><script type="math/tex">\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}</script></span> 是每个上下文词观察到的概率</li>
-<li>我们希望我们生成的概率向量匹配真实概率 <span class="arithmatex"><span class="MathJax_Preview">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</span><script type="math/tex">y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}</script></span> ，one-hot 向量是实际的输出。</li>
+<li>生成中心词的 one-hot 向量 <span class="arithmatex">\(x\in \mathbb{R}^{|V|}\)</span> </li>
+<li>我们对中心词 <span class="arithmatex">\(v_{c}=\mathcal{V}x\in \mathbb{R}^{|V|}\)</span> 得到词嵌入向量</li>
+<li>生成分数向量 <span class="arithmatex">\(z = \mathcal{U}v_{c}\)</span> </li>
+<li>将分数向量转化为概率， <span class="arithmatex">\(\widehat{y}=softmax(z)\)</span> 注意 <span class="arithmatex">\(\widehat{y}_{c-m},...,\widehat{y}_{c-1},\widehat{y}_{c+1},...,\widehat{y}_{c+m}\)</span> 是每个上下文词观察到的概率</li>
+<li>我们希望我们生成的概率向量匹配真实概率 <span class="arithmatex">\(y^{(c-m)},...,y^{(c-1)},y^{(c+1)},...,y^{(c+m)}\)</span> ，one-hot 向量是实际的输出。</li>
 </ul>
 <p>下图是 Skip-Gram 模型的计算图示</p>
 <p><img alt="1560089015401" src="../imgs/1560089015401.png" /></p>
@@ -1316,128 +1267,91 @@ $$
 $$
 \begin{aligned} J &amp;=-\sum_{j=0, j \neq m}^{2 m} \log P\left(u_{c-m+j} | v_{c}\right) \ &amp;=\sum_{j=0, j \neq m}^{2 m} H\left(\hat{y}, y_{c-m+j}\right) \end{aligned}
 $$
-其中 <span class="arithmatex"><span class="MathJax_Preview">H(\widehat{y},y_{c-m+j})</span><script type="math/tex">H(\widehat{y},y_{c-m+j})</script></span> 是向量 <span class="arithmatex"><span class="MathJax_Preview">\widehat{y}</span><script type="math/tex">\widehat{y}</script></span> 的概率和 one-hot 向量 <span class="arithmatex"><span class="MathJax_Preview">y_{c-m+j}</span><script type="math/tex">y_{c-m+j}</script></span> 之间的交叉熵。</p>
+其中 <span class="arithmatex">\(H(\widehat{y},y_{c-m+j})\)</span> 是向量 <span class="arithmatex">\(\widehat{y}\)</span> 的概率和 one-hot 向量 <span class="arithmatex">\(y_{c-m+j}\)</span> 之间的交叉熵。</p>
 <blockquote>
-<p>只有一个概率向量 <span class="arithmatex"><span class="MathJax_Preview">\hat{y}</span><script type="math/tex">\hat{y}</script></span> 是被计算的。Skip-Gram 对每个上下文单词一视同仁：该模型计算每个单词在上下文中出现的概率，而与它到中心单词的距离无关。</p>
+<p>只有一个概率向量 <span class="arithmatex">\(\hat{y}\)</span> 是被计算的。Skip-Gram 对每个上下文单词一视同仁：该模型计算每个单词在上下文中出现的概率，而与它到中心单词的距离无关。</p>
 </blockquote>
 <p><strong>Negative Sampling</strong></p>
-<p>让我们再回到目标函数上。注意对 <span class="arithmatex"><span class="MathJax_Preview">|V|</span><script type="math/tex">|V|</script></span> 的求和计算量是非常大的。任何的更新或者对目标函数的评估都要花费 <span class="arithmatex"><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 的时间复杂度。一个简单的想法是不去直接计算，而是去求近似值。</p>
-<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布 <span class="arithmatex"><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span>  “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
+<p>让我们再回到目标函数上。注意对 <span class="arithmatex">\(|V|\)</span> 的求和计算量是非常大的。任何的更新或者对目标函数的评估都要花费 <span class="arithmatex">\(O(|V|)\)</span> 的时间复杂度。一个简单的想法是不去直接计算，而是去求近似值。</p>
+<p>在每一个训练的时间步，我们不去遍历整个词汇表，而仅仅是抽取一些负样例。我们对噪声分布 <span class="arithmatex">\(P_{n}(w)\)</span>  “抽样”，这个概率是和词频的排序相匹配的。为加强对问题的表述以纳入负抽样，我们只需更新其</p>
 <ul>
 <li>目标函数</li>
 <li>梯度</li>
 <li>更新规则</li>
 </ul>
 <p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了负采样。虽然负采样是基于 Skip-Gram 模型，但实际上是对一个不同的目标函数进行优化。</p>
-<p>考虑一对中心词和上下文词 <span class="arithmatex"><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 。这词对是来自训练数据集吗？我们通过 <span class="arithmatex"><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 表示 <span class="arithmatex"><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 是来自语料库。相应地， <span class="arithmatex"><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 表示 <span class="arithmatex"><span class="MathJax_Preview">(w,c)</span><script type="math/tex">(w,c)</script></span> 不是来自语料库。</p>
-<p>首先，我们对 <span class="arithmatex"><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> 用 sigmoid 函数建模：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>考虑一对中心词和上下文词 <span class="arithmatex">\((w,c)\)</span> 。这词对是来自训练数据集吗？我们通过 <span class="arithmatex">\(P(D=1\mid w,c)\)</span> 表示 <span class="arithmatex">\((w,c)\)</span> 是来自语料库。相应地， <span class="arithmatex">\(P(D=0\mid w,c)\)</span> 表示 <span class="arithmatex">\((w,c)\)</span> 不是来自语料库。</p>
+<p>首先，我们对 <span class="arithmatex">\(P(D=1\mid w,c)\)</span> 用 sigmoid 函数建模：</p>
+<div class="arithmatex">\[
 P(D=1 | w, c, \theta)=\sigma\left(v_{c}^{T} v_{w}\right)=\frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}}
-</div>
-<script type="math/tex; mode=display">
-P(D=1 | w, c, \theta)=\sigma\left(v_{c}^{T} v_{w}\right)=\frac{1}{1+e^{\left(-v_{c}^{T} v_{w}\right)}}
-</script>
-</div>
-<p>现在，我们建立一个新的目标函数，如果中心词和上下文词确实在语料库中，就最大化概率 <span class="arithmatex"><span class="MathJax_Preview">P(D=1\mid w,c)</span><script type="math/tex">P(D=1\mid w,c)</script></span> ，如果中心词和上下文词确实不在语料库中，就最大化概率 <span class="arithmatex"><span class="MathJax_Preview">P(D=0\mid w,c)</span><script type="math/tex">P(D=0\mid w,c)</script></span> 。我们对这两个概率采用一个简单的极大似然估计的方法（这里我们把 <span class="arithmatex"><span class="MathJax_Preview">\theta</span><script type="math/tex">\theta</script></span> 作为模型的参数，在我们的例子是 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{V}</span><script type="math/tex">\mathcal{V}</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mathcal{U}</span><script type="math/tex">\mathcal{U}</script></span> ）</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>现在，我们建立一个新的目标函数，如果中心词和上下文词确实在语料库中，就最大化概率 <span class="arithmatex">\(P(D=1\mid w,c)\)</span> ，如果中心词和上下文词确实不在语料库中，就最大化概率 <span class="arithmatex">\(P(D=0\mid w,c)\)</span> 。我们对这两个概率采用一个简单的极大似然估计的方法（这里我们把 <span class="arithmatex">\(\theta\)</span> 作为模型的参数，在我们的例子是 <span class="arithmatex">\(\mathcal{V}\)</span> 和 <span class="arithmatex">\(\mathcal{U}\)</span> ）</p>
+<div class="arithmatex">\[
 \begin{aligned} \theta &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}} P(D=0 | w, c, \theta) \\ &amp;=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}}(1-P(D=1 | w, c, \theta)) \\ &amp;=\underset{\theta}{\operatorname{argmax}} \sum_{(w, c) \in D} \log P(D=1 | w, c, \theta)+\sum_{(w, c) \in \widetilde{D}} \log (1-P(D=1 | w, c, \theta)) \\ &amp;=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(1-\frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}\right) \\ &amp;=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right) \end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned} \theta &=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}} P(D=0 | w, c, \theta) \\ &=\underset{\theta}{\operatorname{argmax}} \prod_{(w, c) \in D} P(D=1 | w, c, \theta) \prod_{(w, c) \in \widetilde{D}}(1-P(D=1 | w, c, \theta)) \\ &=\underset{\theta}{\operatorname{argmax}} \sum_{(w, c) \in D} \log P(D=1 | w, c, \theta)+\sum_{(w, c) \in \widetilde{D}} \log (1-P(D=1 | w, c, \theta)) \\ &=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(1-\frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}\right) \\ &=\arg \max _{\theta} \sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}+\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right) \end{aligned}
-</script>
-</div>
+\]</div>
 <p>注意最大化似然函数等同于最小化负对数似然：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
-</div>
-<script type="math/tex; mode=display">
-J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \widetilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
-</script>
-</div>
-<p>注意 <span class="arithmatex"><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 是“假的”或者“负的”语料。例如我们有句子类似“stock boil fish is toy”，这种无意义的句子出现时会得到一个很低的概率。我们可以从语料库中随机抽样出负样例 <span class="arithmatex"><span class="MathJax_Preview">\widetilde{D}</span><script type="math/tex">\widetilde{D}</script></span> 。</p>
-<p>对于 Skip-Gram 模型，我们对给定中心词 <span class="arithmatex"><span class="MathJax_Preview">c</span><script type="math/tex">c</script></span> 来观察的上下文单词 <span class="arithmatex"><span class="MathJax_Preview">c-m+j</span><script type="math/tex">c-m+j</script></span> 的新目标函数为</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>注意 <span class="arithmatex">\(\widetilde{D}\)</span> 是“假的”或者“负的”语料。例如我们有句子类似“stock boil fish is toy”，这种无意义的句子出现时会得到一个很低的概率。我们可以从语料库中随机抽样出负样例 <span class="arithmatex">\(\widetilde{D}\)</span> 。</p>
+<p>对于 Skip-Gram 模型，我们对给定中心词 <span class="arithmatex">\(c\)</span> 来观察的上下文单词 <span class="arithmatex">\(c-m+j\)</span> 的新目标函数为</p>
+<div class="arithmatex">\[
 -\log \sigma\left(u_{c-m+j}^{T} \cdot v_{c}\right)-\sum_{k=1}^{K} \log \sigma\left(-\tilde{u}_{k}^{T} \cdot v_{c}\right)
-</div>
-<script type="math/tex; mode=display">
--\log \sigma\left(u_{c-m+j}^{T} \cdot v_{c}\right)-\sum_{k=1}^{K} \log \sigma\left(-\tilde{u}_{k}^{T} \cdot v_{c}\right)
-</script>
-</div>
-<p>对 CBOW 模型，我们对给定上下文向量 <span class="arithmatex"><span class="MathJax_Preview">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</span><script type="math/tex">\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}</script></span> 来观察中心词 <span class="arithmatex"><span class="MathJax_Preview">u_{c}</span><script type="math/tex">u_{c}</script></span> 的新的目标函数为</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>对 CBOW 模型，我们对给定上下文向量 <span class="arithmatex">\(\widehat{v}=\frac{v_{c-m}+v_{c-m+1}+...+v_{c+m}}{2m}\)</span> 来观察中心词 <span class="arithmatex">\(u_{c}\)</span> 的新的目标函数为</p>
+<div class="arithmatex">\[
 -log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}^{K}log\,\sigma(-\widetilde{u}_{k}^{T}\cdot \widehat{v})
-</div>
-<script type="math/tex; mode=display">
--log\,\sigma(u_{c}^{T}\cdot \widehat{v})-\sum_{k=1}^{K}log\,\sigma(-\widetilde{u}_{k}^{T}\cdot \widehat{v})
-</script>
-</div>
-<p>在上面的公式中，<span class="arithmatex"><span class="MathJax_Preview">\{\widetilde{u}_{k}\mid k=1...K\}</span><script type="math/tex">\{\widetilde{u}_{k}\mid k=1...K\}</script></span> 是从 <span class="arithmatex"><span class="MathJax_Preview">P_{n}(w)</span><script type="math/tex">P_{n}(w)</script></span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>在上面的公式中，<span class="arithmatex">\(\{\widetilde{u}_{k}\mid k=1...K\}\)</span> 是从 <span class="arithmatex">\(P_{n}(w)\)</span> 中抽样。有很多关于如何得到最好近似的讨论，从实际效果看来最好的是指数为 &frac34; 的 Unigram 模型。那么为什么是 &frac34;？下面有一些例如可能让你有一些直观的了解：</p>
+<div class="arithmatex">\[
 \begin{eqnarray}  is: 0.9^{3/4} &amp;=&amp; 0.92 \nonumber \\ Constitution: 0.09^{3/4}&amp;=&amp; 0.16 \nonumber \\ bombastic:0.01^{3/4}&amp;=&amp; 0.032 \nonumber \end{eqnarray}
-</div>
-<script type="math/tex; mode=display">
-\begin{eqnarray}  is: 0.9^{3/4} &=& 0.92 \nonumber \\ Constitution: 0.09^{3/4}&=& 0.16 \nonumber \\ bombastic:0.01^{3/4}&=& 0.032 \nonumber \end{eqnarray}
-</script>
-</div>
+\]</div>
 <p>“Bombastic”现在被抽样的概率是之前的三倍，而“is”只比之前的才提高了一点点。</p>
 <p><strong>Hierarchical Softmax</strong></p>
 <p>Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中提出了 hierarchical softmax，相比普通的 softmax 这是一种更有效的替代方法。<strong>在实际中，hierarchical softmax 对低频词往往表现得更好，负采样对高频词和较低维度向量表现得更好</strong>。</p>
-<p>Hierarchical softmax 使用一个二叉树来表示词表中的所有词。树中的每个叶结点都是一个单词，而且只有一条路径从根结点到叶结点。在这个模型中，没有词的输出表示。相反，图的每个节点（根节点和叶结点除外）与模型要学习的向量相关联。单词作为输出单词的概率定义为从根随机游走到单词所对应的叶的概率。计算成本变为 <span class="arithmatex"><span class="MathJax_Preview">O(log (|V|))</span><script type="math/tex">O(log (|V|))</script></span> 而不是 <span class="arithmatex"><span class="MathJax_Preview">O(|V|)</span><script type="math/tex">O(|V|)</script></span> 。</p>
-<p>在这个模型中，给定一个向量 <span class="arithmatex"><span class="MathJax_Preview">w_{i}</span><script type="math/tex">w_{i}</script></span> 的下的单词 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的概率 <span class="arithmatex"><span class="MathJax_Preview">p(w\mid w_{i})</span><script type="math/tex">p(w\mid w_{i})</script></span> ，等于从根结点开始到对应 w 的叶结点结束的随机漫步概率。这个方法最大的优势是计算概率的时间复杂度仅仅是 <span class="arithmatex"><span class="MathJax_Preview">O(log(|V|))</span><script type="math/tex">O(log(|V|))</script></span> ，对应着路径的长度。</p>
+<p>Hierarchical softmax 使用一个二叉树来表示词表中的所有词。树中的每个叶结点都是一个单词，而且只有一条路径从根结点到叶结点。在这个模型中，没有词的输出表示。相反，图的每个节点（根节点和叶结点除外）与模型要学习的向量相关联。单词作为输出单词的概率定义为从根随机游走到单词所对应的叶的概率。计算成本变为 <span class="arithmatex">\(O(log (|V|))\)</span> 而不是 <span class="arithmatex">\(O(|V|)\)</span> 。</p>
+<p>在这个模型中，给定一个向量 <span class="arithmatex">\(w_{i}\)</span> 的下的单词 <span class="arithmatex">\(w\)</span> 的概率 <span class="arithmatex">\(p(w\mid w_{i})\)</span> ，等于从根结点开始到对应 w 的叶结点结束的随机漫步概率。这个方法最大的优势是计算概率的时间复杂度仅仅是 <span class="arithmatex">\(O(log(|V|))\)</span> ，对应着路径的长度。</p>
 <p>下图是 Hierarchical softmax 的二叉树示意图</p>
 <p><img alt="1560093818125" src="../imgs/1560093818125.png" /></p>
-<p>让我们引入一些概念。令 <span class="arithmatex"><span class="MathJax_Preview">L(w)</span><script type="math/tex">L(w)</script></span> 为从根结点到叶结点 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的路径中节点数目。例如，上图中的 <span class="arithmatex"><span class="MathJax_Preview">L(w_{2})</span><script type="math/tex">L(w_{2})</script></span> 为 3。我们定义 <span class="arithmatex"><span class="MathJax_Preview">n(w,i)</span><script type="math/tex">n(w,i)</script></span> 为与向量 <span class="arithmatex"><span class="MathJax_Preview">v_{n(w,i)}</span><script type="math/tex">v_{n(w,i)}</script></span> 相关的路径上第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 个结点。因此 <span class="arithmatex"><span class="MathJax_Preview">n(w,1)</span><script type="math/tex">n(w,1)</script></span> 是根结点，而 <span class="arithmatex"><span class="MathJax_Preview">n(w,L(w))</span><script type="math/tex">n(w,L(w))</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">w</span><script type="math/tex">w</script></span> 的父节点。现在对每个内部节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，我们任意选取一个它的子节点，定义为 <span class="arithmatex"><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> （一般是左节点）。然后，我们可以计算概率为</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>让我们引入一些概念。令 <span class="arithmatex">\(L(w)\)</span> 为从根结点到叶结点 <span class="arithmatex">\(w\)</span> 的路径中节点数目。例如，上图中的 <span class="arithmatex">\(L(w_{2})\)</span> 为 3。我们定义 <span class="arithmatex">\(n(w,i)\)</span> 为与向量 <span class="arithmatex">\(v_{n(w,i)}\)</span> 相关的路径上第 <span class="arithmatex">\(i\)</span> 个结点。因此 <span class="arithmatex">\(n(w,1)\)</span> 是根结点，而 <span class="arithmatex">\(n(w,L(w))\)</span> 是 <span class="arithmatex">\(w\)</span> 的父节点。现在对每个内部节点 <span class="arithmatex">\(n\)</span>，我们任意选取一个它的子节点，定义为 <span class="arithmatex">\(ch(n)\)</span> （一般是左节点）。然后，我们可以计算概率为</p>
+<div class="arithmatex">\[
 p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatorname{ch}(n(w, j))] \cdot v_{n(w, j)}^{T} v_{w_{i}}\right)
-</div>
-<script type="math/tex; mode=display">
-p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatorname{ch}(n(w, j))] \cdot v_{n(w, j)}^{T} v_{w_{i}}\right)
-</script>
-</div>
+\]</div>
 <p>其中</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<div class="arithmatex">\[
 [x]=\left\{\begin{array}{ll}{1} &amp; {\text { if } x \text { is true }} \\ {-1} &amp; {\text { otherwise }}\end{array}\right.
-</div>
-<script type="math/tex; mode=display">
-[x]=\left\{\begin{array}{ll}{1} & {\text { if } x \text { is true }} \\ {-1} & {\text { otherwise }}\end{array}\right.
-</script>
-</div>
+\]</div>
 <p>这个公式看起来非常复杂，让我们细细梳理一下。</p>
-<p>首先，我们将根据从根节点 <span class="arithmatex"><span class="MathJax_Preview">(n(w,1))</span><script type="math/tex">(n(w,1))</script></span> 到叶节点 <span class="arithmatex"><span class="MathJax_Preview">(w)</span><script type="math/tex">(w)</script></span> 的路径的形状来计算相乘的项。如果我们假设 <span class="arithmatex"><span class="MathJax_Preview">ch(n)</span><script type="math/tex">ch(n)</script></span> 一直都是 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 的左节点，然后当路径往左时 <span class="arithmatex"><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 的值返回 1，往右则返回 0。</p>
-<p>此外，<span class="arithmatex"><span class="MathJax_Preview">[n(w,j+1)=ch(n(w,j))]</span><script type="math/tex">[n(w,j+1)=ch(n(w,j))]</script></span> 提供了归一化的作用。在节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 处，如果我们将去往左和右节点的概率相加，对于 <span class="arithmatex"><span class="MathJax_Preview">v_{n}^{T}v_{w_{i}}</span><script type="math/tex">v_{n}^{T}v_{w_{i}}</script></span> 的任何值则可以检查，</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+<p>首先，我们将根据从根节点 <span class="arithmatex">\((n(w,1))\)</span> 到叶节点 <span class="arithmatex">\((w)\)</span> 的路径的形状来计算相乘的项。如果我们假设 <span class="arithmatex">\(ch(n)\)</span> 一直都是 <span class="arithmatex">\(n\)</span> 的左节点，然后当路径往左时 <span class="arithmatex">\([n(w,j+1)=ch(n(w,j))]\)</span> 的值返回 1，往右则返回 0。</p>
+<p>此外，<span class="arithmatex">\([n(w,j+1)=ch(n(w,j))]\)</span> 提供了归一化的作用。在节点 <span class="arithmatex">\(n\)</span> 处，如果我们将去往左和右节点的概率相加，对于 <span class="arithmatex">\(v_{n}^{T}v_{w_{i}}\)</span> 的任何值则可以检查，</p>
+<div class="arithmatex">\[
 \sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
-</div>
-<script type="math/tex; mode=display">
-\sigma\left(v_{n}^{T} v_{w_{i}}\right)+\sigma\left(-v_{n}^{T} v_{w_{i}}\right)=1
-</script>
-</div>
-<p>归一化也保证了 <span class="arithmatex"><span class="MathJax_Preview">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</span><script type="math/tex">\sum_{w=1}^{|V|}P(w\mid w_{i})=1</script></span> ，和在普通的 softmax 是一样的。</p>
-<p>最后我们计算点积来比较输入向量 <span class="arithmatex"><span class="MathJax_Preview">v_{w_{i}}</span><script type="math/tex">v_{w_{i}}</script></span> 对每个内部节点向量 <span class="arithmatex"><span class="MathJax_Preview">v_{n(w,j)}^{T}</span><script type="math/tex">v_{n(w,j)}^{T}</script></span> 的相似度。下面我们给出一个例子。以上图中的 <span class="arithmatex"><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> 为例，从根节点要经过两次左边的边和一次右边的边才到达 <span class="arithmatex"><span class="MathJax_Preview">w_{2}</span><script type="math/tex">w_{2}</script></span> ，因此</p>
-<div class="arithmatex">
-<div class="MathJax_Preview">
+\]</div>
+<p>归一化也保证了 <span class="arithmatex">\(\sum_{w=1}^{|V|}P(w\mid w_{i})=1\)</span> ，和在普通的 softmax 是一样的。</p>
+<p>最后我们计算点积来比较输入向量 <span class="arithmatex">\(v_{w_{i}}\)</span> 对每个内部节点向量 <span class="arithmatex">\(v_{n(w,j)}^{T}\)</span> 的相似度。下面我们给出一个例子。以上图中的 <span class="arithmatex">\(w_{2}\)</span> 为例，从根节点要经过两次左边的边和一次右边的边才到达 <span class="arithmatex">\(w_{2}\)</span> ，因此</p>
+<div class="arithmatex">\[
 \begin{aligned} p\left(w_{2} | w_{i}\right) &amp;=p\left(n\left(w_{2}, 1\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 2\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 3\right), \text { right }\right) \\ &amp;=\sigma\left(v_{n\left(w_{2}, 1\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(v_{n\left(w_{2}, 2\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(-v_{n\left(w_{2}, 3\right)}^{T} v_{w_{i}}\right) \end{aligned}
-</div>
-<script type="math/tex; mode=display">
-\begin{aligned} p\left(w_{2} | w_{i}\right) &=p\left(n\left(w_{2}, 1\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 2\right), \text {left}\right) \cdot p\left(n\left(w_{2}, 3\right), \text { right }\right) \\ &=\sigma\left(v_{n\left(w_{2}, 1\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(v_{n\left(w_{2}, 2\right)}^{T} v_{w_{i}}\right) \cdot \sigma\left(-v_{n\left(w_{2}, 3\right)}^{T} v_{w_{i}}\right) \end{aligned}
-</script>
-</div>
-<p>我们训练模型的目标是最小化负的对数似然 <span class="arithmatex"><span class="MathJax_Preview">-log\,P(w\mid w_{i})</span><script type="math/tex">-log\,P(w\mid w_{i})</script></span> 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。</p>
+\]</div>
+<p>我们训练模型的目标是最小化负的对数似然 <span class="arithmatex">\(-log\,P(w\mid w_{i})\)</span> 。不是更新每个词的输出向量，而是更新更新二叉树中从根结点到叶结点的路径上的节点的向量。</p>
 <p>该方法的速度由构建二叉树的方式确定，并将词分配给叶节点。Mikolov 在论文《Distributed Representations of Words and Phrases and their Compositionality.》中使用的是哈夫曼树，在树中分配高频词到较短的路径。</p>
 
-              
-            </article>
-          </div>
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
         
       </main>
       
@@ -1448,7 +1362,7 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2019 - 2020 Xiao Xu
+      Copyright &copy; 2019 - 2022; Xiao Xu
     </div>
   
   
@@ -1467,7 +1381,16 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
       
     
     <a href="https://github.com/looperXX" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/looperxx_nlp" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
     
@@ -1476,7 +1399,7 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
       
     
     <a href="https://www.linkedin.com/in/%E5%95%B8-%E5%BE%90-012456163/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
 </div>
@@ -1489,14 +1412,19 @@ p\left(w | w_{i}\right)=\prod_{j=1}^{L(w)-1} \sigma\left([n(w, j+1)=\operatornam
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "header.autohide"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../assets/javascripts/workers/search.0bbba5b5.min.js"}</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.e1a181d9.min.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
       
         <script src="../js/baidu-tongji.js"></script>
+      
+        <script src="../js/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
