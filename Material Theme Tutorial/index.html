@@ -96,9 +96,7 @@
     
       
 
-  
-
-<header class="md-header md-header--lifted" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href=".." title="The Sun Also Rises." class="md-header__button md-logo" aria-label="The Sun Also Rises." data-md-component="logo">
       
@@ -206,8 +204,14 @@
     
   </nav>
   
+</header>
     
+    <div class="md-container" data-md-component="container">
       
+      
+        
+          
+            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -277,13 +281,7 @@
     </ul>
   </div>
 </nav>
-    
-  
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -969,13 +967,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    折叠块（默认打开）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    内联块
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     类型
   </a>
   
@@ -995,7 +1007,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     用法
   </a>
   
@@ -1017,14 +1029,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    三个冒号
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     多选项卡的代码块
   </a>
   
@@ -1118,13 +1123,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    折叠块（默认打开）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    内联块
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     类型
   </a>
   
@@ -1144,7 +1163,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     用法
   </a>
   
@@ -1166,14 +1185,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    三个冒号
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     多选项卡的代码块
   </a>
   
@@ -1214,35 +1226,48 @@
 <h2 id="_1">警告<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="_2">用法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>警告块遵循一个简单的语法:每个块都以<code>!!!</code>，然后使用一个关键字作为块的类型限定符。然后，块的内容跟随到下一行，由四个空格缩进。</p>
-<p>Example:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <h4 id="_3">改变标题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>Example:</p>
 <div class="admonition note">
 <p class="admonition-title">title</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <h4 id="_4">删除标题<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>Example:</p>
 <div class="admonition note">
 <p>Text</p>
 <p>Text</p>
 </div>
 <h4 id="_5">折叠块<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Example:</p>
 <details class="note">
 <summary>title</summary>
 <p>Text    </p>
 <p>Text</p>
 </details>
-<h3 id="_6">类型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_6">折叠块（默认打开）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<details class="note" open="open">
+<summary>title</summary>
+<p>Text    </p>
+<p>Text</p>
+</details>
+<h4 id="_7">内联块<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="admonition info inline">
+<p class="admonition-title">Info</p>
+<p>话语教给我们很多，但善恶还是可以自明。 —— 王小波，《思维的乐趣》</p>
+</div>
+<p>我要说出我的结论。中国人一直生活在一种有害哲学的影响之下，孔孟程朱编出了这套东西完全是因为他们在社会的上层生活。假如从整个人类来考虑问题，早就会发现，趋利避害，直截了当地解决实际问题最重要――说实话中国人在这方面已经不像样了这不是什么哲学的思辨，而是我的生活经验。我们的社会里，必须有改变物质生活的原动力，这样才能把未来的命脉握在自己的手里。—— 王小波，《沉默的大多数》</p>
+<div class="admonition info inline end">
+<p class="admonition-title">Info</p>
+<p>话语教给我们很多，但善恶还是可以自明。 —— 王小波，《思维的乐趣》</p>
+</div>
+<p>我要说出我的结论。中国人一直生活在一种有害哲学的影响之下，孔孟程朱编出了这套东西完全是因为他们在社会的上层生活。假如从整个人类来考虑问题，早就会发现，趋利避害，直截了当地解决实际问题最重要――说实话中国人在这方面已经不像样了这不是什么哲学的思辨，而是我的生活经验。我们的社会里，必须有改变物质生活的原动力，这样才能把未来的命脉握在自己的手里。—— 王小波，《沉默的大多数》</p>
+<h3 id="_8">类型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <ul>
-<li><code>note/seealso</code></li>
+<li><code>note</code></li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">note</p>
@@ -1250,15 +1275,15 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>abstract/summary/tldr</code></li>
+<li><code>abstract</code></li>
 </ul>
-<div class="admonition summary">
-<p class="admonition-title">summary</p>
+<div class="admonition abstract">
+<p class="admonition-title">abstract</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <ul>
-<li><code>info/todo</code></li>
+<li><code>info</code></li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">info</p>
@@ -1266,7 +1291,7 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>tip/hint/important</code></li>
+<li><code>tip</code></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">tip</p>
@@ -1274,23 +1299,31 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>success/check/done</code></li>
+<li><code>success</code></li>
 </ul>
-<div class="admonition done">
-<p class="admonition-title">done</p>
+<div class="admonition success">
+<p class="admonition-title">success</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <ul>
-<li><code>question/help/faq</code></li>
+<li><code>question</code></li>
 </ul>
-<div class="admonition help">
-<p class="admonition-title">help</p>
+<div class="admonition question">
+<p class="admonition-title">question</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <ul>
-<li><code>failure/fail/missing</code></li>
+<li><code>warning</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">warning</p>
+<p>Text</p>
+<p>Text</p>
+</div>
+<ul>
+<li><code>failure</code></li>
 </ul>
 <div class="admonition fail">
 <p class="admonition-title">fail</p>
@@ -1298,10 +1331,10 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>danger/error</code></li>
+<li><code>danger</code></li>
 </ul>
-<div class="admonition error">
-<p class="admonition-title">error</p>
+<div class="admonition danger">
+<p class="admonition-title">danger</p>
 <p>Text</p>
 <p>Text</p>
 </div>
@@ -1314,7 +1347,7 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>example/snippet</code></li>
+<li><code>example</code></li>
 </ul>
 <div class="admonition example">
 <p class="admonition-title">example</p>
@@ -1322,36 +1355,30 @@
 <p>Text</p>
 </div>
 <ul>
-<li><code>quote/cite</code></li>
+<li><code>quote</code></li>
 </ul>
-<div class="admonition cite">
-<p class="admonition-title">cite</p>
+<div class="admonition quote">
+<p class="admonition-title">quote</p>
 <p>Text</p>
 <p>Text</p>
 </div>
 <h2 id="codehilite">CodeHilite<a class="headerlink" href="#codehilite" title="Permanent link">&para;</a></h2>
-<h3 id="_7">用法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h3 id="_9">用法<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="markdown"><code>markdown</code>用法<a class="headerlink" href="#markdown" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 </code></pre></div>
 <h4 id="shebang"><code>Shebang</code>用法<a class="headerlink" href="#shebang" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/python</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-</code></pre></div>
-<h4 id="_8">三个冒号<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>:::python
-import tensorflow as tf
-</code></pre></div>
-<h4 id="_9">多选项卡的代码块<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>The <code class="highlight"><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span></code> function is used to...</p>
+<h4 id="_10">多选项卡的代码块<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>``` bash tab="Bash"</p>
 <h1 id="binbash">!/bin/bash<a class="headerlink" href="#binbash" title="Permanent link">&para;</a></h1>
 <p>echo "Hello world!"
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>``` c tab=&quot;C&quot;
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>#include &lt;stdio.h&gt;
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>int main(void) {
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  printf(&quot;Hello world!\n&quot;);
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>``` c tab=&quot;C&quot;
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>#include &lt;stdio.h&gt;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>int main(void) {
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  printf(&quot;Hello world!\n&quot;);
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>}
 </code></pre></div></p>
 <p>``` c++ tab="C++"</p>
 <h1 id="include">include <iostream><a class="headerlink" href="#include" title="Permanent link">&para;</a></h1>
@@ -1359,16 +1386,16 @@ import tensorflow as tf
   std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
   return 0;
 }
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>``` c# tab=&quot;C#&quot;
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>using System;
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>class Program {
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  static void Main(string[] args) {
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    Console.WriteLine(&quot;Hello world!&quot;);
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  }
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>``` c# tab=&quot;C#&quot;
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>using System;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>class Program {
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  static void Main(string[] args) {
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    Console.WriteLine(&quot;Hello world!&quot;);
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  }
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>}
 </code></pre></div></p>
-<h4 id="_10">特定行高亮<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h4 id="_11">特定行高亮<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>#!python hl_lines=&quot;3 4&quot;
     &quot;&quot;&quot; Bubble sort &quot;&quot;&quot;
     def bubble_sort(items):
@@ -1377,50 +1404,50 @@ import tensorflow as tf
                 if items[j] &gt; items[j + 1]:
                     items[j], items[j + 1] = items[j + 1], items[j]
 </code></pre></div>
-<h2 id="_11">脚注<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="_12">脚注<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
 <p>单行 <sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup> 多行<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
-<h2 id="_12">元数据<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">元数据<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <ul>
 <li>设置hero文本
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>hero: 支持摘要文本
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>hero: 支持摘要文本
 </code></pre></div></li>
 <li>给出下载链接</li>
 </ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>path: docs
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>source: Material Theme Tutorial.md
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>path: docs
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>source: Material Theme Tutorial.md
 </code></pre></div>
 - 给出跳转链接</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>redirect: /new/url
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>redirect: /new/url
 </code></pre></div>
-<h3 id="_13">覆盖<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_14">覆盖<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <ul>
 <li>页面标题
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>title: 页面标题
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>title: 页面标题
 </code></pre></div></li>
 <li>页面描述
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>description: 页面描述
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>description: 页面描述
 </code></pre></div></li>
 </ul>
 <h2 id="pymdown">Pymdown<a class="headerlink" href="#pymdown" title="Permanent link">&para;</a></h2>
-<h4 id="_14">块<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>$$
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>$$
+<h4 id="_15">块<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$$
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>$$
 </code></pre></div>
 <div class="arithmatex">\[
 \frac{n!}{k!(n-k)!} = \binom{n}{k}
 \]</div>
-<h4 id="_15">内联<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h4 id="_16">内联<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p><code>$ $</code>
 Lorem ipsum dolor sit amet: <span class="arithmatex">\(p(x|y) = \frac{p(y|x)p(x)}{p(y)}\)</span></p>
-<h4 id="_16">粗体斜体<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_17">粗体斜体<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p><strong>AA</strong>  <code>****</code>
 <em>BB</em>  <code>**</code></p>
-<h4 id="_17">插入符<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_18">插入符<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p><ins>inserted text</ins> </p>
 <p><u>下划线</u><br />
 <code>^^...^^</code> <code>&lt;u&gt;&lt;/u&gt;</code></p>
-<h4 id="_18">评论<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_19">评论<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <ul>
 <li>删除 添加 高亮 </li>
 </ul>
@@ -1437,26 +1464,26 @@ Lorem ipsum dolor sit amet: <span class="arithmatex">\(p(x|y) = \frac{p(y|x)p(x)
 <p>Formatting can also be applied to blocks, by putting the opening and closing
 tags on separate lines and adding new lines between the tags and the content.</p>
 </mark>
-<h4 id="_19">表情<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<h4 id="_20">表情<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p><code>:shit: :smile: :heart: :thumbsup:</code>
 <img alt="💩" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f4a9.svg" title=":shit:" /> <img alt="😄" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f604.svg" title=":smile:" /> <img alt="❤" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/2764.svg" title=":heart:" /> <img alt="👍" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f44d.svg" title=":thumbsup:" /></p>
-<h4 id="_20">内联代码高亮<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<h4 id="_21">内联代码高亮<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <ul>
 <li><code>使用 #!js</code>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="sb">`#!js var test = 0;`</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="sb">`#!js var test = 0;`</span>
 </code></pre></div>
 <code class="highlight"><span class="kd">var</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"></span></code></li>
 </ul>
-<h4 id="_21">突出<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<h4 id="_22">突出<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p><code>==...==</code>
 <mark>AAA</mark></p>
-<h4 id="_22">智能符号<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<h4 id="_23">智能符号<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <ul>
 <li>箭头 (&larr;, &rarr;, &harr;)</li>
 <li>商标和版权符号 (&copy;, &trade;, &reg;) </li>
 <li>分数 (&frac12;, &frac14;, ...).</li>
 </ul>
-<h4 id="_23">任务列表<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<h4 id="_24">任务列表<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Curabitur elit nibh, euismod et ullamcorper at, iaculis feugiat est</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Vestibulum convallis sit amet nisi a tincidunt<ul class="task-list">
@@ -1464,7 +1491,7 @@ tags on separate lines and adding new lines between the tags and the content.</p
 </ul>
 </li>
 </ul>
-<h4 id="_24">波浪线<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<h4 id="_25">波浪线<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p><code>~~...~~</code>
 <del>AAA</del></p>
 <div class="footnote">
@@ -1580,7 +1607,7 @@ tags on separate lines and adding new lines between the tags and the content.</p
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tooltips", "navigation.indexes", "navigation.tracking", "navigation.sections", "navigation.tabs", "navigation.top", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../assets/javascripts/bundle.d6c3db9e.min.js"></script>
