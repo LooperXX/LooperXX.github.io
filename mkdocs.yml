@@ -113,7 +113,7 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Homepage: 'index.md'
+  - Xiao Xu @ HIT-SCIR: 'index.md'
   - Notes: 
       - 'Normalization' : 'Normalization.md'
       - 'Transfer Learning': 'Transfer Learning.md'
