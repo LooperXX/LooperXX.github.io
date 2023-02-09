@@ -81,7 +81,7 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
-      smart_enable: all
+      # smart_enable: all
   - pymdownx.caret
   - pymdownx.critic
   - pymdownx.details
@@ -114,13 +114,16 @@ markdown_extensions:
 # Page tree
 nav:
   - Xiao Xu @ HIT-SCIR: 'index.md'
+  - Blogs:
+      - 'AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁' : 'blog/BridgeTower.md'
+      - 'AAAI 2022 (Oral) | Profile SLU: 基于Profile信息的口语语言理解基准' : 'blog/Profile SLU.md'
   - Notes: 
       - 'Normalization' : 'Normalization.md'
       - 'Transfer Learning': 'Transfer Learning.md'
       - 'Attention' : 'Attention.md'
       - 'Machine Reading Comprehension': 'Neural Reading Comprehension and beyond.md'
       - 'NCRF++' : 'Notes on NCRF++.md'
-  - CS224n-2019 Notes:
+  - Notes on CS224n-2019:
       - 'CS224n-2019 Introduction' : 'CS224n-2019-00-Info.md'
       - 'CS224n-2019 Assignment' : 'CS224n-2019-Assignment.md'
       - '01 Introduction and Word Vectors' : 'CS224n-2019-01-Introduction and Word Vectors.md'
@@ -143,6 +146,6 @@ nav:
       - '18 Tree Recursive Neural Networks, Constituency Parsing, and Sentiment' : 'CS224n-2019-18-Tree Recursive Neural Networks, Constituency Parsing, and Sentiment.md'
       - '19 Safety, Bias, and Fairness' : 'CS224n-2019-19-Safety, Bias, and Fairness.md'
       - '20 The Future of NLP + Deep Learning' : 'CS224n-2019-20-The Future of NLP + Deep Learning.md' 
-  - MkDocs Notes:
+  - Notes on MkDocs:
       - 'Demo' : 'MkDocs_demo.md'
       - 'Material Theme Tutorial' : 'Material Theme Tutorial.md'
