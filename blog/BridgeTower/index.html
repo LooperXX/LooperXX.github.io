@@ -25,7 +25,7 @@
     
     
       
-        <title>AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁 - The Sun Also Rises.</title>
+        <title>AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁 - The Sun Also Rises.</title>
       
     
     
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁
+              AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁
             
           </span>
         </div>
@@ -405,12 +405,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁
+          AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁
+        AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁
       </a>
       
         
@@ -436,6 +436,82 @@
         <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     1. 背景与动机
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 模型架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 设计选择
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 设计选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-bridgelayer" class="md-nav__link">
+    3.1 BridgeLayer的定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cross-modal-layer" class="md-nav__link">
+    3.2 Cross-Modal Layer的数量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bridgelayer" class="md-nav__link">
+    3.3 BridgeLayer的数量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 单模态编码器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 实验效果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 可视化结果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 附录
   </a>
   
 </li>
@@ -1082,6 +1158,82 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 模型架构
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 设计选择
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 设计选择">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-bridgelayer" class="md-nav__link">
+    3.1 BridgeLayer的定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-cross-modal-layer" class="md-nav__link">
+    3.2 Cross-Modal Layer的数量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-bridgelayer" class="md-nav__link">
+    3.3 BridgeLayer的数量
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 单模态编码器
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    4. 实验效果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    5. 可视化结果
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    6. 结论
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    7. 附录
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1101,7 +1253,7 @@
 
 
 
-  <h1>AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁</h1>
+  <h1>AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁</h1>
 
 <div class="admonition note">
 <p class="admonition-title">BridgeTower: Building Bridges Between Encoders in Vision-Language Representation Learning</p>
@@ -1114,13 +1266,133 @@
 <h2 id="0-take-away-messages">0. Take-away messages<a class="headerlink" href="#0-take-away-messages" title="Permanent link">&para;</a></h2>
 <ul>
 <li>提出了一个<strong>简单有效</strong>的视觉语言模型架构，BridgeTower，通过在顶层单模态层和每个跨模态层之间建立<strong>桥梁</strong>，成功地引入了<strong>不同语义层次</strong>的视觉和文本表示，从而提高了跨模态编码器中注意力头的<strong>多样性</strong>，并在各种任务上实现了<strong>突出</strong>的性能改进。</li>
-<li>在公平的评估设置下，与Two-Tower架构的METER模型相比，BridgeTower显著地提高了模型的多模态表示能力。</li>
-<li>BridgeTower可以适用于不同的视觉、文本或跨模态编码器。</li>
+<li>在<strong>公平</strong>的评估设置下，与Two-Tower架构的METER模型相比，BridgeTower<strong>显著</strong>地提高了模型的多模态表示能力。</li>
+<li><strong>仅</strong>使用400万张图片进行视觉语言预训练，BridgeTower在各种视觉语言下游任务上取得了十分<strong>强大</strong>的性能，击败了许多用<strong>更多</strong>数据和参数进行预训练的强大模型。</li>
+<li>BridgeTower可以<strong>适用</strong>于不同的视觉、文本或跨模态编码器。</li>
 </ul>
 <h2 id="1">1. 背景与动机<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 未完待续</li>
+<p><img alt="examples" src="../imgs/bridgetower-examples.png" /></p>
+<blockquote>
+<p>图源：<a href="https://arxiv.org/abs/1912.02315">12-in-1: Multi-Task Vision and Language Representation Learning</a></p>
+</blockquote>
+<p>视觉语言研究的目标，是训练一个能够理解图像和文本的智能AI系统。
+上图展示了一些流行的视觉语言任务。视觉问答是其中最著名的任务之一，它需要根据输入图像来回答和图片相关的问题。</p>
+<video width=100% autoplay controls loop>
+  <source src="../imgs/bridgetower-works.mp4" type="video/mp4">
+</video>
+
+<p>自2019年以来，在大规模图像-文本对的自监督预训练的帮助下，基于Transformer的视觉语言模型取得了显著的进展。其中，具有双塔结构的视觉语言 (VL) 模型在视觉语言表示学习中占主导地位。基于不同的文本和视觉编码器，人们提出了各种模型架构和预训练目标。从模型架构的角度来看，近期大多数的VL工作，可以看作是由三个模块组成的双塔架构，即文本编码器、视觉编码器，以及在它们之上的跨模态融合模块。不同的VL模型在这三个模块的设计上有所不同。</p>
+<p><img alt="brief" src="../imgs/bridgetower-brief.jpg" /></p>
+<blockquote>
+<p>图(a)-(d)是目前的四类视觉语言模型。图(e)简要说明了BridgeTower的模型结构。
+VE、TE和CE分别是视觉编码器、文本编码器和跨模态编码器的简称。每个矩形的高度代表其相对计算成本。本图受到了<a href="https://arxiv.org/abs/2102.03334">ViLT: Vision-and-Language Transformer Without Convolution or Region Supervision</a>的启发。</p>
+</blockquote>
+<p>目前的VL模型要么使用轻量级的单模态编码器，并学习在深度跨模态编码器中同时提取、对齐和融合两种模态，要么将预训练的深层单模态编码器的最后一层单模态表示，送入顶部的跨模态编码器中。这两种方法都有可能限制视觉-语言表示的学习，并进一步限制模型的性能。</p>
+<p><img alt="motivation" src="../imgs/bridgetower-motivation.png" /></p>
+<p>如果我们深入双塔结构的单模态塔 (编码器) ，例如<a href="https://arxiv.org/abs/2211.10797">METER</a>模型。我们可以发现他们只将最后一层的单模态特征直接送入顶部的跨模态融合模块，忽略了深层单模态塔的不同层的语义信息。我们自然地想到，能否在不同层的预训练单模态塔和跨模态融合模块之间建立起桥梁，以充分利用多层单模态特征？</p>
+<video width=100% autoplay controls loop>
+  <source src="../imgs/bridgetower-transform.mp4" type="video/mp4">
+</video>
+
+<p>因此，我们提出了BridgeTower架构。与双塔架构不同，BridgeTower在跨模态融合模块和单模态编码器之间建立起了多座桥梁。二者的主要区别在于，双塔结构只融合最后一层的特征，而BridgeTower则逐渐融合单模态编码器顶部的多层特征。</p>
+<h2 id="2">2. 模型架构<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<p><img alt="framework" src="../imgs/bridgetower-framework.jpg" /></p>
+<p>这里我们展示了BridgeTower的详细架构图。
+具体而言，我们采用12层的RoBERTa-base和12层的CLIP-ViT-B作为单模态编码器。
+跨模态编码器为6层，每一层都添加了BridgeLayer来与单模态编码器的顶部6层建立连接。</p>
+<p>这使得预训练单模态编码器中的<strong>不同语义层次</strong>的视觉和文本表示，通过BridgeLayer与跨模态表示进行融合，从而促进了跨模态编码器中，<strong>高效</strong>的，<strong>自下而上</strong>的跨模态对齐与融合。
+需要注意的是，BridgeTower架构<strong>适用</strong>于不同的视觉、文本或跨模态编码器。</p>
+<h2 id="3">3. 设计选择<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<p>我们对BridgeTower的不同设计选择进行了广泛的实验。</p>
+<h3 id="31-bridgelayer">3.1 BridgeLayer的定义<a class="headerlink" href="#31-bridgelayer" title="Permanent link">&para;</a></h3>
+<video width=100% autoplay controls loop>
+  <source src="../imgs/bridgetower-bridgelayer.mp4" type="video/mp4">
+</video>
+
+<p>首先是BridgeLayer的定义，也就是单模态信息与跨模态信息如何在BridgeLayer中融合。</p>
+<figure>
+<p><img alt="BridgeLayer" src="../imgs/bridgetower-bridgelayer.png" width="500" /></p>
+</figure>
+<p>上表展示了不同定义的BridgeLayer的参数量和其在VQAv2和Flickr30K数据集上的性能。RSUM表示图文检索任务的召回度量之和。<span class="arithmatex">\(x\)</span> 表示前一层输出的跨模态表示。<span class="arithmatex">\(y\)</span> 表示相应的单模态表示。我们省略了每一行中使用的 <span class="arithmatex">\(\operatorname{LayerNorm}\)</span>。有些出乎意料但又合乎情理的是，第一行中的 <span class="arithmatex">\(\operatorname{Add}\&amp;\operatorname{Norm}\)</span> 使用<strong>最小</strong>的参数量得到了<strong>最好</strong>的结果。</p>
+<h3 id="32-cross-modal-layer">3.2 Cross-Modal Layer的数量<a class="headerlink" href="#32-cross-modal-layer" title="Permanent link">&para;</a></h3>
+<video width=100% autoplay controls loop>
+    <source src="../imgs/bridgetower-cross-modal-layer.mp4" type="video/mp4">
+</video>
+
+<p>接着我们基于12层的文本和视觉编码器，研究不同数量的跨模态层对性能的影响。</p>
+<figure>
+<p><img alt="Cross-Modal Layer" src="../imgs/bridgetower-cross-modal-layer.png" width="500" /></p>
+</figure>
+<p><span class="arithmatex">\(L_Z\)</span>表示跨模态层的数量，并且BridgeTower使用Top-<span class="arithmatex">\(L_Z\)</span>的单模态表示作为跨模态层的输入。我们在两个数据集上比较不同<span class="arithmatex">\(L_Z\)</span>下，METER和BridgeTower的性能情况，我们发现更多的跨模态层并不能不断提高性能。这可能是由于
+1. 更多的跨模态层需要更多的训练数据。
+2. 顶层的单模态表示有利于跨模态对齐和融合，而底层的单模态表示可能不利于，甚至是有害于跨模态表示的学习。
+虽然METER和BridgeTower之间唯一的区别是<strong>BridgeLayers</strong>，但BridgeTower在不同数量的跨模态层中始终获得了<strong>一致</strong>的性能提升。</p>
+<h3 id="33-bridgelayer">3.3 BridgeLayer的数量<a class="headerlink" href="#33-bridgelayer" title="Permanent link">&para;</a></h3>
+<video width=100% autoplay controls loop>
+  <source src="../imgs/bridgetower-internal-external.mp4" type="video/mp4">
+</video>
+
+<p>最后是BridgeLayer的数量，也就是在使用相同数量的跨模态层时，应该加入多少个BridgeLayer。</p>
+<figure>
+<p><img alt="Internal and External" src="../imgs/bridgetower-internal-external.png" width="400" /></p>
+</figure>
+<p>为了充分比较BridgeTower和双塔结构的METER模型，我们试图建立一个从BridgeTower到Two-Tower<strong>逐渐变化</strong>的情景。为了进行公平的比较，我们使用共计6个跨模态层，并将它们分为外部 (External) 跨模态层和内部 (Internal) 跨模态层。二者的区别在于内部跨模态层具有BridgeLayer，而外部跨模态层没有。</p>
+<p>第一行显示了6个跨模态层均为内部层的BridgeTower的结果。然后，我们逐渐增加外部层，减少内部层。我们发现在两个数据集上的性能都出现了<strong>稳定的下降</strong>。</p>
+<p>最后一行显示了双塔结构的METER模型的性能。这表明BridgeTower通过BridgeLayers，将单模态编码器的顶层与跨模态编码器的每一层连接起来，可以<strong>显著提高性能</strong>。</p>
+<h3 id="34">3.4 单模态编码器<a class="headerlink" href="#34" title="Permanent link">&para;</a></h3>
+<figure>
+<p><img alt="Uni-Modal Encoders" src="../imgs/bridgetower-uni-modal-encoder.png" width="500" /></p>
+</figure>
+<p>最后我们尝试了不同的视觉和文本编码器作为BridgeTower的预训练单模态编码器，并直接对下游任务进行微调，以进一步研究BridgeLayers带来的影响。我们发现，对于不同的预训练视觉和文本编码器，BridgeTower的性能都<strong>持续</strong>且<strong>显著</strong>地优于METER的性能。</p>
+<h2 id="4">4. 实验效果<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<figure>
+<p><img alt="Pre-train Data" src="../imgs/bridgetower-pre-train-data.png" width="350" /></p>
+</figure>
+<p>我们基于公共图文对数据集对BridgeTower进行预训练，如上表所示，大约共计400万张独立图片，900万对图文对。
+我们使用通用的掩码语言建模 (Masked Language Modeling, MLM) 和图文匹配 (Image-Text Matching, ITM) 任务作为预训练任务。
+所有的预训练设置与预训练参数都与METER<strong>一致</strong>，以提供METER和BridgeTower之间的<strong>公平比较</strong>。</p>
+<figure>
+<p><img alt="Result1" src="../imgs/bridgetower-result1.png" width="800" /></p>
+</figure>
+<p>上图展示了BridgeTower模型在视觉问答 (Visual Question Answering) 的VQAv2数据集上的Base和Large两种Size的模型性能。
+在视觉-语言预训练中，我们的Base模型只使用了400万张图片进行预训练，就在VQAv2基准上取得了令人印象深刻的表现。</p>
+<p>而且，METER和BridgeTower使用<strong>相同</strong>的文本编码器、视觉编码器和跨模态融合机制。
+只需将METER模型的Two-Tower架构改为BridgeTower架构，在<strong>相同</strong>的预训练数据和几乎可以忽略不计的额外参数和计算成本下，VQAv2数据集的Test-Standard性能就可以轻松提高<strong>1.09</strong>。
+BridgeTower的Large模型在VQAv2数据集上更是取得<strong>81.15</strong>的Test-Standard性能。</p>
+<p>值得注意的是，BridgeTower超过了许多使用<strong>10倍</strong>甚至<strong>100倍</strong>的图像进行VL预训练的Base模型与Large模型，击败了许多用更多数据和参数进行预训练的强大模型。</p>
+<figure>
+<p><img alt="Result2" src="../imgs/bridgetower-result2.png" width="800" /></p>
+</figure>
+<p>类似的趋势也出现在视觉蕴含 (Visual Entailment) 和图像-文本检索 (Image-Text Retrieval) 任务中。特别是在Flickr30K数据集上，BridgeTower的Base模型带来了<strong>5.9</strong>点收益。</p>
+<h2 id="5">5. 可视化结果<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<p>为了进一步研究性能提高的原因，我们通过分析每个跨模态层中，不同注意力头的注意力权重分布之间的KL散度，来比较双塔架构的METER模型和我们的BridgeTower架构。</p>
+<p>KL散度可以被看作是注意力头的<strong>多样性</strong>。
+较高或较低的KL散度表示不同的注意力头之间，关注的token更加<strong>不同</strong>或更加<strong>相似</strong>。</p>
+<figure>
+<p><img alt="KL Divergence" src="../imgs/bridgetower-kl.jpg" width="600" /></p>
+</figure>
+<p>上图展示了两个模型的跨模态编码器的视觉和文本部分的自注意力以及交叉注意力的注意力头的多样性。
+图中存在两个明显的趋势：</p>
+<ol>
+<li>对于BridgeTower来说，注意力头的多样性随着层的深入而逐渐变小，但对于METER来说，注意力头的多样性随着层的深入而逐渐变大，然后变小。</li>
+<li>BridgeTower每层的注意力头的<strong>多样性</strong><strong>明显大于</strong>METER，尤其是第1层至第5层。</li>
+</ol>
+<p>因此，对于跨模态编码器的视觉和文本部分的自注意力以及交叉注意力的不同注意力头，与METER相比，BridgeTower能够关注到<strong>更多不同的标记</strong> (token)。</p>
+<p>我们将此归功于我们提出的BridgeLayers，它将单模态编码器的顶层与跨模态编码器的每一层连接起来。
+<strong>不同语义层次</strong>的视觉和文本表示通过BridgeLayer与跨模态表示进行<strong>融合</strong>，从而促进了跨模态编码器每一层的<strong>更有效</strong>和<strong>更丰富</strong>的跨模态对齐和融合。</p>
+<h2 id="6">6. 结论<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>在本文中，我们提出了BridgeTower，它引入了多个BridgeLayer，在单模态编码器的顶层和跨模态编码器的每一层之间建立<strong>连接</strong>。这使得预训练单模态编码器中的<strong>不同语义层次</strong>的视觉和文本表示，通过BridgeLayer与跨模态表示进行<strong>融合</strong>，从而促进了跨模态编码器中，<strong>高效</strong>的，<strong>自下而上</strong>的跨模态对齐与融合。</p>
+<p><strong>仅</strong>使用400万张图像进行视觉语言预训练，BridgeTower在各种下游的视觉-语言任务中取得了非常强大的性能。特别是在VQAv2数据集上，BridgeTower达到了<strong>78.73%</strong>的准确率，在<strong>相同</strong>的预训练数据和几乎可以忽略不计的额外参数和计算成本下，比Two-Tower架构的METER模型高出了<strong>1.09%</strong>的准确率。值得注意的是，当进一步扩展该模型时，BridgeTower达到了<strong>81.15%</strong>的准确率，甚至超过了一些在更大数量级的数据集上使用更多参数进行预训练的强大模型。</p>
+<h2 id="7">7. 附录<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<p>我们在附录中给出了更加<strong>丰富</strong>的实验结果与分析，包括：</p>
+<ul>
+<li>BridgeTower和METER模型在<strong>单模态任务</strong> (CIFAR-10, CIFAR-100, GLUE) 的性能与分析</li>
+<li>BridgeTower和METER模型的<strong>参数量</strong>、<strong>计算量</strong>、<strong>推理时间</strong>和性能的详细比较与分析</li>
+<li>BridgeTower在其他下游任务 (Visual Reasoning - NLVR<span class="arithmatex">\(^2\)</span>, Image-Text Retrieval - COCO) 的性能</li>
+<li>BridgeTower和METER模型在VQAv2上的详细性能比较，以及特定案例的分析</li>
+<li>BridgeTower的预训练和下游任务微调的详细参数配置</li>
 </ul>
+<p>欢迎感兴趣的同学阅读我们的论文，尤其是关于单模态任务的实验结果与分析。文中阐明了对于单模态实验结果的思考与可能的解决方案，该问题对多模态学习的研究是非常有价值的。</p>
 
 
   

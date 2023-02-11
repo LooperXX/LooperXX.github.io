@@ -115,7 +115,7 @@ markdown_extensions:
 nav:
   - Xiao Xu @ HIT-SCIR: 'index.md'
   - Blogs:
-      - 'AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立起编码器之间的桥梁' : 'blog/BridgeTower.md'
+      - 'AAAI 2023 (Oral) | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁' : 'blog/BridgeTower.md'
       - 'AAAI 2022 (Oral) | Profile SLU: 基于Profile信息的口语语言理解基准' : 'blog/Profile SLU.md'
   - Notes: 
       - 'Normalization' : 'Normalization.md'
