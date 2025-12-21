@@ -123,7 +123,7 @@ plugins:
 
 # Page tree
 nav:
-    - Xiao Xu @ HIT-SCIR: "index.md"
+    - Xiao Xu @ Qwen Team, Alibaba Group: "index.md"
     - Blogs:
           - "ACL 2023 Oral Paper | ManagerTower: 自适应融合单模态专家见解的视觉语言表示学习方法": "blog/ManagerTower.md"
           - "AAAI 2023 Oral Paper | BridgeTower: 在视觉语言表示学习中建立编码器间的桥梁": "blog/BridgeTower.md"
